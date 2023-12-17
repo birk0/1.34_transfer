@@ -1,0 +1,7 @@
+#Prov646 - Ambon
+culture = persian
+religion = zoroastrian
+
+base_tax = 1
+base_production = 1
+base_manpower = 1

@@ -1,0 +1,19 @@
+#Sluck
+
+owner = LIT
+controller = LIT 
+culture = byelorussian
+religion = orthodox
+hre = no
+base_tax = 2
+base_production = 3
+trade_goods = cloth 
+base_manpower = 1
+capital = "Sluck"
+is_city = yes
+add_core = LIT
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

@@ -1,0 +1,17 @@
+government = theocracy
+add_government_reform = leading_clergy_reform
+primary_culture = moroccan
+religion = sunni
+technology_group = muslim
+religious_school = maliki_school
+add_piety = 1
+
+1444.1.1 = {
+	monarch = {
+		name = "Yahya ibn Umar"
+		birth_date = 1410.1.1
+		adm = 1
+		dip = 0
+		mil = 3
+	}
+}

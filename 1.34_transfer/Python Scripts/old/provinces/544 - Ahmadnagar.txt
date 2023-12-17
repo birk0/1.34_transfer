@@ -1,0 +1,19 @@
+#544 - Ahmednagar
+
+owner = BAH
+controller = BAH
+culture = marathi
+religion = hinduism
+capital = "Ahmednagar"
+trade_goods = cotton
+hre = no
+base_tax = 4
+base_production = 4
+base_manpower = 1
+is_city = yes
+add_core = BAH
+add_core = AHM
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

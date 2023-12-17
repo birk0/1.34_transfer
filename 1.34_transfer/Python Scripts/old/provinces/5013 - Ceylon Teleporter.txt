@@ -1,0 +1,5 @@
+#Strait Teleporter province which connects India with Africa & Indonesia via gates
+
+base_tax = 1
+base_production = 1
+base_manpower = 1

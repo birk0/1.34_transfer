@@ -1,0 +1,7 @@
+#Prov794 - Jujuy
+culture = nubian
+religion = shamanism #Fetishism
+
+base_tax = 1
+base_production = 1
+base_manpower = 1

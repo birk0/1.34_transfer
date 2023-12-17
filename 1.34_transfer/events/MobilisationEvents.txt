@@ -1,0 +1,77 @@
+
+# Events for the Mobilisation mechanic
+
+
+namespace = mobilisation_events
+# I plan to add more here later, for flavour related stuff
+
+country_event = { # Evading the Draft!
+    id = mobilisation_events.1
+    title = "mobilisation_events.1.t"
+    desc = "mobilisation_events.1.d"
+    picture = REVOLT_eventPicture
+
+    trigger = {
+        ai = no
+        exists = yes
+        is_mobilisation_level = {
+            value = 4
+        }
+    }
+
+    mean_time_to_happen = {
+        months = 240
+        modifier = {
+            factor = 0.8
+            is_mobilisation_level = {
+                value = 5
+            }
+        }
+        modifier = {
+            factor = 0.8
+            is_mobilisation_level = {
+                value = 6
+            }
+        }
+    }
+    goto = draft_evasion_prov
+
+    immediate = {
+        hidden_effect = {
+            random_owned_province = {
+                limit = {
+                    controlled_by = ROOT
+                }
+                save_event_target_as = draft_evasion_prov
+            }
+        }
+    }
+
+    option = {
+        name = "mobilisation_events.1.a" # Institute harsher punishments
+        reduce_stability_or_adm_power = yes
+        event_target:draft_evasion_prov = {
+            add_base_tax = -1
+        }
+    }
+
+    option = {
+        name = "mobilisation_events.1.b" # This is unacceptable.
+        trigger = { 
+            OR = {
+                mil = 4 
+                ruler_has_personality = strict_personality
+            }
+        }
+        highlight = yes
+        event_target:draft_evasion_prov = {
+            area = {
+                limit = {
+                    owned_by = ROOT
+                }
+                add_base_manpower = -2
+            }
+        }
+        add_yearly_manpower = -3
+    }
+}

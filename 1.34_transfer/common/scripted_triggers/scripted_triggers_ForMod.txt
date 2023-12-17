@@ -1,0 +1,1670 @@
+
+# Used for changing the tenaille modifiers in onactions.
+has_tenaille_modifier = {
+	OR = {
+      has_province_modifier = tenaille_modifier_defender_root
+      has_province_modifier = tenaille_modifier_defender_area
+      has_province_modifier = tenaille_modifier_attacker_root
+      has_province_modifier = tenaille_modifier_attacker_area
+      has_province_modifier = earthern_rampart_defender_root
+      has_province_modifier = earthern_rampart_defender_area
+      has_province_modifier = earthern_rampart_attacker_root
+      has_province_modifier = earthern_rampart_defender_area
+	}
+}
+may_have_fort_trigger = {
+   OR = {
+      NOT = { has_province_modifier = may_not_build_fort } 
+      AND = {
+         NOT = { has_province_modifier = recent_ownership_change }
+         has_fort_building_trigger = yes
+      }
+   }
+}
+has_fort_area_modifiers = {
+   OR = {
+      has_province_modifier = fort_15th_modifier
+	   has_province_modifier = fort_16th_modifier
+	   has_province_modifier = fort_17th_modifier
+	   has_province_modifier = fort_18th_modifier
+   }
+}
+has_dry_terrain = {
+   OR = {
+      has_terrain = desert
+      has_terrain = coastal_desert
+      has_terrain = drylands
+      has_terrain = mesa
+   }
+}
+has_cold_terrain = {
+   OR = {
+      has_terrain = mountain
+      has_terrain = glacier
+   }
+}
+has_trees_terrain = {
+   OR = {
+      has_terrain = forest
+      has_terrain = woods
+      has_terrain = hills
+      has_terrain = taiga
+   }
+}
+has_tropical_terrain = {
+   OR = {
+      has_terrain = rainforest
+      has_terrain = jungle
+   }
+}
+has_flat_terrain = {
+   OR = {
+      has_terrain = grasslands
+      has_terrain = farmlands
+      has_terrain = plains
+      has_terrain = savannah
+      has_terrain = steppe
+   }
+}
+has_hills_terrain = {
+   OR = {
+      has_terrain = hills
+      has_terrain = valley
+      has_terrain = highlands
+   }
+}
+has_terrain_type = {
+   has_$type$_terrain = yes
+}
+province_has_winter = {
+   OR = {
+      has_winter = mild_winter
+      has_winter = normal_winter
+      has_winter = severe_winter
+   }
+}
+province_has_monsoon = {
+   OR = {
+      has_monsoon = normal_monsoon
+      has_monsoon = mild_monsoon
+      has_monsoon = severe_monsoon
+   }
+}
+is_allowed_tradegood = {
+   has_province_flag = allowed_$type$_good
+}
+has_library_modifier = {
+   OR = {
+      has_province_modifier = library_area_modifier
+      has_province_modifier = grand_library_area_modifier
+      has_province_modifier = university_area_modifier
+   }
+}
+may_have_library_trigger = {
+   OR = {
+      NOT =  { has_province_modifier = may_not_build_library }
+      AND = {
+         has_library_building_trigger = yes
+         NOT = { has_province_modifier = recent_ownership_change }
+      } 
+   }
+}  
+has_library_building_trigger = {
+   OR = {
+      has_building = library
+      has_building = grand_library
+      has_building = university
+   }
+}
+defensive_terrain_trigger = { #checks if the province has defensive terrain
+   OR = {
+      has_terrain = jungle
+      has_terrain = rainforest
+      has_terrain = highlands
+      has_terrain = valley
+      has_terrain = forest
+      has_terrain = hills
+      has_terrain = woods
+      [[very_defensive]
+         very_defensive_terrain_trigger = yes
+      ]
+   }
+}
+very_defensive_terrain_trigger = {
+   OR = {
+      has_terrain = mountain
+      has_terrain = mesa
+      has_terrain = glacier
+   }
+}
+is_hostile_country_of = {
+   OR = {
+      is_enemy = $who$
+      is_rival = $who$
+      AND = {
+         ai = no
+         NOT = { overlord_of = $who$ }
+         NOT = { alliance_with = $who$ } 
+      } 
+   }
+}
+owner_or_harmonized_religion = {
+   custom_trigger_tooltip = {
+      tooltip = owner_or_harmonized_tt
+      OR = {
+         has_owner_religion = yes
+         owner = { has_harmonized_with = PREV }
+      }
+   }
+}
+can_build_manufactory = {
+   OR = {
+		can_build = fishery
+		can_build = granary
+		can_build = brewery
+		can_build = agreopy
+		can_build = ranch
+		can_build = metal_works
+		can_build = mint
+		can_build = atelier
+		can_build = kiln
+		can_build = wharf
+		can_build = weapons
+		can_build = textile
+		can_build = tradecompany
+		can_build = farm_estate
+		can_build = mills
+		can_build = furnace
+		can_build = plantations
+   }
+}
+
+# Used in random_lists
+random_list_trigger = {
+   NOT = { has_country_modifier = option_$option$ }
+}
+# used in province scope to check the development cost modifiers of the province
+has_development_cost_penalty = {
+   check_variable = {
+      which = local_development_cost_trigger
+      value = $value$
+   }
+}
+# Used to check if the country is ahead of time in technology.
+# Accepts a technology type to check, eg MIL/ADM/DIP
+# If used with no parameters, then it'll check if you're ahead of time in any technology
+# custom_tooltip can be specified when you aren't using 'category = TYPE' but still want a tooltip displayed
+is_ahead_of_time = {
+   custom_trigger_tooltip = {
+      [[custom_tooltip] 
+         tooltip = $custom_tooltip$ 
+      ]
+      [[category]
+         tooltip = is_ahead_of_time_$category$_tooltip
+         has_global_modifier_value = { which = ahead_of_time_$category$_influence value = 1 }
+      ]
+      OR = {
+         [[category] always = yes ]
+         has_global_modifier_value = { which = ahead_of_time_MIL_influence value = 1 }
+         has_global_modifier_value = { which = ahead_of_time_DIP_influence value = 1 }
+         has_global_modifier_value = { which = ahead_of_time_ADM_influence value = 1 }
+      }
+   }
+}
+# Used in events
+fire_once_for_country = {
+   NOT = { has_country_modifier = $event$ }
+}
+
+
+            #### Needs to be reviewed
+
+###################################################
+absolutism_can_revoke_trigger = {
+   if = {
+      limit = {
+         variable_arithmetic_trigger = {
+            export_to_variable = {
+               which = possible_revoked_privileges
+               value = 1 #+1 Base
+            }
+            OR = {
+               ai = no
+               variable_arithmetic_trigger = {
+                  change_variable = {
+                     which = possible_revoked_privileges
+                     value = 1 #+1 for AI
+                  }
+               }
+            }
+            OR = {
+               NOT = { has_country_flag = idea_statecraft }
+               variable_arithmetic_trigger = {
+                  change_variable = {
+                     which = possible_revoked_privileges
+                     value = 1 #+1 for "Statecraft" Idea
+                  }
+               }
+            }
+            OR = {
+               NOT = { has_country_flag = CAC_curbing_estate_power }
+               variable_arithmetic_trigger = {
+                  change_variable = {
+                     which = possible_revoked_privileges
+                     value = 1 #+1 while "Curbing Estate Power" during Court and Country
+                  }
+               }
+            }
+            OR = {
+               NOT = { has_country_flag = resolved_court_and_country }
+               variable_arithmetic_trigger = {
+                  change_variable = {
+                     which = possible_revoked_privileges
+                     value = 3 #+3 For successfully completing Court and Country
+                  }
+               }
+            }
+            check_variable = {
+               which = estate_revoke_var
+               which = possible_revoked_privileges
+            }
+         }
+      }
+      custom_trigger_tooltip = {
+         tooltip = reached_privilege_revoke_limit_tt
+         always = no
+      }
+   }
+}
+any_estate_has_privilege = { #Country scope, defines whether any estate in the country has at least "x" amount of privileges
+   OR = {
+      num_of_estate_privileges = {
+         estate = estate_brahmins
+         value = $value$
+      }
+      num_of_estate_privileges = {
+         estate = estate_burghers
+         value = $value$
+      }
+      num_of_estate_privileges = {
+         estate = estate_church
+         value = $value$
+      }
+      num_of_estate_privileges = {
+         estate = estate_cossacks
+         value = $value$
+      }
+      num_of_estate_privileges = {
+         estate = estate_dhimmi
+         value = $value$
+      }
+      num_of_estate_privileges = {
+         estate = estate_jains
+         value = $value$
+      }
+      num_of_estate_privileges = {
+         estate = estate_maratha
+         value = $value$
+      }
+      num_of_estate_privileges = {
+         estate = estate_nobles
+         value = $value$
+      }
+      num_of_estate_privileges = {
+         estate = estate_nomadic_tribes
+         value = $value$
+      }
+      num_of_estate_privileges = {
+         estate = estate_rajput
+         value = $value$
+      }
+      num_of_estate_privileges = {
+         estate = estate_vaisyas
+         value = $value$
+      }
+      num_of_estate_privileges = {
+         estate = estate_eunuchs
+         value = $value$
+      }
+   }
+}
+no_embassy_modifiers_trigger = { #Returns  true if the country has no embassy modifiers 
+   NOT = {
+      OR = {         
+         has_country_modifier = embassy_modifier1
+         has_country_modifier = embassy_modifier2
+         has_country_modifier = embassy_modifier3
+         has_country_modifier = embassy_modifier4
+         has_country_modifier = embassy_modifier5
+         has_country_modifier = embassy_modifier6
+         has_country_modifier = embassy_modifier7
+         has_country_modifier = embassy_modifier8
+         has_country_modifier = embassy_modifier9
+         has_country_modifier = embassy_modifier10
+         has_country_modifier = embassy_modifier11
+         has_country_modifier = embassy_modifier12
+         has_country_modifier = embassy_modifier13
+         has_country_modifier = embassy_modifier14
+         has_country_modifier = embassy_modifier15
+         has_country_modifier = embassy_modifier16
+         has_country_modifier = embassy_modifier17
+         has_country_modifier = embassy_modifier18
+         has_country_modifier = embassy_modifier19
+         has_country_modifier = embassy_modifier20
+         has_country_modifier = embassy_modifier21
+         has_country_modifier = embassy_modifier22
+         has_country_modifier = embassy_modifier23
+         has_country_modifier = embassy_modifier24
+         has_country_modifier = embassy_modifier25
+         has_country_modifier = embassy_modifier26
+         has_country_modifier = embassy_modifier27
+         has_country_modifier = embassy_modifier28
+         has_country_modifier = embassy_modifier29
+         has_country_modifier = embassy_modifier30
+         has_country_modifier = embassy_modifier31
+         has_country_modifier = embassy_modifier32
+         has_country_modifier = embassy_modifier33
+         has_country_modifier = embassy_modifier34
+         has_country_modifier = embassy_modifier35
+         has_country_modifier = embassy_modifier36
+         has_country_modifier = embassy_modifier37
+         has_country_modifier = embassy_modifier38
+         has_country_modifier = embassy_modifier39
+         has_country_modifier = embassy_modifier40
+         has_country_modifier = embassy_modifier41
+         has_country_modifier = embassy_modifier42
+         has_country_modifier = embassy_modifier43
+         has_country_modifier = embassy_modifier44
+         has_country_modifier = embassy_modifier45
+         has_country_modifier = embassy_modifier46
+         has_country_modifier = embassy_modifier47
+         has_country_modifier = embassy_modifier48 
+      }
+   }
+}
+inland_fort_trigger = { #Checks whether a fort is faraway from borders
+   all_neighbor_province = {
+      owner = { ROOT = { owned_by = PREV } }
+      all_neighbor_province = {
+         owner = { ROOT = { owned_by = PREV } }
+         all_neighbor_province = {
+            owner = { ROOT = { owned_by = PREV } }
+            all_neighbor_province = {
+               owner = { ROOT = { owned_by = PREV } }
+            }
+         }
+      }
+   }
+}
+seize_land_disaster_trigger = { #These were in the crownland interaction folder apparently broken according to pdx
+   OR = {
+      has_disaster = estate_brahmins_disaster
+		has_disaster = estate_burghers_disaster
+		has_disaster = estate_church_disaster
+		has_disaster = estate_cossacks_disaster
+		has_disaster = estate_dhimmi_disaster
+		has_disaster = estate_jains_disaster
+		has_disaster = estate_maratha_disaster
+		has_disaster = estate_nobility_disaster
+		has_disaster = estate_nomadic_tribes_disaster
+		has_disaster = estate_rajput_disaster
+		has_disaster = estate_vaisyas_disaster
+   }
+}
+has_governing_capacity_privilege = { #Returns true if the specified country has any privilege granted out to the estates that increases governing capacity
+   OR = {
+      has_estate_privilege = estate_jains_land_rights
+      has_estate_privilege = estate_church_land_rights
+      has_estate_privilege = estate_nobles_land_rights
+      has_estate_privilege = estate_burghers_land_rights
+      has_estate_privilege = estate_rajput_land_rights
+      has_estate_privilege = estate_maratha_land_rights
+      has_estate_privilege = estate_nomadic_tribes_land_rights
+      has_estate_privilege = estate_cossacks_land_rights
+      has_estate_privilege = estate_dhimmi_land_rights
+      has_estate_privilege = estate_vaisyas_land_rights
+      has_estate_privilege = estate_brahmins_land_rights
+      has_estate_privilege = estate_eunuchs_land_rights
+   }
+}
+is_neighbor_of_or_shares_seazone_with = { #Checks if the country is a neighbor of or shares a seazone with the defined scope
+   OR = {
+      is_neighbor_of = $who$
+      any_owned_province = {
+         sea_zone = {
+            any_neighbor_province = {
+               owned_by = $who$
+            }
+         }
+      }
+   }
+}
+can_build_production = {
+   OR = {
+      can_build = workshop
+      can_build = counting_house
+      can_build = constable
+   }
+}
+can_build_trade_center = {
+   OR = {
+      can_build = trade_center
+      can_build = global_trade_center
+   }
+}
+can_build_land_fl = {
+   OR = {
+      can_build = conscription_center
+      can_build = regimental_camp
+   }
+}
+can_build_manpower = {
+   OR = {
+      can_build = barracks
+      can_build = training_fields
+      can_build = weapons_arsenal
+   }
+}
+can_build_taxation = {
+   OR = {
+      can_build = temple
+      can_build = cathedral
+      can_build = grand_treasury
+   }
+}
+can_build_governing = {
+   OR = {
+      can_build = courthouse
+      can_build = town_hall
+   }
+}
+can_build_naval_fl = {
+   OR = {
+      can_build = shipyard
+      can_build = grand_shipyard
+   }
+}
+can_build_trade = {
+   OR = {
+      can_build = marketplace
+      can_build = trade_depot
+      can_build = stock_exchange
+   }
+}
+can_build_sailors = {
+   OR = {
+      can_build = dock
+      can_build = drydock
+      can_build = naval_arsenal
+   }
+}
+can_build_brokers = {
+   AND = {
+      is_owned_by_trade_company = yes
+      NOT = {
+         has_trade_company_investment_in_area = {
+   	      investment = brokers_exchange
+   	      investor = PREV
+         }
+      }
+      NOT = {
+         has_trade_company_investment_in_area = {
+   	      investment = brokers_office
+	         investor = PREV
+         }
+      }
+   }
+}
+can_build_depot = {
+   AND = {
+      is_owned_by_trade_company = yes
+      NOT = {
+         has_trade_company_investment_in_area = {
+   	      investment = company_warehouse
+   	      investor = PREV
+         }
+      }
+      NOT = {
+         has_trade_company_investment_in_area = {
+   	      investment = company_depot
+	         investor = PREV
+         }
+      }
+   }
+}
+can_build_appraiser = {
+   AND = {
+      is_owned_by_trade_company = yes
+      NOT = {
+         num_investments_in_trade_company_region = {
+   	      investment = property_appraiser
+   	      value = 1
+         }
+      }
+   }
+}
+can_build_township = {
+   AND = {
+      is_owned_by_trade_company = yes
+      NOT = {
+         num_investments_in_trade_company_region = {
+   	      investment = townships
+   	      value = 1
+         }
+      }
+   }
+}
+can_build_governor_mansion = {
+   AND = {
+      is_owned_by_trade_company = yes
+      NOT = {
+         num_investments_in_trade_company_region = {
+   	      investment = governor_general_mansion
+   	      value = 1
+         }
+      }
+   }
+}
+can_build_districts = {
+   AND = {
+      is_owned_by_trade_company = yes
+      NOT = {
+         has_trade_company_investment_in_area = {
+   	      investment = settlements
+   	      investor = PREV
+         }
+      }
+      NOT = {
+         has_trade_company_investment_in_area = {
+   	      investment = district
+	         investor = PREV
+         }
+      }
+   }
+}
+can_build_mil_admin = {
+   AND = {
+      is_owned_by_trade_company = yes
+      NOT = {
+         has_trade_company_investment_in_area = {
+   	      investment = military_administration
+   	      investor = PREV
+         }
+      }
+      NOT = {
+         has_trade_company_investment_in_area = {
+   	      investment = company_administration
+	         investor = PREV
+         }
+      }
+   }
+}
+can_build_local_admin = {
+   is_owned_by_trade_company = yes
+}
+can_build_any_building = { #Checks if any building can be built (only includes the buildings above)
+   OR = {
+      can_build_sailors = yes
+      can_build_trade = yes
+      can_build_naval_fl = yes
+      can_build_governing = yes
+      can_build_taxation = yes
+      can_build_manpower = yes
+      can_build_land_fl = yes
+      can_build_trade_center = yes
+      can_build_production = yes
+      can_build_manufactory = yes
+      can_build_brokers = yes
+      can_build_depot = yes
+      can_build_appraiser = yes
+      can_build_township = yes
+      can_build_governor_mansion = yes
+      can_build_districts = yes
+      can_build_mil_admin = yes
+      can_build_local_admin = yes
+      can_build = university
+   }
+}
+############################################
+#           CULTURAL CENTERS
+#  update when adding new cultural centers
+############################################
+is_cultural_center = {
+   OR = {
+      province_id = 219 #Toledo
+      province_id = 183 #Paris
+      province_id = 118 #Rome
+      province_id = 236 #London
+      province_id = 344 #Marrakesh
+      province_id = 1821 #Nanjing
+      province_id = 677 #Lhasa
+      province_id = 2190 #Qaraqorum
+      province_id = 1029 #Kai
+   }
+}
+no_core_on_cultural_centre = {
+   NOT = { is_core = PREV }
+   NOT = { has_province_flag = monument_destroyed }
+   has_province_flag = tier_1_cultural_center
+}
+owns_tier3_cultural_centre = {
+   owned_by = PREV
+   has_great_project = { tier = 3 type = any }
+   culture_group = PREV
+   NOT = { has_province_flag = monument_destroyed }
+}
+cultural_centre_for_scope = {
+   #SYNTAX:
+   #scope <ROOT> | only supports country, used for checking if the country is sinified
+   #<country|province> = yes | supports Sinified Cultures in country or province scope
+   #lacking_core = yes | checks if the country is lacking a core on its cultural center
+   #tier3_owned = yes | checks if the country owns its respective cultural center at tier 3
+   if = {
+      limit = { culture_group = iberian }
+      219 = {
+         [[lacking_core] no_core_on_cultural_centre = yes ]
+         [[tier3_owned] owns_tier3_cultural_centre = yes ]
+      }
+   }
+   else_if = {
+      limit = { culture_group = maghrebi }
+      344 = {
+         [[lacking_core] no_core_on_cultural_centre = yes ]
+         [[tier3_owned] owns_tier3_cultural_centre = yes ]
+      }
+   }
+   else_if = {
+      limit = { culture_group = french }
+      183 = {
+         [[lacking_core] no_core_on_cultural_centre = yes ]
+         [[tier3_owned] owns_tier3_cultural_centre = yes ]
+      }
+   }
+   else_if = {
+      limit = { culture_group = british }
+      236 = {
+         [[lacking_core] no_core_on_cultural_centre = yes ]
+         [[tier3_owned] owns_tier3_cultural_centre = yes ]
+      }
+   }
+   else_if = {
+      limit = { culture_group = latin }
+      118 = {
+         [[lacking_core] no_core_on_cultural_centre = yes ]
+         [[tier3_owned] owns_tier3_cultural_centre = yes ]
+      }
+   }
+   else_if = {
+      limit = { culture_group = tibetan_group }
+      677 = {
+         [[lacking_core] no_core_on_cultural_centre = yes ]
+         [[tier3_owned] owns_tier3_cultural_centre = yes ]
+      }
+   }
+   else_if = {
+      limit = { culture_group = altaic }
+      2190 = {
+         [[lacking_core] no_core_on_cultural_centre = yes ]
+         [[tier3_owned] owns_tier3_cultural_centre = yes ]
+      }
+   }
+   else_if = {
+      limit = { culture_group = japanese_g }
+      1029 = {
+         [[lacking_core] no_core_on_cultural_centre = yes ]
+         [[tier3_owned] owns_tier3_cultural_centre = yes ]
+      }
+   }
+   else_if = {
+      limit = {
+         $scope$ = { has_country_flag = sino_culture_center_flag }
+      }
+      if = {
+         limit = {
+            [[province] culture = tibetan_group_new ]
+            [[country] primary_culture = tibetan_group_new ]
+         }
+         677 = {
+            [[lacking_core] no_core_on_cultural_centre = yes ]
+            [[tier3_owned] owns_tier3_cultural_centre = yes ]
+         }
+      }
+      else_if = {
+         limit = {
+            [[province] culture = altaic_new ]
+            [[country] primary_culture = altaic_new ]
+         }
+         2190 = {
+            [[lacking_core] no_core_on_cultural_centre = yes ]
+            [[tier3_owned] owns_tier3_cultural_centre = yes ]
+         }
+      }
+      else_if = {
+         limit = {
+            [[province] culture = japanese_g_new ]
+            [[country] primary_culture = altaic_new ]
+         }
+         1029 = {
+            [[lacking_core] no_core_on_cultural_centre = yes ]
+            [[tier3_owned] owns_tier3_cultural_centre = yes ]
+         }
+      }
+      else = {
+         always = no
+      }
+   }
+   else_if = {
+      limit = { culture_group = east_asian }
+      1821 = {
+         [[lacking_core] no_core_on_cultural_centre = yes ]
+         [[tier3_owned] owns_tier3_cultural_centre = yes ]
+      }
+   }
+   else = {
+      always = no
+   }
+}
+#############################################
+has_any_advisor = { #has any employed advisor
+   custom_trigger_tooltip = {
+      tooltip = HAS_EMPLOYED_ADVISOR_TT
+      OR = {
+         employed_advisor = {
+            category = ADM
+         }
+         employed_advisor = {
+            category = DIP
+         }
+         employed_advisor = {
+            category = MIL
+         }
+      }
+   }
+}
+russian_minor_mission_trigger = {
+   OR = {
+      tag = EOR
+      tag = RYA
+      tag = CHR
+      tag = KIE
+      tag = SMO
+      tag = PLT
+      tag = VOL
+      tag = ZAZ
+      tag = OKA
+      tag = TVE
+      tag = YAR
+      tag = PSK
+      tag = PRM
+      tag = RSO
+      tag = NZH
+      tag = BLO
+      tag = UKR
+      tag = TNK
+   }
+}
+valid_for_unguarded_frontier = {
+   custom_trigger_tooltip = {
+      tooltip = valid_for_unguarded_frontier_tt
+      is_subject = no
+      OR = {
+         is_great_power = yes
+         government_rank = 3
+         army_size = PREV
+      }
+      NOT = {
+         OR = {
+            has_opinion = {
+               who = ROOT
+               value = 100
+            }
+            truce_with = PREV
+         }
+      }
+      PREV = {
+         NOT = { has_reform = khanganate_reform }
+      }
+   }
+}
+marcher_lords_bonus = {
+   OR = {
+      has_country_modifier = vassal_leaders_1
+      has_country_modifier = vassal_leaders_2
+      has_country_modifier = vassal_leaders_3
+      has_country_modifier = vassal_leaders_4
+      has_country_modifier = vassal_leaders_5
+      has_country_modifier = vassal_leaders_6
+      has_country_modifier = vassal_leaders_7
+      has_country_modifier = vassal_leaders_8
+      has_country_modifier = vassal_leaders_9
+      has_country_modifier = vassal_leaders_10
+   }
+}
+has_harmony = { #country or province scope
+   OR = {
+      religion = confucianism
+      religion = daoism
+   }
+}
+is_daimyo = {
+   OR = {
+      has_reform = daimyo_reform
+      has_reform = t_daimyo
+      has_reform = r_daimyo
+   }
+}
+is_indep_daimyo = {
+   OR = {
+      has_reform = japanese_warlord
+      has_reform = t_japanese_warlord
+      has_reform = r_japanese_warlord
+   }
+}
+#Checks if a province belongs to a specific culture group, or if it is a sinified culture of that group.
+is_province_culture = {
+   custom_trigger_tooltip = {
+      tooltip = $type$_province_culture_tooltip
+      OR = {
+         culture = $type$_new
+         culture_group = $type$
+      }
+   }
+}
+#Checks if a country belongs to a specific culture group, or if its primary culture is a sinified version of that group
+is_country_culture = {
+   custom_trigger_tooltip = {
+      tooltip = $type$_country_culture_tooltip
+      OR = {
+         primary_culture = $type$_new
+         culture_group = $type$
+      }
+   }
+}
+valid_rebel_type = {
+   OR = {
+      has_province_flag = anglican_rebels_flag
+      has_province_flag = animism_rebels_flag
+      has_province_flag = anti_tax_rebels_flag
+      has_province_flag = buddhism_rebels_flag
+      has_province_flag = catholic_rebels_flag
+      has_province_flag = confucianism_rebels_flag
+      has_province_flag = shen_rebels_flag
+      has_province_flag = daoism_rebels_flag
+      has_province_flag = coptic_rebels_flag
+      has_province_flag = cossack_rebels_flag
+      has_province_flag = dreamtime_rebels_flag
+      has_province_flag = heretic_rebels_flag
+      has_province_flag = hinduism_rebels_flag
+      has_province_flag = hussite_rebels_flag
+      has_province_flag = ibadi_rebels_flag
+      has_province_flag = ikko_ikki_rebels_flag
+      has_province_flag = inti_rebels_flag
+      has_province_flag = jewish_rebels_flag
+      has_province_flag = lollard_rebels_flag
+      has_province_flag = mahayana_rebels_flag
+      has_province_flag = maya_rebels_flag
+      has_province_flag = nahuatl_rebels_flag
+      has_province_flag = nap_republican_rebels_flag
+      has_province_flag = nationalist_rebels_flag
+      has_province_flag = noble_rebels_flag
+      has_province_flag = norse_pagan_reformed_rebels_flag
+      has_province_flag = orthodox_rebels_flag
+      has_province_flag = particularist_rebels_flag
+      has_province_flag = leadered_peasant_rebels_flag
+      has_province_flag = polish_noble_rebels_flag
+      has_province_flag = pretender_rebels_flag
+      has_province_flag = protestant_rebels_flag
+      has_province_flag = reformed_rebels_flag
+      has_province_flag = revolutionary_rebels_flag
+      has_province_flag = ronin_rebels_flag
+      has_province_flag = shamanism_rebels_flag
+      has_province_flag = shiite_rebels_flag
+      has_province_flag = shinto_rebels_flag
+      has_province_flag = sikhism_rebels_flag
+      has_province_flag = sunni_rebels_flag
+      has_province_flag = tengri_pagan_reformed_rebels_flag
+      has_province_flag = totemism_rebels_flag
+      has_province_flag = tribal_rebels_flag
+      has_province_flag = vajrayana_rebels_flag
+      has_province_flag = zoroastrian_rebels_flag
+   }
+}
+has_ai_cb_against = {
+   OR = {
+      has_casus_belli = {
+         target = $who$
+         type = cb_ai_conquest
+      }
+      has_casus_belli = {
+         target = $who$
+         type = cb_player_conquest
+      }
+      has_casus_belli = {
+         target = $who$
+         type = cb_ai_imperialism
+      }
+      has_casus_belli = {
+         target = $who$
+         type = cb_player_imperialism
+      }
+   }
+}
+has_mutual_opinion_modifier = {
+   OR = {
+      has_opinion_modifier = {
+         who = $scope_country$
+         modifier = $opinion_modifier$
+      }
+      reverse_has_opinion_modifier = {
+         who = $scope_country$
+         modifier = $opinion_modifier$
+      }
+   }
+}
+has_insulted_or_is_insulted_by = { #Returns true if either of the countries have insulted eachother, also supports specific insult
+   if = {
+      limit = {
+         always = yes
+         [[scornful]
+            always = no
+         ]
+      }
+      custom_trigger_tooltip = {
+         tooltip = insulted_by_tooltip
+         OR = {
+            has_mutual_opinion_modifier = {
+               scope_country = $who$
+               opinion_modifier = scornfully_insulted
+            }
+            has_mutual_opinion_modifier = {
+               scope_country = $who$
+               opinion_modifier = insulted
+            }
+         }
+      }
+   }
+   else = {
+      custom_trigger_tooltip = {
+         tooltip = scornfully_insulted_by_tooltip
+         has_mutual_opinion_modifier = {
+            scope_country = $who$
+            opinion_modifier = scornfully_insulted
+         }
+      }
+   }
+}
+has_slandered_merchants_from = { #Trade node scope, checks if $who$ has slandered merchants in the node
+   has_trade_modifier = {
+      who = $who$
+      key = "Slandered Merchants "
+   }
+}
+no_rebel_occupation_penalty = {
+   owner = {
+      has_active_policy = policy_of_calculate_delay
+      NOT = { has_country_modifier = reverse_policy_of_calculate_delay }
+   }
+}
+num_of_idea_groups = {
+   [[any]
+      calc_true_if = {
+         amount = $amount$
+      }
+      has_idea_group = influence_ideas
+      has_idea_group = maritime_ideas
+      has_idea_group = exploration_ideas
+      has_idea_group = diplomatic_ideas
+      has_idea_group = trade_ideas
+      has_idea_group = spy_ideas
+      has_idea_group = quantity_ideas
+      has_idea_group = defensive_ideas
+      has_idea_group = plutocracy_ideas
+      has_idea_group = offensive_ideas
+      has_idea_group = naval_ideas
+      has_idea_group = quality_ideas
+      has_idea_group = administrative_ideas
+      has_idea_group = economic_ideas
+      has_idea_group = innovativeness_ideas
+      has_idea_group = religious_ideas
+      has_idea_group = humanist_ideas
+      has_idea_group = expansion_ideas
+   ]
+   [[mil]
+      calc_true_if = {
+         amount = $amount$
+         has_idea_group = quantity_ideas
+         has_idea_group = defensive_ideas
+         has_idea_group = plutocracy_ideas
+         has_idea_group = offensive_ideas
+         has_idea_group = naval_ideas
+         has_idea_group = quality_ideas
+      }
+   ]
+   [[adm]
+      calc_true_if = {
+         amount = $amount$
+         has_idea_group = administrative_ideas
+         has_idea_group = economic_ideas
+         has_idea_group = innovativeness_ideas
+         has_idea_group = religious_ideas
+         has_idea_group = humanist_ideas
+         has_idea_group = expansion_ideas
+      }
+   ]
+   [[dip]
+      calc_true_if = {
+         amount = $amount$
+         has_idea_group = influence_ideas
+         has_idea_group = maritime_ideas
+         has_idea_group = exploration_ideas
+         has_idea_group = diplomatic_ideas
+         has_idea_group = trade_ideas
+         has_idea_group = spy_ideas
+      }
+   ]
+}
+has_wt_timer = {
+   always = no
+}
+has_promote_officials_modifier = {
+   OR = {
+      has_province_modifier = officials1
+      has_province_modifier = officials2
+      has_province_modifier = officials3
+      has_province_modifier = officials4
+      has_province_modifier = officials5
+   }
+}
+fighting_war_with = {
+   OR = {
+      is_in_war = { attackers = THIS attackers = $who$ defenders = $enemy$ }
+      is_in_war = { defenders = THIS defenders = $who$ attackers = $enemy$ }
+   }
+}
+has_naval_supremacy_against = {
+   custom_trigger_tooltip = {
+      tooltip = has_naval_supremacy_against_tt
+      has_opinion_modifier = {
+         who = $who$
+         modifier = naval_supremacy_trigger
+      }
+   }
+}
+land_units_in_province = {
+   OR = {
+      infantry_in_province = $who$
+      cavalry_in_province = $who$
+      artillery_in_province = $who$
+   }
+}
+disable_cb_for_warlords_or_daimyo = {
+   FROM = { 
+      NOT = { has_reform = chinese_warlord_reform } 
+      NOT = { is_daimyo = yes }
+   }
+   NOT = { has_reform = chinese_warlord_reform }
+   NOT = { is_daimyo = yes }
+}
+#country scope, check how many buildings of type the country has
+num_of_owned_buildings = {
+   [[fort]
+      OR = {
+         fort_15th = $amount$
+         fort_16th = $amount$
+         fort_17th = $amount$
+         fort_18th = $amount$
+      }
+   ]
+}
+is_entry_point_teleporter = {
+   always = no
+}
+has_forced_diet_privilege = {
+   OR = {
+      has_estate_privilege = estate_nobles_supremacy_over_nobles
+      has_estate_privilege = estate_brahmins_supremacy_over_brahmins
+      has_estate_privilege = estate_nobles_elite_regiments
+      has_estate_privilege = estate_church_supremacy_over_church
+      has_estate_privilege = estate_nomadic_tribes_supremacy_over_nomadic_tribes
+      has_estate_privilege = estate_burghers_supremacy_over_burghers
+      has_estate_privilege = estate_rajput_supremacy_over_rajput
+      has_estate_privilege = estate_vaisyas_supremacy_over_vaisyas
+      has_estate_privilege = estate_maratha_supremacy_over_maratha
+      has_estate_privilege = estate_jains_supremacy_over_jains
+      has_estate_privilege = estate_dhimmi_supremacy_over_dhimmi
+      has_estate_privilege = estate_cossacks_supremacy_over_cossacks
+      has_estate_privilege = estate_eunuchs_supremacy_over_eunuchs
+   }
+}
+has_gaelic_diceroll_bonus = {
+   OR = {
+      has_province_modifier = gaelic_defender_diceroll_2
+      has_province_modifier = gaelic_defender_diceroll_3
+      has_province_modifier = gaelic_attacker_diceroll_2
+      has_province_modifier = gaelic_attacker_diceroll_3
+   }
+}
+emperor_has_stable_mandate = { # Used in Imperial reforms for china
+   is_at_war = no # You'll die
+   NOT = { num_of_loans = 5 } # It'll ruin your eco
+   has_global_modifier_value = {
+      which = imperial_mandate
+      value = 0.05 # Good Mandate generation
+   }
+   # Have at least 10 tributaries, or own the 3 imperial cities
+	OR = {
+		calc_true_if = {
+			amount = 10
+			all_subject_country = {
+				is_subject_of_type = tributary_state
+			}
+		}
+		AND = {
+			owns = 1821 #Nanjing
+			owns = 667 #Canton
+			owns = 1816 #Beijing
+		}
+	}
+   # Strong neighbour, will probably die if we do this
+   NOT = {
+      any_neighbor_country = {
+         is_great_power = yes
+         NOT = { truce_with = PREV }
+         army_strength = {
+            who = PREV
+            value = 2
+         }
+      }
+   }
+}
+is_mobilisation_level = { # For mobilisation mechanic
+   check_variable = {
+      which = wartax_lvl
+      value = $value$
+   }
+}
+# Unlike vanilla equivalent, checks if there are at least X investments of any regional type investment in the trade company region
+num_of_investments_in_trade_company_region = {
+   calc_true_if = {
+      amount = $value$
+      custom_trigger_tooltip = {
+         tooltip = tc_regional_investments_tooltip
+	   	num_investments_in_trade_company_region = { 
+	   		investment = officers_mess
+	   		value = 1
+	   	}
+	   	num_investments_in_trade_company_region = { 
+   			investment = admiralty
+   			value = 1
+   		}
+   		num_investments_in_trade_company_region = { 
+	   		investment = property_appraiser
+   			value = 1
+   		}
+   		num_investments_in_trade_company_region = { 
+   			investment = townships
+   			value = 1
+   		}
+   		num_investments_in_trade_company_region = { 
+   			investment = governor_general_mansion
+			   value = 1
+		   }
+      }
+   }
+}
+# Checks if the specified country is hunting pirates or protecting trade in the node
+# NOTE: It does NOT accept PREV for the country scope.
+patrolling_or_protecting_trade_in_node = {
+   custom_trigger_tooltip = {
+      tooltip = "Is patrolling or protecting trade in"
+      NOT = {
+         privateer_power = {
+            country = $country$
+            share = 1
+         }
+      }
+      any_trade_node_member_province = {
+         OR = {
+            AND = {
+               is_sea = yes
+               light_ships_in_province = $country$
+               if = {
+                  limit = {
+                     $country$ = { is_at_war = yes }
+                  }
+                  unit_in_battle = no
+                  all_neighbor_province = {
+                     unit_in_battle = no
+                     is_blockaded = no
+                  }
+               }
+            }
+            sea_zone = {
+               light_ships_in_province = $country$
+               if = {
+                  limit = {
+                     $country$ = { is_at_war = yes }
+                  }
+                  unit_in_battle = no
+                  all_neighbor_province = {
+                     unit_in_battle = no
+                     is_blockaded = no
+                  }
+               }
+            }
+         }
+      }
+   }
+}
+#Funny we can promote literal heretics but the guy that loves the lord jesus christ but speaks with a funny accent can't (nice joke pdx)
+advisor_is_unaccepted_culture = {
+	NOT = {
+		owner = {
+			OR = {
+				primary_culture = PREV
+				accepted_culture = PREV
+			}
+		}
+	}
+}
+
+########################################################################
+# SPY NETWORK TRIGGERS (moved here to maintain readability across files)
+########################################################################
+can_sabotage_recruitment = {
+   if = {
+      limit = {
+         NOT = { 
+            has_spy_network_in = {
+               who = $target$
+               value = 100
+            }
+         }
+      }
+      has_spy_network_in = {
+         who = $target$
+         value = 100
+      }
+   }
+   if = {
+      limit = {
+         reverse_has_opinion_modifier = {
+            who = $target$
+            modifier = action_sabotaged_recruitment
+         }
+      }
+      custom_trigger_tooltip = {
+         tooltip = has_sabotaged_recruitment_tt
+         always = no
+      }
+   }
+   if = {
+      limit = {
+         has_reform = chinese_warlord_reform
+         $target$ = { 
+            is_emperor_of_china = no
+            NOT = { has_reform = chinese_warlord_reform } 
+         }
+      }
+      custom_trigger_tooltip = {
+         tooltip = WARLORDS_CANT_DO_THIS
+         always = no
+      }
+   }
+   if = {
+      limit = {
+         is_daimyo = yes
+         $target$ = {
+            NOT = { is_daimyo = yes }
+            NOT = { has_reform = shogunate }
+         }
+      }
+      custom_trigger_tooltip = {
+         tooltip = DAIMYOS_CANT_DO_THIS
+         always = no
+      }
+   }
+   if = {
+      limit = {
+         $target$ = { is_subject_other_than_tributary_trigger = yes }
+      }
+      custom_trigger_tooltip = {
+         tooltip = CANT_DO_THIS_TO_SUBJECTS
+         always = no
+      }
+   }
+}
+
+can_slander_merchants = {
+   if = {
+      limit = {
+         NOT = {
+            has_spy_network_in = {
+               who = $target$
+               value = 100
+            }
+         }
+      }
+      has_spy_network_in = {
+         who = $target$
+         value = 100
+      }
+   }
+   if = {
+      limit = {
+         reverse_has_opinion_modifier = {
+            who = $target$
+            modifier = action_slandered_merchants
+         }
+      }
+      custom_trigger_tooltip = {
+         tooltip = has_slandered_merchants_tt
+         always = no
+      }
+   }
+   #Because it gives FROM a CB on you
+   if = {
+      limit = {
+         has_reform = chinese_warlord_reform
+         $target$ = { 
+            is_emperor_of_china = no
+            NOT = { has_reform = chinese_warlord_reform } 
+         }
+      }
+      custom_trigger_tooltip = {
+         tooltip = WARLORDS_CANT_DO_THIS
+         always = no
+      }
+   }
+   if = {
+      limit = {
+         is_daimyo = yes
+         $target$ = {
+            NOT = { is_daimyo = yes }
+            NOT = { has_reform = shogunate }
+         }
+      }
+      custom_trigger_tooltip = {
+         tooltip = DAIMYOS_CANT_DO_THIS
+         always = no
+      }
+   }
+   if = {
+      limit = {
+         $target$ = { has_reform = chinese_warlord_reform }
+         NOT = { has_reform = chinese_warlord_reform }
+      }
+      custom_trigger_tooltip = {
+         tooltip = CANT_DO_THIS_TO_WARLORDS
+         always = no
+      }
+   }
+   if = {
+      limit = {
+         $target$ = { is_daimyo = yes }
+         NOT = { is_daimyo = yes }
+      }
+      custom_trigger_tooltip = {
+         tooltip = CANT_DO_THIS_TO_DAIMYOS
+         always = no
+      }
+   }
+   if = {
+      limit = { has_country_modifier = lost_trade_war_timer }
+      custom_trigger_tooltip = {
+         tooltip = recently_lost_trade_war_tt
+         always = no
+      }
+   }
+   if = {
+      limit = {
+         $target$ = { is_subject_other_than_tributary_trigger = yes }
+      }
+      custom_trigger_tooltip = {
+         tooltip = CANT_DO_THIS_TO_SUBJECTS
+         always = no
+      }
+   }
+}
+
+can_raid_coffers = {
+   if = {
+      limit = {
+         NOT = { 
+            has_spy_network_in = {
+               who = $target$
+               value = 50
+            }
+         }
+      }
+      has_spy_network_in = {
+         who = $target$
+         value = 50
+      }
+   }
+   if = {
+      limit = {
+         $target$ = { is_subject_other_than_tributary_trigger = yes }
+      }
+      custom_trigger_tooltip = {
+         tooltip = CANT_DO_THIS_TO_SUBJECTS
+         always = no
+      }
+   }
+   if = {
+      limit = { $target$ = { is_bankrupt = yes } }
+      custom_trigger_tooltip = {
+         tooltip = from_bankruptcy_tooltip
+         always = no
+      }
+   }
+   if = {
+      limit = {
+         reverse_has_opinion_modifier = {
+            who = $target$
+            modifier = action_raided_coffers
+         }
+      }
+      custom_trigger_tooltip = {
+         tooltip = already_raided_from_tt
+         always = no
+      }
+   }
+}
+
+can_bribe_recruits = {
+   if = {
+      limit = {
+         variable_arithmetic_trigger = {
+            export_to_variable = {
+               which = our_max_manpower
+               value = trigger_value:max_manpower
+            }
+            export_to_variable = {
+               which = their_max_manpower
+               value = trigger_value:max_manpower
+               who = $target$
+            }
+            check_variable = {
+               #If our Manpower Pool > Their Manpower Pool
+               which = our_max_manpower
+               which = their_max_manpower
+            }
+         }
+      }
+      #If our pool is greater than theirs, we'll be taking manpower scaled on THEIR pool not ours so:
+      if = {
+         limit = {
+            variable_arithmetic_trigger = {
+               export_to_variable = {
+                  which = from_manpower
+                  value = trigger_value:max_manpower
+                  who = $target$
+               }
+               export_to_variable = {
+                  which = from_current_manpower
+                  value = manpower
+                  who = $target$
+               }
+               export_to_variable = {
+                  which = from_mrs_var
+                  value = modifier:manpower_recovery_speed
+                  who = $target$
+               }
+               change_variable = {
+                  which = from_mrs_var
+                  value = 1
+               }
+               multiply_variable = {
+                  which = from_manpower
+                  value = 0.1
+               }
+               multiply_variable = {
+                  which = from_manpower
+                  which = from_mrs_var
+               }
+               #If they don't have 1 years worth of their own manpower in their pool
+               check_variable = {
+                  which = from_manpower
+                  which = from_current_manpower
+               }
+            }
+         }
+         custom_trigger_tooltip = {
+            tooltip = not_enough_manpower_tt
+            always = no
+         }
+      }
+   }
+   #If their Pool is bigger than ours, We'll be taking manpower scaled on OUR pool, not theirs so:
+   else = {
+      if = {
+         limit = {
+            variable_arithmetic_trigger = {
+               export_to_variable = {
+                  which = our_manpower
+                  value = trigger_value:max_manpower
+               }
+               export_to_variable = {
+                  which = mrs_var
+                  value = modifier:manpower_recovery_speed
+               }
+               export_to_variable = {
+                  which = their_manpower
+                  value = manpower
+                  who = $target$
+               }
+               change_variable = {
+                  which = mrs_var
+                  value = 1
+               }
+               multiply_variable = {
+                  which = our_manpower
+                  value = 0.1
+               }
+               multiply_variable = {
+                  which = our_manpower
+                  which = mrs_var
+               }
+               #If they don't have 1 year's worth of our manpower in their pool
+               check_variable = {
+                  which = our_manpower
+                  which = their_manpower
+               }
+            }
+         }
+         custom_trigger_tooltip = {
+            tooltip = not_enough_manpower_tt
+            always = no
+         }
+      }
+   }
+   if = {
+      limit = {
+         NOT = {
+            has_spy_network_in = {
+               who = $target$
+               value = 70
+            }
+         }
+      }
+      has_spy_network_in = {
+         who = $target$
+         value = 70
+      }
+   }
+   if = {
+      limit = {
+         $target$ = { is_subject_other_than_tributary_trigger = yes }
+      }
+      custom_trigger_tooltip = {
+         tooltip = CANT_DO_THIS_TO_SUBJECTS
+         always = no
+      }
+   }
+   if = {
+      limit = {
+         reverse_has_opinion_modifier = {
+            modifier = action_bribed_recruits
+            who = $target$
+         }
+      }
+      custom_trigger_tooltip = {
+         tooltip = already_bribed_recruits_tt
+         always = no
+      }
+   }
+}
+
+can_corrupt_officials = {
+   if = {
+      limit = {
+         $target$ = { is_subject_other_than_tributary_trigger = yes }
+      }
+      custom_trigger_tooltip = {
+         tooltip = CANT_DO_THIS_TO_SUBJECTS
+         always = no
+      }
+   }
+   if = {
+      limit = {
+         reverse_has_opinion_modifier = {
+            who = $target$
+            modifier = action_corrupted_officials
+         }
+      }
+      custom_trigger_tooltip = {
+         tooltip = already_corrupted_officials_tt
+         always = no
+      }
+   }
+   if = {
+      limit = {
+         $target$ = {
+            OR = {
+               NOT = { adm_power = 1 }
+               NOT = { mil_power = 1 }
+               NOT = { dip_power = 1 }
+            }
+         }
+      }
+      custom_trigger_tooltip = {
+         tooltip = from_lacks_pp_tt
+         always = no
+      }
+   }
+   if = {
+      limit = {
+         NOT = {
+            has_spy_network_in = {
+               who = $target$
+               value = 50
+            }
+         }
+      }
+      has_spy_network_in = {
+         who = $target$
+         value = 50
+      }
+   }
+}

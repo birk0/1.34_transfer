@@ -1,0 +1,23 @@
+#233 - Cornwall
+
+owner = ENG
+controller = ENG
+culture = cornish
+religion = catholic
+hre = no
+base_tax = 1
+base_production = 1
+trade_goods = copper
+base_manpower = 1
+capital = "Penryn"
+is_city = yes
+add_core = ENG
+add_core = CRN
+
+1444.12.1 = { # New Bookmark
+	trade_goods = unknown
+	remove_cores = yes
+	owner = ---
+	controller = ---
+	hre = no
+}

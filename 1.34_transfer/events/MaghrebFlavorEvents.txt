@@ -1,0 +1,3579 @@
+namespace = mor_events
+
+#Begins the Wattasid Revolt
+country_event = {
+   id = mor_events.1
+   title = "mor_events.1.t"
+   desc = "mor_events.1.d"
+   picture = CIVIL_WAR_eventPicture
+   is_triggered_only = yes
+   major = yes
+   major_trigger = {
+      capital_scope = {
+         region = maghreb_region
+      }
+   }
+   
+   immediate = {
+      hidden_effect = {
+         set_variable = {
+            which = wattasid_support_var
+            value = 0
+         }
+         set_variable = {
+            which = marinid_support_var
+            value = 0
+         }
+      }
+   }
+   
+   option = { #Dire times are ahead of us...
+      name = "mor_events.1.a"
+      custom_tooltip = mor_disaster_start_tooltip
+   }
+}
+#Ends the Wattasid Revolt
+country_event = {
+   id = mor_events.2
+   title = "mor_events.2.t"
+   desc = "mor_events.2.d"
+   picture = GOOD_WITH_MONARCH_eventPicture
+   is_triggered_only = yes
+   
+   immediate = {
+      hidden_effect = {
+         set_variable = { #Sets variables back to 0
+            which = wattasid_support_var
+            value = 0
+         }
+         set_variable = {
+            which = marinid_support_var
+            value = 0
+         }
+         remove_country_modifier = mor_disaster_reputation_tarnished
+         remove_country_modifier = mor_disaster_mutinies
+         every_owned_province = { 
+            remove_province_modifier = mor_disaster_appeased_wattasids
+            remove_province_modifier = mor_disaster_oppressed_peasants
+         }
+      }
+   }
+   
+   option = {
+      name = "mor_events.2.a"
+      if = {
+         limit = { has_country_flag = disaster_mor_supported_marinids }
+         custom_tooltip = mor_events.2a_tooltip #wattasid revolt unsuccessful
+      }
+      else_if = {
+         limit = { has_country_flag = disaster_mor_supported_wattasids }
+         custom_tooltip = mor_events.2b_tooltip #wattasid revolt successful
+         add_stability = 2
+      }
+      else_if = {
+         limit = { has_country_modifier = just_lost_to_rebels }
+         custom_tooltip = mor_events.2b_tooltip #wattasid revolt successful
+         hidden_effect = {
+            complete_mission = mor_resolve_wattasid_revolt
+            country_event = { id = mor_events.14 }
+         }
+      }
+   }
+}
+#Rebellion in capital
+country_event = {
+   id = mor_events.3
+   title = "mor_events.3.t"
+   desc = "mor_events.3.d"
+   picture = ANGRY_MOB_eventPicture
+   is_triggered_only = yes
+   
+   trigger = { 
+      has_disaster = wattasid_revolt_disaster 
+      NOT = { has_country_flag = disaster_mor_supported_marinids } 
+      NOT = {
+         OR = {
+            check_variable = {
+               which = marinid_support_var
+               value = 10
+            }
+            check_variable = {
+               which = wattasid_support_var
+               value = 10
+            }
+         }
+      }
+   }
+   
+   option = { #Kill them +1 Marinid support
+      name = "mor_events.3.a"
+      ai_chance = { 
+         factor = 0 
+      } #Ai cant handle the Marinid path and will therefore never pick it they became wattasid historically anyway
+      custom_tooltip = marinid_support_tooltip
+      hidden_effect = {
+         change_variable = {
+            which = marinid_support_var
+            value = 1
+         }
+      }
+      capital_scope = {
+         start_revolt = {
+            type = pretender_rebels
+            size = 1
+            leader_dynasty = "Wattasid"
+         }
+      }
+   }
+   option = { #Appease rebels +1 Wattasid support
+      name = "mor_events.3.b"
+      ai_chance = { factor = 100 }
+      custom_tooltip = wattasid_support_tooltip
+      hidden_effect = {
+         change_variable = {
+            which = wattasid_support_var
+            value = 1
+         }
+      }
+      add_stability = -1
+   }
+}
+#Wattasid encourage mutiny
+country_event = {
+   id = mor_events.4
+   title = "mor_events.4.t"
+   desc = "mor_events.4.d"
+   picture = MILITARY_CAMP_eventPicture
+   is_triggered_only = yes
+   
+   trigger = { 
+      has_disaster = wattasid_revolt_disaster
+      NOT = { has_country_modifier = mor_disaster_mutinies }
+      NOT = { has_country_flag = disaster_mor_supported_marinids }
+      NOT = {
+         OR = {
+            check_variable = {
+               which = marinid_support_var
+               value = 10
+            }
+            check_variable = {
+               which = wattasid_support_var
+               value = 10
+            }
+         }
+      }
+   }
+   
+   option = { #Purge them +1 Marinid support
+      name = "mor_events.4.a"
+      ai_chance = { factor = 0 }
+      custom_tooltip = marinid_support_tooltip
+      hidden_effect = {
+         change_variable = {
+            which = marinid_support_var
+            value = 1
+         }
+      }
+      random_owned_province = {
+         start_revolt = {
+            type = pretender_rebels
+            size = 1
+            leader_dynasty = "Wattasid"
+         }
+      }
+      add_army_tradition = -10
+   }
+   option = { #Wattasids would never +1 Wattasid support
+      name = "mor_events.4.b"
+      ai_chance = { factor = 100 }
+      custom_tooltip = wattasid_support_tooltip
+      hidden_effect = {
+         change_variable = {
+            which = wattasid_support_var
+            value = 1
+         }
+      }
+      add_country_modifier = {
+         name = mor_disaster_mutinies
+         duration = 1095
+      }
+   }
+}
+#Wattasid oppress peasants
+country_event = {
+   id = mor_events.5
+   title = "mor_events.5.t"
+   desc = "mor_events.5.d"
+   picture = ANGRY_MOB_eventPicture
+   is_triggered_only = yes
+   
+   trigger = { 
+      has_disaster = wattasid_revolt_disaster 
+      NOT = { has_country_flag = disaster_mor_supported_marinids }
+      NOT = {
+         OR = {
+            check_variable = {
+               which = marinid_support_var
+               value = 10
+            }
+            check_variable = {
+               which = wattasid_support_var
+               value = 10
+            }
+         }
+      }
+   }
+   
+   immediate = {
+      hidden_effect = {
+         random_owned_province = {
+            limit = { NOT = { has_province_modifier = mor_disaster_oppressed_peasants } }
+            save_event_target_as = province1
+         }
+         random_owned_province = {
+            limit = { NOT = { has_province_modifier = mor_disaster_oppressed_peasants } }
+            save_event_target_as = province2
+         }
+         random_owned_province = {
+            limit = { NOT = { has_province_modifier = mor_disaster_oppressed_peasants } }
+            save_event_target_as = province3
+         }
+         random_owned_province = {
+            limit = { NOT = { has_province_modifier = mor_disaster_oppressed_peasants } }
+            save_event_target_as = province4
+         }
+      }
+   }
+   
+   option = { #Support peasants +1 Marinid support
+      name = "mor_events.5.a"
+      ai_chance = { factor = 0 }
+      custom_tooltip = marinid_support_tooltip
+      hidden_effect = {
+         change_variable = {
+            which = marinid_support_var
+            value = 1
+         }
+      }
+      event_target:province1 = {
+         start_revolt = {
+            type = pretender_rebels
+            size = 1
+            leader_dynasty = "Wattasid"
+         }
+      }
+      event_target:province2 = {
+         start_revolt = {
+            type = pretender_rebels
+            size = 1
+            leader_dynasty = "Wattasid"
+         }
+      }
+      event_target:province3 = {
+         start_revolt = {
+            type = pretender_rebels
+            size = 1
+            leader_dynasty = "Wattasid"
+         }
+      }
+      event_target:province4 = {
+         start_revolt = {
+            type = pretender_rebels
+            size = 1
+            leader_dynasty = "Wattasid"
+         }
+      }
+   }
+   option = { #Wattasids just governing +1 Wattasid support
+      name = "mor_events.5.b"
+      ai_chance = { factor = 100 }
+      custom_tooltip = wattasid_support_tooltip
+      hidden_effect = {
+         change_variable = {
+            which = wattasid_support_var
+            value = 1
+         }
+      }
+      event_target:province1 = {
+         start_revolt = {
+            type = anti_tax_rebels
+            size = 1
+         }
+         add_province_modifier = {
+            name = mor_disaster_oppressed_peasants
+            duration = 1095
+         }
+      }
+      event_target:province2 = {
+         add_province_modifier = {
+            name = mor_disaster_oppressed_peasants
+            duration = 1095
+         }
+      }
+      event_target:province3 = {
+         add_province_modifier = {
+            name = mor_disaster_oppressed_peasants
+            duration = 1095
+         }
+      }
+      event_target:province4 = {
+         add_province_modifier = {
+            name = mor_disaster_oppressed_peasants
+            duration = 1095
+         }
+      }
+   }
+}
+#Wattasid corruption
+country_event = {
+   id = mor_events.6
+   title = "mor_events.6.t"
+   desc = "mor_events.6.d"
+   picture = CORRUPTION_eventPicture
+   is_triggered_only = yes
+   
+   trigger = { 
+      has_disaster = wattasid_revolt_disaster 
+      NOT = { has_country_flag = disaster_mor_supported_marinids } 
+      NOT = {
+         OR = {
+            check_variable = {
+               which = marinid_support_var
+               value = 10
+            }
+            check_variable = {
+               which = wattasid_support_var
+               value = 10
+            }
+         }
+      }
+   }
+   
+   option = { #Support traders +1 Marinid support
+      name = "mor_events.6.a"      
+      ai_chance = { factor = 0 }
+      custom_tooltip = marinid_support_tooltip
+      hidden_effect = {
+         change_variable = {
+            which = marinid_support_var
+            value = 1
+         }
+      }
+      capital_scope = {
+         start_revolt = {
+            type = pretender_rebels
+            size = 1
+            leader_dynasty = "Wattasid"
+         }
+      }
+      add_years_of_income = -1
+      add_stability = -1
+   }
+   option = { #Don't care +1 Wattasid support
+      name = "mor_events.6.b"
+      ai_chance = { factor = 100 }
+      custom_tooltip = wattasid_support_tooltip
+      hidden_effect = {
+         change_variable = {
+            which = wattasid_support_var
+            value = 1
+         }
+      }
+      add_corruption = 1
+      add_inflation = 1
+   }
+}
+#Wattasid manipulate advisors
+country_event = {
+   id = mor_events.7
+   title = "mor_events.7.t"
+   desc = "mor_events.7.d"
+   picture = BAD_WITH_MONARCH_eventPicture
+   is_triggered_only = yes
+   
+   trigger = {
+      NOT = { has_country_modifier = mor_disaster_reputation_tarnished }
+      has_disaster = wattasid_revolt_disaster
+      NOT = { has_country_flag = disaster_mor_supported_marinids }
+      NOT = {
+         OR = {
+            check_variable = {
+               which = marinid_support_var
+               value = 10
+            }
+            check_variable = {
+               which = wattasid_support_var
+               value = 10
+            }
+         }
+      }
+   }
+   
+   option = { #Kill them! +1 Marinid Support
+      name = "mor_events.7.a"
+      ai_chance = { factor = 0 }
+      custom_tooltip = marinid_support_tooltip
+      hidden_effect = {
+         change_variable = {
+            which = marinid_support_var
+            value = 1
+         }
+      }
+      kill_advisor = random
+      kill_advisor = random
+      kill_advisor = random
+      random_owned_province = {
+         start_revolt = {
+            type = pretender_rebels
+            size = 1
+            leader_dynasty = "Wattasid"
+         }
+      }
+      capital_scope = {
+         start_revolt = {
+            type = pretender_rebels
+            size = 1
+            leader_dynasty = "Wattasid"
+         }
+      }
+      add_stability = -1
+   }
+   option = { #Deserved it +1 Wattasid support
+     name = "mor_events.7.b"
+     ai_chance = { factor = 100 }
+     custom_tooltip = wattasid_support_tooltip
+      hidden_effect = {
+         change_variable = {
+            which = wattasid_support_var
+            value = 1
+         }
+      }
+      add_legitimacy = -20
+      add_country_modifier = {
+         name = mor_disaster_reputation_tarnished
+         duration = 1825
+      }
+   }
+}
+#Scandal
+country_event = {
+   id = mor_events.8
+   title = "mor_events.8.t"
+   desc = "mor_events.8.d"
+   picture = BAD_WITH_MONARCH_eventPicture
+   is_triggered_only = yes
+   
+   trigger = { 
+      has_disaster = wattasid_revolt_disaster 
+      NOT = { has_country_flag = disaster_mor_supported_marinids }
+      NOT = {
+         OR = {
+            check_variable = {
+               which = marinid_support_var
+               value = 10
+            }
+            check_variable = {
+               which = wattasid_support_var
+               value = 10
+            }
+         }
+      } 
+   }
+   
+   option = { #Take blame +1 Marinid support
+      name = "mor_events.8.a"
+      ai_chance = { factor = 0 }
+      custom_tooltip = marinid_support_tooltip
+      hidden_effect = {
+         change_variable = {
+            which = marinid_support_var
+            value = 1
+         }
+      }
+      add_stability = -1
+   }
+   option = { #Bribe Wattasids +1 Wattasid support
+      name = "mor_events.8.b"
+      ai_chance = { factor = 100 }
+      custom_tooltip = wattasid_support_tooltip
+      hidden_effect = {
+         change_variable = {
+            which = wattasid_support_var
+            value = 1
+         }
+      }
+   }
+}
+#Major revolt
+country_event = {
+   id = mor_events.9
+   title = "mor_events.9.t"
+   desc = "mor_events.9.d"
+   picture = CIVIL_WAR_eventPicture
+   is_triggered_only = yes
+   
+   trigger = { 
+      has_disaster = wattasid_revolt_disaster 
+      NOT = { has_country_flag = disaster_mor_supported_marinids } 
+      NOT = {
+         OR = {
+            check_variable = {
+               which = marinid_support_var
+               value = 10
+            }
+            check_variable = {
+               which = wattasid_support_var
+               value = 10
+            }
+         }
+      }
+   }
+   
+   immediate = {
+      hidden_effect = {
+         random_owned_province = {
+            limit = { NOT = { has_province_modifier = mor_disaster_appeased_wattasids } }
+            save_event_target_as = revolt1
+         }
+         random_owned_province = {
+            limit = { NOT = { has_province_modifier = mor_disaster_appeased_wattasids } }
+            save_event_target_as = revolt2
+         }
+         random_owned_province = {
+            limit = { NOT = { has_province_modifier = mor_disaster_appeased_wattasids } }
+            save_event_target_as = revolt3
+         }
+      }
+   }
+   
+   option = { #Crush them +2 Marinid support
+      name = "mor_events.9.a"
+      ai_chance = { factor = 0 }
+      custom_tooltip = marinid_support_tooltip2
+      hidden_effect = {
+         change_variable = {
+            which = marinid_support_var
+            value = 2
+         }
+      }
+      event_target:revolt1 = {
+         start_revolt = {
+            type = pretender_rebels
+            size = 1
+            leader_dynasty = "Wattasid"
+         }
+      }
+      event_target:revolt2 = {
+         start_revolt = {
+            type = pretender_rebels
+            size = 1
+            leader_dynasty = "Wattasid"
+         }
+      } 
+      event_target:revolt3 = {
+         start_revolt = {
+            type = pretender_rebels
+            size = 1
+            leader_dynasty = "Wattasid"
+         }
+      }
+   }
+   option = { #Appease them +2 Wattasid support
+      name = "mor_events.9.b"
+      ai_chance = { factor = 100 }
+      custom_tooltip = wattasid_support_tooltip2
+      hidden_effect = {
+         change_variable = {
+            which = wattasid_support_var
+            value = 2
+         }
+      }
+      event_target:revolt1 = {
+         add_province_modifier = {
+            name = mor_disaster_appeased_wattasids
+            duration = 1095
+         }
+      }
+      event_target:revolt2 = {
+         add_province_modifier = {
+            name = mor_disaster_appeased_wattasids
+            duration = 1095
+         }
+      } 
+      event_target:revolt3 = {
+         add_province_modifier = {
+            name = mor_disaster_appeased_wattasids
+            duration = 1095
+         }
+      }
+   }
+}             
+#Peasant army
+country_event = {
+   id = mor_events.10
+   title = "mor_events.10.t"
+   desc = "mor_events.10.d"
+   picture = ANGRY_MOB_eventPicture
+   is_triggered_only = yes
+   
+   trigger = { 
+      has_disaster = wattasid_revolt_disaster 
+      NOT = { has_country_flag = disaster_mor_supported_marinids }
+      NOT = {
+         OR = {
+            check_variable = {
+               which = marinid_support_var
+               value = 10
+            }
+            check_variable = {
+               which = wattasid_support_var
+               value = 10
+            }
+         }
+      } 
+   }
+   
+   option = { #Fight them +2 Marinid support
+      name = "mor_events.10.a"
+      ai_chance = { factor = 0 }        
+      custom_tooltip = marinid_support_tooltip2
+      hidden_effect = {
+         change_variable = {
+            which = marinid_support_var
+            value = 2
+         }
+      }
+      random_owned_province = {
+         start_revolt = {
+            type = anti_tax_rebels
+            size = 1
+         }
+      }
+      random_owned_province = {
+         start_revolt = {
+            type = anti_tax_rebels
+            size = 1
+         }
+      }
+      random_owned_province = {
+         start_revolt = {
+            type = anti_tax_rebels
+            size = 1
+         }
+      }
+      random_owned_province = {
+         start_revolt = {
+            type = anti_tax_rebels
+            size = 1
+         }
+      }
+      random_owned_province = {
+         start_revolt = {
+            type = anti_tax_rebels
+            size = 1
+         }
+      }
+   }
+   option = { #Let the Wattasids handle +2 Wattasid support
+      name = "mor_events.10.b"
+      ai_chance = { factor = 100 }
+      custom_tooltip = wattasid_support_tooltip2
+      hidden_effect = {
+         change_variable = {
+            which = wattasid_support_var
+            value = 2
+         }
+      }
+      add_stability = -1
+   }
+}
+#Marinid support 
+country_event = {
+   id = mor_events.11
+   title = "mor_events.11.t"
+   desc = "mor_events.11.d"
+   picture = GOOD_WITH_MONARCH_eventPicture
+   is_triggered_only = yes
+   fire_only_once = yes
+   
+   immediate = {
+      hidden_effect = { set_country_flag = disaster_mor_supported_marinids }
+   }
+   
+   option = {
+      name = "mor_events.11.a"
+      custom_tooltip = mission_mor_revoke_privilege_tt
+      add_stability = 1
+   }
+}
+#Marinid authority restored
+country_event = {
+   id = mor_events.12
+   title = "mor_events.12.t"
+   desc = "mor_events.12.d"
+   picture = GOOD_WITH_MONARCH_eventPicture
+   is_triggered_only = yes
+   fire_only_once = yes
+   
+   option = {
+      name = "mor_events.12.a"
+      if = {
+         limit = { NOT = { dynasty = Marinid } }
+         set_dynasty = "Marinid"
+      }
+      if = {
+         limit = { 
+            exists = TFL
+            TFL = { is_subject_of = ROOT }
+         }
+         inherit = TFL
+      }
+      if = {
+         limit = {
+            exists = SOS
+            SOS = { is_subject_of = ROOT }
+         }
+         inherit = SOS
+      }
+      if = {
+         limit = {
+            NOT = { owns = 349 }
+         }
+         add_core = 349
+      }
+      if = {
+         limit = { has_heir = yes }
+         change_heir_adm = 1
+         change_heir_dip = 1
+         change_heir_mil = 1
+      }
+      change_adm = 1
+      change_dip = 1
+      change_mil = 1
+   }
+}
+#Final Wattasid revolt from revoking privilege
+country_event = {
+   id = mor_events.13
+   is_triggered_only = yes
+   fire_only_once = yes
+   hidden = yes
+   picture = "none"
+   title = "none"
+   desc = "none"
+   
+   option = { #Crush them
+      capital_scope = {
+         start_revolt = {
+            type = pretender_rebels
+            size = 2
+            leader_dynasty = "Wattasid"
+         }
+      }
+   }
+}
+
+#Wattasid Revolt successful
+country_event = {
+   id = mor_events.14
+   title = "mor_events.14.t"
+   desc = "mor_events.14.d"
+   picture = GOOD_WITH_MONARCH_eventPicture
+   is_triggered_only = yes
+   fire_only_once = yes
+   
+   option = {
+      name = "mor_events.14.a"
+      set_country_flag = disaster_mor_supported_wattasids
+      define_ruler = {
+         name = "Muhammad ibn Yahya I"
+         dynasty = "Wattasid"
+         claim = 50
+         culture = berber
+         age = 27
+         adm = 3
+         dip = 1
+         mil = 2
+      }
+      if = {
+         limit = { has_heir = yes }
+         kill_heir = { allow_new_heir = no }
+      }
+   }
+}
+
+# Imperial Cities of Morocco
+country_event = {
+	id = mor_events.15
+	title = "mor_events.15.t"
+	desc = "mor_events.15.d"
+	picture = CITY_VIEW_eventPicture
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "mor_events.15.a"
+		343 = {
+			if = {
+				limit = {
+					NOT = {
+						is_capital = yes
+					}
+				}
+				move_capital_effect = yes
+			}
+			add_base_tax = 1
+			add_base_production = 1
+			add_base_manpower = 1
+		}
+	}
+	option = {
+		name = "mor_events.15.b"
+		344 = {
+			if = {
+				limit = {
+					NOT = {
+						is_capital = yes
+					}
+				}
+				move_capital_effect = yes
+			}
+			add_base_tax = 1
+			add_base_production = 1
+			add_base_manpower = 1
+		}
+	}
+	option = {
+		name = "mor_events.15.c"
+		2467 = {
+			if = {
+				limit = {
+					NOT = {
+						is_capital = yes
+					}
+				}
+				move_capital_effect = yes
+			}
+			add_base_tax = 1
+			add_base_production = 1
+			add_base_manpower = 1
+		}
+	}
+	option = {
+		name = "mor_events.15.e"
+		342 = {
+			if = {
+				limit = {
+					NOT = {
+						is_capital = yes
+					}
+				}
+				move_capital_effect = yes
+			}
+			add_base_tax = 1
+			add_base_production = 1
+			add_base_manpower = 1
+		}
+	}
+}
+
+#Southern tribes break free
+country_event = {
+   id = mor_events.16
+   title = "mor_events.16.t"
+   desc = "mor_events.16.d"
+   picture = DEBATE_REPUBLICAN_eventPicture
+   
+   trigger = {
+      is_subject_of = MOR
+      MOR = {
+         has_disaster = wattasid_revolt_disaster
+         check_variable = {
+            which = wattasid_support_var
+            value = 5
+         }
+      }
+      NOT = { has_country_flag = remain_subject_mor }
+   }
+   
+   mean_time_to_happen = { months = 4 }
+   
+   option = { #Independence
+      name = "mor_events.16.a"
+      ai_chance = {
+         factor = 50
+         modifier = {
+            factor = 2
+            liberty_desire = 50
+         }
+      }
+      grant_independence = yes
+      add_truce_with = MOR
+      MOR = {
+         add_opinion = {
+            who = ROOT
+            modifier = vassal_broke_free
+         }
+         hidden_effect = { country_event = { id = mor_events.17 days = 1 } }
+      }
+   }
+   option = { #Remain subjects
+      name = "mor_events.16.b"
+      ai_chance = {
+         factor = 5
+      }
+      set_country_flag = remain_subject_mor
+      MOR = {
+         add_opinion = {
+            who = ROOT
+            modifier = opinion_good_relations
+         }
+      }
+   }
+}
+
+#Southern tribes break free for morocco
+country_event = {
+   id = mor_events.17
+   title = "mor_events.17.t"
+   desc = "mor_events.17.d"
+   picture = BAD_WITH_MONARCH_eventPicture
+   is_triggered_only = yes
+   fire_only_once = yes
+   
+   option = {
+      name = "mor_events.17.a"
+      custom_tooltip = mor_tribes_independence_tooltip
+      add_prestige = -25
+      add_legitimacy = -25
+   }
+} 
+
+#The Wattasid Viziers - Foreboding
+country_event = {
+	id = mor_events.18
+	title = "mor_events.18.t"
+	desc = "mor_events.18.d"
+	picture = KING_SICK_IN_BED_eventPicture
+	
+	fire_only_once = yes
+	
+	trigger = {
+		tag = MOR
+		NOT = { is_year = 1455 } #Died in 1448
+	}
+	
+	mean_time_to_happen = {
+		months = 3
+	}
+	
+	option = {
+		name = "mor_events.18.a" #A great man has passed away
+		add_piety = -0.05
+		set_country_flag = mor_death_of_yahya
+	}
+	
+}
+
+#A Wattasid Conspiracy?
+country_event = {
+	id = mor_events.19
+	title = "mor_events.19.t"
+	desc = "mor_events.19.d"
+	picture = ACCUSATION_eventPicture
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		tag = MOR
+		has_country_flag = mor_death_of_yahya
+		has_disaster = wattasid_revolt_disaster
+	}
+	
+	option = {
+		name = "mor_events.19.a" #Kill them all!
+		ai_chance = { factor = 0 }
+		custom_tooltip = marinid_support_tooltip
+        hidden_effect = {
+           change_variable = {
+              which = marinid_support_var
+              value = 1
+           }
+        }
+		add_stability = -1
+		country_event = { id = mor_events.20 days = 30 }
+	}
+	
+	option = {
+		name = "mor_events.19.b" #They remain our trusted advisors.
+		ai_chance = { factor = 100 }
+		custom_tooltip = wattasid_support_tooltip
+        hidden_effect = {
+           change_variable = {
+              which = wattasid_support_var
+              value = 1
+           }
+        }
+	}
+}
+
+#Wattasid Revolt
+country_event = {
+	id = mor_events.20
+	title = "mor_events.20.t"
+	desc = "mor_events.20.d"
+	picture = CIVIL_WAR_eventPicture
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	option = {
+		name = "mor_events.20.a"
+		random_owned_province = {
+			limit = {
+				is_capital = no
+			}
+			start_revolt = {
+				type = pretender_rebels
+				size = 2
+				leader_dynasty = "Wattasid"
+			}
+		}
+	}	
+}
+
+# Tribes and Sufis sense weakness
+country_event = {
+	id = mor_events.21
+	title = "mor_events.21.t"
+	desc = "mor_events.21.d"
+	picture = ANGRY_MOB_eventPicture
+	
+	fire_only_once = yes
+	
+	trigger = {
+		tag = MOR
+	    has_country_flag = disaster_mor_supported_wattasids
+	    NOT = { mission_completed = mor_rein_in_south }
+		owns_core_province = 343
+		OR = {
+			MRK = {
+				NOT = { is_subject_of = ROOT }
+			}
+			SOS = {
+				NOT = { is_subject_of = ROOT }
+			}
+			TFL = {
+				NOT = { is_subject_of = ROOT }
+			}
+		}
+	}
+	mean_time_to_happen = {
+		months = 12
+	}
+	option = { # Assert Dominance beyond the capital
+		name = "mor_events.21.a"
+		ai_chance = { factor = 25 }
+		add_stability = -1
+		add_country_modifier = {
+			name = "mor_looks_outward"
+			duration = 7300
+		}
+		if = {
+			limit = {
+				MRK = {
+					is_subject_of = ROOT
+				}
+			}
+			MRK = {
+				add_liberty_desire = 25
+			}
+		}
+		else_if = {
+			limit = {
+				344 = { owned_by = ROOT }
+			}
+			344 = {
+				add_local_autonomy = -25
+			}
+		}
+		if = {
+			limit = {
+				SOS = {
+					is_subject_of = ROOT
+				}
+			}
+			SOS = {
+				add_liberty_desire = 25
+			}
+		}
+		else_if = {
+			limit = {
+				348 = { owned_by = ROOT }
+			}
+			348 = {
+				add_local_autonomy = -25
+			}
+		}
+		if = {
+			limit = {
+				TFL = {
+					is_subject_of = ROOT
+				}
+			}
+			TFL = {
+				add_liberty_desire = 25
+			}
+		}
+		else_if = {
+			limit = {
+				346 = { owned_by = ROOT }
+			}
+			346 = {
+				add_local_autonomy = -25
+			}
+		}
+	}
+	option = { # Remain cloistered in Fez
+		name = "mor_events.21.b"
+		ai_chance = { factor = 100 }
+		set_country_flag = mor_cant_handle_tribes #If a southern tribe is at war with wattasid morocco while this is active moroccan troops get nerfed
+		add_stability = 1
+		add_country_modifier = {
+		   name = mor_tribes_run_rampart
+		   duration = 1825
+		}
+		343 = {
+			add_province_modifier = {
+				name = "mor_looks_inward"
+				duration = 7300
+			}
+		}
+	}
+}
+
+#The Sudanese Expedition
+country_event = {
+	id = mor_events.22
+	title = "mor_events.22.t"
+	desc = "mor_events.22.d"
+	picture = EXPLORERS_eventPicture
+	
+	is_triggered_only = yes
+	
+	immediate = {
+		hidden_effect = {
+			every_country = {
+				limit = {
+					owns = 1128
+					owns = 1129
+					owns = 1132
+					owns = 2247
+				}
+				set_country_flag = mor_crosses_sahara
+			}
+		}
+	}
+	
+	option = {
+		name = "mor_events.22.a" #Let us cross the Sahara!
+		ai_chance = { factor = 1 }
+		1127 = {
+			add_core = ROOT
+			cede_province = ROOT
+		}
+		every_province = {
+			limit = {
+				OR = {
+					province_id = 1128
+					province_id = 1129
+					province_id = 1132
+					province_id = 2247
+				}
+			}
+			add_permanent_claim = ROOT
+		}
+		every_country = {
+			limit = { 
+			   has_country_flag = mor_crosses_sahara
+			   NOT = { tag = ROOT }
+		    }
+			country_event = { id = mor_events.25 }
+		}
+		
+	}	
+}
+#Morocco United
+country_event = {
+   id = mor_events.23
+   title = "mor_events.23.t"
+   desc = "mor_events.23.d"
+   picture = GOOD_WITH_MONARCH_eventPicture
+   is_triggered_only = yes
+   
+   trigger = { has_country_flag = united_morocco }
+   
+   option = {
+      name = "mor_events.23.a"
+      add_stability = 1
+      random = {
+         chance = 75
+         change_adm = 1
+      }
+   }
+   after = { clr_country_flag = united_morocco }
+}
+#Restoration of the Almohads
+country_event = {
+   id = mor_events.24
+   title = "mor_events.24.t"
+   desc = "mor_events.24.d"
+   picture = GOOD_WITH_MONARCH_eventPicture
+   is_triggered_only = yes
+   major = yes
+   major_trigger = {
+      capital_scope = {
+         OR = {
+            region = iberia_region
+            region = maghreb_region
+            region = italy_region
+            region = france_region
+            region = egypt_region
+         }
+      }
+   }
+   
+   trigger = { has_country_flag = restore_almohad_mission }
+   
+   option = {
+      name = "mor_events.24.a"
+      change_tag = ALM
+      add_government_reform = feudal_theocracy
+      set_government_rank = 3
+      swap_non_generic_missions = yes
+      iberia_region = {
+         add_permanent_claim = ROOT
+      }
+      maghreb_region = {
+         add_permanent_claim = ROOT
+      }
+      344 = { #Marrakesh
+		 move_capital_effect = yes
+	  }
+	  if = {
+		 limit = {
+		    NOT = { primary_culture = berber }
+		 }
+		 change_primary_culture = berber
+	  }
+	  add_prestige = 25
+	  add_country_modifier = {
+			name = centralization_modifier
+			duration = 3650
+	  }
+	   if = {
+			limit = {
+				has_custom_ideas = no
+				NOT = { has_idea_group = ALM_ideas }
+			}
+			country_event = { id = ideagroups.1 } #Swap Ideas
+		}
+		set_country_flag = restored_almohads_flag
+   }
+   after = { clr_country_flag = restore_almohad_mission }
+}
+
+#The Sudanese Expedition - Info Popup
+country_event = {
+	id = mor_events.25
+	title = "mor_events.25.t"
+	desc = "mor_events.25.d"
+	picture = BORDER_TENSION_eventPicture
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "mor_events.25.a" #This cannot end well.
+		tooltip = {
+			every_province = {
+				limit = {
+					OR = {
+						province_id = 1128
+						province_id = 1129
+						province_id = 1132
+						province_id = 2247
+					}
+				}
+				add_permanent_claim = FROM
+			}
+		}
+	}
+}
+#The Saadi proposal
+country_event = {
+   id = mor_events.26
+   title = "mor_events.26.t"
+   desc = "mor_events.26.d"
+   picture = DIPLOMACY_eventPicture
+   is_triggered_only = yes
+   fire_only_once = yes 
+   
+   option = { #Let us join the Saadi
+      name = "mor_events.26.a"
+      ai_chance = { factor = 75 }
+      TFL = { inherit = ROOT }
+   }
+   option = { #Refuse! 
+      name = "mor_events.26.b"
+      ai_chance = { factor = 25 }
+      TFL = { country_event = { id = mor_events.27 } } #Hinata refuse our request
+   }
+}
+#Hinata refuse our request
+country_event = {
+   id = mor_events.27
+   title = "mor_events.27.t"
+   desc = "mor_events.27.d"
+   picture = BORDER_TENSION_eventPicture
+   is_triggered_only = yes
+   fire_only_once = yes
+   
+   option = { #So be it
+      name = "mor_events.27.a"
+      every_province = {
+         limit = { owned_by = MRK }
+         add_permanent_claim = ROOT
+      }
+      if = {
+         limit = { MRK = { marriage_with = ROOT } }
+         MRK = { 
+            break_marriage = ROOT
+            add_opinion = {
+               who = ROOT
+               modifier = claimed_throne_on_us
+            }
+            add_rival = ROOT
+            remove_rival = ROOT
+         }
+      }
+   }
+}
+#Tlemcen Civil Crisis
+country_event = {
+   id = mor_events.28
+   title = "mor_events.28.t"
+   desc = "mor_events.28.d"
+   picture = CIVIL_WAR_eventPicture
+   is_triggered_only = yes
+   fire_only_once = yes
+   major = yes
+   major_trigger = {
+      capital_scope = {
+         region = maghreb_region
+      }
+   }
+   
+   trigger = { has_disaster = tlemcen_civil_crisis }
+   
+   immediate = {
+      hidden_effect = {
+         every_owned_province = {
+            limit = { is_capital = no }
+            add_province_modifier = {
+               name = tlc_anarchy
+               duration = -1
+            }
+         }
+      }
+   }
+   
+   option = { #Dire times..
+      name = "mor_events.28.a"
+      set_country_flag = tlc_nomads_can_invade
+      add_stability = -1
+   }
+}
+
+#End of Civil Crisis
+country_event = {
+   id = mor_events.29
+   title = "mor_events.29.t"
+   desc = "mor_events.29.d"
+   picture = GOOD_WITH_MONARCH_eventPicture
+   is_triggered_only = yes
+   fire_only_once = yes
+   
+   immediate = {
+      hidden_effect = {
+          clr_country_flag = tlc_nomads_can_invade
+      }
+   }
+   
+   option = {
+      name = "mor_events.29.a"
+      trigger = { NOT = { is_subject = yes } }
+      if = {
+         limit = { dynasty = Zayyanid }
+         change_adm = 1
+         change_dip = 1
+         change_mil = 1
+         custom_tooltip = tlc_zayyanids_tooltip
+         hidden_effect = {
+            add_country_modifier = { #Successive monarchs will now always have +1 skill in all category
+               name = tlc_zayyanids
+               duration = -1
+               hidden = yes
+            }
+         }
+      }
+   }
+   
+   option = {
+      name = "mor_events.29.b"
+      trigger = { is_subject = yes }
+      add_stability = -1
+   }
+}
+#Remove anarchy modifier
+country_event = {
+   id = mor_events.30
+   title = "mor_events.30.t"
+   desc = "mor_events.30.d"
+   picture = BAD_WITH_MONARCH_eventPicture
+   
+   trigger = {
+      has_disaster = tlemcen_civil_crisis
+      NOT = { num_of_rebel_armies = 1 }
+      NOT = { num_of_rebel_controlled_provinces = 1 }
+      any_owned_province = {
+         has_province_modifier = tlc_anarchy
+         NOT = { has_province_flag = tlc_fighting_anarchy }
+         NOT = { has_province_modifier = tlc_ignoring_anarchy }
+         any_neighbor_province = {
+            owned_by = ROOT
+            NOT = { has_province_modifier = tlc_anarchy }
+         }
+      }
+   }
+   mean_time_to_happen = { months = 9 }
+   
+   immediate = {
+      hidden_effect = {
+         random_owned_province = {
+            limit = {
+               NOT = { has_province_flag = tlc_fighting_anarchy }
+               NOT = { has_province_modifier = tlc_ignoring_anarchy }
+               has_province_modifier = tlc_anarchy
+               any_neighbor_province = {
+                  owned_by = ROOT
+                  NOT = { has_province_modifier = tlc_anarchy }
+               }
+            }
+            save_event_target_as = rebel_province
+         }
+      }
+   }
+   
+   option = {
+      name = "mor_events.30.a"
+      ai_chance = { factor = 75 }
+      event_target:rebel_province = {
+         start_revolt = {
+            type = nationalist_rebels
+            size = 1
+            win = yes
+         }
+         remove_province_modifier = tlc_anarchy
+         set_province_flag = tlc_fighting_anarchy
+      }
+      add_legitimacy = 15
+   }
+   option = {
+      name = "mor_events.30.b"
+      ai_chance = { factor = 25 }
+      add_legitimacy = -15
+      event_target:rebel_province = {
+         add_province_modifier = {
+            name = tlc_ignoring_anarchy
+            duration = 730
+         }
+      }
+   }
+}
+#Fighting anarchy successful
+province_event = {
+   id = mor_events.31
+   hidden = yes
+   picture = "none"
+   title = "none"
+   desc = "none"
+   is_triggered_only = yes
+   trigger = { has_province_flag = tlc_fighting_anarchy }
+   
+   immediate = {
+      random_list = {
+         30 = { set_province_flag = tax }
+         30 = { set_province_flag = production }
+         30 = { set_province_flag = manpower }
+         10 = { set_province_flag = all }
+      }
+   }
+   option = {
+      trigger_switch = {
+         on_trigger = has_province_flag
+         tax = { add_base_tax = 1 }
+         production = { add_base_production = 1 }
+         manpower = { add_base_manpower = 1 }
+         all = {
+            add_base_tax = 1
+            add_base_manpower = 1
+            add_base_production = 1
+         }
+      }
+   }
+   after = {
+     clr_province_flag = tlc_fighting_anarchy
+     clr_province_flag = tax
+     clr_province_flag = production
+     clr_province_flag = manpower
+     clr_province_flag = all
+   }
+}
+#Desert tribes invade
+province_event = {
+   id = mor_events.32
+   title = "mor_events.32.t"
+   desc = "mor_events.32.d"
+   picture = COSSACK_ESTATE_RAIDERS_eventPicture
+   trigger = {
+      owned_by = TLC
+      TLC = { 
+         NOT = { 
+            mission_completed = tlc_crush_desert_tribes
+            is_subject = yes
+         } 
+      }
+      OR = {
+         has_terrain = desert
+         any_neighbor_province = {
+            has_terrain = desert
+         }
+      }
+      NOT = { has_province_modifier = desert_tribes_invaded }
+   }
+   mean_time_to_happen = { months = 24 }
+   
+   option = {
+      name = "mor_events.32.a"
+      add_province_modifier = {
+         name = desert_tribes_invaded
+         duration = 730
+      }
+      ROOT = {
+         start_revolt = {
+            type = anti_tax_rebels
+            size = 1
+         }
+      }
+   }
+}
+#For when the Ai collapses to rebels in a disaster
+country_event = {
+   id = mor_events.33
+   picture = "none"
+   title = "none"
+   desc = "none"
+   hidden = yes
+   trigger = { 
+      has_country_modifier = just_lost_to_rebels
+      ai = yes
+      NOT = { has_country_modifier = lost_to_rebels_dummy }
+   }
+   immediate = {
+      add_country_modifier = {
+         name = lost_to_rebels_dummy
+         duration = 30
+         hidden = yes
+      }
+   }
+   mean_time_to_happen = { days = 1 }
+   option = {
+      ai_chance = { factor = 1 }
+   }
+}
+#Tlemcen conquers Saharan routes
+country_event = {
+   id = mor_events.34
+   title = "mor_events.34.t"
+   desc = "mor_events.34.d"
+   picture = MERCHANTS_TALKING_eventPicture
+   is_triggered_only = yes
+   fire_only_once = yes
+   
+   immediate = {
+		hidden_effect = {
+			every_country = {
+				limit = {
+				    capital_scope = {
+				       region = sahel_region
+				    }
+				}
+				set_country_flag = tlc_crosses_sahara
+			}
+		}
+	}
+	
+	option = {
+		name = "mor_events.34.a" #Let us cross the Sahara!
+		ai_chance = { factor = 1 }
+		add_country_modifier = {
+		   name = tlc_saharan_trade
+		   duration = 7300
+		}
+		1127 = {
+			add_core = TLC
+			cede_province = TLC
+		}
+		2474 = {
+		   add_core = TLC
+		   cede_province = TLC
+		}
+		2475 = {
+		   add_core = TLC
+		   cede_province = TLC
+		}
+		every_province = {
+			limit = {
+				region = sahel_region
+				NOT = { country_or_non_sovereign_subject_holds = ROOT }
+			}
+			add_permanent_claim = TLC
+		}
+		every_country = {
+			limit = { has_country_flag = tlc_crosses_sahara }
+			country_event = { id = mor_events.36 }
+		}
+	}
+}
+#End of Algerian Revolt
+country_event = {
+   id = mor_events.35
+   title = "mor_events.35.t"
+   desc = "mor_events.35.d"
+   picture = GOOD_WITH_MONARCH_eventPicture
+   is_triggered_only = yes
+   fire_only_once = yes
+   
+   option = { #Deport Algerians
+      name = "mor_events.35.a"
+      ai_chance = { factor = 50 }
+      add_prestige = 25
+      2461 = {
+         change_culture = ROOT
+         add_base_tax = -1
+         add_base_manpower = -1
+         remove_core = ALG
+      }
+   }
+   option = { #Let them stay
+      name = "mor_events.35.b"
+      ai_chance = { factor = 50 }
+      2461 = {
+         set_province_flag = tlc_algerian_revolt
+         add_base_tax = 1
+         add_base_production = 1
+         add_base_manpower = 1
+      }
+   }
+}
+      
+#Tlemcen troops marching through Saharan corridors forboding
+country_event = {
+   id = mor_events.36
+   title = "mor_events.36.t"
+   desc = "mor_events.36.d"
+   picture = LAND_MILITARY_eventPicture
+   is_triggered_only = yes
+   trigger = { has_country_flag = tlc_crosses_sahara }
+   
+   option = { #scary
+      name = "mor_events.36.a"
+      clr_country_flag = tlc_crosses_sahara
+      tooltip = {
+         every_province = {
+            limit = {
+               region = sahel_region
+            }
+            add_permanent_claim = TLC
+         }
+      }
+   }
+}
+
+#Algerian Revolt
+province_event = {
+   id = mor_events.37
+   title = "mor_events.37.t"
+   desc = "mor_events.37.d"
+   picture = ANGRY_MOB_eventPicture
+   trigger = { has_province_flag = tlc_algerian_revolt }
+   mean_time_to_happen = { months = 100 }
+   
+   option = {
+      name = "mor_events.37.a"
+      clr_province_flag = tlc_algerian_revolt
+      start_revolt = {
+         type = nationalist_rebels
+         size = 3
+      }
+   }
+}
+#Decision to be pirate republic (algiers)
+country_event = {
+   id = mor_events.38
+   title = "mor_events.38.t"
+   desc = "mor_events.38.d"
+   picture = NAVAL_MILITARY_eventPicture
+   fire_only_once = yes
+   
+   trigger = { tag = ALG }
+   
+   mean_time_to_happen = { months = 3 }
+   major = yes
+   major_trigger = {
+      capital_scope = {
+         region = maghreb_region
+      }
+   }
+   
+   option = { #A Pirate's life for me!
+      name = "mor_events.38.a"
+      ai_chance = { factor = 100 }
+      remove_government_reform = iqta
+      change_government_to_republic = yes
+      add_government_reform = pirate_republic_reform
+      add_republican_tradition = 100
+      swap_non_generic_missions = yes
+   }
+   option = { #We are honest traders
+      name = "mor_events.38.b"
+      add_country_modifier = {
+         name = alg_honest_traders
+         duration = 3650
+      }
+   }
+}
+# Hayreddin Barbarossa
+country_event = {
+	id = mor_events.39
+	title = "flavor_tun.EVTNAME1"
+	desc = "flavor_tun.EVTDESC1"
+	picture = BARBARY_PIRATES_eventPicture
+
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {
+		name = "flavor_tun.EVTOPTA1"
+		if = {
+		   limit = { 
+		      exists = ALG
+		      ALG = { ai = yes }
+		   }
+		   ALG = {
+		      define_ruler = {
+		         name = "Hayreddin Barbarossa"
+		         adm = 3
+		         dip = 4
+		         mil = 5
+		         claim = 95
+		      }
+		   }
+		   create_march = ALG
+		}
+		else_if = {
+		    limit = { NOT = { exists = ALG } }
+		    338 = {
+			   cede_province = ALG
+		    }
+		    ALG = {
+            change_government_to_republic = yes
+			    add_government_reform = pirate_republic_reform
+			    adopt_reform_progress = ROOT
+			    define_ruler = {
+				   name = "Hayreddin Barbarossa"
+				   adm = 3
+				   dip = 4
+				   mil = 5
+				   claim = 95
+				}
+			}
+			create_march = ALG
+		}
+	}
+	option = {
+		name = "flavor_tun.EVTOPTB1"
+		define_admiral = {
+			name = "Hayreddin Barbarossa"
+			shock = 4
+			fire = 4
+			manuever = 4
+			siege = 2
+		}
+	}
+}
+#Move capital to Tahert?
+country_event = {
+   id = mor_events.40
+   title = "mor_events.40.t"
+   desc = "mor_events.40.d"
+   picture = CITY_DEVELOPMENT_eventPicture
+   is_triggered_only = yes
+   fire_only_once = yes
+   
+   option = { #Restore the great city
+      name = "mor_events.40.a"
+      ai_chance = { factor = 80 }
+      set_country_flag = moved_capital_to_tahert
+      2459 = {
+         change_province_name = "Tahert"
+         move_capital_effect = yes
+         add_base_tax = 2
+         add_base_production = 2
+         add_base_manpower = 2
+      }
+   }
+   option = { #No
+      name = "mor_events.40.b"
+      ai_chance = { factor = 20 }
+      2459 = {
+         remove_province_modifier = i_m_renovate_capital
+      }
+      capital_scope = {
+         add_base_tax = 1
+         add_base_production = 1
+         add_base_manpower = 1
+      }
+   }
+}
+#Destroy the Iberian Cultural Center?
+country_event = {
+   id = mor_events.41
+   title = "mor_events.41.t"
+   desc = "mor_events.41.d"
+   picture = CITY_VIEW_eventPicture
+   is_triggered_only = yes
+   fire_only_once = yes
+   
+   option = { #Destroy it
+      name = "mor_events.41.a"
+      ai_chance = { factor = 50 }
+      hidden_effect = {
+         219 = {
+            change_culture = ROOT
+            change_religion = ROOT
+            province_event = { id = cultural_events.2 }
+            add_province_modifier = {
+               name = cultural_zeal
+               duration = 10950
+            }
+         }
+      }
+   }
+   
+   option = { #Leave it be
+      name = "mor_events.41.b"
+      ai_chance = { factor = 50 }
+      219 = { add_unrest = -1 }
+   }
+}
+#Growth of Bordeaux
+country_event = {
+   id = mor_events.42
+   title = "mor_events.42.t"
+   desc = "mor_events.42.d"
+   picture = CITY_DEVELOPMENT_eventPicture
+   is_triggered_only = yes
+   fire_only_once = yes
+   option = { #Convert the city
+      name = "mor_events.42.a"
+      add_years_of_income = 0.3
+      174 = {
+         change_religion = ROOT
+         change_culture = ROOT
+         add_province_modifier = {
+            name = alm_converted_bordeaux
+            duration = -1
+         }
+      }
+   }
+   option = { #Allow the city free reign
+      name = "mor_events.42.b"
+      174 = {
+         add_base_manpower = 3
+         add_base_production = 3
+         add_local_autonomy = 25
+         add_province_modifier = {
+            name = alm_growth_of_bordeaux
+            duration = -1
+         }
+      }
+   }
+}
+#Pillaging of Paris
+country_event = {
+   id = mor_events.43
+   title = "mor_events.43.t"
+   desc = "mor_events.43.d"
+   picture = NOT_DISCIPLINED_SOLDIERS_eventPicture
+   is_triggered_only = yes
+   fire_only_once = yes
+   option = {
+      name = "mor_events.43.a"
+      add_years_of_income = 0.5
+      183 = {
+         add_base_tax = -3
+         add_base_production = -3
+         add_base_manpower = -3
+      }
+      if = {
+         limit = { 183 = { owned_by = ROOT } }
+         183 = {
+            change_culture = ROOT
+            change_religion = ROOT
+            hidden_effect = {
+               province_event = { id = cultural_events.2 }
+               add_province_modifier = {
+                  name = cultural_zeal
+                  duration = 10950
+               }
+            }
+         }
+      }
+      else = {
+         183 = {
+            add_province_modifier = {
+               name = alm_paris_looted
+               duration = 1825
+            }
+         }
+      }
+   }
+}
+#Every country in English or North Sea nodes transfers trade
+country_event = {
+   id = mor_events.44
+   title = "mor_events.44.t"
+   desc = "mor_events.44.d"
+   picture = CONQUEST_eventPicture
+   is_triggered_only = yes
+   fire_only_once = yes
+   immediate = {
+      hidden_effect = {
+         every_country = {
+            limit = {
+                 NOT = { tag = ROOT }
+                 OR = {
+                    1269 = {
+                       trade_share = {
+                          country = PREV
+                          share = 1
+                       }
+                    }
+                    1975 = {
+                       trade_share = {
+                          country = PREV
+                          share = 1
+                       }
+                    }
+                 }
+            }
+            1269 = {
+               add_trade_modifier = {
+                  power = -1000
+                  duration = 1825
+                  key = alm_nations_steer_trade
+                  who = PREV
+               }
+            }
+            1975 = {
+               add_trade_modifier = {
+                  power = -1000
+                  duration = 1825
+                  key = alm_nations_steer_trade
+                  who = PREV
+               }
+            }
+         }
+      }
+   }
+   option = { 
+      name = "mor_events.44.a"
+      custom_tooltip = alm_nations_steer_trade_tooltip
+   }
+}
+#Ivory or Slaves
+country_event = {
+   id = mor_events.45
+   title = "mor_events.45.t"
+   desc = "mor_events.45.d"
+   picture = PIRATES_CAPTURED_eventPicture
+   is_triggered_only = yes
+   fire_only_once = yes
+   option = { #Enslave them!
+      name = "mor_events.45.a"
+      change_price = {
+         trade_goods = slaves
+         key = alm_slave_trade
+         value = 0.5
+         duration = 36500
+      }
+      1466 = {
+         every_trade_node_member_province = {
+            limit = {
+               trade_goods = slaves
+            }
+            add_province_modifier = {
+               name = alm_growth_of_slave_trade
+               duration = 36500
+            }
+         }
+         add_trade_modifier = {
+            key = alm_slave_trade
+            power = 50
+            duration = 36500
+            who = ROOT
+         }
+      }
+      add_country_modifier = {
+         name = alm_enslaving_people
+         duration = 7300
+      }
+   }
+   option = { #Dont dabble in such practice
+      name = "mor_events.45.b"
+      custom_tooltip = alm_no_slavery_tooltip
+      hidden_effect = {
+         slavery_randomize_effect = yes
+      }
+      1466 = {
+         add_trade_modifier = {
+            key = alm_no_slave_trade
+            power = 30
+            duration = -1            
+            who = ROOT
+         }
+      }
+      add_country_modifier = {
+         name = alm_not_enslaving_people
+         duration = 7300
+      }
+   }
+}
+#Ivory Provinces get buff
+country_event = {
+   id = mor_events.46
+   title = "mor_events.46.t"
+   desc = "mor_events.46.d"
+   picture = ECONOMY_eventPicture
+   is_triggered_only = yes
+   fire_only_once = yes
+   option = {
+      name = "mor_events.46.a"
+      custom_tooltip = alm_former_slaves_ivory_tooltip
+      hidden_effect = {
+         1466 = {
+            every_trade_node_member_province = {
+               limit = {
+                  owned_by = ROOT
+                  trade_goods = ivory
+               }
+               add_province_modifier = {
+                  name = alm_growth_of_ivory_trade
+                  duration = -1
+               }
+            }
+            every_trade_node_member_province = {
+               limit = {
+                  has_province_flag = no_more_slaves_here
+                  trade_goods = ivory
+               }
+               add_province_modifier = {
+                  name = alm_ivory_no_slaves_bonus
+                  duration = -1
+               }
+               clr_province_flag = no_more_slaves_here
+            }
+         }
+      }
+   }
+}
+#Naval vs military path
+country_event = {
+   id = mor_events.47
+   title = "mor_events.47.t"
+   desc = "mor_events.47.d"
+   picture = GOOD_WITH_MONARCH_eventPicture
+   is_triggered_only = yes
+   fire_only_once = yes
+   option = { #reform army
+      name = "mor_events.47.a"
+      custom_tooltip = alm_establish_black_guard_tt
+      set_country_flag = can_use_special_units
+      add_country_modifier = {
+         name = alm_reform_the_army
+         duration = -1
+      }
+      add_mil_power = 200
+      change_government_reform_progress = 100
+   }
+   option = { #reform navy
+      name = "mor_events.47.b"
+      add_country_modifier = {
+         name = alm_reform_the_navy
+         duration = -1
+      }
+      add_dip_power = 200
+      change_government_reform_progress = 100
+   }
+}
+#Privateering incident
+country_event = {
+   id = mor_events.48
+   title = "mor_events.48.t"
+   desc = {
+      trigger = { exists = MAM }
+      desc = "mor_events.48.d"
+   }
+   desc = {
+      trigger = { NOT = { exists = MAM } }
+      desc = "mor_events.48.d.2"
+   }
+   picture = FLAGSHIP_CAPTURED_eventPicture
+   is_triggered_only = yes
+   immediate = { set_country_flag = almohad_mamluk_war }
+   option = { #To war!
+      trigger = { exists = MAM }
+      name = "mor_events.48.a"
+      ai_chance = { factor = 0 }
+      MAM = {
+         country_event = { id = mor_events.52 } #Almohad agression
+         kill_ruler = yes
+      }
+      start_war_effect = {
+         who = MAM
+         cb = cb_imperial
+         war_goal = 1
+      }
+      add_country_modifier = {
+         name = alm_mam_privateering_incident
+         duration = 1825
+      }
+   }
+   option = { #Negotiate
+      trigger = { exists = MAM }
+      name = "mor_events.48.b"
+      add_treasury = 2500
+      add_country_modifier = {
+         name = alm_captured_mamluk_sultan
+         duration = 3650
+      }
+      MAM = { add_treasury = -2500 }
+   }
+   option = { #End of the Mamluks
+      trigger = { NOT = { exists = MAM } }
+      name = "mor_events.48.c"
+      add_country_modifier = {
+         name = alm_no_more_mamluks
+         duration = 1825
+      }
+   }
+   after = { clr_country_flag = almohad_mamluk_war }
+}
+#Darfur Route
+country_event = {
+   id = mor_events.49
+   title = "mor_events.49.t"
+   desc = "mor_events.49.d"
+   picture = ECONOMY_eventPicture
+   is_triggered_only = yes 
+   immediate = {
+		hidden_effect = {
+			every_country = {
+				limit = {
+				   NOT = { tag = ROOT }
+				   any_owned_province = {
+				       OR = {
+				          area = tigray_area
+	                      area = central_ethiopia_area
+	                      area = shewa_area
+	                      area = damot_area
+	                      area = southern_ethiopia_area
+	                      area = hadiya_area
+	                      area = red_sea_coast_area
+	                      area = upper_nubia_area
+	                      area = sennar_area
+	                      area = east_azbin_area
+	                      area = dongola_area
+	                      area = kurdufan_area
+	                      area = darfur_central_sahara_area   
+				       }
+				   }
+				}
+				set_country_flag = alm_the_darfur_route
+			}
+		}
+	}
+	
+	option = {
+		name = "mor_events.49.a" #Cross the Sahara
+		darfur_central_sahara_area = {
+		   limit = { is_empty = yes }
+		   add_core = ROOT
+		   cede_province = ROOT
+		}
+		kurdufan_area = {
+		   limit = { is_empty = yes }
+		   add_core = ROOT
+		   cede_province = ROOT
+		}
+		east_azbin_area = {
+		   limit = { is_empty = yes }
+		   add_core = ROOT
+		   cede_province = ROOT
+		}
+		darfur_central_sahara_area = {
+	       limit = {
+		       NOT = { is_core = ROOT }
+	           NOT = { is_permanent_claim = ROOT }
+		   }
+		   add_permanent_claim = ROOT
+	    }
+		kurdufan_area = {
+	       limit = {
+	      	  NOT = { is_core = ROOT }
+			  NOT = { is_permanent_claim = ROOT }
+		   }
+		   add_permanent_claim = ROOT
+	    }
+    	east_azbin_area = {
+			      limit = {
+			         NOT = { is_core = ROOT }
+			         NOT = { is_permanent_claim = ROOT }
+			      }
+			      add_permanent_claim = ROOT
+			   }
+			   dongola_area = {
+			      limit = {
+			         NOT = { is_core = ROOT }
+			         NOT = { is_permanent_claim = ROOT }
+			      }
+			      add_permanent_claim = ROOT
+			   }
+			   upper_nubia_area = {
+			      limit = {
+			         NOT = { is_core = ROOT }
+			         NOT = { is_permanent_claim = ROOT }
+			      }
+			      add_permanent_claim = ROOT
+			   }
+			   sennar_area = {
+			      limit = {
+			         NOT = { is_core = ROOT }
+			         NOT = { is_permanent_claim = ROOT }
+			      }
+			      add_permanent_claim = ROOT
+			   }
+			   red_sea_coast_area = {
+			      limit = {
+			         NOT = { is_core = ROOT }
+			         NOT = { is_permanent_claim = ROOT }
+			      }
+			      add_permanent_claim = ROOT
+			   }
+			   southern_ethiopia_area = {
+			      limit = {
+			         NOT = { is_core = ROOT }
+			         NOT = { is_permanent_claim = ROOT }
+			      }
+			      add_permanent_claim = ROOT
+			   }
+			   hadiya_area = {
+			      limit = {
+			         NOT = { is_core = ROOT }
+			         NOT = { is_permanent_claim = ROOT }
+			      }
+			      add_permanent_claim = ROOT
+			   }
+			   damot_area = {
+			      limit = {
+			         NOT = { is_core = ROOT }
+			         NOT = { is_permanent_claim = ROOT }
+			      }
+			      add_permanent_claim = ROOT
+			   }
+			   shewa_area = {
+			      limit = {
+			         NOT = { is_core = ROOT }
+			         NOT = { is_permanent_claim = ROOT }
+			      }
+			      add_permanent_claim = ROOT
+			   }
+			   central_ethiopia_area = {
+			      limit = {
+			         NOT = { is_core = ROOT }
+			         NOT = { is_permanent_claim = ROOT }
+			      }
+			      add_permanent_claim = ROOT
+			   }
+			   tigray_area = {
+			      limit = {
+			         NOT = { is_core = ROOT }
+			         NOT = { is_permanent_claim = ROOT }
+			      }
+			      add_permanent_claim = ROOT
+			   }
+		every_country = {
+			limit = { 
+			   has_country_flag = alm_the_darfur_route
+			   NOT = { tag = ROOT }
+		    }
+			country_event = { id = mor_events.53 } #Almohads cross the Central Sahara
+		}
+	}
+}
+#From the Black Gold mission
+country_event = {
+   id = mor_events.50
+   title = "mor_events.50.t"
+   desc = "mor_events.50.d"
+   picture = ECONOMY_eventPicture
+   is_triggered_only = yes
+   option = {
+      name = "mor_events.50.a"
+      change_price = {
+         trade_goods = coffee
+         key = alm_black_gold
+         duration = -1
+         value = 0.25
+      }
+      2772 = {
+         every_trade_node_member_province = {
+            limit = {
+               province_has_center_of_trade_of_level = 1
+            }
+            add_center_of_trade_level = 1
+         }
+      }
+      1331 = {
+         every_trade_node_member_province = {
+            limit = {
+               province_has_center_of_trade_of_level = 1
+            }
+            add_center_of_trade_level = 1
+         }
+      }
+   }
+}
+#Conversions VS humanism (alomhads)
+country_event = {
+   id = mor_events.51
+   title = "mor_events.51.t"
+   desc = "mor_events.51.d"
+   picture = DEBATE_REPUBLICAN_eventPicture
+   is_triggered_only = yes
+   fire_only_once = yes
+   immediate = {
+      hidden_effect = {
+         clr_country_flag = alm_renovating_the_holy_cities
+         remove_country_modifier = alm_renovating_holy_cities
+      }
+   }
+   option = { #Conversion path
+      name = "mor_events.51.a"
+      custom_tooltip = alm_better_religious_advisor
+      set_country_flag = alm_conversion_path
+      add_country_modifier = {
+         name = alm_conversion_path
+         duration = -1
+      }
+   }
+   option = { #Humanist path
+      name = "mor_events.51.b"
+      custom_tooltip = alm_better_humanist_advisor
+      set_country_flag = alm_humanist_path
+      add_country_modifier = {
+         name = alm_humanist_path
+         duration = -1
+      }
+   }
+}        
+#Almohads executed our ruler!
+country_event = {
+   id = mor_events.52
+   title = "mor_events.52.t"
+   desc = "mor_events.52.d"
+   picture = IMPALED_SOLDIERS_eventPicture
+   is_triggered_only = yes
+   option = { #Bastards!!
+      name = "mor_events.52.a"
+   }
+}           
+#Almohads Cross Central Sahara
+country_event = {
+   id = mor_events.53
+   title = "mor_events.53.t"
+   desc = "mor_events.53.d"
+   picture = LAND_MILITARY_eventPicture
+   is_triggered_only = yes
+   option = { #cant be good
+      name = "mor_events.53.a"
+      tooltip = {
+               darfur_central_sahara_area = {
+			      limit = {
+			         NOT = { is_core = FROM }
+			         NOT = { is_permanent_claim = FROM }
+			      }
+			      add_permanent_claim = FROM
+			   }
+			   kurdufan_area = {
+			      limit = {
+			         NOT = { is_core = FROM }
+			         NOT = { is_permanent_claim = FROM }
+			      }
+			      add_permanent_claim = FROM
+			   }
+			   east_azbin_area = {
+			      limit = {
+			         NOT = { is_core = FROM }
+			         NOT = { is_permanent_claim = FROM }
+			      }
+			      add_permanent_claim = FROM
+			   }
+			   dongola_area = {
+			      limit = {
+			         NOT = { is_core = FROM }
+			         NOT = { is_permanent_claim = FROM }
+			      }
+			      add_permanent_claim = FROM
+			   }
+			   upper_nubia_area = {
+			      limit = {
+			         NOT = { is_core = FROM }
+			         NOT = { is_permanent_claim = FROM }
+			      }
+			      add_permanent_claim = FROM
+			   }
+			   sennar_area = {
+			      limit = {
+			         NOT = { is_core = FROM }
+			         NOT = { is_permanent_claim = FROM }
+			      }
+			      add_permanent_claim = FROM
+			   }
+			   red_sea_coast_area = {
+			      limit = {
+			         NOT = { is_core = FROM }
+			         NOT = { is_permanent_claim = FROM }
+			      }
+			      add_permanent_claim = FROM
+			   }
+			   southern_ethiopia_area = {
+			      limit = {
+			         NOT = { is_core = FROM }
+			         NOT = { is_permanent_claim = FROM }
+			      }
+			      add_permanent_claim = FROM
+			   }
+			   hadiya_area = {
+			      limit = {
+			         NOT = { is_core = FROM }
+			         NOT = { is_permanent_claim = FROM }
+			      }
+			      add_permanent_claim = FROM
+			   }
+			   damot_area = {
+			      limit = {
+			         NOT = { is_core = FROM }
+			         NOT = { is_permanent_claim = FROM }
+			      }
+			      add_permanent_claim = FROM
+			   }
+			   shewa_area = {
+			      limit = {
+			         NOT = { is_core = FROM }
+			         NOT = { is_permanent_claim = FROM }
+			      }
+			      add_permanent_claim = FROM
+			   }
+			   central_ethiopia_area = {
+			      limit = {
+			         NOT = { is_core = FROM }
+			         NOT = { is_permanent_claim = FROM }
+			      }
+			      add_permanent_claim = FROM
+			   }
+			   tigray_area = {
+			      limit = {
+			         NOT = { is_core = FROM }
+			         NOT = { is_permanent_claim = FROM }
+			      }
+			      add_permanent_claim = FROM
+			   }
+	  }
+   }
+}
+#Event to repair the holy cities
+country_event = {
+   id = mor_events.54
+   title = "mor_events.54.t"
+   desc = "mor_events.54.d"
+   picture = CITY_DEVELOPMENT_eventPicture
+   trigger = {
+      mission_completed = alm_coffee_trade
+   }
+   mean_time_to_happen = {
+      months = 60
+      modifier = {
+         factor = 2
+         has_country_flag = alm_ignoring_holy_cities
+      }
+   }
+   immediate = {
+      if = {
+         limit = { has_country_flag = alm_ignoring_holy_cities }
+         clr_country_flag = alm_ignoring_holy_cities
+      }
+   }
+   option = { #Renovate the cities
+      name = "mor_events.54.a"
+      custom_tooltip = alm_renovating_holy_cities_tooltip
+      set_country_flag = alm_renovating_the_holy_cities
+      add_country_modifier = {
+         name = alm_renovating_holy_cities
+         hidden = yes
+         duration = -1
+      }
+      add_years_of_income = -0.25
+   }
+   option = { #Let them fall
+      name = "mor_events.54.b"
+      set_country_flag = alm_ignoring_holy_cities
+      custom_tooltip = alm_not_renovating_holy_cities_tooltip
+   }
+}
+#Ruler & heir get +1 in all category
+country_event = {
+   id = mor_events.55
+   title = "mor_events.55.t"
+   desc = "mor_events.55.d"
+   picture = GOOD_WITH_MONARCH_eventPicture
+   is_triggered_only = yes
+   fire_only_once = yes
+   option = {
+      name = "mor_events.55.a"
+      change_adm = 1
+      change_dip = 1
+      change_mil = 1
+      change_heir_adm = 1
+      change_heir_dip = 1
+      change_heir_mil = 1
+   }
+}
+#Ottomans get some nasty modifiers
+country_event = {
+   id = mor_events.56
+   title = "mor_events.56.t"
+   desc = {
+      trigger = { exists = TUR }
+      desc = "mor_events.56.d"
+   }
+   desc = {
+      trigger = { NOT = { exists = TUR } }
+      desc = "mor_events.56.d.2"
+   }
+   picture = BATTLE_eventPicture
+   is_triggered_only = yes
+   fire_only_once = yes
+   option = {
+      trigger = { exists = TUR }
+      name = "mor_events.56.a"
+      add_country_modifier = {
+         name = alm_we_defeated_turks
+         duration = 1095
+      }
+      TUR = {
+         country_event = { id = mor_events.58 } 
+         add_country_modifier = {
+            name = alm_defeated_turks
+            duration = 3650
+         }
+         add_stability = -3
+      }
+   }
+   option = {
+      trigger = { NOT = { exists = TUR } }
+      name = "mor_events.56.b"
+      add_prestige = 15
+      add_country_modifier = {
+         name = alm_crush_ottomans_mission
+         duration = 1825
+      }
+   }
+}
+#Papacy crushed 
+country_event = {
+   id = mor_events.57
+   title = "mor_events.57.t"
+   desc = "mor_events.57.d"
+   picture = NOT_DISCIPLINED_SOLDIERS_eventPicture
+   is_triggered_only = yes
+   fire_only_once = yes
+   option = { #destroy the city
+      name = "mor_events.57.a"
+      add_years_of_income = 0.5
+      118 = {
+         add_base_tax = -3
+         add_base_production = -3
+         add_base_manpower = -3
+         change_culture = ROOT
+         change_religion = ROOT
+         hidden_effect = {
+            province_event = { id = cultural_events.2 }
+            add_province_modifier = { 
+               name = cultural_zeal
+               duration = 10950
+            }
+         }
+      }
+   }
+   option = { #leave it be
+      name = "mor_events.57.b"
+      add_adm_power = 100
+      add_mil_power = 200
+      add_dip_power = 200
+      118 = {
+         add_province_modifier = {
+            name = alm_conquered_rome
+            duration = 7300
+         }
+      }
+   }
+}                 
+#Event for ottomans
+country_event = {
+   id = mor_events.58
+   title = "mor_events.58.t"
+   desc = "mor_events.58.d"
+   picture = BAD_WITH_MONARCH_eventPicture
+   is_triggered_only = yes
+   option = {
+      name = "mor_events.58.a"
+      tooltip = {
+         add_country_modifier = {
+            name = alm_defeated_turks
+            duration = 3650
+         }
+      }
+   }
+}
+#Envoy to fezzan
+country_event = { 
+   id = mor_events.59
+   title = "mor_events.59.t"
+   desc = "mor_events.59.d"
+   picture = DIPLOMACY_eventPicture
+   is_triggered_only = yes
+   option = { #request to buy province
+      name = "mor_events.59.a"
+      FZA = { country_event = { id = mor_events.60 } } #Request from Rustamids
+   }
+}
+#Rustamids want to buy Fezzan
+country_event = {
+   id = mor_events.60
+   title = "mor_events.60.t"
+   desc = "mor_events.60.d"
+   picture = DIPLOMACY_eventPicture
+   is_triggered_only = yes
+   option = { #sell the province
+      name = "mor_events.60.a"
+      ai_chance = {
+         factor = 100
+         modifier = {
+            factor = 0.75
+            NOT = { is_subject_of = FROM }
+         }
+         modifier = {
+            factor = 0.75
+            is_subject_of = FROM
+            liberty_desire = 50
+         }
+      }
+      set_country_flag = fza_sold_province
+      2448 = {
+         add_core = FROM
+         cede_province = FROM
+         remove_core = ROOT
+      }
+      FROM = { 
+         add_treasury = -250
+         country_event = { id = mor_events.61 } #the fezzanese response
+      }
+      add_treasury = 250
+   }
+   option = { #refuse!
+      name = "mor_events.60.b"
+      ai_chance = {
+         factor = 100
+         modifier = {
+            factor = 0
+            is_subject_of = FROM
+            NOT = { liberty_desire = 50 }
+         }
+         modifier = {
+            factor = 0.25
+            is_subject_of = FROM
+            liberty_desire = 50
+         }
+         modifier = {
+            factor = 0.25
+            NOT = { is_subject_of = FROM }
+         }
+      }
+      set_country_flag = fza_refused_province
+      every_owned_province = {
+         add_permanent_claim = FROM
+      }
+      FROM = { country_event = { id = mor_events.61 } } #the fezzanese response
+   }
+}
+#Fezzanese response
+country_event = {
+   id = mor_events.61
+   title = "mor_events.61.t"
+   desc = {
+      trigger = { FZA = { has_country_flag = fza_sold_province } }
+      desc = "mor_events.61.d"
+   }
+   desc = {
+      trigger = { FZA = { has_country_flag = fza_refused_province } }
+      desc = "mor_events.61.d.2"
+   }
+   picture = DIPLOMACY_eventPicture
+   is_triggered_only = yes
+   option = {
+      trigger = { FZA = { has_country_flag = fza_sold_province } }
+      name = "mor_events.61.a"
+      tooltip = {
+           2448 = {
+             add_core = ROOT
+             cede_province = ROOT
+             remove_core = FROM
+           }
+           add_treasury = -250
+           FROM = { add_treasury = 250 }
+      }
+      country_event = { id = mor_events.62 } #cross sahara
+   }
+   option = {
+      trigger = { FZA = { has_country_flag = fza_refused_province } }
+      name = "mor_events.61.b"
+      tooltip = {
+           FROM = {
+              every_owned_province = {
+                 add_permanent_claim = ROOT
+              }
+           }
+      }
+   }
+}    
+#Saharan Route via Fezzan
+country_event = {
+   id = mor_events.62
+   title = "mor_events.62.t"
+   desc = "mor_events.62.d"
+   picture = LAND_MILITARY_eventPicture
+   is_triggered_only = yes
+   option = {
+      name = "mor_events.62.a"
+      hidden_effect = {
+         2448 = {
+            remove_province_triggered_modifier = rsm_fezzan_corridor
+         }
+      }
+      if = {
+         limit = {
+             2474 = {
+                is_empty = yes
+             }
+         }
+         2474 = {
+            add_core = ROOT
+            cede_province = ROOT
+         }
+      }
+      else = {
+        2474 = { add_permanent_claim = ROOT }
+      }
+      if = {
+         limit = {
+             2475 = {
+                is_empty = yes
+             }
+         }
+         2475 = {
+            add_core = ROOT
+            cede_province = ROOT
+         }
+      }
+      else = {
+        2475 = { add_permanent_claim = ROOT }
+      }
+      east_azbin_area = {
+         limit = {
+            NOT = { is_core = ROOT }
+            NOT = { is_permanent_claim = ROOT }
+         }
+         add_permanent_claim = ROOT
+         discover_country = ROOT
+      }
+      azbin_area = {
+         limit = {
+            NOT = { is_core = ROOT }
+            NOT = { is_permanent_claim = ROOT }
+         }
+         add_permanent_claim = ROOT
+         discover_country = ROOT
+      }
+   }
+}
+#Establish Persian Embassy
+country_event = {
+   id = mor_events.63
+   title = "mor_events.63.t"
+   desc = "mor_events.63.d"
+   picture = DIPLOMACY_eventPicture
+   trigger = {
+      mission_completed = rsm_persian_contact
+      NOT = { has_saved_event_target = rsm_persian_embassy }
+      any_ally = {
+         has_opinion = {
+            who = ROOT
+            value = 150
+         }
+         trust = {
+            who = ROOT
+            value = 80
+         }
+         capital_scope = {
+            region = persia_region
+         }
+      }
+   } 
+   immediate = {
+      hidden_effect = {
+          random_ally = {
+             limit = {
+                 has_opinion = {
+                    who = ROOT
+                    value = 150
+                 }
+                 trust = {
+                    who = ROOT
+                    value = 80
+                 }
+                 capital_scope = {
+                    region = persia_region
+                 }
+             }
+             save_event_target_as = ally
+          }
+      }
+   }
+         
+   option = { 
+      name = "mor_events.63.a"
+      set_country_flag = established_persian_embassy
+      event_target:ally = {
+         save_global_event_target_as = rsm_persian_embassy
+         add_opinion = {
+            who = ROOT
+            modifier = opinion_good_relations
+         }
+      }
+   }
+}
+#Dissolves the Embassy if triggers are met
+country_event = {
+   id = mor_events.64
+   title = "mor_events.64.t"
+   desc = "mor_events.64.d"
+   picture = ACCUSATION_eventPicture
+   trigger = {
+      has_country_flag = established_persian_embassy
+      event_target:rsm_persian_embassy = {
+         OR = {
+            NOT = {
+              has_opinion = {
+                  who = ROOT
+                  value = 150
+               }
+            }
+            NOT = {
+               trust = {
+                  who = ROOT
+                  value = 50
+               }
+            }
+            NOT = {
+               capital_scope = {
+                  region = persia_region
+               }
+            }
+            NOT = { alliance_with = ROOT }
+         }
+      }
+   }
+   option = {
+      name = "mor_events.64.a"
+      event_target:rsm_persian_embassy = {
+         custom_tooltip = embassy_removed_tt
+      }
+      clear_global_event_target = rsm_persian_embassy
+      clr_country_flag = established_persian_embassy
+      remove_embassy_modifiers_effect = yes
+   }
+}
+#Embassy modifiers 
+country_event = {
+   id = mor_events.65
+   title = "mor_events.65.t"
+   desc = "mor_events.65.d"
+   picture = DIPLOMACY_eventPicture
+   trigger = {
+      has_country_flag = established_persian_embassy
+      no_embassy_modifiers_trigger = yes
+      event_target:rsm_persian_embassy = {
+         has_opinion = {
+            who = ROOT
+            value = 150
+          }
+          trust = {
+            who = ROOT
+            value = 55
+          }
+          capital_scope = {
+            region = persia_region
+          }
+          alliance_with = ROOT
+      }
+   }
+   immediate = {
+      hidden_effect = {
+         embassy_modifiers_randomize_effect = yes
+      }
+   }
+   option = {
+      name = "mor_events.65.a"
+      event_target:rsm_persian_embassy = {
+         add_trust = {
+            who = ROOT
+            value = -5
+         }
+      }
+      add_embassy_modifiers_effect = yes
+   }
+   after = { clear_embassy_flags_effect = yes }
+}           
+#Abu-l-Hasan's Revolt
+country_event = {
+   id = mor_events.66
+   title = "mor_events.66.t"
+   desc = "mor_events.66.d"
+   picture = CIVIL_WAR_eventPicture
+   fire_only_once = yes
+   trigger = {
+      tag = TUN
+      num_of_rebel_armies = 1
+      num_of_rebel_controlled_provinces = 1
+   }
+   option = { #Crush them!
+      name = "mor_events.66.a"
+      339 = {
+         start_revolt = {
+            type = pretender_rebels
+            size = 1
+         }
+      }
+   }
+}
+#Revolt crushed
+country_event = {
+   id = mor_events.67
+   title = "mor_events.67.t"
+   desc = "mor_events.67.d"
+   picture = GOOD_WITH_MONARCH_eventPicture
+   fire_only_once = yes
+   trigger = {
+      tag = TUN
+      NOT = { num_of_rebel_armies = 1 }
+      NOT = { num_of_rebel_controlled_provinces = 1 }
+   }
+   option = { #execute them
+      name = "mor_events.67.a"
+      add_legitimacy = 50
+      change_mil = 1
+   }
+   option = { #keep them at court
+      name = "mor_events.67.b"
+      change_adm = 1
+      define_advisor = {
+         name = Abu-l-Hasan
+         type = army_reformer
+         skill = 2
+         cost_multiplier = 0.25
+      }
+   }
+}
+#Ports of Maghreb
+country_event = {
+   id = mor_events.68
+   title = "mor_events.68.t"
+   desc = "mor_events.68.d"
+   picture = SHIP_SAILING_eventPicture
+   is_triggered_only = yes                           
+   fire_only_once = yes
+   option = { #Navies will benefit
+      name = "mor_events.68.a"
+      add_dip_power = 100
+      add_country_modifier = {
+         name = alm_maghreb_ports_navy
+         duration = -1
+      }
+   }
+   option = { #Trade will benefit
+      name = "mor_events.68.b"
+      add_adm_power = 100
+      every_province = {
+         limit = {
+            region = maghreb_region
+            has_port = yes
+            is_island = no
+         }
+         add_province_modifier = {
+            name = alm_maghreb_ports_trade
+            duration = -1
+         }
+      }
+   }
+}
+#The Kiffa
+country_event = {
+   id = mor_events.69
+   title = "mor_events.69.t"
+   desc = "mor_events.69.d"
+   picture = NATIVES_eventPicture
+   trigger = {
+      is_year = 1470
+      always = no
+      NOT = { exists = KIF }
+   }
+   mean_time_to_happen = {
+      months = 120
+   }
+   option = { #Vassalize them (available if missions are completed )
+      name = "mor_events.69.a"
+      trigger = {
+         OR = {
+            mission_completed = mor_saharan_route
+         }
+      }
+      custom_tooltip = ask_for_vassalisation_tooltip
+      hidden_effect = {
+         KIF = {
+            change_religion = sunni
+            change_primary_culture = sanhaja
+            country_event = { id = mor_events.70 days = 1 } #From.GetName requests vassalisation
+            adopt_reform_progress = FROM
+         }
+      }
+   }
+   #Interesting
+   option = { 
+      name = "mor_events.69.b"
+      hidden_effect = {
+         KIF = {
+            change_religion = sunni
+            change_primary_culture = sanhaja
+            adopt_reform_progress = FROM
+         }
+      }
+   }
+   #Play as Kiffa
+   option = {
+      name = "mor_events.69.c"
+      trigger = { ai = no }
+      hidden_effect = {
+         KIF = {
+            change_religion = sunni
+            change_primary_culture = sanhaja
+            adopt_reform_progress = FROM
+         }
+      }
+      switch_tag = KIF
+   }
+}
+#From.GetName offers us vassalisation
+country_event = {
+   id = mor_events.70
+   title = "mor_events.70.t"
+   desc = "mor_events.70.d"
+   picture = DEBATE_REPUBLICAN_eventPicture
+   is_triggered_only = yes
+   option = {
+      name = "mor_events.70.a" #Refuse
+      ai_chance = { factor = 50 }
+      set_country_flag = tribe_refused_vassalage
+      FROM = { country_event = { id = mor_events.71 } } #Tribal Response
+      tooltip = {
+         every_owned_province = {
+            add_permanent_claim = FROM
+         }
+      }
+   }
+   option = {
+      name = "mor_events.70.b" #Accept
+      ai_chance = { factor = 50 }
+      set_country_flag = tribe_accepted_vassalge
+      FROM = { country_event = { id = mor_events.71 } }
+      custom_tooltip = tribe_will_become_vassal_tooltip
+   }
+}
+#Tribal response
+country_event = {
+   id = mor_events.71
+   title = "mor_events.71.t"
+   desc = {
+      trigger = { FROM = { has_country_flag = tribe_refused_vassalage } }
+      desc = "mor_events.71.d"
+   }
+   desc = {
+      trigger = { FROM = { has_country_flag = tribe_accepted_vassalage } }
+      desc = "mor_events.71.d.2"
+   }
+   picture = DIPLOMACY_eventPicture
+   is_triggered_only = yes
+   option = {
+      trigger = {
+         FROM = { has_country_flag = tribe_refused_vassalage }
+      }
+      name = "mor_events.71.a" #Pathetic
+      FROM = {
+         every_owned_province = {
+            add_permanent_claim = ROOT
+         }
+      }
+   }
+   option = {
+      trigger = {
+         FROM = { has_country_flag = tribe_accepted_vassalage }
+      }
+      name = "mor_events.71.b" #Excellent
+      vassalize = FROM
+   }
+   after = {
+      FROM = {
+         clr_country_flag = tribe_accepted_vassalage
+         clr_country_flag = tribe_refused_vassalage
+      }
+   }
+}
+#The Berabish
+country_event = {
+   id = mor_events.72
+   title = "mor_events.72.t"
+   desc = "mor_events.72.d"
+   picture = NATIVES_eventPicture
+   trigger = {
+      is_year = 1470
+      always = no
+      NOT = { exists = BEB }
+   }
+   mean_time_to_happen = {
+      months = 120
+   }
+   option = { #Vassalize them (available if missions are completed )
+      name = "mor_events.72.a"
+      trigger = {
+         OR = {
+            mission_completed = mor_saharan_route
+         }
+      }
+      custom_tooltip = ask_for_vassalisation_tooltip_beb
+      hidden_effect = {
+         BEB = {
+            change_religion = shamanism
+            change_primary_culture = sanhaja
+            country_event = { id = mor_events.70 days = 1 } #From.GetName requests vassalisation
+            adopt_reform_progress = FROM
+         }
+      }
+   }
+   #Interesting
+   option = { 
+      name = "mor_events.72.b"
+      hidden_effect = {
+         BEB = {
+            change_religion = shamanism
+            change_primary_culture = sanhaja
+            adopt_reform_progress = FROM
+         }
+      }
+   }
+   #Play as Berabish
+   option = {
+      name = "mor_events.72.c"
+      trigger = { ai = no }
+      hidden_effect = {
+         BEB = {
+            change_religion = shamanism
+            change_primary_culture = sanhaja
+            adopt_reform_progress = FROM
+         }
+      }
+      switch_tag = BEB
+   }
+}
+#Algerian-Aragonese diplomacy
+country_event = {
+   id = mor_events.73 
+   title = "mor_events.73.t"
+   desc = "mor_events.73.d"
+   picture = SHIP_SAILING_eventPicture
+   is_triggered_only = yes
+   option = {
+      name = "mor_events.73.a" #Send emissary to Aragon
+      custom_tooltip = alg_emissary_to_ara_tooltip
+      hidden_effect = {
+         ARA = { country_event = { id = mor_events.75 } }
+      }
+      set_country_flag = alg_emissary_to_ara
+   }
+   option = {
+      name = "mor_events.73.b" #Send emissary and small gift to Aragon
+      custom_tooltip = alg_emissary_to_ara_small_gift_tooltip
+      add_treasury = -50
+      ARA = {
+         add_treasury = 50
+         hidden_effect = { 
+           country_event = { id = mor_events.75 }
+         }
+      }
+      set_country_flag = alg_emissary_and_small_gift_to_ara
+   }
+   option = {
+      name = "mor_events.73.c" #Send emissary and large gift to Aragon
+      custom_tooltip = alg_emissary_to_ara_large_gift_tooltip
+      add_treasury = -200
+      ARA = {
+         add_treasury = 200
+         hidden_effect = { 
+           country_event = { id = mor_events.75 }
+         }
+      }
+      set_country_flag = alg_emissary_and_large_gift_to_ara
+   }
+}
+#Fate of Tlemcen
+country_event = {
+   id = mor_events.74
+   title = "mor_events.74.t"
+   desc = "mor_events.74.d"
+   picture = CONQUEST_eventPicture
+   is_triggered_only = yes
+   option = {
+      name = "mor_events.74.a"
+      if = {
+         limit = { 
+            exists = TLC
+            TLC = { is_subject = no } 
+         }
+         vassalize = TLC
+         TLC = { add_liberty_desire = -50 }
+      }
+      else = {
+         add_power_projection = {
+            type = mission_rewards_power_projection
+            amount = 50
+         }
+      }
+   }
+}
+#For Aragon
+country_event = {
+   id = mor_events.75
+   title = "mor_events.75.t"
+   desc = {
+      trigger = { ALG = { has_country_flag = alg_emissary_to_ara } }
+      desc = "mor_events.75.d"
+   }
+   desc = {
+      trigger = { ALG = { has_country_flag = alg_emissary_and_small_gift_to_ara } }
+      desc = "mor_events.75.d.2"
+   }
+   desc = {
+      trigger = { ALG = { has_country_flag = alg_emissary_and_large_gift_to_ara } }
+      desc = "mor_events.75.d.3"
+   }
+   picture = DEBATE_REPUBLICAN_eventPicture
+   is_triggered_only = yes
+   option = {
+      name = "mor_events.75.a" #Decline their offer
+      ai_chance = {
+         factor = 100
+         modifier = {
+            factor = 0
+            ALG = { has_country_flag = alg_emissary_and_large_gift_to_ara }
+         }
+         modifier = {
+            factor = 0.5
+            ALG = { has_country_flag = alg_emissary_and_small_gift_to_ara }
+         }
+      }
+      set_country_flag = ara_declined_alg
+      FROM = {
+         country_event = { id = mor_events.76 }
+      }
+   }
+   option = {
+      name = "mor_events.75.b" #Accept their offer
+      ai_chance = {
+         factor = 100
+      }
+      set_country_flag = ara_accepted_alg
+      FROM = {
+         country_event = { id = mor_events.76 }
+      }
+   }
+   after = {
+      ALG = {
+         clr_country_flag = alg_emissary_and_large_gift_to_ara
+         clr_country_flag = alg_emissary_and_small_gift_to_ara
+         clr_country_flag = alg_emissary_to_ara
+      }
+   }
+}
+#Aragonese response
+country_event = {
+   id = mor_events.76
+   title = "mor_events.76.t"
+   desc = {
+      trigger = { ARA = { has_country_flag = ara_declined_alg } }
+      desc = "mor_events.76.d"
+   }
+   desc = {
+      trigger = { ARA = { has_country_flag = ara_accepted_alg } }
+      desc = "mor_events.76.d.2"
+   }
+   picture = DIPLOMACY_eventPicture
+   is_triggered_only = yes
+   option = {
+      trigger = { ARA = { has_country_flag = ara_declined_alg } }
+      name = "mor_events.76.a" #Damn
+   }
+   option = {
+      name  = "mor_events.76.b" #Wonderful
+      trigger = { ARA = { has_country_flag = ara_accepted_alg } }
+      create_alliance = ARA
+   }
+   after = {
+      ARA = {
+         clr_country_flag = ara_declined_alg
+         clr_country_flag = ara_accepted_alg
+      }
+   }
+}
+#Moro flavour
+country_event = {
+   id = mor_events.77
+   title = "mor_events.77.t"
+   desc = "mor_events.77.d"
+   picture = MERCHANTS_TALKING_eventPicture
+   trigger = {
+      tag = MOR
+      any_owned_province = {
+         any_neighbor_province = {
+            region = maghreb_region
+            owner = { culture_group = iberian }
+         }
+      }
+      NOT = {
+         1110 = {
+            has_trade_modifier = {
+               key = mor_foreign_merchants_ousted
+               who = ROOT
+            }
+         }
+      }
+      is_year = 1500
+   }
+   mean_time_to_happen = {
+      months = 360
+   }
+   immediate = {
+      hidden_effect = {
+         random_province = {
+            limit = {
+               owner = { culture_group = iberian }
+               region = maghreb_region
+               any_neighbor_province = {
+                  owned_by = ROOT 
+               }
+            }
+            owner = {
+               save_event_target_as = iberian_country
+            }
+         }
+      }
+   }
+   option = {
+      name = "mor_events.77.a" #Allow free trade
+      event_target:iberian_country = {
+         add_opinion = {
+            who = ROOT
+            modifier = honored_trade_agreement
+         }
+      }
+      1110 = {
+         add_trade_modifier = {
+            who = ROOT
+            power = -10
+            duration = 3650
+            key = mor_foreign_merchants_competing
+         }
+      }
+      add_years_of_income = 0.5
+   }
+   option = {
+      name = "mor_events.77.b" #Protect trade
+      event_target:iberian_country = {
+         add_casus_belli = {
+            type = cb_trade_conflict
+            target = ROOT
+         }
+         add_opinion = {
+            who = ROOT
+            modifier = trade_conflict
+         }
+      }
+      1110 = {
+         add_trade_modifier = {
+            who = ROOT
+            power = 10
+            duration = 5475
+            key = mor_foreign_merchants_ousted
+         }
+      }
+      add_years_of_income = -0.3
+   }
+}
+#Settling tribes
+country_event = {
+   id = mor_events.78
+   title = "mor_events.78.t"
+   desc = "mor_events.78.d"
+   picture = HAJJ_eventPicture
+   trigger = {
+      tag = MOR
+      mission_completed = mor_rein_in_south
+   }
+   mean_time_to_happen = {
+      months = 360
+   }
+   immediate = {
+      hidden_effect = {
+         random_owned_province = {
+            limit = {
+               OR = {
+                  area = tafilalt_area
+                  area = sus_area
+                  area = southern_morocco_area
+               }
+            }
+            save_event_target_as = migrating_province
+         }
+      }
+   }
+   option = {
+      name = "mor_events.78.a" #Allow them to settle down
+      event_target:migrating_province = {
+         add_base_production = 1
+      }
+      add_piety = 0.01
+   }
+   option = {
+      name = "mor_events.78.b" #Conscript them
+      event_target:migrating_province = {
+         add_base_manpower = 1
+      }
+      add_piety = -0.01
+   }
+}
+#Algerian Revolt
+country_event = {
+   id = mor_events.79
+   title = "mor_events.79.t"
+   desc = "mor_events.79.d"
+   picture = CIVIL_WAR_eventPicture
+   fire_only_once = yes
+   trigger = {
+      has_disaster = tlemcen_civil_crisis
+      tag = TLC
+      ALG = {
+         alliance_with = ARA
+      }
+   }
+   option = {
+      name = "mor_events.79.a" #Agree to their demands
+      ai_chance = { factor = 100 }
+      every_owned_province = {
+         limit = {
+            is_core = ALG
+         }
+         cede_province = ALG
+      }
+      add_truce_with = ALG
+      add_truce_with = ARA
+      ALG = { country_event = { id = mor_events.80 } }
+   }
+   option = {
+      name = "mor_events.79.b" #Refuse!
+      ai_chance = { factor = 0 }
+      random_owned_province = {
+         limit = { is_core = ALG }
+         start_revolt = {
+            type = nationalist_rebels
+            size = 2
+         }
+      }
+      declare_war_with_cb = {
+         casus_belli = cb_core
+         who = ALG
+         war_goal_province = 2461
+      }
+   }
+}
+#Demands successful
+country_event = {
+   id = mor_events.80
+   title = "mor_events.80.t"
+   desc = "mor_events.80.d"
+   picture = GOOD_WITH_MONARCH_eventPicture
+   is_triggered_only = yes
+   option = {
+      name = "mor_events.80.a"
+      custom_tooltip = tlc_will_cede_alg_tooltip
+   }
+}

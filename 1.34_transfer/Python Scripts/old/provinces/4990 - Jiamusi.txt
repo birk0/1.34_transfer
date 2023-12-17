@@ -1,0 +1,27 @@
+#4490 - Jiamusi
+
+culture = manchu
+religion = tengri_pagan_reformed
+capital = "Jiamusi"
+trade_goods = fur
+hre = no
+base_tax = 2
+base_production = 1
+base_manpower = 2
+is_city = yes
+#discovered_by = chinese
+#discovered_by = indonesian
+#discovered_by = nomad_group
+#Changes
+owner = EJZ
+controller = EJZ
+add_core = EJZ
+base_tax = 3
+base_production = 1
+base_manpower = 2
+
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

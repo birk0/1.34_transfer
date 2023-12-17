@@ -1,0 +1,2283 @@
+namespace = shen_events
+
+#################################
+#	Khwan events (The Ancestors)
+#################################
+country_event = {
+	id = shen_events.1 #Ancestor worship in [ancestor_province]
+	title = "shen_events.1.t"
+	desc = "shen_events.1.d"
+	picture = PRAYING_eventPicture
+	is_triggered_only = yes
+
+	trigger = {
+		has_personal_deity = khwan
+		any_owned_province = { has_owner_religion = yes }
+	}
+	immediate = {
+		hidden_effect = {
+			random_owned_province = {
+				limit = {
+					has_owner_religion = yes
+				}
+				save_event_target_as = ancestor_province
+			}
+		}
+	}
+	option = { #Let us exploit this
+		name = "shen_events.1.a"
+		event_target:ancestor_province = {
+			add_base_tax = 2
+			add_province_modifier = {
+				name = khwan_ancestor_worship
+				duration = 3650
+			}
+		}
+		hidden_effect = {
+			random = {
+				chance = 50 #Ancestors displeased
+				set_country_flag = khwan_ancestors_displeased
+			}
+		}
+	}
+	option = {
+		name = "shen_events.1.b" #Let them worship in peace
+		add_prestige = 5
+		ai_chance = {
+			factor = 3
+		}
+	}
+}
+country_event = {
+	id = shen_events.2
+	title = "shen_events.2.t" #Ancestors displeased
+	desc = "shen_events.2.d"
+	picture = BAD_WITH_MONARCH_eventPicture
+	trigger = {
+		has_country_flag = khwan_ancestors_displeased
+		any_owned_province = {
+			has_province_modifier = khwan_ancestor_worship
+		}
+	}
+	mean_time_to_happen = {
+		months = 60
+	}
+	immediate = {
+		clr_country_flag = khwan_ancestors_displeased
+		hidden_effect = {
+			random_owned_province = {
+				limit = {
+					has_province_modifier = khwan_ancestor_worship
+				}
+				save_event_target_as = ancestor_prov
+			}
+		}
+	}
+	option = {
+		name = "shen_events.2.a" #Nonsense!
+		event_target:ancestor_prov = {
+			add_base_production = -1
+			area = {
+				limit = { owned_by = ROOT }
+				add_province_modifier = {
+					name = khwan_ancestors_angry
+					duration = 1825
+				}
+			}
+		}
+	}
+	option = {
+		name = "shen_events.2.b" #Appease the ancestors!
+		event_target:ancestor_prov = {
+			area = {
+				limit = { owned_by = ROOT }
+				add_local_autonomy = 20
+			}
+		}
+		add_years_of_income = -0.3
+		random = {
+			chance = 50
+			add_dip_power = 50
+		}
+		ai_chance = {
+			factor = 2
+		}
+	}
+}
+country_event = {
+	id = shen_events.3
+	title = "shen_events.3.t" #Dissing the Ancestors
+	desc = "shen_events.3.d"
+	picture = ADVISOR_eventPicture
+	is_triggered_only = yes
+
+	trigger = {
+		has_any_advisor = yes
+		has_personal_deity = khwan
+	}
+
+	option = {
+		name = "shen_events.3.a" #Rubbish
+		custom_tooltip = ancestors_pissed_tt
+		random = {
+			chance = 75
+			set_country_flag = ancestors_pissed_flag
+			random_owned_province = {
+				limit = { has_owner_religion = yes }
+				change_religion = buddhism
+			}
+		}
+		add_adm_power = 25
+		add_dip_power = 25
+		add_mil_power = 25
+	}
+	option = {
+		name = "shen_events.3.b" #We will not tolerate insolence!
+		kill_advisor = random
+		add_corruption = -0.5
+		add_adm_power = -50
+		hidden_effect = {
+			random = {
+				chance = 75
+				set_country_flag = ancestors_pleased_flag
+			}
+		}
+		ai_chance = {
+			factor = 2
+		}
+	}
+}
+country_event = {
+	id = shen_events.4
+	title = "shen_events.4.t" #Ancestors pissed
+	desc = "shen_events.4.d"
+	picture = BAD_WITH_MONARCH_eventPicture
+
+	trigger = {
+		has_country_flag = ancestors_pissed_flag
+	}
+	mean_time_to_happen = {
+		months = 60
+	}
+	immediate = {
+		clr_country_flag = ancestors_pissed_flag
+	}
+	option = {
+		name = "shen_events.4.a" #Unfortunate
+		add_stability = -1
+		add_legitimacy_equivalent = {
+			amount = -20
+		}
+		random = {
+			chance = 30
+			change_adm = -1
+		}
+		ai_chance = {
+			factor = 2
+		}
+	}
+	option = {
+		name = "shen_events.4.b" #Donate a generous offering to appease them
+		add_years_of_income = -1
+		random = {
+			chance = 50
+			add_stability = 1
+		}
+	}
+}
+country_event = {
+	id = shen_events.5
+	title = "shen_events.5.t" #Ancestors pleased
+	desc = "shen_events.5.d"
+	picture = GOOD_WITH_MONARCH_eventPicture
+	trigger = {
+		has_country_flag = ancestors_pleased_flag
+	}
+	immediate = {
+		clr_country_flag = ancestors_pleased_flag
+	}
+	option = {
+		name = "shen_events.5.a" #Wonderful
+		random = {
+			chance = 50
+			change_adm = 1
+		}
+		add_adm_power = 100
+	}
+}
+country_event = {
+	id = shen_events.6
+	title = "shen_events.6.t" #The way of Worship
+	desc = "shen_events.6.d"
+	picture = RELIGION_eventPicture
+	is_triggered_only = yes
+	trigger = {
+		has_personal_deity = khwan
+	}
+	option = {
+		name = "shen_events.6.a" #Stick Traditional
+		add_country_modifier = {
+			name = khwan_traditional_worship
+			duration = 3650
+		}
+		add_legitimacy_equivalent = {
+			amount = 10
+		}
+		ai_chance = { factor = 2 }
+	}
+	option = {
+		name = "shen_events.6.b" #Innovate our worship
+		add_legitimacy_equivalent = {
+			amount = -10
+		}
+		change_innovativeness = 10
+	}
+}
+country_event = {
+	id = shen_events.7
+	title = "shen_events.7.t" #Ancestral Rites
+	desc = "shen_events.7.d"
+	picture = RELIGION_eventPicture
+	is_triggered_only = yes
+	trigger = {
+		has_personal_deity = khwan
+	}
+	option = {
+		name = "shen_events.7.a" #We will of course support this
+		add_dip_power = -50
+		add_country_modifier = { 
+			name = khwan_ruler_on_ancestral_trip
+			duration = 3650
+			hidden = yes
+		}
+		add_legitimacy_equivalent = {
+			amount = 10
+		}
+		ai_chance = { factor = 2 }
+	}
+	option = {
+		name = "shen_events.7.b" #[Monarch.GetName] is needed in court
+		add_legitimacy_equivalent = {
+			amount = -10
+		}
+		add_dip_power = 30
+		add_adm_power = 30
+	}
+}
+country_event = {
+	id = shen_events.8
+	title = "shen_events.8.t" #Ancestral Rites, ruler progresses
+	desc = "shen_events.8.d"
+	picture = GOOD_WITH_MONARCH_eventPicture
+	trigger = {
+		has_country_modifier = khwan_ruler_on_ancestral_trip
+	}
+	mean_time_to_happen = {
+		months = 90 #may not always fire
+	}
+	option = {
+		name = "shen_events.8.a" #Great
+		change_dip = 1
+	}
+}
+country_event = {
+	id = shen_events.9
+	title = "shen_events.9.t" #Ancestral Temple in decay
+	desc = "shen_events.9.d"
+	picture = CITY_VIEW_eventPicture
+	is_triggered_only = yes
+
+	trigger = {
+		has_personal_deity = khwan
+		any_owned_province = {
+			has_owner_religion = yes
+		}
+	}
+	immediate = {
+		hidden_effect = {
+			random_owned_province = {
+				limit = { has_owner_religion = yes }
+				save_event_target_as = ancestral_temple
+			}
+		}
+	}
+	option = {
+		name = "shen_events.9.a" #We will naturally repair it
+		add_legitimacy_equivalent = {
+			amount = 10
+		}
+		add_prestige = 15
+		add_years_of_income = -0.4
+		event_target:ancestral_temple = {
+			add_base_manpower = 1
+			area = {
+				limit = { owned_by = ROOT }
+				add_province_modifier = {
+					name = khwan_repair_temple_mod
+					duration = 5475
+				}
+			}
+		}
+	}
+	option = {
+		name = "shen_events.9.b" #We dont have time for this nonsense
+		add_prestige = -15
+		add_legitimacy_equivalent = {
+			amount = -15
+		}
+		event_target:ancestral_temple = {
+			area = {
+				limit = { owned_by = ROOT } 
+				add_province_modifier = {
+					name = khwan_temple_disrepair_mod
+					duration = 7300
+				}
+			}
+		}
+		ai_chance = {
+			factor = 2
+		}
+	}
+}
+###############################
+#	Mophi events (The Priests)
+###############################
+country_event = {
+	id = shen_events.10
+	title = "shen_events.10.t" #Mophi request financial aid
+	desc = "shen_events.10.d"
+	picture = CHURCH_ESTATE_1_eventPicture
+	is_triggered_only = yes
+	trigger = {
+		has_personal_deity = mophi
+	}
+	option = {
+		name = "shen_events.10.a" #We will naturally support them
+		add_years_of_income = -0.3
+		add_estate_loyalty = {
+			estate = estate_church
+			loyalty = 10
+		}
+		add_country_modifier = {
+			name = mophi_financial_aid_mod
+			duration = 3650
+		}
+	}
+	option = {
+		name = "shen_events.10.b" #Servants of the Shen have no need of worldly funds
+		add_estate_loyalty = {
+			estate = estate_church
+			loyalty = -10
+		}
+	}
+}
+country_event = {
+	id = shen_events.11
+	title = "shen_events.11.t" #Contact with the Shen
+	desc = "shen_events.11.d"
+	picture = RELIGION_eventPicture
+	is_triggered_only = yes
+	trigger = {
+		has_personal_deity = mophi
+	}
+	immediate = {
+		hidden_effect = {
+			random_list = {
+				50 = {
+					set_country_flag = shen_contact_mil
+				}
+				50 = {
+					set_country_flag = shen_contact_dip
+				}
+				50 = {
+					set_country_flag = shen_contact_adm
+				}
+			}
+		}
+	}
+	option = {
+		name = "shen_events.11.a" #Support the Ritual
+		add_estate_influence_modifier = {
+			influence = 10
+			duration = 3650
+			estate = estate_church
+		}
+		add_years_of_income = -0.5
+		trigger_switch = {
+			on_trigger = has_country_flag
+			shen_contact_mil = {
+				random = {
+					chance = 50
+					add_country_modifier = {
+						name = shen_contact_mil
+						duration = 1825
+					}
+				}
+				random = {
+					chance = 50
+					custom_tooltip = shen_fail_tt
+				}
+			}
+			shen_contact_dip = {
+				random = {
+					chance = 50
+					add_dip_power = 100
+					add_country_modifier = {
+						name = shen_contact_dip
+						duration = 1825
+					}
+				}
+				random = {
+					chance = 50
+					custom_tooltip = shen_fail_tt
+				}
+			}
+			shen_contact_adm = {
+				random = {
+					chance = 50
+					add_adm_power = 100
+					add_country_modifier = {
+						name = shen_contact_adm
+						duration = 1825
+					}
+				}
+				random = {
+					chance = 50
+					custom_tooltip = shen_fail_tt
+				}
+			}
+		}
+		ai_chance = {
+			factor = 2
+		}
+	}
+	option = {
+		name = "shen_events.11.b" #Sounds Sketchy
+		add_prestige = 20
+	}
+	after = {
+		clr_country_flag = shen_contact_mil
+		clr_country_flag = shen_contact_adm
+		clr_country_flag = shen_contact_dip
+	}
+}
+country_event = {
+	id = shen_events.12
+	title = "shen_events.12.t" #Corrupt Mophi
+	desc = "shen_events.12.d" 
+	picture = CORRUPTION_eventPicture
+	is_triggered_only = yes
+	trigger = {
+		has_personal_deity = mophi
+	}
+	option = {
+		name = "shen_events.12.a" #Crack down on it
+		add_corruption = -2
+		add_estate_loyalty = {
+			loyalty = -10
+			estate = estate_church
+		}
+		add_years_of_income = -0.4
+		ai_chance = { factor = 2 }
+	}
+	option = {
+		name = "shen_events.12.b" #We must not interfere with these things
+		add_corruption = 2
+		add_estate_loyalty = {
+			loyalty = 10
+			estate = estate_church
+		}
+		add_country_modifier = {
+			name = corrupt_mophi_mod
+			duration = 3650
+		}
+	}
+}
+country_event = {
+	id = shen_events.13 #Mophi worried
+	title = "shen_events.13.t"
+	desc = "shen_events.13.d"
+	picture = CHURCH_ESTATE_1_eventPicture
+	is_triggered_only = yes
+	trigger = {
+		has_personal_deity = mophi
+		NOT = { religious_unity = 1 }
+		any_owned_province = {
+			has_owner_religion = no
+		}
+	}
+	immediate = {
+		hidden_effect = {
+			random_owned_province = {
+				limit = {
+					has_owner_religion = no
+				}
+				save_event_target_as = mophi_prov
+			}
+		}
+	}
+	option = {
+		name = "shen_events.13.a" #The Mophi are right!
+		event_target:mophi_prov = {
+			start_revolt = { size = 2 }
+			area = {
+				limit = {
+					owned_by = ROOT
+					has_owner_religion = no
+				}
+				add_unrest = 20
+			}
+		}
+		add_country_modifier = {
+			name = mophi_conversion_mod
+			duration = 7300
+		}
+		add_estate_influence_modifier = {
+			influence = 10
+			duration = 7300
+			estate = estate_church
+		}
+	}
+	option = {
+		name = "shen_events.13.b" #Let them worship in peace
+		add_estate_loyalty = {
+			estate = estate_church
+			loyalty = -10
+		}
+		add_legitimacy_equivalent = {
+			amount = -10
+		}
+		event_target:mophi_prov = {
+			add_base_tax = 1
+		}
+		ai_chance = {
+			factor = 2
+		}
+	}
+}
+country_event = {
+	id = shen_events.14
+	title = "shen_events.14.t" #Shen Festivities
+	desc = "shen_events.14.d"
+	picture = RELIGION_eventPicture
+	is_triggered_only = yes
+	trigger = {
+		has_personal_deity = mophi
+	}
+	option = {
+		name = "shen_events.14.a" #Great
+		add_country_modifier = {
+			name = shen_festivities_mod
+			duration = 3650
+		}
+	}
+}
+country_event = {
+	id = shen_events.15
+	title = "shen_events.15.t" #Mophi overtaxing
+	desc = "shen_events.15.d"
+	picture = ANGRY_MOB_eventPicture
+	is_triggered_only = yes
+	trigger = {
+		has_personal_deity = mophi
+	}
+	immediate = {
+		hidden_effect = {
+			random_owned_province = {
+				save_event_target_as = taxed_prov
+			}
+		}
+	}
+	option = {
+		name = "shen_events.15.a" #We need it
+		add_country_modifier = {
+			name = mophi_taking_money_mod
+			duration = 5475
+		}
+		add_legitimacy_equivalent = {
+			amount = -10
+		}
+		add_estate_loyalty = {
+			estate = estate_church
+			loyalty = 10
+		}
+		event_target:taxed_prov = {
+			area = {
+				limit = {
+					owned_by = ROOT
+				}
+				add_province_modifier = {
+					name = mophi_peasants
+					duration = 5475
+				}
+			}
+		}
+		add_years_of_income = 0.5
+		ai_chance = { factor = 2 }
+	}
+	option = {
+		name = "shen_events.15.b" #Reprimand them!
+		add_legitimacy_equivalent = {
+			amount = 10
+		}
+		add_estate_loyalty = {
+			estate = estate_church
+			loyalty = -10
+		}
+		add_country_modifier = {
+			name = reduced_religious_taxes
+			duration = 7300
+		}
+	}
+}
+country_event = {
+	id = shen_events.16
+	title = "shen_events.16.t" #Expensive Rituals Conspiracy
+	desc = "shen_events.16.d"
+	picture = CHURCH_ESTATE_2_eventPicture
+	is_triggered_only = yes
+	trigger = {
+		has_personal_deity = mophi
+		has_any_advisor = yes
+	}
+	immediate = {
+		hidden_effect = {
+			set_saved_name = {
+				type = advisor
+				key = mophi_advisor
+				scope = ROOT
+			}
+		}
+	}
+	option = {
+		name = "shen_events.16.a" #[Advisor] is right, divert funds elsewhere
+		add_years_of_income = 1
+		add_estate_loyalty = {
+			estate = estate_church
+			loyalty = -10
+		}
+		add_estate_influence_modifier = {
+			estate = estate_church
+			influence = -5
+			duration = 3650
+		}
+		add_country_modifier = {
+			name = mophi_advisor_favoured
+			duration = 3650
+		}
+		set_country_flag = mophi_pissed
+	}
+	option = {
+		name = "shen_events.16.b" #Keep the Funds the same
+		add_estate_loyalty = {
+			estate = estate_church
+			loyalty = -5
+		}
+		add_country_modifier = {
+			name = slightly_expensive_mophi_ritual
+			duration = 3650
+		}
+		set_country_flag = mophi_slightly_pissed
+		ai_chance = {
+			factor = 10
+		}
+	}
+	option = {
+		name = "shen_events.16.c" #Send the Mophi everything they need!
+		add_estate_influence_modifier = {
+			influence = 10
+			duration = 3650
+			estate = estate_church
+		}
+		add_years_of_income = -1
+		add_country_modifier = {
+			name = expensive_mophi_ritual
+			duration = 3650
+		}
+		set_country_flag = mophi_happy
+		add_adm_power = -50
+	}
+	after = {
+		hidden_effect = {
+			random_list = {
+				#Mophi slightly pissed
+				50 = {
+					trigger = { has_country_flag = mophi_slightly_pissed }
+					set_country_flag = mophi_betrayal
+				}
+				50 = {
+					trigger = { has_country_flag = mophi_slightly_pissed }
+					set_country_flag = mophi_loyal
+				}
+				#Mophi very pissed
+				75 = {
+					trigger = { has_country_flag = mophi_pissed }
+					set_country_flag = mophi_betrayal
+				}
+				25 = {
+					trigger = { has_country_flag = mophi_pissed }
+					set_country_flag = mophi_loyal
+				}
+				#Mophi happy
+				25 = {
+					trigger = { has_country_flag = mophi_happy }
+					set_country_flag = mophi_betrayal
+				}
+				75 = {
+					trigger = { has_country_flag = mophi_happy }
+					set_country_flag = mophi_loyal
+				}
+			}
+			clr_country_flag = mophi_happy
+			clr_country_flag = mophi_pissed
+			clr_country_flag = mophi_slightly_pissed
+			clear_saved_name = mophi_advisor
+		}
+	}
+}
+country_event = {
+	id = shen_events.17
+	title = "shen_events.17.t" #Mophi embezzling Ritual funds
+	desc = "shen_events.17.d"
+	picture = CORRUPTION_eventPicture
+	trigger = {
+		has_country_flag = mophi_betrayal
+	}
+	mean_time_to_happen = {
+		months = 60
+	}
+	option = {
+		name = "shen_events.17.a" #Damn them!
+		clr_country_flag = mophi_betrayal
+		add_corruption = 3
+		add_adm_power = -50
+		add_dip_power = -50
+		add_years_of_income = -0.3
+		if = {
+			limit = { NOT = { ruler_has_personality = naive_personality } }
+			random = {
+				chance = 50
+				add_ruler_personality = naive_personality
+			}
+		}
+		add_estate_loyalty = {
+			estate = estate_church
+			loyalty = -5
+		}
+	}
+}
+country_event = {
+	id = shen_events.18
+	title = "shen_events.18.t" #Mophi Ritual Complete
+	desc = "shen_events.18.d"
+	picture = GOOD_WITH_MONARCH_eventPicture
+	trigger = {
+		has_country_flag = mophi_loyal
+	}
+	mean_time_to_happen = {
+		months = 60
+	}
+	option = {
+		clr_country_flag = mophi_loyal
+		name = "shen_events.18.a" #Great!
+		add_adm_power = 50
+		add_dip_power = 50
+		add_country_modifier = {
+			name = mophi_ritual_complete
+			duration = 3650
+		}
+	}
+}
+################################
+#	Cheng Events (City Deities)
+################################
+country_event = {
+	id = shen_events.19 #[Capital]'s temple
+	title = "shen_events.19.t"
+	desc = "shen_events.19.d"
+	picture = CITY_VIEW_eventPicture
+	is_triggered_only = yes
+
+	trigger = {
+		has_personal_deity = chengshen
+	}
+	option = {
+		name = "shen_events.19.a" #Invest in the capital temple
+		add_country_modifier = {
+			name = cheng_capital_temple_mod
+			duration = 3650
+		}
+		capital_scope = {
+			add_base_tax = 1
+			add_base_manpower = 1
+			add_province_modifier = {
+				name = cheng_capital_temple_prov
+				duration = 3650
+			}
+		}
+		add_years_of_income = -0.4
+	}
+	option = {
+		name = "shen_events.19.b" #We dont have time for this
+		add_prestige = -10
+		add_years_of_income = 0.4
+		add_estate_loyalty = {
+			estate = estate_burghers
+			loyalty = -5
+		}
+	}
+}
+country_event = {
+	id = shen_events.20 #City temples in disrepair
+	title = "shen_events.20.t"
+	desc = "shen_events.20.d"
+	picture = CITY_VIEW_eventPicture
+	is_triggered_only = yes
+	trigger = {
+		has_personal_deity = chengshen
+		calc_true_if = {
+			amount = 3
+			all_owned_province = {
+				is_capital = no
+			}
+		}
+	}
+	immediate = {
+		hidden_effect = {
+			random_owned_province = {
+				limit = { 
+					is_capital = no
+					NOT = { has_province_flag = prov_selected } 
+				}
+				set_province_flag = prov_selected
+				save_event_target_as = prov1
+			}
+			random_owned_province = {
+				limit = { 
+					is_capital = no
+					NOT = { has_province_flag = prov_selected } 
+				}
+				set_province_flag = prov_selected
+				save_event_target_as = prov2
+			}
+			random_owned_province = {
+				limit = { 
+					is_capital = no
+					NOT = { has_province_flag = prov_selected } 
+				}
+				set_province_flag = prov_selected
+				save_event_target_as = prov3
+			}
+		}
+	}
+	option = {
+		name = "shen_events.20.a" #Repair the temples
+		add_years_of_income = -0.5
+		event_target:prov1 = {
+			add_base_production = 1
+			add_province_modifier = {
+				name = cheng_temples_in_repair
+				duration = 5475
+			}
+			clr_province_flag = prov_selected
+		}
+		event_target:prov2 = {
+			add_base_production = 1
+			add_province_modifier = {
+				name = cheng_temples_in_repair
+				duration = 5475
+			}
+			clr_province_flag = prov_selected
+		}
+		event_target:prov3 = {
+			add_base_production = 1
+			add_province_modifier = {
+				name = cheng_temples_in_repair
+				duration = 5475
+			}
+			clr_province_flag = prov_selected
+		}
+	}
+	option = {
+		name = "shen_events.20.b" #Ignore them
+		add_prestige = -20
+		event_target:prov1 = {
+			add_base_production = -1
+			clr_province_flag = prov_selected
+		}
+		event_target:prov2 = {
+			add_base_production = -1
+			clr_province_flag = prov_selected
+		}
+		event_target:prov3 = {
+			add_base_production = -1
+			clr_province_flag = prov_selected
+		}
+	}
+}
+country_event = {
+	id = shen_events.21 #frontier city deity
+	title = "shen_events.21.t"
+	desc = "shen_events.21.d"
+	picture = FORT_eventPicture
+	is_triggered_only = yes
+	trigger = {
+		has_personal_deity = chengshen
+		any_owned_province = {
+			has_fort_building_trigger = yes
+			OR = {
+				any_neighbor_province = {
+					NOT = { owned_by = ROOT }
+				}
+				any_neighbor_province = {
+					any_neighbor_province = {
+						NOT = { owned_by = ROOT }
+					}
+				}
+			}
+		}
+	}
+	immediate = {
+		hidden_effect = {
+			random_owned_province = {
+				limit = {
+					has_fort_building_trigger = yes
+					OR = {
+						any_neighbor_province = {
+							NOT = { owned_by = ROOT }
+						}
+						any_neighbor_province = {
+							any_neighbor_province = {
+								NOT = { owned_by = ROOT }
+							}
+						}
+					}
+				}
+				save_event_target_as = frontier_prov
+			}
+		}
+	}
+	option = {
+		name = "shen_events.21.a" #Great
+		event_target:frontier_prov = {
+			area = {
+				limit = {
+					owned_by = ROOT
+				}
+				add_province_modifier = {
+					name = cheng_frontier_fort
+					duration = 7300
+				}
+			}
+			add_base_manpower = 2
+		}
+	}
+}
+country_event = {
+	id = shen_events.22 #city deity worshipper appears
+	title = "shen_events.22.t"
+	desc = "shen_events.22.d"
+	picture = ADVISOR_eventPicture
+	is_triggered_only = yes
+	trigger = {
+		has_personal_deity = chengshen
+		any_owned_province = {
+			has_owner_religion = yes
+		}
+	}
+	immediate = {
+		hidden_effect = {
+			random_owned_province = {
+				limit = { has_owner_religion = yes }
+				PREV = {
+					set_saved_name = {
+						type = advisor
+						key = cheng_advisor
+						scope = PREV
+					}
+				}
+				save_event_target_as = advisor_prov
+			}
+		}
+	}
+	option = {
+		name = "shen_events.22.a" #Hire him
+		define_advisor = {
+			type = fortification_expert
+			name = cheng_advisor
+			skill = 2
+			cost_multiplier = 0.75
+			culture = event_target:advisor_prov
+			religion = event_target:advisor_prov
+		}
+		add_mil_power = 50
+	}
+	option = {
+		name = "shen_events.22.b" #Let him stay home
+		event_target:advisor_prov = {
+			add_province_modifier = {
+				name = cheng_local_expert
+				duration = 7300
+			}
+			add_base_manpower = 1
+		}
+		add_prestige = 10
+	}
+	after = {
+		hidden_effect = {
+			clear_saved_name = cheng_advisor
+		}
+	}
+}
+country_event = {
+	id = shen_events.23 #City deities propser economy
+	title = "shen_events.23.t"
+	desc = "shen_events.23.d"
+	picture = CITY_DEVELOPMENT_eventPicture
+	is_triggered_only = yes
+	trigger = {
+		has_personal_deity = chengshen
+	}
+	immediate = {
+		hidden_effect = {
+			random_owned_province = {
+				save_event_target_as = deity_prov
+			}
+		}
+	}
+	option = {
+		name = "shen_events.23.a" #Reap the benefits
+		event_target:deity_prov = {
+			add_province_modifier = {
+				name = cheng_local_deity
+				duration = 5475
+			}
+			add_base_production = 1
+		}
+		add_years_of_income = 1
+	}
+	option = {
+		name = "shen_events.23.b" #Invest the profit
+		event_target:deity_prov = {
+			add_base_tax = 2
+			add_base_production = 2
+		}
+		add_country_modifier = {
+			name = investing_in_city_deities
+			duration = 3650
+		}
+		add_years_of_income = -0.5
+	}
+}
+country_event = {
+	id = shen_events.24 #Offerings to City deities - Wartime
+	title = "shen_events.24.t"
+	desc = "shen_events.24.d"
+	picture = SIEGE_eventPicture
+	is_triggered_only = yes
+	trigger = {
+		has_personal_deity = chengshen
+		is_at_war = yes
+	}
+	option = {
+		name = "shen_events.24.a" #This shall support the war effort
+		add_war_exhaustion = -2
+		add_country_modifier = {
+			name = cheng_offerings
+			duration = 5475
+		}
+		add_mil_power = 50
+	}
+	option = {
+		name = "shen_events.24.b" #Invest back into the cities
+		add_war_exhaustion = -5
+		add_country_modifier = {
+			name = cheng_invested_offerings
+			duration = 5475
+		}
+		add_adm_power = 50
+	}
+}
+country_event = {
+	id = shen_events.25 #fortification advisor and city deities
+	title = "shen_events.25.t"
+	desc = "shen_events.25.d"
+	picture = ADVISOR_eventPicture
+	is_triggered_only = yes
+	trigger = {
+		employed_advisor = {
+			type = fortification_expert
+		}
+		has_personal_deity = chengshen
+		NOT = { has_country_flag = cheng_fortification_expert }
+	}
+	option = {
+		name = "shen_events.25.a" #His tactics shall be known among the commanders
+		add_country_modifier = {
+			name = cheng_siege_mod
+			duration = 3650
+		}
+	}
+	option = {
+		name = "shen_events.25.b" #His tactics shall be employed in the future
+		custom_tooltip = cheng_siege_tt
+		set_country_flag = cheng_fortification_expert
+	}
+}
+#######################################
+#	Phi events (Nature Deities)
+#######################################
+country_event = {
+	id = shen_events.26 #economic opportunity in [eco_prov]
+	title = "shen_events.26.t"
+	desc = "shen_events.26.d"
+	picture = CITY_DEVELOPMENT_eventPicture
+	is_triggered_only = yes
+	trigger = {
+		has_personal_deity = phi
+		num_of_cities = 2
+	}
+	immediate = {
+		hidden_effect = {
+			random_owned_province = {
+				limit = { is_capital = no }
+				save_event_target_as = eco_prov
+			}
+		}
+	}
+	option = {
+		name = "shen_events.26.a" #We should not disturb the spirits
+		event_target:eco_prov = {
+			area = {
+				limit = {
+					owned_by = ROOT
+				}
+				add_province_modifier = {
+					name = phi_spirits_undisturbed
+					duration = 3650
+				}
+			}
+		}
+		add_adm_power = 50
+		hidden_effect = {
+			random = {
+				chance = 50
+				set_country_flag = phi_spirits_pleased
+			}
+		}
+	}
+	option = {
+		name = "shen_events.26.b" #Let us exploit this
+		event_target:eco_prov = {
+			area = {
+				limit = {
+					owned_by = ROOT
+				}
+				add_province_modifier = {
+					name = phi_economic_opportunity
+					duration = 3650
+				}
+			}
+		}
+		hidden_effect = {
+			random = {
+				chance = 50
+				set_country_flag = phi_spirits_angered
+			}
+		}
+	}
+}
+country_event = {
+	id = shen_events.27 #Phi spirits angered
+	title = "shen_events.27.t"
+	desc = "shen_events.27.d"
+	picture = VILLAGE_BURNING_eventPicture
+	trigger = {
+		has_country_flag = phi_spirits_angered
+	}
+	mean_time_to_happen = {
+		months = 60
+	}
+	immediate = {
+		hidden_effect = {
+			clr_country_flag = phi_spirits_angered
+			random_owned_province = {
+				limit = {
+					has_province_modifier = phi_economic_opportunity
+				}
+				save_event_target_as = phi_prov
+			}
+		}
+	}
+	option = {
+		name = "shen_events.27.a" #Appease the spirits
+		add_years_of_income = -0.7
+		add_adm_power = -75
+	}
+	option = {
+		name = "shen_events.27.b" #Nonsense
+		event_target:phi_prov = {
+			area = {
+				limit = {
+					owned_by = ROOT
+				}
+				add_province_modifier = {
+					name = phi_spirits_angry
+					duration = 1825
+				}
+			}
+		}
+		add_stability = -1
+	}
+}
+country_event = {
+	id = shen_events.28 #nature spirits pleased
+	title = "shen_events.28.t"
+	desc = "shen_events.28.d"
+	picture = GOOD_WITH_MONARCH_eventPicture
+	trigger = {
+		has_country_flag = phi_spirits_pleased
+	}
+	mean_time_to_happen = {
+		months = 60
+	}
+	immediate = {
+		hidden_effect = {
+			clr_country_flag = phi_spirits_pleased
+			random_owned_province = {
+				limit = {
+					has_province_modifier = phi_spirits_undisturbed
+				}
+				save_event_target_as = phi_province
+			}
+		}
+	}
+	option = {
+		name = "shen_events.28.a" #Wonderful
+		event_target:phi_province = {
+			area = {
+				limit = { owned_by = ROOT }
+				add_base_production = 1
+			}
+		}
+		change_government_reform_progress = 50
+		add_dip_power = 75
+	}
+}
+country_event = {
+	id = shen_events.29 #renovate temples
+	title = "shen_events.29.t"
+	desc = "shen_events.29.d"
+	picture = RELIGION_eventPicture
+	is_triggered_only = yes
+	trigger = {
+		has_personal_deity = phi
+	}
+	option = {
+		name = "shen_events.29.a" #Renovate them
+		custom_tooltip = phi_temples_tt
+		hidden_effect = {
+			every_owned_province = {
+				limit = { has_tax_building_trigger = yes }
+				add_province_modifier = {
+					name = phi_temples_mod
+					duration = 3650
+				}
+			}
+		}
+		add_years_of_income = -0.5
+		add_adm_power = -50
+	}
+	option = {
+		name = "shen_events.29.b" #Too expensive
+		add_legitimacy_equivalent = {
+			amount = -10
+		}
+	}
+}
+country_event = {
+	id = shen_events.30 #angered spirits in [prov]
+	title = "shen_events.30.t"
+	desc = "shen_events.30.d"
+	picture = VILLAGE_RAIDED_eventPicture
+	is_triggered_only = yes
+	trigger = {
+		has_personal_deity = phi
+	}
+	immediate = {
+		hidden_effect = {
+			random_owned_province = {
+				save_event_target_as = angry_prov
+			}
+		}
+	}
+	option = {
+		name = "shen_events.30.a" #Build a shrine
+		add_years_of_income = -1
+		add_adm_power = 100
+		add_dip_power = 100
+		event_target:angry_prov = {
+			area = {
+				limit = { owned_by = ROOT } 
+				add_province_modifier = {
+					name = phi_shrine_built
+					duration = 1825
+				}
+			}
+		}
+	}
+	option = {
+		name = "shen_events.30.b" #ignore it
+		event_target:angry_prov = {
+			add_unrest = 30
+			area = {
+				limit = { owned_by = ROOT }
+				add_devastation = 30
+			}
+		}
+	}
+}
+country_event = {
+	id = shen_events.31 #wide spread natural disaster
+	title = "shen_events.31.t"
+	desc = "shen_events.31.d"
+	picture = VILLAGE_BURNING_eventPicture
+	is_triggered_only = yes
+	trigger = {
+		has_personal_deity = phi
+	}
+	option = {
+		name = "shen_events.31.a" #we must appease the phi!
+		add_adm_power = -50
+		add_mil_power = -50
+		add_yearly_manpower = -0.5
+		add_years_of_income = -0.5
+		add_country_modifier = {
+			name = appeasing_phi
+			duration = 3650
+		}
+	}
+	option = {
+		name = "shen_events.31.b" #it will soon go away
+		add_country_modifier = {
+			name = phi_widespread_disaster
+			duration = 3650
+		}
+	}
+}
+country_event = {
+	id = shen_events.32 #sacred mountain
+	title = "shen_events.32.t"
+	desc = "shen_events.32.d"
+	picture = COPTIC_MOUNTAIN_eventPicture
+	is_triggered_only = yes
+	trigger = {
+		has_personal_deity = phi
+		any_owned_province = {
+			has_terrain = mountain
+			NOT = { has_province_flag = sacred_mountain }
+		}
+	}
+	immediate = {
+		hidden_effect = {
+			random_owned_province = {
+				limit = {
+					has_terrain = mountain
+					NOT = { has_province_flag = sacred_mountain }
+				}
+				save_event_target_as = mt_prov
+			}
+		}
+	}
+	option = {
+		name = "shen_events.32.a" #Dedicate it a holy site
+		hidden_effect = {
+			random = {
+				chance = 50
+				event_target:mt_prov = {
+					set_province_flag = sacred_mountain
+				}
+			}
+		}
+		add_years_of_income = -0.3
+		custom_tooltip = phi_holy_site_tt
+	}
+	option = {
+		name = "shen_events.32.b" #its just a mountain
+		event_target:phi_prov = {
+			add_base_production = 2
+		}
+	}
+}
+province_event = {
+	id = shen_events.33 #Sacred Mountain - Monastry
+	title = "shen_events.33.t"
+	desc = "shen_events.33.d"
+	picture = CITY_VIEW_eventPicture
+	goto = ROOT
+	trigger = {
+		has_province_flag = sacred_mountain
+		NOT = {
+			OR = {
+				has_province_modifier = phi_adm
+				has_province_modifier = phi_dip
+				has_province_modifier = phi_mil
+			}
+		}
+	}
+	mean_time_to_happen = {
+		months = 60
+	}
+	immediate = {
+		hidden_effect = {
+			random_list = {
+				50 = { set_province_flag = mountain_adm }
+				50 = { set_province_flag = mountain_mil }
+				50 = { set_province_flag = mountain_dip }
+			}
+		}
+	}
+	option = {
+		name = "shen_events.33.a" #Great
+		trigger_switch = {
+			on_trigger = has_province_flag
+			mountain_adm = {
+				add_province_modifier = {
+					name = phi_adm
+					duration = -1
+				}
+				owner = {
+					add_adm_power = 100
+				}
+			}
+			mountain_dip = {
+				add_province_modifier = {
+					name = phi_dip
+					duration = -1
+				}
+				owner = {
+					add_dip_power = 100
+				}
+			}
+			mountain_mil = {
+				add_province_modifier = {
+					name = phi_mil
+					duration = -1
+				}
+				owner = {
+					add_mil_power = 100
+				}
+			}
+		}
+		clr_province_flag = mountain_adm
+		clr_province_flag = mountain_dip
+		clr_province_flag = mountain_mil
+	}
+}
+###################################
+#	Naga Events (The Supernatural)
+###################################
+country_event = {
+	id = shen_events.34 #Offerings to the naga
+	title = "shen_events.34.t"
+	desc = "shen_events.34.d"
+	picture = RELIGION_eventPicture
+	is_triggered_only = yes
+	trigger = {
+		has_personal_deity = naga
+	}
+	option = {
+		name = "shen_events.34.a" #Minor Offering
+		add_mil_power = -50
+		add_years_of_income = -0.3
+		add_country_modifier = {
+			name = naga_offerings
+			duration = 1825
+		}
+	}
+	option = {
+		name = "shen_events.34.b" #Average Offering
+		ai_chance = {
+			factor = 3
+		}
+		add_mil_power = -100
+		add_years_of_income = -0.6
+		add_country_modifier = {
+			name = naga_offerings
+			duration = 3650
+		}
+	}
+	option = {
+		name = "shen_events.34.c" #Grand Offering
+		add_mil_power = -150
+		add_years_of_income = -1
+		add_country_modifier = {
+			name = naga_offerings
+			duration = 5475
+		}
+	}
+}
+country_event = {
+	id = shen_events.35 #Contact with the Naga (chain)
+	title = "shen_events.35.t"
+	desc = "shen_events.35.d"
+	picture = RELIGION_eventPicture
+	trigger = {
+		has_country_modifier = naga_offerings
+	}
+	mean_time_to_happen = {
+		months = 108 #Chances are a minor offering wont be enough to fire this
+	}
+	option = {
+		name = "shen_events.35.a" #Begin the Ritual!
+		add_country_modifier = {
+			name = naga_ritual_in_progress
+			duration = 1825
+		}
+		add_mil_power = 30
+		add_dip_power = 30
+		add_adm_power = 30
+	}
+	after = {
+		hidden_effect = {
+			random_list = {
+				77 = { set_country_flag = naga_ritual_success }
+				33 = { set_country_flag = naga_ritual_fail }
+			}
+		}
+	}
+}
+country_event = {
+	id = shen_events.36 #Naga ritual successful (chain)
+	title = "shen_events.36.t"
+	desc = "shen_events.36.d"
+	picture = RELIGION_eventPicture
+	trigger = {
+		has_country_flag = naga_ritual_success
+	}
+	mean_time_to_happen = {
+		months = 60
+	}
+	immediate = {
+		hidden_effect = {
+			clr_country_flag = naga_ritual_success
+			random_list = {
+				50 = { set_country_flag = ruler_mil }
+				50 = { set_country_flag = army_mil }
+			}
+		}
+	}
+	option = {
+		name = "shen_events.36.a" #Success!
+		if = {
+			limit = { has_country_flag = ruler_mil }
+			change_mil = 1
+			clr_country_flag = ruler_mil
+		}
+		if = {
+			limit = { has_country_flag = army_mil }
+			add_country_modifier = {
+				name = army_naga_ritual
+				duration = 1825
+			}
+			clr_country_flag = army_mil
+		}
+		ai_chance = {
+			factor = 1
+			modifier = {
+				factor = 1000
+				is_at_war = yes
+			}
+		}
+	}
+	option = {
+		name = "shen_events.36.b" #We shall reserve their blessing for later..
+		trigger = { 
+			has_country_flag = army_mil 
+			NOT = { has_country_flag = naga_decision }
+		}
+		if = {
+			limit = { has_country_flag = ruler_mil }
+			change_mil = 1
+			clr_country_flag = ruler_mil
+		}
+		clr_country_flag = army_mil
+		custom_tooltip = army_mil_tt
+		set_country_flag = naga_decision
+		ai_chance = {
+			factor = 1
+			modifier = {
+				factor = 1000
+				is_at_war = no #Ai will reserve this for later
+			}
+		}
+	}
+}
+country_event = {
+	id = shen_events.37 #Naga ritual fails (chain)
+	title = "shen_events.37.t"
+	desc = "shen_events.37.d"
+	picture = RELIGION_eventPicture
+	trigger = {
+		has_country_flag = naga_ritual_fail
+	}
+	mean_time_to_happen = {
+		months = 60
+	}
+	immediate = {
+		clr_country_flag = naga_ritual_fail
+	}
+	option = {
+		name = "shen_events.37.a" #Unfortunate
+		add_prestige = -10
+		add_legitimacy_equivalent = {
+			amount = -10
+		}
+	}
+}
+country_event = {
+	id = shen_events.38 #Servants of Naga
+	title = "shen_events.38.t"
+	desc = "shen_events.38.d"
+	picture = LAND_MILITARY_eventPicture
+	is_triggered_only = yes
+	trigger = {
+		has_personal_deity = naga
+	}
+	option = {
+		name = "shen_events.38.a" #March forth, boldly!
+		add_yearly_manpower = 1
+	}
+}
+country_event = {
+	id = shen_events.39 #[Advisor] discovers way of Naga
+	title = "shen_events.39.t"
+	desc = "shen_events.39.d"
+	picture = ADVISOR_eventPicture
+	is_triggered_only = yes
+	trigger = {
+		has_personal_deity = naga
+		employed_advisor = {
+			type = commandant
+		}
+	}
+	immediate = {
+		hidden_effect = {
+			set_saved_name = {
+				type = advisor
+				key = naga_advisor
+				scope = ROOT
+			}
+		}
+	}
+	option = {
+		name = "shen_events.39.a" #We shall put this to good use!
+		add_country_modifier = {
+			name = way_of_the_naga
+			duration = 365
+		}
+	}
+	option = {
+		name = "shen_events.39.b" #This shall be useful in the future..
+		trigger = { NOT = { has_country_flag = way_of_naga } }
+		custom_tooltip = way_of_the_naga_tt
+		set_country_flag = way_of_naga
+		ai_chance = {
+			factor = 1
+			modifier = {
+				factor = 1000
+				is_at_war = no #AI will reserve this for war time
+			}
+		}
+	}
+	after = {
+		clear_saved_name = naga_advisor
+	}
+}
+country_event = {
+	id = shen_events.40 #Naga blessing
+	title = "shen_events.40.t"
+	desc = "shen_events.40.d"
+	picture = GOOD_WITH_MONARCH_eventPicture
+	is_triggered_only = yes
+	trigger = {
+		has_personal_deity = naga
+		num_of_cities = 2
+	}
+	option = {
+		name = "shen_events.40.a" #This shall benefit our rule
+		add_legitimacy_equivalent = {
+			amount = 20
+		}
+		add_prestige = 15
+		add_adm_power = 50
+		custom_tooltip = adm_dev_tt
+		hidden_effect = {
+			set_variable = {
+				which = adm_dev
+				value = 10
+			}
+			while = {
+				limit = { 
+					check_variable = {
+						which = adm_dev
+						value = 1
+					}
+				}
+				random_owned_province = {
+					add_base_tax = 1
+				}
+				subtract_variable = {
+					which = adm_dev
+					value = 1
+				}
+			}
+			set_variable = {
+				which = adm_dev
+				value = 0
+			}
+		}
+	}
+	option = {
+		name = "shen_events.40.b" #This shall benefit the armies!
+		add_mil_power = 100
+		custom_tooltip = mil_dev_tt
+		hidden_effect = {
+			set_variable = {
+				which = mil_dev
+				value = 10
+			}
+			while = {
+				limit = { 
+					check_variable = {
+						which = mil_dev
+						value = 1
+					}
+				}
+				random_owned_province = {
+					add_base_manpower = 1
+				}
+				subtract_variable = {
+					which = mil_dev
+					value = 1
+				}
+			}
+			set_variable = {
+				which = mil_dev
+				value = 0
+			}
+		}
+		ai_chance = {
+			factor = 3
+		}
+	}
+}
+country_event = {
+	id = shen_events.41 #Draft Naga Temple workers?
+	title = "shen_events.41.t"
+	desc = "shen_events.41.d"
+	picture = RELIGION_eventPicture
+	is_triggered_only = yes
+	trigger = {
+		has_personal_deity = naga
+		OR = {
+			is_at_war = yes
+			NOT = { manpower_percentage = 0.1 }
+		}
+	}
+	immediate = {
+		hidden_effect = {
+			random_owned_province = {
+				save_event_target_as = temple
+			}
+		}
+	}
+	option = {
+		name = "shen_events.41.a" #Draft them
+		event_target:temple = {
+			add_base_manpower = -2
+		}
+		add_yearly_manpower = 1.5
+		hidden_effect = {
+			random = {
+				chance = 75 
+				set_country_flag = lack_of_temple_workers
+			}
+		}
+	}
+	option = {
+		name = "shen_events.41.b" #Leave them
+		add_prestige = 10
+		hidden_effect = {
+			random = {
+				chance = 50
+				set_country_flag = naga_patron
+			}
+		}
+		event_target:temple = {
+			add_base_tax = 1
+		}
+		ai_chance = {
+			factor = 3
+			modifier = {
+				factor = 0
+				is_at_war = yes
+			}
+		}
+	}
+}
+country_event = {
+	id = shen_events.42 #Patron of the Naga (chain)
+	title = "shen_events.42.t"
+	desc = "shen_events.42.d"
+	picture = GOOD_WITH_MONARCH_eventPicture
+	trigger = {
+		has_country_flag = naga_patron
+	}
+	mean_time_to_happen = {
+		months = 60
+	}
+	option = {
+		name = "shen_events.42.a" #Great!
+		random = {
+			chance = 25
+			change_mil = 1
+		}
+		add_mil_power = 100
+	}
+	option = {
+		name = "shen_events.42.b" #Exploit this!
+		add_years_of_income = -1.5
+		random = {
+			chance = 50
+			change_mil = 1
+		}
+		ai_chance = {
+			factor = 0
+		}
+	}
+	after = {
+		clr_country_flag = naga_patron
+	}
+}
+country_event = {
+	id = shen_events.43 #Lack of temple workers (chain)
+	title = "shen_events.43.t"
+	picture = RELIGION_eventPicture
+	trigger = {
+		has_country_flag = lack_of_temple_workers
+	}
+	desc = "shen_events.43.d"
+	mean_time_to_happen = {
+		months = 60
+	}
+	option = {
+		name = "shen_events.43.a" #Unfortunate
+		add_country_modifier = {
+			name = naga_rituals_neglected
+			duration = 3650
+		}
+	}
+	option = {
+		name = "shen_events.43.b" #Blame [Monarch]
+		add_stability = -1
+		if = {
+			limit = { mil = 1 }
+			change_mil = -1
+		}
+		else = {
+			add_mil_power = -200
+		}
+		ai_chance = {
+			factor = 0
+		}
+	}
+}
+#################################
+#	The Shen Events (Deity)
+#################################
+country_event = {
+	id = shen_events.44 #[country] united in rituals
+	title = "shen_events.44.t"
+	desc = "shen_events.44.d"
+	picture = RELIGION_eventPicture
+	is_triggered_only = yes
+	trigger = {
+		has_personal_deity = the_shen
+		any_known_country = {
+			religion = shen
+		}
+	}
+	immediate = {
+		hidden_effect = {
+			random_known_country = {
+				limit = { religion = shen }
+				save_event_target_as = shen_country
+			}
+		}
+	}
+	option = {
+		name = "shen_events.44.a" #Send Gifts
+		custom_tooltip = shen_contact_tt
+		hidden_effect = {
+			random_list = {
+				75 = {
+					set_country_flag = contact_success
+				}
+				25 = {
+					set_country_flag = contact_fail
+				}
+			}
+		}
+		add_dip_power = -25
+		add_years_of_income = -0.5
+		add_country_modifier = {
+			name = shen_foreign_contacts
+			duration = 1825
+		}
+	}
+	option = {
+		name = "shen_events.44.b" #Attend the ritual
+		add_dip_power = 50
+		custom_tooltip = shen_attend_tt
+		hidden_effect = {
+			random_list = {
+				75 = {
+					set_country_flag = contact_fail
+				}
+				25 = {
+					set_country_flag = contact_success
+				}
+			}
+		}
+	}
+	after = {
+		hidden_effect = {
+			if = {
+				limit = { has_country_flag = contact_fail }
+				clr_country_flag = contact_fail
+				event_target:shen_country = {
+					country_event = {
+						id = shen_events.46
+					}
+				}
+			}
+			if = {
+				limit = { has_country_flag = contact_success }
+				clr_country_flag = contact_success
+				event_target:shen_country = {
+					country_event = {
+						id = shen_events.45
+					}
+				}
+			}
+		}
+	}
+}
+country_event = {
+	id = shen_events.45 #[from] offers patronage (accept)
+	title = "shen_events.45.t"
+	desc = "shen_events.45.d"
+	picture = RELIGION_eventPicture
+	is_triggered_only = yes
+
+	option = {
+		name = "shen_events.45.a" #We will accept this
+		ai_chance = {
+			factor = 2
+		}
+		hidden_effect = {
+			FROM = {
+				country_event = {
+					id = shen_events.52
+					days = 1825
+				}
+			}
+		}
+		add_dip_power = 50
+	}
+	option = {
+		name = "shen_events.45.b" #We have no business with [From]
+		add_prestige = 10
+		add_legitimacy_equivalent = {
+			amount = 10
+		}
+		hidden_effect = {
+			FROM = {
+				country_event = {
+					id = shen_events.53
+					days = 1825
+				}
+			}
+		}
+	}
+}
+country_event = {
+	id = shen_events.46 #[from] offers patronage (reject)
+	title = "shen_events.45.t"
+	desc = "shen_events.45.d"
+	picture = RELIGION_eventPicture
+	is_triggered_only = yes
+
+	option = {
+		name = "shen_events.45.a" #we want nothing to do with [From]
+		ai_chance = {
+			factor = 2
+		}
+		add_country_modifier = {
+			name = isolationist_shen
+			duration = 1825
+		}
+		hidden_effect = {
+			FROM = {
+				country_event = {
+					id = shen_events.52
+					days = 1825
+				}
+			}
+		}
+	}
+	option = {
+		name = "shen_events.45.b" #Perhaps good may come of this
+		add_dip_power = 50
+		hidden_effect = {
+			FROM = {
+				country_event = {
+					id = shen_events.53
+					days = 1825
+				}
+			}
+		}
+	}
+}
+country_event = {
+	id = shen_events.52 #Patronage accepted
+	title = "shen_events.52.t"
+	desc = "shen_events.52.d"
+	picture = DIPLOMACY_SIGNING_eventPicture
+	is_triggered_only = yes
+
+	option = {
+		name = "shen_events.52.a" #Great
+		add_adm_power = 100
+		add_opinion = {
+			who = FROM
+			modifier = opinion_good_relations
+		}
+		add_country_modifier = {
+			name = shen_foreign_relations
+			duration = 3650
+		}
+	}
+}
+country_event = {
+	id = shen_events.53 #Patronage rejected
+	title = "shen_events.53.t"
+	desc = "shen_events.53.d"
+	picture = BAD_WITH_MONARCH_eventPicture
+	is_triggered_only = yes
+
+	option = {
+		name = "shen_events.53.a" #We didnt need [from] anyway
+		add_legitimacy_equivalent = {
+			amount = 10
+		}
+		add_opinion = {
+			who = FROM
+			modifier = opinion_bad_monarch
+		}
+	}
+}
+country_event = {
+	id = shen_events.47 #supreme governor (gov)
+	title = "shen_events.47.t"
+	desc = "shen_events.47.d"
+	picture = GOOD_WITH_MONARCH_eventPicture
+	is_triggered_only = yes
+	trigger = {
+		has_personal_deity = the_shen
+	}
+	immediate = {
+		hidden_effect = {
+			random_owned_province = {
+				save_event_target_as = advisor_province
+			}
+			set_saved_name = {
+				type = advisor
+				key = rando_advisor
+				scope = ROOT
+			}
+		}
+	}
+	option = {
+		name = "shen_events.47.a" #Promote him
+		add_country_modifier = {
+			name = shen_advisors
+			duration = 3650
+		}
+		event_target:advisor_province = {
+			add_base_production = 2
+			add_base_tax = 1
+		}
+	}
+	option = {
+		name = "shen_events.47.b" #Bring him to court
+		define_advisor = {
+			name = rando_advisor
+			skill = 2
+			type = treasurer
+			discount = yes
+			culture = event_target:advisor_province
+			religion = event_target:advisor_province
+		}
+		add_legitimacy_equivalent = {
+			amount = 10
+		}
+	}
+	after = {
+		clear_saved_name = rando_advisor
+	}
+}
+country_event = {
+	id = shen_events.48 #Shen cowers Rebels
+	title = "shen_events.48.t"
+	desc = "shen_events.48.d"
+	picture = GOOD_WITH_MONARCH_eventPicture
+	is_triggered_only = yes
+	trigger = {
+		has_personal_deity = the_shen
+	}
+
+	option = {
+		name = "shen_events.48.a" #cool
+		add_country_modifier = {
+			name = shen_separatism
+			duration = 5475
+		}
+	}
+}
+country_event = {
+	id = shen_events.49 #Goodness of the Shen
+	title = "shen_events.49.t"
+	desc = "shen_events.49.d"
+	picture = GOOD_WITH_MONARCH_eventPicture
+	is_triggered_only = yes
+	trigger = {
+		has_personal_deity = the_shen
+	}
+	option = {
+		name = "shen_events.49.a" #cool
+		add_country_modifier = {
+			name = goodness_shen
+			duration = 5475
+		}
+	}
+	option = {
+		name = "shen_events.49.b" #perhaps this..
+		add_country_modifier = {
+			name = subject_good_shen
+			duration = 5475
+		}
+	}
+}
+country_event = {
+	id = shen_events.50 #Harmony with the Shen (aut)
+	title = "shen_events.50.t"
+	desc = "shen_events.50.d"
+	picture = GOOD_WITH_MONARCH_eventPicture
+	is_triggered_only = yes
+	trigger = {
+		has_personal_deity = the_shen
+		any_owned_province = {
+			local_autonomy = 10
+		}
+	}
+	option = {
+		name = "shen_events.50.a" #great
+		custom_tooltip = shen_auto_tt
+		hidden_effect = {
+			every_owned_province = {
+				limit = { local_autonomy = 10 }
+				add_local_autonomy = -20
+			}
+		}
+	}
+}
+country_event = {
+	id = shen_events.51 #Enemies cower (ae drop)
+	title = "shen_events.51.t"
+	desc = "shen_events.51.d"
+	picture = GOOD_WITH_MONARCH_eventPicture
+	is_triggered_only = yes
+	trigger = {
+		has_personal_deity = the_shen
+		any_known_country = {
+			coalition_target = ROOT
+		}
+	}
+	option = {
+		name = "shen_events.51.a" #great
+		custom_tooltip = shen_ae_tt
+		hidden_effect = {
+			every_country = {
+				limit = { 
+					coalition_target = ROOT
+				}
+				add_ae_with = {
+					scope = ROOT
+					amount = -1
+				}
+			}
+		}
+	}
+}
+###################################
+#	Other
+###################################
+country_event = {
+	id = shen_events.54
+	title = "shen_events.54.t" #Rites of the Shen
+	desc = "shen_events.54.d"
+	picture = RELIGION_eventPicture
+	is_triggered_only = yes
+	trigger = {
+		religion = tengri_pagan_reformed
+		secondary_religion = shen
+		any_owned_province = {
+			religion = shen
+		}
+	}
+	immediate = {
+		hidden_effect = {
+			random_owned_province = {
+				limit = {
+					religion = shen
+				}
+				save_event_target_as = shen_prov
+			}
+		}
+	}
+	option = {
+		name = "shen_events.54.a" #We must tolerate the locals
+		event_target:shen_prov = {
+			add_base_tax = 1
+		}
+		add_country_modifier = {
+			name = tengri_shen
+			duration = 3650
+		}
+		add_adm_power = 50
+		change_government_reform_progress = 30
+	}
+	option = {
+		name = "shen_events.54.b" #Attempt to integrate them into society
+		event_target:shen_prov = {
+			add_unrest = 5
+		}
+		add_country_modifier = {
+			name = tengri_integrate_shen
+			duration = 1825
+		}
+		add_stability = 1
+	}
+}

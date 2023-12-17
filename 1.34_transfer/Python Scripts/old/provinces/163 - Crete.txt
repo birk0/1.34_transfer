@@ -1,0 +1,23 @@
+#163 - Crete
+
+owner = VEN
+controller = VEN
+culture = greek
+religion = orthodox
+capital = "Heraklion"
+trade_goods = fish
+hre = no
+base_tax = 5 
+base_production = 5
+base_manpower = 3
+is_city = yes
+add_core = VEN
+add_core = CRT
+
+1444.12.1 = { # New Bookmark
+	trade_goods = unknown
+	remove_cores = yes
+	owner = ---
+	controller = ---
+	hre = no
+}

@@ -1,0 +1,21 @@
+#81 - Hessen
+
+owner = HES
+controller = HES
+add_core = HES
+capital = "Marburg"
+trade_goods = wool
+culture = hessian
+religion = catholic
+base_tax = 4 
+base_production = 3
+base_manpower = 3
+is_city = yes
+hre = yes
+
+1444.12.1 = {
+	trade_goods = unknown
+	owner = ---
+	controller = ---
+	hre = no
+}

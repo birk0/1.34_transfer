@@ -1,0 +1,22 @@
+#2033 - Savanaur+Hubli+Keladi+Dharwar
+
+owner = BAH
+controller = BAH
+culture = kannada
+religion = hinduism
+capital = "Dharwar"
+trade_goods = cotton
+hre = no
+base_tax = 4 
+base_production = 4
+base_manpower = 3
+is_city = yes
+add_core = BAH
+add_core = BIJ
+add_core = KLN
+add_core = VIJ
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

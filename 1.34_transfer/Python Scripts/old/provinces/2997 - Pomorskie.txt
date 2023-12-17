@@ -1,0 +1,20 @@
+#2997 - Pomorskie
+
+owner = TEU
+controller = TEU
+add_core = TEU
+capital = "Tuchel"
+culture = prussian
+religion = catholic
+trade_goods = grain
+hre = no
+base_tax = 3 
+base_production = 4
+base_manpower = 3
+is_city = yes
+fort_15th = yes
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

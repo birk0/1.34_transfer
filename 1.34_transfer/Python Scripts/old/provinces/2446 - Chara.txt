@@ -1,0 +1,21 @@
+#2446 - Chara
+
+culture = buryat
+religion = tengri_pagan_reformed
+capital = "Chara"
+hre = no
+#changes
+base_tax = 2
+base_production = 1
+base_manpower = 2
+owner = WRU
+controller = WRU
+add_core = WRU
+is_city = yes
+trade_goods = fur
+
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

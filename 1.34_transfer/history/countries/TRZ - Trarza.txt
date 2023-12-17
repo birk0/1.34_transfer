@@ -1,0 +1,18 @@
+government = tribal
+add_government_reform = stateless_society
+government_rank = 1
+primary_culture = sanhaja
+religion = sunni
+technology_group = sub_saharan
+capital = 1111	# Arguin
+fixed_capital = 1111 # Cannot move capital away from this province & no power cost to move to it
+religious_school = maliki_school
+1444.1.1 = {
+	monarch = {
+		name = "Ibn Al'Saak"
+		dynasty = "Mashrid"
+		adm = 4
+		dip = 1
+		mil = 2
+	}
+}

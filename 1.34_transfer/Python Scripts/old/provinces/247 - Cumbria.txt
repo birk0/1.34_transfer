@@ -1,0 +1,20 @@
+#247 - Cumbria
+#Cumberland and Westmoreland
+
+owner = ENG
+controller = ENG
+culture = english
+religion = catholic
+hre = no
+base_tax = 2 
+base_production = 2
+trade_goods = wool
+base_manpower = 1
+capital = "Carlisle"
+is_city = yes
+add_core = ENG
+add_core = NOL
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

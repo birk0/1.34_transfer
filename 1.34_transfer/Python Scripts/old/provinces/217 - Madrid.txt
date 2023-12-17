@@ -1,0 +1,22 @@
+#217 - Madrid
+
+owner = CAS		#Juan II of Castille
+controller = CAS
+add_core = CAS
+culture = castillian
+religion = catholic
+hre = no
+base_tax = 3
+base_production = 3
+trade_goods = cloth 
+base_manpower = 2
+capital = "Madrid" 
+is_city = yes # Includes the population of Alcalá de Henares and Guadalajara, that at times were bigger than Madrid itself
+
+1444.12.1 = { # New Bookmark
+	trade_goods = unknown
+	remove_cores = yes
+	owner = ---
+	controller = ---
+	hre = no
+}

@@ -1,0 +1,6 @@
+# Prov1016 - Ha Tinh
+culture = vietnamese
+religion = shen # changes
+base_tax = 1
+base_production = 1
+base_manpower = 1

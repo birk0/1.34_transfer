@@ -1,0 +1,18 @@
+#533 - Mysore
+
+owner = MYS
+controller = MYS
+culture = kannada
+religion = hinduism
+capital = "Ummatur"
+trade_goods = iron
+hre = no
+base_tax = 3
+base_production = 3
+base_manpower = 2
+is_city = yes
+add_core = MYS
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

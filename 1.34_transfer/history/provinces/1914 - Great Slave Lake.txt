@@ -1,0 +1,7 @@
+#Prov1914 - Great Slave Lake
+religion = shamanism
+culture = songhai
+
+base_tax = 1
+base_production = 1
+base_manpower = 1

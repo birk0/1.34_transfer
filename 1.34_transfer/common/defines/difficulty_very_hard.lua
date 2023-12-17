@@ -1,0 +1,1 @@
+--clears vanilla defines, see other file

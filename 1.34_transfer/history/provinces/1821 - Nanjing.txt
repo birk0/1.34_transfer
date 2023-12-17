@@ -1,0 +1,7 @@
+#Prov1821 - Nanjing
+culture = jianghuai
+religion = confucianism # changes
+
+base_tax = 1
+base_production = 1
+base_manpower = 1

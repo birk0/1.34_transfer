@@ -1,0 +1,295 @@
+#Missions for Moghulistan and Yarkent
+MHL_1 = {
+	slot = 1
+	potential = {
+		OR = {
+			primary_culture = kirgiz
+			primary_culture = uyghur
+		}
+		NOT = { tag = CHG }
+	}
+	generic = no
+	ai = yes
+	has_country_shield = yes
+
+	mhl_find_rivals = {
+		icon = mission_steppe_warriors
+		position = 1
+		required_missions = {}
+		trigger = {
+			custom_trigger_tooltip = {
+				tooltip = mhl_at_least_2_rivals
+				calc_true_if = {
+					amount = 2
+					all_known_country = {
+						ROOT = { is_rival = PREV }
+					}
+				}
+			}
+		}
+		effect = {
+			add_army_professionalism = 0.03
+			add_army_tradition = 15
+		}
+	}
+
+	mhl_chagatai_diplomacy = {
+		icon = mission_buddhist_monk_praying
+		position = 2
+		required_missions = { mhl_find_rivals }
+		trigger = {
+			num_of_allies = 2
+		}
+		effect = {
+			add_dip_power = 100
+		}
+	}
+
+	mhl_legitimise_rule = {
+		icon = mission_persian_soldiers
+		position = 3
+		required_missions = { mhl_chagatai_diplomacy mhl_warrior_of_chagatai }
+		trigger = {
+			estate_loyalty = {
+				estate = estate_nomadic_tribes
+				loyalty = 50
+			}
+		}
+		effect = {
+			add_country_modifier = {
+				name = mhl_legitimacy_mod
+				duration = -1
+			}
+		}
+	}
+}
+MHL_2 = {
+	slot = 2
+	potential = {
+		OR = {
+			primary_culture = kirgiz
+			primary_culture = uyghur
+		}
+		NOT = { tag = CHG }
+	}
+	generic = no
+	ai = yes
+	has_country_shield = yes
+
+	mhl_warrior_of_chagatai = {
+		position = 2
+		required_missions = { mhl_build_an_army mhl_find_rivals }
+		icon = mission_chinese_general_riding
+		trigger = {
+			custom_trigger_tooltip = {
+				tooltip = dowed_rival_chagatayid_tt
+				has_country_flag = mhl_warrior_of_chagatai_flag #declared war effect
+			}
+		}
+		effect = {
+			clr_country_flag = mhl_warrior_of_chagatai_flag
+			add_country_modifier = {
+				name = mhl_warrior_of_chagatai_mod
+				duration = 1825
+			}
+			custom_tooltip = chagatai_lands_claim_tt
+			hidden_effect = {
+				every_province = {
+					limit = {
+						NOT = { is_permanent_claim = ROOT }
+						NOT = { country_or_non_sovereign_subject_holds = ROOT }
+						OR = {
+							culture = uyghur
+							culture = kirgiz
+						}
+					}
+					add_permanent_claim = ROOT
+				}
+			}
+		}
+	}
+}
+MHL_3 = {
+	slot = 3
+	potential = {
+		OR = {
+			primary_culture = uyghur
+			primary_culture = kirgiz
+		}
+		NOT = { tag = CHG }
+	}
+	generic = no
+	ai = yes
+	has_country_shield = yes
+
+	mhl_build_an_army = {
+		icon = mission_asian_cannon
+		position = 1
+		required_missions = {}
+
+		trigger = {
+			army_size_percentage = 0.9
+		}
+		effect = {
+			add_mil_power = 100
+		}
+	}
+
+	mhl_unite_the_chagatai = {
+		icon = mission_market_place_with_asian_traders
+		position = 3
+		required_missions = { mhl_warrior_of_chagatai mhl_build_an_army mhl_centralise_the_realm }
+		provinces_to_highlight = {
+			OR = {
+				culture = uyghur
+				culture = kirgiz
+			}
+			NOT = { is_core = ROOT }
+		}
+		trigger = {
+			custom_trigger_tooltip = {
+				tooltip = all_chagatai_land_cored_tt
+				NOT = {
+					any_province = {
+						OR = {
+							culture = uyghur
+							culture = kirgiz
+						}
+						NOT = { is_core = ROOT }
+					}
+				}
+			}
+		}
+		effect = {
+			add_country_modifier = {
+				name = mhl_unified_chagatai
+				duration = 9125 #shock 
+			}
+		}
+	}
+}
+MHL_4 = {
+	slot = 4
+	potential = {
+		OR = {
+			primary_culture = uyghur
+			primary_culture = kirgiz
+		}
+		NOT = { tag = CHG }
+	}
+	generic = no
+	ai = yes
+	has_country_shield = yes
+
+	mhl_centralise_the_realm = {
+		icon = mission_kowtow
+		required_missions = { mhl_build_an_army mhl_develop_capital }
+		position = 2
+		
+		provinces_to_highlight = {
+			owner = {
+				is_subject_of = ROOT
+			}
+		}
+		trigger = {
+			NOT = { num_of_subjects = 1 }
+		}
+		effect = {
+			add_years_of_income = 1
+			add_adm_power = 100
+		}
+	}
+
+	mhl_expand_trade = {
+		icon = mission_non-western_soldiers
+		required_missions = { mhl_centralise_the_realm mhl_expand_infrastructure }
+		position = 3
+		provinces_to_highlight = {
+			OR = {
+				province_id = 710
+				province_id = 2124
+				province_id = 739
+				province_id = 715
+			}
+		}
+		trigger = {
+			owns_core_province = 710
+			owns_core_province = 2124
+			owns_core_province = 739
+			owns_core_province = 715
+		}
+		effect = {
+			710 = {
+				add_center_of_trade_level = 1
+			}
+			2124 = {
+				add_center_of_trade_level = 1
+			}
+			739 = {
+				add_center_of_trade_level = 1
+			}
+			715 = {
+				add_center_of_trade_level = 1
+			}
+		}
+	}
+}
+MHL_5 = {
+	slot = 5
+	potential = {
+		OR = {
+			primary_culture = uyghur
+			primary_culture = kirgiz
+		}
+		NOT = { tag = CHG }
+	}
+	generic = no
+	ai = yes
+	has_country_shield = yes
+
+	mhl_develop_capital = {
+		icon = mission_asian_city
+		required_missions = {}
+		position = 1
+		provinces_to_highlight = {
+			is_capital_of = ROOT
+			NOT = { development = 10 }
+		}
+		trigger = {
+			capital_scope = {
+				development = 10 
+			}
+		}
+		effect = {
+			custom_tooltip = tax_in_chagatai_provinces_tt
+			hidden_effect = {
+				every_owned_province = {
+					limit = {
+						OR = {
+							culture = uyghur
+							culture = kirgiz
+						}
+					}
+					add_base_tax = 1
+				}
+			}
+		}
+	}
+
+	mhl_expand_infrastructure = {
+		icon = mission_central_asian_city
+		required_missions = { mhl_develop_capital }
+		position = 2
+		trigger = {
+			num_of_owned_provinces_with = {
+				has_tax_building_trigger = yes
+				value = 5
+			}
+		}
+		effect = {
+			capital_scope = {
+				add_next_institution_embracement = 100
+			}
+		}
+	}
+}

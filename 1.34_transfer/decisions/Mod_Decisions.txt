@@ -1,0 +1,2249 @@
+country_decisions = {
+	######################
+	# AI Related Decisions
+	######################
+	ai_force_building_decision = { #Forces the AI to spend their money on buildings they need
+		potential = {
+			exists = yes
+			has_country_flag = ai_forced_to_construct_buildings #Given if the AI is hoarding money and dosent need to save for anything
+			ai = yes
+		}
+		allow = {
+			NOT = { government = native }
+		}
+		effect = {
+			#Factoring in mid-late game economic priorities considering they shouldnt have cash stacks early game.
+
+			set_variable = {
+				which = loop_fail # This counts the number of failures in the loop, without having to check every owned province
+				value = 0
+			}
+
+			#Manufactory: Prior 1
+			while = {
+				limit = {
+					treasury = 500
+					is_variable_equal = {
+						which = loop_fail
+						value = 0
+					}
+				}
+				random_owned_province = {
+					limit = { can_build_manufactory = yes }
+					build_manufactory_in_province = yes
+					PREV = {
+						subtract_variable = {
+							which = loop_fail
+							value = 1
+						}
+					}
+				}
+				change_variable = {
+					which = loop_fail
+					value = 1
+				}
+			}
+			set_variable = {
+				which = loop_fail
+				value = 0
+			}
+
+			#Production: Prior 2
+			while = {
+				limit = {
+					treasury = 500
+					is_variable_equal = {
+						which = loop_fail
+						value = 0
+					}
+				}
+				random_owned_province = {
+					limit = { can_build_production = yes }
+					build_production_in_province = yes
+					PREV = {
+						subtract_variable = {
+							which = loop_fail
+							value = 1
+						}
+					}
+				}
+				change_variable = {
+					which = loop_fail
+					value = 1
+				}
+			}
+			set_variable = {
+				which = loop_fail
+				value = 0
+			}
+
+			#Trade Centres: Prior 3
+			while = {
+				limit = {
+					treasury = 500
+					is_variable_equal = {
+						which = loop_fail
+						value = 0
+					}
+				}
+				random_owned_province = {
+					limit = { can_build_trade_center = yes }
+					build_trade_center_in_province = yes
+					PREV = {
+						subtract_variable = {
+							which = loop_fail
+							value = 1
+						}
+					}
+				}
+				change_variable = {
+					which = loop_fail
+					value = 1
+				}
+			}
+			set_variable = {
+				which = loop_fail
+				value = 0
+			}
+
+			#Broker's exchange: Prior 4
+			while = {
+				limit = {
+					treasury = 500
+					is_variable_equal = {
+						which = loop_fail
+						value = 0
+					}
+				}
+				random_owned_province = {
+					limit = { can_build_brokers = yes }
+					build_brokers_in_province = yes
+					PREV = {
+						subtract_variable = {
+							which = loop_fail
+							value = 1
+						}
+					}
+				}
+				change_variable = {
+					which = loop_fail
+					value = 1
+				}
+			}
+			set_variable = {
+				which = loop_fail
+				value = 0
+			}
+
+			#Company Depot: Prior 5
+			while = {
+				limit = {
+					treasury = 500
+					is_variable_equal = {
+						which = loop_fail
+						value = 0
+					}
+				}
+				random_owned_province = {
+					limit = { can_build_depot = yes }
+					build_depot_in_province = yes
+					PREV = {
+						subtract_variable = {
+							which = loop_fail
+							value = 1
+						}
+					}
+				}
+				change_variable = {
+					which = loop_fail
+					value = 1
+				}
+			}
+			set_variable = {
+				which = loop_fail
+				value = 0
+			}
+
+			#Appraiser: Prior 6
+			while = {
+				limit = {
+					treasury = 500
+					is_variable_equal = {
+						which = loop_fail
+						value = 0
+					}
+				}
+				random_owned_province = {
+					limit = { can_build_appraiser = yes }
+					build_appraiser_in_province = yes
+					PREV = {
+						subtract_variable = {
+							which = loop_fail
+							value = 1
+						}
+					}
+				}
+				change_variable = {
+					which = loop_fail
+					value = 1
+				}
+			}
+			set_variable = {
+				which = loop_fail
+				value = 0
+			}
+
+			#Township: Prior 7
+			while = {
+				limit = {
+					treasury = 500
+					is_variable_equal = {
+						which = loop_fail
+						value = 0
+					}
+				}
+				random_owned_province = {
+					limit = { can_build_township = yes }
+					build_township_in_province = yes
+					PREV = {
+						subtract_variable = {
+							which = loop_fail
+							value = 1
+						}
+					}
+				}
+				change_variable = {
+					which = loop_fail
+					value = 1
+				}
+			}
+			set_variable = {
+				which = loop_fail
+				value = 0
+			}
+
+
+			#Taxation: Prior 8
+			while = {
+				limit = {
+					treasury = 500
+					is_variable_equal = {
+						which = loop_fail
+						value = 0
+					}
+				}
+				random_owned_province = {
+					limit = { can_build_taxation = yes }
+					build_taxation_in_province = yes
+					PREV = {
+						subtract_variable = {
+							which = loop_fail
+							value = 1
+						}
+					}
+				}
+				change_variable = {
+					which = loop_fail
+					value = 1
+				}
+			}
+			set_variable = {
+				which = loop_fail
+				value = 0
+			}
+
+			#Land forcelimit: Prior 9
+			while = {
+				limit = {
+					treasury = 500
+					is_variable_equal = {
+						which = loop_fail
+						value = 0
+					}
+				}
+				random_owned_province = {
+					limit = { can_build_land_fl = yes }
+					build_land_fl_in_province = yes
+					PREV = {
+						subtract_variable = {
+							which = loop_fail
+							value = 1
+						}
+					}
+				}
+				change_variable = {
+					which = loop_fail
+					value = 1
+				}
+			}
+			set_variable = {
+				which = loop_fail
+				value = 0
+			}
+
+			#Manpower: Prior 10
+			while = {
+				limit = {
+					treasury = 500
+					is_variable_equal = {
+						which = loop_fail
+						value = 0
+					}
+				}
+				random_owned_province = {
+					limit = { can_build_manpower = yes }
+					build_manpower_in_province = yes
+					PREV = {
+						subtract_variable = {
+							which = loop_fail
+							value = 1
+						}
+					}
+				}
+				change_variable = {
+					which = loop_fail
+					value = 1
+				}
+			}
+			set_variable = {
+				which = loop_fail
+				value = 0
+			}
+
+			#Trade Company Mansion: Prior 11
+			while = {
+				limit = {
+					treasury = 500
+					is_variable_equal = {
+						which = loop_fail
+						value = 0
+					}
+				}
+				random_owned_province = {
+					limit = { can_build_governor_mansion = yes }
+					build_governor_mansion_in_province = yes
+					PREV = {
+						subtract_variable = {
+							which = loop_fail
+							value = 1
+						}
+					}
+				}
+				change_variable = {
+					which = loop_fail
+					value = 1
+				}
+			}
+			set_variable = {
+				which = loop_fail
+				value = 0
+			}
+
+			#Local Administrations: Prior 12
+			while = {
+				limit = {
+					treasury = 500
+					is_variable_equal = {
+						which = loop_fail
+						value = 0
+					}
+				}
+				random_owned_province = {
+					limit = { can_build_local_admin = yes }
+					build_local_admin_in_province = yes
+					PREV = {
+						subtract_variable = {
+							which = loop_fail
+							value = 1
+						}
+					}
+				}
+				change_variable = {
+					which = loop_fail
+					value = 1
+				}
+			}
+			set_variable = {
+				which = loop_fail
+				value = 0
+			}
+
+			#Districts: Prior 13
+			while = {
+				limit = {
+					treasury = 500
+					is_variable_equal = {
+						which = loop_fail
+						value = 0
+					}
+				}
+				random_owned_province = {
+					limit = { can_build_districts = yes }
+					build_districts_in_province = yes
+					PREV = {
+						subtract_variable = {
+							which = loop_fail
+							value = 1
+						}
+					}
+				}
+				change_variable = {
+					which = loop_fail
+					value = 1
+				}
+			}
+			set_variable = {
+				which = loop_fail
+				value = 0
+			}
+
+			#Universities: Prior 14
+			while = {
+				limit = {
+					treasury = 500
+					is_variable_equal = {
+						which = loop_fail
+						value = 0
+					}
+				}
+				random_owned_province = {
+					limit = { can_build = university }
+					add_building_construction = {
+						building = university
+						speed = 1
+						cost = 1
+					}
+					PREV = {
+						subtract_variable = {
+							which = loop_fail
+							value = 1
+						}
+					}
+				}
+				change_variable = {
+					which = loop_fail
+					value = 1
+				}
+			}
+			set_variable = {
+				which = loop_fail
+				value = 0
+			}
+
+			#Sailors: Prior 15
+			while = {
+				limit = {
+					treasury = 500
+					is_variable_equal = {
+						which = loop_fail
+						value = 0
+					}
+				}
+				random_owned_province = {
+					limit = { can_build_sailors = yes }
+					build_sailors_in_province = yes
+					PREV = {
+						subtract_variable = {
+							which = loop_fail
+							value = 1
+						}
+					}
+				}
+				change_variable = {
+					which = loop_fail
+					value = 1
+				}
+			}
+			set_variable = {
+				which = loop_fail
+				value = 0
+			}
+
+			#Military Administration: Prior 16
+			while = {
+				limit = {
+					treasury = 500
+					is_variable_equal = {
+						which = loop_fail
+						value = 0
+					}
+				}
+				random_owned_province = {
+					limit = { can_build_mil_admin = yes }
+					build_mil_admin_in_province = yes
+					PREV = {
+						subtract_variable = {
+							which = loop_fail
+							value = 1
+						}
+					}
+				}
+				change_variable = {
+					which = loop_fail
+					value = 1
+				}
+			}
+			set_variable = {
+				which = loop_fail
+				value = 0
+			}
+
+			#Governing: Prior 17
+			while = {
+				limit = {
+					treasury = 500
+					is_variable_equal = {
+						which = loop_fail
+						value = 0
+					}
+				}
+				random_owned_province = {
+					limit = { can_build_governing = yes }
+					build_governing_in_province = yes
+					PREV = {
+						subtract_variable = {
+							which = loop_fail
+							value = 1
+						}
+					}
+				}
+				change_variable = {
+					which = loop_fail
+					value = 1
+				}
+			}
+			set_variable = {
+				which = loop_fail
+				value = 0
+			}
+
+			#Naval Forcelimit: Prior 18
+			while = {
+				limit = {
+					treasury = 500
+					is_variable_equal = {
+						which = loop_fail
+						value = 0
+					}
+				}
+				random_owned_province = {
+					limit = { can_build_naval_fl = yes }
+					build_naval_fl_in_province = yes
+					PREV = {
+						subtract_variable = {
+							which = loop_fail
+							value = 1
+						}
+					}
+				}
+				change_variable = {
+					which = loop_fail
+					value = 1
+				}
+			}
+			set_variable = {
+				which = loop_fail
+				value = 0
+			}
+
+			#Trade: Prior 19
+			while = {
+				limit = {
+					treasury = 500
+					is_variable_equal = {
+						which = loop_fail
+						value = 0
+					}
+				}
+				random_owned_province = {
+					limit = { can_build_trade = yes }
+					build_trade_in_province = yes
+					PREV = {
+						subtract_variable = {
+							which = loop_fail
+							value = 1
+						}
+					}
+				}
+				change_variable = {
+					which = loop_fail
+					value = 1
+				}
+			}
+			set_variable = {
+				which = loop_fail
+				value = 0
+			}
+			clr_country_flag = ai_forced_to_construct_buildings
+		}
+		ai_will_do = {
+			factor = 400
+		}
+		ai_importance = 1000
+	}
+	ai_convert_money_to_development_decision = {
+		potential = {
+			treasury = 10000
+			ai = yes
+			exists = yes
+			NOT = { has_global_flag = misc_setup }
+		}
+		allow = { #Every province has to be fully maxed out with buildings and treasury 10k+
+			NOT = { government = native }
+			all_owned_province = {
+				NOT = { can_build_any_building = yes }
+			}
+			NOT = { num_of_loans = 1 }
+		}
+		effect = {
+			#Converts treasury into randomly distributed development
+
+			#Formula:
+			#	Total Development Gained = Treasury / 200 * (1 + local development cost) per province
+
+			set_variable = {
+				which = development_power
+				value = 0
+			}
+			export_to_variable = {
+				which = development_power
+				value = treasury
+			}
+			divide_variable = {
+				which = development_power
+				value = 200 #1 development per 200 ducats
+			}
+			set_variable = {
+				which = fail_variable # Used to track whether theres failures in the loop
+				value = 0
+			}
+			while = {
+				limit = {
+					check_variable = {
+						which = development_power
+						value = 1
+					}
+					NOT = {
+						check_variable = {
+							which = fail_variable #end the loop when theres no more provinces
+							value = 1
+						}
+					}
+				}
+				change_variable = {
+					which = fail_variable
+					value = 1
+				}
+				random_owned_province = {
+					limit = { 
+						NOT = { has_terrain = teleporter }
+						OR = {
+							AND = {
+								NOT = {
+									any_neighbor_province = {
+										owned_by = ROOT
+										NOT = { has_province_flag = ai_money_for_dev }
+									}
+								}
+								has_province_flag = ai_money_for_dev
+							}
+							NOT = { has_province_flag = ai_money_for_dev }
+						}
+					}
+					set_province_flag = ai_money_for_dev
+					set_variable = {
+						which = development_power
+						value = 1
+					}
+					export_to_variable = {
+						which = local_dev_cost
+						value = modifier:local_development_cost
+					}
+					change_variable = {
+						which = local_dev_cost
+						value = 1
+					}
+					multiply_variable = {
+						which = development_power
+						which = local_dev_cost
+					}
+					if = {
+						limit = { is_capital = yes }
+						divide_variable = {
+							which = development_power
+							value = 2
+						}
+					}
+					ROOT = {
+						subtract_variable = {
+							which = development_power
+							which = PREV
+						}
+						subtract_variable = {
+							which = fail_variable
+							value = 1
+						}
+					}
+					while = {
+						limit = {
+							check_variable = {
+								which = development_power
+								value = 0.2
+							}
+						}
+						ROOT = { add_treasury = -40 }
+						subtract_variable = { 
+							which = development_power
+							value = 0.2
+						}
+					}
+					trigger_switch = {
+						on_trigger = has_province_flag
+
+						add_adm_power = {
+							clr_province_flag = add_adm_power
+							set_province_flag = add_dip_power
+							add_base_tax = 1
+						}
+						add_dip_power = {
+							clr_province_flag = add_dip_power
+							set_province_flag = add_mil_power
+							add_base_production = 1
+						}
+						add_mil_power = {
+							clr_province_flag = add_mil_power
+							set_province_flag = add_adm_power
+							add_base_manpower = 1
+						}
+						ai_money_for_dev = {
+							set_province_flag = add_dip_power
+							add_base_tax = 1
+						}
+					}
+				}
+			}
+			#Cleanup
+			every_owned_province = {
+				limit = { has_province_flag = ai_money_for_dev }
+				clr_province_flag = ai_money_for_dev
+			}
+			set_variable = {
+				which = development_power
+				value = 0
+			}
+		}
+		ai_will_do = {
+			factor = 400
+		}
+		ai_importance = 1000
+	}
+	#Mostly for AI, but also QoL for player
+	upgrade_forts_decision = {
+		potential = {
+			treasury = 2000
+			OR = {
+				NOT = { has_country_flag = forts_decision }
+				had_country_flag = {
+					flag = forts_decision
+					days = 730
+				}
+			}
+		}
+		allow = {
+		}
+		effect = {
+			clr_country_flag = forts_decision
+			set_country_flag = forts_decision
+			custom_tooltip = forts_upgrade_tooltip
+			hidden_effect = {
+				every_owned_province = {
+					limit = {
+						has_fort_building_trigger = yes
+					}
+					add_latest_building = {
+						fort = yes
+						speed = 1
+						cost = 1
+					}
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	ai_covert_actions_decision = { # This is because the AI is bad at managing its diplomats and lets spy networks hit 100+
+		major = yes
+		potential = {
+			ai = yes
+			exists = yes
+			is_free_or_tributary_trigger = yes
+			any_known_country = {
+				has_spy_network_from = {
+					who = ROOT
+					value = 100
+				}
+			}
+		}
+		allow = {
+			any_known_country = {
+				has_spy_network_from = {
+					who = ROOT
+					value = 100
+				}
+			}
+		}
+		effect = {
+			random_known_country = {
+				limit = {
+					has_spy_network_from = {
+						who = ROOT
+						value = 100
+					}
+				}
+				save_event_target_as = victim
+
+				# Sabotage their recruitment
+				if = {
+					limit = {
+						ROOT = {
+							can_sabotage_recruitment = {
+								target = event_target:victim
+							}
+						}
+					}
+					ROOT = {
+						calculate_spy_cost = {
+							base_cost = 100
+							target_country = event_target:victim
+							action = sabotaged_recruitment
+						}
+					}
+				}
+
+				# Slander their merchants
+				else_if = {
+					limit = {
+						ROOT = {
+							can_slander_merchants = {
+								target = event_target:victim
+							}
+						}
+					}
+					ROOT = {
+						slander_merchants_effect = {
+							target = event_target:victim
+						}
+					}
+				}
+
+				# Raid their coffers
+				else_if = {
+					limit = {
+						ROOT = {
+							can_raid_coffers = {
+								target = event_target:victim
+							}
+						}
+					}
+					ROOT = {
+						raid_coffers_effect = {
+							target = event_target:victim
+						}
+					}
+				}
+
+				# Bribe their recruits
+				else_if = {
+					limit = {
+						ROOT = {
+							can_bribe_recruits = {
+								target = event_target:victim
+							}
+						}
+					}
+					ROOT = {
+						bribe_recruits_effect = {
+							target = event_target:victim
+						}
+					}
+				}
+
+				# Corrupt their officials
+				else_if = {
+					limit = {
+						ROOT = {
+							can_corrupt_officials = {
+								target = event_target:victim
+							}
+						}
+					}
+					ROOT = {
+						corrupt_officials_effect = {
+							target = event_target:victim
+						}
+					}
+				}
+			}
+		}
+
+	}
+	ai_disinherit_heir_decision = {
+		major = yes
+		potential = {
+			ai = yes
+			exists = yes
+			prestige = 50
+			has_heir = yes
+			has_regency = no
+			has_government_attribute = heir
+			NOT = { government = theocracy }
+			OR = {
+				NOT = { ruler_age = 40 }
+				NOT = { religion_group = christian }
+			}
+		}
+		allow = {
+			prestige = 50
+			variable_arithmetic_trigger = {
+				custom_tooltip = ruler_skill_below_9
+				# heir skills
+				export_to_variable = {
+					which = heir_skills
+					value = heir_adm
+				}
+				export_to_variable = {
+					which = heir_dip_skill
+					value = heir_dip
+				}
+				export_to_variable = {
+					which = heir_mil_skill
+					value = heir_mil
+				}
+				# ruler skills
+				export_to_variable = {
+					which = ruler_skills
+					value = ADM
+				}
+				export_to_variable = {
+					which = ruler_dip_skill
+					value = DIP
+				}
+				export_to_variable = {
+					which = ruler_mil_skill
+					value = MIL
+				}
+				# calc heir
+				change_variable = {
+					which = heir_skills
+					which = heir_dip_skill
+				}
+				change_variable = {
+					which = heir_skills
+					which = heir_mil_skill
+				}
+				# calc ruler
+				change_variable = {
+					which = ruler_skills
+					which = ruler_dip_skill
+				}
+				change_variable = {
+					which = ruler_skills
+					which = ruler_mil_skill
+				}
+				change_variable = {
+					which = ruler_skills
+					value = 2
+				}
+				NOT = {
+					check_variable = {
+						which = heir_skills
+						value = 10
+					}
+				}
+				# This is done so heirs better than their parent aren't disinherited, and the parent is removed instead
+				OR = {
+					AND = {
+						NOT = { ruler_age = 60 }
+						NOT = { months_of_ruling = 240 }
+					}
+					check_variable = {
+						which = ruler_skills
+						which = heir_skills
+					}
+				}
+			}
+		}
+		effect = {
+			remove_heir = {}
+			add_prestige = -50
+			add_country_modifier = {
+				name = "ai_increased_heir_chance" # The AI needs this so it dosen't fall in PUs too often. Player can usually avoid this
+				duration = 3650
+				hidden = yes
+			}
+		}
+		ai_will_do = {
+			factor = 10
+		}
+		ai_importance = 400
+	}
+	ai_abdicate_ruler_decision = {
+		major = yes
+		potential = {
+			ai = yes
+			exists = yes
+			has_regency = no
+			OR = {
+				ruler_age = 60
+				months_of_ruling = 240
+			}
+			prestige = 50
+			legitimacy = 50
+			heir_age = 15
+			has_government_attribute = heir
+			NOT = { government = theocracy }
+			NOT = {
+				any_subject_country = {
+					is_subject_of_type = personal_union
+					NOT = {
+						has_opinion = {
+							who = ROOT
+							value = 1
+						}
+					}
+				}
+			}
+		}
+		allow = {
+			prestige = 50
+			variable_arithmetic_trigger = {
+				custom_tooltip = heir_better_skilled_tooltip
+				export_to_variable = {
+					which = heir_skills
+					value = heir_adm
+				}
+				export_to_variable = {
+					which = heir_dip_skill
+					value = heir_dip
+				}
+				export_to_variable = {
+					which = heir_mil_skill
+					value = heir_mil
+				}
+				export_to_variable = {
+					which = ruler_skills
+					value = ADM
+				}
+				export_to_variable = {
+					which = ruler_dip_skill
+					value = DIP
+				}
+				export_to_variable = {
+					which = ruler_mil_skill
+					value = MIL
+				}
+				change_variable = {
+					which = heir_skills
+					which = heir_dip_skill
+				}
+				change_variable = {
+					which = heir_skills
+					which = heir_mil_skill
+				}
+				change_variable = {
+					which = ruler_skills
+					which = ruler_dip_skill
+				}
+				change_variable = {
+					which = ruler_skills
+					which = ruler_mil_skill
+				}
+				change_variable = {
+					which = ruler_skills
+					value = 2
+				}
+				check_variable = {
+					which = heir_skills
+					which = ruler_skills
+				}
+			}
+		}
+		effect = {
+			exile_ruler_as = { name = yes }
+			add_prestige = -50
+			add_legitimacy_equivalent = { amount = -20 }
+		}
+		ai_will_do = {
+			factor = 10
+		}
+		ai_importance = 400
+	}
+
+	ai_disband_units_decision = {
+		potential = {
+			ai = yes
+			army_size_percentage = 1.05
+			is_at_war = no
+		}
+		allow = {
+			any_army = {
+				location = {
+					owned_by = ROOT
+				}
+			}
+		}
+		effect = {
+			if = {
+				limit = {
+					army_size_percentage = 1.05
+				}
+				random_owned_province = {
+					limit = {
+						num_of_units_in_province = {
+							who = ROOT
+							amount = 10
+						}
+					}
+					export_to_variable = {
+						which = infantry
+						value = trigger_value:infantry_in_province
+					}
+					divide_variable = {
+						which = infantry
+						value = 2 # its assumed you had mercs
+					}
+					export_to_variable = {
+						which = cavalry
+						value = trigger_value:cavalry_in_province
+					}
+					multiply_variable = {
+						which = cavalry
+						value = 1.5 # extra bonus
+					}
+					kill_units = {
+						who = ROOT
+					}
+					change_variable = {
+						which = infantry
+						which = cavalry
+					}
+					while = {
+						limit = {
+							check_variable = {
+								which = infantry
+								value = 5
+							}
+						}
+						subtract_variable = {
+							which = infantry
+							value = 5
+						}
+						ROOT = {
+							add_manpower = 10
+							add_treasury = 125
+						}
+					}
+				}
+			}
+		}
+
+		ai_will_do = {
+			factor = 10
+		}
+		ai_importance = 400
+	}
+
+	ai_build_artillery_decision = {
+		#stuipid ai
+		potential = {
+			army_size_percentage = 0.5
+			NOT = { army_size_percentage = 1 }
+			NOT = { artillery_fraction = 0.5 }
+			ai = yes
+		}
+		allow = {}
+		effect = {
+			random_owned_province = {
+				limit = {
+					controlled_by = ROOT
+				}
+				build_to_forcelimit = {
+					artillery = 1
+				}
+			}
+		}
+	}
+
+	###################################
+	#	Mobilisation decision toggle
+	###################################
+	mobilisation_tooltip_mode_decision = { # Enables tooltip only mode on the Mobilisation buttons
+		major = yes
+		potential = {
+			ai = no
+			exists = yes
+			NOT = { has_country_flag = mobilisation_tooltip_mode }
+		}
+		allow = {}
+		effect = {
+			custom_tooltip = "mobilisation_decision_tooltip_mode"
+			set_country_flag = mobilisation_tooltip_mode
+		}
+	}
+	mobilisation_tooltip_mode_decision_off = { # Disables tooltip mode for the Mobilisation buttons
+		major = yes
+		potential = {
+			ai = no
+			exists = yes
+			has_country_flag = mobilisation_tooltip_mode
+		}
+		allow = {}
+		effect = {
+			custom_tooltip = "mobilisation_decision_tooltip_mode_off"
+			clr_country_flag = mobilisation_tooltip_mode
+		}
+	}
+
+	##############################
+	#		MERCENARIES
+	##############################
+	hire_mercs_decision = {
+		major = yes
+		potential = {
+			ai = no
+			exists = yes
+		}
+		allow = {
+			capital_scope = {
+				controlled_by = ROOT
+				has_siege = no
+				custom_trigger_tooltip = {
+					tooltip = no_enemies_in_capital_tt
+					NOT = { units_in_province = REB }
+					NOT = {
+						any_country = {
+							PREV = { units_in_province = PREV }
+							war_with = ROOT
+						}
+					}
+				}
+			}
+			NOT = { inflation = 100 }
+			variable_arithmetic_trigger = {
+				custom_tooltip = merc_fl_tooltip
+				export_to_variable = {
+					which = mercs_hired
+					value = trigger_value:num_of_streltsy
+				}
+				export_to_variable = {
+					which = merc_fl
+					value = trigger_value:total_base_tax
+				}
+				export_to_variable = {
+					which = merc_fl_modifier
+					value = modifier:mercenary_manpower
+				}
+				change_variable = {
+					which = merc_fl_modifier
+					value = 1
+				}
+				multiply_variable = {
+					which = merc_fl
+					value = 0.1
+				}
+				multiply_variable = {
+					which = merc_fl
+					which = merc_fl_modifier
+				}
+				subtract_variable = {
+					which = merc_fl
+					value = 1
+				}
+				#Check if Merc FL > hired mercs
+				check_variable = {
+					which = merc_fl
+					which = mercs_hired
+				}
+			}
+		}
+		effect = {
+			if = {
+				limit = {
+					any_owned_province = {
+						has_great_project = {
+							type = tower_of_london
+							tier = 3
+						}
+					}
+				}
+				custom_tooltip = brit_hire_merc_tt
+			}
+			else = {
+				custom_tooltip = hire_merc_tt
+			}
+			hidden_effect = {
+				#Inflation is calculated by 0.1 * mercenary_cost
+				set_variable = {
+					which = inflation_cost
+					value = 0.1
+				}
+				set_variable = {
+					which = mercenary_cost
+					value = 0
+				}
+				export_to_variable = {
+					which = mercenary_cost
+					value = modifier:mercenary_cost
+				}
+				change_variable = {
+					which = mercenary_cost
+					value = 1
+				}
+				multiply_variable = {
+					which = inflation_cost
+					which = mercenary_cost
+				}
+				set_variable = {
+					which = inflation_cost_tt #Displayed in tooltip
+					which = inflation_cost
+				}
+				while = {
+					limit = {
+						check_variable = {
+							which = inflation_cost
+							value = 0.01
+						}
+					}
+					add_inflation = 0.01
+					subtract_variable = {
+						which = inflation_cost
+						value = 0.01
+					}
+				}
+				ROOT = {
+					capital_scope = {
+						streltsy_infantry = ROOT
+					}
+				}
+				set_variable = {
+					which = num_merc_tt
+					value = 0
+				}
+				export_to_variable = {
+					which = num_merc_tt #Displayed in tooltip
+					value = trigger_value:num_of_streltsy
+				}
+				set_variable = {
+					which = inflation_from_merc_tt
+					value = 0
+				}
+				export_to_variable = {
+					which = inflation_from_merc_tt
+					value = trigger_value:num_of_streltsy
+				}
+				set_variable = {
+					which = merc_maintenance_modifier
+					value = 0
+				}
+				set_variable = {
+					which = regular_fl
+					value = 0
+				}
+				export_to_variable = {
+					which = merc_maintenance_modifier
+					value = modifier:merc_maintenance_modifier
+				}
+				change_variable = {
+					which = merc_maintenance_modifier
+					value = 1
+				}
+				export_to_variable = {
+					which = regular_fl
+					value = trigger_value:land_forcelimit
+				}
+				multiply_variable = {
+					which = regular_fl
+					value = 3
+				}
+				divide_variable = {
+					which = inflation_from_merc_tt
+					which = regular_fl
+				}
+				multiply_variable = {
+					which = inflation_from_merc_tt
+					which = merc_maintenance_modifier
+				}
+				multiply_variable = {
+					which = inflation_from_merc_tt #Displayed in tooltip
+					value = 12
+				}
+				set_variable = {
+					which = merc_fl_tt
+					value = 0
+				}
+				set_variable = {
+					which = mercenary_forcelimit_modifier
+					value = 0
+				}
+				export_to_variable = {
+					which = merc_fl_tt
+					value = trigger_value:total_base_tax
+				}
+				export_to_variable = {
+					which = mercenary_forcelimit_modifier
+					value = modifier:mercenary_manpower
+				}
+				change_variable = {
+					which = mercenary_forcelimit_modifier
+					value = 1
+				}
+				multiply_variable = {
+					which = merc_fl_tt
+					value = 0.1
+				}
+				multiply_variable = {
+					which = merc_fl_tt
+					which = mercenary_forcelimit_modifier
+				}
+				set_variable = {
+					which = float_remove
+					which = merc_fl_tt
+				}
+				while = {
+					limit = {
+						check_variable = {
+							which = float_remove
+							value = 1
+						}
+					}
+					subtract_variable = {
+						which = float_remove
+						value = 1
+					}
+				}
+				subtract_variable = {
+					which = merc_fl_tt #Displayed as tooltip
+					which = float_remove
+				}
+			}
+		}
+	}
+	#################
+	#	Marines
+	#################
+	recruit_marines_decision = {
+		major = yes
+		potential = {
+			exists = yes
+			ai = no
+			has_global_modifier_value = {
+				which = allowed_marine_fraction
+				value = -9.99
+			}
+		}
+		allow = {
+			variable_arithmetic_trigger = {
+				custom_tooltip = below_marine_limit_tt
+				export_to_variable = {
+					which = naval_forcelimit
+					value = trigger_value:naval_forcelimit
+				}
+				export_to_variable = {
+					which = marine_modifier
+					value = modifier:allowed_marine_fraction
+				}
+				export_to_variable = {
+					which = current_marines
+					value = trigger_value:num_of_marines
+				}
+				change_variable = {
+					which = marine_modifier
+					value = 10
+				}
+				multiply_variable = {
+					which = naval_forcelimit
+					which = marine_modifier
+				}
+				subtract_variable = {
+					which = naval_forcelimit
+					value = 1
+				}
+				#Over Marine forcelimit
+				check_variable = {
+					which = naval_forcelimit
+					which = current_marines
+				}
+			}
+			capital_scope = {
+				controlled_by = ROOT
+				has_siege = no
+				custom_trigger_tooltip = {
+					tooltip = no_enemies_in_capital_tt
+					NOT = { units_in_province = REB }
+					NOT = {
+						any_country = {
+							PREV = { units_in_province = PREV }
+							war_with = ROOT
+						}
+					}
+				}
+			}
+		}
+		effect = {
+			custom_tooltip = hire_marines_tooltip
+			hidden_effect = {
+				ROOT = {
+					capital_scope = {
+						marine_infantry = ROOT
+					}
+				}
+				#for tooltip
+				set_variable = {
+					which = current_marines
+					value = 0
+				}
+				set_variable = {
+					which = marine_forcelimit
+					value = 0
+				}
+				set_variable = {
+					which = marine_modifier
+					value = 0
+				}
+				export_to_variable = {
+					which = marine_forcelimit
+					value = trigger_value:naval_forcelimit
+				}
+				export_to_variable = {
+					which = marine_modifier
+					value = modifier:allowed_marine_fraction
+				}
+				export_to_variable = {
+					which = current_marines
+					value = trigger_value:num_of_marines
+				}
+				change_variable = {
+					which = marine_modifier
+					value = 10
+				}
+				multiply_variable = {
+					which = marine_forcelimit
+					which = marine_modifier
+				}
+				set_variable = {
+					which = decimal_remove
+					which = marine_forcelimit
+				}
+				while = {
+					limit = {
+						check_variable = {
+							which = decimal_remove
+							value = 1
+						}
+					}
+					subtract_variable = {
+						which = decimal_remove
+						value = 1
+					}
+				}
+				subtract_variable = {
+					which = marine_forcelimit
+					which = decimal_remove
+				}
+				multiply_variable = {
+					which = marine_modifier
+					value = 100
+				}
+			}
+		}
+	}
+
+	##############################
+	#	ADVISOR DECISIONS
+	##############################
+	grand_captain_decision = {
+		major = yes
+		potential = {
+			has_country_flag = grand_captain_decision
+		}
+		allow = {
+			if = {
+				limit = { ai = yes }
+				is_at_war = yes
+			}
+		}
+		effect = {
+			clr_country_flag = grand_captain_decision
+			add_country_modifier = {
+				name = "land_investment"
+				duration = 2190
+			}
+		}
+	}
+	army_organiser_decision = {
+		major = yes
+		potential = {
+			has_country_flag = army_organiser_decision
+		}
+		allow = {
+			if = {
+				limit = { ai = yes }
+				is_at_war = yes
+			}
+		}
+		effect = {
+			clr_country_flag = army_organiser_decision
+			add_country_modifier = {
+				name = "army_organiser_boost"
+				duration = 2190
+			}
+		}
+	}
+	commandant_decision = {
+		major = yes
+		potential = {
+			has_country_flag = commandant_decision
+		}
+		allow = {
+			if = {
+				limit = { ai = yes }
+				is_at_war = yes
+			}
+		}
+		effect = {
+			clr_country_flag = commandant_decision
+			add_country_modifier = {
+				name = "commandant_boost"
+				duration = 2190
+			}
+		}
+	}
+	quartermaster_decision = {
+		major = yes
+		potential = {
+			has_country_flag = quartermaster_decision
+		}
+		allow = {
+			if = {
+				limit = { ai = yes }
+				is_at_war = yes
+			}
+		}
+		effect = {
+			clr_country_flag = quartermaster_decision
+			add_country_modifier = {
+				name = "quartermaster_boost"
+				duration = 2190
+			}
+		}
+	}
+	recruitmaster_decision = {
+		major = yes
+		potential = {
+			has_country_flag = recruitmaster_decision
+		}
+		allow = {
+			if = {
+				limit = { ai = yes }
+				is_at_war = yes
+			}
+		}
+		effect = {
+			clr_country_flag = recruitmaster_decision
+			add_country_modifier = {
+				name = "recruitmaster_boost"
+				duration = 2190
+			}
+		}
+	}
+	fortification_expert_decision = {
+		major = yes
+		potential = {
+			has_country_flag = fortification_expert_decision
+		}
+		allow = {
+			if = {
+				limit = { ai = yes }
+				is_at_war = yes
+			}
+		}
+		effect = {
+			clr_country_flag = fortification_expert_decision
+			add_country_modifier = {
+				name = "fortification_expert_boost"
+				duration = 2190
+			}
+		}
+	}
+	army_reformer_decision = {
+		major = yes
+		potential = {
+			has_country_flag = army_reformer_decision
+		}
+		allow = {
+			if = {
+				limit = { ai = yes }
+				is_at_war = yes
+			}
+		}
+		effect = {
+			clr_country_flag = army_reformer_decision
+			add_country_modifier = {
+				name = "grand_captain_boost"
+				duration = 2190
+			}
+		}
+	}
+	tribal_leader_decision = {
+		major = yes
+		potential = {
+			has_country_flag = tribal_leader_decision
+		}
+		allow = {
+			if = {
+				limit = { ai = yes }
+				is_at_war = yes
+			}
+		}
+		effect = {
+			clr_country_flag = tribal_leader_decision
+			add_country_modifier = {
+				name = "tribal_leader_boost"
+				duration = 2190
+			}
+		}
+	}
+	drill_commander_decision = {
+		major = yes
+		potential = {
+			has_country_flag = drill_commander_decision
+		}
+		allow = {
+			if = {
+				limit = { ai = yes }
+				is_at_war = yes
+			}
+		}
+		effect = {
+			clr_country_flag = drill_commander_decision
+			add_country_modifier = {
+				name = "drill_commander_boost"
+				duration = 2190
+			}
+		}
+	}
+	war_captain_decision = {
+		major = yes
+		potential = {
+			has_country_flag = war_captain_decision
+		}
+		allow = {
+			if = {
+				limit = { ai = yes }
+				is_at_war = yes
+			}
+		}
+		effect = {
+			clr_country_flag = war_captain_decision
+			add_country_modifier = {
+				name = "war_captain_boost"
+				duration = 2190
+			}
+		}
+	}
+	artillery_captain_decision = {
+		major = yes
+		potential = {
+			has_country_flag = artillery_captain_decision
+		}
+		allow = {
+			if = {
+				limit = { ai = yes }
+				is_at_war = yes
+			}
+		}
+		effect = {
+			clr_country_flag = artillery_captain_decision
+			add_country_modifier = {
+				name = "artillery_captain_boost"
+				duration = 2190
+			}
+		}
+	}
+	supply_expert_decision = {
+		major = yes
+		potential = {
+			has_country_flag = supply_expert_decision
+		}
+		allow = {
+			if = {
+				limit = { ai = yes }
+				is_at_war = yes
+			}
+		}
+		effect = {
+			clr_country_flag = supply_expert_decision
+			add_country_modifier = {
+				name = "supply_expert_boost"
+				duration = 2190
+			}
+		}
+	}
+	subject_governor_decision = {
+		major = yes
+		potential = {
+			has_country_flag = subject_governor_decision
+		}
+		allow = {
+			if = {
+				limit = { ai = yes }
+				is_at_war = yes
+			}
+		}
+		effect = {
+			clr_country_flag = subject_governor_decision
+			add_country_modifier = {
+				name = "subject_governor_boost"
+				duration = 5475
+			}
+		}
+	}
+	journalist_decision = {
+		major = yes
+		potential = {
+			has_country_flag = journalist_decision
+		}
+		allow = {
+			if = {
+				limit = { ai = yes }
+				is_at_war = yes
+			}
+		}
+		effect = {
+			clr_country_flag = journalist_decision
+			add_country_modifier = {
+				name = "journalist_boost"
+				duration = 5475
+			}
+		}
+	}
+	marauder_captain_decision = {
+		major = yes
+		potential = {
+			has_country_flag = marauder_captain_decision
+		}
+		allow = {
+			if = {
+				limit = { ai = yes }
+				is_at_war = yes
+			}
+		}
+		effect = {
+			clr_country_flag = marauder_captain_decision
+			add_country_modifier = {
+				name = "marauder_captain_boost"
+				duration = 2190
+			}
+		}
+	}
+	philosopher_decision = {
+		major = yes
+		potential = {
+			has_country_flag = philosopher_decision
+		}
+		allow = {
+			if = {
+				limit = { ai = yes }
+				is_lacking_institutions = yes
+			}
+		}
+		effect = {
+			clr_country_flag = philosopher_decision
+			add_country_modifier = {
+				name = "philosopher_boost"
+				duration = 2190
+			}
+		}
+	}
+	natural_scientist_decision = {
+		major = yes
+		potential = {
+			has_country_flag = natural_scientist_decision
+		}
+		allow = {
+			if = {
+				limit = {
+					ai = yes
+				}
+				is_at_war = yes
+			}
+		}
+		effect = {
+			set_country_flag = fired_from_decision
+			clr_country_flag = natural_scientist_decision
+			country_event = {
+				id = 4022
+			}
+		}
+	}
+	naval_reformer_decision = {
+		major = yes
+		potential = {
+			has_country_flag = naval_reformer_decision
+		}
+		allow = {
+			if = {
+				limit = {
+					ai = yes
+				}
+				is_at_war = yes
+			}
+		}
+		effect = {
+			clr_country_flag = naval_reformer_decision
+			add_country_modifier = {
+				name = "naval_investment"
+				duration = 2190
+			}
+		}
+	}
+	artist_decision = {
+		major = yes
+		potential = {
+			has_country_flag = artist_decision
+		}
+		allow = {
+			if = {
+				limit = {
+					ai = yes
+				}
+				any_owned_province = {
+					NOT = {
+						province_is_or_accepts_culture = yes
+					}
+					NOT = {
+						nationalism = 1
+					}
+				}
+			}
+		}
+		effect = {
+			clr_country_flag = artist_decision
+			add_country_modifier = {
+				name = "reduced_stability_cost"
+				duration = 2190
+			}
+		}
+	}
+	statesman_decision = {
+		major = yes
+		potential = {
+			has_country_flag = statesman_decision
+		}
+		allow = {
+		}
+		effect = {
+			clr_country_flag = statesman_decision
+			add_country_modifier = {
+				name = "government_investment"
+				duration = 2190
+			}
+		}
+	}
+	master_of_mint_decision = {
+		major = yes
+		potential = {
+			has_country_flag = master_of_mint_decision
+		}
+		allow = {
+			if = {
+				limit = {
+					ai = yes
+				}
+				inflation = 10
+			}
+		}
+		effect = {
+			clr_country_flag = master_of_mint_decision
+			add_country_modifier = {
+				name = "master_of_mint_boost"
+				duration = 2190
+			}
+		}
+	}
+	navigator_decision = {
+		major = yes
+		potential = {
+			has_country_flag = navigator_decision
+		}
+		allow = {
+			if = {
+				limit = {
+					ai = yes
+				}
+				is_at_war = no
+			}
+		}
+		effect = {
+			clr_country_flag = navigator_decision
+			add_country_modifier = {
+				name = "navigator_boost"
+				duration = 2190
+			}
+		}
+	}
+	inquisitor_decision = {
+		major = yes
+		potential = {
+			has_country_flag = inquisitor_decision
+		}
+		allow = {
+			if = {
+				limit = {
+					ai = yes
+				}
+				NOT = { religious_unity = 1 }
+			}
+		}
+		effect = {
+			clr_country_flag = inquisitor_decision
+			add_country_modifier = {
+				name = "inquisitor_boost"
+				duration = 2190
+			}
+		}
+	}
+	architect_decision = {
+		major = yes
+		potential = {
+			has_country_flag = architect_decision
+		}
+		allow = {}
+		effect = {
+			clr_country_flag = architect_decision
+			add_country_modifier = {
+				name = "architect_boost"
+				duration = 2190
+			}
+		}
+	}
+	civil_engineer_decision = {
+		major = yes
+		potential = {
+			has_country_flag = civil_engineer_decision
+		}
+		allow = {}
+		effect = {
+			clr_country_flag = civil_engineer_decision
+			add_country_modifier = {
+				name = "civil_engineer_boost"
+				duration = 2190
+			}
+		}
+	}
+
+	################################
+	# AI WAR OBJECTIVES
+	################################
+#	assign_war_objectives_decision = {
+#		major = yes
+#		potential = {
+#			ai = no
+#			exists = yes
+#			is_at_war = yes
+#			any_war_enemy_country = {
+#				any_war_enemy_country = {
+#					ai = yes
+#					is_in_war = {
+#						participants = ROOT
+#					}
+#				}
+#			}
+#		}
+#		allow = {
+#			any_army = {
+#				location = {
+#					unit_in_battle = yes
+#					NOT = { has_province_flag = has_province_assigned_war_objective }
+#				}
+#			}
+#		}
+#		effect = {
+#		}
+#	}
+
+	#################################
+	# 	Reworked Rajput Regiments
+	#################################
+	hire_rajput_regiments = {
+		major = yes
+		potential = {
+			ai = no
+			exists = yes
+			has_estate_privilege = estate_rajput_rajput_regiments
+		}
+		allow = {
+			manpower = 1
+			capital_scope = {
+				controlled_by = ROOT
+				has_siege = no
+				custom_trigger_tooltip = {
+					tooltip = no_enemies_in_capital_tt
+					NOT = { units_in_province = REB }
+					NOT = {
+						any_country = {
+							PREV = { units_in_province = PREV }
+							war_with = ROOT
+						}
+					}
+				}
+			}
+			if = {
+				limit = {
+					NOT = {
+						check_variable = {
+							which = rajput_forcelimit
+							value = 1
+						}
+					}
+				}
+				custom_trigger_tooltip = {
+					tooltip = "Below Rajput Forcelimit"
+					estate_territory = {
+						estate = estate_rajput
+						territory = 5
+					}
+					land_forcelimit = 30
+				}
+			}
+			else = {
+				variable_arithmetic_trigger = {
+					custom_tooltip = "Below Rajput Forcelimit"
+					export_to_variable = {
+						which = num_of_rajputs
+						value = trigger_value:num_of_cossacks
+					}
+					check_variable = {
+						which = rajput_forcelimit
+						which = num_of_rajputs
+					}
+				}
+			}
+		}
+		effect = {
+			custom_tooltip = hire_rajput_tooltip
+			hidden_effect = {
+				add_manpower = -1
+				if = {
+					limit = {
+						NOT = { has_country_modifier = hired_rajput_units }
+					}
+					add_country_modifier = {
+						name = "hired_rajput_units"
+						duration = -1
+						hidden = yes
+					}
+				}
+				set_variable = {
+					which = rajput_forcelimit
+					value = 0
+				}
+				# Calculate rajput land share
+				while = {
+					limit = {
+						estate_territory = {
+							estate = estate_rajput
+							territory = 1
+						}
+					}
+					change_estate_land_share = {
+						estate = estate_rajput
+						share = -1
+					}
+					change_variable = {
+						which = rajput_forcelimit
+						value = 1
+					}
+				}
+				set_variable = {
+					which = rajput_copy
+					which = rajput_forcelimit
+				}
+				# Give the land back
+				while = {
+					limit = {
+						check_variable = {
+							which = rajput_copy
+							value = 1
+						}
+					}
+					change_estate_land_share = {
+						estate = estate_rajput
+						share = 1
+					}
+					subtract_variable = {
+						which = rajput_copy
+						value = 1
+					}
+				}
+				# Calculate the forcelimit now that we have the land share
+				divide_variable = {
+					which = rajput_forcelimit
+					value = 150
+				}
+				export_to_variable = {
+					which = normal_forcelimit
+					value = trigger_value:land_forcelimit
+				}
+				multiply_variable = {
+					which = rajput_forcelimit
+					which = normal_forcelimit
+				}
+				subtract_variable = {
+					which = rajput_forcelimit
+					value = 1
+				}
+				# 4.096 eg
+
+				capital_scope = {
+					cossack_cavalry = ROOT
+				}
+
+				# Tooltip handling
+				export_to_variable = {
+					which = rajput_number_tt
+					value = trigger_value:num_of_cossacks
+				}
+				set_variable = {
+					which = rajput_forcelimit_tt
+					which = rajput_forcelimit
+				}
+				change_variable = {
+					which = rajput_forcelimit_tt
+					value = 1
+				}
+				set_variable = {
+					which = decimal_remove
+					which = rajput_forcelimit_tt
+				}
+				while = {
+					limit = {
+						check_variable = {
+							which = decimal_remove
+							value = 1
+						}
+					}
+					subtract_variable = {
+						which = decimal_remove
+						value = 1
+					}
+				}
+				subtract_variable = {
+					which = rajput_forcelimit_tt
+					which = decimal_remove
+				}
+			}
+		}
+	}
+}

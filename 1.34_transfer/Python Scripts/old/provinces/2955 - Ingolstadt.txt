@@ -1,0 +1,20 @@
+# - Ingolstadt + Neuburg
+
+owner = ING
+controller = ING
+add_core = ING
+culture = bavarian
+religion = catholic
+base_tax = 5 
+base_production = 5
+trade_goods = wine #Would shift to beer over time
+base_manpower = 3
+capital	= "Ingolstadt" 
+is_city = yes
+hre = yes
+
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

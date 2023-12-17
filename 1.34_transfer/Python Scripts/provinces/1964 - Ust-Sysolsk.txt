@@ -1,0 +1,7 @@
+#Prov1964 - Ust-Sysolsk
+culture = uralic
+religion = animism
+
+base_tax = 1
+base_production = 1
+base_manpower = 1

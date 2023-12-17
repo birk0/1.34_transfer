@@ -1,0 +1,25 @@
+#2552 - Karakol
+
+culture = kirgiz
+religion = sunni
+capital = "Karakol"
+trade_goods = wool
+hre = no
+base_tax = 2 
+base_production = 1
+base_manpower = 1
+is_city = yes
+#discovered_by = chinese
+#discovered_by = indonesian
+#discovered_by = indian
+#discovered_by = nomad_group
+#discovered_by = muslim
+#Changes
+owner = MHL
+controller = MHL
+add_core = MHL
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

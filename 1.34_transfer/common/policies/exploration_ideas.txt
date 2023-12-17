@@ -1,0 +1,222 @@
+###############################################
+#	Policies for the Exploration Idea Group
+###############################################
+render_unto_caesar_policy = { 
+	monarch_power = ADM
+
+	potential = {
+		ai = no
+		has_idea_group = exploration_ideas
+	}
+	
+	allow = {
+		full_idea_group = exploration_ideas
+		hidden_trigger = {
+			NOT = { has_idea_group = indigenous_ideas }
+		}
+		if = {
+			limit = { has_country_modifier = render_unto_caesar_policy_cooldown }
+			custom_trigger_tooltip = {
+				tooltip = POLICY_ON_COOLDOWN
+				always = no
+			}
+		}
+		if = {
+			limit = {
+				has_country_flag = exploration_cd_fl
+			}
+			custom_trigger_tooltip = {
+				tooltip = "We must wait before we can select a policy from this idea group again."
+				always = no
+			}
+		}
+	}
+
+	province_warscore_cost = -0.15
+
+	ai_will_do = {
+		factor = 1
+	}
+}
+the_stamp_act = {
+	monarch_power = ADM
+	
+	potential = {
+		ai = no
+		has_idea_group = exploration_ideas
+	}
+	allow = {
+		full_idea_group = exploration_ideas
+		hidden_trigger = {
+			NOT = { has_idea_group = indigenous_ideas }
+		}
+		if = {
+			limit = { has_country_modifier = the_stamp_act_cooldown }
+			custom_trigger_tooltip = {
+				tooltip = POLICY_ON_COOLDOWN
+				always = no
+			}
+		}
+		if = {
+			limit = {
+				has_country_flag = exploration_cd_fl
+			}
+			custom_trigger_tooltip = {
+				tooltip = "We must wait before we can select a policy from this idea group again."
+				always = no
+			}
+		}
+	}
+	
+	global_tariffs = 1
+	treasure_fleet_income = 0.5
+	
+	ai_will_do = {
+		factor = 1
+	}
+}
+war_on_our_terms_policy = {
+	monarch_power = MIL
+
+	potential = {
+		ai = no
+		has_idea_group = exploration_ideas
+	}
+	
+	allow = {
+		full_idea_group = exploration_ideas
+		hidden_trigger = {
+			NOT = { has_idea_group = indigenous_ideas }
+		}
+		if = {
+			limit = { has_country_modifier = war_on_our_terms_policy_cooldown }
+			custom_trigger_tooltip = {
+				tooltip = POLICY_ON_COOLDOWN
+				always = no
+			}
+		}
+		if = {
+			limit = {
+				has_country_flag = exploration_cd_fl
+			}
+			custom_trigger_tooltip = {
+				tooltip = "We must wait before we can select a policy from this idea group again."
+				always = no
+			}
+		}
+	}
+
+	reserves_organisation = 1.25
+	
+	ai_will_do = {
+		factor = 1
+	}
+}
+the_colonial_nobility_act = {
+	monarch_power = MIL
+	potential = {
+		ai = no
+		has_idea_group = exploration_ideas
+	}
+	
+	allow = {
+		full_idea_group = exploration_ideas
+		hidden_trigger = {
+			NOT = { has_idea_group = indigenous_ideas }
+		}
+		if = {
+			limit = { has_country_modifier = the_colonial_nobility_act_cooldown }
+			custom_trigger_tooltip = {
+				tooltip = POLICY_ON_COOLDOWN
+				always = no
+			}
+		}
+		if = {
+			limit = {
+				has_country_flag = exploration_cd_fl
+			}
+			custom_trigger_tooltip = {
+				tooltip = "We must wait before we can select a policy from this idea group again."
+				always = no
+			}
+		}
+	}
+
+	global_manpower_modifier = 1
+
+	ai_will_do = {
+		factor = 1
+	}
+}
+colonial_companies_act = {
+	monarch_power = DIP
+	potential = {
+		ai = no
+		has_idea_group = exploration_ideas
+	}
+	
+	allow = {
+		full_idea_group = exploration_ideas
+		hidden_trigger = {
+			NOT = { has_idea_group = indigenous_ideas }
+		}
+		if = {
+			limit = { has_country_modifier = colonial_companies_act_cooldown }
+			custom_trigger_tooltip = {
+				tooltip = POLICY_ON_COOLDOWN
+				always = no
+			}
+		}
+		if = {
+			limit = {
+				has_country_flag = exploration_cd_fl
+			}
+			custom_trigger_tooltip = {
+				tooltip = "We must wait before we can select a policy from this idea group again."
+				always = no
+			}
+		}
+	}
+	
+	placed_merchant_power = 200
+
+	ai_will_do = {
+		factor = 1
+	}
+}
+beneficial_neglect = {
+	monarch_power = DIP
+
+	potential = {
+		ai = no
+		has_idea_group = exploration_ideas
+	}
+	
+	allow = {
+		full_idea_group = exploration_ideas
+		hidden_trigger = {
+			NOT = { has_idea_group = indigenous_ideas }
+		}
+		if = {
+			limit = { has_country_modifier = beneficial_neglect_cooldown }
+			custom_trigger_tooltip = {
+				tooltip = POLICY_ON_COOLDOWN
+				always = no
+			}
+		}
+		if = {
+			limit = {
+				has_country_flag = exploration_cd_fl
+			}
+			custom_trigger_tooltip = {
+				tooltip = "We must wait before we can select a policy from this idea group again."
+				always = no
+			}
+		}
+	}
+	reduced_liberty_desire = 33
+
+	ai_will_do = {
+		factor = 1
+	}
+}

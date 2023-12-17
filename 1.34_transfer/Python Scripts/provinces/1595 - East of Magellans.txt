@@ -1,0 +1,7 @@
+#Prov1595 - East of Magellans
+religion = sunni
+culture = amhara
+
+base_tax = 1
+base_production = 1
+base_manpower = 1

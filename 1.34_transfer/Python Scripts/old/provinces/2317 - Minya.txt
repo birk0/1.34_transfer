@@ -1,0 +1,19 @@
+#2317 - Minya
+
+owner = MAM
+controller = MAM
+culture = al_misr_arabic
+religion = sunni
+capital = "Al Minya"
+trade_goods = sugar
+hre = no
+base_tax = 3
+base_production = 3
+base_manpower = 2
+is_city = yes
+add_core = MAM
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

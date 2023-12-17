@@ -1,0 +1,7 @@
+#Prov1745 - Cantabria
+culture = castillian
+religion = catholic
+
+base_tax = 1
+base_production = 1
+base_manpower = 1

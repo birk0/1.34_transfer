@@ -1,0 +1,19 @@
+#691 - Jinan
+
+owner = MNG
+controller = MNG
+add_core = MNG
+culture = shandong_culture
+religion = confucianism
+capital = "Jinan"
+trade_goods = cloth
+hre = no
+base_tax = 5 #changes
+base_production = 5
+base_manpower = 2
+is_city = yes
+add_core = QIC
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

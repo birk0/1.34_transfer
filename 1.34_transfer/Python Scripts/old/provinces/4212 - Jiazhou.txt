@@ -1,0 +1,20 @@
+#4212 - Jiazhou
+
+owner = MNG
+controller = MNG
+add_core = MNG
+culture = sichuanese
+religion = mahayana #changes
+capital = "Jiazhou"
+trade_goods = tea
+hre = no
+base_tax = 4 
+base_production = 3
+base_manpower = 3
+is_city = yes
+add_core = CXI
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

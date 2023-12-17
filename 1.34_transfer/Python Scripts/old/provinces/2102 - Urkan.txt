@@ -1,0 +1,23 @@
+# 2102 - Urkan
+
+latent_trade_goods = {
+	coal
+}
+
+owner = SOL
+controller = SOL
+add_core = SOL
+culture = evenk
+religion = tengri_pagan_reformed
+capital = "Urkantun"
+trade_goods = fur
+hre = no
+base_tax = 1 #changes
+base_production = 1
+base_manpower = 1
+is_city = yes
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

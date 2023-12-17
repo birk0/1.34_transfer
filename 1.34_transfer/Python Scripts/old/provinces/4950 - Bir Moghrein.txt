@@ -1,0 +1,19 @@
+# - Bir Moghrein
+
+culture = sanhaja
+religion = sunni
+capital = "Bir Moghrein"
+trade_goods = grain
+hre = no
+base_tax = 1 
+base_production = 1
+base_manpower = 1
+add_core = LAM
+is_city = yes
+owner = LAM
+controller = LAM
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

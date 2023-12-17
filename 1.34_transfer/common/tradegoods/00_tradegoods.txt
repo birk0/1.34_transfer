@@ -1,0 +1,1458 @@
+# Do not change tags in here without changing every other reference to them.
+# If adding new resources, make sure they are uniquely named.
+# Please add price definitions to prices.txt as well.
+
+# Country trade good bonuses are gone
+
+#######################
+#		CEREALS
+#######################
+
+grain = { # Temperate
+	color = { 0.96 0.93 0.58 }
+	is_valuable = yes
+	province = { local_unrest = -1 }
+	chance = {
+		factor = 1
+		modifier = {
+			factor = 0
+			OR = {
+				has_terrain_type = { type = dry }
+				has_terrain_type = { type = cold }
+			}
+		}
+		modifier = {
+			factor = 0.5
+			OR = {
+				has_terrain_type = { type = tropical }
+				has_terrain_type = { type = trees }
+				has_winter = normal_winter
+				has_winter = severe_winter
+			} 
+		} 
+		modifier = {
+			factor = 3
+			has_terrain_type = { type = flat }
+		}
+	}
+}
+rye = { # Cold
+	color = { 1.0 0.66 0.23 }
+	is_valuable = yes
+	province = { regiment_recruit_speed = -0.1 }
+	chance = {
+		factor = 1
+		modifier = {
+			factor = 0
+			OR = {
+				has_terrain_type = { type = dry }
+				has_terrain_type = { type = tropical }
+				has_terrain = oasis
+			}
+		}
+		modifier = {
+			factor = 0.5
+			OR = {
+				NOT = { province_has_winter = yes } 
+				has_terrain_type = { type = cold } 
+			}
+		} 
+		modifier = {
+			factor = 3
+			has_terrain_type = { type = flat }
+			NOT = { has_terrain = plains }
+			NOT = { has_terrain = savannah }  
+		}
+	}
+}
+millet = { # Hot
+	color = { 0.55 1.0 0.56 }
+	is_valuable = yes
+	province = { local_missionary_maintenance_cost = -0.1 }
+	chance = {
+		factor = 1
+		modifier = {
+			factor = 0
+			has_terrain_type = { type = cold } 
+		}
+		modifier = {
+			factor = 0.5
+			province_has_winter = yes
+		} 
+		modifier = {
+			factor = 1.3
+			has_terrain_type = { type = tropical }
+		} 
+		modifier = {
+			factor = 3
+			OR = {
+				has_terrain_type = { type = dry }
+				has_terrain = oasis
+			}
+		}
+	}
+}
+
+##########################
+#		FOODS
+##########################
+rice = {
+	color = { 0.43 0.66 0.32 }
+	is_valuable = yes
+	province = { local_regiment_cost = -0.05 }
+	chance = {
+		factor = 1
+		modifier = {
+			factor = 0
+			OR = {
+				has_terrain_type = { type = cold }
+				has_terrain_type = { type = dry }
+				has_terrain = oasis
+				province_has_winter = yes
+				has_terrain = steppe
+				has_terrain = plains
+			}
+		}
+		modifier = {
+			factor = 0.5
+			OR = {
+				has_terrain_type = { type = trees }
+				has_terrain_type = { type = tropical } 
+				has_terrain = coastline
+				has_terrain = highlands
+				has_terrain = marsh
+				NOT = { province_has_monsoon = yes } 
+			}
+		}
+		modifier = {
+			factor = 3
+			has_terrain_type = { type = flat } 
+		} 
+	}
+}
+fruit = {
+	color = { 0.9 0.31 0.46 }
+	is_valuable = yes
+	province = { local_prosperity_growth = 0.1 }
+	chance = {
+		factor = 1
+		modifier = {
+			factor = 0
+			OR = {
+				has_terrain_type = { type = cold }
+				has_terrain_type = { type = dry }
+				has_terrain = steppe
+				has_terrain = plains
+			} 
+		} 
+		modifier = {
+			factor = 0.5
+			OR = {
+				province_has_winter = yes
+				has_terrain = oasis
+				has_terrain = highlands
+			}
+		}
+		modifier = {
+			factor = 2
+			has_terrain_type = { type = flat }
+		}
+		modifier = {
+			factor = 3
+			OR = {
+				has_terrain_type = { type = trees }
+				has_terrain_type = { type = tropical }
+			}
+		}   
+	}
+}
+dates = {
+	color = { 0.55 0.29 0.4 }
+	is_valuable = yes
+	province = { local_religious_unity_contribution = -0.15 }
+	chance = {
+		factor = 1
+		modifier = {
+			factor = 0
+			OR = {
+				has_terrain_type = { type = cold } 
+				province_has_winter = yes
+				has_terrain = steppe
+				has_terrain = plains
+				has_terrain_type = { type = trees } 
+			}
+		}
+		modifier = {
+			factor = 0.5
+			OR = {
+				has_terrain_type = { type = hills }
+				has_terrain_type = { type = flat } 
+				has_terrain = desert
+				has_terrain = mesa
+			}
+		}
+		modifier = {
+			factor = 1.5
+			has_terrain_type = { type = tropical }
+		}
+		modifier = {
+			factor = 3
+			OR = {
+				has_terrain_type = { type = dry }
+				has_terrain = oasis
+			}
+		}
+	}
+}
+vegetables = {
+	color = { 0.31 0.21 0.08 }
+	is_valuable = yes
+	province = { local_years_of_nationalism = -2 }
+	chance = {
+		factor = 1
+		modifier = {
+			factor = 0
+			OR = {
+				has_terrain_type = { type = cold } 
+				has_terrain_type = { type = dry }
+				has_terrain = oasis
+			}
+		}
+		modifier = {
+			factor = 0.5
+			OR = {
+				has_terrain = steppe
+				has_terrain_type = { type = trees }
+				has_terrain_type = { type = hills }
+				has_winter = severe_winter
+				has_winter = normal_winter
+			}  
+		} 
+		modifier = {
+			factor = 3
+			OR = {
+				has_terrain_type = { type = flat }
+				has_terrain = marsh
+			}
+			NOT = { has_terrain = steppe }
+		} 
+	}
+}
+maize = {
+	color = { 0.97 0.83 0.08 }
+	is_valuable = yes
+	province = { local_core_creation = -0.05 }
+	chance = {
+		factor = 1
+		modifier = {
+			factor = 0
+			OR = {
+				has_terrain_type = { type = cold }
+				AND = {
+					NOT = { has_terrain = drylands }
+					NOT = { has_terrain = coastal_desert }  
+					has_terrain_type = { type = dry }
+				}
+			}  
+		}
+		modifier = {
+			factor = 0.5
+			OR = {
+				has_terrain_type = { type = trees }
+				has_terrain_type = { type = hills }
+			}  
+		} 
+		modifier = {
+			factor = 3
+			OR = {
+				has_terrain_type = { type = tropical }
+				has_terrain_type = { type = flat }
+				has_terrain = marsh
+			}
+		}  
+	}
+}
+nuts = {
+	color = { 0.5 0.45 0.34 }
+	is_valuable = yes
+	province = { local_monthly_devastation = -0.15 }
+	chance = {
+		factor = 0.9
+		modifier = {
+			factor = 0
+			has_terrain_type = { type = cold } 
+		}
+		modifier = {
+			factor = 0.5
+			OR = {
+				has_terrain_type = { type = flat }
+				has_terrain_type = { type = dry }
+			}
+		}  
+		modifier = {
+			factor = 3
+			OR = {
+				has_terrain_type = { type = tropical }
+				has_terrain_type = { type = trees }
+				AND = {
+					NOT = { has_terrain = highlands } 
+					has_terrain_type = { type = hills }   
+				}
+			}
+		}
+	}
+}
+
+#################################
+#			Haram
+#################################
+wine = { # Warmer
+	color = { 0.36 0.13 0.28 }
+	is_valuable = yes
+	province = { local_governing_cost = -0.05 }
+	chance = {
+		factor = 1
+		modifier = {
+			factor = 0
+			OR = {
+				has_terrain_type = { type = dry }
+				has_terrain_type = { type = cold }
+				has_terrain = oasis
+			} 
+		}
+		modifier = {
+			factor = 0.5
+			has_terrain_type = { type = flat }
+			OR = {
+				NOT = { has_terrain = grasslands }
+				NOT = { has_terrain = farmlands }
+			} 
+			province_has_monsoon = yes   
+		} 
+		modifier = {
+			factor = 0.5
+			province_has_winter = yes
+			NOT = { has_winter = mild_winter }  
+		}
+		modifier = {
+			factor = 3
+			has_terrain_type = { type = hills }
+		}
+	}
+}
+alcohol = { # Colder
+	color = { 0.6 0.15 0.01 }
+	is_valuable = yes
+	province = { local_autonomy = -0.05 }
+	chance = {
+		factor = 0.9
+		modifier = {
+			factor = 0.5
+			NOT = { province_has_winter = yes }
+		}
+		modifier = {
+			factor = 1.5
+			OR = {
+				has_terrain_type = { type = trees }
+				has_terrain_type = { type = hills }
+			}
+		}    
+		modifier = {
+			factor = 2
+			has_winter = severe_winter # VODKA
+		}
+	}
+}
+
+###############################
+#		FABRICS
+###############################
+
+wool = {
+	color = { 0.83 0.83 0.83  }
+	is_valuable = yes
+	province = { local_state_maintenance_modifier = -0.1 }
+	chance = {
+		factor = 1.5
+		modifier = {
+			factor = 0
+			has_terrain_type = { type = tropical }
+		}
+		modifier = {
+			factor = 0.4
+			OR = {
+				has_terrain_type = { type = trees }
+				has_terrain_type = { type = cold }
+			} 
+		}
+		modifier = {
+			factor = 2
+			OR = {
+				has_terrain_type = { type = dry }
+				has_terrain_type = { type = flat }
+				has_terrain = marsh
+				has_terrain = oasis
+			}
+		}
+	}
+}
+cloth = {
+	color = { 0.86 0.19 0.19 }
+	is_valuable = yes
+	province = { local_institution_spread = 0.1 }
+	chance = {
+		factor = 1.5
+		modifier = {
+			factor = 0.4
+			has_terrain_type = { type = cold }
+		} 
+	}
+}
+carpet = { # Latent
+	color = { 0.53 0.07 0.28 }
+	is_valuable = yes
+	is_latent = yes
+	province = { local_culture_conversion_cost = -0.05 }
+	trigger = {
+		is_allowed_tradegood = { type = carpet } 
+	}
+}
+silk = { # Latent
+	color = { 0.72 0.10 0.10 }
+	is_valuable = yes
+	is_latent = yes
+	province = { local_religious_conversion_resistance = 0.15 }
+	trigger = {
+		is_allowed_tradegood = { type = silk }
+	}
+}
+
+#######################
+#		ANIMALS
+#######################
+
+fish = {
+	color = { 0.55 0.82 0.97 }
+	is_valuable = yes
+	province = { local_sailors_modifier = 0.05 }
+	chance = {
+		factor = 1.5
+		modifier = {
+			factor = 0
+			NOT = { has_port = yes }
+		}
+	}
+}
+seafood = { # Latent
+	color = { 0.39 0.30 0.92 }
+	is_valuable = yes
+	is_latent = yes
+	province = { ship_recruit_speed = -0.1 }
+	trigger = {
+		is_allowed_tradegood = { type = seafood } 
+	}
+}
+livestock = { # not cold or hot climates, basically cows
+	color = { 0.72 0.49 0.44 }
+	is_valuable = yes
+	province = { garrison_growth = 0.1 }
+	chance = {
+		factor = 1
+		modifier = {
+			factor = 0
+			OR = {
+				has_terrain_type = { type = cold }
+				has_terrain_type = { type = dry }
+				has_terrain_type = { type = tropical }
+			}
+		}
+		modifier = {
+			factor = 0.5
+			OR = {
+				has_terrain_type = { type = trees }
+				has_terrain_type = { type = hills } 
+				province_has_winter = yes
+				has_terrain = oasis
+			}
+		}
+		modifier = {
+			factor = 3
+			OR = {
+				has_terrain = farmlands
+				has_terrain = grasslands
+			}
+		}
+	}
+}
+camels = { # hot
+	color = { 0.76 0.37 0.21 }
+	is_valuable = yes
+	province = { local_warscore_cost_modifier = 0.05 }
+	chance = {
+		factor = 2
+		modifier = {
+			factor = 0
+			NOT = { has_terrain_type = { type = dry } }  
+			NOT = { has_terrain = oasis } 
+			NOT = { has_terrain = plains } 
+		}
+		modifier = {
+			factor = 0.15
+			has_terrain = plains
+		}
+	}
+}
+horses = { # cold flat climates
+	color = { 0.47 0.35 0.21 }
+	is_valuable = yes
+	province = { local_friendly_movement_speed = 0.1 }
+	chance = {
+		factor = 1
+		modifier = {
+			factor = 0
+			OR = {
+				has_terrain_type = { type = tropical } 
+				has_terrain_type = { type = dry }
+				has_terrain = oasis
+			}
+		}
+		modifier = {
+			factor = 0.5
+			OR = {
+				has_terrain_type = { type = trees }
+				has_terrain_type = { type = hills } 
+				has_terrain_type = { type = cold }
+			}
+		}
+		modifier = {
+			factor = 3
+			OR = {
+				has_terrain = steppe
+				has_terrain = plains
+				has_terrain = savannah
+			}
+		}
+	}
+}
+elephants = { # Jungles
+	color = { 0.25 0.23 0.22 }
+	is_valuable = yes
+	province = { local_defensiveness = 0.1 }
+	chance = {
+		factor = 2
+		modifier = {
+			factor = 0
+			NOT = { has_terrain_type = { type = tropical } }  
+			NOT = { has_terrain = savannah } 
+		}
+		modifier = {
+			factor = 0.15
+			has_terrain = savannah
+		}
+	}
+}
+slaves = {
+	color = { 0.0 0.0 0.0 }
+	is_valuable = yes
+	province = { local_manpower_modifier = 0.05 }
+	chance = {
+		factor = 0 # Needs its own system
+	}
+}
+#######################################
+#			ANIMAL PRODUCTS
+#######################################
+leather = { # latent
+	color = { 0.49 0.23 0.2 }
+	is_valuable = yes
+	is_latent = yes
+	province = { min_local_autonomy = -5 }
+	trigger = {
+		is_allowed_tradegood = { type = leather } 
+	}
+}
+fur = {
+	color = { 0.54 0.40 0.31 }
+	is_valuable = yes
+	province = { supply_limit_modifier = 0.15 }
+	
+	chance = {
+		factor = 1
+		modifier = {
+			factor = 0
+			OR = {
+				has_terrain_type = { type = dry } 
+				has_terrain_type = { type = flat }
+				has_terrain = oasis
+				has_terrain = coastline
+			} 
+		}
+		modifier = {
+			factor = 0.5
+			has_terrain_type = { type = cold } 
+		}
+		modifier = {
+			factor = 3
+			OR = {
+				has_terrain_type = { type = trees }
+				AND = {
+					province_has_winter = yes
+					NOT = { has_winter = mild_winter }
+				} 
+			} 
+		}
+	}
+}
+ivory = { # latent
+	color = { 0.75 0.7 0.63 }
+	is_valuable = yes
+	is_latent = yes
+	province = { local_missionary_strength = 0.003 }
+
+	trigger = {
+		is_allowed_tradegood = { type = ivory } 
+	}
+}
+
+####################################
+#			MINERALS
+####################################
+
+salt = {
+	color = { 0.999 0.999 0.999 }
+	is_valuable = yes
+	province = { local_fort_maintenance_modifier = -0.1 }
+	chance = {
+		factor = 1
+		modifier = {
+			factor = 0.5
+			OR = {
+				has_terrain_type = { type = flat } 
+				has_terrain_type = { type = trees }
+				has_terrain_type = { type = tropical }
+			}   
+		}
+		modifier = {
+			factor = 3
+			OR = {
+				has_terrain_type = { type = cold }
+				has_terrain_type = { type = dry }
+				has_terrain = oasis
+				has_terrain = coastline
+			}
+		}  
+	}
+}
+copper = {
+	color = { 0.85 0.46 0.15 }
+	is_valuable = yes
+	province = { local_hostile_attrition = 0.3 }
+	chance = {
+		factor = 1
+		modifier = {
+			factor = 0
+			OR = {
+				has_terrain_type = { type = flat }
+				has_terrain_type = { type = dry }  
+				has_terrain = coastline
+				has_terrain = marsh
+				has_terrain = oasis
+			}
+			NOT = { has_terrain = mesa } 
+		}
+		modifier = {
+			factor = 0.5
+			OR = {
+				has_terrain = woods
+				has_terrain = jungle
+			}
+		}
+		modifier = {
+			factor = 3
+			OR = {
+				has_terrain_type = { type = cold }
+				has_terrain = mesa
+				has_terrain_type  = { type = hills }
+			}
+			NOT = { has_terrain = valley } 
+		}
+	}
+}
+gold = { #special
+	color = { 1.0 0.84 0.19 }
+	is_valuable = yes
+	
+	chance = {
+		factor = 0.4
+		modifier = {
+			factor = 1.4
+			OR = {
+				has_terrain_type = { type = hills }
+				has_terrain_type = { type = trees }
+			}
+			NOT = { has_terrain = woods }  
+		} 
+		modifier = {
+			factor = 3
+			OR = {
+				has_terrain_type = { type = cold } 
+				has_terrain = mesa
+			}
+		}
+	}
+}
+silver = { #special
+	color = { 0.7 0.76 0.83 }
+	is_valuable = yes
+
+	province = { trade_goods_size_modifier = -0.8 }
+	
+	chance = {
+		factor = 0.8
+		modifier = {
+			factor = 1.25
+			OR = {
+				has_terrain_type = { type = hills }
+				has_terrain_type = { type = trees }
+			}
+			NOT = { has_terrain = woods }  
+		} 
+		modifier = {
+			factor = 2.5
+			OR = {
+				has_terrain_type = { type = cold } 
+				has_terrain = mesa
+			}
+		}
+	}
+}
+iron = {
+	color = { 0.2 0.2 0.2 }
+	is_valuable = yes
+	province = { local_build_cost = -0.025 }
+	chance = {
+		factor = 1
+		modifier = {
+			factor = 0
+			OR = {
+				has_terrain_type = { type = flat }
+				has_terrain_type = { type = dry }  
+				has_terrain = coastline
+				has_terrain = marsh
+				has_terrain = oasis
+			}
+			NOT = { has_terrain = mesa } 
+		}
+		modifier = {
+			factor = 0.5
+			OR = {
+				has_terrain = woods
+				has_terrain = jungle
+			}
+		}
+		modifier = {
+			factor = 3
+			OR = {
+				has_terrain_type = { type = cold }
+				has_terrain = mesa
+				has_terrain_type  = { type = hills }
+			}
+			NOT = { has_terrain = valley } 
+		}
+	}
+}
+coal = { #latent
+	color = { 0.0 1.0 1.0 }
+	province = { local_colonial_growth = 10 }
+	is_latent = yes
+	is_valuable = yes
+	trigger = {
+		is_allowed_tradegood = { type = coal }
+	}
+}
+steel = { #latent
+	color = { 0.45 0.51 0.64 }
+	is_valuable = yes
+	is_latent = yes
+	province = { local_build_time = -0.15 }
+	trigger = {
+		is_allowed_tradegood = { type = steel }
+	}
+}
+gunpowder = { #latent
+	color = { 0.14 0.04 0.18 }
+	is_valuable = yes
+	is_latent = yes
+	province = { local_garrison_size = 0.05 }
+	trigger = {
+		is_allowed_tradegood = { type = gunpowder }
+	}
+}
+explosives = { #latent
+	color = { 0.25 0.26 0.4 }
+	is_valuable = yes
+	is_latent = yes
+	province = { land_forcelimit = 0.25 }
+	trigger = {
+		is_allowed_tradegood = { type = explosives }
+	}
+}
+naval_supplies = {
+	color = { 0.11 0.17 0.4 }
+	is_valuable = yes
+	province = { local_ship_cost = -0.05 }
+
+	chance = {
+		factor = 1
+		modifier = {
+			factor = 0
+			has_port = no 
+			OR = {
+				has_terrain_type = { type = dry }
+				has_terrain_type = { type = flat }
+				has_terrain = marsh
+				has_terrain = oasis
+			}
+		}
+		modifier = {
+			factor = 0.4
+			has_port = no
+		}
+		modifier = {
+			factor = 0.5
+			has_terrain_type = { type = cold }
+			has_port = yes
+		}
+		modifier = {
+			factor = 3
+			OR = {
+				has_terrain_type = { type = hills }
+				has_terrain = coastline
+				has_terrain_type = { type = trees }
+				has_terrain_type = { type = tropical }
+			}
+		}
+	}
+}
+gems = {
+	color = { 0.96 0.78 0.78 }
+	is_valuable = yes
+	province = { local_governing_cost_increase = -1 }
+	chance = {
+		factor = 0.9
+		modifier = {
+			factor = 0
+			has_terrain_type = { type = flat }
+		}
+		modifier = {
+			factor = 0.5
+			OR = {
+				has_terrain = marsh
+				has_terrain = oasis
+				AND = {
+					has_terrain_type = { type = dry }
+					NOT = { has_terrain = mesa }
+				}
+				has_terrain = woods  
+			}
+		}
+		modifier = {
+			factor = 1.5
+			has_terrain_type = { type = hills }
+			NOT = { has_terrain = highlands } 
+		}
+		modifier = {
+			factor = 2.5
+			has_terrain = highlands 
+		}
+		modifier = {
+			factor = 3
+			OR = {
+				has_terrain_type = { type = cold }
+				has_terrain = mesa
+			}
+		}
+	}
+}
+
+###############################
+#		Comfort foods
+###############################
+tea = {
+	color = { 0.07 0.33 0.09 }
+	is_valuable = yes
+	province = { supply_limit = 1 }
+	chance = {
+		factor = 1
+		modifier = {
+			factor = 0
+			OR = {
+				has_terrain_type = { type = dry }
+				has_terrain_type = { type = cold }
+				has_terrain = oasis
+				AND = {
+					province_has_winter = yes
+					NOT = { has_winter = mild_winter }
+				} 
+			} 
+		}
+		modifier = {
+			factor = 0.5
+			OR = {
+				has_terrain_type = { type = flat }
+				has_terrain = marsh
+				has_terrain = coastline
+				has_terrain_type = { type = trees } 
+				has_winter = mild_winter
+				has_terrain = highlands
+			}
+		}
+		modifier = {
+			factor = 3
+			has_terrain_type = { type = hills }
+			NOT = { has_terrain = highlands }
+		}  
+	}
+}
+coffee = { # latent
+	color = { 0.22 0.15 0.09 }
+	is_valuable = yes
+	is_latent = yes
+	province = { regiment_recruit_speed = -0.15 }
+	trigger = {
+		is_allowed_tradegood = { type = coffee }
+	}
+}
+sugar = {
+	color = { 0.74 0.95 0.68 }
+	is_valuable = yes
+	province = { local_colonist_placement_chance = 0.05 }
+	chance = {
+		factor = 1
+		modifier = {
+			factor = 0
+			OR = {
+				has_terrain_type = { type = cold }
+				AND = {
+					has_terrain_type = { type = dry }
+					NOT = { has_terrain = coastal_desert }
+				} 
+				has_terrain_type = { type = hills }
+				province_has_winter = yes
+			}
+		}
+		modifier = {
+			factor = 0.5
+			OR = {
+				has_terrain_type = { type = trees }
+				AND = {
+					has_terrain_type = { type = flat }
+					NOT = { has_terrain = farmlands }
+					NOT = { has_terrain = grasslands }
+					NOT = { has_terrain = savannah }
+				}
+			}    
+		}
+		modifier = {
+			factor = 3
+			OR = {
+				has_terrain = marsh
+				has_terrain = oasis
+				has_port = yes
+			}
+		}
+	}
+}
+tobacco = {
+	color = { 0.33 0.56 0.38 }
+	is_valuable = yes
+	province = { local_center_of_trade_upgrade_cost = -0.1 }
+	chance = {
+		factor = 1.5
+		modifier = {
+			factor = 0
+			OR = {
+				has_terrain_type = { type = cold }
+				has_terrain_type = { type = dry }
+				has_terrain_type = { type = hills }
+			}
+		}
+		modifier = {
+			factor = 0.4
+			OR = {
+				AND = {
+					has_terrain_type = { type = flat }
+					NOT = { has_terrain = farmlands }
+					NOT = { has_terrain = grasslands }
+					NOT = { has_terrain = savannah }
+				}
+				province_has_winter = yes
+			}
+		}
+	}
+}
+cocoa = {
+	color = { 0.45 0.21 0.09 }
+	is_valuable = yes
+	province = { local_development_cost = -0.025 }
+
+	chance = {
+		factor = 1
+		modifier = {
+			factor = 0
+			OR = {
+				has_terrain_type = { type = cold }
+				has_terrain_type = { type = hills }
+				has_terrain_type = { type = dry }
+				province_has_winter = yes
+			}
+		}
+		modifier = {
+			factor = 0.5
+			OR = {
+				has_terrain_type = { type = trees }
+				AND = {
+					has_terrain_type = { type = flat }   
+					NOT = { has_terrain = farmlands }
+					NOT = { has_terrain = grasslands }
+					NOT = { has_terrain = savannah }
+				}
+			}
+		}
+		modifier = {
+			factor = 3
+			has_terrain_type = { type = tropical }
+		} 
+	}
+}
+chocolate = { # latent
+	color = { 0.48 0.32 0.01 }
+	is_valuable = yes
+	is_latent = yes
+	province = { local_development_cost = -0.025 }
+
+	trigger = {
+		is_allowed_tradegood = { type = chocolate }
+	} 
+}
+honey = {
+	color = { 0.83 0.73 0.27 }
+	is_valuable = yes
+	province = { province_trade_power_modifier = 0.05 }
+	chance = {
+		factor = 0.9
+		modifier = {
+			factor = 0
+			OR = {
+				has_terrain_type = { type = cold }
+				has_terrain_type = { type = dry }
+				has_terrain = oasis
+			}
+		}
+		modifier = {
+			factor = 0.5
+			OR = {
+				has_winter = severe_winter
+				has_terrain = highlands
+			}
+		}
+		modifier = {
+			factor = 2
+			has_terrain = grasslands
+			has_terrain = farmlands
+			has_terrain = savannah
+		}
+		modifier = {
+			factor = 2.5
+			OR = {
+				has_terrain_type = { type = trees } 
+				has_terrain_type = { type = hills }
+				has_terrain_type = { type = tropical } 
+				has_terrain = marsh
+			}
+		}
+	}
+}
+#################################
+#			CERAMIC
+#################################
+clay = {
+	color = { 0.25 0.39 0.30 }
+	is_valuable = yes
+	province = { local_great_project_upgrade_cost = -0.05 }
+	chance = {
+		factor = 1
+		modifier = {
+			factor = 0.5
+			OR = {
+				AND = {
+					has_terrain_type = { type = flat }
+					NOT = { has_terrain = plains }
+				}
+				has_terrain_type = { type = trees }
+				has_terrain_type = { type = tropical }  
+				has_terrain = oasis
+				has_terrain = coastline
+			}
+		}  
+		modifier = {
+			factor = 3
+			OR = {
+				has_terrain_type = { type = cold }
+				has_terrain_type = { type = dry }
+				has_terrain_type = { type = hills } 
+			}
+		}  
+	}
+}
+chinaware = { # latent
+	color = { 0.18 0.57 0.8 }
+	is_valuable = yes
+	is_latent = yes
+	province = { local_great_project_upgrade_cost = -0.05 }
+
+	trigger = {
+		is_allowed_tradegood = { type = chinaware }
+	} 
+}
+###############################
+#		PLANTS BASED
+###############################
+spices = {
+	color = { 0.4 0.65 0.38 }
+	is_valuable = yes
+	province = { local_hostile_movement_speed = 0.1 }
+	chance = {
+		factor = 1
+		modifier = {
+			factor = 0
+			OR = {
+				has_terrain_type = { type = cold }
+				province_has_winter = yes
+			}
+		}
+		modifier = {
+			factor = 0.5
+			OR = {
+				has_terrain_type = { type = hills } 
+				has_terrain_type = { type = trees }
+				has_terrain = farmlands 
+				has_terrain = marsh
+				has_terrain = coastline
+			} 
+		}
+		modifier = {
+			factor = 2
+			has_terrain_type = { type = tropical }
+		}
+		modifier = {
+			factor = 3
+			OR = {
+				has_terrain_type = { type = dry }
+				has_terrain = plains
+			}  
+		}
+	}
+}
+opium = {
+	color = { 1.0 0.10 0.91 }
+	is_valuable = yes
+	province = { local_unrest = -1 }
+	chance = {
+		factor = 0.8
+		modifier = {
+			factor = 0
+			OR = {
+				has_terrain_type = { type = cold }
+				has_terrain_type = { type = dry }
+				has_terrain = oasis
+			}
+		}
+		modifier = {
+			factor = 0.5
+			OR = {
+				has_terrain = highlands
+				has_terrain_type = { type = tropical } 
+				has_terrain = woods
+				has_terrain = farmlands 
+				has_terrain = steppe
+				province_has_winter = yes
+			} 
+		}
+		modifier = {
+			factor = 1.5
+			province_has_monsoon = yes
+		}
+		modifier = {
+			factor = 2
+			OR = {
+				AND = {
+					has_terrain_type = { type = flat }
+					NOT = { has_terrain = farmlands }
+					NOT = { has_terrain = steppe }
+				}   
+				has_terrain = marsh
+				has_terrain = coastline
+			}  
+		}
+	}
+}
+cotton = {
+	color = { 0.52 0.68 0.6 }
+	is_valuable = yes
+	province = { max_attrition = 0.5 }
+	chance = {
+		factor = 1
+		modifier = {
+			factor = 0
+			OR = {
+				has_terrain_type = { type = cold }
+				has_terrain_type = { type = dry }
+				has_terrain = oasis
+				has_winter = severe_winter
+			}
+		}
+		modifier = {
+			factor = 0.5
+			OR = {
+				has_terrain_type = { type = trees }
+				has_terrain_type = { type = tropical }
+				province_has_winter = yes
+			}
+		}  
+		modifier = {
+			factor = 3
+			OR = {
+				has_terrain_type = { type = flat } 
+				has_terrain = marsh
+			}
+		}
+	}
+}
+olives = {
+	color = { 0.5 0.5 0.01 }
+	is_valuable = yes
+	province = { local_autonomy = -0.05 }
+	
+	chance = {
+		factor = 1
+		modifier = {
+			factor = 0
+			OR = {
+				has_terrain_type = { type = cold } 
+				has_terrain_type = { type = dry }
+				has_terrain = oasis
+			} 
+		}
+		modifier = {
+			factor = 0.5
+			OR = {
+				AND = {
+					has_terrain_type = { type = trees }
+					NOT = { has_terrain = woods }
+				} 
+				has_terrain_type = { type = tropical }
+				has_terrain = marsh
+				has_terrain = steppe
+				province_has_winter = yes
+			}
+		}  
+		modifier = {
+			factor = 3
+			OR = {
+				AND = {
+					has_terrain_type = { type = flat }
+					NOT = { has_terrain = steppe }
+					NOT = { has_terrain = plains }
+				}  
+				has_terrain = hills
+			}
+		} 
+	}
+}
+oils = { # latent
+	color = { 0.01 0.62 0.03 }
+	is_valuable = yes
+	is_latent = yes
+	province = { local_tax_modifier = 0.05 }
+	
+	trigger = {
+		is_allowed_tradegood = { type = oils }
+	} 
+}
+cloves = {
+	color = { 1.0 0.5 0.85 }
+	is_valuable = yes
+	province = { local_friendly_movement_speed = 0.1 }
+	chance = {
+		factor = 1
+		modifier = {
+			factor = 0
+			has_terrain_type = { type = cold }
+		}
+		modifier = {
+			factor = 0.5
+			OR = {
+				province_has_winter = yes
+				has_terrain_type = { type = flat }
+				has_terrain_type = { type = hills }
+				has_terrain = oasis
+				has_terrain = marsh
+				has_terrain_type = { type = dry }
+			}
+		}
+		modifier = {
+			factor = 3
+			OR = {
+				has_terrain_type = { type = tropical }
+				province_has_monsoon = yes
+			}
+		}
+	}
+}
+
+##############################
+#			WOOD
+##############################
+lumber = {
+	color = { 0.49 1.0 0.59 }
+	is_valuable = yes
+	province = { local_build_cost = -0.05 }
+	chance = {
+		factor = 1
+		modifier = {
+			factor = 0
+			OR = {
+				has_terrain_type = { type = cold }
+				has_terrain_type = { type = dry } 
+				AND = {
+					has_terrain_type = { type = flat }  
+					NOT = { has_terrain = savannah } 
+				}
+			}
+		}
+		modifier = {
+			factor = 0.5
+			OR = {
+				has_terrain = coastline
+				has_terrain = oasis
+				has_terrain = highlands
+			}
+		}
+		modifier = {
+			factor = 3
+			OR = {
+				has_terrain_type = { type = trees }
+				has_terrain_type = { type = tropical }
+				has_terrain = hills
+			}
+		}  
+	} 
+}
+tropical_wood = { # latent
+	color = { 0.45 0.47 0.09 }
+	is_valuable = yes
+	is_latent = yes
+	province = { local_build_time = -0.15 }
+	trigger = {
+		is_allowed_tradegood = { type = tropical_wood }
+	} 
+}
+wood = { # latent
+	color = { 0.07 0.33 0.24 }
+	is_valuable = yes
+	is_latent = yes
+	province = { local_build_time = -0.15 }
+	trigger = {
+		is_allowed_tradegood = { type = wood }
+	} 
+}
+###########################
+#			MISC
+###########################
+incense = {
+	color = { 0.89 0.79 0.47 }
+	is_valuable = yes
+	province = { local_missionary_strength = 0.005 }
+	chance = {
+		factor = 0.9
+		modifier = {
+			factor = 0
+			has_terrain_type = { type = flat }
+		} 
+		modifier = {
+			factor = 2
+			has_terrain_type = { type = trees }
+		}
+		modifier = {
+			factor = 3
+			OR = {
+				has_terrain_type = { type = tropical }
+				has_terrain_type = { type = hills }
+			} 
+		}
+	}
+}
+dyes = {
+	color = { 0.63 0.17 0.50 }
+	is_valuable = yes
+	province = { local_prosperity_growth = 0.15 }
+	
+	chance = {
+		factor = 1
+		modifier = {
+			factor = 0
+			OR = {
+				has_terrain_type = { type = cold } 
+				has_terrain_type = { type = dry }
+				has_terrain = oasis
+			} 
+		}
+		modifier = {
+			factor = 0.5
+			OR = {
+				has_terrain_type = { type = flat } 
+				has_terrain = marsh
+				has_terrain = coastline
+			}
+		}
+	}
+}
+glass = {
+	color = { 0.0 0.60 0.45 }
+	is_valuable = yes
+	province = { local_institution_spread = 0.05 }
+	chance = {
+		factor = 1
+		modifier = {
+			factor = 0
+			OR = {
+				has_terrain_type = { type = cold } 
+				has_terrain_type = { type = tropical }
+			} 
+		}
+		modifier = {
+			factor = 0.5
+			OR = {
+				has_terrain_type = { type = dry }
+				has_terrain = oasis
+				NOT = { province_has_winter = yes }
+				has_terrain_type = { type = trees }
+				has_terrain = steppe
+			}   
+		}
+	}
+}
+paper = {
+	color = { 0.9 0.86 0.71 }
+	is_valuable = yes
+	is_latent = yes
+	province = { local_state_maintenance_modifier = -0.2 }
+	trigger = {
+		is_allowed_tradegood = { type = paper }
+	}
+}
+
+unknown = {
+	color = { 0.5 0.5 0.5 }
+}

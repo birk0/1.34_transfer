@@ -1,0 +1,102 @@
+guiTypes = {
+
+	windowType = {
+		name = "holy_orders_view"
+		position = { x=438 y=153 } #12,419  --165
+		size = { x=50 y=200 }
+
+		iconType = {
+			name = "background"
+			spriteType = "GFX_mod_empty"
+			Orientation = "UPPER_LEFT"
+			position = { x = 0 y = -15 }
+		}
+
+		instantTextBoxType = {
+			name = "title"
+			position = { x = 0 y = 0 }
+			font = "vic_22"
+			text = ""
+			maxWidth = 1
+			maxHeight = 1
+			fixedsize = yes
+		}
+		
+		listboxType = {
+			name = "holy_orders_list"
+			position = { x = 0 y = 0 }
+
+			if_resolution = {
+				max_height = 899
+				size = { x = 50 y = 72 }
+			}
+			if_resolution = {
+				min_height = 900
+				size = { x = 50 y = 72 }
+			}
+
+			scrollbartype = "standardlistbox_slider"
+			spacing = 1
+		}
+
+		instantTextBoxType = {
+			name = "founder"
+			position = { x = 0 y = 0 }
+			font = "vic_22"
+			maxWidth = 1
+			maxHeight = 1
+			fixedsize = yes
+		}
+	}
+
+	windowType = {
+		name = "holy_order_item"
+		position = { x = 0 y = 0 } #0,0
+		size = { x = 36 y = 36}
+
+		guiButtonType = {
+			name = "button"
+			position = { x = 0 y = 0 } #-3,-5
+			quadTextureSprite ="GFX_holy_orders_button"	
+		}
+		
+		iconType = {
+			name = "icon"
+			position = { x = 0 y = 0 }
+			quadTextureSprite ="GFX_idea_unknown"
+			alwaystransparent = yes
+		}
+		
+		instantTextBoxType = {
+			name = "description"
+			position = { x = 3 y = 25 } #64,10
+			font = "vic_18"
+			maxWidth = 1
+			maxHeight = 1
+			format = left
+			fixedsize = yes
+		}
+	}
+
+	windowType = {
+		name = "existing_order_item"
+		position = { x = 0 y = 0 }
+		size = { x = 36 y = 36 }
+		
+		iconType = {
+			name = "icon"
+			position = { x = 0 y = 0 }
+			quadTextureSprite ="GFX_idea_unknown"	
+		}
+		
+		instantTextBoxType = {
+			name = "description"
+			position = { x = 3 y = 25 }
+			font = "vic_18"
+			maxWidth = 1
+			maxHeight = 1
+			format = left
+			fixedsize = yes
+		}
+	}
+}

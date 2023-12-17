@@ -1,0 +1,19 @@
+# Forcalquier
+
+owner = PRO
+controller = PRO 
+capital = "Forcalquier"
+is_city = yes
+culture = occitain
+religion = catholic
+hre = no
+base_tax = 3 
+base_production = 3
+trade_goods = wool
+base_manpower = 2
+add_core = PRO
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

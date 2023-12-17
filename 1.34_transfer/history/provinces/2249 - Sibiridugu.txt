@@ -1,0 +1,7 @@
+#Prov2249 - Sibiridugu
+culture = mali
+religion = shamanism  #Fetishism
+
+base_tax = 1
+base_production = 1
+base_manpower = 1

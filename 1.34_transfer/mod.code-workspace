@@ -1,0 +1,100 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"cwtools.experimental": false,
+		"cwtools.errors.ignore": [
+
+
+			//"CW240", "CW263" //this can cause issues beware
+			
+		],
+		"files.encoding": "iso88591",
+		"[eu4]": {
+			"files.encoding": "iso88591",
+			"files.autoGuessEncoding": false
+		},
+		"files.watcherExclude": {
+			"**/.git/objects/**": true,
+			"**/node_modules/**": true,
+		},
+		"cwtools.errors.ignorefiles": [
+
+			"README.txt",
+			"credits.txt",
+			"credits_l_simp_chinese.txt",
+			"reference.txt",
+			"startup_info.txt",
+
+			//ages
+			"00_default.txt",
+
+			//bookmarks
+			"misc_setup.txt",
+
+			//custom_ideas
+			"05_leviathan_custom_ideas.txt",
+			"07_lotn_custom_ideas.txt",
+
+			//decrees
+			"00_china.txt",
+
+			//diasters
+			"bonfire_of_the_vanities.txt",
+			"french_empire_diaster.txt",
+
+			//agendas
+			"01_church_agendas.txt",
+			"03_burgher_agendas.txt",
+
+			//estate privileges
+			"00_privileges.txt",
+
+			//estates
+			"01_church.txt",
+			"03_burghers.txt",
+
+			//reforms
+			"00_government_reforms.txt",
+			"01_government_reforms_monarchies.txt",
+			"02_government_reforms_republics.txt",
+			"03_government_reforms_theocracies.txt",
+			"04_government_reforms_tribes.txt",
+
+			//holy orders
+			"00_holy_orders.txt",
+
+			//ideas
+			"00_basic_ideas.txt",
+
+			//incidents
+			"00_isolationism.txt",
+			//institutions
+			"00_Core.txt",
+
+			//natives
+			"00_natives.txt",
+
+			//onactions
+			"00_on_actions.txt",
+
+			//PTMS
+			"00_modifiers.txt",
+			"mod_modifiers.txt",
+
+			//religion
+			"00_religion.txt",
+
+			//scriptedeffects
+
+			"00_scripted_effects.txt",
+			"00_scripted_effects_for_on_actions.txt",
+			"00_scripted_effects_for_simple_bonuses_penalties.txt",
+			"00_mod_scripted_effects.txt",
+
+		],
+	}
+}

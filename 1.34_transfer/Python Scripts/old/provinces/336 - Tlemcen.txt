@@ -1,0 +1,28 @@
+#336 - Tlemcen
+
+owner = TLC
+controller = TLC 
+culture = berber
+religion = sunni
+capital = "Tlemcen"
+trade_goods = cloth
+hre = no
+#Changes
+base_tax = 6 
+base_production = 7
+base_manpower = 4
+add_province_triggered_modifier = great_tlemcen_fortress
+#
+is_city = yes
+fort_15th = yes #Tlemcen Fortifications, site of many long sieges - Controls this area.
+add_core = TLC
+#discovered_by = western
+#discovered_by = eastern
+#discovered_by = muslim
+#discovered_by = ottoman
+extra_cost = 16
+center_of_trade = 2
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

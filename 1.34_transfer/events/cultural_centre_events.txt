@@ -1,0 +1,6575 @@
+###########################################################
+#  Events for Mechanics and other misc stuff within mod
+###########################################################
+
+namespace = cultural_events
+
+#######################################################################
+#           STATIC EVENTS (dont require changing)
+#######################################################################
+
+country_event = { #Event for countries that got their monument destroyed
+   id = cultural_events.9
+   title = "cultural_events.9.t"
+   desc = "cultural_events.9.d"
+   picture = wihgfx_FEMALE_GENERAL_eventPicture
+   is_triggered_only = yes
+   
+   immediate = { hidden_effect = { clr_country_flag = our_monument_was_destroyed } }
+   
+   option = {
+      name = "cultural_events.9.a"
+      custom_tooltip = monument_lost_tt
+   }
+}
+
+province_event = { #Upgrades to Tier 1
+   id = cultural_events.5
+   title = "cultural_events.5.t"
+   desc = "cultural_events.5.d"
+   picture = UNIVERSITY_eventPicture
+   is_triggered_only = yes
+   trigger = { NOT = { has_province_flag = monument_destroyed } owner = { culture_group = ROOT } }
+   
+   option = {
+      name = "cultural_events.5.a"
+      custom_tooltip = upgrade_tier1_tooltip
+      set_province_flag = tier_1_cultural_center
+      owner = { add_prestige = 10 }
+   }
+}
+
+province_event = { #Upgrades To Tier 2
+   id = cultural_events.6
+   title = "cultural_events.5.t"
+   desc = "cultural_events.5.d"
+   picture = UNIVERSITY_eventPicture
+   is_triggered_only = yes
+   trigger = { NOT = { has_province_flag = monument_destroyed } owner = { culture_group = ROOT } }
+   
+   option = {
+      name = "cultural_events.6.a"
+      custom_tooltip = upgrade_tier2_tooltip
+      set_province_flag = tier_1_cultural_center
+      owner = { add_prestige = 15 }
+   }
+}
+
+province_event = { #Upgrades to Tier 3
+   id = cultural_events.7
+   title = "cultural_events.7.t"
+   desc = "cultural_events.7.d"
+   picture = UNIVERSITY_eventPicture
+   is_triggered_only = yes
+   trigger = { NOT = { has_province_flag = monument_destroyed } owner = { culture_group = ROOT } }
+   
+   option = {
+      name = "cultural_events.7.a"
+      hidden_effect = { owner = { set_government_rank = 3 } }
+      owner = { add_prestige = 15 }
+   }
+}
+
+province_event = { #If the monument is no longer tier 1+, flag that fires the event below is removed
+   id = cultural_events.67
+   hidden = yes
+   picture = "none"
+   title = "none"
+   desc = "none"
+   trigger = {
+      has_province_flag = tier_1_cultural_center
+      has_great_project = {
+         type = any
+         tier = 0
+      }
+   }
+   option = {
+      ai_chance = { factor = 1 }
+      clr_province_flag = tier_1_cultural_center
+   }
+}
+
+country_event = { #Countries that dont yet have a claim to their cultural center get the claim (if above tier1)
+   id = cultural_events.4
+   title = "cultural_events.4.t"
+   desc = "cultural_events.4.d"
+   picture = CITY_VIEW_eventPicture
+
+   trigger = {
+      NOT = { has_country_flag = culture_backed_down }
+      is_free_or_tributary_trigger = yes
+		any_cultural_centre = {
+			culture_group = ROOT
+			owned_by = ROOT
+			has_great_project = {
+				tier = 1
+				type = any
+			}
+			NOT = { has_province_flag = monument_destroyed }
+         NOT = { is_core = ROOT }
+		}
+   }
+
+   immediate = { 
+      hidden_effect = {
+         random_province = {
+            limit = {
+               has_province_flag = tier_1_cultural_center
+               NOT = { has_province_flag = monument_destroyed }
+               culture_group = PREV
+            }
+            save_event_target_as = cultural_centre
+            owner = { save_event_target_as = cultural_owner }
+         }
+      }
+   }
+   
+   option = {
+      name = "cultural_events.4.a"
+      ai_chance = {
+         factor = 1.5
+         modifier = { factor = 100 is_rival = event_target:cultural_owner }
+      }
+      add_core = event_target:cultural_centre
+   }
+   option = {
+      name = "cultural_events.4.b"
+      ai_chance = {
+         factor = 1
+         modifier = { factor = 100 alliance_with = event_target:cultural_owner }
+      }
+      set_country_flag = culture_backed_down
+      event_target:cultural_owner = { add_opinion = { who = ROOT modifier = opinion_good_relations } }
+   }
+}
+province_event = { #Repair the monument?
+   id = cultural_events.10
+   title = "cultural_events.10.t"
+   desc = "cultural_events.10.d"
+   Picture = CITY_DEVELOPMENT_eventPicture
+   trigger = {
+      has_province_flag = monument_destroyed
+      owner = {
+         culture_group = ROOT
+         NOT = { has_country_flag = monument_disrepair }
+      }
+      NOT = { has_active_triggered_province_modifier = culture_center }
+   }
+   
+   option = {
+      name = "cultural_events.10.a"
+      ai_chance = { factor = 0.25 }
+      custom_tooltip = repair_monument_tt
+      owner = { add_years_of_income = -5 }
+      hidden_effect = { clr_province_flag = monument_destroyed }
+   }
+   option = {
+     name = "cultural_events.10.b"
+     ai_chance = { factor = 1 }
+     custom_tooltip = monument_disrepair_tt
+     owner = { add_prestige = -25 }
+     hidden_effect = { owner = { set_country_flag = monument_disrepair } }
+   }
+}
+country_event = { #Automatically upgrades Cultural centers for the AI
+   id = cultural_events.12
+   hidden = yes
+   picture = "none"
+   title = "none"
+   desc = "none"
+   trigger = { 
+      ai = yes
+      if = {
+         limit = { is_subject = yes }
+         overlord = { ai = yes }
+      }
+      NOT = { current_age = age_of_discovery }
+      if = {
+         limit = {
+            current_age = age_of_reformation
+         }
+         any_owned_province = {
+            culture_group = ROOT
+            NOT = { has_province_flag = monument_destroyed }
+            NOT = {
+               OR = {
+                  has_great_project = {
+                     type = any
+                     tier = 1
+                  }
+                  has_great_project = {
+                     type = any
+                     tier = 2
+                  }
+                  has_great_project = {
+                     type = any
+                     tier = 3
+                  }
+               }
+            }
+         }
+      }
+      else_if = {
+         limit = {
+            current_age = age_of_absolutism
+         }
+         any_owned_province = {
+            culture_group = ROOT 
+            NOT = { has_province_flag = monument_destroyed }
+            NOT = {
+               OR = {
+                  has_great_project = {
+                     type = any
+                     tier = 2
+                  }
+                  has_great_project = {
+                     type = any
+                     tier = 3
+                  }
+               }
+            }
+         }
+      }
+      else_if = {
+         limit = {
+            current_age = age_of_industry
+         }
+         any_owned_province = {
+            culture_group = ROOT 
+            NOT = { has_province_flag = monument_destroyed }
+            NOT = {
+               has_great_project = {
+                  type = any
+                  tier = 3
+               }
+            }
+         }
+      }
+   } 
+   immediate = {
+      random_owned_province = {
+         limit = {
+            culture_group = ROOT
+            OR = {
+               has_great_project = { type = any tier = 0 }
+               has_great_project = { type = any tier = 1 }
+               has_great_project = { type = any tier = 2 }
+            }
+            NOT = {
+               OR = {
+                  has_great_project = { type = any tier = 3 }
+                  has_province_flag = monument_destroyed
+               }
+            }
+         }
+         save_event_target_as = cultural_center
+      }
+   }
+   mean_time_to_happen = { months = 120 }
+    
+   option = {
+      event_target:cultural_center = {
+         if = {
+            limit = { current_age = age_of_reformation }
+            upgrade_cultural_center_to = {
+               level = 1
+            }
+         }
+         else_if = {
+            limit = { current_age = age_of_absolutism }
+            upgrade_cultural_center_to = {
+               level = 2
+            }
+         }
+         else_if = {
+            limit = { current_age = age_of_industry }
+            upgrade_cultural_center_to = {
+               level = 3
+            }
+         }
+      }
+   }
+}
+country_event = { #Upgrades Cultural Center
+   id = cultural_events.3
+   hidden = yes
+   picture = "none"
+   title = "none"
+   desc = "none"
+   
+   trigger = { 
+      any_cultural_centre = {
+         has_province_flag = upgrade
+         culture_group = ROOT
+         owned_by = ROOT
+         NOT = { has_province_flag = monument_destroyed }
+      }
+   }
+   mean_time_to_happen = { days = 1 }
+   
+   immediate = {
+      random_owned_province = {
+         limit = {
+            has_province_flag = upgrade
+            culture_group = ROOT
+            NOT = { has_province_flag = monument_destroyed }
+         }
+         save_event_target_as = cultural_center
+      }
+   }
+   
+   option = {
+      ai_chance = { factor = 1 }
+      event_target:cultural_center = {
+         if = {
+            limit = { 
+               has_great_project = { type = any tier = 0 }
+               check_variable = { which = culture_var value = 50 }
+            }
+            upgrade_cultural_center_effect = {
+               level = 1
+               value = 50
+            }
+         }
+         if = {
+            limit = { 
+               has_great_project = { type = any tier = 1 }
+               check_variable = { which = culture_var value = 75 }
+            }
+            upgrade_cultural_center_effect = {
+               level = 2
+               value = 75
+            }
+         }
+         if = {
+            limit = { 
+               has_great_project = { type = any tier = 2 }
+               check_variable = { which = culture_var value = 100 }
+            }
+            upgrade_cultural_center_effect = {
+               level = 3
+               value = 100
+            }
+         }
+         clr_province_flag = upgrade
+      }
+   }
+}
+
+country_event = { #Sets variables to all Cultural Centers
+   id = cultural_events.1
+   picture = "none"
+   title = "none"
+   desc = "none"
+   is_triggered_only = yes
+   fire_only_once = yes
+   hidden = yes
+   
+   option = {
+      ai_chance = { factor = 1 }
+   }
+}
+
+##############################################################
+#           DYNAMIC EVENTS (require changing)
+#  When adding new cultural centres remember to update effects
+#  -  upgrade_cultural_center_to = {}
+#  -  upgrade_cultural_center_effect = {}
+#  and triggers:
+#
+#  and province triggered modifier:
+#  -  culture_center = {}
+##############################################################
+
+province_event = { #Logs the amount of provinces converted by a specific Culture group
+   id = cultural_events.2
+   is_triggered_only = yes
+   hidden = yes
+   desc = "none"
+   picture = "none"
+   title = "none"
+   
+   immediate = {
+      hidden_effect = {
+         #New Culture Groups must be added here
+         trigger_switch = {
+            on_trigger = culture_group
+            iberian = { 219 = { change_variable = { which = culture_var value = 1 } set_province_flag = upgrade } }
+            maghrebi = { 344 = { change_variable = { which = culture_var value = 1 } set_province_flag = upgrade } }
+            french = { 183 = { change_variable = { which = culture_var value = 1 } set_province_flag = upgrade } }
+            british = { 236 = { change_variable = { which = culture_var value = 1 } set_province_flag = upgrade } }
+            latin = { 118 = { change_variable = { which = culture_var value = 1 } set_province_flag = upgrade } }
+            tibetan_group = { 677 = { change_variable = { which = culture_var value = 1 } set_province_flag = upgrade } }
+            altaic = { 2190 = { change_variable = { which = culture_var value = 1 } set_province_flag = upgrade } }
+            japanese_g = { 1029 = { change_variable = { which = culture_var value = 1 } set_province_flag = upgrade } }
+         }
+         #Special Triggers for Sinified Cultures
+         if = {
+            limit = { owner = { has_country_flag = sino_culture_center_flag } }
+            trigger_switch = {
+               on_trigger = culture
+               tibetan_group_new = { 677 = { change_variable = { which = culture_var value = 1 } set_province_flag = upgrade } }
+               altaic_new = { 2190 = { change_variable = { which = culture_var value = 1 } set_province_flag = upgrade } }
+               japanese_g_new = { 1029 = { change_variable = { which = culture_var value = 1 } set_province_flag = upgrade } }
+            }
+         }
+         else_if = {
+            limit = { culture_group = east_asian }
+            1821 = { change_variable = { which = culture_var value = 1 } set_province_flag = upgrade }
+         }
+      }
+   }
+   
+   option = {}
+}
+
+province_event = { #Event for the country that destroys the monument
+   id = cultural_events.8
+   title = "cultural_events.8.t"
+   desc = "cultural_events.8.d"
+   picture = SIEGE_eventPicture
+   is_triggered_only = yes
+   immediate = { hidden_effect = { owner = { save_event_target_as = owner } } }
+   
+   option = {
+      name = "cultural_events.8.a"
+      custom_tooltip = conquered_monument_tt
+   }
+   
+   after = {
+      every_country = {
+         limit = { has_country_flag = our_monument_was_destroyed }
+         country_event = { id = cultural_events.9 days = 1 }
+      }
+   }
+}
+
+
+
+
+
+
+
+#############################
+# Court & Country Rework
+#############################
+
+
+
+
+
+
+
+#Starts court and country
+country_event = {
+   id = cultural_events.35
+   title = "cultural_events.35.t"
+   desc = {
+      trigger = { has_any_estates = yes }  
+      desc = "cultural_events.35.d"
+   }
+   desc = {
+      trigger = { NOT = { has_any_estates = yes } }
+      desc = "cultural_events.35.desc"
+   }  
+   picture = BURGHER_ESTATE_UPSET_eventPicture
+   is_triggered_only = yes
+   
+   immediate = {
+      hidden_effect = {
+         if = {
+            limit = { has_any_estates = yes }
+            add_estate_influence_modifier = {
+               estate = all
+               duration = 10950 #estimated duration of cac
+               influence = -10
+            }
+            set_country_flag = had_court_and_country
+            set_country_flag = CAC_event_1
+         }
+         else = {
+            set_country_flag = had_court_and_country
+            set_country_flag = CAC_event_13 #cultural_events.52
+            set_variable = { which = monarchy_support_var value = 0 }
+            set_variable = { which = republic_support_var value = 0 } 
+         }
+      }
+   }
+   
+   option = { #I am the state
+      name = "cultural_events.35.a"
+      trigger = { has_any_estates = yes }
+      ai_chance = { factor = 100 }
+      set_country_flag = authority_imposed #Makes events that increase authority happen sooner
+      custom_tooltip = CAC_privilege_revoke_tooltip
+      random_estate = { add_loyalty = -5 }
+      capital_scope = {
+         start_revolt = {
+            size = 3
+         }
+      }
+   }
+   
+   option = { #Attempt to negotiate
+      name = "cultural_events.35.b"
+      trigger = { has_any_estates = yes }
+      ai_chance = { factor = 0 }
+      custom_tooltip = CAC_privilege_slower_revoke_tooltip
+      set_country_flag = authority_questioned #Makes events that increase authority happen slower
+      random_estate = { add_loyalty = 10 }
+   }
+   
+   option = { #Protect the Republic!
+      name = "cultural_events.35.c"
+      ai_chance = { factor = 90 }
+      trigger = { NOT = { has_any_estates = yes } }
+      custom_tooltip = CAC_privilege_revoke_tooltip
+      add_republican_tradition = 5
+      random_owned_province = { 
+         limit = {
+            island = no
+            if = {
+               limit = { owner = { ai = yes } }
+               same_continent = capital
+            }
+         }
+         start_revolt = {
+				size = 2
+			}
+      }
+      change_variable = {
+         which = republic_support_var
+         value = 1
+      }
+   }
+   
+   option = { #Negotiate with these troublemakers
+      name = "cultural_events.35.e"
+      ai_chance = { factor = 10 }
+      trigger = { NOT = { has_any_estates = yes } }
+      add_republican_tradition = -10
+      custom_tooltip = CAC_privilege_slower_revoke_tooltip
+      add_years_of_income = 0.3
+      change_variable = {
+         which = monarchy_support_var
+         value = 1
+      }
+   }
+}
+#Ends court and country
+country_event = {
+   id = cultural_events.36
+   title = "cultural_events.36.t"
+   desc = {
+      trigger = { has_any_estates = yes }
+      desc = "cultural_events.36.d"
+   }
+   desc = {
+      trigger = { NOT = { has_any_estates = yes } }
+      desc = "cultural_events.36.desc"
+   }
+   picture = GOOD_WITH_MONARCH_eventPicture
+   is_triggered_only = yes
+   
+   immediate = {
+      hidden_effect = {
+         clr_country_flag = had_court_and_country
+         clr_country_flag = CAC_curbing_estate_power
+         if = {
+            limit = { has_country_flag = CAC_broke_to_rebels }
+            clr_country_flag = CAC_broke_to_rebels
+            set_country_flag = failed_court_and_country
+         }
+         else_if = {
+            limit = { 
+               has_any_estates = yes
+               NOT = { has_country_flag = CAC_ruled_by_despot }
+            }
+            if = {
+               limit = {
+                  ai = yes
+                  NOT = { any_estate_has_privilege = { value = 2 } }
+               }
+               set_country_flag = resolved_court_and_country
+            }
+            else_if = {
+               limit = { any_estate_has_privilege = { value = 1 } }
+               set_country_flag = failed_court_and_country
+            }
+            else_if = {
+               limit = { NOT = { any_estate_has_privilege = { value = 1 } } }
+               set_country_flag = resolved_court_and_country
+            }
+         }
+         else = {
+            if = {
+               limit = { 
+                  check_variable = {
+                     which = monarchy_support_var
+                     value = 5
+                  }
+               }
+               set_country_flag = CAC_republic_chose_monarchy
+            }
+            else_if = {
+               limit = {
+                  check_variable = {
+                     which = republic_support_var
+                     value = 5
+                  }
+               }
+               set_country_flag = CAC_republic_chose_republic
+            }
+            else_if = {
+               limit = {
+                  OR = {
+                     NOT = {
+                        check_variable = {
+                           which = republic_support_var
+                           value = 5
+                        }
+                     }
+                     NOT = {
+                        check_variable = {
+                           which = monarchy_support_var
+                           value = 5
+                        }
+                     }
+                  }
+               }
+               set_country_flag = failed_court_and_country
+            }
+         }
+      }
+   }
+   option = {
+      name = "cultural_events.36.a"
+      trigger = { 
+         has_country_flag = failed_court_and_country
+         has_any_estates = yes 
+      }
+      ai_chance = { factor = 1 }
+      custom_tooltip = failed_court_and_country_tt
+      add_country_modifier = {
+         name = failed_court_and_country
+         duration = -1
+         hidden = yes
+      }
+   }
+   
+   option = {
+      name = "cultural_events.36.b"
+      trigger = { 
+         has_country_flag = resolved_court_and_country 
+         has_any_estates = yes
+      }
+      ai_chance = { factor = 1 }
+      custom_tooltip = resolved_court_and_country_tt
+      add_stability = 1
+      add_country_modifier = {
+         name = resolved_court_and_country
+         duration = -1
+         hidden = yes
+      }
+   }
+   
+   option = {
+      name = "cultural_events.36.c"
+      trigger = { has_country_flag = CAC_republic_chose_republic }
+      ai_chance = { factor = 1 }
+      custom_tooltip = CAC_republic_chose_republic_tt
+      add_stability = 1
+      add_country_modifier = {
+         name = CAC_republic_chose_republic
+         duration = -1
+         hidden = yes
+      }
+      set_country_flag = resolved_court_and_country
+   }
+   
+   option = {
+      name = "cultural_events.36.e"
+      trigger = { has_country_flag = CAC_republic_chose_monarchy }
+      ai_chance = { factor = 1 }
+      add_stability = -1
+      define_ruler = {
+         adm = 1
+         dip = 1
+         mil = 3
+      }
+      if = {
+         limit = { 
+            has_country_flag = CAC_ruled_by_despot
+            has_reform = presidential_despot_reform
+         }
+         remove_government_reform = presidential_despot_reform
+         clr_country_flag = CAC_ruled_by_despot
+      }   
+      change_government_to_monarchy = yes
+      add_government_reform = autocracy_reform
+      hidden_effect = { country_event = { id = cultural_events.56 days = 1 } }
+      set_country_flag = resolved_court_and_country 
+      #While you wont get the +25 absolutism by flipping monarchy, youll still be able to grant privileges without penalty
+   }
+   
+   option = {
+      name = "cultural_events.36.f"
+      trigger = {
+        NOT = { has_any_estates = yes }
+        has_country_flag = failed_court_and_country
+      }
+      ai_chance = { factor = 1 }
+      custom_tooltip = failed_court_and_country_tt
+      add_country_modifier = {
+         name = failed_court_and_country
+         duration = -1
+         hidden = yes
+      }
+   }
+   
+   after = {
+      clear_CAC_triggers = yes
+   }     
+}
+#If country is not eligible for the disaster
+country_event = {
+   id = cultural_events.37
+   title = "cultural_events.37.t"
+   desc = {
+      trigger = { has_any_estates = yes }
+      desc = "cultural_events.37.d"
+   }
+   desc = {
+      trigger = { NOT = { has_any_estates = yes } }
+      desc = "cultural_events.37.desc"
+   }
+   picture = GOOD_WITH_MONARCH_eventPicture
+   
+   trigger = {
+      current_age = age_of_absolutism
+      NOT = { 
+         OR = {
+            has_country_flag = had_court_and_country
+            has_country_flag = failed_court_and_country
+            has_country_flag = resolved_court_and_country
+            has_country_flag = CAC_republic_chose_republic
+            has_country_flag = CAC_republic_chose_monarchy
+            has_country_flag = CAC_ruled_by_despot
+            has_disaster = court_and_country
+         }
+      }
+      OR = {
+         AND = {
+            has_any_estates = yes
+            NOT = { any_estate_has_privilege = { value = 1 } }
+         }
+         AND = {
+            NOT = { has_any_estates = yes }
+            republican_tradition = 100
+            stability = 3
+         }
+      }
+      is_free_or_tributary_trigger = yes
+      num_of_cities = 5
+   }
+   
+   mean_time_to_happen = { months = 120 }
+   
+   immediate = {
+      hidden_effect = {
+         if = {
+            limit = { has_any_estates = yes }
+            set_country_flag = resolved_court_and_country
+         }
+         else = {
+            set_country_flag = CAC_republic_chose_republic
+         }
+      }
+   }
+   
+   option = {
+      name = "cultural_events.37.a"
+      trigger = { has_country_flag = resolved_court_and_country }
+      ai_chance = { factor = 1 }
+      custom_tooltip = resolved_court_and_country_tt
+      add_stability = 1
+      add_country_modifier = {
+         name = resolved_court_and_country
+         duration = -1
+         hidden = yes
+      }
+   }
+   
+   option = {
+      name = "cultural_events.37.b"
+      trigger = { has_country_flag = CAC_republic_chose_republic }
+      ai_chance = { factor = 1 }
+      custom_tooltip = CAC_republic_chose_republic_tt
+      add_stability = 1
+      add_country_modifier = {
+         name = CAC_republic_chose_republic
+         duration = -1
+         hidden = yes
+      }
+   }
+}
+#If its no longer the Age of Absolutism
+country_event = {
+   id = cultural_events.63
+   title = "cultural_events.63.t"
+   desc = "cultural_events.63.d"
+   picture = BAD_WITH_MONARCH_eventPicture
+   trigger = {
+      current_age = age_of_industry
+      NOT = {
+         OR = {
+            has_country_flag = failed_court_and_country
+            has_country_flag = resolved_court_and_country
+         }
+      }
+   }
+   option = {
+      name = "cultural_events.63.a"
+      set_country_flag = failed_court_and_country 
+      custom_tooltip = failed_court_and_country_tt
+      add_country_modifier = {
+         name = failed_court_and_country
+         duration = -1
+         hidden = yes
+      }
+   }
+}
+
+#Resets privilege counter
+country_event = {
+   id = cultural_events.38
+   title = "cultural_events.38.t"
+   desc = "cultural_events.38.d"
+   picture = REFORM_eventPicture
+   is_triggered_only = yes
+   
+   trigger = { 
+      has_disaster = court_and_country
+      check_variable = {
+         which = estate_revoke_var
+         value = 1
+      }
+      OR = {
+         has_country_flag = authority_questioned
+         has_country_flag = authority_imposed
+      }
+      NOT = {
+         OR = {
+            num_of_rebel_controlled_provinces = 1
+            num_of_rebel_armies = 1
+         }
+      }
+   }
+   
+   mean_time_to_happen = {
+      days = 1
+      modifier = {
+         factor = 0.4
+         has_country_flag = authority_questioned
+      }
+   }
+   
+   immediate = {
+      hidden_effect = {
+         clr_country_flag = authority_imposed
+         clr_country_flag = authority_questioned
+      }
+   }
+   
+   option = { #Allows privilege revoke
+      name = "cultural_events.38.a"
+      ai_chance = { factor = 90 }
+      random_owned_province = { 
+         limit = {
+            island = no
+            if = {
+               limit = { owner = { ai = yes } }
+               same_continent = capital
+            }
+         }  
+         start_revolt = {
+				size = 2
+			}
+      }
+      random_owned_province = { 
+         limit = {
+            island = no
+            if = {
+               limit = { owner = { ai = yes } }
+               same_continent = capital
+            }
+         } 
+         start_revolt = {
+				size = 1
+			}
+      }
+      random_owned_province = { 
+         limit = {
+            island = no
+            if = {
+               limit = { owner = { ai = yes } }
+               same_continent = capital
+            }
+         } 
+         start_revolt = {
+				size = 1
+			}
+      }
+      add_stability = -1
+      custom_tooltip = privilege_can_be_revoked_tooltip
+      hidden_effect = {
+         set_variable = {
+            which = estate_revoke_var
+            value = 0
+         }
+      }
+      random_estate = {
+         add_influence = -5
+         desc = CAC_can_revoke_privilege_influence_modifier
+         duration = 1095
+      }
+   }
+   option = { #Back down
+      name = "cultural_events.38.b"
+      ai_chance = { factor = 10 }
+      add_legitimacy = -10
+      add_prestige = -10
+      custom_tooltip = privilege_cant_be_revoked_tooltip
+      random_estate = { add_loyalty = 20 }
+   }
+}
+#Advisor sides with estates
+country_event = {
+   id = cultural_events.39
+   title = "cultural_events.39.t"
+   desc = "cultural_events.39.d"
+   picture = ADVISOR_eventPicture
+   
+   trigger = {
+      has_disaster = court_and_country
+      has_country_flag = CAC_event_1
+      NOT = {
+         has_country_flag = authority_imposed
+         has_country_flag = authority_questioned
+         num_of_rebel_controlled_provinces = 1
+         num_of_rebel_armies = 1
+      }
+   }
+   mean_time_to_happen = { months = 9 }
+   
+   immediate = {
+      hidden_effect = {
+         clr_country_flag = CAC_event_1
+         set_country_flag = CAC_event_2
+      }
+   }
+   
+   option = { #kill them!
+      name = "cultural_events.39.a"
+      ai_chance = { factor = 100 }
+      custom_tooltip = CAC_privilege_revoke_tooltip
+      remove_advisor_by_category = ADM
+      random_owned_province = {
+         limit = {
+            island = no
+            if = {
+               limit = { owner = { ai = yes } }
+               same_continent = capital
+            }
+         } 
+         start_revolt = {
+				size = 2
+			}
+      }
+      add_years_of_income = -0.75
+      add_adm_power = -50
+      set_country_flag = authority_imposed
+   }
+   option = { #Back down
+      name = "cultural_events.39.b"
+      ai_chance = { factor = 0 }
+      custom_tooltip = CAC_privilege_slower_revoke_tooltip
+      add_adm_power = 50
+      add_years_of_income = 0.375
+      set_country_flag = authority_questioned
+      random_estate = { add_loyalty = 10 }
+      random_estate = {
+         add_influence = 5
+         duration = 1095
+         desc = CAC_sided_with_estates_advisor_influence_modifier
+      }
+   }
+}
+#Estates demand autonomy
+country_event = {
+   id = cultural_events.40
+   title = "cultural_events.40.t"
+   desc = "cultural_events.40.d"
+   picture = NOBLE_ESTATE_DEMANDS_eventPicture
+   
+   trigger = {
+      has_disaster = court_and_country
+      has_country_flag = CAC_event_2
+      NOT = {
+         OR = {
+            has_country_flag = authority_imposed
+            has_country_flag = authority_questioned
+            num_of_rebel_controlled_provinces = 1
+            num_of_rebel_armies = 1
+         }
+      }
+   }
+   mean_time_to_happen = { months = 9 }
+   immediate = {
+      hidden_effect = {
+         clr_country_flag = CAC_event_2
+         set_country_flag = CAC_event_3
+         random_owned_province = { 
+            limit = {
+               island = no
+               if = {
+                  limit = { owner = { ai = yes } }
+                  same_continent = capital
+               }
+            }
+            save_event_target_as = province1 
+         }
+         random_owned_province = { 
+            limit = {
+               island = no
+               if = {
+                  limit = { owner = { ai = yes } }
+                  same_continent = capital
+               }
+            }
+            save_event_target_as = province2 
+         }
+         random_owned_province = { 
+            limit = {
+               island = no
+               if = {
+                  limit = { owner = { ai = yes } }
+                  same_continent = capital
+               }
+            }
+            save_event_target_as = province3 
+         }
+      }
+   }
+   
+   option = { #Refuse!
+      name = "cultural_events.40.a"
+      ai_chance = { factor = 100 }
+      custom_tooltip = CAC_privilege_revoke_tooltip
+      event_target:province1 = { start_revolt = { size = 2 } }
+      event_target:province2 = { start_revolt = { size = 1 } }
+      event_target:province3 = { start_revolt = { size = 1 } }
+      set_country_flag = authority_imposed
+      random_list = {
+         33 = { add_adm_power = -50 }
+         33 = { add_dip_power = -50 }
+         33 = { add_mil_power = -50 }
+      }
+      random_estate = { add_land_share = -5 }
+   }
+   option = { #Accept demands
+      name = "cultural_events.40.b"
+      ai_chance = { factor = 0 }
+      custom_tooltip = CAC_privilege_slower_revoke_tooltip
+      event_target:province1 = { add_local_autonomy = 25 }
+      event_target:province2 = { add_local_autonomy = 25 }
+      event_target:province3 = { add_local_autonomy = 25 }
+      random_estate = { add_loyalty = 10 }
+      set_country_flag = authority_questioned
+   }
+}
+#Estates oppose reforms
+country_event = {
+   id = cultural_events.41
+   title = "cultural_events.41.t"
+   desc = "cultural_events.41.d"
+   picture = CHURCH_ESTATE_UPSET_eventPicture
+   
+   trigger = {
+      has_disaster = court_and_country
+      has_country_flag = CAC_event_3
+      NOT = {
+         has_country_flag = authority_imposed
+         has_country_flag = authority_questioned
+         num_of_rebel_controlled_provinces = 1
+         num_of_rebel_armies = 1
+      }
+   }
+   mean_time_to_happen = { months = 9 }
+   immediate = {
+      hidden_effect = {
+         clr_country_flag = CAC_event_3
+         set_country_flag = CAC_event_4
+      }
+   }
+   option = { #Ignore them
+      name = "cultural_events.41.a"
+      ai_chance = { factor = 100 }
+      custom_tooltip = CAC_privilege_revoke_tooltip
+      add_years_of_income = -0.75
+      add_stability = -1
+      change_government_reform_progress = 50
+      add_disaster_modifier = {
+         name = ignored_estates_tech_cost
+         disaster = court_and_country
+         duration = -1
+      }
+      capital_scope = { start_revolt = { size = 2 } }
+      random_owned_province = { 
+         limit = {
+            island = no
+            if = {
+               limit = { owner = { ai = yes } }
+               same_continent = capital
+            }
+         }
+         start_revolt = { size = 1 } 
+      }
+      set_country_flag = authority_imposed
+      add_estate_influence_modifier = {
+         influence = -10
+         duration = 730
+         desc = CAC_ignored_estates_influence_modifier
+         estate = all
+      }
+   }
+   option = { #Listen to them
+      name = "cultural_events.41.b"
+      ai_chance = { factor = 0 }
+      custom_tooltip = CAC_privilege_slower_revoke_tooltip
+      add_years_of_income = 0.5
+      add_stability = 1
+      change_government_reform_progress = -50
+      add_disaster_modifier = {
+         name = listened_estates_tech_cost
+         disaster = court_and_country
+         duration = -1
+      }
+      add_estate_loyalty = {
+         estate = all
+         loyalty = 10
+      }
+      add_estate_influence_modifier = {
+         influence = 5
+         desc = CAC_estates_opposing_reforms
+         duration = 3650
+         estate = all
+      }
+      set_country_flag = authority_questioned
+   }
+}
+#Land seizure
+country_event = {
+   id = cultural_events.42
+   title = "cultural_events.42.t"
+   desc = "cultural_events.42.d"
+   picture = DHIMMI_ESTATE_eventPicture
+   trigger = {
+      has_disaster = court_and_country
+      has_country_flag = CAC_event_4
+      NOT = {
+         OR = {
+            has_country_flag = authority_imposed
+            has_country_flag = authority_questioned
+            num_of_rebel_controlled_provinces = 1
+            num_of_rebel_armies = 1
+         }
+      }
+   }
+   mean_time_to_happen = { months = 9 }
+   immediate = {
+      hidden_effect = {
+         clr_country_flag = CAC_event_4
+         set_country_flag = CAC_event_5
+         if = {
+            limit = {
+               num_of_owned_provinces_with = {
+                  likely_rebels = particularist_rebels
+                  value = 4
+               }
+            }
+            random_owned_province = {
+               limit = { 
+                  island = no
+                  if = {
+                     limit = { owner = { ai = yes } }
+                     same_continent = capital
+                  }
+                  likely_rebels = particularist_rebels
+               }
+               save_event_target_as = province1
+            }
+            random_owned_province = {
+               limit = { 
+                  island = no
+                  if = {
+                     limit = { owner = { ai = yes } }
+                     same_continent = capital
+                  }
+                  likely_rebels = particularist_rebels 
+               }
+               save_event_target_as = province2
+            }
+            random_owned_province = {
+               limit = { 
+                  island = no
+                  if = {
+                     limit = { owner = { ai = yes } }
+                     same_continent = capital
+                  }   
+                  likely_rebels = particularist_rebels 
+               }
+               save_event_target_as = province3
+            }
+            random_owned_province = {
+               limit = { 
+                  island = no
+                  if = {
+                     limit = { owner = { ai = yes } }
+                     same_continent = capital
+                  }
+                  likely_rebels = particularist_rebels 
+               }
+               save_event_target_as = province4
+            }
+         }
+         else = {
+            random_owned_province = {
+               limit = {
+                  island = no
+                  if = {
+                     limit = { owner = { ai = yes } }
+                     same_continent = capital
+                  }
+               }
+               save_event_target_as = province1
+            }
+            random_owned_province = {
+               limit = {
+                  island = no
+                  if = {
+                     limit = { owner = { ai = yes } }
+                     same_continent = capital
+                  }
+               }
+               save_event_target_as = province2
+            }
+            random_owned_province = {
+               limit = {
+                  island = no
+                  if = {
+                     limit = { owner = { ai = yes } }
+                     same_continent = capital
+                  }
+               }
+               save_event_target_as = province3
+            }
+            random_owned_province = {
+               limit = {
+                  island = no
+                  if = {
+                     limit = { owner = { ai = yes } }
+                     same_continent = capital
+                  }
+               }
+               save_event_target_as = province4
+            }
+         }
+      }
+   }
+   option = { #Take land
+      name = "cultural_events.42.a"
+      ai_chance = { factor = 100 }
+      custom_tooltip = CAC_privilege_revoke_tooltip
+      random_estate = { add_land_share = -5 }
+      event_target:province1 = { start_revolt = { size = 1 } }
+      event_target:province2 = { start_revolt = { size = 1 } }
+      event_target:province3 = { start_revolt = { size = 1 } }
+      event_target:province4 = { start_revolt = { size = 1 } }
+      set_country_flag = authority_imposed
+   }
+   option = { #Dont take 
+      name = "cultural_events.42.b"
+      ai_chance = { factor = 0 }
+      custom_tooltip = CAC_privilege_slower_revoke_tooltip
+      random_estate = { add_land_share = 5 }
+      set_country_flag = authority_questioned
+   }
+}
+#Estates revolt
+country_event = {
+   id = cultural_events.43
+   title = "cultural_events.43.t"
+   desc = "cultural_events.43.d"
+   picture = CHURCH_ESTATE_UPSET_eventPicture
+   trigger = {
+      has_disaster = court_and_country
+      has_country_flag = CAC_event_5
+      NOT = {
+         has_country_flag = authority_imposed
+         has_country_flag = authority_questioned
+         num_of_rebel_controlled_provinces = 1
+         num_of_rebel_armies = 1
+      }
+   }
+   mean_time_to_happen = { months = 9 }
+   immediate = {
+      hidden_effect = {
+         clr_country_flag = CAC_event_5
+         set_country_flag = CAC_event_6
+      }
+   }
+   option = { #Fight them
+      name = "cultural_events.43.a"
+      ai_chance = { factor = 100 }
+      custom_tooltip = CAC_privilege_revoke_tooltip
+      random_estate = { add_loyalty = -5 }
+      random_estate = {
+         add_influence = -10
+         desc = CAC_land_seizure_influence_modifier
+         duration = 1095
+      }
+      add_stability = -1
+      set_country_flag = authority_imposed
+      random_owned_province = {
+         limit = {
+            island = no
+            if = {
+               limit = { owner = { ai = yes } }
+               same_continent = capital
+            }
+         }
+         add_unrest = 5
+         start_revolt = { size = 2 }
+      }
+      random_owned_province = {
+         limit = {
+            island = no
+            if = {
+               limit = { owner = { ai = yes } }
+               same_continent = capital
+            }
+         }
+         add_unrest = 5
+         start_revolt = { size = 1 }
+      }
+   }
+   option = { #See what they want
+      name = "cultural_events.43.b"
+      ai_chance = { factor = 0 }
+      custom_tooltip = CAC_privilege_slower_revoke_tooltip
+      random_estate = { add_land_share = 5 }
+      set_country_flag = authority_questioned
+   }
+}
+#Estates bribe
+country_event = {
+   id = cultural_events.44
+   title = "cultural_events.44.t"
+   desc = "cultural_events.44.d"
+   picture = CORRUPTION_eventPicture
+   trigger = {
+      has_disaster = court_and_country
+      has_country_flag = CAC_event_6
+      NOT = {
+         has_country_flag = authority_imposed
+         has_country_flag = authority_questioned
+         num_of_rebel_controlled_provinces = 1
+         num_of_rebel_armies = 1
+      }
+   }
+   mean_time_to_happen = { months = 9 }
+   immediate = {
+      hidden_effect = {
+         clr_country_flag = CAC_event_6
+         set_country_flag = CAC_event_7
+      }
+   }
+   option = { #Root out the rot
+      name = "cultural_events.44.a"
+      ai_chance = { factor = 100 }
+      custom_tooltip = CAC_privilege_revoke_tooltip
+      add_corruption = -2
+      add_disaster_modifier = {
+         name = CAC_estate_bribes_refused
+         disaster = court_and_country
+         duration = -1
+      }
+      random_estate = { add_land_share = -3 }
+      add_estate_influence_modifier = {
+         influence = -5
+         desc = CAC_refused_bribes_influence_modifier
+         duration = 730
+         estate = all
+      }
+      set_country_flag = authority_imposed
+   }
+   option = { #Take bribe
+      name = "cultural_events.44.b"
+      ai_chance = { factor = 0 }
+      custom_tooltip = CAC_privilege_slower_revoke_tooltip
+      add_corruption = 2
+      add_years_of_income = 0.75
+      add_disaster_modifier = {
+         name = CAC_estate_bribes_accepted
+         disaster = court_and_country
+         duration = -1
+      }
+      set_country_flag = authority_questioned
+      random_estate = {
+         add_influence = 5
+         desc = CAC_accepted_bribes_from_estate
+         duration = 1825
+      }
+   }
+}
+#Curb estate power?
+country_event = {
+   id = cultural_events.45
+   title = "cultural_events.45.t"
+   desc = "cultural_events.45.d"
+   picture = DEBATE_REPUBLICAN_eventPicture
+   trigger = {
+      has_disaster = court_and_country
+      has_country_flag = CAC_event_7
+      NOT = {
+         has_country_flag = authority_imposed
+         has_country_flag = authority_questioned
+         num_of_rebel_controlled_provinces = 1
+         num_of_rebel_armies = 1
+      }
+   }
+   immediate = {
+      hidden_effect = {
+         clr_country_flag = CAC_event_7
+         set_country_flag = CAC_event_8
+      }
+   }
+   option = { #Curb them
+      name = "cultural_events.45.a"
+      ai_chance = { factor = 100 }
+      custom_tooltip = CAC_privilege_revoke_tooltip
+      custom_tooltip = CAC_curbing_estate_power_tt
+      set_country_flag = CAC_curbing_estate_power #Allows for 2 privileges to be revoked instead of one
+      random_owned_province = { 
+         limit = {
+            island = no
+            if = {
+               limit = { owner = { ai = yes } }
+               same_continent = capital
+            }
+         }
+         start_revolt = { size = 3 } 
+      }
+      capital_scope = {
+         area = { 
+            limit = { owned_by = ROOT } 
+            start_revolt = { size = 1 } 
+         }
+      }
+      random_estate = { add_loyalty = -5 }
+      add_stability = -1
+      set_country_flag = authority_imposed
+      random_estate = { add_land_share = -5 }
+   }
+   option = { #Dont intervene
+      name = "cultural_events.45.b"
+      ai_chance = { factor = 0 }
+      custom_tooltip = CAC_privilege_slower_revoke_tooltip
+      set_country_flag = authority_questioned
+      add_estate_loyalty = {
+         estate = all
+         loyalty = 15
+      }
+   }
+}
+#Estates propose advisor
+country_event = {
+   id = cultural_events.46
+   title = "cultural_events.46.t"
+   desc = "cultural_events.46.d"
+   picture = ADVISOR_eventPicture
+   trigger = {
+      has_disaster = court_and_country
+      has_country_flag = CAC_event_8
+      NOT = {
+         OR = {
+            has_country_flag = authority_imposed
+            has_country_flag = authority_questioned
+            num_of_rebel_controlled_provinces = 1
+            num_of_rebel_armies = 1
+         }
+      }
+   }
+   mean_time_to_happen = { months = 9 }
+   immediate = {
+      hidden_effect = {
+         clr_country_flag = CAC_event_8
+         set_country_flag = CAC_event_9
+         random_owned_province = {
+            limit = {
+               island = no
+               if = {
+                  limit = { owner = { ai = yes } }
+                  same_continent = capital
+               }
+            }
+            save_event_target_as = advisor_homeland
+         }
+      }
+   }
+   option = { #Keep your enemies close..
+      name = "cultural_events.46.a"
+      ai_chance = { factor = 100 }
+      custom_tooltip = CAC_privilege_revoke_tooltip
+      define_advisor = {
+         type = commandant
+         skill = 3
+         location = event_target:advisor_homeland
+         cost_multiplier = 0.2
+         religion = event_target:advisor_homeland
+         culture = event_target:advisor_homeland
+      }
+      set_country_flag = authority_imposed
+      set_country_flag = CAC_estates_advisor
+      event_target:advisor_homeland = {
+         set_province_flag = CAC_advisor_homeland
+      }
+      random_estate = { add_land_share = -5 }
+   }
+   option = { #Allow him free reign
+      name = "cultural_events.46.b"
+      ai_chance = { factor = 0 }
+      custom_tooltip = CAC_privilege_slower_revoke_tooltip
+      event_target:advisor_homeland = {
+         add_province_modifier = {
+            name = CAC_advisor_reigning_free
+            duration = 1825
+         }
+         set_province_flag = CAC_advisor_homeland
+      }
+      set_country_flag = authority_questioned
+      set_country_flag = CAC_estates_local_ruler
+      random_estate = { add_land_share = 5 }
+      random_estate = { add_loyalty = 10 }
+   }
+}
+#Outcome of previous event
+country_event = {
+   id = cultural_events.47
+   title = "cultural_events.47.t"
+   desc = "cultural_events.47.d"
+   picture = BAD_WITH_MONARCH_eventPicture
+   trigger = {
+      has_disaster = court_and_country
+      has_country_flag = CAC_event_9
+      NOT = {
+         OR = {
+            has_country_flag = authority_imposed
+            has_country_flag = authority_questioned
+            num_of_rebel_controlled_provinces = 1
+            num_of_rebel_armies = 1
+         }
+      }
+   }
+   mean_time_to_happen = { months = 9 }
+   immediate = {
+      hidden_effect = {
+         clr_country_flag = CAC_event_9
+         set_country_flag = CAC_event_10
+         random_owned_province = {
+            limit = {
+               OR = {
+                  has_province_modifier = CAC_advisor_reigning_free
+                  has_province_flag = CAC_advisor_homeland
+               }
+            }
+            save_event_target_as = advisor_homeland
+         }
+      }
+   }
+   option = { #Kill him off
+      name = "cultural_events.47.a"
+      ai_chance = { factor = 100 }
+      trigger = { has_country_flag = CAC_estates_advisor }
+      custom_tooltip = CAC_privilege_revoke_tooltip
+      clr_country_flag = CAC_estates_advisor
+      set_country_flag = authority_imposed
+      if = {
+         limit = {
+            employed_advisor = {
+               type = commandant
+            }
+         }
+         kill_advisor = commandant
+      }
+      else = {
+         remove_advisor_by_category = MIL
+      }
+      event_target:advisor_homeland = {
+         clr_province_flag = CAC_advisor_homeland
+      }
+      random_estate = {
+         add_influence = -10
+         duration = 1095
+         desc = CAC_killed_off_influential_noble
+      }
+   }
+   option = { #He makes a good point
+      name = "cultural_events.47.b"
+      ai_chance = { factor = 0 }
+      trigger = { has_country_flag = CAC_estates_advisor }
+      custom_tooltip = CAC_privilege_slower_revoke_tooltip
+      clr_country_flag = CAC_estates_advisor
+      set_country_flag = authority_questioned
+      add_years_of_income = 1
+      event_target:advisor_homeland = {
+         add_base_tax = 1
+         add_base_production = 1
+         add_base_manpower = 1
+         add_local_autonomy = 100
+         clr_province_flag = CAC_advisor_homeland
+      }
+      random_estate = { add_loyalty = 10 }
+   }
+   option = { #Kill them
+      name = "cultural_events.47.c"
+      ai_chance = { factor = 100 }
+      trigger = { has_country_flag = CAC_estates_local_ruler }
+      custom_tooltip = CAC_privilege_revoke_tooltip
+      clr_country_flag = CAC_estates_local_ruler
+      set_country_flag = authority_imposed
+      event_target:advisor_homeland = {
+         start_revolt = {
+            type = pretender_rebels
+            size = 2
+         }
+         start_revolt = {
+            type = pretender_rebels
+            size = 1
+         }
+         add_unrest = 10
+         remove_province_modifier = CAC_advisor_reigning_free
+         clr_province_flag = CAC_advisor_homeland
+      }
+      random_estate = {
+         add_influence = -10
+         duration = 1095
+         desc = CAC_killed_off_influential_noble
+      }
+   }
+   option = { #Its fine
+      name = "cultural_events.47.e"
+      ai_chance = { factor = 0 }
+      trigger = { has_country_flag = CAC_estates_local_ruler }
+      custom_tooltip = CAC_privilege_slower_revoke_tooltip
+      clr_country_flag = CAC_estates_local_ruler
+      set_country_flag = authority_questioned
+      add_estate_influence_modifier = {
+         influence = 5
+         desc = CAC_ignoring_influential_land_holders
+         duration = 1825
+         estate = all
+      }
+      event_target:advisor_homeland = {
+         add_local_autonomy = 100
+         clr_province_flag = CAC_advisor_homeland
+         remove_province_modifier = CAC_advisor_reigning_free
+         area = {
+            limit = { owned_by = ROOT }
+            add_province_modifier = {
+               name = CAC_influential_land_holder
+               duration = 18250
+            }
+         }
+      }
+   }
+}
+#Estates Orchestrate mutiny
+country_event = {
+   id = cultural_events.48
+   title = "cultural_events.48.t"
+   desc = "cultural_events.48.d"
+   picture = CIVIL_WAR_eventPicture
+   trigger = {
+      has_disaster = court_and_country
+      has_country_flag = CAC_event_10
+      NOT = {
+         has_country_flag = authority_imposed
+         has_country_flag = authority_questioned
+         num_of_rebel_controlled_provinces = 1
+         num_of_rebel_armies = 1
+      }
+   }
+   mean_time_to_happen = { months = 9 }
+   immediate = {
+      hidden_effect = {
+         clr_country_flag = CAC_event_10
+         set_country_flag = CAC_event_11
+         random_owned_province = {
+            limit = { num_of_units_in_province = { who = ROOT amount = 1 } }
+            save_event_target_as = province_mutiny
+         }
+      }
+   }
+   option = { #Kill them
+      name = "cultural_events.48.a"
+      ai_chance = { factor = 100 }
+      custom_tooltip = CAC_privilege_revoke_tooltip
+      set_country_flag = authority_imposed
+      event_target:province_mutiny = {
+         if = {
+            limit = { NOT = { has_province_modifier = recent_unit_recruited_timer } }
+            kill_units = {
+               who = owner
+            }
+         }
+         start_revolt = { size = 2 } 
+         add_unrest = 5
+      }
+      add_yearly_manpower = -2
+      add_estate_loyalty = {
+         estate = all
+         loyalty = -5
+      }
+   }
+   option = { #Oh well
+      name = "cultural_events.48.b"
+      ai_chance = { factor = 0 }
+      custom_tooltip = CAC_privilege_slower_revoke_tooltip
+      set_country_flag = authority_questioned
+      event_target:province_mutiny = {
+         if = {
+            limit = {
+               NOT = { has_province_modifier = recent_unit_recruited_timer }
+            }
+            kill_units = { who = owner }
+         }
+         add_unrest = 10
+      }
+      add_yearly_manpower = -1
+      add_estate_loyalty = {
+         estate = all
+         loyalty = -5
+      }
+   }
+}
+#Estates sabotage recruitment
+country_event = {
+   id = cultural_events.49
+   title = "cultural_events.49.t"
+   desc = "cultural_events.49.d"
+   picture = ANGRY_MOB_eventPicture
+   trigger = {
+      has_disaster = court_and_country
+      has_country_flag = CAC_event_11
+      NOT = {
+         OR = {
+            has_country_flag = authority_imposed
+            has_country_flag = authority_questioned
+            num_of_rebel_controlled_provinces = 1
+            num_of_rebel_armies = 1
+         }
+      }
+   }
+   mean_time_to_happen = { months = 9 }
+   immediate = {
+      hidden_effect = {
+         clr_country_flag = CAC_event_11
+         set_country_flag = CAC_event_12
+      }
+   }
+   option = { #Bastards
+      name = "cultural_events.49.a"
+      ai_chance = { factor = 100 }
+      custom_tooltip = CAC_privilege_revoke_tooltip
+      set_country_flag = authority_imposed
+      add_yearly_manpower = -3
+      add_disaster_modifier = {
+         name = CAC_estates_sabotaged_recruitment
+         disaster = court_and_country
+         duration = -1
+      }
+      capital_scope = {
+         start_revolt = { size = 2 }
+      }
+      add_estate_influence_modifier = {
+         influence = -5
+         duration = 1825
+         desc = CAC_crushed_estates_mutiny
+         estate = all
+      }
+   }
+   option = { #See to their needs
+      name = "cultural_events.49.b"
+      ai_chance = { factor = 0 }
+      custom_tooltip = CAC_privilege_slower_revoke_tooltip
+      set_country_flag = authority_questioned
+      random_estate = { add_land_share = 5 }
+   }
+}
+#Estates plan a coup
+country_event = {
+   id = cultural_events.50
+   title = "cultural_events.50.t"
+   desc = "cultural_events.50.d"
+   picture = BAD_WITH_MONARCH_eventPicture
+   trigger = {
+      has_disaster = court_and_country
+      has_country_flag = CAC_event_11
+      NOT = {
+         OR = {
+            has_country_flag = authority_questioned
+            has_country_flag = authority_imposed
+            num_of_rebel_controlled_provinces = 1
+            num_of_rebel_armies = 1
+         }
+      }
+   }
+   mean_time_to_happen = { months = 9 }
+   immediate = {
+      hidden_effect = {
+         clr_country_flag = CAC_event_11
+      }
+   }
+   option = { #kill them all
+      name = "cultural_events.50.a"
+      ai_chance = { factor = 100 }
+      custom_tooltip = CAC_privilege_revoke_tooltip
+      capital_scope = {
+         area = {
+            limit = { owned_by = ROOT }
+            start_revolt = {
+               type = pretender_rebels
+               size = 1
+            }
+         }
+      }
+      set_country_flag = authority_imposed
+      random_estate = { add_land_share = -5 }
+   }
+   option = { #Bribe them to stop
+      name = "cultural_events.50.b"
+      ai_chance = { factor = 0 }
+      custom_tooltip = CAC_privilege_slower_revoke_tooltip
+      add_years_of_income = -1
+      random_estate = { add_land_share = 5 }
+      add_estate_influence_modifier = {
+         influence = 10
+         duration = 1825
+         desc = CAC_sold_titles_to_estates_influence_modifier
+         estate = all
+      }
+      set_country_flag = authority_questioned
+   }
+}
+#Bribery
+country_event = {
+   id = cultural_events.52
+   title = "cultural_events.52.t"
+   desc = "cultural_events.52.d"
+   picture = CORRUPTION_eventPicture
+   trigger = {
+      has_disaster = court_and_country
+      has_country_flag = CAC_event_13
+      NOT = {
+         OR = {
+            num_of_rebel_controlled_provinces = 1
+            num_of_rebel_armies = 1
+         }
+      }
+   }
+   mean_time_to_happen = { months = 36 }
+   immediate = {
+      hidden_effect = {
+         clr_country_flag = CAC_event_13
+      }
+   }
+   option = { #Refuse the bribe
+      name = "cultural_events.52.a"
+      ai_chance = { factor = 90 }
+      add_corruption = -2
+      random_owned_province = {
+         start_revolt = {
+            type = pretender_rebels
+            size = 1
+         }
+         add_unrest = 5
+      }
+      random_owned_province = {
+         limit = {
+            island = no
+            if = {
+               limit = { owner = { ai = yes } }
+               same_continent = capital
+            }
+         }
+         start_revolt = {
+            type = pretender_rebels
+            size = 1
+         }
+         add_unrest = 5
+      }
+      capital_scope = {
+         start_revolt = {
+            type = pretender_rebels
+            size = 3
+         }
+         add_unrest = 5
+      }
+      change_variable = {
+         which = republic_support_var
+         value = 1
+      }
+      add_republican_tradition = 5
+   }
+   option = { #Take bribe
+      name = "cultural_events.52.b"
+      ai_chance = { factor = 10 }
+      add_corruption = 2
+      add_years_of_income = 0.5
+      add_republican_tradition = -5
+      change_variable = {
+         which = monarchy_support_var
+         value = 1
+      }
+   }
+   after = { set_country_flag = CAC_event_14 }
+}
+#Promising representative
+country_event = {
+   id = cultural_events.53
+   title = "cultural_events.53.t"
+   desc = "cultural_events.53.d"
+   picture = ECONOMY_eventPicture
+   trigger = {
+      has_disaster = court_and_country
+      has_country_flag = CAC_event_14
+      NOT = {
+         num_of_rebel_controlled_provinces = 1
+         num_of_rebel_armies = 1
+      }
+   }
+   mean_time_to_happen = { months = 36 }
+   immediate = {
+      hidden_effect = {
+         clr_country_flag = CAC_event_14
+         set_saved_name = {
+            key = advisor_leader_name
+            type = simple
+            name = "Jean Collase"
+         }
+      }
+   }
+   option = { #Make him our ruler!
+      name = "cultural_events.53.a"
+      ai_chance = { factor = 25 }
+      add_adm_power = 100
+      define_ruler = {
+         adm = 6
+         dip = 5
+         mil = 3
+         age = 23
+         name = advisor_leader_name
+      }
+      add_republican_tradition = -25
+      change_variable = {
+         which = monarchy_support_var
+         value = 1
+      }
+   }
+   option = { #Bring him to court instead
+      name = "cultural_events.53.b"
+      ai_chance = { factor = 75 }
+      define_advisor = {
+         type = statesman
+         skill = 3
+         cost_multiplier = 0.75
+         name = advisor_leader_name
+      }
+      add_republican_tradition = 5
+      change_variable = {
+         which = republic_support_var
+         value = 1
+      }
+      random_owned_province = {
+         limit = {
+            island = no
+            if = {
+               limit = { owner = { ai = yes } }
+               same_continent = capital
+            }
+         }
+         start_revolt = {
+            type = pretender_rebels
+            size = 2
+          }
+      }
+      random_owned_province = {
+         limit = {
+            island = no
+            if = {
+               limit = { owner = { ai = yes } }
+               same_continent = capital
+            }
+         }
+         start_revolt = {
+            type = pretender_rebels
+            size = 2
+          }
+      }
+      add_stability = -1
+   }
+   after = { 
+      clear_saved_name = advisor_leader_name
+      set_country_flag = CAC_event_15 
+   }
+}
+#Pretenders
+country_event = {
+   id = cultural_events.54
+   title = "cultural_events.54.t"
+   desc = "cultural_events.54.d"
+   picture = ANGRY_MOB_eventPicture
+   trigger = {
+      has_country_flag = CAC_event_15
+      has_disaster = court_and_country
+      NOT = {
+         num_of_rebel_controlled_provinces = 1
+         num_of_rebel_armies = 1
+      }
+   }
+   mean_time_to_happen = { months = 36 }
+   immediate = {
+      hidden_effect = {
+         clr_country_flag = CAC_event_15
+         random_owned_province = {
+            limit = {
+               island = no
+               if = {
+                  limit = { owner = { ai = yes } }
+                  same_continent = capital
+               }
+            }
+            start_revolt = {
+               type = pretender_rebels
+               size = 3
+            }
+            save_event_target_as = revolt1
+         }
+         random_owned_province = {
+            limit = {
+               island = no
+               if = {
+                  limit = { owner = { ai = yes } }
+                  same_continent = capital
+               }
+            }
+            start_revolt = { 
+              type = pretender_rebels
+              size = 1
+            }
+            save_event_target_as = revolt2
+         }
+         random_owned_province = {
+            limit = {
+               island = no
+               if = {
+                  limit = { owner = { ai = yes } }
+                  same_continent = capital
+               }
+            }
+            start_revolt = { 
+              type = pretender_rebels
+              size = 1
+            }
+            save_event_target_as = revolt3
+         }
+      }
+   }
+   option = { #Fight them!
+      name = "cultural_events.54.a"
+      ai_chance = { factor = 90 }
+      event_target:revolt1 = {
+         add_unrest = 20
+      }
+      event_target:revolt2 = {
+         add_unrest = 20
+      }
+      event_target:revolt3 = {
+         add_unrest = 20
+      }
+      add_disaster_modifier = {
+         name = CAC_republic_fighting_pretenders
+         disaster = court_and_country
+         duration = -1
+      }
+      change_variable = {
+         which = republic_support_var
+         value = 2
+      }
+      add_republican_tradition = 5
+      add_stability = -1
+   }
+   option = { #Agree to their terms
+      name = "cultural_events.54.b"
+      ai_chance = { factor = 10 }
+      event_target:revolt1 = {
+         kill_units = {
+            who = REB
+         }
+         add_province_modifier = {
+            name = CAC_agreed_to_rebel_demands
+            duration = 3650
+         }
+      }
+      event_target:revolt2 = {
+         kill_units = {
+            who = REB
+         }
+         add_province_modifier = {
+            name = CAC_agreed_to_rebel_demands
+            duration = 3650
+         }
+      }
+      event_target:revolt3 = {
+         kill_units = {
+            who = REB
+         }
+         add_province_modifier = {
+            name = CAC_agreed_to_rebel_demands
+            duration = 3650
+         }
+      }
+      change_variable = {
+         which = monarchy_support_var
+         value = 2
+      }
+      add_republican_tradition = -50
+      kill_ruler = yes
+   }
+   after = { set_country_flag = CAC_event_16 }
+}
+#Bold accusations
+country_event = {
+   id = cultural_events.55
+   title = "cultural_events.55.t"
+   desc = "cultural_events.55.d"
+   picture = ACCUSATION_eventPicture
+   trigger = {
+      has_disaster = court_and_country
+      has_country_flag = CAC_event_16
+      NOT = {
+         num_of_rebel_controlled_provinces = 1
+         num_of_rebel_armies = 1
+      }
+   }
+   mean_time_to_happen = { months = 36 }
+   immediate = {
+      hidden_effect = {
+         clr_country_flag = CAC_event_16
+      }
+   }
+   option = { #For the republic
+      name = "cultural_events.55.a"
+      ai_chance = { factor = 90 }
+      add_republican_tradition = 25
+      define_ruler = {
+         adm = 0
+         dip = 0
+         mil = 0
+      }
+      change_variable = {
+         which = republic_support_var
+         value = 2
+      }
+   }
+   option = { #Lies
+      name = "cultural_events.55.b"
+      ai_chance = { factor = 10 }
+      add_republican_tradition = -25
+      add_corruption = 1
+      capital_scope = {
+         start_revolt = {
+            type = pretender_rebels
+            size = 3
+         }
+      }
+      random_owned_province = {
+         limit = {
+            island = no
+            if = {
+               limit = { owner = { ai = yes } }
+               same_continent = capital
+            }
+         }
+         start_revolt = {
+            type = pretender_rebels
+            size = 1
+         }
+      }
+      random_owned_province = {
+         limit = {
+            island = no
+            if = {
+               limit = { owner = { ai = yes } }
+               same_continent = capital
+            }
+         }
+         start_revolt = {
+            type = pretender_rebels
+            size = 1
+         }
+      }
+      change_variable = {
+         which = monarchy_support_var
+         value = 2
+      }
+   }
+}      
+#Crownland change
+country_event = {
+   id = cultural_events.56
+   title = "cultural_events.56.t"
+   desc = "cultural_events.56.d"
+   picture = NOBLE_ESTATE_eventPicture
+   is_triggered_only = yes
+   immediate = {
+      hidden_effect = {
+      }
+   }
+   option = { #seize land
+      name = "cultural_events.56.a"
+      ai_chance = { factor = 60 }
+      random_estate = { add_land_share = -10 }
+      capital_scope = { start_revolt = { size = 1 } }
+   }
+   option = { #Leave them be
+      name = "cultural_events.56.b"
+      ai_chance = { factor = 40 }
+      add_estate_loyalty = {
+         estate = all
+         loyalty = 20
+      }
+      add_years_of_income = 0.2
+   }
+}
+
+######################################
+#  Italian Trading Policy
+######################################
+
+
+
+
+#Italian trading policy dosent work in trade node scope 
+country_event = {
+   id = cultural_events.64
+   picture = "none"
+   title = "none"
+   desc = "none"
+   hidden = yes
+   trigger = {
+      culture_group = latin
+      any_active_trade_node = {
+         ROOT = {
+            trading_policy_in_node = {
+               node = PREV
+               policy = latin_trade_policy
+            }
+         }
+         NOT = {
+            has_trade_modifier = {
+               key = checked_active_policy_dummy
+               who = ROOT
+            }
+         }
+      }
+   }
+   immediate = {
+   }
+   option = {
+      ai_chance = { factor = 1 }
+      random_active_trade_node = {
+         limit = {
+            ROOT = {
+               trading_policy_in_node = {
+                  node = PREV
+                  policy = latin_trade_policy
+               }
+            }
+         }
+         every_trade_node_member_province = {
+            limit = {
+               owned_by = ROOT
+            }
+            add_province_modifier = {
+               name = latin_trade_policy_modifier
+               duration = -1
+               hidden = yes
+            }
+         }
+         add_trade_modifier = {
+            key = checked_active_policy_dummy
+            duration = 200
+            power = 0
+            who = ROOT
+         }
+      }
+   }
+}
+#In case the policy is revoked
+country_event = {
+   id = cultural_events.65
+   picture = "none"
+   title = "none"
+   desc = "none"
+   hidden = yes
+   trigger = {
+      culture_group = latin
+      any_trade_node = {
+         has_trade_modifier = {
+            key = checked_active_policy_dummy
+            who = ROOT
+         }
+         ROOT = {
+            NOT = {
+               trading_policy_in_node = {
+                  node = PREV
+                  policy = latin_trade_policy
+               }
+            }
+         }
+      }
+   }
+   immediate = {
+   }
+   option = {
+      ai_chance = { factor = 1 }
+      random_trade_node = {
+         limit = {
+            ROOT = {
+               NOT = {
+                  trading_policy_in_node = {
+                     node = PREV
+                     policy = latin_trade_policy
+                  }
+               }
+            }
+            has_trade_modifier = {
+               key = checked_active_policy_dummy
+               who = ROOT
+            }
+         }
+         every_trade_node_member_province = {
+            limit = {
+               owned_by = ROOT
+            }
+            remove_province_modifier = latin_trade_policy_modifier
+         }
+         remove_trade_modifier = {
+            key = checked_active_policy_dummy
+            who = ROOT
+         }
+      }  
+   }
+}
+
+
+# available events:
+#129,130,139,131,80,112,32,31,102,62,105,134,135,137,73,111,113,114,126,86,87,128
+
+########################################
+#     AI FORTS
+########################################
+
+
+
+
+
+
+
+
+####################################
+#  Reduced Cav Costs Mechanic
+####################################
+#removed as of 1.34 due to cavalry being more useful with break through
+
+
+
+
+
+############################
+#  China Mechanics
+############################
+
+
+
+
+country_event = { #Mechanic to force hordes into razing land they conquer, triggered from on_province_owner_change
+   id = cultural_events.106
+   title = "none"
+   desc = "none"
+   picture = "none"
+   hidden = yes
+   is_triggered_only = yes
+   immediate = {
+      add_horde_unity = 100
+   }
+   option = {}
+}
+country_event = { #Mechanic to check if the AI is hoarding Mandate it could be using
+   id = cultural_events.107
+   title = "none"
+   desc = "none"
+   picture = "none"
+   hidden = yes
+   is_triggered_only = yes #pulse
+   trigger = {
+      is_emperor_of_china = yes
+      imperial_mandate = 100
+   }
+   immediate = {
+      event_target:EmperorOfChina = {
+         country_event = { id = cultural_events.108 days = 180 }
+      }
+   }
+   option = {}
+}
+country_event = { #Checks if Mandate is still 100 6 months later
+   id = cultural_events.108
+   title = "none"
+   desc = "none"
+   picture = "none"
+   hidden = yes
+   is_triggered_only = yes
+   trigger = {
+      imperial_mandate = 100
+   }
+   immediate = {
+      add_country_modifier = {
+         name = spend_mandate_dummy 
+         duration = 1095
+         hidden = yes
+      }
+   }
+   option = {}
+}
+country_event = { #Mandate cost modifier mechanic
+   id = cultural_events.109
+   title = "none"
+   desc = "none"
+   picture = "none"
+   hidden = yes
+   trigger = {
+      NOT = {
+         check_variable = {
+            which = mandate_cost_modifier
+            value = 0.01
+         }
+      }
+   }
+   immediate = {
+      set_variable = {
+         which = mandate_cost_modifier
+         value = 1 #Multiplied by this in script
+      }
+   }
+   option = {}
+}
+country_event = { #Forces the Emperor to declare war on especially weak Warlords if they are for some reason not dowing
+   id = cultural_events.110
+   title = "none"
+   desc = "none"
+   picture = "none"
+   hidden = yes
+   trigger = {
+      ai = yes
+      is_emperor_of_china = yes
+      is_at_war = no
+      is_bankrupt = no
+      NOT = { overextension_percentage = 0.5 }
+      NOT = { num_of_rebel_armies = 1 }
+      NOT = { war_exhaustion = 5 }
+      manpower_percentage = 0.1
+      any_neighbor_country = {
+         has_reform = chinese_warlord_reform
+         NOT = { truce_with = ROOT }
+         ROOT = {
+            army_strength = {
+               who = PREV
+               value = 2
+            }
+            mil_tech = PREV
+         }
+      }
+   }
+   mean_time_to_happen = {
+      months = 36
+   }
+   immediate = {
+      random_neighbor_country = {
+         limit = {
+            NOT = { truce_with = ROOT }
+            ROOT = {
+               army_strength = {
+                  who = PREV
+                  value = 2
+               }
+               mil_tech = PREV
+            }
+            has_reform = chinese_warlord_reform
+         }
+         ROOT = {
+            declare_war_with_cb = {
+               casus_belli = cb_crush_rebel_warlord
+               who = PREV
+            }
+         }
+      }
+   }
+   option = {}
+}
+#Great Wall of China
+country_event = {
+   id = cultural_events.66
+   title = "none"
+   desc = "none"
+   picture = "none"
+   hidden = yes
+   is_triggered_only = yes
+   fire_only_once = yes
+   trigger = {
+      tag = MNG
+   }
+   immediate = {
+      every_province = {
+         limit = {
+            OR = {
+               area = west_gansu_area
+               area = central_gansu_area
+               area = north_shanxi_area
+               area = hebei_area
+               area = korea_bay_area
+               area = liaoning_area
+            }
+         }
+         set_province_flag = the_great_wall_of_china
+         add_great_wall_of_china_modifier = yes
+      }
+   }
+   option = {}
+}
+province_event = { #Dosent work when called from monument scope (bad programmers)
+   id = cultural_events.70
+   title = "none"
+   desc = "none"
+   picture  = "none"
+   hidden = yes
+   is_triggered_only = yes
+
+   option = {
+      on_action_great_wall_of_china = yes
+   }
+}
+
+#Makes countries Warlords
+country_event = {
+   id = cultural_events.88
+   title = "cultural_events.88.t"
+   desc = "cultural_events.88.d"
+   picture = MONGOL_BANNERS_eventPicture
+   trigger = {
+      capital_scope = { superregion = china_superregion }
+      is_subject = no
+      is_revolutionary = no
+      is_emperor_of_china = no
+      NOT = { has_reform = chinese_warlord_reform }
+      NOT = { has_global_flag = empire_of_china_dismantled }
+   }
+   immediate = {
+      hidden_effect = {
+         if = {
+            limit = { NOT = { government = monarchy } }
+            change_government_to_monarchy = yes
+         }
+         if = {
+            limit = { NOT = { technology_group = chinese } }
+            change_technology_group = chinese
+            change_unit_type = chinese
+         }
+         add_government_reform = chinese_warlord_reform
+         add_meritocracy = 100
+      }
+   }
+   option = {
+      name = "cultural_events.88.a"
+      tooltip = {
+         add_government_reform = chinese_warlord_reform
+      }
+   }
+}
+
+#Cancels tributaries if they own land in china/japan or if overlord has cores/perma claims or primary culture claim on them
+#no tributary circle jerks 
+country_event = {
+   id = cultural_events.90
+   hidden = yes
+   title = "none"
+   picture = "none"
+   desc = "none"
+   trigger = {
+      is_subject_of_type = tributary_state
+      OR = {
+         AND = {
+            overlord = {
+               is_emperor_of_china = yes
+            }
+            OR = {
+               china_superregion = { owned_by = ROOT }
+               any_subject_country = {
+                  china_superregion = { owned_by = PREV }
+               }
+            }
+         }
+         AND = {
+            overlord = { 
+               capital_scope = { region = japan_region }
+            }
+            OR = {
+               japan_region = { owned_by = ROOT }
+               any_subject_country = {
+                  japan_region = { owned_by = PREV }
+               }
+            }
+         }
+         all_neighbor_country = { #country is surrounded by its overlord
+            overlord_of = ROOT
+         }
+         overlord = {
+            OR = {
+               core_claim = ROOT
+               claim = ROOT
+               culture_group_claim = PREV
+            }
+         }
+      }
+   }
+   immediate = {
+      overlord = {
+         save_event_target_as = overlord
+      }
+      if = { #if tributary is completely surrounded by overlord they break free and all provinces become cores of overlord
+         limit = {
+            all_neighbor_country = {
+               overlord_of = ROOT
+            }
+         }
+         every_owned_province = {
+            add_core = event_target:overlord
+         }
+      }
+   }
+   option = {
+      grant_independence = yes
+      add_opinion = {
+         modifier = eoc_must_conquer
+         who = event_target:overlord
+      }
+   }
+}
+
+country_event = { #Mandate Calculations.
+   id = cultural_events.91
+   hidden = yes
+   title = "none"
+   desc = "none"
+   picture = "none"
+   mean_time_to_happen = {
+      months = 12
+   }
+   trigger = {
+      OR = {
+         is_emperor_of_china = yes
+         has_country_modifier = lost_mandate_of_heaven
+      }
+   }
+   immediate = {
+      clr_warlords_drop_mandate_effect = yes
+      clr_rebellion_drop_mandate_effect = yes
+      clr_mercs_drop_mandate_effect = yes
+      clr_independent_tags_drop_mandate_effect = yes
+      clr_chinese_land_increase_mandate_effect = yes
+   }
+   option = {
+      trigger = { is_emperor_of_china = yes }
+      if = {
+         limit = {
+            any_known_country = { has_reform = chinese_warlord_reform }
+            NOT = { is_in_war = { casus_belli = cb_crush_rebel_warlord attacker_leader = ROOT } }
+            NOT = { has_country_modifier = new_mandate_holder }
+         }
+         warlords_drop_mandate_effect = yes
+      }
+      rebellion_drop_mandate_effect = yes
+      mercs_drop_mandate_effect = yes
+      if = {
+         limit = {
+            NOT = {
+               OR = {
+                  has_reform = khanganate_reform
+                  has_country_modifier = new_mandate_holder
+               }
+            }
+         }
+         independent_tags_drop_mandate_effect = yes
+      }
+      chinese_land_increase_mandate_effect = yes
+   }
+   option = {
+      trigger = { NOT = { is_emperor_of_china = yes } }
+   }
+}
+#End of the Celestial Empire
+country_event = {
+	id = cultural_events.92
+	title = "cultural_events.92.t"
+	desc = "cultural_events.92.d"
+	picture = SUFFERING_CHINESE_VILLAGE_eventPicture
+	
+	is_triggered_only = yes
+	
+	major = yes
+	
+	trigger = { #If there are no eligible countries to pass the Mandate onto, the empire is dismantled.
+		FROM = { is_emperor_of_china = yes }
+      NOT = {
+         OR = {
+            has_reform = chinese_warlord_reform
+            AND = {
+               culture_group = east_asian
+               capital_scope = { superregion = china_superregion }
+            }
+            any_known_country = {
+               NOT = { 
+                  OR = {
+                     tag = ROOT
+                     tag = FROM
+                  }
+               }
+               OR = {
+                  has_reform = chinese_warlord_reform
+                  AND = {
+                     culture_group = east_asian
+                     capital_scope = { superregion = china_superregion }
+                  }
+               }
+            }
+         }
+      }
+	}
+	
+	option = {
+		name = "cultural_events.92.a"
+		add_prestige = 20
+		add_dip_power = 50
+		add_mil_power = 50
+		add_adm_power = 50
+	}
+}
+#Makes sure EmperorOfChina and ShogunOfJapan are set
+country_event = {
+   id = cultural_events.97
+   title = "none"
+   desc = "none"
+   picture = "none"
+   hidden = yes
+   trigger = {
+      OR = {
+         AND = {
+            is_emperor_of_china = yes
+            OR = {
+               event_target:EmperorOfChina = { exists = no }
+               NOT = { event_target:EmperorOfChina = { tag = ROOT } }
+            }
+         }
+         AND = {
+            has_reform = shogunate
+            OR = {
+               event_target:ShogunOfJapan = { exists = no }
+               NOT = { event_target:ShogunOfJapan = { tag = ROOT } }
+            }
+         }
+         #Weird case of EoC being assigned to a dead tag
+         AND = {
+            event_target:EmperorOfChina = {
+               exists = no
+            }
+            has_reform = chinese_warlord_reform
+         }
+         AND = {
+            event_target:ShogunOfJapan = {
+               exists = no
+            }
+            is_daimyo = yes
+         }
+      }
+   }
+   immediate = {
+      if = {
+         limit = { is_emperor_of_china = yes }
+         save_global_event_target_as = EmperorOfChina
+      }
+      else_if = {
+         limit = { 
+            event_target:EmperorOfChina = { exists = no } 
+         }
+         if = {
+            limit = {
+               any_country = {
+                  is_emperor_of_china = yes
+               }
+            }
+            random_country = {
+               limit = {
+                  is_emperor_of_china = yes
+               }
+               save_global_event_target_as = EmperorOfChina
+               set_emperor_of_china = THIS
+            }
+         }
+         else = {
+            random_country = {
+               limit = {
+                  has_reform = chinese_warlord_reform
+               }
+               save_global_event_target_as = EmperorOfChina
+               set_emperor_of_china = THIS
+            }
+         }
+      }
+      else_if = {
+         limit = {
+            event_target:ShogunOfJapan = { exists = no }
+         }
+         if = {
+            limit = {
+               any_country = {
+                  has_reform = shogunate
+               }
+            }
+            random_country = {
+               limit = { has_reform = shogunate }
+               save_global_event_target_as = ShogunOfJapan
+               1020 = {
+                  cede_province = ROOT
+               }
+            }
+         }
+         else = {
+            random_country = {
+               limit = { is_daimyo = yes }
+               save_global_event_target_as = ShogunOfJapan
+               1020 = {
+                  cede_province = ROOT
+               }
+            }
+         }
+      }
+      else = {
+         save_global_event_target_as = ShogunOfJapan
+      }
+   }
+   option = {}
+}
+
+
+######################################
+#  Spanish Netherlands Stuff
+######################################
+
+
+
+#Emperor cedes lowlands to Spain
+country_event = {
+   id = cultural_events.93
+   title = "cultural_events.93.t"
+   desc = "cultural_events.93.d"
+   picture = DEATH_OF_HEIR_eventPicture
+   is_triggered_only = yes
+   option = {
+      ai_chance = {
+         factor = 1
+      }
+      name = "cultural_events.93.a" #Cede lowlands
+      custom_tooltip = spa_gets_lowlands_tooltip
+      hidden_effect = {
+         every_owned_province = {
+            limit = {
+               OR = {
+                  area = picardy_area
+                  area = bourgogne_area
+                  region = low_countries_region
+               }
+            }
+            remove_core = ROOT
+            add_core = FROM
+            cede_province = FROM
+         }
+         #cleanup bordergore
+         every_owned_province = {
+            limit = {
+               region = france_region
+            }
+            remove_core = ROOT
+            add_core = FROM
+            cede_province = FROM
+         }
+      }
+   }
+   option = {
+      ai_chance = {
+         factor = 0
+      }
+      name = "cultural_events.93.b" #Refuse
+      add_mutual_opinion_modifier_effect = {
+         scope_country = FROM
+         opinion_modifier = opinion_refused_low_countries
+      }
+   }
+}
+
+
+
+
+
+
+
+############################################
+#  AI Behaviour Mechanics
+############################################
+
+country_event = {
+   id = cultural_events.58 #Neighbouring Warlords and Daimyos have bad opinions of eachother
+   hidden = yes
+   title = "none"
+   desc = "none"
+   picture = "none"
+   is_triggered_only = yes #on_yearly
+   trigger = {
+      OR = {
+         is_daimyo = yes
+         is_indep_daimyo = yes
+         has_reform = shogunate
+         has_reform = chinese_warlord_reform
+      }
+   }
+   option = {
+      if = {
+         limit = {
+            OR = {
+               has_reform = shogunate
+               is_daimyo = yes
+               is_indep_daimyo = yes
+            }
+         }
+         every_known_country = {
+            limit = {
+               OR = {
+                  is_daimyo = yes
+                  is_indep_daimyo = yes
+                  has_reform = shogunate
+               }
+            }
+            add_mutual_opinion_modifier_effect = {
+               scope_country = ROOT
+               opinion_modifier = daimyo_border_mod
+            }
+         }
+      }
+      else_if = {
+         limit = {
+            has_reform = chinese_warlord_reform 
+         }
+         every_known_country = {
+            limit = {
+               has_reform = chinese_warlord_reform
+            }
+            add_mutual_opinion_modifier_effect = {
+               scope_country = ROOT
+               opinion_modifier = warlord_border_mod
+            }
+         }
+      }
+   }
+}
+country_event = { #Removes the Relation penalty if countries dont border eachother anymore
+   id = cultural_events.59
+   title = "none"
+   desc = "none"
+   picture = "none"
+   hidden = yes
+   trigger = {
+      OR = {
+         revanchism = 1
+         overextension_percentage = 0.01
+      }
+      OR = {
+         is_daimyo = yes
+         is_indep_daimyo = yes
+         has_reform = shogunate
+         has_reform = chinese_warlord_reform
+      }
+      OR = {
+         NOT = { has_country_flag = daimyowarlord_rel }
+         had_country_flag = { flag = daimyowarlord_rel days = 180 }
+      }
+   }
+   immediate = {
+      clr_country_flag = daimyowarlord_rel
+      set_country_flag = daimyowarlord_rel
+      every_known_country = {
+         limit = {
+            OR = {
+               NOT = { is_neighbor_of_or_shares_seazone_with = { who = ROOT } }
+               is_subject_other_than_tributary_trigger = yes
+            }
+            OR = {
+               has_opinion_modifier = {
+                  who = PREV
+                  modifier = warlord_border_mod
+               }
+               has_opinion_modifier = {
+                  who = PREV
+                  modifier = daimyo_border_mod
+               }
+            }
+         }
+         remove_mutual_opinion_modifier_effect = {
+            scope_country = PREV
+            opinion_modifier = daimyo_border_mod
+         }
+         remove_mutual_opinion_modifier_effect = {
+            scope_country = PREV
+            opinion_modifier = warlord_border_mod
+         }
+         add_trust = {
+            who = PREV
+            value = 35
+            mutual = yes
+         }
+      }
+   }
+   option = {}
+}
+#AI money checker
+country_event = {
+   id = cultural_events.94
+   title = "none"
+   desc = "none"
+   picture = "none"
+   hidden = yes
+   trigger = {
+      treasury = 4000
+      ai = yes
+      NOT = { num_of_loans = 1 }
+      NOT = { has_country_flag = ai_money_checker_flag }
+      any_owned_province = {
+         can_build_any_building = yes
+      }
+   }
+   mean_time_to_happen = { 
+      days = 365 
+      modifier = {
+         factor = 0.1
+         treasury = 8000
+      }
+   }
+   immediate = {
+      set_country_flag = ai_money_checker_flag
+      country_event = { id = cultural_events.95 days = 180 }
+   }
+   option = {}
+}
+#AI money checker
+country_event = {
+   id = cultural_events.95
+   title = "none"
+   desc = "none"
+   picture = "none"
+   is_triggered_only = yes
+   hidden = yes
+   immediate = {
+      if = {
+         limit = { treasury = 4000 } #Forces the AI to construct buildings if theyve been above 4000 ducats for 6 months.
+         set_country_flag = ai_forced_to_construct_buildings
+      }
+      clr_country_flag = ai_money_checker_flag
+   }
+   option = {}
+}
+
+#Re-assigns the AI's merchants so they can evaluate their trade situation better.
+country_event = {
+   id = cultural_events.99
+   hidden = yes
+   title = "none"
+   desc = "none"
+   picture = "none"
+   trigger = {
+      ai = yes
+      NOT = { has_country_modifier = ai_merchant_eval_dummy }
+   }
+   is_triggered_only = yes #pulse
+   immediate = {
+      add_country_modifier = {
+         name = ai_merchant_eval_dummy
+         duration = 3650 #10 years
+         hidden = yes
+      }
+      set_variable = {
+         which = merchant_reassign_limit
+         value = 15
+      }
+      while = {
+         limit = {
+            check_variable = {
+               which = merchant_reassign_limit #stops it from hitting 100000 checks
+               value = 1
+            }
+         }
+         subtract_variable = {
+            which = merchant_reassign_limit
+            value = 1
+         }
+         random_trade_node = {
+            limit = { has_trader = ROOT }
+            recall_merchant = ROOT
+         }
+      }
+      set_variable = { #cleanup
+         which = merchant_reassign_limit
+         value = 0
+      }
+   }
+   option = {}
+}
+country_event = {
+   id = cultural_events.103 #Makes all AI rulers fanatical conquerors at game start
+   title = "none"
+   desc = "none"
+   picture = "none"
+   hidden = yes
+   trigger = {
+      ai = yes
+      NOT = { ruler_has_personality = ai_personality }
+   }
+   option = {
+      add_ruler_personality = ai_personality
+   }
+}
+country_event = { #Breaks alliance after emperor refused/accepted CTA from Warlord same with Daimyos and shogun
+   id = cultural_events.89
+   title = "none"
+   desc = "none"
+   picture = "none"
+   hidden = yes
+   is_triggered_only = yes
+
+   immediate = {
+      event_target:EmperorOfChina = {
+         if = {
+            limit = {
+               alliance_with = ROOT
+            }
+            ROOT = { 
+               break_alliance_with = { who = PREV }
+               remove_mutual_opinion_modifier_effect = {
+                  scope_country = PREV
+                  opinion_modifier = get_along_temp
+               }
+            }
+         }
+      }
+      event_target:ShogunOfJapan = {
+         if = {
+            limit = {
+               alliance_with = ROOT
+            }
+            ROOT = { 
+               break_alliance_with = { who = PREV }
+               remove_mutual_opinion_modifier_effect = {
+                  scope_country = PREV
+                  opinion_modifier = get_along_temp
+               }
+            }
+         }
+      }
+   }
+   option = {}
+}
+country_event = { #Removes Illegal relations 
+   id = cultural_events.33
+   title = "none"
+   desc = "none"
+   picture = "none"
+   hidden = yes
+   trigger = {
+      OR = {
+         AND = { #Warlords allied to non-Warlord or has subjects
+            has_reform = chinese_warlord_reform
+            OR = {
+               any_known_country = {
+                  alliance_with = ROOT
+                  NOT = { has_reform = chinese_warlord_reform }
+                  NOT = { has_opinion_modifier = { who = PREV modifier = get_along_temp } } #CTA
+               }
+               num_of_subjects = 1
+            }
+         }
+         AND = { #Daimyos allied to someone outside japan/has subjects
+            is_daimyo = yes
+            OR = {
+               any_known_country = {
+                  alliance_with = ROOT
+                  NOT = { has_reform = shogunate }
+                  NOT = { is_daimyo = yes }
+                  NOT = { is_indep_daimyo = yes }
+               }
+               num_of_subjects = 1
+            }
+         }
+         AND = { #EoC allied to someone who has land in China
+            is_emperor_of_china = yes
+            china_superregion = {
+               owner = {
+                  alliance_with = ROOT
+                  NOT = { has_opinion_modifier = { who = ROOT modifier = get_along_temp } } #CTA
+               }
+            }
+         }
+         AND = { #Shogunate/Japan allied to non-Japanese that has land in Japan
+            OR = {
+               has_reform = shogunate
+               has_reform = imperial_japan
+            }
+            japan_region = {
+               owner = {
+                  alliance_with = ROOT
+                  NOT = { is_daimyo = yes }
+                  NOT = { is_indep_daimyo = yes }
+               }
+            }
+         }
+      }
+   }
+   immediate = {
+      if = {
+         limit = {
+            has_reform = chinese_warlord_reform
+         }
+         every_known_country = {
+            limit = {
+               alliance_with = ROOT
+               NOT = { has_reform = chinese_warlord_reform }
+               NOT = { has_opinion_modifier = { who = ROOT modifier = get_along_temp } } #cta
+            }
+            break_alliance_with = { who = ROOT }
+         }
+         if = {
+            limit = { num_of_subjects = 1 }
+            every_subject_country = { grant_independence = yes }
+         }
+      }
+      if = {
+         limit = {
+            is_daimyo = yes
+         }
+         every_known_country = {
+            limit = {
+               alliance_with = ROOT
+               NOT = { is_daimyo = yes }
+               NOT = { is_indep_daimyo = yes }
+               NOT = { has_reform = shogunate }
+            }
+            break_alliance_with = { who = ROOT }
+         }
+         if = {
+            limit = { num_of_subjects = 1 }
+            every_subject_country = { grant_independence = yes }
+         }
+      }
+      if = {
+         limit = {
+            is_emperor_of_china = yes
+         }
+         every_known_country = {
+            limit = {
+               alliance_with = ROOT
+               any_owned_province = { superregion = china_superregion }
+               NOT = { has_opinion_modifier = { who = ROOT modifier = get_along_temp } }
+            }
+            break_alliance_with = { who = ROOT }
+         }
+      }
+      if = {
+         limit = {
+            OR = {
+               has_reform = shogunate
+               has_reform = imperial_japan
+            }
+         }
+         every_known_country = {
+            limit = {
+               alliance_with = ROOT
+               NOT = { is_daimyo = yes }
+               NOT = { is_indep_daimyo = yes }
+               any_owned_province = {
+                  region = japan_region
+               }
+            }
+            break_alliance_with = { who = ROOT }
+         }
+      }
+   }
+   option = {}
+}
+country_event = { #AI dosent need favours to call allies to war (dosent apply to player though)
+   id = cultural_events.104
+   title = "none"
+   desc = "none"
+   picture = "none"
+   hidden = yes
+   is_triggered_only = yes #on_five_year
+   trigger = {
+      owns = 1
+      ai = yes
+   }
+   immediate = {
+      every_country = {
+         limit = { 
+            ai = yes
+         }
+         every_country = {
+            limit = {
+               ai = yes
+               alliance_with = PREV
+            }
+            add_favors = {
+               who = PREV
+               amount = 100
+            }
+         }
+      }
+   }
+   option = {}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+###########################################
+#           ANIMOSITY MECHANIC
+###########################################
+
+
+##################################
+#  MISC MECHANICS
+#################################
+
+
+
+
+
+
+#Puts a hard limit on forcelimits of 2million troops
+#Forcelimit is replaced with reinforce speed to compensate.
+country_event = {
+   id = cultural_events.115
+   title = "none"
+   desc = "none"
+   picture = "none"
+   hidden = yes
+   is_triggered_only = yes
+
+   trigger = {
+      land_forcelimit = 2100
+   }
+
+   option = {
+      trigger_switch = {
+         on_trigger = has_country_modifier
+         forcelimit_cap1 = { reset_modifier = { which = forcelimit_cap1 new_modifier = forcelimit_cap2 scope = country } }
+         forcelimit_cap2 = { reset_modifier = { which = forcelimit_cap2 new_modifier = forcelimit_cap3 scope = country } }
+         forcelimit_cap3 = { reset_modifier = { which = forcelimit_cap3 new_modifier = forcelimit_cap4 scope = country } }
+         forcelimit_cap4 = { reset_modifier = { which = forcelimit_cap4 new_modifier = forcelimit_cap5 scope = country } }
+         forcelimit_cap5 = { reset_modifier = { which = forcelimit_cap5 new_modifier = forcelimit_cap6 scope = country } }
+         forcelimit_cap6 = { reset_modifier = { which = forcelimit_cap6 new_modifier = forcelimit_cap7 scope = country } }
+         forcelimit_cap7 = { reset_modifier = { which = forcelimit_cap7 new_modifier = forcelimit_cap8 scope = country } }
+         forcelimit_cap8 = { reset_modifier = { which = forcelimit_cap8 new_modifier = forcelimit_cap9 scope = country } }
+         forcelimit_cap9 = { reset_modifier = { which = forcelimit_cap9 new_modifier = forcelimit_cap10 scope = country } }
+         forcelimit_cap10 = { reset_modifier = { which = forcelimit_cap10 new_modifier = forcelimit_cap11 scope = country } }
+         forcelimit_cap11 = { reset_modifier = { which = forcelimit_cap11 new_modifier = forcelimit_cap12 scope = country } }
+         forcelimit_cap12 = { reset_modifier = { which = forcelimit_cap12 new_modifier = forcelimit_cap13 scope = country } }
+         forcelimit_cap13 = { reset_modifier = { which = forcelimit_cap13 new_modifier = forcelimit_cap14 scope = country } }
+         forcelimit_cap14 = { reset_modifier = { which = forcelimit_cap14 new_modifier = forcelimit_cap15 scope = country } }
+         forcelimit_cap15 = { reset_modifier = { which = forcelimit_cap15 new_modifier = forcelimit_cap16 scope = country } }
+         forcelimit_cap16 = { reset_modifier = { which = forcelimit_cap16 new_modifier = forcelimit_cap17 scope = country } }
+         forcelimit_cap17 = { reset_modifier = { which = forcelimit_cap17 new_modifier = forcelimit_cap18 scope = country } }
+         forcelimit_cap18 = { reset_modifier = { which = forcelimit_cap18 new_modifier = forcelimit_cap19 scope = country } }
+         forcelimit_cap19 = { reset_modifier = { which = forcelimit_cap19 new_modifier = forcelimit_cap20 scope = country } }
+      }
+      if = {
+         limit = {
+            NOT = { has_country_flag = forcelimit_cap_set }
+         }
+         add_country_modifier = {
+            name = forcelimit_cap1
+            duration = -1
+            hidden = yes
+         }
+         set_country_flag = forcelimit_cap_set
+      }
+   }
+}
+country_event = {
+   id = cultural_events.116 #Calculates yearly the leader pool bonus from vassals
+   hidden = yes
+   title = "none"
+   desc = "none"
+   picture = "none"
+   trigger = {
+      has_idea = marcher_lords #influence ideas
+      NOT = { has_country_modifier = marcher_lords_dummy }
+   }
+   option = {
+      add_country_modifier = {
+         name = marcher_lords_dummy
+         duration = 365
+         hidden = yes
+      }
+      set_variable = {
+         which = vassal_leaders
+         value = 0
+      }
+      export_to_variable = {
+         which = vassal_leaders
+         value = trigger_value:num_of_subjects
+      }
+      divide_variable = {
+         which = vassal_leaders
+         value = 3
+      }
+      calculate_leaders_from_vassals = yes
+   }
+}
+country_event = {
+   id = cultural_events.117 #Removes the leader pool bonus if no longer has influence ideas
+   title = "none"
+   picture = "none"
+   desc = "none"
+   hidden = yes
+   trigger = {
+      NOT = { has_idea = marcher_lords }
+      marcher_lords_bonus = yes
+   }
+   option = {
+      clr_marcher_lords_bonus = yes
+   }
+}
+
+
+##########################################
+#  Special Unit Handling
+##########################################
+
+
+
+
+
+#Calculate Ronin legitimacy penalty
+country_event = {
+   id = cultural_events.57
+   title = "none"
+   desc = "none"
+   picture = "none"
+   hidden = yes
+
+   trigger = {
+      #AI dosen't get legitimacy penalty since it can't evaluate when it should disband Ronin. 
+      #However AI wont build more than 30% of their armies Ronin and they still pay the initial legitimacy cost for hiring them.
+      ai = no 
+      OR = {
+         culture_group = japanese_g
+         AND = {
+            primary_culture = japanese_g_new
+            has_country_flag = sino_culture_center_flag
+         }
+      }
+      OR = {
+         NOT = {
+            check_variable = {
+               which = registered_ronin
+               value = 0
+            }
+         }
+         variable_arithmetic_trigger = {
+            export_to_variable = {
+               which = recruited_ronin
+               value = trigger_value:num_of_rajput
+            }
+            subtract_variable = {
+               which = recruited_ronin
+               which = registered_ronin
+            }
+            #More or less Ronin that what we have on record
+            NOT = {
+               is_variable_equal = {
+                  which = recruited_ronin
+                  value = 0
+               }
+            }
+         }
+      }
+   }
+   immediate = {
+      if = {
+         limit = {
+            NOT = {
+               check_variable = {
+                  which = registered_ronin
+                  value = 0
+               }
+            }
+         }
+         set_variable = {
+            which = registered_ronin
+            value = 0
+         }
+      }
+      else = {
+         export_to_variable = {
+            which = recruited_ronin
+            value = trigger_value:num_of_rajput
+         }
+         export_to_variable = {
+            which = ronin_total_fl
+            value = trigger_value:land_forcelimit
+         }
+         set_variable = {
+            which = registered_ronin
+            which = recruited_ronin
+         }
+         divide_variable = {
+            which = recruited_ronin
+            which = ronin_total_fl
+         }
+         clear_ronin_penalties = yes
+         add_country_modifier = {
+            name = ronin_0
+            duration = -1
+            hidden = yes
+         }
+         while = {
+            limit = {
+               check_variable = {
+                  which = recruited_ronin
+                  value = 0.01
+               }
+               NOT = { #Tier 3 grants no Ronin legitimacy penalty
+                  any_owned_province = {
+                     has_great_project = {
+                        type = mount_fuji
+                        tier = 3
+                     }
+                  }
+               }
+            }
+            subtract_variable = {
+               which = recruited_ronin
+               value = 0.01
+            }
+            set_ronin_penalty = yes
+         }
+         set_variable = {
+            which = recruited_ronin
+            value = 0
+         }
+         set_variable = {
+            which = ronin_total_fl
+            value = 0
+         }
+      }
+   }
+   option = {}
+}
+
+country_event = {
+   id = cultural_events.119 #Calculate Mercenary Inflation penalty
+   hidden = yes
+   title = "none"
+   picture = "none"
+   desc = "none"
+   trigger = {
+      #AI dosent get the inflation penalty since it dosent know how to disband these mercs. It will still act like it does though.
+      ai = no
+      OR = {
+         NOT = {
+            check_variable = {
+               which = registered_mercs
+               value = 0
+            }
+         }
+         variable_arithmetic_trigger = {
+            export_to_variable = {
+               which = recruited_mercs
+               value = trigger_value:num_of_streltsy
+            }
+            export_to_variable = {
+               which = merc_mod
+               value = modifier:merc_maintenance_modifier
+            }
+            multiply_variable = {
+               which = recruited_mercs
+               which = merc_mod
+            }
+            subtract_variable = {
+               which = recruited_mercs
+               which = registered_mercs
+            }
+            #More or less Mercs than what we have on record
+            NOT = {
+               is_variable_equal = {
+                  which = recruited_mercs
+                  value = 0
+               }
+            }
+         }
+      }
+   }
+   immediate = {
+      if = {
+         limit = {
+            NOT = {
+               check_variable = {
+                  which = registered_mercs
+                  value = 0
+               }
+            }
+         }
+         set_variable = {
+            which = registered_mercs
+            value = 0
+         }
+      }
+      else = {
+         export_to_variable = {
+            which = recruited_mercs
+            value = trigger_value:num_of_streltsy
+         }
+         export_to_variable = {
+            which = merc_total_fl
+            value = trigger_value:land_forcelimit
+         }
+         multiply_variable = {
+            which = merc_total_fl
+            value = 3
+         }
+         export_to_variable = {
+            which = merc_maintenance_mod
+            value = modifier:merc_maintenance_modifier
+         }
+         change_variable = {
+            which = merc_maintenance_mod
+            value = 1
+         }
+         set_variable = {
+            which = registered_mercs
+            which = recruited_mercs
+         }
+         multiply_variable = {
+            which = registered_mercs
+            which = merc_maintenance_mod
+         }
+         divide_variable = {
+            which = recruited_mercs
+            which = merc_total_fl
+         }
+         multiply_variable = {
+            which = recruited_mercs
+            which = merc_maintenance_mod
+         }
+         clear_merc_penalties = yes
+         add_country_modifier = {
+            name = merc_0
+            duration = -1
+            hidden = yes
+         }
+         while = {
+            limit = {
+               check_variable = {
+                  which = recruited_mercs
+                  value = 0.01
+               }
+               NOT = { #Tier 3 grants no Merc Inflation penalty
+                  any_owned_province = {
+                     has_great_project = {
+                        type = tower_of_london
+                        tier = 3
+                     }
+                  }
+               }
+            }
+            subtract_variable = {
+               which = recruited_mercs
+               value = 0.01
+            }
+            set_merc_penalty = yes
+         }
+         set_variable = {
+            which = recruited_mercs
+            value = 0
+         }
+         set_variable = {
+            which = merc_total_fl
+            value = 0
+         }
+         set_variable = {
+            which = merc_maintenance_mod
+            value = 0
+         }
+      }
+   }
+   option = {}
+}
+country_event = {
+   id = cultural_events.121 #Calculate Penalty from exceeding land forcelimit
+   title = "none"
+   desc = "none"
+   picture = "none"
+   hidden = yes
+
+   trigger = {
+      always = no
+      ai = no #AI wont exceed forcelimits
+      OR = {
+         #Is over the forcelimit and penalty has not been calculated yet
+         AND = {
+            army_size_percentage = 1.1
+            NOT = {
+               check_variable = {
+                  which = stored_fl_ratio
+                  value = 0
+               }
+            }
+         }
+         #Amount over the forcelimit has changed 
+         AND = {
+            army_size_percentage = 1.1
+            variable_arithmetic_trigger = {
+               export_to_variable = {
+                  which = current_fl_ratio
+                  value = trigger_value:army_size_percentage
+               }
+               subtract_variable = {
+                  which = current_fl_ratio
+                  which = stored_fl_ratio
+               }
+               NOT = {
+                  is_variable_equal = {
+                     which = current_fl_ratio
+                     value = 0
+                  }
+               }
+            }
+         }
+         #Was over forcelimit but isnt now
+         AND = {
+            has_country_flag = was_over_forcelimit
+            NOT = { army_size_percentage = 1.1 }
+         }
+      }
+   }
+   immediate = {
+      if = {
+         limit = {
+            has_country_flag = was_over_forcelimit
+            NOT = { army_size_percentage = 1.1 }
+         }
+         #Remove the Penalty
+         clear_forcelimit_penalties = yes
+         clr_country_flag = was_over_forcelimit
+      }
+      else = {
+         #Calculate the Penalty
+         set_country_flag = was_over_forcelimit
+         set_variable = {
+            which = stored_fl_ratio
+            value = 0
+         }
+         export_to_variable = {
+            which = stored_fl_ratio
+            value = trigger_value:army_size_percentage
+         }
+         set_variable = {
+            which = fl_penalty
+            which = stored_fl_ratio
+         }
+         subtract_variable = {
+            which = fl_penalty
+            value = 1
+         }
+         clear_forcelimit_penalties = yes
+         add_country_modifier = {
+            name = fl_0
+            duration = -1
+            hidden = yes
+         }
+         while = {
+            limit = {
+               check_variable = {
+                  which = fl_penalty
+                  value = 0.01
+               }
+            }
+            subtract_variable = {
+               which = fl_penalty
+               value = 0.01
+            }
+            set_forcelimit_penalty = yes
+         }
+      }
+   }
+   option = {}
+}
+country_event = {
+   id = cultural_events.122 #Calculate Penalty from exceeding naval forcelimit
+   title = "none"
+   desc = "none"
+   picture = "none"
+   hidden = yes
+
+   trigger = {
+      always = no
+      ai = no #AI wont exceed forcelimits
+      OR = {
+         #Is over the forcelimit and penalty has not been calculated yet
+         AND = {
+            navy_size_percentage = 1.001
+            NOT = {
+               check_variable = {
+                  which = navy_stored_fl_ratio
+                  value = 0
+               }
+            }
+         }
+         #Amount over the forcelimit has changed 
+         AND = {
+            navy_size_percentage = 1.001
+            variable_arithmetic_trigger = {
+               export_to_variable = {
+                  which = navy_current_fl_ratio
+                  value = trigger_value:navy_size_percentage
+               }
+               subtract_variable = {
+                  which = navy_current_fl_ratio
+                  which = navy_stored_fl_ratio
+               }
+               NOT = {
+                  is_variable_equal = {
+                     which = navy_current_fl_ratio
+                     value = 0
+                  }
+               }
+            }
+         }
+         #Was over forcelimit but isnt now
+         AND = {
+            has_country_flag = was_over_navy_forcelimit
+            NOT = { navy_size_percentage = 1 }
+         }
+      }
+   }
+   immediate = {
+      if = {
+         limit = {
+            has_country_flag = was_over_navy_forcelimit
+            NOT = { navy_size_percentage = 1 }
+         }
+         #Remove the Penalty
+         clear_navy_forcelimit_penalties = yes
+         clr_country_flag = was_over_navy_forcelimit
+      }
+      else = {
+         #Calculate the Penalty
+         set_country_flag = was_over_navy_forcelimit
+         set_variable = {
+            which = navy_stored_fl_ratio
+            value = 0
+         }
+         export_to_variable = {
+            which = navy_stored_fl_ratio
+            value = trigger_value:navy_size_percentage
+         }
+         set_variable = {
+            which = navy_fl_penalty
+            which = navy_stored_fl_ratio
+         }
+         subtract_variable = {
+            which = navy_fl_penalty
+            value = 1
+         }
+         clear_navy_forcelimit_penalties = yes
+         add_country_modifier = {
+            name = navy_fl_0
+            duration = -1
+            hidden = yes
+         }
+         while = {
+            limit = {
+               check_variable = {
+                  which = navy_fl_penalty
+                  value = 0.01
+               }
+            }
+            subtract_variable = {
+               which = navy_fl_penalty
+               value = 0.01
+            }
+            set_navy_forcelimit_penalty = yes
+         }
+      }
+   }
+   option = {}
+}
+country_event = {
+   id = cultural_events.123 #Hire mercs for the AI
+   title = "none"
+   desc = "none"
+   picture = "none"
+   hidden = yes
+   is_triggered_only = yes
+   immediate = {
+      random_hired_mercenary_company = {
+         add_company_manpower = -0.05
+         location = {
+            save_event_target_as = mercs_prov
+         }
+         disband_mercenary_company = THIS
+      }
+      if = {
+         limit = {
+            event_target:mercs_prov = {
+               controlled_by = ROOT
+            }
+         }
+         add_yearly_manpower = 1
+         #Inflation is calculated by 0.1 * mercenary_cost per regiment hired
+         set_variable = {
+            which = inflation_cost
+            value = 0.1
+         }
+         set_variable = {
+            which = mercenary_cost
+            value = 0
+         }
+         export_to_variable = {
+            which = mercenary_cost
+            value = modifier:mercenary_cost
+         }
+         change_variable = {
+            which = mercenary_cost
+            value = 1
+         }
+         multiply_variable = {
+            which = inflation_cost
+            which = mercenary_cost
+         }
+         set_variable = {
+            which = base_inflation_cost
+            which = inflation_cost
+         }
+         set_variable = {
+            which = merc_var_limit
+            value = 0
+         }
+         set_variable = {
+            which = artillery_thing
+            value = 0
+         }
+         while = {
+            limit = {
+               NOT = { army_size_percentage = 1 }
+               NOT = {
+                  check_variable = {
+                     which = merc_var_limit
+                     value = 100 #Stop the loop freezing game 
+                  }
+               }
+               variable_arithmetic_trigger = {
+                  custom_tooltip = merc_fl_tooltip
+                  export_to_variable = {
+                     which = mercs_hired
+                     value = trigger_value:num_of_streltsy
+                  }
+                  export_to_variable = {
+                     which = merc_fl
+                     value = trigger_value:total_base_tax
+                  }
+                  export_to_variable = {
+                     which = merc_fl_modifier
+                     value = modifier:mercenary_manpower
+                  }
+                  change_variable = {
+                     which = merc_fl_modifier
+                     value = 1
+                  }
+                  multiply_variable = {
+                     which = merc_fl
+                     value = 0.1
+                  }
+                  multiply_variable = {
+                     which = merc_fl
+                     which = merc_fl_modifier
+                  }
+                  subtract_variable = {
+                     which = merc_fl
+                     value = 1
+                  }
+                  #Check if Merc FL > hired mercs
+                  check_variable = {
+                     which = merc_fl
+                     which = mercs_hired
+                  }
+               }
+            }
+            change_variable = {
+               which = merc_var_limit
+               value = 1
+            }
+            change_variable = {
+               which = inflation_cost
+               which = base_inflation_cost
+            }
+            change_variable = {
+               which = artillery_thing
+               value = 1
+            }
+            event_target:mercs_prov = {
+               streltsy_infantry = ROOT
+               if = {
+                  limit = {
+                     PREV = {
+                        check_variable = {
+                           which = artillery_thing
+                           value = 2
+                        }
+                     }
+                  }
+                  PREV = {
+                     set_variable = {
+                        which = artillery_thing
+                        value = 0
+                     }
+                  }
+                  artillery = ROOT # This is to make sure the AI still has artillery, since merc only stacks will just get wiped
+               }
+            }
+         }
+         while = {
+            limit = {
+               check_variable = {
+                  which = inflation_cost
+                  value = 0.01
+               }
+               NOT = { inflation = 40 }
+            }
+            add_inflation = 0.01
+            subtract_variable = {
+               which = inflation_cost
+               value = 0.01
+            }
+         }
+      }
+   }
+   option = {}
+}
+country_event = {
+   id = cultural_events.96 #Hires Ronin for AI
+   title = "none"
+   desc = "none"
+   picture = "none"
+   hidden = yes
+   is_triggered_only = yes
+
+   trigger = {
+      ai = yes
+      is_country_culture = { type = japanese_g }
+      NOT = { army_size_percentage = 1 }
+      capital_scope = {
+         controlled_by = ROOT
+         has_siege = no
+         custom_trigger_tooltip = {
+            tooltip = no_enemies_in_capital_tt
+            NOT = { units_in_province = REB }
+         }
+      }
+      legitimacy_equivalent = 50
+      variable_arithmetic_trigger = {
+         export_to_variable = {
+            which = ai_ronin
+            value = trigger_value:num_of_rajput
+         }
+         export_to_variable = {
+            which = ai_fl
+            value = trigger_value:land_forcelimit
+         }
+         multiply_variable = {
+            which = ai_fl
+            value = 0.3
+         }
+         #Check if less than 30% forcelimit is ronin
+         check_variable = {
+            which = ai_fl
+            which = ai_ronin
+         }
+      }
+   }
+   immediate = {
+      if = {
+         limit = {
+            NOT = { has_country_modifier = jap_ronin_mod }
+         }
+         add_country_modifier = {
+            name = jap_ronin_mod
+            duration = -1
+            hidden = yes
+         }
+      }
+      set_variable = {
+         which = ronin_var_limit
+         value = 0
+      }
+      while = {
+         limit = {
+            NOT = {
+               check_variable = {
+                  which = ronin_var_limit
+                  value = 100 #Stop loop freezing game
+               }
+            }
+            NOT = { army_size_percentage = 1 }
+            legitimacy_equivalent = 50
+            variable_arithmetic_trigger = {
+               export_to_variable = {
+                  which = ai_ronin
+                  value = trigger_value:num_of_rajput
+               }
+               export_to_variable = {
+                  which = ai_fl
+                  value = trigger_value:land_forcelimit
+               }
+               multiply_variable = {
+                  which = ai_fl
+                  value = 0.3
+               }
+               #Check if less than 30% forcelimit is ronin
+               check_variable = {
+                  which = ai_fl
+                  which = ai_ronin
+               }
+            }
+         }
+         change_variable = {
+            which = ronin_var_limit
+            value = 1
+         }
+         add_legitimacy_equivalent = { amount = -0.3 }
+         capital_scope = {
+            rajput_infantry = ROOT
+         }
+      }
+   }
+   option = {}
+}
+country_event = { #Hires Marines for AI
+   id = cultural_events.76
+   title = "none"
+   desc = "none"
+   picture = "none"
+   is_triggered_only = yes
+   hidden = yes
+
+   trigger = {
+      ai = yes
+      has_global_modifier_value = {
+         which = allowed_marine_fraction
+         value = -9.9
+      }
+      NOT = { army_size_percentage = 1 }
+      sailors_percentage = 0.5
+      capital_scope = {
+         controlled_by = ROOT
+         has_siege = no
+         custom_trigger_tooltip = {
+            tooltip = no_enemies_in_capital_tt
+            NOT = { units_in_province = REB }
+         }
+      }
+      #below marine limit
+      variable_arithmetic_trigger = {
+         export_to_variable = {
+            which = marine_mod
+            value = modifier:allowed_marine_fraction
+         }
+         export_to_variable = {
+            which = current_marine
+            value = trigger_value:num_of_marines
+         }
+         export_to_variable = {
+            which = naval_fl
+            value = trigger_value:naval_forcelimit
+         }
+         change_variable = {
+            which = marine_mod
+            value = 10
+         }
+         multiply_variable = {
+            which = naval_fl
+            which = marine_mod
+         }
+         subtract_variable = {
+            which = naval_fl
+            value = 1
+         }
+         check_variable = {
+            which = naval_fl
+            which = current_marine
+         }
+      }
+   }
+   immediate = {
+      set_variable = {
+         which = marine_var_limit
+         value = 0
+      }
+      while = {
+         limit = {
+            NOT = {
+               check_variable = {
+                  which = marine_var_limit
+                  value = 100 #Stop loop freezing game
+               }
+            }
+            NOT = { army_size_percentage = 1 }
+            #below marine forcelimit
+            variable_arithmetic_trigger = {
+               export_to_variable = {
+                  which = marine_mod
+                  value = modifier:allowed_marine_fraction
+               }
+               export_to_variable = {
+                  which = current_marine
+                  value = trigger_value:num_of_marines
+               }
+               export_to_variable = {
+                  which = naval_fl
+                  value = trigger_value:naval_forcelimit
+               }
+               change_variable = {
+                  which = marine_mod
+                  value = 10
+               }
+               multiply_variable = {
+                  which = naval_fl
+                  which = marine_mod
+               }
+               subtract_variable = {
+                  which = naval_fl
+                  value = 1
+               }
+               check_variable = {
+                  which = naval_fl
+                  which = current_marine
+               }
+            }
+         }
+         change_variable = {
+            which = marine_var_limit
+            value = 1
+         }
+         capital_scope = {
+            marine_infantry = ROOT
+         }
+      }
+   }
+   option = {}
+}
+country_event = {
+   id = cultural_events.120 #Hires Rajputs for AI
+   title = "none"
+   desc = "none"
+   picture = "none"
+   hidden = yes
+   is_triggered_only = yes
+
+   trigger = {
+      ai = yes
+      exists = yes
+      has_estate_privilege = estate_rajput_rajput_regiments
+      NOT = { army_size_percentage = 1 }
+      manpower = 1
+      capital_scope = {
+         controlled_by = ROOT
+         has_siege = no
+         custom_trigger_tooltip = {
+            tooltip = no_enemies_in_capital_tt
+            NOT = { units_in_province = REB }
+         }
+      }
+      if = {
+         limit = {
+            NOT = {
+               check_variable = {
+                  which = rajput_forcelimit
+                  value = 1
+               }
+            }
+         }
+         custom_trigger_tooltip = {
+            tooltip = "Below Rajput Forcelimit"
+            estate_territory = {
+               estate = estate_rajput
+               territory = 5
+            }
+            land_forcelimit = 30
+         }
+      }
+      else = {
+         variable_arithmetic_trigger = {
+            custom_tooltip = "Below Rajput Forcelimit"
+            export_to_variable = {
+               which = num_of_rajputs
+               value = trigger_value:num_of_cossacks
+            }
+            check_variable = {
+               which = rajput_forcelimit
+               which = num_of_rajputs
+            }
+         }
+      }
+   }
+   immediate = {
+      hidden_effect = {
+         if = {
+            limit = {
+               NOT = { has_country_modifier = hired_rajput_units }
+            }
+            add_country_modifier = {
+               name = "hired_rajput_units"
+               duration = -1
+               hidden = yes
+            }
+         }
+         set_variable = {
+            which = rajput_forcelimit
+            value = 0
+         }
+         # Calculate rajput land share
+         while = {
+            limit = {
+               estate_territory = {
+                  estate = estate_rajput
+                  territory = 1
+               }
+            }
+            change_estate_land_share = {
+               estate = estate_rajput
+               share = -1
+            }
+            change_variable = {
+               which = rajput_forcelimit
+               value = 1
+            }
+         }
+         set_variable = {
+            which = rajput_copy
+            which = rajput_forcelimit
+         }
+         # Give the land back
+         while = {
+            limit = {
+               check_variable = {
+                  which = rajput_copy
+                  value = 1
+               }
+            }
+            change_estate_land_share = {
+               estate = estate_rajput
+               share = 1
+            }
+            subtract_variable = {
+               which = rajput_copy
+               value = 1
+            }
+         }
+         # Calculate the forcelimit now that we have the land share
+         divide_variable = {
+            which = rajput_forcelimit
+            value = 150
+         }
+         export_to_variable = {
+            which = normal_forcelimit
+            value = trigger_value:land_forcelimit
+         }
+         multiply_variable = {
+            which = rajput_forcelimit
+            which = normal_forcelimit
+         }
+         subtract_variable = {
+            which = rajput_forcelimit
+            value = 1
+         }
+
+         while = {
+            limit = {
+               variable_arithmetic_trigger = {
+                  custom_tooltip = "Below Rajput Forcelimit"
+                  export_to_variable = {
+                     which = num_of_rajputs
+                     value = trigger_value:num_of_cossacks
+                  }
+                  check_variable = {
+                     which = rajput_forcelimit
+                     which = num_of_rajputs
+                  }
+               }
+               PREV = {
+                  manpower = 1
+               }
+            }
+            capital_scope = {
+               cossack_cavalry = ROOT
+               PREV = {
+                  add_manpower = -1
+               }
+            }
+         }
+      }
+   }
+   option = {}
+}
+province_event = { #Rebel stack fix (Fixing one problem creates another one)
+   id = cultural_events.124
+   title = "none"
+   desc = "none"
+   picture = "none"
+   hidden = yes
+   trigger = {
+      num_of_units_in_province = {
+         who = REB
+         amount = 500
+      }
+   }
+   immediate = {
+      start_revolt = {
+         clear = yes
+      }
+   }
+   option = {
+   }
+}
+country_event = { #Removes CB and opinion modifier after sabotaged country is defeated/wins
+   id = cultural_events.68
+   hidden = yes
+   title = "none"
+   desc = "none"
+   picture = "none"
+   is_triggered_only = yes
+
+   #FROM = loser
+   #ROOT = winner
+   trigger = {
+      OR = {
+         reverse_has_opinion_modifier = {
+            who = FROM
+            modifier = action_sabotaged_reputation
+         }
+         has_opinion_modifier = {
+            who = FROM
+            modifier = action_sabotaged_reputation
+         }
+      }
+   }
+   option = {
+      #If the Loser is a sabotaged country
+      if = {
+         limit = {
+            reverse_has_opinion_modifier = {
+               who = FROM
+               modifier = action_sabotaged_reputation
+            }
+         }
+         reverse_remove_opinion = {
+            who = FROM
+            modifier = action_sabotaged_reputation
+         }
+         remove_casus_belli = { target = FROM type = cb_reputation_sabotaged }
+      }
+      #Otherwise if the Sabotaged country won
+      else = {
+         remove_opinion = {
+            who = FROM
+            modifier = action_sabotaged_reputation
+         }
+         FROM = { remove_casus_belli = { target = FROM type = cb_reputation_sabotaged } }
+      }
+   }
+}
+country_event = {
+   id = cultural_events.85
+   title = "cultural_events.85.t" #Covert Action Popup: $COUNTRY$ $ACTION$
+   desc = "cultural_events.85.d"
+   picture = GOOD_WITH_MONARCH_eventPicture
+   is_triggered_only = yes
+
+   immediate = {
+      hidden_effect = {
+         random_known_country = {
+            limit = {
+               has_opinion_modifier = {
+                  who = ROOT
+                  modifier = temp_trigger_modifier
+               }
+            }
+            save_event_target_as = beta_country
+         }
+         trigger_switch = {
+            #This is done so the title of the event is also dynamically generated
+            on_trigger = has_country_flag
+            sabotaged_reputation_flag = {
+               set_saved_name = {
+                  type = simple
+                  name = "Sabotaged Reputation"
+                  key = ACTION_NAME
+               }
+               set_saved_name = {
+                  type = simple
+                  name = "The very act of uttering their name shall leave a bitter taste in people's mouths."
+                  key = ACTION_DESC
+               }
+            }
+            sabotaged_recruitment_flag = {
+               set_saved_name = {
+                  type = simple
+                  name = "Sabotaged Recruitment"
+                  key = ACTION_NAME
+               }
+               set_saved_name = {
+                  type = simple
+                  name = "Their men shall surely retreat before they can even fight us."
+                  key = ACTION_DESC
+               }
+            }
+            slandered_merchants_flag = {
+               set_saved_name = {
+                  type = simple
+                  name = "Slandered Merchants"
+                  key = ACTION_NAME
+               }
+               set_saved_name = {
+                  type = simple
+                  name = "The very thought of trading with their scandulous merchants will disgust people."
+                  key = ACTION_DESC
+               }
+            }
+            agitated_liberty_flag = {
+               set_saved_name = {
+                  type = simple
+                  name = "Agitated Liberty in Subjects"
+                  key = ACTION_NAME
+               }
+               set_saved_name = {
+                  type = simple
+                  name = "Their Subjects shall surely rebel against their Tyranical rule!"
+                  key = ACTION_DESC
+               }
+            }
+            stole_war_maps_flag = {
+               set_saved_name = {
+                  type = simple
+                  name = "Stole War Maps"
+                  key = ACTION_NAME
+               }
+               set_saved_name = {
+                  type = simple
+                  name = "We shall surely uncover all their War Plans and Secret Manuevers!"
+                  key = ACTION_DESC
+               }
+            }
+            sabotaged_supply_flag = {
+               set_saved_name = {
+                  type = simple
+                  name = "Sabotaged Supply Lines"
+                  key = ACTION_NAME
+               }
+               set_saved_name = {
+                  type = simple
+                  name = "We shall surely out-manuever their pathetic struggles at victory."
+                  key = ACTION_DESC
+               }
+            }
+            raided_coffers_flag = {
+               set_saved_name = {
+                  type = simple
+                  name = "Raided Coffers"
+                  key = ACTION_NAME
+               }
+               set_saved_name = {
+                  type = simple
+                  name = "We shall plunder every last treasure from their pathetic country!"
+                  key = ACTION_DESC
+               }
+               set_variable = {
+                  which = income_to_add_tt
+                  which = income_to_add
+               }
+            }
+            bribed_recruits_flag = {
+               set_saved_name = {
+                  type = simple
+                  name = "Bribed Recruits"
+                  key = ACTION_NAME
+               }
+               set_saved_name = {
+                  type = simple
+                  name = "Their weak-minded recruits shall surely flock to our banners!"
+                  key = ACTION_DESC
+               }
+               set_variable = {
+                  which = manpower_to_take_tt
+                  which = manpower_to_take
+               }
+               multiply_variable = {
+                  which = manpower_to_take_tt
+                  value = 1000
+               }
+            }
+            corrupted_officials_flag = {
+               set_saved_name = {
+                  type = simple
+                  name = "Corrupted Officials"
+                  key = ACTION_NAME
+               }
+               set_saved_name = {
+                  type = simple
+                  name = "We shall be well informed of their State Secrets.."
+                  key = ACTION_DESC
+               }
+               set_variable = {
+                  which = adm_to_take_tt
+                  which = from_adm
+               }
+               set_variable = {
+                  which = dip_to_take_tt
+                  which = from_dip
+               }
+               set_variable = {
+                  which = mil_to_take_tt
+                  which = from_mil
+               }
+            }
+            disrupted_diplomacy_flag = {
+               set_saved_name = {
+                  type = simple
+                  name = "Disrupted Diplomacy"
+                  key = ACTION_NAME
+               }
+               set_saved_name = {
+                  type = simple
+                  name = "May their friends become their worst enemies.."
+                  key = ACTION_DESC
+               }
+               random_known_country = {
+                  limit = {
+                     alliance_with = event_target:beta_country
+                     has_opinion_modifier = {
+                        who = ROOT
+                        modifier = action_disrupted_diplomacy
+                     }
+                  }
+                  save_event_target_as = ally_break_country
+               }
+            }
+            cleared_ae_flag = {
+               set_saved_name = {
+                  type = simple
+                  name = "Cleared Aggressive Expansion"
+                  key = ACTION_NAME
+               }
+               set_saved_name = {
+                  type = simple
+                  name = "They shall surely think twice before forming a Coalition against us.."
+                  key = ACTION_DESC
+               }
+            }
+         }
+      }
+   }
+   option = {
+      name = "EXCELLENT"
+      custom_tooltip = spy_network_cost_tooltip
+      trigger_switch = {
+         on_trigger = has_country_flag
+         raided_coffers_flag = { custom_tooltip = income_to_add_tooltip }
+         bribed_recruits_flag = { custom_tooltip = manpower_to_take_tooltip }
+         corrupted_officials_flag = { custom_tooltip = power_to_take_tooltip }
+         disrupted_diplomacy_flag = { custom_tooltip = alliance_to_break_tooltip }
+         slandered_merchants_flag = { custom_tooltip = slander_merchants_notif_tooltip }
+      }
+   }
+   after = {
+      hidden_effect = {
+         clear_saved_name = ACTION_NAME
+         clear_saved_name = ACTION_DESC
+         clr_country_flag = sabotaged_reputation_flag
+         clr_country_flag = sabotaged_recruitment_flag
+         clr_country_flag = agitated_liberty_flag
+         clr_country_flag = stole_war_maps_flag
+         clr_country_flag = sabotaged_supply_flag
+         clr_country_flag = raided_coffers_flag
+         clr_country_flag = bribed_recruits_flag
+         clr_country_flag = corrupted_officials_flag
+         clr_country_flag = disrupted_diplomacy_flag
+         clr_country_flag = cleared_ae_flag
+         clr_country_flag = slandered_merchants_flag
+      }
+   }
+}
+country_event = {
+   id = cultural_events.71
+   title = "cultural_events.71.t" #Covert Action - Notification
+   desc = "cultural_events.71.d"
+   picture = BAD_WITH_MONARCH_eventPicture
+   is_triggered_only = yes
+
+   immediate = {
+      hidden_effect = {
+         random_known_country = {
+            limit = {
+               reverse_has_opinion_modifier = {
+                  who = ROOT
+                  modifier = temp_trigger_modifier
+               }
+            }
+            save_event_target_as = alpha_country
+         }
+         random_subject_country = {
+            limit = {
+               reverse_has_opinion_modifier = {
+                  who = PREV
+                  modifier = agitated_disloyal
+               }
+            }
+            save_event_target_as = agitated_subject
+         }
+         random_ally = {
+            limit = {
+               has_opinion_modifier = {
+                  who = event_target:alpha_country
+                  modifier = action_disrupted_diplomacy
+               }
+            }
+            save_event_target_as = my_ally
+         }
+         trigger_switch = {
+            #This is done so the title of the event is also dynamically generated
+            on_trigger = has_country_flag
+            sabotaged_reputation_flag = {
+               set_saved_name = {
+                  type = simple
+                  name = "Sabotaged our Reputation!"
+                  key = WHAT
+               }
+            }
+            sabotaged_recruitment_flag = {
+               set_saved_name = {
+                  type = simple
+                  name = "Sabotaged our Recruitment!"
+                  key = WHAT
+               }
+            }
+            slandered_merchants_flag = {
+               set_saved_name = {
+                  type = simple
+                  name = "Slandered our Merchants!"
+                  key = WHAT
+               }
+            }
+            agitated_liberty_flag = {
+               set_saved_name = {
+                  type = simple
+                  name = "Agitated our Subject's desire for Liberty!"
+                  key = WHAT
+               }
+               event_target:agitated_subject = { 
+                  trigger_switch = {
+                     on_trigger = is_subject_of_type
+                     vassal = { set_country_flag = was_vassal_flag }
+                     march = { set_country_flag = was_march_flag }
+                     daimyo_vassal = { set_country_flag = was_daimyo_vassal_flag }
+                     personal_union = { set_country_flag = was_pu_flag }
+                     client_vassal = { set_country_flag = was_client_flag }
+                     client_march = { set_country_flag = was_client_flag }
+                     crown_colony = { set_country_flag = was_colony_flag }
+                     private_enterprise = { set_country_flag = was_colony_flag }
+                     self_governing_colony = { set_country_flag = was_colony_flag }
+                  }
+                  grant_independence = yes
+               }
+               add_casus_belli = {
+                  target = event_target:agitated_subject
+                  type = cb_agitated_subject
+                  months = 1
+               }
+            }
+            stole_war_maps_flag = {
+               set_saved_name = {
+                  type = simple
+                  name = "Stolen our War Maps!"
+                  key = WHAT
+               }
+            }
+            sabotaged_supply_flag = {
+               set_saved_name = {
+                  type = simple
+                  name = "Sabotaged our Supply Lines!"
+                  key = WHAT
+               }
+            }
+            raided_coffers_flag = {
+               set_saved_name = {
+                  type = simple
+                  name = "Raided our Coffers!"
+                  key = WHAT
+               }
+            }
+            bribed_recruits_flag = {
+               set_saved_name = {
+                  type = simple
+                  name = "Bribed our Recruits!"
+                  key = WHAT
+               }
+            }
+            corrupted_officials_flag = {
+               set_saved_name = {
+                  type = simple
+                  name = "Corrupted our Officials!"
+                  key = WHAT
+               }
+            }
+            disrupted_diplomacy_flag = {
+               set_saved_name = {
+                  type = simple
+                  name = "Disrupted our Diplomacy!"
+                  key = WHAT
+               }
+            }
+            cleared_ae_flag = {
+               set_saved_name = {
+                  type = simple
+                  name = "Cleared our Aggressive Expansion against them!"
+                  key = WHAT
+               }
+            }
+         }
+      }
+   }
+   option = {
+      name = "cultural_events.71.a"
+      trigger = { NOT = { has_country_flag = agitated_liberty_flag } }
+      trigger_switch = {
+         on_trigger = has_country_flag 
+         sabotaged_reputation_flag = {
+            custom_tooltip = sabotaged_reputation_penalty_tt
+         }
+         sabotaged_recruitment_flag = {
+            custom_tooltip = sabotaged_recruitment_penalty_tt
+         }
+         slandered_merchants_flag = {
+            custom_tooltip = slandered_merchants_penalty_tt
+         }
+         stole_war_maps_flag = {
+            custom_tooltip = stole_war_maps_penalty_tt
+         }
+         sabotaged_supply_flag = {
+            custom_tooltip = sabotaged_supply_penalty_tt
+         }
+         raided_coffers_flag = {
+            custom_tooltip = raided_coffers_penalty_tt
+         }
+         bribed_recruits_flag = {
+            custom_tooltip = bribed_recruits_penalty_tt
+         }
+         corrupted_officials_flag = {
+            custom_tooltip = corrupted_officials_penalty_tt
+         }
+         disrupted_diplomacy_flag = {
+            custom_tooltip = disrupted_diplomacy_penalty_tt
+         }
+         cleared_ae_flag = {
+            custom_tooltip = cleared_ae_penalty_tt
+         }
+      }
+   }
+   option = {
+      trigger = { has_country_flag = agitated_liberty_flag }
+      name = "cultural_events.71.b" #Go to War!
+      declare_war_with_cb = {
+         casus_belli = cb_agitated_subject
+         who = event_target:agitated_subject
+      }
+      set_country_flag = the_agitation_war
+      custom_tooltip = cant_call_allies_tooltip
+      event_target:alpha_country = {
+         join_all_defensive_wars_of = event_target:agitated_subject
+         create_alliance = event_target:agitated_subject
+      }
+      ai_chance = {
+         factor = 20
+         modifier = {
+            factor = 2
+            is_great_power = yes
+         }
+         modifier = {
+            factor = 2
+            OR = {
+               ai_attitude = {
+                  who = event_target:alpha_country
+                  attitude = attitude_hostile
+               }
+               ai_attitude = {
+                  who = event_target:alpha_country
+                  attitude = attitude_rivalry
+               }
+               ai_attitude = {
+                  who = event_target:alpha_country
+                  attitude = attitude_outraged
+               }
+            }
+         }
+      }
+   }
+   option = {
+      trigger = { has_country_flag = agitated_liberty_flag }
+      name = "cultural_events.71.c" #Back down.
+      tooltip = {
+         event_target:agitated_subject = { grant_independence = yes }
+      }
+      add_truce_with = event_target:agitated_subject
+      add_truce_with = event_target:alpha_country
+      event_target:alpha_country = {
+         create_alliance = event_target:agitated_subject
+         hidden_effect = {
+            reverse_remove_opinion = {
+               who = event_target:agitated_subject
+               modifier = agitated_our_liberty
+            }
+         }
+      }
+      hidden_effect = {
+         remove_opinion = {
+            modifier = agitated_disloyal
+            who = event_target:agitated_subject
+         }
+         remove_opinion = {
+            modifier = action_agitated_liberty
+            who = event_target:alpha_country
+         }
+      }
+      event_target:agitated_subject = {
+         clr_country_flag = was_vassal_flag
+         clr_country_flag = was_daimyo_vassal_flag
+         clr_country_flag = was_pu_flag
+         clr_country_flag = was_march_flag
+         clr_country_flag = was_colony_flag
+         clr_country_flag = was_client_flag
+      }
+      ai_chance = {
+         factor = 10
+         modifier = {
+            factor = 2
+            event_target:alpha_country = {
+               army_strength = {
+                  who = ROOT
+                  value = 2
+               }
+            }
+         }
+         modifier = {
+            factor = 2
+            is_bankrupt = yes
+         }
+      }
+   }
+   after = {
+      hidden_effect = {
+         clear_saved_name = WHAT
+         clr_country_flag = sabotaged_reputation_flag
+         clr_country_flag = sabotaged_recruitment_flag
+         clr_country_flag = slandered_merchants_flag
+         clr_country_flag = agitated_liberty_flag
+         clr_country_flag = stole_war_maps_flag
+         clr_country_flag = sabotaged_supply_flag
+         clr_country_flag = raided_coffers_flag
+         clr_country_flag = bribed_recruits_flag
+         clr_country_flag = corrupted_officials_flag
+         clr_country_flag = disrupted_diplomacy_flag
+         clr_country_flag = cleared_ae_flag
+         remove_opinion = {
+            who = event_target:alpha_country
+            modifier = temp_trigger_modifier
+         }
+         remove_casus_belli = {
+            type = cb_agitated_subject
+            target = event_target:agitated_subject
+         }
+      }
+   }
+}
+country_event = {
+   id = cultural_events.11 #Lost The Agitation War
+   title = "cultural_events.11.t"
+   picture = BAD_WITH_MONARCH_eventPicture
+   desc = {
+      trigger = {
+         reverse_has_opinion_modifier = {
+            who = FROM
+            modifier = agitated_our_liberty
+         }
+      }
+      desc = "cultural_events.11.d.2"
+   }
+   desc = {
+      trigger = {
+         NOT = {
+            reverse_has_opinion_modifier = {
+               who = FROM
+               modifier = agitated_our_liberty
+            }
+         }
+      }
+      desc = "cultural_events.11.d"
+   }
+   is_triggered_only = yes
+
+   trigger = {
+      FROM = { 
+         OR = {
+            always = yes
+            has_country_flag = the_agitation_war
+            has_opinion_modifier = {
+               who = ROOT
+               modifier = agitated_our_liberty
+            }
+         }
+      }
+      OR = {
+         reverse_has_opinion_modifier = {
+            who = FROM
+            modifier = agitated_disloyal
+         }
+         reverse_has_opinion_modifier = {
+            who = FROM
+            modifier = agitated_our_liberty
+         }
+         reverse_has_opinion_modifier = {
+            who = FROM
+            modifier = action_agitated_liberty
+         }
+         tag = NAP
+      }
+      NOT = { has_country_modifier = independent_flag_trigger }
+   }
+   
+   option = {
+      name = "cultural_events.11.a"
+      #If you were the subject but failed
+      if = {
+         limit = {
+            reverse_has_opinion_modifier = {
+               who = FROM
+               modifier = agitated_disloyal
+            }
+            FROM = { NOT = { has_country_modifier = won_agitation_war } }
+         }
+         custom_tooltip = become_subject_of_from_tt
+         hidden_effect = {
+            FROM = { clr_country_flag = the_agitation_war }
+            trigger_switch = {
+               on_trigger = has_country_flag
+               was_vassal_flag = {
+                  clr_country_flag = was_vassal_flag
+                  FROM = { create_subject = { subject_type = vassal subject = ROOT } }
+               }
+               was_daimyo_vassal_flag = {
+                  clr_country_flag = was_daimyo_vassal_flag
+                  FROM = { create_subject = { subject_type = daimyo_vassal subject = ROOT } }
+               }
+               was_colony_flag = {
+                  clr_country_flag = was_colony_flag
+                  FROM = { create_subject = { subject_type = crown_colony subject = ROOT } }
+               }
+               was_march_flag = {
+                  clr_country_flag = was_march_flag
+                  FROM = { create_subject = { subject_type = march subject = ROOT } }
+               }
+               was_pu_flag = {
+                  clr_country_flag = was_pu_flag
+                  FROM = { create_subject = { subject_type = personal_union subject = ROOT } }
+               }
+               was_client_flag = {
+                  clr_country_flag = was_client_flag
+                  FROM = { create_subject = { subject_type = client_vassal subject = ROOT } }
+               }
+            }
+            add_liberty_desire = -100
+            reverse_remove_opinion = {
+               modifier = agitated_disloyal
+               who = FROM
+            }
+            random_known_country = {
+               limit = {
+                  reverse_has_opinion_modifier = {
+                     who = ROOT
+                     modifier = agitated_our_liberty
+                  }
+               }
+               reverse_remove_opinion = {
+                  who = FROM
+                  modifier = action_agitated_liberty
+               }
+               country_event = {
+                  id = cultural_events.11
+                  days = 1
+               }
+            }
+         }
+      }
+      #If you were the country that helped the subject but failed
+      else_if = {
+         limit = {
+            OR = {
+               reverse_has_opinion_modifier = {
+                  who = FROM
+                  modifier = agitated_our_liberty
+               }
+               reverse_has_opinion_modifier = {
+                  who = FROM
+                  modifier = action_agitated_liberty
+               }
+            }
+            NOT = { has_country_modifier = independent_flag_trigger }
+         }
+         hidden_effect = {
+            reverse_remove_opinion = {
+               who = FROM
+               modifier = agitated_our_liberty
+            }
+            reverse_remove_opinion = {
+               who = PREV
+               modifier = action_agitated_liberty
+            }
+         }
+         add_country_modifier = {
+            name = lost_agitation_war
+            duration = 5475
+         }
+      }
+   }
+   after = {
+      hidden_effect = {
+         FROM = { clr_country_flag = the_agitation_war }
+      }
+   }
+}
+country_event = {
+   id = cultural_events.74 #For the Idea "By the Grace of Gold" in Plutocratic Ideas
+   title = "none"
+   desc = "none"
+   picture = "none"
+   hidden = yes
+   trigger = {
+      OR = {
+         AND = {
+            has_idea = by_the_grace_of_gold
+            NOT = { has_country_modifier = by_the_grace_of_gold }
+         }
+         AND = {
+            has_country_modifier = by_the_grace_of_gold
+            NOT = { has_idea = by_the_grace_of_gold }
+         }
+      }
+   }
+   option = {
+      if = {
+         limit = { has_country_modifier = by_the_grace_of_gold }
+         remove_country_modifier = by_the_grace_of_gold
+      }
+      else = {
+         add_country_modifier = {
+            name = by_the_grace_of_gold
+            duration = -1
+            hidden = yes
+         }
+      }
+   }
+}
+country_event = {
+   id = cultural_events.51 #Because stupid VAT can only check flags
+   title = "none"
+   desc = "none"
+   picture = "none"
+   hidden = yes
+   trigger = {
+      OR = {
+         AND = {
+            has_idea = statecraft
+            NOT = { has_country_flag = idea_statecraft }
+         }
+         AND = {
+            NOT = { has_idea = statecraft }
+            has_country_flag = idea_statecraft
+         }
+      }
+   }
+   option = {
+      if = {
+         limit = { has_idea = statecraft }
+         set_country_flag = idea_statecraft
+      }
+      else = {
+         clr_country_flag = idea_statecraft
+      }
+   }
+}
+country_event = {
+   id = cultural_events.79 #Policy Ran out - Notification
+   title = "cultural_events.79.t"
+   desc = "cultural_events.79.d"
+   picture = REFORM_eventPicture
+
+   trigger = {
+      ai = no
+      OR = {
+         had_country_flag = { flag = quality_cd_fl days = 1825 }
+         had_country_flag = { flag = quantity_cd_fl days = 1825 }
+         had_country_flag = { flag = naval_cd_fl days = 1825 }
+         had_country_flag = { flag = influence_cd_fl days = 1825 }
+         had_country_flag = { flag = maritime_cd_fl days = 1825 }
+         had_country_flag = { flag = exploration_cd_fl days = 1825 }
+         had_country_flag = { flag = espionage_cd_fl days = 1825 }
+         had_country_flag = { flag = trade_cd_fl days = 1825 }
+         had_country_flag = { flag = diplomatic_cd_fl days = 1825 }
+         had_country_flag = { flag = plutocratic_cd_fl days = 1825 }
+         had_country_flag = { flag = offensive_cd_fl days = 1825 }
+         had_country_flag = { flag = defensive_cd_fl days = 1825 }
+         had_country_flag = { flag = economic_cd_fl days = 1825 }
+         had_country_flag = { flag = expansion_cd_fl days = 1825 }
+         had_country_flag = { flag = inno_cd_fl days = 1825 }
+         had_country_flag = { flag = religious_cd_fl days = 1825 }
+         had_country_flag = { flag = admin_cd_fl days = 1825 }
+         had_country_flag = { flag = humanist_cd_fl days = 1825 }
+      }
+      NOT = { has_country_modifier = policy_notif_cd }
+   }
+   immediate = {
+      hidden_effect = {
+         if = {
+            limit = { had_country_flag = { flag = quality_cd_fl days = 1825 } }
+            apply_reverse_policy_effect = { quality = yes }
+         }
+         if = {
+            limit = { had_country_flag = { flag = quantity_cd_fl days = 1825 } }
+            apply_reverse_policy_effect = { quantity = yes }
+         }
+         if = {
+            limit = { had_country_flag = { flag = naval_cd_fl days = 1825 } }
+            apply_reverse_policy_effect = { naval = yes }
+         }
+         if = {
+            limit = { had_country_flag = { flag = influence_cd_fl days = 1825 } }
+            apply_reverse_policy_effect = { influence = yes }
+         }
+         if = {
+            limit = { had_country_flag = { flag = maritime_cd_fl days = 1825 } }
+            apply_reverse_policy_effect = { maritime = yes }
+         }
+         if = {
+            limit = { had_country_flag = { flag = exploration_cd_fl days = 1825 } }
+            apply_reverse_policy_effect = { exploration = yes }
+         }
+         if = {
+            limit = { had_country_flag = { flag = espionage_cd_fl days = 1825 } }
+            apply_reverse_policy_effect = { espionage = yes }
+         }
+         if = {
+            limit = { had_country_flag = { flag = trade_cd_fl days = 1825 } }
+            apply_reverse_policy_effect = { trade = yes }
+         }
+         if = {
+            limit = { had_country_flag = { flag = diplomatic_cd_fl days = 1825 } }
+            apply_reverse_policy_effect = { diplomatic = yes }
+         }
+         if = {
+            limit = { had_country_flag = { flag = plutocratic_cd_fl days = 1825 } }
+            apply_reverse_policy_effect = { plutocratic = yes }
+         }
+         if = {
+            limit = { had_country_flag = { flag = offensive_cd_fl days = 1825 } }
+            apply_reverse_policy_effect = { offensive = yes }
+         }
+         if = {
+            limit = { had_country_flag = { flag = defensive_cd_fl days = 1825 } }
+            apply_reverse_policy_effect = { defensive = yes }
+         }
+         if = {
+            limit = { had_country_flag = { flag = economic_cd_fl days = 1825 } }
+            apply_reverse_policy_effect = { economic = yes }
+         }
+         if = {
+            limit = { had_country_flag = { flag = expansion_cd_fl days = 1825 } }
+            apply_reverse_policy_effect = { expansion = yes }
+         }
+         if = {
+            limit = { had_country_flag = { flag = inno_cd_fl days = 1825 } }
+            apply_reverse_policy_effect = { inno = yes }
+         }
+         if = {
+            limit = { had_country_flag = { flag = religious_cd_fl days = 1825 } }
+            apply_reverse_policy_effect = { religious = yes }
+         }
+         if = {
+            limit = { had_country_flag = { flag = admin_cd_fl days = 1825 } }
+            apply_reverse_policy_effect = { admin = yes }
+         }
+         if = {
+            limit = { had_country_flag = { flag = humanist_cd_fl days = 1825 } }
+            apply_reverse_policy_effect = { humanist = yes }
+         }
+         add_country_modifier = {
+            name = policy_notif_cd
+            duration = 60
+            hidden = yes
+         }
+      }
+   }
+   option = {
+      name = "cultural_events.79.a"
+      tooltip = {
+         if = {
+            limit = { had_country_flag = { flag = quality_cd_fl days = 1825 } }
+            apply_reverse_policy_effect = { quality = yes }
+         }
+         if = {
+            limit = { had_country_flag = { flag = quantity_cd_fl days = 1825 } }
+            apply_reverse_policy_effect = { quantity = yes }
+         }
+         if = {
+            limit = { had_country_flag = { flag = naval_cd_fl days = 1825 } }
+            apply_reverse_policy_effect = { naval = yes }
+         }
+         if = {
+            limit = { had_country_flag = { flag = influence_cd_fl days = 1825 } }
+            apply_reverse_policy_effect = { influence = yes }
+         }
+         if = {
+            limit = { had_country_flag = { flag = maritime_cd_fl days = 1825 } }
+            apply_reverse_policy_effect = { maritime = yes }
+         }
+         if = {
+            limit = { had_country_flag = { flag = exploration_cd_fl days = 1825 } }
+            apply_reverse_policy_effect = { exploration = yes }
+         }
+         if = {
+            limit = { had_country_flag = { flag = espionage_cd_fl days = 1825 } }
+            apply_reverse_policy_effect = { espionage = yes }
+         }
+         if = {
+            limit = { had_country_flag = { flag = trade_cd_fl days = 1825 } }
+            apply_reverse_policy_effect = { trade = yes }
+         }
+         if = {
+            limit = { had_country_flag = { flag = diplomatic_cd_fl days = 1825 } }
+            apply_reverse_policy_effect = { diplomatic = yes }
+         }
+         if = {
+            limit = { had_country_flag = { flag = plutocratic_cd_fl days = 1825 } }
+            apply_reverse_policy_effect = { plutocratic = yes }
+         }
+         if = {
+            limit = { had_country_flag = { flag = offensive_cd_fl days = 1825 } }
+            apply_reverse_policy_effect = { offensive = yes }
+         }
+         if = {
+            limit = { had_country_flag = { flag = defensive_cd_fl days = 1825 } }
+            apply_reverse_policy_effect = { defensive = yes }
+         }
+         if = {
+            limit = { had_country_flag = { flag = economic_cd_fl days = 1825 } }
+            apply_reverse_policy_effect = { economic = yes }
+         }
+         if = {
+            limit = { had_country_flag = { flag = expansion_cd_fl days = 1825 } }
+            apply_reverse_policy_effect = { expansion = yes }
+         }
+         if = {
+            limit = { had_country_flag = { flag = inno_cd_fl days = 1825 } }
+            apply_reverse_policy_effect = { inno = yes }
+         }
+         if = {
+            limit = { had_country_flag = { flag = religious_cd_fl days = 1825 } }
+            apply_reverse_policy_effect = { religious = yes }
+         }
+         if = {
+            limit = { had_country_flag = { flag = admin_cd_fl days = 1825 } }
+            apply_reverse_policy_effect = { admin = yes }
+         }
+         if = {
+            limit = { had_country_flag = { flag = humanist_cd_fl days = 1825 } }
+            apply_reverse_policy_effect = { humanist = yes }
+         }
+      }
+   }
+}
+#AI uncon mechanic
+country_event = {
+   id = cultural_events.29
+   title = "cultural_events.29.t"
+   desc = "cultural_events.29.d"
+   picture = BATTLE_eventPicture
+   trigger = {
+      ai = yes
+      NOT = { war_exhaustion = 19 }
+      any_war_enemy_country = {
+         NOT = { 
+            is_in_war = { participants = ROOT casus_belli = cb_super_badboy } # So you can't escape coalitions by this mechanic
+         }
+         OR = {
+            AND = {
+               ai = no
+               war_score_against = {
+                  who = ROOT
+                  value = 99
+               }
+            }
+            AND = {
+               ai = yes
+               war_score_against = {
+                  who = ROOT
+                  value = 80
+               }
+            }
+            AND = {
+               war_score_against = {
+                  who = ROOT
+                  value = 50
+               }
+               ROOT = {
+                  is_bankrupt = yes
+               }
+            }
+         }
+         OR = {
+            ai = yes
+            any_capital_province = {
+               owned_by = ROOT
+               controlled_by = PREV
+            }
+         }
+      }
+   }
+   major = yes
+   major_trigger = {
+      war_score_against = {
+         who = FROM
+         value = 99
+      }
+   }
+   immediate = {
+      hidden_effect = {
+         random_war_enemy_country = {
+            limit = {
+               NOT = { 
+                  is_in_war = { participants = ROOT casus_belli = cb_super_badboy } # So you can't escape coalitions by this mechanic
+               }
+               OR = {
+                  AND = {
+                     ai = no
+                     war_score_against = {
+                        who = ROOT
+                        value = 99
+                     }
+                  }
+                  AND = {
+                     ai = yes
+                     war_score_against = {
+                        who = ROOT
+                        value = 80
+                     }
+                  }
+                  AND = {
+                     war_score_against = {
+                        who = ROOT
+                        value = 50
+                     }
+                     ROOT = {
+                        is_bankrupt = yes
+                     }
+                  }
+               }
+               OR = {
+                  ai = yes
+                  any_capital_province = {
+                     owned_by = ROOT
+                     controlled_by = PREV
+                  }
+               }
+            }
+            save_event_target_as = winner_country
+         }
+         add_war_exhaustion = 20
+         if = {
+            limit = { num_of_loans = 1 }
+            set_country_flag = received_loan_compensation
+            add_treasury = 800 # This is to stop the AI going bankrupt if they have loans
+         }
+         every_owned_province = {
+            limit = { controlled_by = ROOT }
+            change_controller = event_target:winner_country
+         }
+         add_country_modifier = {
+            name = unconditionally_surrendered
+            duration = 90
+            hidden = yes
+         }
+      }
+   }
+   option = {
+      name = "cultural_events.29.a"
+      custom_tooltip = uncon_tooltip
+   }
+}
+country_event = {
+   id = cultural_events.30 #Removes the Applied war exhaustion later
+   title = "none"
+   desc = "none"
+   picture = "none"
+   hidden = yes
+   trigger = {
+      war_exhaustion = 20
+      is_at_war = no
+   }
+
+   option = {
+      add_war_exhaustion = -20
+      if = {
+         limit = { has_country_flag = received_loan_compensation }
+         add_treasury = -800 # Removes the money later, so they aren't getting free cash
+         clr_country_flag = received_loan_compensation
+      }
+   }
+}
+country_event = {
+   id = cultural_events.127 #Removes buildings that are useless for the AI
+   title = "none"
+   desc = "none"
+   picture = "none"
+   hidden = yes
+   is_triggered_only = yes
+   trigger = {
+      always = no
+   }
+
+   option = {
+      clr_country_flag = ai_building_delete_timer
+      set_country_flag = ai_building_delete_timer
+      if = {
+         limit = {
+            adm_tech = 20
+         }
+         every_owned_province = {
+            limit = {
+               NOT = { base_tax = 10 }
+               has_tax_building_trigger = yes
+               NOT = { can_build_any_building = yes } #No free slots
+            }
+            remove_tax_building_effect = yes
+         }
+      }
+      else_if = {
+         limit = {
+            adm_tech = 10
+         }
+         every_owned_province = {
+            limit = {
+               NOT = { base_tax = 5 }
+               has_tax_building_trigger = yes
+               NOT = { can_build_any_building = yes } #No free slots
+            }
+            remove_tax_building_effect = yes
+         }
+      }
+      if = {
+         limit = {
+            sailors_percentage = 0.85
+         }
+         every_owned_province = {
+            limit = {
+               has_dock_building_trigger = yes
+               NOT = { can_build_any_building = yes } #No free slots
+            }
+            remove_dock_building_effect = yes
+         }
+      }
+      every_owned_province = {
+         limit = {
+            OR = {
+               has_building = trade_depot
+               has_building = marketplace
+               has_building = stock_exchange
+            }
+            trade_share = {
+               country = ROOT
+               share = 90
+            }
+            NOT = { can_build_any_building = yes } #no free slots
+         }
+         remove_trade_building_effect = yes
+      }
+   }
+}
+###############################################
+#     NAVAL SUPREMACY MECHANIC
+###############################################
+country_event = {
+   id = cultural_events.61 #Calculates which side has Naval Supremacy
+   title = "none"
+   desc = "none"
+   picture = "none"
+   is_triggered_only = yes # triggered only from naval battles
+   hidden = yes
+
+   immediate = {
+      set_naval_supremacy_for = {
+         allies_of = ROOT
+         against_allies_of = event_target:loser
+      }
+   }
+   option = {
+   }
+}
+#Checks if a province is being blockaded
+province_event = {
+   id = cultural_events.77
+   hidden = yes
+   title = "none"
+   desc = "none"
+   picture = "none"
+
+   trigger = {
+      is_blockaded = yes
+      controller = { is_at_war = yes }
+   }
+
+   option = {
+      set_province_flag = blockade_started
+      controller = {
+         random_war_enemy_country = {
+            limit = {
+               ROOT = { is_blockaded_by = PREV }
+            }
+            save_event_target_as = blockader
+         }
+         save_event_target_as = root_owner
+      }
+      export_to_variable = {
+         which = enemy_siege_ability
+         value = modifier:blockade_efficiency
+         who = event_target:blockader
+      }
+      export_to_variable = {
+         which = blockade_defensiveness
+         value = modifier:blockade_force_required
+      }
+      if = {
+         limit = {
+            event_target:blockader = {
+               has_naval_supremacy_against = {
+                  who = event_target:root_owner
+               }
+            }
+         }
+         subtract_variable = {
+            which = blockade_defensiveness
+            value = 0.5 # from naval supremacy
+         }
+      }
+      subtract_variable = {
+         which = enemy_siege_ability
+         which = blockade_defensiveness # directly proportional
+      }
+   }
+}
+#Removes the check if the province isn't blockaded anymore
+province_event = {
+   id = cultural_events.78
+   title = "none"
+   desc = "none"
+   picture = "none"
+   hidden = yes
+
+   trigger = {
+      has_province_flag = blockade_started
+   }
+
+   immediate = {
+      controller = {
+         random_war_enemy_country = {
+            limit = {
+               ROOT = { is_blockaded_by = PREV }
+            }
+            save_event_target_as = blockader
+         }
+      }
+   }
+
+   option = {
+      if = {
+         limit = {
+            is_blockaded = no
+         }
+         clr_province_flag = blockade_started
+         set_variable = {
+            which = siege_progress
+            value = 0
+         }
+         set_variable = {
+            which = enemy_siege_ability
+            value = 0
+         }
+      }
+      else = {
+         random_list = {
+            1 = {
+               modifier = {
+                  factor = 1.5
+                  check_variable = {
+                     which = enemy_siege_ability
+                     value = 0.1
+                  }
+               }
+               modifier = {
+                  factor = 1.5
+                  check_variable = {
+                     which = enemy_siege_ability
+                     value = 0.2
+                  }
+               }
+               modifier = {
+                  factor = 1.5
+                  check_variable = {
+                     which = enemy_siege_ability
+                     value = 0.3
+                  }
+               }
+               modifier = {
+                  factor = 1.5
+                  check_variable = {
+                     which = enemy_siege_ability
+                     value = 0.4
+                  }
+               }
+               modifier = {
+                  factor = 1.5
+                  check_variable = {
+                     which = enemy_siege_ability
+                     value = 0.5
+                  }
+               }
+               modifier = {
+                  factor = 1.3
+                  check_variable = {
+                     which = enemy_siege_ability
+                     value = 0.6
+                  }
+               }
+               modifier = {
+                  factor = 1.2
+                  check_variable = {
+                     which = enemy_siege_ability
+                     value = 0.7
+                  }
+               }
+               modifier = {
+                  factor = 1.1
+                  check_variable = {
+                     which = enemy_siege_ability
+                     value = 0.8
+                  }
+               }
+               modifier = {
+                  factor = 1.1
+                  check_variable = {
+                     which = enemy_siege_ability
+                     value = 0.9
+                  }
+               }
+               modifier = {
+                  factor = 1.1
+                  check_variable = {
+                     which = enemy_siege_ability
+                     value = 1
+                  }
+               }
+               modifier = {
+                  factor = 1.1
+                  check_variable = {
+                     which = enemy_siege_ability
+                     value = 1.1
+                  }
+               }
+               modifier = {
+                  factor = 1.1
+                  check_variable = {
+                     which = enemy_siege_ability
+                     value = 1.2
+                  }
+               }
+               modifier = {
+                  factor = 1.1
+                  check_variable = {
+                     which = enemy_siege_ability
+                     value = 1.3
+                  }
+               }
+               modifier = {
+                  factor = 1.1
+                  check_variable = {
+                     which = enemy_siege_ability
+                     value = 1.4
+                  }
+               }
+               modifier = {
+                  factor = 1.1
+                  check_variable = {
+                     which = enemy_siege_ability
+                     value = 1.5
+                  }
+               }
+
+               hidden_effect={add_naval_siege_tick_from = { who = event_target:blockader }}
+            }
+            95 = {}
+         }
+      }
+   }
+}
+#Removes the sieged modifier if the province is retaken
+province_event = {
+   id = cultural_events.101
+   title = "none"
+   desc = "none"
+   picture = "none"
+   hidden = yes
+
+   trigger = {
+      has_province_modifier = recently_naval_sieged
+      controller = { ROOT = { owned_by = PREV } }
+   }
+
+   option = {
+      remove_province_modifier = recently_naval_sieged
+   }
+}
+#Removes Naval Supremacy trigger after war ends
+country_event = {
+   id = cultural_events.100
+   title = "none"
+   desc = "none"
+   picture = "none"
+   hidden = yes
+
+   trigger = {
+      any_known_country = {
+         NOT = { is_in_war = { participants = ROOT } }
+         has_opinion_modifier = {
+            who = ROOT
+            modifier = naval_supremacy_trigger
+         }
+      }
+   }
+   option = {
+      every_country = {
+         limit = {
+            has_opinion_modifier = {
+               who = ROOT
+               modifier = naval_supremacy_trigger
+            }
+            NOT = { is_in_war = { participants = ROOT } }
+         }
+         remove_mutual_opinion_modifier_effect = {
+            scope_country = ROOT
+            opinion_modifier = naval_supremacy_trigger
+         }
+      }
+   }
+}
+###########################################################################################################
+#     AI teleportation
+#  This is stupid, but the way the AI is coded means it can't perform long distance naval invasions.
+#  So instead I'll just employ the classic Wiz Strategy:
+#  "The AI will cheat with naval invasions but pretend that it obeys the rules."
+###########################################################################################################
+#removed as of 1.34 due to lag, replaced with teleporters instead
+
+#Gets rid of any heavies the AI has
+country_event = {
+   id = cultural_events.132
+   title = "none"
+   desc = "none"
+   picture = "none"
+   hidden = yes
+
+   trigger = {
+      ai = yes
+      num_of_heavy_ship = 1
+   }
+
+   option = {
+      every_owned_province = {
+         limit = {
+            heavy_ships_in_province = 1
+         }
+         kill_units = {
+            type = heavy_ship
+            who = owner
+         }
+      }
+   }
+}
+#The no raiding mechanic
+country_event = {
+   id = cultural_events.133
+   title = "none"
+   desc = "none"
+   picture = "none"
+   hidden = yes
+   trigger = {
+      NOT = { has_country_modifier = raiding_pact_timer }
+      any_known_country = {
+         has_opinion_modifier = {
+            who = ROOT
+            modifier = opinion_raiding_pact
+         }
+      }
+   }
+   option = {
+      add_country_modifier = {
+         name = raiding_pact_timer
+         duration = 1500
+         hidden = yes
+      }
+      every_known_country = {
+         limit = {
+            has_opinion_modifier = {
+               who = ROOT
+               modifier = opinion_raiding_pact
+            }
+         }
+         add_truce_with = ROOT
+      }
+   }
+}
+#Defeated but can't uncon because multiple countries have occupied their lands
+country_event = {
+   id = cultural_events.138
+   title = "none"
+   desc = "none"
+   picture = "none"
+   hidden = yes
+
+   trigger = {
+      OR = {
+         is_in_war = { defender_leader = THIS }
+         is_in_war = { attacker_leader = THIS }
+      }
+      NOT = { army_size = 2 }
+      any_war_enemy_country = {
+         war_score_against = {
+            who = ROOT
+            value = 50
+         }
+      }
+   }
+
+   mean_time_to_happen = {
+      months = 12
+   }
+
+   immediate = {
+      every_war_enemy_country = {
+         limit = {
+            OR = {
+               is_in_war = { attacker_leader = THIS defender_leader = ROOT }
+               is_in_war = { defender_leader = THIS attacker_leader = ROOT }
+            }
+         }
+         set_country_flag = war_leaders_flag
+         export_to_variable = {
+            which = war_score_value
+            value = trigger_value:war_score
+         }
+      }
+      random_war_enemy_country = {
+         limit = {
+            war_with = ROOT
+            has_country_flag = war_leaders_flag
+            all_known_country = {
+               NOT = {
+                  check_variable = {
+                     which = war_score_value
+                     which = PREV
+                  }
+               }
+            }
+         }
+         save_event_target_as = war_leader_target
+      }
+      every_war_enemy_country = {
+         limit = {
+            war_with = ROOT
+            has_country_flag = war_leaders_flag
+         }
+         set_variable = {
+            which = war_score_value
+            value = 0
+         }
+         clr_country_flag = war_leaders_flag
+      }
+   }
+   option = {
+      every_owned_province = {
+         limit = {
+            NOT = { controlled_by = event_target:war_leader_target }
+         }
+         change_controller = event_target:war_leader_target
+      }
+      add_country_modifier = {
+         name = recently_partioned
+         duration = 365
+      }
+   }
+}
+
+
+
+
+#Mercs
+
+#This is done to preserve the mercenary_discipline modifier for streltsy
+country_event = {
+   id = cultural_events.82
+   title = "none"
+   desc = "none"
+   picture = "none"
+   hidden = yes
+
+   is_triggered_only = yes #on_yearly
+
+   trigger = {
+      num_of_streltsy = 1
+   }
+
+   immediate = {
+      export_to_variable = {
+         which = merc_discipline
+         value = modifier:mercenary_discipline
+      }
+      clr_merc_discipline_effect = yes
+   }
+
+   option = {
+      while = {
+         limit = {
+            check_variable = {
+               which = merc_discipline
+               value = 0.02
+            }
+         }
+         apply_merc_discipline_effect = yes
+         subtract_variable = {
+            which = merc_discipline
+            value = 0.02
+         }
+      }
+   }
+}
+
+#Terra incognita in teleporters
+
+country_event = {
+   id = cultural_events.83
+   title = "none"
+   desc = "none"
+   hidden = yes
+   picture = "none"
+   
+   is_triggered_only = yes #on_yearly
+
+   trigger = {
+      ai = no
+      any_teleporter_province = {
+         PREV = { has_discovered = PREV }
+         any_neighbor_province = {
+            OR = {
+               AND = {
+                  ROOT = { is_subject = no }
+                  NOT = { country_or_non_sovereign_subject_holds = ROOT }
+               }
+               AND = {
+                  ROOT = { is_subject = yes }
+                  NOT = {
+                     OR = {
+                        owned_by = ROOT
+                        owner = {
+                           OR = {
+                              overlord_of = ROOT
+                              overlord = {
+                                 overlord_of = ROOT
+                              }
+                           }
+                        }
+                     }
+                  }
+               }
+            }
+         }
+      }
+   }
+
+   option = {
+      every_teleporter_province = {
+         limit = {
+            PREV = { has_discovered = PREV }
+            any_neighbor_province = {
+               OR = {
+                  AND = {
+                     ROOT = { is_subject = no }
+                     NOT = { country_or_non_sovereign_subject_holds = ROOT }
+                  }
+                  AND = {
+                     ROOT = { is_subject = yes }
+                     NOT = {
+                        OR = {
+                           owned_by = ROOT
+                           owner = {
+                              OR = {
+                                 overlord_of = ROOT
+                                 overlord = {
+                                    overlord_of = ROOT
+                                 }
+                              }
+                           }
+                        }
+                     }
+                  }
+               }
+            }
+         }
+         undiscover_country = ROOT
+      }
+   }
+}
+
+#Updates Terra incognita, since spread of discovery is off now.
+country_event = {
+   id = cultural_events.84
+   title = "none"
+   desc = "none"
+   picture = "none"
+   hidden = yes
+   is_triggered_only = yes #on_yearly
+
+   immediate = {
+      save_event_target_as = overlord
+      if ={
+         limit = { is_subject = yes }
+         overlord = {
+            save_event_target_as = overlord
+         }
+      }
+   }
+
+   option = {
+      if = {
+         limit = {
+            is_subject = yes
+         }
+         every_owned_province = {
+            discover_country = event_target:overlord
+         }
+         event_target:overlord = {
+            every_owned_province = {
+               discover_country = ROOT
+            }
+         }
+      }
+      every_teleporter_province = {
+         limit = {
+            OR = {
+               event_target:overlord = { has_discovered = PREV }
+               AND = {
+                  ROOT = { ai = yes }
+                  any_neighbor_province = {
+                     owner = { gives_military_access_to = ROOT }
+                  }
+               }
+            }
+         }
+         discover_country = event_target:overlord
+         discover_country = ROOT
+      }
+   }
+}
+#ai free units
+country_event = {
+   id = cultural_events.81
+   title = none
+   desc = none
+   picture = none
+   is_triggered_only = yes #on_yearly
+   hidden = yes
+
+   trigger = {
+      ai = yes
+      NOT = { current_age = age_of_discovery }
+   }
+
+   option = {
+      every_owned_province = {
+         add_province_modifier = {
+            name = ai_free_units
+            duration = -1
+            hidden = yes
+         }
+      }
+   }
+}
+
+
+#Marine discipline naval glory idea
+
+country_event = {
+   id = cultural_events.60
+   title = "none"
+   desc = "none"
+   picture = "none"
+   hidden = yes
+
+   trigger = {
+      OR = {
+         AND = {
+            has_idea = naval_glory
+            NOT = { has_country_modifier = naval_glory_mod }
+         }
+         AND = {
+            NOT = { has_idea = naval_glory }
+            has_country_modifier = naval_glory_mod
+         }
+      }
+   }
+   is_triggered_only = yes #on_yearly
+
+   option = {
+      if = {
+         limit = { has_idea = naval_glory }
+         add_country_modifier = {
+            name = naval_glory_mod
+            duration = -1
+            hidden = yes
+         }
+      }
+      else = {
+         remove_country_modifier = naval_glory_mod
+      }
+   }
+}
+
+###################  MISC SETUP
+
+province_event = {
+   id = cultural_events.118
+   title = "none"
+   desc = "none"
+   picture = "none"
+   hidden = yes
+
+   trigger = {
+      #always = no
+      has_global_flag = misc_setup
+      any_empty_neighbor_province = {
+         OR = {
+            NOT = { continent = teleporter_continent }
+            has_terrain = teleporter
+         }
+      }
+   }
+
+   immediate = {
+      owner = {
+         save_event_target_as = owner_country
+      }
+      random_empty_neighbor_province = {
+         limit = {
+            OR = {
+               NOT = { continent = teleporter_continent }
+               has_terrain = teleporter
+            }
+         }
+         cede_province = event_target:owner_country
+         add_core = event_target:owner_country
+         change_culture = event_target:owner_country
+         change_religion = event_target:owner_country
+         #add_all_institutions = yes
+      }
+   }
+
+   option = {
+      ai_chance = {factor = 1}
+   }
+}
+country_event = { # Army drill decay penalty, fired yearly 
+   id = cultural_events.136
+   title = "none"
+   desc = "none"
+   picture = "none"
+   hidden = yes
+
+   is_triggered_only = yes
+
+   trigger = {
+      is_at_war = yes
+      army_professionalism = 0.01
+   }
+
+   option = {
+      set_variable = {
+         which = drill_decay
+         value = 2
+      }
+      export_to_variable = {
+         which = var_war_exhaustion
+         value = trigger_value:war_exhaustion
+      }
+      multiply_variable = {
+         which = var_war_exhaustion
+         value = 0.5
+      }
+      export_to_variable = {
+         which = var_manpower_pool
+         value = trigger_value:manpower_percentage
+      }
+      if = {
+         limit = {
+            check_variable = {
+               which = var_manpower_pool
+               value = 1
+            }
+         }
+         set_variable = {
+            which = var_manpower_pool
+            value = 1
+         }
+      }
+      subtract_variable = {
+         which = var_manpower_pool
+         value = 1
+      }
+      multiply_variable = {
+         which = var_manpower_pool
+         value = -1
+      }
+      multiply_variable = {
+         which = drill_decay
+         which = var_manpower_pool
+      }
+      change_variable = {
+         which = drill_decay
+         which = var_war_exhaustion
+      }
+      export_to_variable = {
+         which = drill_decay_mod
+         value = modifier:drill_decay_modifier
+      }
+      change_variable = {
+         which = drill_decay_modifier
+         value = 1
+      }
+      multiply_variable = {
+         which = drill_decay
+         which = drill_decay_mod
+      }
+      while = {
+         limit = {
+            check_variable = {
+               which = drill_decay
+               value = 0.5
+            }
+         }
+         subtract_variable = {
+            which = drill_decay
+            value = 0.5
+         }
+         add_army_professionalism = -0.005
+      }
+   }
+}
+
+country_event = {
+   id = cultural_events.125 # Calculate the yearly drill gain from drilling armies
+   title = "none"
+   desc = "none"
+   picture = "none"
+   hidden = yes
+   is_triggered_only = yes
+
+   trigger = {
+      is_at_war = no
+      land_maintenance = 1
+      OR = {
+         ai = yes
+         num_of_regiments_at_full_drill = 1
+      }
+   }
+
+   option = {
+      set_variable = {
+         which = yearly_army_drill_gain
+         value = 3
+      }
+      export_to_variable = {
+         which = drill_gain_mod
+         value = modifier:drill_gain_modifier
+      }
+      change_variable = {
+         which = drill_gain_mod
+         value = 1
+      }
+      if = {
+         limit = { ai = yes }
+         export_to_variable = {
+            which = regiments_drilling
+            value = trigger_value:army_size
+         }
+      }
+      else = {
+         export_to_variable = {
+            which = regiments_drilling
+            value = trigger_value:num_of_regiments_at_full_drill
+         }
+      }
+      # because special units have increased drill gain
+      export_to_variable = {
+         which = no_rajput
+         value = trigger_value:num_of_rajput
+      }
+      export_to_variable = {
+         which = no_janissary
+         value = trigger_value:num_of_janissaries
+      }
+      export_to_variable = {
+         which = no_marine
+         value = trigger_value:num_of_marines
+      }
+      export_to_variable = {
+         which = no_banner
+         value = trigger_value:num_of_banners
+      }
+      export_to_variable = {
+         which = no_cossacks
+         value = trigger_value:num_of_cossacks
+      }
+      change_variable = {
+         which = regiments_drilling
+         which = no_rajput
+      }
+      change_variable = {
+         which = regiments_drilling
+         which = no_janissary
+      }
+      change_variable = {
+         which = regiments_drilling
+         which = no_marine
+      }
+      change_variable = {
+         which = regiments_drilling
+         which = no_banner
+      }
+      change_variable = {
+         which = regiments_drilling
+         which = no_cossacks
+      }
+      
+      #
+      export_to_variable = {
+         which = land_fl
+         value = trigger_value:land_forcelimit
+      }
+      divide_variable = { # % of forcelimit drilling
+         which = regiments_drilling
+         which = land_fl
+      }
+      multiply_variable = {
+         which = yearly_army_drill_gain
+         which = drill_gain_mod
+      }
+      multiply_variable = {
+         which = yearly_army_drill_gain
+         which = regiments_drilling
+      }
+      while = {
+         limit = {
+            check_variable = {
+               which = yearly_army_drill_gain
+               value = 0.25
+            }
+         }
+         subtract_variable = {
+            which = yearly_army_drill_gain
+            value = 0.25
+         }
+         add_army_professionalism = 0.0025
+      }
+   }
+}

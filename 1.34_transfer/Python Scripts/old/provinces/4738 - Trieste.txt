@@ -1,0 +1,21 @@
+#4738 - Yus'va
+
+owner = KAZ
+controller = KAZ
+culture = uralic
+religion = tengri_pagan_reformed #Sami Shamanism
+hre = no
+trade_goods = copper
+base_tax = 2
+base_production = 1
+base_manpower = 2
+capital = "Yus'va"
+is_city = yes
+add_core = KAZ
+add_core = PRM
+
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

@@ -1,0 +1,1273 @@
+#Changes
+ALM_ideas = {
+	start = {
+		governing_capacity_modifier = 0.15
+		caravan_power = 0.2
+	}
+
+	bonus = {
+		legitimacy = 1
+	}
+    
+	trigger = {
+		tag = ALM
+	}
+	free = yes        #will be added at load.
+    
+	alm_legacy_of_ibn_tumart = {
+		global_missionary_strength = 0.02
+	}
+	alm_maghreb_warfare = {
+		leader_land_manuever = 1
+    }
+	alm_unity_of_god = {
+		monthly_piety = 0.003
+		stability_cost_modifier = -0.1
+    }
+	alm_university_of_seville = {
+		build_cost = -0.1
+		development_cost = -0.1
+	}
+	alm_rulers_of_maghreb = {
+		core_creation = -0.15
+	}
+	alm_fighters_for_the_faith = {
+		discipline = 0.05
+	}
+	alm_traditions_of_ibn_tumart = {
+		army_tradition_decay = -0.01
+	}
+}
+
+TLC_ideas = {
+	start = {
+		may_perform_slave_raid = yes
+		defensiveness = 0.2
+	}
+
+	bonus = {
+		hostile_attrition = 1
+	}
+    
+	trigger = {
+		tag = TLC
+	}
+	free = yes        #will be added at load.
+    
+	tlc_barbary_fleet = {
+		naval_forcelimit_modifier = 0.1
+		light_ship_power = 0.05
+	}
+	tlc_pirate_leaders = {
+		leader_naval_manuever = 1
+    }
+	tlc_saharan_trade = {
+		caravan_power = 0.15
+    }
+	tlc_desert_warriors = {
+		cavalry_power = 0.1
+		cavalry_cost = -0.1
+	}
+	tlc_naval_ambition = {
+		admiral_cost = -0.15
+	}
+	tlc_hardy_warriors = {
+		land_attrition = -0.1
+	}
+	tlc_raid_iberian_trade = {
+		privateer_efficiency = 0.15
+		global_sailors_modifier = 0.1
+	}
+}
+
+RSM_ideas = {
+	start = {
+		monthly_piety = -0.005
+		movement_speed = 0.10
+	}
+
+	bonus = {
+		land_morale = 0.1
+	}
+    
+	trigger = {
+		tag = RSM
+	}
+	free = yes        #will be added at load.
+    
+	rsm_persian_roots = {
+		prestige_decay = -0.01
+	}
+	rsm_desert_empire = {
+		local_development_cost = -0.1
+    }
+	rsm_mystic_imams = {
+		global_heretic_missionary_strength = 0.03
+    }
+	rsm_great_scholars = {
+		idea_cost = -0.1
+		technology_cost = -0.1
+	}
+	rsm_innovative_court = {
+		advisor_cost = -0.075
+	}
+	rsm_saharan_trade = {
+		merchants = 1
+		trade_steering = 0.15
+	}
+	rsm_tribal_hosts = {
+		cavalry_power = 0.15
+	}
+}
+
+Mauritania_ideas = {
+	start = {
+		land_attrition = -0.1
+		movement_speed = 0.2
+	}
+
+	bonus = {
+		hostile_attrition = 1
+	}
+    
+	trigger = {
+		OR = {
+			TAG = LAM
+			TAG = TRZ
+			TAG = KIF
+			TAG = BEB
+		}
+	}
+	free = yes        #will be added at load.
+    
+	mauritania_almoravid_legacy = {
+		prestige = 1
+	}
+	mauritania_desert_warriors = {
+		cavalry_power = 0.1
+    }
+	mauritania_zawiyas = {
+		global_heretic_missionary_strength = 0.01
+    }
+	mauritania_atlantic = {
+		light_ship_cost = -0.1
+	}
+	mauritania_saharan_trade = {
+		caravan_power = 0.1
+		trade_efficiency = 0.05
+	}
+	mauritania_pirates = {
+		privateer_efficiency = 0.1
+	}
+	mauritania_hardy_seamen = {
+		naval_attrition = -0.1
+	}
+}
+
+JIN_ideas = {
+	free = yes
+	start = {
+		cavalry_power = 0.1
+		stability_cost_modifier = -0.1
+	}
+	bonus = {
+		has_banners = yes
+		amount_of_banners = 0.1
+	}
+	trigger = {
+		tag = JIN
+	}
+	jin_great_jin = {
+		prestige = 1
+	}
+	jin_mongol_ties = {
+		diplomatic_reputation = 1
+	}
+	jin_jurchen_roots = {
+		discipline = 0.05
+	}
+	jin_sinicization = {
+		imperial_mandate = 0.05
+	}
+	jin_great_wall = {
+		defensiveness = 0.15
+		fort_maintenance_modifier = -0.1
+	}
+	jin_claim_to_china = {
+		core_creation = -0.1
+	}
+	jin_feng_shui = {
+		global_trade_goods_size_modifier = 0.1
+	}
+}
+
+WUU_ideas = {
+	free = yes
+	start = {
+		global_trade_goods_size_modifier = 0.1
+		improve_relation_modifier = 0.1
+	}
+	bonus = {
+		land_forcelimit_modifier = 0.1
+	}
+	trigger = {
+		tag = WUU
+	}
+	wuu_warring_state = {
+		infantry_power = 0.1
+	}
+	wuu_shipyards = {
+		global_sailors_modifier = 0.2
+	}
+	wuu_imperial_census = {
+		global_tax_modifier = 0.1
+	}
+	wuu_cities_of_east = {
+		trade_efficiency = 0.1
+	}
+	wuu_examination_system = {
+		imperial_mandate = 0.05
+		meritocracy = 0.5
+	}
+	wuu_riches_of_china = {
+		production_efficiency = 0.1
+		build_cost = -0.05
+	}
+	wuu_mandate_of_heaven = {
+		prestige_decay = -0.01
+	}
+}
+
+YAN_ideas = {
+	free = yes
+	start = {
+		advisor_cost = -0.075
+		adm_tech_cost_modifier = -0.1
+	}
+	bonus = {
+		global_tax_modifier = 0.15
+	}
+	trigger = {
+		tag = YAN
+	}
+	yan_bureaucracy = {
+		governing_capacity_modifier = 0.1
+	}
+	yan_imperial_census = {
+		global_manpower_modifier = 0.25
+		land_forcelimit_modifier = 0.1
+	}
+	yan_forbidden_city = {
+		imperial_mandate = 0.05
+		meritocracy = 1
+	}
+	yan_northern_frontier = {
+		defensiveness = 0.1
+	}
+	yan_warring_state = {
+		war_exhaustion = -0.05
+	}
+	yan_mandate_of_heaven = {
+		prestige = 1
+	}
+	yan_gunpowder = {
+		artillery_power = 0.1
+		artillery_cost = -0.05
+	}
+}
+
+LNG_ideas = {
+	free = yes
+	start = {
+		infantry_power = 0.1
+		land_maintenance_modifier = -0.05
+	}
+	bonus = {
+		imperial_mandate = 0.05
+	}
+	trigger = {
+		tag = LNG
+	}
+	lng_yellow_river = {
+		production_efficiency = 0.1
+		global_trade_goods_size_modifier = 0.05
+	}
+	lng_warlords = {
+		free_leader_pool = 1
+	}
+	lng_middle_kingdom = {
+		technology_cost = -0.1
+	}
+	lng_protecters_of_heaven = {
+		army_tradition_from_battle = 0.5
+	}
+	lng_persian_tributes = {
+		prestige = 1
+		diplomatic_reputation = 1
+	}
+	lng_dragon_throne = {
+		global_unrest = -2
+	}
+	lng_imperial_census = {
+		global_manpower_modifier = 0.2
+	}
+}
+
+CXI_ideas = {
+	free = yes
+	start = {
+		movement_speed = 0.15
+		siege_ability = 0.1
+	}
+	bonus = {
+		leader_land_manuever = 1
+	}
+	trigger = {
+		tag = CXI
+	}
+	cxi_yellow_tiger = {
+		shock_damage = 0.1
+		infantry_power = 0.1
+	}
+	cxi_mountain_retreats = {
+		defensiveness = 0.15
+		hostile_attrition = 1
+	}
+	cxi_civil_administration = {
+		global_tax_modifier = 0.1
+	}
+	cxi_jesuits = {
+		tolerance_heathen = 2
+	}
+	cxi_rebel_leader = {
+		global_manpower_modifier = 0.25
+	}
+	cxi_xi_wang = {
+		imperial_mandate = 0.05
+	}
+	cxi_reforms_of_zhang_xianzhong = {
+		stability_cost_modifier = -0.1
+	}
+}
+
+SHU_ideas = {
+	free = yes
+	start = {
+		production_efficiency = 0.1
+		defensiveness = 0.1
+	}
+	bonus = {
+		infantry_power = 0.1
+	}
+	trigger = {
+		tag = SHU
+	}
+	shu_silk_road = {
+		trade_efficiency = 0.1
+	}
+	shu_mountain_retreats = {
+		hostile_attrition = 1
+	}
+	shu_civil_administration = {
+		global_autonomy = -0.05
+	}
+	shu_ambition_for_heaven = {
+		prestige = 1
+	}
+	shu_chinese_gunpowder = {
+		leader_siege = 1
+	}
+	shu_examination_system = {
+		imperial_mandate = 0.05
+		meritocracy = 0.5
+	}
+	shu_chinese_diplomacy = {
+		improve_relation_modifier = 0.1
+		diplomatic_upkeep = 1
+	}
+}
+
+YUE_ideas = { 
+	free = yes
+	start = {
+		ae_impact = -0.1
+		imperial_mandate = 0.05
+	}
+	bonus = {
+		fire_damage = 0.1
+	}
+	trigger = {
+		tag = YUE
+	}
+	yue_army_of_dragon = {
+		land_forcelimit_modifier = 0.2
+		free_leader_pool = 1
+	}
+	yue_imperial_census = {
+		global_tax_modifier = 0.1
+	}
+	yue_diplomatic_corps = {
+		diplomats = 1
+		diplomatic_upkeep = 1
+	}
+	yue_cities_of_east = {
+		trade_steering = 0.25
+	}
+	yue_examination_system = {
+		advisor_pool = 1
+	}
+	yue_cannons = {
+		leader_land_fire = 1
+		siege_ability = 0.1
+	}
+	yue_warring_state = {
+		land_morale = 0.1
+	}
+}
+
+CZH_ideas = { 
+	free = yes
+	start = {
+		discipline = 0.05
+		defensiveness = 0.1
+	}
+	bonus = {
+		land_attrition = -0.1
+	}
+	trigger = {
+		tag = CZH
+	}
+	czh_seasoned_troops = {
+		fire_damage_received = -0.1
+		shock_damage_received = -0.1
+	}
+	czh_claim_to_mandate = {
+		imperial_mandate = 0.05
+	}
+	czh_southern_frontier = {
+		movement_speed = 0.1
+	}
+	czh_renoun_general = {
+		army_tradition_decay = -0.01
+	}
+	czh_recruit_rebels = {
+		global_manpower_modifier = 0.25
+	}
+	czh_imperial_court = {
+		same_culture_advisor_cost = -0.1
+		meritocracy = 0.5
+	}
+	czh_great_zhou = {
+		diplomatic_reputation = 1
+	}
+}
+
+CGS_ideas = {
+	free = yes
+	start = {
+		hostile_attrition = 1
+		free_leader_pool = 1
+	}
+	bonus = {
+		core_creation = -0.1
+	}
+	trigger = {
+		tag = CGS
+	}
+	cgs_jungle_kingdom = {
+		movement_speed = 0.2
+	}
+	cgs_tribes = {
+		cavalry_power = 0.1
+		global_manpower_modifier = 0.15
+	}
+	cgs_dragon_court = {
+		same_culture_advisor_cost = -0.1
+	}
+	cgs_defy_ming = {
+		land_morale = 0.1
+	}
+	cgs_thai_trade = {
+		caravan_power = 0.15
+	}
+	cgs_jungle_cities = {
+		development_cost = -0.05
+		build_cost = -0.05
+	}
+	cgs_claim_to_mandate = {
+		imperial_mandate = 0.05
+		meritocracy = 0.5
+	}
+}
+
+JOSEON_ideas = {
+	start = {
+		global_unrest = -2
+		technology_cost = -0.1
+	}
+	
+	bonus = {
+		land_forcelimit_modifier = 0.25
+	}
+	
+	trigger = {
+		OR = {
+			has_country_flag = formed_joseon_dynasty
+			AND = {
+				is_colonial_nation = yes
+				overlord = { has_country_flag = formed_joseon_dynasty }
+			}
+		}
+	}
+	free = yes
+	
+	joseon_road_networks = {
+		development_cost = -0.1
+	}
+	geobukseon = {
+		#Used in KOR_ideas
+	}
+	joseon_chinese_laws = {
+		core_creation = -0.1
+		imperial_mandate = 0.05
+	}
+	hyanyak_system = {
+		#Used in KOR_ideas
+	}
+	kyujanggak = {
+		#Used in KOR_ideas
+	}
+	joseon_chinese_reforms = {
+		global_trade_goods_size_modifier = 0.1
+	}
+	joseon_chinese_warfare = {
+		artillery_power = 0.15
+	}
+}
+
+tibetan_ideas = {
+	start = {
+		years_of_nationalism = -5
+		hostile_attrition = 1
+	}
+	
+	bonus = {
+		production_efficiency = 0.1
+	}
+	
+	trigger = {
+		tag = TIB
+	}
+	free = yes       #will be added at load.
+	
+	tib_warriors_of_empire  = {
+		fire_damage_received = -0.15
+	}
+	bon_influence = {
+		leader_land_shock = 1
+	}
+	yaks = {
+		global_trade_goods_size_modifier = 0.1
+	}
+	way_of_virtue= {
+		religious_unity = 0.25
+		tolerance_heathen = 1
+	}
+	potala_palace = {
+		diplomatic_reputation = 1
+	}
+	pale_earth = {
+		idea_cost = -0.1
+		global_institution_spread = 0.05
+	}
+	way_of_ancients = {
+		discipline = 0.05
+	}
+}
+TNK_ideas = {
+	start = {
+		land_morale = 0.1
+		tolerance_own = 1
+	}
+	bonus = {
+		global_manpower_modifier = 0.2
+	}
+	trigger = {
+		tag = TNK
+	}
+	free = yes
+
+	claim_to_moscow = {
+		legitimacy = 1
+	}
+	dukes_of_galich = {
+		prestige = 0.5
+		global_unrest = -1
+	}
+	galich_churches = {
+		yearly_patriarch_authority = 0.005
+		global_missionary_strength = 0.01
+	}
+	yurys_army = {
+		infantry_power = 0.1
+	}
+	galich_siberian_frontier = {
+		colonists = 1
+	}
+	galich_populate_north = {
+		build_cost = -0.1
+	}
+	galich_fur_trade = {
+		caravan_power = 0.2
+	}
+}
+CHC_ideas = {
+	start = {
+		advisor_pool = 1
+		idea_cost = -0.1
+	}
+	bonus = {
+		global_manpower_modifier = 0.25
+	}
+	trigger = {
+		tag = CHC
+	}
+	free = yes
+
+	warlord_kings = {
+		infantry_power = 0.1
+		land_maintenance_modifier = -0.05
+	}
+	found_the_wuchang_pottery = {
+		global_trade_goods_size_modifier = 0.1
+	}
+	chc_chinese_laws = {
+		stability_cost_modifier = -0.1
+		imperial_mandate = 0.05
+	}
+	red_barbarian_artillery_corps = {
+		artillery_cost = -0.1
+	}
+	chu_renaissance = {
+		global_institution_spread = 0.1
+	}
+	legacy_of_the_chu = {
+		prestige = 1
+	}
+	yangtzhe_dikes = {
+		build_cost = -0.15
+	}
+}
+HUA_ideas = {
+	start = {
+		yearly_army_professionalism = 0.005
+		infantry_power = 0.1
+	}
+	bonus = {
+		imperial_mandate = 0.05
+	}
+	trigger = {
+		tag = HUA
+	}
+	free = yes
+
+	hua_the_southern_dialect = {
+		technology_cost = -0.1
+	}
+	hua_sponsor_meritocracy = {
+		meritocracy = 0.5
+		same_culture_advisor_cost = -0.1
+	}
+	hua_one_china = {
+		core_creation = -0.1
+	}
+	hua_art_of_war = {
+		army_tradition = 1
+	}
+	hua_sponsor_the_jesuits = {
+		global_own_trade_power = 0.1
+		religious_unity = 0.1
+	}
+	hua_imperial_census = {
+		production_efficiency = 0.1
+	}
+	hua_fire_the_red_cannon = {
+		backrow_artillery_damage = 0.1
+	}
+}
+MIN_ideas = {
+	start = {
+		global_manpower_modifier = 0.25
+		global_tax_modifier = 0.1
+	}
+	bonus = {
+		land_maintenance_modifier = -0.1
+	}
+	trigger = {
+		tag = MIN
+	}
+	free = yes
+
+	min_japanese_trade = {
+		improve_relation_modifier = 0.1
+		global_trade_power = 0.1
+	}
+	min_artillery_corps = {
+		leader_land_fire = 1
+	}
+	min_fuzhou_guard = {
+		light_ship_power = 0.05
+		trade_steering = 0.15
+	}
+	min_unite_middle_kingdom = {
+		state_governing_cost = -0.1
+	}
+	min_harmonize_the_folk_religions = {
+		harmonization_speed = 0.1
+		yearly_harmony = 0.25
+	}
+	min_chinese_yamens = {
+		development_cost = -0.1
+	}
+	min_to_the_last_man = {
+		discipline = 0.05
+	}
+}
+NNG_ideas = {
+	start = {
+		leader_land_shock = 1
+		stability_cost_modifier = -0.1
+	}
+	bonus = {
+		global_unrest = -1
+	}
+	trigger = {
+		tag = NNG
+	}
+	free = yes
+
+	nng_hill_warriors = {
+		land_attrition = -0.15
+	}
+	nng_mounted_warlords = {
+		cavalry_power = 0.15
+		cavalry_flanking = 0.5
+	}
+	nng_sponsor_the_yangtze_trade = {
+		merchants = 1
+	}
+	nng_sons_of_heaven = {
+		imperial_mandate = 0.05
+	}
+	nng_the_kingdom_garrisons = {
+		garrison_size = 0.2
+		global_manpower_modifier = 0.15
+	}
+	nng_trade_with_barbarians = {
+		embracement_cost = -0.1
+		global_ship_cost = -0.1
+	}
+	nng_found_the_gan_banners = {
+		shock_damage = 0.15
+	}
+}
+QIN_ideas = {
+	start = {
+		infantry_power = 0.1
+		general_cost = -0.25
+	}
+	bonus = {
+		discipline = 0.05
+	}
+	trigger = {
+		tag = QIN
+	}
+	free = yes
+
+	qin_first_dynasty = {
+		land_morale = 0.1
+	}
+	qin_hankou_pass = {
+		defensiveness = 0.1
+		garrison_size = 0.1
+	}
+	qin_terracotta_army = {
+		global_manpower_modifier = 0.15
+	}
+	qin_founders_of_heaven = {
+		imperial_mandate = 0.05
+		core_creation = -0.15
+	}
+	qin_great_generals_of_old = {
+		leader_land_fire = 1
+	}
+	qin_harmony_with_petty_faiths = {
+		global_unrest = -1
+	}
+	qin_the_first_chinese_dialect = {
+		technology_cost = -0.05
+	}
+}
+QIC_ideas = {
+	start = {
+		global_sailors_modifier = 0.15
+		trade_efficiency = 0.1
+	}
+	bonus = {
+		artillery_power = 0.1
+	}
+	trigger = {
+		tag = QIC
+	}
+	free = yes
+
+	qic_yellow_river_estuary = {
+		center_of_trade_upgrade_cost = -0.25
+	}
+	qic_expand_the_examinations = {
+		advisor_cost = -0.05
+	}
+	qic_yellow_sea_dockyards = {
+		naval_forcelimit_modifier = 0.15
+		ship_durability = 0.1
+	}
+	qic_army_for_heaven = {
+		global_manpower_modifier = 0.15
+		imperial_mandate = 0.05
+	}
+	qic_yellow_river_dikes = {
+		build_cost = -0.1
+	}
+	qic_red_barbarian_cannon = {
+		fire_damage = 0.1
+	}
+	qic_expand_the_bureaucrats = {
+		reform_progress_growth = 0.25
+	}
+}
+TNG_ideas = {
+	start = {
+		manpower_recovery_speed = 0.1
+		mil_tech_cost_modifier = -0.1
+	}
+	
+	bonus = {
+		global_manpower_modifier = 0.25
+	}
+	
+	trigger = {
+		tag = TNG
+	}
+	free = yes
+	
+	keju_examination = {
+		advisor_pool = 1
+	}
+	middle_kingdom = {
+		diplomatic_reputation = 1
+		unjustified_demands = -0.25
+	}
+	scholar_gentry = {
+		stability_cost_modifier = -0.1
+		global_tax_modifier = 0.1
+	}
+	order_of_four_occupations = {
+		production_efficiency = 0.10
+	}
+	nation_of_rites_and_etiquette = {
+		prestige = 1
+	}
+	firearm_training = {
+		infantry_power = 0.1
+	}
+	son_of_heaven = {
+		meritocracy = 0.5
+		imperial_mandate = 0.05
+	}
+}
+FRM_ideas = {
+    start = {
+        naval_morale = 0.1
+        infantry_power = 0.1
+    }
+    bonus = {
+        naval_forcelimit_modifier = 0.25
+    }
+    trigger = {
+        tag = FRM
+    }
+    free = yes
+
+    house_of_koxinga = {
+        leader_land_shock = 1
+        naval_maintenance_modifier = -0.1
+    }
+    safe_haven_for_ming_princes = {
+        prestige = 1
+        meritocracy = 0.5
+		legitimacy = 1
+    }
+    revive_tuntian ={
+        global_tax_modifier = 0.10
+    }
+    resist_qing_seaban = {
+        global_manpower_modifier = 0.25
+    }
+    sika_deer_skins = {
+        global_trade_goods_size_modifier = 0.10
+    }
+    aboriginals_of_formosa = {
+        culture_conversion_cost = -0.15
+    }
+    cultivation_sugarcanes = {
+        global_own_trade_power = 0.20
+		trade_efficiency = 0.1
+    }
+}
+LAP_ideas = {
+	start = {
+		development_cost = -0.05
+		cavalry_cost = -0.1
+	}
+	bonus = {
+		global_sailors_modifier = 0.2
+	}
+	trigger = {
+		tag = LAP #Argentina
+	}
+	free = yes
+
+	argentinian_inquisition = {
+		missionaries = 1
+	}
+	native_raiders = {
+		cavalry_power = 0.1
+	}
+	settle_frontier = {
+		colonists = 1
+		global_colonial_growth = 10
+	}
+	magellan_strait = {
+		trade_efficiency = 0.1
+	}
+	repel_the_colonists = {
+		light_ship_power = 0.05
+	}
+	whale_hunters = {
+		shock_damage_received = -0.15
+	}
+	la_platan_steppes = {
+		hostile_attrition = 1
+	}
+}
+LOU_ideas = {
+	start = {
+		province_warscore_cost = -0.1
+		global_colonial_growth = 10
+	}
+	bonus = {
+		governing_capacity_modifier = 0.1
+	}
+	trigger = {
+		tag = LOU #Louisiana
+	}
+	free = yes
+
+	integration_of_the_cowboys = {
+		infantry_power = 0.15
+	}
+	the_wild_west = {
+		prestige = 1
+	}
+	repel_the_eastern_settlers = {
+		land_forcelimit_modifier = 0.15
+	}
+	integration_of_the_indians = {
+		culture_conversion_cost = -0.1
+		num_accepted_cultures = 1
+	}
+	religious_harmony = {
+		church_power_modifier = 0.25
+		papal_influence = 1
+		monthly_fervor_increase = 1
+		monthly_piety = 0.005
+		yearly_patriarch_authority = 0.01
+	}
+	lou_nationalism = {
+		stability_cost_modifier = -0.1
+	}
+	settle_the_plains = {
+		global_trade_goods_size_modifier = 0.1
+	}
+}
+PRG_ideas = {
+	start = {
+		reform_progress_growth = 0.2
+		tolerance_heretic = 2
+	}
+	bonus = {
+		advisor_cost = -0.075
+	}
+	trigger = {
+		tag = PRG #Paraguay
+	}
+	free = yes
+
+	expand_the_paraguay_school_of_cadets = {
+		global_naval_engagement_modifier = 0.03
+	}
+	ruthless_generals = {
+		leader_land_fire = 1
+	}
+	trade_with_the_amazons = {
+		global_trade_power = 0.1
+	}
+	diplomatic_bastion = {
+		reduced_liberty_desire = 15
+	}
+	south_american_empire = {
+		core_creation = -0.1
+		autonomy_change_time = -0.25
+	}
+	atlantic_slave_trade = {
+		privateer_efficiency = 0.25
+	}
+	purge_spanish_strongholds = {
+		land_morale = 0.1
+		siege_ability = 0.05
+	}
+}
+PEU_ideas = {
+	start = {
+		defensiveness = 0.15
+		discipline = 0.05
+	}
+	bonus = {
+		interest = -0.5
+	}
+	trigger = {
+		tag = PEU #Peru
+	}
+	free = yes
+
+	peruvian_institute_of_technology = {
+		idea_cost = -0.1
+	}
+	ties_with_the_inca = {
+		free_mil_policy = 15
+	}
+	llama_michis = {
+		#see inca ideas
+	}
+	conquer_the_petty_kingdoms = {
+		ae_impact = -0.1
+		unjustified_demands = -0.25
+	}
+	well_versed_siege_tactics = {
+		leader_siege = 1
+	}
+	cusco_gold_mines = {
+		gold_depletion_chance_modifier = -0.33
+	}
+	machu_picchu = {
+		#see inca ideas
+	}
+}
+CAM_ideas = {
+	start = {
+		global_tax_modifier = 0.1
+		land_morale = 0.15
+	}
+	bonus = {
+		land_maintenance_modifier = -0.05
+	}
+	trigger = {
+		tag = CAM #Central America
+	}
+	free = yes
+
+	jungle_raiders = {
+		leader_land_manuever = 1
+	}
+	panama_canal = {
+		blockade_efficiency = 0.2
+	}
+	football = {
+		shock_damage = 0.1
+	}
+	clear_the_jungles = {
+		development_cost = -0.05
+		build_cost = -0.05
+	}
+	just_government = {
+		legitimacy = 1
+		republican_tradition = 1
+		devotion = 1
+		horde_unity = 1
+		meritocracy = 1
+	}
+	defend_against_the_pirates = {
+		global_ship_trade_power = 0.2
+	}
+	misquito_mercenaries = {
+		merc_maintenance_modifier = -0.1
+		mercenary_manpower = 0.1
+	}
+}
+VNZ_ideas = {
+	start = {
+		center_of_trade_upgrade_cost = -0.25
+		spy_offence = 0.2
+	}
+	bonus = {
+		global_trade_goods_size_modifier = 0.1
+	}
+	trigger = {
+		tag = VNZ #Venezuela
+	}
+	free = yes
+
+	caribbean_pirates = {
+		privateer_efficiency = 0.25
+	}
+	vnz_integrated_marines = {
+		allowed_marine_fraction = 0.15
+	}
+	settle_the_jungles = {
+		colonists = 1
+	}
+	spanish_firearms = {
+		artillery_power = 0.1
+		artillery_cost = -0.05
+	}
+	native_taxation = {
+		global_tax_modifier = 0.1
+	}
+	replacement_system = {
+		yearly_corruption = -0.2
+		advisor_pool = 2
+	}
+	professional_allotment = {
+		fire_damage = 0.1
+	}
+}
+guyana_ideas = {
+	start = {
+		legitimacy = 1
+		republican_tradition = 1
+		horde_unity = 1
+		meritocracy = 1
+		devotion = 1
+		army_tradition = 1
+	}
+	bonus = {
+		diplomats = 1
+	}
+	trigger = {
+		tag = VRM #Guyana
+	}
+	free = yes
+
+	atlantic_trade_routes = {
+		trade_steering = 0.25
+	}
+	native_warriors = {
+		infantry_power = 0.1
+	}
+	repel_the_europeans = {
+		naval_morale = 0.1
+	}
+	clear_the_jungles = {
+		#shared with central america
+	}
+	colonial_governance = {
+		reform_progress_growth = 0.25
+	}
+	ruthless_generals = {
+		#shared with paraguay
+	}
+	control_the_trade_winds = {
+		trade_efficiency = 0.05
+		merchants = 1
+	}
+}
+ILI_ideas = {
+	start = {
+		culture_conversion_cost = -0.15
+		religious_unity = 0.25
+	}
+	bonus = {
+		land_morale = 0.1
+	}
+	trigger = {
+		tag = ILI #Illinois
+	}
+	free = yes
+
+	conquer_the_prairie = {
+		development_cost = -0.1
+	}
+	the_nile_of_north_america = {
+		trade_efficiency = 0.1
+		movement_speed = 0.1
+	}
+	the_blackhawk_wars = {
+		fire_damage = 0.1
+	}
+	the_oregon_trail = {
+		colonists = 1
+	}
+	circle_the_wagons = {
+		infantry_power = 0.1
+	}
+	the_american_breadbasket = {
+		global_trade_goods_size_modifier = 0.1
+	}
+	riverboat_flotilla = {
+		global_sailors_modifier = 0.1
+		light_ship_power = 0.05
+	}
+}
+HOL_ideas = { #Holland
+	start = {
+		trade_efficiency = 0.15
+		siege_ability = 0.10
+	}
+	
+	bonus = {
+		naval_forcelimit_modifier = 0.50
+	}
+
+	trigger = {
+		OR = {
+			tag = HOL
+			AND = {
+				is_colonial_nation = yes
+				is_subject_of = HOL
+			}
+		}
+	}
+	free = yes		#will be added at load.
+	
+	hol_infantry_idea = {
+		infantry_power = 0.1
+	}
+	hol_amsterdam_bankers = {
+		interest = -0.5
+	}
+	embrace_humanism = {
+		tolerance_heretic = 3
+	}
+	dutch_trading_spirit = {
+		#shared with NED_ideas
+	}
+	polders = {
+		#shared with NED_ideas
+	}
+	instructie_voor_de_admiraliteiten = {
+		#shared with NED_ideas
+	}
+	hol_sailors_idea = {
+		global_sailors_modifier = 0.25
+	}
+}

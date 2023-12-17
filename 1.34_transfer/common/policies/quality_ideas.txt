@@ -1,0 +1,223 @@
+#########################################
+#	Policies for the Quality Idea Group
+#########################################
+weapon_quality_standards = {
+	monarch_power = MIL
+	
+	potential = {
+		ai = no
+		has_idea_group = quality_ideas
+	}
+	allow = {
+		full_idea_group = quality_ideas
+		hidden_trigger = {
+			NOT = { has_idea_group = indigenous_ideas } #This weird Syntax is required otherwise the game will crash lol @PDX
+		}
+		if = {
+			limit = { has_country_modifier = weapon_quality_standards_cooldown }
+			custom_trigger_tooltip = {
+				tooltip = POLICY_ON_COOLDOWN
+				always = no
+			}
+		}
+		if = {
+			limit = {
+				has_country_flag = quality_cd_fl
+			}
+			custom_trigger_tooltip = {
+				tooltip = "We must wait before we can select a policy from this idea group again."
+				always = no
+			}
+		}
+	}
+	
+	discipline = 0.05
+	
+	ai_will_do = {
+		factor = 1 #will do later
+	}
+}
+superior_supply_system = {
+	monarch_power = MIL
+	
+	potential = {
+		ai = no
+		has_idea_group = quality_ideas
+	}
+	
+	allow = {
+		full_idea_group = quality_ideas
+		hidden_trigger = {
+			NOT = { has_idea_group = indigenous_ideas }
+		}
+		if = {
+			limit = { has_country_modifier = superior_supply_system_cooldown }
+			custom_trigger_tooltip = {
+				tooltip = POLICY_ON_COOLDOWN
+				always = no
+			}
+		}
+		if = {
+			limit = {
+				has_country_flag = quality_cd_fl
+			}
+			custom_trigger_tooltip = {
+				tooltip = "We must wait before we can select a policy from this idea group again."
+				always = no
+			}
+		}
+	}
+	
+	leader_land_fire = 6
+
+	ai_will_do = {
+		factor = 1 #will do later
+	}
+}
+professional_diplomatic_corps = {
+	monarch_power = DIP
+	potential = {
+		ai = no
+		has_idea_group = quality_ideas
+	}
+	
+	allow = {
+		full_idea_group = quality_ideas
+		hidden_trigger = {
+			NOT = { has_idea_group = indigenous_ideas }
+		}
+		if = {
+			limit = { has_country_modifier = professional_diplomatic_corps_cooldown }
+			custom_trigger_tooltip = {
+				tooltip = POLICY_ON_COOLDOWN
+				always = no
+			}
+		}
+		if = {
+			limit = {
+				has_country_flag = quality_cd_fl
+			}
+			custom_trigger_tooltip = {
+				tooltip = "We must wait before we can select a policy from this idea group again."
+				always = no
+			}
+		}
+	}
+	
+	improve_relation_modifier = 0.25
+
+	ai_will_do = {
+		factor = 1 #will do later
+	}
+
+}
+the_integrated_administration_act = {
+	monarch_power = DIP
+	
+	potential = {
+		ai = no
+		has_idea_group = quality_ideas
+	}
+	
+	allow = {
+		full_idea_group = quality_ideas
+		hidden_trigger = {
+			NOT = { has_idea_group = indigenous_ideas }
+		}
+		if = {
+			limit = { has_country_modifier = the_integrated_administration_act_cooldown }
+			custom_trigger_tooltip = {
+				tooltip = POLICY_ON_COOLDOWN
+				always = no
+			}
+		}
+		if = {
+			limit = {
+				has_country_flag = quality_cd_fl
+			}
+			custom_trigger_tooltip = {
+				tooltip = "We must wait before we can select a policy from this idea group again."
+				always = no
+			}
+		}
+	}	
+	
+	diplomatic_annexation_cost = -0.25
+	
+	ai_will_do = {
+		factor = 1 #will do later
+	}
+}
+the_mining_act = {
+	monarch_power = ADM
+
+	potential = {
+		ai = no
+		has_idea_group = quality_ideas
+	}
+	allow = {
+		full_idea_group = quality_ideas
+		hidden_trigger = {
+			NOT = { has_idea_group = indigenous_ideas }
+		}
+		if = {
+			limit = { has_country_modifier = the_mining_act_cooldown }
+			custom_trigger_tooltip = {
+				tooltip = POLICY_ON_COOLDOWN
+				always = no
+			}
+		}
+		if = {
+			limit = {
+				has_country_flag = quality_cd_fl
+			}
+			custom_trigger_tooltip = {
+				tooltip = "We must wait before we can select a policy from this idea group again."
+				always = no
+			}
+		}
+	}
+	
+	production_efficiency = 0.25
+	
+	ai_will_do = {
+		factor = 1 #will do later
+	}
+}
+visionary_thinkers = {
+	monarch_power = ADM
+	
+	potential = {
+		ai = no
+		has_idea_group = quality_ideas
+	}
+	
+	allow = {
+		full_idea_group = quality_ideas
+		hidden_trigger = {
+			NOT = { has_idea_group = indigenous_ideas }
+		}
+		if = {
+			limit = { has_country_modifier = visionary_thinkers_cooldown }
+			custom_trigger_tooltip = {
+				tooltip = POLICY_ON_COOLDOWN
+				always = no
+			}
+		}
+		if = {
+			limit = {
+				has_country_flag = quality_cd_fl
+			}
+			custom_trigger_tooltip = {
+				tooltip = "We must wait before we can select a policy from this idea group again."
+				always = no
+			}
+		}
+	}	
+	
+	technology_cost = -0.15
+	
+	ai_will_do = {
+		factor = 1 #will do later
+	}
+}

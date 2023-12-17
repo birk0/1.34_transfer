@@ -1,0 +1,23 @@
+#77 - Heidelberg
+
+capital = "Heidelberg"
+culture = hessian
+religion = catholic
+trade_goods = wine
+owner = PAL
+base_tax = 5
+base_production = 4
+base_manpower = 4
+fort_15th = yes
+is_city = yes
+controller = PAL
+add_core = PAL
+hre = yes
+
+
+1444.12.1 = {
+	trade_goods = unknown
+	owner = ---
+	controller = ---
+	hre = no
+}

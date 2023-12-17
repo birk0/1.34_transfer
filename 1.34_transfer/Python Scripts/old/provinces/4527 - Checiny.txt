@@ -1,0 +1,18 @@
+#4527 - Checiny
+
+owner = POL
+controller = POL
+capital = "Checiny"
+culture = polish
+religion = catholic
+trade_goods = cloth
+hre = no
+base_tax = 3
+base_production = 2
+base_manpower = 2
+is_city = yes
+add_core = POL
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

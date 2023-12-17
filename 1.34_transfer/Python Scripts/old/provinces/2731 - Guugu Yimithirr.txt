@@ -1,0 +1,21 @@
+#2731 - Kultuk
+
+culture = buryat
+religion = tengri_pagan_reformed
+capital = "Kultuk"
+hre = no
+base_tax = 1 
+base_production = 1
+base_manpower = 1
+#changes
+owner = BRT
+controller = BRT
+add_core = BRT
+is_city = yes
+trade_goods = fur
+add_local_autonomy = 25
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

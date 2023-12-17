@@ -1,0 +1,19 @@
+# 4623 - Garada
+
+culture = nubian 
+religion = shiite
+capital = "Garada"
+owner = ABB
+controller = ABB
+add_core = ABB
+add_core = MAK
+is_city = yes
+trade_goods = grain
+base_manpower = 1
+hre = no
+base_tax = 1
+base_production = 1
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

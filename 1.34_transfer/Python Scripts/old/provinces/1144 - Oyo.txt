@@ -1,0 +1,18 @@
+#1144 - Oyo
+
+owner = OYO 
+controller = OYO
+add_core = OYO
+culture = yorumba 
+religion = shamanism #Fetishism
+capital = "Oyo"
+is_city = yes
+base_manpower = 1
+trade_goods = ivory
+hre = no
+base_tax = 1 
+base_production = 1
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

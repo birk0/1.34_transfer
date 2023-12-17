@@ -1,0 +1,20 @@
+#546 - East Berar / Nagpur
+
+owner = BAH
+controller = BAH
+culture = gondi
+religion = hinduism
+capital = "Wairagarh"
+trade_goods = cotton
+hre = no
+base_tax = 3 
+base_production = 3
+base_manpower = 3
+is_city = yes
+add_core = BRR
+add_core = BAH
+add_brahmins_or_church_effect = yes
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

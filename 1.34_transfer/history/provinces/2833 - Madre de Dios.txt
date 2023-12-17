@@ -1,0 +1,7 @@
+#Prov2833 - Madre de Dios
+culture = songhai #Dogon
+religion = shamanism  #Fetishism
+
+base_tax = 1
+base_production = 1
+base_manpower = 1

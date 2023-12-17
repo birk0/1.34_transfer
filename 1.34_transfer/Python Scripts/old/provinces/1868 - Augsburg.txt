@@ -1,0 +1,19 @@
+# 1868 - Augsburg
+owner = AUG
+controller = AUG
+add_core = AUG
+culture = swabian
+religion = catholic
+base_tax = 7 
+base_production = 6
+trade_goods = cloth	#fustians
+base_manpower = 4
+capital = "Augsburg"
+is_city = yes
+hre = yes
+
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

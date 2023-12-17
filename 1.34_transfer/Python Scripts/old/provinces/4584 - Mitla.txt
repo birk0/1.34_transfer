@@ -1,0 +1,19 @@
+# 4584 - Gulch
+
+owner = ALO
+controller = ALO
+add_core = ALO
+add_core = ABB
+culture = nubian 
+religion = sunni
+capital = "Gulch"
+base_manpower = 1
+base_tax = 1 
+base_production = 1
+is_city = yes
+trade_goods = ivory
+hre = no
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

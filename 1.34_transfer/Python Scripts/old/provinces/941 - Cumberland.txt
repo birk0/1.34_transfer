@@ -1,0 +1,19 @@
+#941 - Calamocha
+
+owner = ARA		# Alfons V of Aragon
+controller = ARA
+add_core = ARA
+culture = aragonese
+religion = catholic
+hre = no
+base_tax = 2
+base_production = 2
+trade_goods = grain
+base_manpower = 2
+capital = "Calamocha"
+is_city = yes
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

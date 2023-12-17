@@ -1,0 +1,7 @@
+#Prov3714 - Prov3714
+religion = shamanism
+culture = amhara
+
+base_tax = 1
+base_production = 1
+base_manpower = 1

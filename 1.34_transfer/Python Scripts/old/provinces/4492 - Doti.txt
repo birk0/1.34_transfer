@@ -1,0 +1,17 @@
+#4492 - Doti
+
+owner = DTI
+controller = DTI
+culture = nepali
+religion = hinduism
+capital = "Doti"
+trade_goods = wool
+hre = no
+base_tax = 1
+base_production = 1
+base_manpower = 1
+is_city = yes
+add_core = DTI
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

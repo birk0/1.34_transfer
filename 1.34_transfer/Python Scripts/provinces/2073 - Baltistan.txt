@@ -1,0 +1,7 @@
+#Prov2073 - Baltistan
+culture = kashmiri # Dardic/Shina and Balti
+religion = vajrayana
+
+base_tax = 1
+base_production = 1
+base_manpower = 1

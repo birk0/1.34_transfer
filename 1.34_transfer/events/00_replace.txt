@@ -1,0 +1,477 @@
+
+namespace = celestial_empire_events
+namespace = mch_missions
+namespace = women_history_events
+namespace = prices
+namespace = corruption_event
+namespace = mercs
+
+#An ideology for an Empire
+country_event = {
+	id = celestial_empire_events.2
+	title = celestial_empire_events.2.t
+	desc = "mod_celestial_empire_events.2.d"
+	picture = IMPERIAL_EXAMINATION_eventPicture
+	
+	trigger = {
+		OR = {
+			is_emperor_of_china = yes
+			culture_group = east_asian
+		}
+		NOT = { has_harmony = yes }
+		NOT = { has_country_flag = reacted_to_confucianism_event } #If you form the empire multiple times you won't get this again
+	}
+	
+	immediate = {
+		set_country_flag = reacted_to_confucianism_event
+		hidden_effect = {
+			trigger_switch = {
+				on_trigger = religion
+				mahayana = { set_country_flag = mah_fl }
+				vajrayana = { set_country_flag = vaj_fl }
+				buddhism = { set_country_flag = bud_fl }
+				shen = { set_country_flag = shen_fl }
+				shinto = { set_country_flag = shin_fl }
+			}
+			trigger_switch = {
+				on_trigger = religion_group
+				muslim = { set_country_flag = mus_fl }
+				christian = { set_country_flag = chr_fl }
+				dharmic = { set_country_flag = dha_fl }
+				pagan = { set_country_flag = pag_fl }
+				jewish_group = { set_country_flag = jew_fl }
+				zoroastrian_group = { set_country_flag = zor_fl }
+			}
+			set_variable = {
+				which = conf_var
+				value = 0
+			}
+			set_variable = {
+				which = dao_var
+				value = 0
+			}
+			every_owned_province = {
+				limit = { religion = confucianism }
+				set_province_flag = conf_count_fl
+			}
+			every_owned_province = {
+				limit = { religion = daoism }
+				set_province_flag = dao_count_fl
+			}
+			while = {
+				limit = {
+					any_owned_province = {
+						has_province_flag = conf_count_fl
+					}
+				}
+				random_owned_province = {
+					limit = { has_province_flag = conf_count_fl }
+					clr_province_flag = conf_count_fl
+				}
+				change_variable = {
+					which = conf_var
+					value = 1
+				}
+			}
+			while = {
+				limit = {
+					any_owned_province = {
+						has_province_flag = dao_count_fl
+					}
+				}
+				random_owned_province = {
+					limit = { has_province_flag = dao_count_fl }
+					clr_province_flag = dao_count_fl
+				}
+				change_variable = {
+					which = dao_var
+					value = 1
+				}
+			}
+		}
+	}
+	
+	option = {
+		name = "mod_celestial_empire_events.2.a" #Convert to Confucian
+		trigger = {
+			OR = {
+				ai = no
+				AND = {
+					ai = yes
+					check_variable = { #Confucian more dominant than Daoism
+						which = conf_var
+						which = dao_var
+					}
+				}
+				AND = {
+					ai = yes
+					is_variable_equal = { #Same presence
+						which = conf_var
+						which = dao_var
+					}
+				}
+			}
+		}
+		ai_chance = { factor = 2 } #2x more likely to convert to Confucianism
+		change_religion = confucianism
+		add_meritocracy_effect = yes
+		add_mandate_effect = yes
+		trigger_switch = {
+			on_trigger = has_country_flag
+			mah_fl = { add_harmonized_religion = mahayana }
+			vaj_fl = { add_harmonized_religion = vajrayana }
+			bud_fl = { add_harmonized_religion = buddhism }
+			shin_fl = { add_harmonized_religion = shinto }
+			shen_fl = { add_harmonized_religion = shen }
+			mus_fl = { add_harmonized_religion = sunni }
+			pag_fl = { add_harmonized_religion = animism }
+			dha_fl = { add_harmonized_religion = hinduism }
+			chr_fl = { add_harmonized_religion = catholic }
+			jew_fl = { add_harmonized_religion = jewish }
+			zor_fl = { add_harmonized_religion = zoroastrian }
+		}
+	}
+	option = {
+		name = "celestial_empire_events.2.c" #Convert to Daoist
+		trigger = {
+			OR = {
+				ai = no
+				AND = {
+					ai = yes
+					check_variable = { #Daoism more dominant than Confucianism
+						which = dao_var
+						which = conf_var
+					}
+				}
+				AND = {
+					ai = yes
+					is_variable_equal = { #Same presence
+						which = dao_var
+						which = conf_var
+					}
+				}
+			}
+		}
+		ai_chance = { factor = 1 } #AI 2x more likely to choose Confucian
+		change_religion = daoism
+		add_meritocracy_effect = yes
+		add_mandate_effect = yes
+		trigger_switch = {
+			on_trigger = has_country_flag
+			mah_fl = { add_harmonized_religion = mahayana }
+			vaj_fl = { add_harmonized_religion = vajrayana }
+			bud_fl = { add_harmonized_religion = buddhism }
+			shin_fl = { add_harmonized_religion = shinto }
+			shen_fl = { add_harmonized_religion = shen }
+			mus_fl = { add_harmonized_religion = sunni }
+			pag_fl = { add_harmonized_religion = animism }
+			dha_fl = { add_harmonized_religion = hinduism }
+			chr_fl = { add_harmonized_religion = catholic }
+			jew_fl = { add_harmonized_religion = jewish }
+			zor_fl = { add_harmonized_religion = zoroastrian }
+		}
+	}
+	option = {
+		name = "celestial_empire_events.2.b"
+		trigger = {
+			ai = no
+		}
+		reduce_meritocracy_effect = yes
+		add_stability = -1
+	}
+	after = {
+		clr_country_flag = mah_fl
+		clr_country_flag = vaj_fl
+		clr_country_flag = bud_fl
+		clr_country_flag = shin_fl
+		clr_country_flag = shen_fl
+		clr_country_flag = mus_fl
+		clr_country_flag = pag_fl
+		clr_country_flag = dha_fl
+		clr_country_flag = chr_fl
+		clr_country_flag = jew_fl
+		clr_country_flag = zor_fl
+	}
+}
+# Koxinga Flees to Taiwan (replaced with eoc_events.35)
+country_event = {
+	id = mch_missions.5
+	title = "mch_missions.5.t"
+	desc = "mch_missions.5.d"
+	picture = NAVAL_MILITARY_eventPicture
+	
+	trigger = {
+		always = no
+	}
+	option = {
+		name = "mch_missions.5.a"
+	}
+}
+#Popular Religion
+#Diplomatic Penalty from annexing
+country_event = {
+	id = 610
+	title = "EVTNAME610"
+	desc = "EVTDESC610"
+	picture = DEBATE_REPUBLICAN_eventPicture
+
+	trigger = {
+		NOT = {
+			FROM = {
+				has_country_modifier = to_be_agenda_annexed_timer
+			}
+		}
+		NOT = { has_country_flag = no_integrate_penalty }
+		NOT = { has_country_modifier = overlord_sankin_kotai }
+	}
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "EVTOPTB610A"
+		add_country_modifier = {
+			name = "annexers_legacy"
+			duration = 3650
+		}
+	}
+}
+
+
+
+
+# The People turn to spirit worship
+province_event = {
+	id = 6179
+	title = "EVTNAME6179"
+	desc = "EVTDESC6179"
+	picture = BUDDHA_eventPicture
+
+	trigger = {
+		is_capital = no
+		OR = {
+			religion = buddhism
+			religion = vajrayana
+			religion = mahayana
+		}
+		OR = {
+			owner = {
+				religion = buddhism
+				shinto = 2
+			}
+			owner = {
+				religion = vajrayana
+				shinto = 2
+			}
+			owner = {
+				religion = mahayana
+				shinto = 2
+			}
+		}
+		is_province_culture = { type = japanese_g }
+		NOT = { has_province_modifier = religious_zeal_at_conv }
+	}
+
+	mean_time_to_happen = {
+		months = 5000
+		modifier = {
+			factor = 0.95
+			owner = { innovativeness_ideas = 4 }
+		}
+		modifier = {
+			factor = 0.95
+			owner = { innovativeness_ideas = 5 }
+		}
+		modifier = {
+			factor = 0.95
+			owner = { innovativeness_ideas = 6 }
+		}
+		modifier = {
+			factor = 0.95
+			owner = { innovativeness_ideas = 7 }
+		}
+		modifier = {
+			factor = 2.0
+			owner = { government = theocracy }
+		}
+		modifier = {
+			factor = 0.95
+			any_neighbor_province = {
+				religion = shinto
+			}
+		}
+	}
+
+	is_mtth_scaled_to_size = 1
+
+	option = {
+		name = "EVTOPTA6179"
+		change_religion = shinto
+	}
+}
+# Our people embrace Shintoism
+province_event = {
+	id = 6185
+	title = "EVTNAME6185"
+	desc = "EVTDESC6185"
+	picture = RELIGION_eventPicture 
+
+	trigger = {
+		is_capital = no
+		religion = confucianism
+		is_province_culture = { type = japanese_g }
+		owner = {
+			religion = confucianism
+			shinto = 2
+		}
+		NOT = { has_province_modifier = religious_zeal_at_conv }
+	}
+
+	mean_time_to_happen = {
+		months = 2000
+		modifier = {
+			factor = 0.95
+			owner = { innovativeness_ideas = 4 }
+		}
+		modifier = {
+			factor = 0.95
+			owner = { innovativeness_ideas = 5 }
+		}
+		modifier = {
+			factor = 0.95
+			owner = { innovativeness_ideas = 6 }
+		}
+		modifier = {
+			factor = 0.95
+			owner = { innovativeness_ideas = 7 }
+		}
+		modifier = {
+			factor = 2.0
+			owner = { government = theocracy }
+		}
+	}
+
+	is_mtth_scaled_to_size = 1
+
+	option = {
+		name = "EVTOPTA6185"
+		change_religion = shinto
+	}
+}
+#######################################
+# New World
+#######################################
+# Japanese Tea Culture
+country_event = {
+	id = prices.21
+	title = prices.21.t
+	desc = prices.21.d
+	picture = TRADEGOODS_eventPicture
+	
+	major = yes
+
+	trigger = {
+		dip_tech = 8
+		OR = {
+			has_reform = shogunate
+			has_reform = imperial_japan
+		}
+		NOT = { has_global_flag = japanese_tea_happened }
+	}
+	mean_time_to_happen = {
+		months = 1
+	}
+	
+	
+	option = {
+		name = prices.21.a
+		change_price = {
+			trade_goods = tea
+			key = JAPANESE_TEA_CULTURE
+			value = 0.25
+			duration = -1
+		}
+		change_price = {
+			trade_goods = incense
+			key = JAPANESE_TEA_CULTURE
+			value = 0.10
+			duration = -1
+		}
+		set_global_flag = japanese_tea_happened
+	}
+}
+# Mercenaris Extorting Locals
+country_event = {
+	id = corruption_event.16
+	title = "corruption_event.16.t"
+	desc = "corruption_event.16.d"
+	picture = BORDER_TENSION_eventPicture
+	goto = hired_mercs_victim_area
+	
+	is_triggered_only = yes
+	
+	trigger = {
+		num_of_streltsy = 1
+		is_at_war = no
+	}
+
+	immediate = {
+		hidden_effect = {
+			random_owned_province = {
+				limit = {
+					owned_by = root
+					is_state_core = root
+					units_in_province = ROOT
+				}
+				save_event_target_as = hired_mercs_victim_area
+			}
+		}
+	}
+	
+	option = {
+		name = "corruption_event.16.a"
+		add_mil_power = -50
+	}
+
+	option = {
+		name = "corruption_event.16.b"
+		add_corruption = 1
+		event_target:hired_mercs_victim_area = {
+			area = {
+				limit = { owned_by = root }
+				add_devastation = 15
+			}
+		}
+	}
+}
+# Discontent Among Mercenaries
+country_event = {
+	id = mercs.1
+	title = mercs.1.t
+	desc = mercs.1.d
+	picture = SCOTTISH_MERCENARIES_eventPicture
+	
+	is_triggered_only = yes # pulse
+	
+	trigger = {
+		is_at_war = yes
+		num_of_streltsy = 1
+	}
+	
+	immediate = {
+		hidden_effect = {
+			random_country = {
+				limit = { war_with = ROOT }
+				save_event_target_as = merc_home_country
+				capital_scope = {
+					save_event_target_as = merc_home_province
+				}
+			}
+		}
+	}
+	
+	option = {
+		name = mercs.1.a
+		add_years_of_income = -0.3
+	}
+}
+

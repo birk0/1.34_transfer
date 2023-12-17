@@ -1,0 +1,13 @@
+# Muscovite Caracolle
+
+type = cavalry
+manpower = 2
+unit_type = eastern
+
+maneuver = 6	
+offensive_morale = 6
+defensive_morale = 6
+offensive_fire = 4
+defensive_fire = 0
+offensive_shock = 4
+defensive_shock = 4

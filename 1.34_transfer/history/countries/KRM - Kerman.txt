@@ -1,0 +1,31 @@
+government = monarchy
+government_rank = 1
+primary_culture = uzbehk
+religion = sunni
+technology_group = muslim
+add_accepted_culture = baluchi
+add_accepted_culture = persian
+capital = 2220 #Bam
+religious_school = hanafi_school
+add_government_reform = timurid_prince
+
+1436.1.1 = {
+	monarch = {
+		name = "Mu'izz al-Din Malik"
+		dynasty = "Simnani"
+		regent = yes
+		adm = 3
+		dip = 3
+		mil = 1
+	}
+	heir = {
+		name = "Husayn Bayqara"
+		dynasty = "Timurid"
+		birth_date = 1436.1.1
+		death_date = 1471.1.1
+		claim = 100
+		adm = 4
+		dip = 5
+		mil = 2
+	}
+}

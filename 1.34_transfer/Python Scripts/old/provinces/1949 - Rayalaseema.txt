@@ -1,0 +1,22 @@
+#1949 - Penukonda
+
+owner = VIJ
+controller = VIJ
+culture = telegu
+religion = hinduism
+capital = "Penukonda"
+trade_goods = cotton
+hre = no
+base_tax = 3
+base_production = 3
+base_manpower = 2
+is_city = yes
+add_core = KRK
+add_core = VIJ
+add_core = YOR
+fort_15th = yes #One of the great forts of the East
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

@@ -1,0 +1,19 @@
+# 822 - Ofinso
+
+culture = aka
+base_manpower = 1
+religion = shamanism #Fetishism
+capital = "Ofinso"
+trade_goods = grain
+hre = no
+base_tax = 1
+base_production = 1
+native_size = 60
+native_ferocity = 4
+native_hostileness = 9
+add_core = ASH
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

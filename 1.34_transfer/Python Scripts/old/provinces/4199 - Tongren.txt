@@ -1,0 +1,21 @@
+#4199 - Tongren
+
+owner = MNG
+controller = MNG
+add_core = MNG
+culture = miao
+religion = shen #changes
+capital = "Tongren"
+trade_goods = tea
+hre = no
+base_tax = 4 
+base_production = 3
+base_manpower = 3
+is_city = yes
+add_core = CMI
+add_local_autonomy = 25 #Ming weak rule over South
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

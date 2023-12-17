@@ -1,0 +1,36 @@
+french_empire_disaster = { #Lost the French Empire reform
+	ended_by_country_breaking_to_rebels = no
+	potential = {
+		always = no
+	}
+
+	can_start = {
+		always = no
+	}
+	
+	can_stop = {
+		always = no
+	}
+
+	
+	
+	progress = {
+		modifier = {
+		    factor = 1
+			always = yes
+		}
+	}
+
+
+
+
+	
+	can_end = {
+		always = no
+	}
+
+	modifier = {
+		stability_cost_modifier = 0.1
+	}
+}
+

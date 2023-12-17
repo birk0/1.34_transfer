@@ -1,0 +1,20 @@
+#2090 - Gutti
+
+owner = VIJ
+controller = VIJ
+culture = telegu
+religion = hinduism
+capital = "Gutti"
+trade_goods = iron
+hre = no
+base_tax = 2
+base_production = 2
+base_manpower = 2
+is_city = yes
+add_core = VIJ
+add_core = YOR
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

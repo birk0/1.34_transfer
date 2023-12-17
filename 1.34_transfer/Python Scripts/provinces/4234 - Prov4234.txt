@@ -1,0 +1,7 @@
+#Prov4234 - Prov4234
+religion = shamanism
+culture = mossi
+
+base_tax = 1
+base_production = 1
+base_manpower = 1

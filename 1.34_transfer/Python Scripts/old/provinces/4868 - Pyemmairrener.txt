@@ -1,0 +1,20 @@
+#4868 - Linxia
+
+owner = MNG
+controller = MNG
+add_core = MNG
+culture = xibei
+religion = vajrayana
+capital = "Linxia"
+trade_goods = grain
+hre = no
+base_tax = 2 
+base_production = 1
+base_manpower = 2
+is_city = yes
+add_core = CSH
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

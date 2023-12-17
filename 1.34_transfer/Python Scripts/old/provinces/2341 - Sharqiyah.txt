@@ -1,0 +1,20 @@
+#2341 - Sharqiyah
+
+owner = ORM
+controller = ORM
+culture = omani_culture
+religion = ibadi
+capital = "Masirah"
+trade_goods = copper
+hre = no
+base_tax = 1 
+base_production = 1
+base_manpower = 1
+is_city = yes
+add_core = ORM
+add_core = OMA
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

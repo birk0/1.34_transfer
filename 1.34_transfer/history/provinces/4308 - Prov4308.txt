@@ -1,0 +1,8 @@
+#Prov4308 - Prov4308
+religion = sunni
+culture = persian
+is_city = no
+
+base_tax = 1
+base_production = 1
+base_manpower = 1

@@ -1,0 +1,20 @@
+#1838 - Hefei
+
+owner = MNG
+controller = MNG
+add_core = MNG
+culture = jianghuai
+religion = mahayana #changes
+capital = "Hefei"
+trade_goods = grain
+hre = no
+base_tax = 1 
+base_production = 2
+base_manpower = 4
+is_city = yes
+
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

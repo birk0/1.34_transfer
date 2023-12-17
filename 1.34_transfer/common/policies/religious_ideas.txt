@@ -1,0 +1,229 @@
+############################################
+#	Policies for the Religious Idea Group
+############################################
+military_zeal_act = {
+	monarch_power = MIL
+	
+	potential = {
+		ai = no
+		has_idea_group = religious_ideas
+	}
+	
+	allow = {
+		full_idea_group = religious_ideas
+		hidden_trigger = {
+			NOT = { has_idea_group = indigenous_ideas }
+		}
+		if = {
+			limit = { has_country_modifier = military_zeal_act_cooldown }
+			custom_trigger_tooltip = {
+				tooltip = POLICY_ON_COOLDOWN
+				always = no
+			}
+		}
+		if = {
+			limit = {
+				has_country_flag = religious_cd_fl
+			}
+			custom_trigger_tooltip = {
+				tooltip = "We must wait before we can select a policy from this idea group again."
+				always = no
+			}
+		}
+	}
+	
+	siege_ability = 0.33
+
+	ai_will_do = {
+		factor = 1
+	}
+}
+wielders_of_the_flaming_sword_policy = { 
+	monarch_power = MIL
+
+	potential = {
+		ai = no
+		has_idea_group = religious_ideas
+	}
+	
+	allow = {
+		full_idea_group = religious_ideas
+		hidden_trigger = {
+			NOT = { has_idea_group = indigenous_ideas }
+		}
+		if = {
+			limit = { has_country_modifier = wielders_of_the_flaming_sword_policy_cooldown }
+			custom_trigger_tooltip = {
+				tooltip = POLICY_ON_COOLDOWN
+				always = no
+			}
+		}
+		if = {
+			limit = {
+				has_country_flag = religious_cd_fl
+			}
+			custom_trigger_tooltip = {
+				tooltip = "We must wait before we can select a policy from this idea group again."
+				always = no
+			}
+		}
+	}
+
+	infantry_shock = 1
+	
+	ai_will_do = {
+		factor = 1
+	}
+}
+edict_of_resistance = {
+	monarch_power = DIP
+
+	potential = {
+		ai = no
+		has_idea_group = religious_ideas
+	}
+	
+	allow = {
+		full_idea_group = religious_ideas
+		hidden_trigger = {
+			NOT = { has_idea_group = indigenous_ideas }
+		}
+		if = {
+			limit = { has_country_modifier = edict_of_resistance_cooldown }
+			custom_trigger_tooltip = {
+				tooltip = POLICY_ON_COOLDOWN
+				always = no
+			}
+		}
+		if = {
+			limit = {
+				has_country_flag = religious_cd_fl
+			}
+			custom_trigger_tooltip = {
+				tooltip = "We must wait before we can select a policy from this idea group again."
+				always = no
+			}
+		}
+	}
+
+	justify_trade_conflict_cost = -0.66
+
+	ai_will_do = {
+		factor = 1
+	}
+
+}
+one_and_true = { 
+	monarch_power = DIP
+	
+	potential = {
+		ai = no
+		has_idea_group = religious_ideas
+	}
+	
+	allow = {
+		full_idea_group = religious_ideas
+		hidden_trigger = {
+			NOT = { has_idea_group = indigenous_ideas }
+		}
+		if = {
+			limit = { has_country_modifier = one_and_true_cooldown }
+			custom_trigger_tooltip = {
+				tooltip = POLICY_ON_COOLDOWN
+				always = no
+			}
+		}
+		if = {
+			limit = {
+				has_country_flag = religious_cd_fl
+			}
+			custom_trigger_tooltip = {
+				tooltip = "We must wait before we can select a policy from this idea group again."
+				always = no
+			}
+		}
+	}
+	
+	heir_chance = 1
+	prestige = 20
+
+	ai_will_do = {
+		factor = 1
+	}
+}
+church_sponsored_guilds = {
+	monarch_power = ADM
+
+	potential = {
+		ai = no
+		has_idea_group = religious_ideas
+	}
+	
+	allow = {
+		full_idea_group = religious_ideas
+		hidden_trigger = {
+			NOT = { has_idea_group = indigenous_ideas }
+		}
+		if = {
+			limit = { has_country_modifier = church_sponsored_guilds_cooldown }
+			custom_trigger_tooltip = {
+				tooltip = POLICY_ON_COOLDOWN
+				always = no
+			}
+		}
+		if = {
+			limit = {
+				has_country_flag = religious_cd_fl
+			}
+			custom_trigger_tooltip = {
+				tooltip = "We must wait before we can select a policy from this idea group again."
+				always = no
+			}
+		}
+	}
+	
+	idea_cost = -0.33
+	
+	ai_will_do = {
+		factor = 1
+	}
+}
+policy_of_calculate_delay = {
+	monarch_power = ADM
+	potential = {
+		ai = no
+		has_idea_group = religious_ideas
+	}
+	
+	allow = {
+		full_idea_group = religious_ideas
+		hidden_trigger = {
+			NOT = { has_idea_group = indigenous_ideas }
+		}
+		if = {
+			limit = { has_country_modifier = policy_of_calculate_delay_cooldown }
+			custom_trigger_tooltip = {
+				tooltip = POLICY_ON_COOLDOWN
+				always = no
+			}
+		}
+		if = {
+			limit = {
+				has_country_flag = religious_cd_fl
+			}
+			custom_trigger_tooltip = {
+				tooltip = "We must wait before we can select a policy from this idea group again."
+				always = no
+			}
+		}
+	}
+	
+	global_unrest = -5
+	#No penalty from rebels occupying provinces
+	#rebel_size_modifier = -0.75
+ 
+
+	ai_will_do = {
+		factor = 1
+	}
+}

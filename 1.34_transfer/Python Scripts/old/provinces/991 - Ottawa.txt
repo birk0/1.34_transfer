@@ -1,0 +1,18 @@
+#991 - Halun
+
+add_core = SWE
+owner = SWE
+controller = SWE
+culture = swedish
+religion = catholic
+hre = no
+base_tax = 1 
+base_production = 1
+trade_goods = copper
+base_manpower = 1
+capital = "Halun"
+is_city = yes
+
+1444.12.1 = {
+	add_bookmark_effect = yes
+}

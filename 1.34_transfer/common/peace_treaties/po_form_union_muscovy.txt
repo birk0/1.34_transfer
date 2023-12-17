@@ -1,0 +1,28 @@
+po_form_union_muscovy = { #Muscovy can form union over Galich as defender with this 
+
+	prestige_base = 0.2
+	ae_base = 0
+	power_projection = humiliated_rival
+	warscore_cost = {
+		no_provinces = 50.0
+	}
+	warscore_cap = 100
+	requires_is_allowed = yes
+	is_visible = {
+		has_country_flag = muscovite_civil_war
+	}
+	effect = { 
+		country_event = {
+			id = flavor_rus.39 #Muscovy defeats Yury I
+		}
+	}
+	ai_weight = {
+		export_to_variable = {
+			variable_name = ai_value
+			value = 1000
+		}
+		limit = {
+			always = yes
+		}
+	}
+}

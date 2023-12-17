@@ -1,0 +1,19 @@
+#2414 - Azaraba
+
+owner = CRI
+controller = CRI
+culture = crimean
+religion = sunni
+hre = no
+base_tax = 3
+base_production = 3
+trade_goods = livestock
+base_manpower = 3
+capital = "Azaraba"
+is_city = yes
+add_core = CRI
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

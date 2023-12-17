@@ -1,0 +1,22 @@
+#5000 - Burabay
+
+owner = SHY
+controller = SHY
+culture = khazak
+religion = sunni
+capital = "Burabay"
+trade_goods = copper
+hre = no
+base_tax = 3
+base_production = 3
+base_manpower = 2
+is_city = yes
+add_core = KZH
+add_core = SHY
+center_of_trade = 1
+extra_cost = 4
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

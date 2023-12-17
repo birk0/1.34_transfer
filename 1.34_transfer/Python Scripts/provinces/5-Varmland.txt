@@ -1,0 +1,8 @@
+#Prov5-Varmland
+culture = danish
+religion = catholic
+is_city = no
+
+base_tax = 1
+base_production = 1
+base_manpower = 1

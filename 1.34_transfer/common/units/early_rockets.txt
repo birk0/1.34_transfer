@@ -1,0 +1,14 @@
+# Early Rockets
+
+type = artillery
+manpower = 0.1
+unit_type = indian
+
+maneuver = 2
+
+offensive_fire = 4
+defensive_fire = 2
+offensive_shock = 2
+defensive_shock = 2
+offensive_morale = 4
+defensive_morale = 4

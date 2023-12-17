@@ -1,0 +1,8 @@
+#Prov3195 - Prov3195
+religion = hinduism
+culture = bengali
+is_city = no
+
+base_tax = 1
+base_production = 1
+base_manpower = 1

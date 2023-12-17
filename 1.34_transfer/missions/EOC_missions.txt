@@ -1,0 +1,1254 @@
+#Missions for the Celestial Emperor (And other chinese tags)
+ming_branch_1 = {
+	slot = 1
+	generic = no
+	ai = yes
+	potential = {
+		tag = MNG
+		NOT = { 
+			OR = {
+				has_country_flag = eoc_exterminating_miao
+				has_country_flag = eoc_not_exterminating_miao
+				has_country_flag = eoc_resolved_miao_revolts
+			}
+		}
+	}
+	has_country_shield = yes
+
+	mng_miao_revolts_branch = {
+		icon = mission_unknown_mission
+		position = 1
+		required_missions = {}
+		trigger = {
+			custom_trigger_tooltip = {
+				tooltip = selectable_mission_trigger_tt
+				always = no
+			}
+			OR = {
+				AND = {
+					custom_trigger_tooltip = {
+						tooltip = eoc_exterminate_path_tooltip
+						always = no
+					}
+					custom_trigger_tooltip = {
+						tooltip = eoc_exterminate_path_trigger_tooltip
+						always = no
+					}
+				}
+				AND = {
+					custom_trigger_tooltip = {
+						tooltip = eoc_acceptance_path_tooltip
+						always = no
+					}
+					custom_trigger_tooltip = {
+						tooltip = eoc_acceptance_path_trigger_tooltip
+						always = no
+					}
+				}
+			}
+		}
+		effect = {
+			custom_tooltip = eoc_exterminate_path_tooltip
+			custom_tooltip = eoc_exterminate_path_effect_tooltip
+			custom_tooltip = eoc_acceptance_path_tooltip
+			custom_tooltip = eoc_acceptance_path_effect_tooltip
+		}
+	}
+}
+
+ming_1 = { #Ming Extermination Path
+	slot = 1
+	generic = no
+	ai = yes
+	potential = {
+		tag = MNG
+		OR = {
+			has_country_flag = eoc_exterminating_miao
+			has_country_flag = eoc_resolved_miao_revolts
+		}
+		NOT = { has_global_flag = mng_accept_miao_mission }
+	}
+	has_country_shield = yes
+
+	mng_exterminate_miao = { #Resolve Miao revolts
+		icon = mission_chinese_general_riding
+		required_missions = {}
+		position = 1
+		provinces_to_highlight = {
+			south_china_region = {
+				type = all
+				NOT = { 
+					OR = {
+						province_is_or_accepts_culture = yes
+						country_or_non_sovereign_subject_holds = ROOT
+						has_owner_religion = yes 
+					}
+				}
+			}
+			xinan_region = {
+				type = all
+				NOT = { 
+					OR = {
+						province_is_or_accepts_culture = yes
+						country_or_non_sovereign_subject_holds = ROOT 
+						has_owner_religion = yes 
+					}
+				}
+			}
+		}
+		trigger = {
+			south_china_region = {
+				type = all
+				province_is_or_accepts_culture = yes
+				has_owner_religion = yes
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			xinan_region = {
+				type = all
+				province_is_or_accepts_culture = yes
+				has_owner_religion = yes
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			NOT = {
+				OR = {
+					exists = CMI
+					exists = CYI
+					exists = CDL
+					exists = CGS
+					num_of_rebel_armies = 1
+					num_of_rebel_controlled_provinces = 1	
+				}
+			}
+		}
+		effect = {
+			set_global_flag = mng_exterminate_miao_mission
+			add_mandate = 25
+			add_country_modifier = {
+				name = mng_exterminated_miao_revolts 
+				duration = -1
+			}
+			xinan_region = {
+				add_province_modifier = {
+					name = mng_repopulation_of_south 
+					duration = -1
+				}
+			}
+			south_china_region = {
+				add_province_modifier = {
+					name = mng_repopulation_of_south 
+					duration = -1
+				}
+			}
+			country_event = { id = eoc_events.3 }
+		}
+	}
+}
+ming_2 = { #Ming Acceptance path
+	slot = 1
+	generic = no
+	ai = yes
+	potential = {
+		tag = MNG
+		OR = {
+			has_country_flag = eoc_not_exterminating_miao
+			has_country_flag = eoc_resolved_miao_revolts
+		}
+		NOT = { has_global_flag = mng_exterminate_miao_mission }
+	}
+	has_country_shield = yes
+
+	mng_accept_miao = { #Resolve Miao revolts
+		icon = mission_buddhist_monk_praying
+		required_missions = {}
+		position = 1
+		trigger = {
+			custom_trigger_tooltip = {
+				tooltip = had_miao_revolts_for_25_years_tt
+				had_country_flag = {
+					flag = eoc_miao_revolts
+					days = 9125
+				}
+			}
+			if = {
+				limit = {
+					ai = no #AI cant handle this
+				}
+				custom_trigger_tooltip = {
+					tooltip = eoc_one_accepted_tibet_culture
+					any_owned_province = {
+						culture_group = tibetan_group
+						ROOT = { accepted_culture = PREV }
+					}
+				}
+			}
+			NOT = {
+				OR = {
+					num_of_rebel_armies = 1
+					num_of_rebel_controlled_provinces = 1
+				}
+			}
+		}
+		effect = {
+			set_global_flag = mng_accept_miao_mission
+			add_country_modifier = {
+				name = mng_accepted_miao_revolts 
+				duration = -1 
+			}
+			xinan_region = {
+				limit = {
+					owned_by = ROOT
+				}
+				add_province_modifier = {
+					name = mng_miao_goods_produced 
+					duration = -1
+				}
+			}
+			south_china_region = {
+				limit = {
+					owned_by = ROOT
+				}
+				add_province_modifier = {
+					name = mng_miao_goods_produced
+					duration = -1
+				}
+			}
+			country_event = { id = eoc_events.3 }
+		}
+	}
+}
+ming_3 = {
+	slot = 1
+	generic = no
+	ai = yes
+	potential = {
+		tag = MNG
+	}
+	has_country_shield = yes
+
+	mng_curb_eunuch_influence = {
+		icon = mission_restore_caliphate_of_cordoba
+		position = 2
+		required_missions = {}
+		trigger = {
+			custom_trigger_tooltip = {
+				tooltip = eoc_resolved_miao_revolts_tt
+				has_country_flag = eoc_resolved_miao_revolts
+			}
+			NOT = {
+				estate_influence = {
+					estate = estate_eunuchs
+					influence = 50
+				}
+			}
+			imperial_mandate = 100
+			stability = 1
+			OR = {
+				adm = 5
+				AND = {
+					monthly_adm = 10
+					meritocracy = 75
+				}
+			}
+		}
+		effect = {
+			country_event = { id = eoc_events.5 } #Purging of the Eunuchs
+			change_estate_land_share = {
+				estate = estate_eunuchs
+				share = -10
+			}
+		}
+	}
+
+	mng_prevent_collapse = {
+		icon = mission_kowtow
+		position = 3
+		required_missions = { mng_curb_eunuch_influence }
+		trigger = {
+			NOT = { current_age = age_of_discovery }
+			empire_of_china_reform_passed = new_centralizing_top_government_decision
+		}
+		effect = {
+			country_event = { id = eoc_events.6 } #Resurgence of the Ming
+		}
+	}
+}
+
+ming_5 = {
+	generic = no
+	potential = { tag = MNG }
+	ai = yes
+	slot = 2
+	has_country_shield = yes
+
+	mng_mission_unify_china = {
+		icon = mission_asian_city 
+		position = 3
+		required_missions = { mng_curb_eunuch_influence }
+		provinces_to_highlight = {
+			superregion = china_superregion
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+		}
+		trigger = {
+			china_superregion = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		effect = {
+			add_army_tradition = 25
+			create_general = { tradition = 75 }
+			add_casus_belli = {
+				type = cb_vassalize_mission
+				target = DAI
+			}
+		}
+	}
+
+	mng_subjugate_dai_viet = {
+		icon = mission_rice_field
+		position = 4
+		required_missions = { mng_mission_unify_china mng_prevent_collapse }
+		trigger = {
+			DAI = {
+				is_subject_of = ROOT
+			}
+		}
+		effect = {
+			custom_tooltip = eoc_mng_upgrade_tribute_cb_tt
+		}
+	}
+}
+
+eoc_1 = {
+	slot = 4
+	generic = yes
+	ai = yes
+	potential = {
+		is_emperor_of_china = yes
+	}
+
+	eoc_mission_gunpowder_empire = {
+		icon = mission_asian_cannon
+		position = 1
+		required_missions = {}
+		trigger = {
+			OR = {
+				army_size_percentage = 1
+				hidden_trigger = {
+					AND = {
+						ai = yes
+						army_size_percentage = 0.75
+						is_year = 1447
+					}
+				}
+			}
+		}
+		effect = {
+			add_yearly_manpower = 1
+			add_stability = 1
+			add_country_modifier = {
+				name = thriving_arms_industry
+				duration = 3650
+			}
+			capital_scope = {
+				add_unit_construction = {
+					type = chinese_golden_dragon_cannon
+					cost = 0
+					speed = 0
+					amount = 10
+				}
+			}
+		}	
+	}
+
+	eoc_mission_build_fleet = {
+		icon = crusader_fleet
+		position = 2
+		required_missions = { eoc_mission_gunpowder_empire }
+		trigger = {
+			if = {
+				limit = { ai = yes }
+				navy_size_percentage = 0.75 #Stupid ai
+			}
+			else = {
+				navy_size_percentage = 1
+			}
+			naval_forcelimit = 60
+		}
+		effect = {
+			add_country_modifier = {
+				name = eoc_mission_navy_modifier
+				duration = 3650
+			}
+			add_dip_power = 100
+			add_yearly_sailors = 2
+		}
+	}
+
+	eoc_mission_mandate_of_heaven = {
+		icon = mission_seize_the_dragon_throne
+		position = 3
+		required_missions = { eoc_mission_build_fleet }
+		trigger = {
+			imperial_mandate = 90
+		}
+		effect = {
+			custom_tooltip = eoc_advisor_imperial_examiner_tooltip
+			define_advisor = {
+				type = eoc_imperial_examiner
+				skill = 3
+				culture = ROOT
+				religion = ROOT
+				discount = yes
+				name = "Jinghao Zhu"
+			}
+		}
+	}
+
+	eoc_mission_reform_the_seaban = {
+		icon = mission_corsairs_of_the_north_sea
+		position = 4
+		required_missions = { eoc_mission_mandate_of_heaven }
+		trigger = {
+			imperial_mandate = 50
+			custom_trigger_tooltip = {
+				tooltip = no_pirates_in_china_tt
+				NOT = {
+					OR = {
+						any_trade_node = {
+							any_trade_node_member_province = {
+								superregion = china_superregion
+							}
+							any_trade_node_member_country = {
+								PREV = {
+									privateer_power = {
+										share = 1
+										country = PREV 
+									}
+								}
+							}
+						}
+						any_owned_province = {
+							superregion = china_superregion
+							has_province_modifier = slaves_raided
+						}
+					}
+				}
+			}
+		}
+		effect = {
+			add_yearly_sailors = 3
+			add_country_modifier = {
+				name = eoc_mission_reformed_seaban
+				duration = 7300
+			}
+			custom_tooltip = eoc_can_pass_seaban_reform_tt
+		}
+	}
+}
+
+eoc_2 = {
+	slot = 3
+	generic = yes
+	ai = yes
+	potential = { is_emperor_of_china = yes }
+
+	eoc_mission_establish_tribute = {
+		icon = mission_have_two_subjects
+		position = 1
+		required_missions = {}
+		trigger = {
+			calc_true_if = {
+				amount = 16
+				all_subject_country = {
+					is_subject_of_type = tributary_state
+				}
+			}
+		}
+		effect = {
+			add_country_modifier = { 
+				name = eoc_loyal_tribute_modifier
+				duration = 3650
+			}
+		}
+	}
+
+	eoc_mission_imperial_reserves = {
+		icon = mission_non-western_soldiers
+		position = 2
+		required_missions = { eoc_mission_gunpowder_empire eoc_mission_establish_tribute }
+		trigger = {
+			manpower_percentage = 0.5
+		}
+		effect = {
+			add_mandate = 10
+			add_country_modifier = {
+				name = eoc_imperial_reserves_modifier
+				duration = 7300
+			}
+		}
+	}
+
+	eoc_mission_sailors_reserve = {
+		icon = imperial_navy
+		position = 3
+		required_missions = { eoc_mission_imperial_reserves eoc_mission_build_fleet }
+		trigger = {
+			sailors_percentage = 0.5
+		}
+		effect = {
+			if = {
+				limit = {
+					ai = no
+				}
+				capital_scope = {
+					add_unit_construction = {
+						type = light_ship
+						cost = 0
+						speed = 0
+						amount = 10
+					}
+				}
+			}
+			else = {
+				capital_scope = {
+					add_unit_construction = {
+						type = light_ship
+						cost = 0
+						speed = 0
+						amount = 10
+					}
+				}
+			}
+			add_navy_tradition = 30
+			create_admiral = { tradition = 60 }
+		}
+	}
+
+	eoc_mission_colonise_taiwan = {
+		icon = mission_colonize_florida
+		position = 5
+		required_missions = { eoc_mission_reform_the_seaban eoc_mission_sailors_reserve }
+		trigger = {
+			1371 = {
+				trade_share = {
+					country = ROOT
+					share = 75
+				}
+			}
+		}
+		effect = {
+			if = {
+				limit = {
+					taiwan_area = {
+						type = all
+						is_empty = yes
+					}
+				}
+				taiwan_area = {
+					cede_province = ROOT
+					add_core = ROOT
+					change_religion = ROOT
+					change_culture = ROOT
+				}
+				add_country_modifier = {
+					name = eoc_overseas_ambition_modifier
+					duration = 7300
+				}
+			}
+			else = {
+				1371 = {
+					add_trade_modifier = {
+						key = eoc_canton_trade_modifier
+						duration = 10950
+						power = 15
+						who = ROOT
+					}
+				}
+				667 = {
+					add_base_tax = 2
+					add_base_production = 2
+					add_base_manpower = 2
+
+				}
+			}
+		}
+	}
+}
+
+ming_4 = {
+	slot = 5
+	generic = no
+	ai = yes
+	potential = { tag = MNG }
+	has_country_shield = yes
+
+	mng_tumu_crisis = {
+		icon = mission_chinese_general_riding
+		position = 2
+		required_missions = { eoc_mission_gunpowder_empire }
+		trigger = {
+			OIR = {
+				is_subject_of = ROOT
+				is_subject_of_type = tributary_state
+			}
+		}
+		effect = {
+			add_meritocracy = 15
+			change_adm = 1
+			OIR = { add_liberty_desire = -15 }
+		}
+	}
+
+	mng_korean_diplomacy = {
+		icon = mission_japanese_fort
+		position = 3
+		required_missions = {
+			mng_tumu_crisis
+		}
+		trigger = {
+			if = {
+				limit = { 
+					exists = KOR
+					KOR = {
+						is_at_war = no
+						OR = {
+							is_subject_of = ROOT
+							is_subject = no
+						}
+					}
+				}
+				imperial_mandate = 80
+				KOR = {
+					trust = {
+						who = ROOT
+						value = 80
+					}
+					has_opinion = {
+						who = ROOT
+						value = 200
+					}
+					NOT = { liberty_desire = 10 }
+				}
+			}
+			else = {
+				korea_region = {
+					type = all
+					country_or_non_sovereign_subject_holds = ROOT
+				}
+			}
+		}
+		effect = {
+			if = {
+				limit = { exists = KOR }
+				vassalize = KOR
+				KOR = { add_liberty_desire = -15 }
+				change_dip = 1
+			}
+			manchuria_region = {
+				limit = {
+					NOT = { is_permanent_claim = ROOT }
+					NOT = { is_core = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+		}
+	}
+
+	mng_subjugate_manchuria = {
+		icon = mission_manchu_warrior
+		position = 4
+		required_missions = { mng_korean_diplomacy }
+		provinces_to_highlight = {
+			region = manchuria_region
+			owner = {
+				NOT = { 
+					OR = {
+						is_subject_of = ROOT
+						tag = ROOT
+					}
+				}
+			}
+		}
+		trigger = {
+			manchuria_region = {
+				type = all
+				OR = {
+					country_or_non_sovereign_subject_holds = ROOT
+					owner = { is_subject_of = ROOT }
+				}
+			}
+		}
+		effect = {
+			add_country_modifier = {
+				name = mng_subjugated_manchu_modifier
+				duration = 7300
+			}
+			mongolia_region = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+		}
+	}
+
+	mng_end_the_yuan = {
+		position = 5
+		icon = mission_steppe_warriors
+		required_missions = { mng_subjugate_manchuria }
+		provinces_to_highlight = {
+			region = mongolia_region
+			owner = {
+				NOT = { 
+					OR = {
+						is_subject_of = ROOT
+						tag = ROOT
+					}
+				}
+			}
+		}
+		trigger = {
+			mongolia_region = {
+				type = all
+				OR = {
+					country_or_non_sovereign_subject_holds = ROOT
+					owner = { is_subject_of = ROOT }
+				}
+			}
+		}
+		effect = {
+			country_event = { id = eoc_events.7 } #Imperial Seal of Yuan
+		}
+	}
+}
+
+warlords_1 = {
+	slot = 1
+	generic = yes
+	ai = yes
+	potential = { 
+		OR = {
+			culture_group = east_asian
+			capital_scope = { superregion = china_superregion }
+		}
+	}
+	
+	warlords_mission_find_rivals = {
+		icon = mission_steppe_warriors
+		position = 1
+		required_missions = {}
+		trigger = {
+			calc_true_if = {
+				amount = 2
+				all_known_country = {
+					ROOT = { is_rival = PREV }
+				}
+			}
+		}
+		effect = {
+			add_yearly_manpower = 5
+		} 
+	}
+	warlords_mission_expand = {
+		icon = mission_conquer_lower_burma_ori
+		position = 2
+		required_missions = { warlords_mission_find_rivals warlords_mission_find_allies }
+		trigger = {
+			total_development = 300
+		}
+		effect = {
+			add_adm_power = 200
+			if = {
+				limit = {
+					NOT = { adm = 6 }
+				}
+				change_adm = 1
+			}
+			else_if = {
+				limit = {
+					NOT = { heir_adm = 6 }
+				}
+				change_heir_adm = 1
+			}
+			else = {
+				add_adm_power = 300
+			}
+		}
+	}
+	warlords_mission_war_for_mandate = {
+		icon = mission_japanese_fort
+		position = 3
+		required_missions = { warlords_mission_swindle_the_emperor warlords_mission_expand }
+		trigger = {
+			OR = {
+				is_in_war = { attacker_leader = ROOT casus_belli = cb_claim_mandate_warlord }
+				is_emperor_of_china = yes
+			}
+		}
+		effect = {
+			add_country_modifier = {
+				name = warlords_mission_war_for_mandate_modifier
+				duration = 1825
+			}
+		}
+	}
+	warlords_mission_unite_china = {
+		icon = mission_asian_city
+		position = 4
+		required_missions = { warlords_mission_war_for_mandate }
+		trigger = {
+			china_superregion = {
+				type = all
+				owned_by = ROOT
+			}
+		}
+		effect = {
+			add_country_modifier = {
+				name = warlords_unify_china_modifier
+				duration = -1
+			}
+		}
+	}
+}
+
+warlords_2 = {
+	slot = 2
+	generic = yes
+	ai = yes
+	potential = {
+		OR = {
+			culture_group = east_asian
+			capital_scope = { superregion = china_superregion }
+		}
+	}
+
+	warlords_mission_find_allies = {
+		icon = mission_reliable_allies
+		position = 1
+		required_missions = {}
+		trigger = {
+			calc_true_if = {
+				amount = 2
+				all_known_country = {
+					alliance_with = ROOT
+				}
+			}
+		}
+		effect = {
+			add_country_modifier = {
+				name = warlords_mission_allies_modifier
+				duration = 3650
+			}
+		}
+	}
+	warlords_mission_swindle_the_emperor = {
+		icon = mission_conquer_assam
+		position = 2
+		required_missions = { warlords_mission_find_allies }
+		trigger = {
+			OR = {
+				event_target:EmperorOfChina = {
+					has_opinion = {
+						who = ROOT
+						value = 200
+					}
+				}
+				is_emperor_of_china = yes
+			}
+		}
+		effect = {
+			if = {
+				limit = {
+					is_emperor_of_china = yes
+				}
+				add_mandate = 5
+			}
+			else = {
+				event_target:EmperorOfChina = {
+					add_mandate = -5
+				}
+				add_dip_power = 100
+			}
+		}
+	}
+	warlords_mission_trade = {
+		icon = mission_open_up_china
+		position = 3
+		required_missions = { warlords_mission_swindle_the_emperor }
+		trigger = {
+			custom_trigger_tooltip = {
+				tooltip = warlords_mission_chinese_trade_tt
+				any_active_trade_node = {
+					any_trade_node_member_province = {
+						superregion = china_superregion
+					}
+					trade_share = {
+						country = ROOT
+						share = 50
+					}
+				}
+			}
+		}
+		effect = {
+			add_country_modifier = {
+				name = warlords_mission_trade_modifier
+				duration = 10950
+			}
+		}
+	}
+}
+
+shun_1 = {
+	slot = 1
+	generic = no
+	ai = yes
+	potential = {
+		tag = CSH
+	}
+	has_country_shield = yes
+
+	shun_cities_of_china = {
+		position = 5
+		required_missions = {}
+		icon = mission_asian_city
+		trigger = {
+			1821 = {
+				development = 25
+				OR = {
+					has_tax_building_trigger = yes
+					has_production_building_trigger = yes
+					has_manufactory_trigger = yes
+				}
+			}
+			667 = {
+				development = 25
+				OR = {
+					has_tax_building_trigger = yes
+					has_production_building_trigger = yes
+					has_manufactory_trigger = yes
+				}
+			}
+			1816 = {
+				development = 25
+				OR = {
+					has_tax_building_trigger = yes
+					has_production_building_trigger = yes
+					has_manufactory_trigger = yes
+				}
+			}
+			700 = {
+				development = 25
+				OR = {
+					has_tax_building_trigger = yes
+					has_production_building_trigger = yes
+					has_manufactory_trigger = yes
+				}
+			}
+			679 = {
+				development = 25
+				OR = {
+					has_tax_building_trigger = yes
+					has_production_building_trigger = yes
+					has_manufactory_trigger = yes
+				}
+			}
+			1836 = {
+				development = 25
+				OR = {
+					has_tax_building_trigger = yes
+					has_production_building_trigger = yes
+					has_manufactory_trigger = yes
+				}
+			}
+		}
+		effect = {
+			country_event = { id = eoc_events.46 } #Cities of China
+		}
+	}
+}
+
+shun_2 = {
+	slot = 2
+	generic = no
+	ai = yes
+	potential = {
+		tag = CSH
+	}
+	has_country_shield = yes
+
+	shun_rival_japanese = {
+		icon = mission_trade_with_japan
+		position = 4
+		required_missions = { warlords_mission_trade warlords_mission_war_for_mandate }
+		trigger = {
+			custom_trigger_tooltip = {
+				tooltip = no_japanese_has_trade_or_navy_tt
+				NOT = {
+					any_known_country = {
+						capital_scope = {
+							region = japan_region
+						}
+						OR = {
+							navy_size = ROOT
+							any_active_trade_node = {
+								any_trade_node_member_province = {
+									superregion = china_superregion
+								}
+								trade_share = {
+									country = PREV
+									share = 20
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		effect = {
+			kyushu_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			northern_kyushu = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			shikoku_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			saigoku_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			sanindo_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+		}
+	}
+	shun_destroy_shogun = {
+		icon = mission_japanese_samurai
+		position = 5
+		required_missions = { shun_rival_japanese }
+		provinces_to_highlight = {
+			OR = {
+				area = sanindo_area
+				area = saigoku_area
+				area = shikoku_area
+				area = northern_kyushu
+				area = kyushu_area
+				province_id = 1020
+			}
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+		}
+		trigger = {
+			sanindo_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			saigoku_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			shikoku_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			northern_kyushu = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			kyushu_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			NOT = {
+				any_known_country = {
+					has_reform = shogunate
+				}
+			}
+		}
+		effect = {
+			add_mandate = 25
+			add_prestige = 25
+		}
+	}
+}
+shun_5_emperor = {
+	slot = 5
+	generic = no
+	ai = yes
+	potential = {
+		tag = CSH
+		is_emperor_of_china = yes
+	}
+	has_country_shield = yes
+
+	shun_reverse_the_tide = {
+		icon = mission_manchu_warrior
+		position = 2
+		required_missions = { eoc_mission_gunpowder_empire }
+		trigger = {
+			if = {
+				limit = { exists = MCH }
+				war_score_against = {
+					who = MCH
+					value = 50
+				}
+			}
+			else_if = {
+				limit = {
+					any_known_country = {
+						has_reform = steppe_horde
+						capital_scope = { region = manchuria_region }
+					}
+				}
+				any_known_country = {
+					has_reform = steppe_horde
+					capital_scope = {
+						region = manchuria_region
+					}
+					ROOT = {
+						war_score_against = {
+							who = PREV
+							value = 50
+						}
+					}
+				}
+			}
+			else = {
+				manchuria_region = {
+					type = all
+					country_or_non_sovereign_subject_holds = ROOT
+				}
+			}
+		}
+		effect = {
+			country_event = { id = eoc_events.47 } #Manchu disintegrating
+		}
+	}
+	shun_subjugate_hordes = {
+		icon = mission_conquer_50_development
+		position = 3
+		required_missions = { shun_reverse_the_tide }
+		trigger = {
+			NOT = {
+				any_known_country = {
+					has_reform = steppe_horde
+					capital_scope = {
+						OR = {
+							region = mongolia_region
+							region = manchuria_region
+						}
+					}
+					NOT = { is_subject_of = ROOT }
+				}
+			}
+		}
+		effect = {
+			add_mandate = 20
+			custom_tooltip = unguarded_frontier_cant_happen_tt
+			set_country_flag = shun_immune_to_unguarded_frontier
+		}
+	}
+}
+shun_5 = {
+	slot = 5
+	generic = no
+	ai = yes
+	potential = {
+		tag = CSH
+	}
+	has_country_shield = yes
+
+	shun_li_zichengs_rebellion = {
+		icon = mission_chinese_general_riding
+		position = 4
+		required_missions = {}
+		trigger = {
+			OR = {
+				is_emperor_of_china = yes
+				has_ruler = "Zicheng"
+			}
+		}
+		effect = {
+			change_mil = 1
+			add_mil_tech = 1
+		}
+	}
+	shun_consolidate_china = {
+		icon = mission_city_of_victory_vij
+		position = 5
+		required_missions = { shun_li_zichengs_rebellion }
+		trigger = {
+			china_superregion = {
+				type = all
+				owned_by = ROOT
+				development = 8
+			}
+			1816 = {
+				has_great_project = {
+					tier = 3
+					type = forbidden_city
+				}
+			}
+			667 = {
+				has_great_project = {
+					tier = 3
+					type = temple_of_confucius
+				}
+			}
+		}
+		effect = {
+			china_superregion = {
+				add_base_tax = 1
+			}
+			1821 = {
+				add_great_project_tier = {
+					type = porcelain_tower_nanjing
+					tier = 1
+				}
+			}
+		}
+	}
+}
+shun_4 = {
+	slot = 4
+	generic = no
+	ai = yes
+	potential = { tag = CSH }
+	has_country_shield = yes
+
+	shun_destroy_ming = {
+		icon = mission_kanbawzathadi_palace
+		position = 5
+		required_missions = { shun_li_zichengs_rebellion }
+		trigger = {
+			NOT = { exists = MNG }
+		}
+		effect = {
+			add_country_modifier = {
+				name = shun_mission_destroy_ming
+				duration = -1
+			}
+		}
+	}
+}

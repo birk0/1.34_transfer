@@ -1,0 +1,21 @@
+#411 - Mosul
+
+owner = QAR
+controller = QAR
+culture = kurdish
+religion = sunni
+capital = "Al Mawsil"
+trade_goods = cloth
+hre = no
+base_tax = 4 
+base_production = 4
+base_manpower = 4
+is_city = yes
+fort_15th = yes
+add_core = IRQ
+add_core = QAR
+add_core = BHT
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

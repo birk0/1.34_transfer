@@ -1,0 +1,22 @@
+#4971 - Baise
+
+owner = MNG
+controller = MNG
+add_core = MNG
+culture = zhuang
+religion = shen #changes
+capital = "Baise"
+trade_goods = tropical_wood
+hre = no
+base_tax = 2 
+base_production = 1
+base_manpower = 1
+is_city = yes
+add_core = CGS
+
+add_local_autonomy = 25 #Ming weak rule over South
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

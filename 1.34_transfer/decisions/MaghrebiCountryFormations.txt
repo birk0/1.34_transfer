@@ -1,0 +1,465 @@
+country_decisions = {
+	tunisian_nation = {
+		major = yes
+		potential = {
+			OR = {
+				primary_culture = tunisian
+				primary_culture = berber
+			}
+			exists = yes
+			normal_or_historical_nations = yes
+			was_never_end_game_tag_trigger = yes
+			NOT = { has_country_flag = formed_tunisia_flag }
+			OR = {
+				ai = no
+				is_playing_custom_nation = no
+			}
+			NOT = { tag = MOR }
+			NOT = { tag = TUN }
+			NOT = { tag = PAP }
+			NOT = { tag = HLR }
+			NOT = { tag = ALM }
+			NOT = { tag = RSM }
+			OR = {
+				ai = no
+				AND = {
+					NOT = { exists = TUN }
+					ai = yes
+					num_of_cities = 5
+				}
+			}
+			is_colonial_nation = no
+			OR = {
+				is_former_colonial_nation = no
+				AND = {
+					is_former_colonial_nation = yes
+					ai = no
+				}
+			}
+		}
+		provinces_to_highlight = {
+			OR = {
+				province_id = 341
+				province_id = 2473
+				AND = {
+                    province_id = 2454
+                    ROOT = { NOT = { owns_core_province = 354 } }
+                }
+                AND = {
+                    province_id = 354
+                    ROOT = { NOT = { owns_core_province = 2454 } }
+                }
+			}
+			OR = {
+				NOT = { owned_by = ROOT }
+				NOT = { is_core = ROOT }
+			}
+		}
+		allow = {
+			NOT = { exists = TUN }
+			is_at_war = no
+			is_free_or_tributary_trigger = yes
+			is_nomad = no
+			owns_core_province = 2473	#Souss
+			owns_core_province = 341 	#Tunis
+			341 = {						#Tunis
+				is_state = yes
+			}
+			OR = {
+				owns_core_province = 2454 #Kef
+				owns_core_province = 354 #Tripoli
+			}
+		}
+		effect = {
+			341 = {
+				move_capital_effect = yes
+			}
+			change_tag = TUN
+			swap_non_generic_missions = yes
+			remove_non_electors_emperors_from_empire_effect = yes
+			if = {
+				limit = {
+					NOT = { government_rank = 2 }
+				}
+				set_government_rank = 2
+			}
+			change_primary_culture = tunisian
+			tunisia_area = {
+				limit = {
+					NOT = { owned_by = ROOT }
+				}
+				add_permanent_claim = TUN
+			}
+			if = {
+				limit = {
+					is_tribal = yes
+				}
+				change_government_to_monarchy = yes #Desert tribes settling down.
+				#set_legacy_government = despotic_monarchy
+			}
+			add_prestige = 25
+			set_country_flag = formed_tunisia_flag
+			if = {
+				limit = {
+					has_custom_ideas = no
+					NOT = { has_idea_group = TUN_ideas }
+				}
+				country_event = { id = ideagroups.1 } #Swap Ideas
+			}
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		ai_importance = 400
+	}
+	#Changes
+	moroccan_nation = {
+		major = yes
+		potential = {
+			OR = {
+				primary_culture = moroccan
+				primary_culture = berber
+			}
+			exists = yes
+			normal_or_historical_nations = yes
+			was_never_end_game_tag_trigger = yes
+			NOT = { has_country_flag = formed_morocco_flag }
+			OR = {
+				ai = no
+				is_playing_custom_nation = no
+			}
+			NOT = { tag = MOR }
+			NOT = { tag = TUN }
+			NOT = { tag = PAP }
+			NOT = { tag = HLR }
+			NOT = { tag = ALM }
+			NOT = { tag = RSM }
+			OR = {
+				ai = no
+				AND = {
+					ai = yes
+					num_of_cities = 5	#Any big Moroccan tag will try to usurp the title
+				}
+			}
+			is_colonial_nation = no
+			OR = {
+				is_former_colonial_nation = no
+				AND = {
+					is_former_colonial_nation = yes
+					ai = no
+				}
+			}
+		}
+		provinces_to_highlight = {
+			OR = {
+				province_id = 343 #Fez
+				province_id = 344 #Marrekech
+				AND = {
+                    province_id = 348
+                    ROOT = { NOT = { owns_core_province = 346 } }
+                }
+                AND = {
+                    province_id = 346
+                    ROOT = { NOT = { owns_core_province = 348 } }
+                }
+			}
+			OR = {
+				NOT = { owned_by = ROOT }
+				NOT = { is_core = ROOT }
+			}
+		}
+		allow = {
+			NOT = { exists = MOR }
+			is_at_war = no
+			is_free_or_tributary_trigger = yes
+			is_nomad = no
+			owns_core_province = 343 	#Fez
+			owns_core_province = 344 	#Marrekech
+			344 = {						#Marrekech
+				is_state = yes
+			}
+			OR = {
+				owns_core_province = 348 #Sus
+				owns_core_province = 346 #Tafilalt
+			}
+		}
+		effect = {
+			344 = {
+				move_capital_effect = yes
+			}
+			change_tag = MOR
+			swap_non_generic_missions = yes
+			remove_non_electors_emperors_from_empire_effect = yes
+			if = {
+				limit = {
+					NOT = { government_rank = 2 }
+				}
+				set_government_rank = 2
+			}
+			tafilalt_area = {
+				limit = {
+					NOT = { owned_by = ROOT }
+				}
+				add_permanent_claim = MOR
+			}
+			sus_area = {
+				limit = {
+					NOT = { owned_by = ROOT }
+				}
+				add_permanent_claim = MOR
+			}
+			marrekesh_area = {
+				limit = {
+					NOT = { owned_by = ROOT }
+				}
+				add_permanent_claim = MOR
+			}
+			western_morocco_area = {
+				limit = {
+					NOT = { owned_by = ROOT }
+				}
+				add_permanent_claim = MOR
+			}
+			southern_morocco_area = {
+				limit = {
+					NOT = { owned_by = ROOT }
+				}
+				add_permanent_claim = MOR
+			}
+			northern_morocco_area = {
+				limit = {
+					NOT = { owned_by = ROOT }
+				}
+				add_permanent_claim = MOR
+			}
+			add_prestige = 25
+			if = {
+				limit = { 
+					is_emperor_of_china = no
+				}
+				change_government_to_monarchy = yes #Desert tribes settling down, theocracies become monarchies.
+				#set_legacy_government = despotic_monarchy
+			}
+			change_primary_culture = moroccan
+			set_country_flag = formed_morocco_flag
+			if = {
+				limit = { 
+					has_custom_ideas = no
+					NOT = { has_idea_group = MOR_ideas }
+				}
+				country_event = { id = ideagroups.1 } #Swap Ideas
+			}
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		ai_importance = 400
+	}
+	almohads_nation = {
+		major = yes
+		potential = {
+			culture_group = maghrebi
+			exists = yes
+			normal_or_historical_nations = yes
+			was_never_end_game_tag_trigger = yes
+			NOT = { has_country_flag = restored_almohads_flag }
+			OR = {
+				ai = no
+				is_playing_custom_nation = no
+			}
+			is_colonial_nation = no
+			OR = {
+				is_former_colonial_nation = no
+				AND = {
+					is_former_colonial_nation = yes
+					ai = no
+				}
+			}
+			religion_group = muslim
+			NOT = { religion = ibadi }
+		}
+		provinces_to_highlight = {
+			OR = {
+				region = maghreb_region
+				province_id = 219 #Toledo
+				province_id = 227 #Lisbon
+				province_id = 220 #Valencia
+				province_id = 223 #Granada
+				province_id = 225 #Cordoba
+			}
+			OR = {
+				NOT = { owned_by = ROOT }
+				NOT = { is_core = ROOT }
+			}
+		}
+		allow = {
+			NOT = { 
+				OR = {
+			   		exists = ALM 
+			   		exists = ADU
+				}
+			}
+			is_free_or_tributary_trigger = yes
+			is_at_war = no
+			maghreb_region = {
+				type = all
+				owned_by = ROOT
+				is_core = ROOT
+			}
+			owns_core_province = 219 #Toledo
+			owns_core_province = 227 #Lisbon
+			owns_core_province = 220 #Valencia
+			owns_core_province = 223 #Granada
+			owns_core_province = 225 #Cordoba
+			344 = { #Marrakesh
+				is_state = yes
+			}
+		}
+		effect = {
+			restore_country_name = yes
+			344 = {	#Marrakesh
+				move_capital_effect = yes
+			}
+			change_tag = ALM
+			swap_non_generic_missions = yes
+			iberia_region = {
+			   add_permanent_claim = ROOT
+			}
+			maghreb_region = {
+			   add_permanent_claim = ROOT
+			}
+			change_government_to_monarchy = yes
+			add_government_reform = feudal_theocracy
+			remove_non_electors_emperors_from_empire_effect = yes
+			if = {
+				limit = {
+					NOT = { government_rank = 3 }
+				}
+				set_government_rank = 3
+			}
+			add_prestige = 25
+			add_country_modifier = {
+				name = centralization_modifier
+				duration = 3650
+			}
+			set_capital = 344 # Marrakesh
+			if = {
+				limit = {
+					NOT = { primary_culture = berber }
+				}
+				change_primary_culture = berber
+			}
+			set_country_flag = restored_almohads_flag
+			if = {
+				limit = { has_custom_ideas = no }
+				country_event = { id = ideagroups.1 } #Swap Ideas
+			}
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		ai_importance = 400
+	}
+	
+	rustamids_nation = {
+		major = yes
+		potential = {
+			religion = ibadi
+			culture_group = maghrebi
+			exists = yes
+			normal_or_historical_nations = yes
+			was_never_end_game_tag_trigger = yes
+			NOT = { has_country_flag = restored_rustamids_flag }
+			OR = {
+				ai = no
+				is_playing_custom_nation = no
+			}
+			is_colonial_nation = no
+			OR = {
+				is_former_colonial_nation = no
+				AND = {
+					is_former_colonial_nation = yes
+					ai = no
+				}
+			}
+		}
+		provinces_to_highlight = {
+			OR = {
+				province_id = 2459	# Titteri
+				province_id = 2461	# Dahra
+				province_id = 336	# Tala Imsan
+				province_id = 339	# Kabylia
+				province_id = 2457	# Mzab
+				province_id = 2450	# Ghadames
+			}
+			OR = {
+				NOT = { owned_by = ROOT }
+				NOT = { is_core = ROOT }
+			}
+		}
+		allow = {
+			NOT = {
+				OR = {
+			   		exists = RSM 
+			   		exists = TLC
+			   		exists = ALG
+				}
+			}
+			is_free_or_tributary_trigger = yes
+			is_at_war = no
+			owns_core_province = 2459			# Titteri
+			owns_core_province = 2461			# Dahra
+			owns_core_province = 336			# Tala Imsan
+			owns_core_province = 339			# Kabylia
+			owns_core_province = 2457			# Mzab
+			owns_core_province = 2450			# Ghadames
+			2459 = { 							# Titteri
+				is_state = yes
+			}
+		}
+		effect = {
+		    if = {
+		       limit = { NOT = { has_country_flag = moved_capital_to_tahert } }
+			   2459 = {	#Titteri
+				   move_capital_effect = yes
+				   add_base_tax = 2
+				   add_base_production = 2
+				   add_base_manpower = 2
+				   change_province_name = "Tahert"
+			   }
+			}
+			restore_country_name = yes
+			change_tag = RSM
+			swap_non_generic_missions = yes
+			remove_non_electors_emperors_from_empire_effect = yes
+			if = {
+				limit = {
+					NOT = { government_rank = 3 }
+				}
+				set_government_rank = 3
+			}
+			add_prestige = 25
+			add_country_modifier = {
+				name = centralization_modifier
+				duration = 3650
+			}
+			if = {
+				limit = {
+					NOT = { primary_culture = berber }
+				}
+				change_primary_culture = berber
+			}
+			change_government_to_monarchy = yes
+			add_government_reform = feudal_theocracy
+			set_country_flag = restored_rustamids_flag
+			if = {
+				limit = { has_custom_ideas = no }
+				country_event = { id = ideagroups.1 } #Swap Ideas
+			}
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		ai_importance = 400
+	}
+}

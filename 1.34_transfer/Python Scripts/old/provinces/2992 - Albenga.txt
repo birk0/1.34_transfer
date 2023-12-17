@@ -1,0 +1,19 @@
+# - Albenga
+
+owner = GEN
+controller = GEN
+add_core = GEN
+culture = ligurian
+religion = catholic
+hre = yes
+base_tax = 6
+base_production = 6
+trade_goods = naval_supplies
+base_manpower = 1
+capital = "Albenga"
+is_city = yes # Estimated
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

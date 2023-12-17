@@ -1,0 +1,7 @@
+# Prov2041 - Manipur
+culture = burmese
+is_city = no
+religion = shen
+base_tax = 1
+base_production = 1
+base_manpower = 1

@@ -1,0 +1,68 @@
+#Changes
+maghrebi_raiders = {
+    trigger = {
+       culture_group = maghrebi
+		any_owned_province = {
+			culture_group = ROOT
+			has_great_project = {
+				tier = 3
+				type = any
+			}
+			NOT = { has_province_flag = monument_destroyed }
+		}
+    }
+    modifier = {
+        privateering_efficiency_in_fleet_modifier = 1
+    }
+    ai_trade_score = {
+        factor = 0
+    }
+    ai_war_score = {
+        factor = 1
+    }
+}
+maghrebi_cannoneers = {
+    trigger = {
+       culture_group = maghrebi
+		any_owned_province = {
+			culture_group = ROOT
+			has_great_project = {
+				tier = 3
+				type = any
+			}
+			NOT = { has_province_flag = monument_destroyed }
+		}
+    }
+    modifier = {
+        blockade_impact_on_siege_in_fleet_modifier = 5
+        barrage_cost_in_fleet_modifier = -1
+    }
+    ai_trade_score = {
+        factor = 0
+    }
+    ai_war_score = {
+        factor = 1
+    }
+}
+maghrebi_invaders = {
+    trigger = {
+       culture_group = maghrebi
+		any_owned_province = {
+			culture_group = ROOT
+			has_great_project = {
+				tier = 3
+				type = any
+			}
+			NOT = { has_province_flag = monument_destroyed }
+		}
+    }
+    modifier = {
+        movement_speed_onto_off_boat_modifier = 2
+    }
+    ai_trade_score = {
+        factor = 0
+    }
+    ai_war_score = {
+        factor = 1
+    }
+}

@@ -1,0 +1,13 @@
+# Shaybanid Tactics
+
+type = cavalry
+manpower = 2
+unit_type = muslim
+
+maneuver = 6	
+offensive_morale = 2
+defensive_morale = 4	
+offensive_fire = 0
+defensive_fire = 0
+offensive_shock = 4
+defensive_shock = 2

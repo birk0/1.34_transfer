@@ -1,0 +1,17 @@
+#218 - Badajoz
+
+owner = CAS		#Juan II of Castille
+controller = CAS
+add_core = CAS
+culture = andalucian
+religion = catholic
+hre = no
+base_tax = 3
+base_production = 3
+trade_goods = livestock 
+base_manpower = 2
+capital = "Huelva" 
+is_city = yes
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

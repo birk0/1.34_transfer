@@ -1,0 +1,20 @@
+#4124 - North Karelia
+
+owner = NOV
+controller = NOV
+add_core = NOV
+culture = karelian
+religion = orthodox
+hre = no
+base_tax = 1
+base_production = 1
+trade_goods = fur
+base_manpower = 1
+capital = "Lieksa"
+is_city = yes
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}
+

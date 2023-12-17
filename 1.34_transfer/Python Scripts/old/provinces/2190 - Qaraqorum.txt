@@ -1,0 +1,25 @@
+# 2190 - Qaraqorum
+
+owner = OIR
+controller = OIR
+add_core = OIR
+culture = khalkha
+religion = tengri_pagan_reformed
+capital = "Qaraqorum"
+trade_goods = cloth
+hre = no
+base_tax = 3 
+base_production = 2 #changes
+base_manpower = 2
+is_city = yes
+extra_cost = 8
+center_of_trade = 1
+
+add_province_triggered_modifier = mongol_kurultai
+#changes
+add_province_triggered_modifier = culture_center
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

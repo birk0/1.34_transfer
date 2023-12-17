@@ -1,0 +1,19 @@
+#270 Troki
+
+owner = LIT
+controller = LIT
+religion = "catholic"
+culture = lithuanian
+capital = "Trakai"
+trade_goods = livestock
+hre = no
+base_tax = 3
+base_production = 3
+base_manpower = 2 
+is_city = yes
+#fort_15th = yes #Trakai Castles "Little Marienburg"
+add_core = LIT
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

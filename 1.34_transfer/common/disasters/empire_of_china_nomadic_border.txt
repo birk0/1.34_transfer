@@ -1,0 +1,201 @@
+#Reworked Unguarded Frontier
+
+#More interactive for the EoC. Progress is added via events/actions such as losing battles. It triggers for any country
+#That borders the Emperor of China that is either: 1) A Great Power 2) An Empire or 3) has a larger army than the Emperor.
+
+empire_of_china_nomadic_border = {
+	potential = {
+		has_dlc = "Mandate of Heaven"
+		is_emperor_of_china = yes
+		NOT = { has_country_flag = shun_immune_to_unguarded_frontier }
+		NOT = { has_country_modifier = new_mandate_holder }
+		NOT = { has_reform = khanganate_reform }
+	}
+
+	can_start = {
+		has_any_disaster = no
+		hidden_trigger = {
+			NOT = { 
+				has_disaster_progress = {
+					disaster = ming_crisis #Ming Crisis is prioritised over this.
+					value = 1
+				} 
+			}
+		}
+		hidden_trigger = {
+			NOT = {
+				has_disaster_progress = {
+					disaster = court_and_country
+					value = 1
+				}
+			}
+		}
+		any_neighbor_country = {
+			valid_for_unguarded_frontier = yes
+		}
+	}
+	
+	can_stop = { 
+		OR = {
+			has_any_disaster = yes
+			NOT = {
+				any_neighbor_country = {
+					valid_for_unguarded_frontier = yes
+				}
+			}
+			hidden_trigger = {
+				has_disaster_progress = {
+					disaster = ming_crisis #Ming Crisis is prioritised over this.
+					value = 1
+				} 
+			}
+			hidden_trigger = {
+				has_disaster_progress = {
+					disaster = court_and_country
+					value = 1
+				}
+			}
+		}
+	}
+	
+	
+	progress = {
+		#Progress is also added from events and other actions
+		modifier = {
+			factor = 1
+			any_neighbor_country = {
+				valid_for_unguarded_frontier = yes
+				war_score_against = {
+					who = ROOT
+					value = 50
+				}
+			}
+		}
+		modifier = {
+			factor = 0.25
+			any_known_country = {
+				valid_for_unguarded_frontier = yes
+				war_score_against = {
+					who = ROOT
+					value = 25
+				}
+			}
+		}
+	}
+	
+	can_end = {
+		OR = {
+			is_emperor_of_china = no
+			NOT = {
+				any_neighbor_country = {
+					valid_for_unguarded_frontier = yes
+				}
+			}
+			hidden_trigger = {
+				has_disaster_progress = {
+					disaster = ming_crisis
+					value = 1
+				}
+			}
+			hidden_trigger = {
+				has_disaster_progress = {
+					disaster = court_and_country
+					value = 1
+				}
+			}
+		}
+	}
+
+	modifier = {
+		land_morale = -0.15
+		imperial_mandate = -0.15
+		global_unrest = 10
+	}	
+	
+	
+	on_start = eoc_events.36 #Powerful nations on the Frontier
+	on_end = eoc_events.37 #Nations no longer a threat
+	
+	on_monthly = {
+		events = {
+		}
+		random_events = { 
+			1000 = 0
+			50 = eoc_events.41 #Lose Mandate
+			50 = eoc_events.42 #Gain Mandate
+			50 = eoc_events.43 #Raiding parties
+			50 = eoc_events.44 #Border skirmishes
+			50 = eoc_events.45 #revolts
+		}
+	}
+
+	on_start_effect = {
+		hidden_effect = {
+			clr_country_flag = eoc_unguarded_frontier_started_ticker
+			clr_country_flag = eoc_unguarded_frontier_higher_ticker
+			every_country = {
+				limit = {
+					has_country_flag = eoc_unguarded_frontier_cause
+				}
+				clr_country_flag = eoc_unguarded_frontier_cause
+			}
+		}
+	}
+
+	#triggered monthly when it is ticking up to 100. The progress is saved in a variable that is <disaster key>_progress
+	on_progress_effect = {
+		if = {
+			limit = {
+				NOT = { has_country_flag = eoc_unguarded_frontier_started_ticker }
+				check_variable = {
+					which = empire_of_china_nomadic_border_progress
+					value = 10
+				}
+			}
+			set_country_flag = eoc_unguarded_frontier_started_ticker
+			every_neighbor_country = {
+				limit = {
+					valid_for_unguarded_frontier = yes
+				}
+				set_country_flag = eoc_unguarded_frontier_cause
+				country_event = { id = eoc_events.38 } #Unguarded Frontier at 10%
+			}
+		}
+		if = {
+			limit = {
+				NOT = { has_country_flag = eoc_unguarded_frontier_higher_ticker }
+				check_variable = {
+					which = empire_of_china_nomadic_border_progress
+					value = 75
+				}
+			}
+			set_country_flag = eoc_unguarded_frontier_higher_ticker
+			every_neighbor_country = {
+				limit = {
+					valid_for_unguarded_frontier = yes
+				}
+				set_country_flag = eoc_unguarded_frontier_cause
+				country_event = { id = eoc_events.39 } #Unguarded Frontier at 75%
+			}
+		}
+		if = {
+			limit = {
+				NOT = {
+					check_variable = {
+						which = empire_of_china_nomadic_border_progress
+						value = 2
+					}
+				}
+				has_country_flag = eoc_unguarded_frontier_started_ticker
+			}
+
+			every_country = {
+				limit = {
+					has_country_flag = eoc_unguarded_frontier_cause
+				}
+				country_event = { id = eoc_events.40 } #Notifier that the Emperor is stronger now
+			}
+		}
+	}
+}
+

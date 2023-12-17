@@ -1,0 +1,20 @@
+#2038 - Midnapore
+
+owner = ORI
+controller = ORI
+culture = bengali
+religion = hinduism
+capital = "Midnapore"
+trade_goods = spices #Opium
+hre = no
+base_tax = 4
+base_production = 4
+base_manpower = 3
+is_city = yes
+add_core = ORI
+add_core = BNG
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

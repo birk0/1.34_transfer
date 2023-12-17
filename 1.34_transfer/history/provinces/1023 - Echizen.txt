@@ -1,0 +1,7 @@
+#Prov1023 - Echizen
+culture = japanese
+religion = shinto
+
+base_tax = 1
+base_production = 1
+base_manpower = 1

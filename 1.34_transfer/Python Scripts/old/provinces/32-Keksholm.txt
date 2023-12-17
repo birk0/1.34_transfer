@@ -1,0 +1,28 @@
+#Karelen, incl. Sordavala and Keksholm.
+
+owner = NOV
+controller = NOV
+add_core = NOV
+culture = karelian
+religion = orthodox
+hre = no
+trade_goods = fur
+capital = "Korela" # initial Russian name
+is_city = yes
+#discovered_by = western
+#discovered_by = eastern
+#discovered_by = nomad_group
+#changes
+base_tax = 1
+base_production = 1
+base_manpower = 1
+
+
+
+1444.12.1 = {
+	trade_goods = unknown
+	owner = ---
+	controller = ---
+	hre = no
+}
+

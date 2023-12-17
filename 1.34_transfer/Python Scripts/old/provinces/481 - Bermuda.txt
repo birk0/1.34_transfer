@@ -1,0 +1,19 @@
+#481 - Kirkenær
+ 
+owner = NOR
+controller = NOR
+add_core = NOR
+culture = norwegian
+religion = catholic
+hre = no
+base_tax = 1
+base_production = 1
+trade_goods = livestock
+base_manpower = 1
+capital = "Kirkenær"
+is_city = yes
+
+
+1444.12.1 = {
+	add_bookmark_effect = yes
+}

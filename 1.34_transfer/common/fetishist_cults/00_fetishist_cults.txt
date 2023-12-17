@@ -1,0 +1,448 @@
+yemoja_cult = {
+	naval_morale = 0.125
+
+	allow = {
+		OR = {
+			has_unlocked_cult = yemoja_cult
+			technology_group = sub_saharan
+			has_estate_privilege = estate_church_patronize_foreign_cults
+		}
+		religion = shamanism
+		OR = {
+			NOT = { has_country_flag = uses_primary_cult }
+			AND = {
+				has_country_flag = uses_primary_cult
+				has_primary_cult = {
+					cult = yemoja_cult
+				}
+			}
+		}
+	}
+	sprite = 1
+
+	ai_will_do = {
+		factor = 1 #meh
+	}
+}
+
+roog_cult = {
+	global_manpower_modifier = 0.2
+
+	allow = {
+		OR = {
+			has_unlocked_cult = roog_cult
+			technology_group = sub_saharan
+			has_estate_privilege = estate_church_patronize_foreign_cults
+		}
+		religion = shamanism
+		OR = {
+			NOT = { has_country_flag = uses_primary_cult }
+			AND = {
+				has_country_flag = uses_primary_cult
+				has_primary_cult = {
+					cult = roog_cult
+				}
+			}
+		}
+	}
+	sprite = 3
+
+	ai_will_do = {
+		factor = 10 #yeah maybe
+	}
+}
+
+nyame_cult = {
+	diplomatic_annexation_cost = -0.15
+	allow = {
+		OR = {
+			technology_group = sub_saharan
+			has_unlocked_cult = nyame_cult
+			has_estate_privilege = estate_church_patronize_foreign_cults
+		}
+		religion = shamanism
+		OR = {
+			NOT = { has_country_flag = uses_primary_cult }
+			AND = {
+				has_country_flag = uses_primary_cult
+				has_primary_cult = {
+					cult = nyame_cult
+				}
+			}
+		}
+	}
+	sprite = 2
+
+	ai_will_do = {
+		factor = 1 #meh
+	}
+}
+
+#Central Africa (doubles as generic cults for Nation Designer countries)
+
+cwezi_cult = { #Great lakes / Kitara successor states
+	sprite = 4
+	allow  = {
+		OR = {
+			has_unlocked_cult = cwezi_cult
+			technology_group = central_african
+			has_estate_privilege = estate_church_patronize_foreign_cults
+			AND = {
+				NOT = { technology_group = sub_saharan }
+				NOT = { technology_group = east_african }
+			}
+		}
+		religion = shamanism
+		OR = {
+			NOT = { has_country_flag = uses_primary_cult }
+			AND = {
+				has_country_flag = uses_primary_cult
+				has_primary_cult = {
+					cult = cwezi_cult
+				}
+			}
+		}
+	}
+	improve_relation_modifier = 0.2
+	ai_will_do = {
+		factor = 1 #meh
+	}
+}
+
+central_african_ancestor_cult = {  #Name TBD (Woot, Mlira, Monomotapan religion)
+	sprite = 6
+	global_missionary_strength = 0.015
+	allow  = {
+		OR = {
+			has_unlocked_cult = central_african_ancestor_cult
+			technology_group = central_african
+			has_estate_privilege = estate_church_patronize_foreign_cults
+			AND = {
+				NOT = { technology_group = sub_saharan }
+				NOT = { technology_group = east_african }
+			}
+		}
+		religion = shamanism
+		OR = {
+			NOT = { has_country_flag = uses_primary_cult }
+			AND = {
+				has_country_flag = uses_primary_cult
+				has_primary_cult = {
+					cult = central_african_ancestor_cult
+				}
+			}
+		}
+	}
+	ai_will_do = {
+		factor = 5 #maybe
+		modifier = {
+			factor = 0.1
+			religious_unity = 1 #yeah no
+		}
+	}
+}
+
+mwari_cult = { #Semi-monotheistic religion from Zimbabwe plateau
+	sprite = 5
+	allow  = {
+		OR = {
+			has_unlocked_cult = mwari_cult
+			technology_group = central_african
+			AND = {
+				NOT = { technology_group = sub_saharan }
+				NOT = { technology_group = east_african }
+			}
+			has_estate_privilege = estate_church_patronize_foreign_cults
+		}
+		religion = shamanism
+		OR = {
+			NOT = { has_country_flag = uses_primary_cult }
+			AND = {
+				has_country_flag = uses_primary_cult
+				has_primary_cult = {
+					cult = mwari_cult
+				}
+			}
+		}
+	}
+	discipline = 0.035
+	ai_will_do = {
+		factor = 1000 #yessir
+	}
+}
+
+#East Africa
+enkai_cult = {
+	manpower_recovery_speed = 0.2
+	
+	allow = {
+		OR = {
+			has_unlocked_cult = enkai_cult
+			technology_group = east_african
+			has_estate_privilege = estate_church_patronize_foreign_cults
+		}
+		religion = shamanism
+		OR = {
+			NOT = { has_country_flag = uses_primary_cult }
+			AND = {
+				has_country_flag = uses_primary_cult
+				has_primary_cult = {
+					cult = enkai_cult
+				}
+			}
+		}
+	}
+	sprite = 7
+
+	ai_will_do = {
+		factor = 9 #maybe
+	}
+}
+
+waaq_cult = {
+	years_of_nationalism = -5
+
+	allow = {
+		OR = {
+			has_unlocked_cult = waaq_cult	
+			technology_group = east_african
+			has_estate_privilege = estate_church_patronize_foreign_cults
+		}
+		religion = shamanism
+		OR = {
+			NOT = { has_country_flag = uses_primary_cult }
+			AND = {
+				has_country_flag = uses_primary_cult
+				has_primary_cult = {
+					cult = waaq_cult
+				}
+			}
+		}
+	}
+	sprite = 8
+
+	ai_will_do = {
+		factor = 1 #meh
+	}
+}
+
+zanahary_cult = {
+	core_creation = -0.1
+
+	allow = {
+		OR = {
+			has_unlocked_cult = zanahary_cult
+			technology_group = east_african
+			has_estate_privilege = estate_church_patronize_foreign_cults
+		}
+		religion = shamanism
+		OR = {
+			NOT = { has_country_flag = uses_primary_cult }
+			AND = {
+				has_country_flag = uses_primary_cult
+				has_primary_cult = {
+					cult = zanahary_cult
+				}
+			}
+		}
+	}
+	sprite = 9
+
+	ai_will_do = {
+		factor = 6 #maybe
+	}
+}
+
+#ROTW Cults
+
+christianity_cult = {
+	sprite = 10
+	allow  = {
+		OR = {
+			has_unlocked_cult = christianity_cult
+			has_estate_privilege = estate_church_patronize_foreign_cults
+		}
+		religion = shamanism
+		OR = {
+			NOT = { has_country_flag = uses_primary_cult }
+			AND = {
+				has_country_flag = uses_primary_cult
+				has_primary_cult = {
+					cult = christianity_cult
+				}
+			}
+		}
+	}
+	trade_efficiency = 0.15
+	ai_will_do = {
+		factor = 11 #maybe
+	}
+}
+
+islam_cult = {
+	sprite = 11
+	allow  = {
+		OR = {
+			has_estate_privilege = estate_church_patronize_foreign_cults
+			has_unlocked_cult = islam_cult
+		}
+		religion = shamanism
+		OR = {
+			NOT = { has_country_flag = uses_primary_cult }
+			AND = {
+				has_country_flag = uses_primary_cult
+				has_primary_cult = {
+					cult = islam_cult
+				}
+			}
+		}
+	}
+	global_institution_spread = 0.15
+	ai_will_do = {
+		factor = 40 #probably a good idea
+	}
+}
+
+buddhism_cult = {
+	sprite = 13
+	allow  = {
+		OR = {
+			has_estate_privilege = estate_church_patronize_foreign_cults
+			has_unlocked_cult = buddhism_cult
+		}
+		religion = shamanism
+		OR = {
+			NOT = { has_country_flag = uses_primary_cult }
+			AND = {
+				has_country_flag = uses_primary_cult
+				has_primary_cult = {
+					cult = buddhism_cult
+				}
+			}
+		}
+	}
+	development_cost = -0.075
+	ai_will_do = {
+		factor = 6.5 #maybe
+	}
+}
+
+dharmic_cult = {
+	sprite = 12
+	allow  = {
+		OR = {
+			has_estate_privilege = estate_church_patronize_foreign_cults
+			has_unlocked_cult = dharmic_cult
+		}
+		religion = shamanism
+		OR = {
+			NOT = { has_country_flag = uses_primary_cult }
+			AND = {
+				has_country_flag = uses_primary_cult
+				has_primary_cult = {
+					cult = dharmic_cult
+				}
+			}
+		}
+	}
+	global_trade_goods_size_modifier = 0.15
+	ai_will_do = {
+		factor = 8 #maybe
+	}
+}
+
+south_central_american_cult = {
+	sprite = 17
+	allow  = {
+		OR = {
+			has_estate_privilege = estate_church_patronize_foreign_cults
+			has_unlocked_cult = south_central_american_cult
+		}
+		religion = shamanism
+		OR = {
+			NOT = { has_country_flag = uses_primary_cult }
+			AND = {
+				has_country_flag = uses_primary_cult
+				has_primary_cult = {
+					cult = south_central_american_cult
+				}
+			}
+		}
+	}
+	land_morale = 0.125
+	ai_will_do = {
+		factor = 750 #yessir
+	}
+}
+
+norse_cult = {
+	sprite = 15
+	allow  = {
+		OR = {
+			has_estate_privilege = estate_church_patronize_foreign_cults
+			has_unlocked_cult = norse_cult
+		}
+		religion = shamanism
+		OR = {
+			NOT = { has_country_flag = uses_primary_cult }
+			AND = {
+				has_country_flag = uses_primary_cult
+				has_primary_cult = {
+					cult = norse_cult
+				}
+			}
+		}
+	}
+	shock_damage = 0.15
+	ai_will_do = {
+		factor = 400 #yes
+	}
+}
+
+jewish_cult = {
+	sprite = 14
+	allow = {
+		OR = {
+			has_estate_privilege = estate_church_patronize_foreign_cults
+			has_unlocked_cult = jewish_cult
+		}
+		religion = shamanism
+		OR = {
+			NOT = { has_country_flag = uses_primary_cult }
+			AND = {
+				has_country_flag = uses_primary_cult
+				has_primary_cult = {
+					cult = jewish_cult
+				}
+			}
+		}
+	}
+	advisor_cost = -0.125
+	ai_will_do = {
+		factor = 15 #maybe/yes
+	}
+}
+
+zoroastrian_cult = {
+	sprite = 16
+	allow = {
+		OR = {
+			has_estate_privilege = estate_church_patronize_foreign_cults
+			has_unlocked_cult = zoroastrian_cult
+		}
+		religion = shamanism
+		OR = {
+			NOT = { has_country_flag = uses_primary_cult }
+			AND = {
+				has_country_flag = uses_primary_cult
+				has_primary_cult = {
+					cult = zoroastrian_cult
+				}
+			}
+		}
+	}
+	fire_damage = 0.1
+	ai_will_do = {
+		factor = 650 #yessir
+	}
+}

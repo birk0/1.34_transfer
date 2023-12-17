@@ -1,0 +1,196 @@
+timurid_civil_war = {
+	ended_by_country_breaking_to_rebels = no
+
+	potential = {
+		tag = TIM
+		NOT = { has_country_flag = formed_timurids_flag }
+		NOT = { has_country_flag = had_timurid_civil_war }
+		is_free_or_tributary_trigger = yes
+		always = no
+	}
+	
+	can_start = {
+		custom_trigger_tooltip = {
+			tooltip = death_of_shah_rukh_tooltip
+			has_global_flag = death_of_shah_rukh
+		}
+		any_known_country = {
+			dynasty = "Timurid"
+			NOT = { is_subject_of = ROOT }
+		}
+	}
+	
+	can_stop = { 
+		custom_trigger_tooltip = {
+			tooltip = resolved_timurid_civil_war_tooltip
+			has_country_flag = tim_resolved_civil_war
+		}
+	}
+	
+	
+	progress = {
+		modifier = {
+			factor = 0.5
+			calc_true_if = {
+				amount = 1
+				custom_trigger_tooltip = {
+					tooltip = independent_timurid_princes_tooltip
+					all_known_country = {
+						is_free_or_tributary_trigger = yes
+						dynasty = "Timurid"
+					}
+				}
+			}
+		}
+		modifier = {
+			factor = 0.5
+			calc_true_if = {
+				amount = 2
+				custom_trigger_tooltip = {
+					tooltip = independent_timurid_princes_tooltip
+					all_known_country = {
+						is_free_or_tributary_trigger = yes
+						dynasty = "Timurid"
+					}
+				}
+			}
+		}
+		modifier = {
+			factor = 0.5
+			calc_true_if = {
+				amount = 3
+				custom_trigger_tooltip = {
+					tooltip = independent_timurid_princes_tooltip
+					all_known_country = {
+						is_free_or_tributary_trigger = yes
+						dynasty = "Timurid"
+					}
+				}
+			}
+		}
+		modifier = {
+			factor = 0.5
+			calc_true_if = {
+				amount = 4
+				custom_trigger_tooltip = {
+					tooltip = independent_timurid_princes_tooltip
+					all_known_country = {
+						is_free_or_tributary_trigger = yes
+						dynasty = "Timurid"
+					}
+				}
+			}
+		}
+		modifier = {
+			factor = 0.5
+			calc_true_if = {
+				amount = 5
+				custom_trigger_tooltip = {
+					tooltip = independent_timurid_princes_tooltip
+					all_known_country = {
+						is_free_or_tributary_trigger = yes
+						dynasty = "Timurid"
+					}
+				}
+			}
+		}
+		modifier = {
+			factor = 0.5
+			calc_true_if = {
+				amount = 6
+				custom_trigger_tooltip = {
+					tooltip = independent_timurid_princes_tooltip
+					all_known_country = {
+						is_free_or_tributary_trigger = yes
+						dynasty = "Timurid"
+					}
+				}
+			}
+		}
+		modifier = {
+			factor = 0.5
+			calc_true_if = {
+				amount = 7
+				custom_trigger_tooltip = {
+					tooltip = independent_timurid_princes_tooltip
+					all_known_country = {
+						is_free_or_tributary_trigger = yes
+						dynasty = "Timurid"
+					}
+				}
+			}
+		}
+		modifier = {
+			factor = 0.5
+			calc_true_if = {
+				amount = 8
+				custom_trigger_tooltip = {
+					tooltip = independent_timurid_princes_tooltip
+					all_known_country = {
+						is_free_or_tributary_trigger = yes
+						dynasty = "Timurid"
+					}
+				}
+			}
+		}
+		modifier = {
+			factor = 0.5
+			calc_true_if = {
+				amount = 9
+				custom_trigger_tooltip = {
+					tooltip = independent_timurid_princes_tooltip
+					all_known_country = {
+						is_free_or_tributary_trigger = yes
+						dynasty = "Timurid"
+					}
+				}
+			}
+		}
+		modifier = {
+			factor = 0.5
+			calc_true_if = {
+				amount = 10
+				custom_trigger_tooltip = {
+					tooltip = independent_timurid_princes_tooltip
+					all_known_country = {
+						is_free_or_tributary_trigger = yes
+						dynasty = "Timurid"
+					}
+				}
+			}
+		}
+	}
+	
+	can_end = {
+		OR = {
+			custom_trigger_tooltip = {
+				tooltip = resolved_timurid_civil_war_tooltip
+				has_country_flag = tim_resolved_civil_war
+			}
+			hidden_trigger = {
+				is_subject_other_than_tributary_trigger = yes
+			}
+			hidden_trigger = {
+				has_country_modifier = just_lost_to_rebels
+			}
+		}
+	}
+	
+
+	modifier = {
+		global_unrest = 20
+		stability_cost_modifier = 1
+		all_estate_loyalty_equilibrium = -0.1
+	}
+	
+	
+	on_start = flavor_tim.8 #Timurid Civil War
+	on_end = flavor_tim.9 #Order Restored
+	
+	on_monthly = {
+		random_events = { 
+			1000 = 0
+			40 = flavor_tim.16 #Influential Court Officials
+		}
+	}
+}

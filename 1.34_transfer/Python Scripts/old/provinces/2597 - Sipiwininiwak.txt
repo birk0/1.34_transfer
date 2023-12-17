@@ -1,0 +1,20 @@
+# 2597 - Meluco
+
+owner = ZAN
+controller = ZAN
+add_core = ZAN
+culture = swahili
+religion = sunni
+capital = "Meluco"
+is_city = yes
+base_manpower = 2
+trade_goods = ivory
+hre = no
+base_tax = 2
+base_production = 1
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}
+

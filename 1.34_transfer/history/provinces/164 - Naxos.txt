@@ -1,0 +1,7 @@
+#Prov164 - Naxos
+culture = greek
+religion = orthodox
+
+base_tax = 1
+base_production = 1
+base_manpower = 1

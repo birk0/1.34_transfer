@@ -1,0 +1,226 @@
+##############################################
+#	Policies for the Diplomatic Idea Group
+##############################################
+fear_tactics_policy = {
+	monarch_power = DIP
+
+	potential = {
+		has_idea_group = diplomatic_ideas
+		ai = no
+	}
+	
+	allow = {
+		full_idea_group = diplomatic_ideas
+		hidden_trigger = {
+			NOT = { has_idea_group = indigenous_ideas }
+		}
+		if = {
+			limit = { has_country_modifier = fear_tactics_policy_cooldown }
+			custom_trigger_tooltip = {
+				tooltip = POLICY_ON_COOLDOWN
+				always = no
+			}
+		}
+		if = {
+			limit = {
+				has_country_flag = diplomatic_cd_fl
+			}
+			custom_trigger_tooltip = {
+				tooltip = "We must wait before we can select a policy from this idea group again."
+				always = no
+			}
+		}
+	}
+
+	power_projection_from_insults = 2
+	
+	ai_will_do = {
+		factor = 1
+	}
+}
+appeal_to_old_powers_policy = {
+	monarch_power = DIP
+	
+	potential = {
+		has_idea_group = diplomatic_ideas
+		ai = no
+	}
+	
+	allow = {
+		full_idea_group = diplomatic_ideas
+		hidden_trigger = {
+			NOT = { has_idea_group = indigenous_ideas }
+		}
+		if = {
+			limit = { has_country_modifier = appeal_to_old_powers_policy_cooldown }
+			custom_trigger_tooltip = {
+				tooltip = POLICY_ON_COOLDOWN
+				always = no
+			}
+		}
+		if = {
+			limit = {
+				has_country_flag = diplomatic_cd_fl
+			}
+			custom_trigger_tooltip = {
+				tooltip = "We must wait before we can select a policy from this idea group again."
+				always = no
+			}
+		}
+	}
+	
+	accept_vassalization_reasons = 150
+
+	ai_will_do = {
+		factor = 1
+	}
+}
+inspirational_leaders = {
+	monarch_power = MIL
+	
+	potential = {
+		has_idea_group = diplomatic_ideas
+		ai = no
+	}
+	
+	allow = {
+		full_idea_group = diplomatic_ideas
+		hidden_trigger = {
+			NOT = { has_idea_group = indigenous_ideas }
+		}
+		if = {
+			limit = { has_country_modifier = inspirational_leaders_cooldown }
+			custom_trigger_tooltip = {
+				tooltip = POLICY_ON_COOLDOWN
+				always = no
+			}
+		}
+		if = {
+			limit = {
+				has_country_flag = diplomatic_cd_fl
+			}
+			custom_trigger_tooltip = {
+				tooltip = "We must wait before we can select a policy from this idea group again."
+				always = no
+			}
+		}
+	}	
+	
+	shock_damage = 0.2
+	
+	ai_will_do = {
+		factor = 1
+	}
+}
+disruptive_innovation_policy = { 
+	monarch_power = MIL
+	
+	potential = {
+		has_idea_group = diplomatic_ideas
+		ai = no
+	}
+	
+	allow = {
+		full_idea_group = diplomatic_ideas
+		hidden_trigger = {
+			NOT = { has_idea_group = indigenous_ideas }
+		}
+		if = {
+			limit = { has_country_modifier = disruptive_innovation_policy_cooldown }
+			custom_trigger_tooltip = {
+				tooltip = POLICY_ON_COOLDOWN
+				always = no
+			}
+		}
+		if = {
+			limit = {
+				has_country_flag = diplomatic_cd_fl
+			}
+			custom_trigger_tooltip = {
+				tooltip = "We must wait before we can select a policy from this idea group again."
+				always = no
+			}
+		}
+	}
+	
+	mil_tech_cost_modifier = -0.25
+
+	ai_will_do = {
+		factor = 1
+	}
+}
+diplomatic_defence_act = {
+	monarch_power = ADM
+	potential = {
+		has_idea_group = diplomatic_ideas
+		ai = no
+	}
+	
+	allow = {
+		full_idea_group = diplomatic_ideas
+		hidden_trigger = {
+			NOT = { has_idea_group = indigenous_ideas }
+		}
+		if = {
+			limit = { has_country_modifier = diplomatic_defence_act_cooldown }
+			custom_trigger_tooltip = {
+				tooltip = POLICY_ON_COOLDOWN
+				always = no
+			}
+		}
+		if = {
+			limit = {
+				has_country_flag = diplomatic_cd_fl
+			}
+			custom_trigger_tooltip = {
+				tooltip = "We must wait before we can select a policy from this idea group again."
+				always = no
+			}
+		}
+	}
+
+	global_spy_defence = 0.3
+	
+	ai_will_do = {
+		factor = 1
+	}
+	
+}
+record_keeping_act = {
+	monarch_power = ADM
+	potential = {
+		has_idea_group = diplomatic_ideas
+		ai = no
+	}
+	
+	allow = {
+		full_idea_group = diplomatic_ideas
+		hidden_trigger = {
+			NOT = { has_idea_group = indigenous_ideas }
+		}
+		if = {
+			limit = { has_country_modifier = record_keeping_act_cooldown }
+			custom_trigger_tooltip = {
+				tooltip = POLICY_ON_COOLDOWN
+				always = no
+			}
+		}
+		if = {
+			limit = {
+				has_country_flag = diplomatic_cd_fl
+			}
+			custom_trigger_tooltip = {
+				tooltip = "We must wait before we can select a policy from this idea group again."
+				always = no
+			}
+		}
+	}
+
+	monarch_admin_power = 1
+	monarch_diplomatic_power = 1
+	monarch_military_power = 1
+
+	ai_will_do = {
+		factor = 1
+	}
+}

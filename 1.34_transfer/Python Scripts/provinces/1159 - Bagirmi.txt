@@ -1,0 +1,7 @@
+#Prov1159 - Bagirmi
+culture = songhai# bagirmi
+religion = sunni# Fetishism
+
+base_tax = 1
+base_production = 1
+base_manpower = 1

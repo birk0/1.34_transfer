@@ -1,0 +1,88 @@
+wattasid_revolt_disaster = { #Disaster for Morocco
+	ended_by_country_breaking_to_rebels = no
+	potential = {
+		TAG = MOR
+		NOT = { has_country_flag = formed_morocco_flag } #Wont fire for a reformed Moroccan nation
+		NOT = { mission_completed = mor_resolve_wattasid_revolt } 
+	}
+
+	can_start = {
+		TAG = MOR
+		has_any_disaster = no
+		NOT = { has_country_flag = formed_morocco_flag }
+		NOT = { mission_completed = mor_resolve_wattasid_revolt } 
+	}
+	
+	can_stop = {
+		mission_completed = mor_resolve_wattasid_revolt
+		has_any_disaster = yes
+	}
+	
+	progress = {
+		modifier = {
+		    factor = 1
+		    NOT = { stability = 1 }
+		}
+		modifier = {
+			factor = 2
+			has_estate_privilege = estate_nobles_wattasid_viziers
+		}
+		modifier = {
+		    factor = 2
+		    dynasty = Marinid
+		}
+		modifier = {
+		    factor = 2
+		    has_country_modifier = mor_crisis
+		}
+		modifier = {
+		    factor = 3
+		    custom_trigger_tooltip = {
+		       tooltip = mor_wattasid_vizier_dies_tt
+		       has_country_flag = mor_death_of_yahya
+		    }
+		}
+		
+	}
+
+	can_end = {
+		OR = {
+		   	NOT = { has_estate_privilege = estate_nobles_wattasid_viziers }
+		   	AND = {
+		      	dynasty = Wattasid
+		      	mission_completed = mor_resolve_wattasid_revolt
+		   	}
+			hidden_trigger = {
+				has_country_modifier = just_lost_to_rebels
+			}
+		}
+	}
+
+	modifier = {
+		stability_cost_modifier = 1
+		global_unrest = 5
+		reduced_liberty_desire = -30
+	}
+
+	on_start = mor_events.1
+	on_end = mor_events.2
+	
+	on_monthly = {
+		events = {
+		}
+		
+		random_events = {
+			1000 = 0
+			20 = mor_events.3 #Gain 1 support
+			20 = mor_events.4 #Gain 1 support 
+			20 = mor_events.5 #Gain 1 support  
+			20 = mor_events.6 #Gain 1 support 
+			20 = mor_events.7 #Gain 1 support 
+			20 = mor_events.8 #Gain 1 support
+			20 = mor_events.19 #Gain 1 support
+			15 = mor_events.9 #Gain 2 support
+			15 = mor_events.10 #Gain 2 support
+		}
+	}
+}
+

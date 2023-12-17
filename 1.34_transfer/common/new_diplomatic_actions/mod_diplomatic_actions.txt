@@ -1,0 +1,1460 @@
+#Moving these to covert actions so theyre not shown and cause lag for AI in macrobuilder..
+eoc_encourage_revolts = {
+	category = covert
+
+	require_acceptance = no
+
+	is_visible = {
+		is_emperor_of_china = yes
+		FROM = {
+			is_subject_of = ROOT
+			NOT = { has_country_modifier = eoc_encouraged_revolts }
+			is_subject_of_type = tributary_state
+		}
+	}
+	is_allowed = {
+		hidden_trigger = {
+			is_emperor_of_china = yes
+			FROM = {
+				is_subject_of = ROOT
+				NOT = { has_country_modifier = eoc_encouraged_revolts }
+				is_subject_of_type = tributary_state
+			}
+		}
+		imperial_mandate = 50
+		FROM = { liberty_desire = 50 }
+		total_development = FROM
+		NOT = {
+			FROM = {
+				trust = {
+					who = ROOT
+					value = 40
+				}
+			}
+		}
+	}
+	on_accept = {
+		add_mandate = -25
+		FROM = { 
+			add_opinion = {
+				who = ROOT
+				modifier = emperor_encouraged_revolts
+			}
+			add_country_modifier = {
+				name = eoc_encouraged_revolts
+				duration = 3650
+			}
+			capital_scope = {
+				spawn_rebels = {
+					size = 4
+				}
+			}
+		}
+	}
+
+	ai_will_do = {
+		imperial_mandate = 100
+		FROM = { liberty_desire = 50 }
+		NOT = {
+			FROM = {
+				trust  = {
+					who = ROOT
+					value = 40
+				}
+			}
+		}
+		has_country_modifier = spend_mandate_dummy
+	}
+}
+eoc_convert_tributary_to_vassal = {
+	category = covert
+	require_acceptance = no
+	is_visible = {
+		is_emperor_of_china = yes
+		empire_of_china_reform_passed = military_governors_decision
+		FROM = {
+			is_subject_of_type = tributary_state
+			is_subject_of = ROOT
+		}
+	}
+	is_allowed = {
+		hidden_trigger = {
+			is_emperor_of_china = yes
+			empire_of_china_reform_passed = military_governors_decision
+			FROM = {
+				is_subject_of_type = tributary_state
+				is_subject_of = ROOT
+			}
+		}
+		custom_trigger_tooltip = {
+			tooltip = eoc_convert_tributary_to_vassal_trigger
+			FROM = {
+				NOT = { liberty_desire = 50 }
+			}
+		}
+		is_neighbor_of = FROM
+		variable_arithmetic_trigger = {
+			custom_tooltip = MANDATE_HIGHER_THAN_COST
+			export_to_variable = {
+				which = mandate_to_pay
+				value = trigger_value:total_development
+				who = FROM
+			}
+			export_to_variable = {
+				which = our_development
+				value = trigger_value:total_development
+			}
+			export_to_variable = {
+				which = current_mandate
+				value = trigger_value:imperial_mandate
+			}
+			divide_variable = {
+				which = mandate_to_pay
+				which = our_development
+			}
+			multiply_variable = {
+				which = mandate_to_pay
+				value = 400
+			}
+			multiply_variable = {
+				which = mandate_to_pay
+				which = mandate_cost_modifier
+			}
+			check_variable = {
+				which = current_mandate #Checks if the current Mandate > required Mandate to vassalize
+				which = mandate_to_pay
+			}
+		}
+	}
+	on_accept = {
+		export_to_variable = {
+			which = mandate_to_pay
+			value = trigger_value:total_development
+			who = FROM
+		}
+		export_to_variable = {
+			which = our_development
+			value = trigger_value:total_development
+		}
+		divide_variable = {
+			which = mandate_to_pay
+			which = our_development
+		}
+		multiply_variable = {
+			which = mandate_to_pay
+			value = 400
+		}
+		multiply_variable = {
+			which = mandate_to_pay
+			which = mandate_cost_modifier
+		}
+		while = {
+			limit = {
+				check_variable = {
+					which = mandate_to_pay
+					value = 1
+				}
+			}
+			add_mandate = -1
+			subtract_variable = {
+				which = mandate_to_pay
+				value  = 1
+			}
+		}
+		#Cleanup
+		set_variable = {
+			which = mandate_to_pay
+			value = 0
+		}
+		set_variable = {
+			which = our_development
+			value = 0 
+		}
+		FROM = {
+			grant_independence = yes
+		}
+		create_subject = {
+			subject_type = vassal
+			subject = FROM
+		}
+		FROM = { add_liberty_desire = -25 }
+	}
+	ai_will_do = {
+		imperial_mandate = 100
+		has_country_modifier = spend_mandate_dummy
+		variable_arithmetic_trigger = {
+			export_to_variable = {
+				which = mandate_to_pay
+				value = trigger_value:total_development
+				who = FROM
+			}
+			export_to_variable = {
+				which = our_development
+				value = trigger_value:total_development
+			}
+			divide_variable = {
+				which = mandate_to_pay
+				which = our_development
+			}
+			multiply_variable = {
+				which = mandate_to_pay
+				value = 400
+			}
+			multiply_variable = {
+				which = mandate_to_pay
+				which = mandate_cost_modifier
+			}
+			NOT = {
+				check_variable = {
+					which = mandate_to_pay #Checks if Mandate cost is below 60
+					value = 60
+				}
+			}
+		}
+		num_of_free_diplomatic_relations = 1
+	}
+}
+eoc_reduce_liberty_desire = {
+	category = covert
+	require_acceptance = no
+	is_visible = {
+		is_emperor_of_china = yes
+		FROM = {
+			liberty_desire = 25
+			is_subject_of = ROOT
+		}
+		empire_of_china_reform_passed = new_centralizing_top_government_decision
+	}
+	is_allowed = {
+		hidden_trigger = {
+			is_emperor_of_china = yes
+			FROM = {
+				liberty_desire = 25
+				is_subject_of = ROOT
+			}
+			empire_of_china_reform_passed = new_centralizing_top_government_decision
+		}
+		imperial_mandate = 50
+		variable_arithmetic_trigger = {
+			custom_tooltip = MANDATE_HIGHER_THAN_COST
+			export_to_variable = {
+				which = mandate_to_pay
+				value = trigger_value:total_development
+				who = FROM
+			}
+			export_to_variable = {
+				which = our_development
+				value = trigger_value:total_development
+			}
+			export_to_variable = {
+				which = current_mandate
+				value = trigger_value:imperial_mandate
+			}
+			divide_variable = {
+				which = mandate_to_pay
+				which = our_development
+			}
+			multiply_variable = {
+				which = mandate_to_pay
+				value = 200
+			}
+			multiply_variable = {
+				which = mandate_to_pay
+				which = mandate_cost_modifier
+			}
+			check_variable = { #Checks that current mandate > mandate cost
+				which = current_mandate
+				which = mandate_to_pay
+			}
+		}
+	}
+	on_accept = {
+		export_to_variable = {
+			which = mandate_to_pay
+			value = trigger_value:total_development
+			who = FROM
+		}
+		export_to_variable = {
+			which = our_development
+			value = trigger_value:total_development
+		}
+		divide_variable = {
+			which = mandate_to_pay
+			which = our_development
+		}
+		multiply_variable = {
+			which = mandate_to_pay
+			value = 200
+		}
+		multiply_variable = {
+			which = mandate_to_pay
+			which = mandate_cost_modifier
+		}
+		while = {
+			limit = {
+				check_variable = {
+					which = mandate_to_pay
+					value = 1
+				}
+			}
+			add_mandate = -1
+			subtract_variable = {
+				which = mandate_to_pay
+				value  = 1
+			}
+		}
+		#Cleanup
+		set_variable = {
+			which = mandate_to_pay
+			value = 0
+		}
+		set_variable = {
+			which = our_development
+			value = 0 
+		}
+		FROM = { add_liberty_desire = -25 }
+	}
+	ai_will_do = {
+		imperial_mandate = 100
+		has_country_modifier = spend_mandate_dummy
+		FROM = {
+			liberty_desire = 50
+		}
+		variable_arithmetic_trigger = {
+			export_to_variable = {
+				which = mandate_to_pay
+				value = trigger_value:total_development
+				who = FROM
+			}
+			export_to_variable = {
+				which = our_development
+				value = trigger_value:total_development
+			}
+			divide_variable = {
+				which = mandate_to_pay
+				which = our_development
+			}
+			multiply_variable = {
+				which = mandate_to_pay
+				value = 200
+			}
+			multiply_variable = {
+				which = mandate_to_pay
+				which = mandate_cost_modifier
+			}
+			NOT = {
+				check_variable = {
+					which = mandate_to_pay #Checks that it does NOT cost more than 60 mandate to reduce liberty desire of FROM
+					value = 60
+				}
+			}
+		}
+	}
+}
+#view_animosity_action = { #Displays tooltip talking about Animosity
+#	category = covert
+#	require_acceptance = no
+#	is_visible = { 
+#
+#	}
+#	is_allowed = { 
+#
+#	}
+#	on_accept = {}
+#	ai_will_do = { always = no }
+#}
+#New Espionage actions
+
+
+action_sabotage_reputation = {
+	category = covert
+	require_acceptance = no
+
+	is_visible = {
+		exists = yes
+		OR = {
+			ai = no
+			has_spy_network_in = {
+				who = FROM
+				value = 100
+			}
+		}
+	}
+	is_allowed = {
+		if = {
+			limit = { 
+				FROM = { has_country_modifier = sabotaged_reputation_cooldown }
+			}
+			custom_trigger_tooltip = {
+				tooltip = has_sabotaged_reputation_tt
+				always = no
+			}
+		}
+		if = {
+			limit = {
+				NOT = {
+					has_spy_network_in = { who = FROM value = 100 }
+				}
+			}
+			has_spy_network_in = { who = FROM value = 100 }
+		}
+		if = {
+			limit = {
+				has_reform = chinese_warlord_reform
+				FROM = { 
+					is_emperor_of_china = no
+					NOT = { has_reform = chinese_warlord_reform } 
+				}
+			}
+			custom_trigger_tooltip = {
+				tooltip = WARLORDS_CANT_DO_THIS
+				always = no
+			}
+		}
+		if = {
+			limit = {
+				is_daimyo = yes
+				FROM = {
+					NOT = { is_daimyo = yes }
+					NOT = { has_reform = shogunate }
+				}
+			}
+			custom_trigger_tooltip = {
+				tooltip = DAIMYOS_CANT_DO_THIS
+				always = no
+			}
+		}
+		if = {
+			limit = {
+				FROM = { has_reform = chinese_warlord_reform }
+				NOT = { has_reform = chinese_warlord_reform }
+			}
+			custom_trigger_tooltip = {
+				tooltip = CANT_DO_THIS_TO_WARLORDS
+				always = no
+			}
+		}
+		if = {
+			limit = {
+				FROM = { is_daimyo = yes }
+				NOT = { is_daimyo = yes }
+			}
+			custom_trigger_tooltip = {
+				tooltip = CANT_DO_THIS_TO_DAIMYOS
+				always = no
+			}
+		}
+		if = {
+			limit = {
+				FROM = { is_subject_other_than_tributary_trigger = yes }
+			}
+			custom_trigger_tooltip = {
+				tooltip = CANT_DO_THIS_TO_SUBJECTS
+				always = no
+			}
+		}
+	}
+	on_accept = {
+		calculate_spy_cost = {
+			base_cost = 100
+			target_country = FROM
+			action = sabotaged_reputation
+		}
+		FROM = {
+			every_known_country = {
+				limit = {
+					has_opinion = {
+						who = FROM
+						value = 1
+					}
+				}
+				add_opinion = {
+					who = FROM
+					modifier = opinion_sabotaged_reputation
+				}
+				add_trust = {
+					who = FROM
+					value = -25
+				}
+			}
+			add_country_modifier = {
+				name = sabotaged_reputation_cooldown
+				duration = 7300 #20 years
+				hidden = yes
+			}
+		}
+		add_casus_belli = {
+			target = FROM
+			type = cb_reputation_sabotaged
+			months = 180
+		}
+	}
+	ai_will_do = {
+		#AI will do this to you if they hate you, neighbour you, dont have a truce and they've insulted or youve insulted them
+		OR = {
+			ai_attitude = {
+				who = FROM
+				attitude = attitude_hostile
+			}
+			ai_attitude = {
+				who = FROM
+				attitude = attitude_outraged
+			}
+			ai_attitude = {
+				who = FROM
+				attitude = attitude_rivalry 
+			}
+		}
+		OR = {
+			is_neighbor_of = FROM
+			NOT = {
+				border_distance = {
+					who = FROM
+					distance = 100
+				}
+			}
+		}
+		NOT = { truce_with = FROM }
+		has_insulted_or_is_insulted_by = { who = FROM }
+		reverse_has_opinion_modifier = {
+			who = FROM
+			modifier = action_sabotaged_recruitment # AI will try to sabotage your recruitment first
+		}
+	}
+}
+action_sabotage_recruitment = {
+	category = covert
+	require_acceptance = no
+
+	is_visible = {
+		exists = yes
+		OR = {
+			ai = no
+			has_spy_network_in = {
+				who = FROM
+				value = 100
+			}
+		}
+	}
+	is_allowed = {
+		can_sabotage_recruitment = {
+			target = FROM
+		}
+	}
+	on_accept = {
+		calculate_spy_cost = {
+			base_cost = 100
+			target_country = FROM
+			action = sabotaged_recruitment
+		}
+	}
+	ai_will_do = {
+		#AI will do this if they border you (higher chance to go to war)
+		OR = {
+			is_neighbor_of = FROM
+			NOT = {
+				border_distance = {
+					who = FROM
+					distance = 100
+				}
+			}
+		}
+	}
+}
+action_slander_merchants = {
+	category = covert
+	require_acceptance = no
+
+	is_visible = {
+		exists = yes
+		OR = {
+			ai = no
+			has_spy_network_in = {
+				who = FROM
+				value = 100
+			}
+		}
+	}
+	is_allowed = {
+		can_slander_merchants = {
+			target = FROM
+		}
+	}
+	on_accept = {
+		slander_merchants_effect = {
+			target = FROM
+		}
+	}
+	ai_will_do = {
+		#AI will do this if there is at least 5 trade nodes that they trade in that you have dominant power in
+		calc_true_if = {
+			amount = 5
+			all_trade_node = {
+				is_strongest_trade_power = FROM
+				any_trade_node_member_province = {
+					OR = {
+						owned_by = ROOT
+						trade_share = {
+							country = ROOT
+							share = 1
+						}
+					}
+				}
+			}
+		}
+	}
+}
+action_agitate_for_liberty = {
+	#This amount of bugs that had to be ironed out of this.......
+	category = covert
+	require_acceptance = no
+
+	is_visible = {
+		exists = yes
+		ai = no
+	}
+	is_allowed = {
+		ai = no #some weird ctd i think
+		if = {
+			limit = {
+				FROM = {
+					overlord = {
+						NOT = {
+							has_spy_network_from = {
+								who = ROOT
+								value = 100
+							}
+						}
+					}
+				}
+			}
+			custom_trigger_tooltip = {
+				tooltip = lacking_spy_network_in_overlord_tt
+				always = no
+			}
+		}
+		if = {
+			limit = {
+				FROM = { is_free_or_tributary_trigger = yes }
+			}
+			custom_trigger_tooltip = {
+				tooltip = they_arent_a_subject_tt
+				always = no
+			}
+		}
+		if = {
+			limit = {
+				has_reform = chinese_warlord_reform
+				FROM = { 
+					is_emperor_of_china = no
+					NOT = { has_reform = chinese_warlord_reform } 
+				}
+			}
+			custom_trigger_tooltip = {
+				tooltip = WARLORDS_CANT_DO_THIS
+				always = no
+			}
+		}
+		if = {
+			limit = {
+				is_daimyo = yes
+				FROM = {
+					NOT = { is_daimyo = yes }
+					NOT = { has_reform = shogunate }
+				}
+			}
+			custom_trigger_tooltip = {
+				tooltip = DAIMYOS_CANT_DO_THIS
+				always = no
+			}
+		}
+		if = {
+			limit = {
+				OR = {
+					FROM = { NOT = { liberty_desire = 25 } }
+					NOT = {
+						reverse_has_opinion = {
+							who = FROM
+							value = 0
+						}
+					}
+				}
+			}
+			custom_trigger_tooltip = {
+				tooltip = loyal_or_bad_relations_tt
+				always = no
+			}
+		}
+		if = {
+			limit = {
+				FROM = {
+					overlord = {
+						army_strength = {
+							who = ROOT
+							value = 1
+						}
+					}
+				}
+			}
+			custom_trigger_tooltip = {
+				tooltip = weaker_than_overlord_tt
+				always = no
+			}
+		}
+		if = {
+			limit = {
+				FROM = { 
+					has_opinion_modifier = {
+						who = ROOT
+						modifier = agitated_in_past
+					}
+				}
+			}
+			custom_trigger_tooltip = {
+				tooltip = agitated_in_past_tt
+				always = no
+			}
+		}
+		if = {
+			limit = {
+				FROM = { is_at_war = yes }
+			}
+			custom_trigger_tooltip = {
+				tooltip = target_at_war_tt
+				always = no
+			}
+		}
+		if = {
+			limit = {
+				FROM = { 
+					is_subject = yes
+					truce_with = overlord 
+				}
+			}
+			custom_trigger_tooltip = {
+				tooltip = truce_with_overlord_tt
+				always = no
+			}
+		}
+		if = {
+			limit = {
+				FROM = {
+					overlord = {
+						has_opinion_modifier = {
+							who = ROOT
+							modifier = action_agitated_liberty
+						}
+					}
+				}
+			}
+			custom_trigger_tooltip = {
+				tooltip = already_agitated_subjects_tt
+				always = no
+			}
+		}
+		if = {
+			limit = {
+				FROM = {
+					overlord = {
+						is_at_war = yes
+					}
+				}
+			}
+			custom_trigger_tooltip = {
+				tooltip = overlord_at_war_tt
+				always = no
+			}
+		}
+	}
+	on_accept = {
+		FROM = {
+			overlord = {
+				ROOT = {
+					calculate_spy_cost = {
+						base_cost = 100
+						target_country = PREV
+						action = agitated_liberty
+						agitated_from = yes
+					}
+				}
+			}
+			add_opinion = {
+				who = ROOT
+				modifier = agitated_in_past
+			}
+		}
+	}
+	ai_will_do = {
+		#AI will do this if your subject has 50% or more liberty desire, they hate you and theyre stronger than you
+		FROM = { liberty_desire = 50 }
+		FROM = {
+			overlord = {
+				ROOT = {
+					OR = {
+						ai_attitude = {
+							attitude = attitude_rivalry
+							who = PREV
+						}
+						ai_attitude = {
+							attitude = attitude_outraged
+							who = PREV
+						}
+						ai_attitude = {
+							attitude = attitude_hostile
+							who = PREV
+						}
+					}
+					army_strength = {
+						who = PREV
+						value = 1.5
+					}
+				}
+			}
+		}
+	}
+}
+action_steal_war_maps = {
+	category = covert
+	require_acceptance = no
+	
+	is_visible = {
+		exists = yes
+		ai = no
+	}
+	is_allowed = {
+		if = {
+			limit = {
+				NOT = {
+					has_spy_network_in = {
+						who = FROM
+						value = 10
+					}
+				}
+			}
+			has_spy_network_in = {
+				who = FROM
+				value = 10
+			}
+		}
+		if = {
+			limit = {
+				NOT = { war_with = FROM }
+			}
+			custom_trigger_tooltip = {
+				tooltip = not_at_war_with_from_tt
+				always = no
+			}
+		}
+		if = {
+			limit = {
+				FROM = { has_country_modifier = stolen_war_maps_timer }
+			}
+			custom_trigger_tooltip = {
+				tooltip = already_stole_their_maps_tt
+				always = no
+			}
+		}
+		if = {
+			limit = {
+				FROM = { is_subject_other_than_tributary_trigger = yes }
+			}
+			custom_trigger_tooltip = {
+				tooltip = CANT_DO_THIS_TO_SUBJECTS
+				always = no
+			}
+		}
+	}
+	on_accept = {
+		calculate_spy_cost = {
+			base_cost = 10
+			target_country = FROM
+			action = stole_war_maps
+		}
+		FROM = {
+			add_country_modifier = {
+				name = stolen_war_maps_timer
+				duration = 180
+				hidden = yes
+			}
+		}
+		every_country = {
+			limit = {
+				war_with = FROM
+				is_in_war = { participants = ROOT }
+			}
+			FROM = { remove_fow = 12 }
+		}
+	}
+	ai_will_do = {
+		always = no #AI can see through fow anyway lol..
+	}
+}
+action_sabotage_supply_lines = {
+	category = covert
+	require_acceptance = no
+
+	is_visible = {
+		exists = yes
+		OR = {
+			ai = no
+			has_spy_network_in = {
+				who = FROM
+				value = 25
+			}
+		}
+	}
+	is_allowed = {
+		if = {
+			limit = {
+				NOT = {
+					has_spy_network_in = {
+						who = FROM
+						value = 25
+					}
+				}
+			}
+			has_spy_network_in = {
+				who = FROM
+				value = 25
+			}
+		}
+		if = {
+			limit = {
+				has_reform = chinese_warlord_reform
+				FROM = { 
+					NOT = { has_reform = chinese_warlord_reform }
+					is_emperor_of_china = no
+				}
+			}
+			custom_trigger_tooltip = {
+				tooltip = WARLORDS_CANT_DO_THIS
+				always = no
+			}
+		}
+		if = {
+			limit = {
+				is_daimyo = yes
+				FROM = {
+					NOT = { is_daimyo = yes }
+					NOT = { has_reform = shogunate }
+				}
+			}
+			custom_trigger_tooltip = {
+				tooltip = DAIMYOS_CANT_DO_THIS
+				always = no
+			}
+		}
+		if = {
+			limit = {
+				reverse_has_opinion_modifier = {
+					who = FROM
+					modifier = action_sabotaged_supply
+				}
+			}
+			custom_trigger_tooltip = {
+				tooltip = already_sabotaged_supply_tt
+				always = no
+			}
+		}
+		if = {
+			limit = {
+				FROM = { is_subject_other_than_tributary_trigger = yes }
+			}
+			custom_trigger_tooltip = {
+				tooltip = CANT_DO_THIS_TO_SUBJECTS
+				always = no
+			}
+		}
+	}
+	on_accept = {
+		calculate_spy_cost = {
+			base_cost = 25
+			target_country = FROM
+			action = sabotaged_supply
+		}
+	}
+	ai_will_do = {
+		#AI will do this if they border you and you've done it to them
+		OR = {
+			is_neighbor_of = FROM
+			NOT = {
+				border_distance = {
+					who = FROM
+					distance = 100
+				}
+			}
+		}
+		has_opinion_modifier = {
+			who = FROM
+			modifier = action_sabotaged_supply
+		}
+	}
+}
+action_raid_coffers = {
+	category = covert
+	require_acceptance = no
+
+	is_visible = {
+		exists = yes
+		OR = {
+			ai = no
+			has_spy_network_in = {
+				who = FROM
+				value = 50
+			}
+		}
+	}
+	is_allowed = {
+		can_raid_coffers = {
+			target = FROM
+		}
+	}
+	on_accept = {
+		raid_coffers_effect = {
+			target = FROM
+		}
+	}
+	ai_will_do = {
+		#AI will do this if they hate you, also evaluates if they need money vs manpower
+		NOT = { alliance_with = FROM }
+		NOT = { is_subject_of = FROM }
+		if = {
+			limit = {
+				guaranteed_by = FROM
+			}
+			NOT = {
+				has_opinion = {
+					who = FROM
+					value = 1
+				}
+			}
+		}
+		OR = {
+			manpower_percentage = 0.25
+			num_of_loans = 1
+		}
+	}
+}
+action_bribe_recruits = {
+	category = covert
+	require_acceptance = no
+
+	is_visible = {
+		exists = yes
+		OR = {
+			ai = no
+			has_spy_network_in = {
+				who = FROM
+				value = 70
+			}
+		}
+	}
+	is_allowed = {
+		can_bribe_recruits = {
+			target = FROM
+		}
+	}
+	on_accept = {
+		bribe_recruits_effect = {
+			target = FROM
+		}
+	}
+	ai_will_do = {
+		#AI will do this if they lack manpower
+		NOT = { manpower_percentage = 0.3 }
+	}
+}
+action_corrupt_officials = {
+	category = covert
+	require_acceptance = no
+	is_visible = {
+		exists = yes
+		OR = {
+			ai = no
+			has_spy_network_in = {
+				who = FROM
+				value = 50
+			}
+		}
+	}
+	is_allowed = {
+		can_corrupt_officials = {
+			target = FROM
+		}
+	}
+	on_accept = {
+		corrupt_officials_effect = {
+			target = FROM
+		}
+	}
+	ai_will_do = {
+		#AI will do this if they're lacking behind in tech
+		any_known_country = {
+			tech_difference = 1
+		}
+	}
+}
+action_disrupt_diplomacy = {
+	category = covert
+	require_acceptance = no
+
+	is_visible = {
+		exists = yes
+		OR = {
+			ai = no
+			AND = {
+				has_spy_network_in = {
+					who = FROM
+					value = 50
+				}
+				FROM = {
+					any_ally = {
+						has_spy_network_from = {
+							who = ROOT
+							value = 50
+						}
+					}
+				}
+			}
+		}
+	}
+	is_allowed = {
+		if = {
+			limit = {
+				OR = {
+					NOT = {
+						has_spy_network_in = {
+							who = FROM
+							value = 50
+						}
+					}
+					FROM = {
+						NOT = {
+							any_ally = {
+								has_spy_network_from = {
+									who = ROOT
+									value = 50
+								}
+							}
+						}
+					}
+				}
+			}
+			custom_trigger_tooltip = {
+				tooltip = lacking_spy_network_in_targets_tt
+				always = no
+			}
+		}
+		if = {
+			limit = {
+				FROM = {
+					NOT = { num_of_allies = 1 }
+				}
+			}
+			custom_trigger_tooltip = {
+				tooltip = target_no_allies_tt
+				always = no
+			}
+		}
+		if = {
+			limit = {
+				reverse_has_opinion_modifier = {
+					who = FROM
+					modifier = action_disrupted_diplomacy
+				}
+			}
+			custom_trigger_tooltip = {
+				tooltip = already_disrupted_diplomacy_tt
+				always = no
+			}
+		}
+		if = {
+			limit = {
+				FROM = { is_subject_other_than_tributary_trigger = yes }
+			}
+			custom_trigger_tooltip = {
+				tooltip = CANT_DO_THIS_TO_SUBJECTS
+				always = no
+			}
+		}
+
+	}
+	on_accept = {
+		FROM = {
+			random_ally = {
+				limit = {
+					has_spy_network_from = {
+						who = ROOT
+						value = 50
+					}
+				}
+				ROOT = {
+					calculate_spy_cost = {
+						base_cost = 50
+						target_country = FROM
+						action = disrupted_diplomacy
+						disrupted_from = yes
+					}
+				}
+				break_alliance_with = { who = FROM }
+			}
+		}
+	}
+	ai_will_do = {
+		#In the rare case the AI actually meets the triggers to do this
+		OR = {
+			is_neighbor_of = FROM
+			NOT = {
+				border_distance = {
+					who = FROM
+					distance = 100
+				}
+			}
+		}
+	}
+}
+#Esiponage Ideas only actions:
+action_state_propaganda = {
+	category = covert
+	require_acceptance = no
+
+	is_visible = {
+		has_idea = state_propaganda
+		ai = no #AI wont need to do this
+		exists = yes
+	}
+	is_allowed = {
+		if = {
+			limit = {
+				NOT = { reverse_has_opinion_modifier = { who = FROM modifier = aggressive_expansion } }
+			}
+			custom_trigger_tooltip = {
+				tooltip = dont_have_ae_with_tt
+				always = no
+			}
+		}
+		if = {
+			limit = {
+				FROM = { is_subject_other_than_tributary_trigger = yes }
+			}
+			custom_trigger_tooltip = {
+				tooltip = CANT_DO_THIS_TO_SUBJECTS
+				always = no
+			}
+		}
+		if = {
+			limit = {
+				NOT = {
+					has_spy_network_in = {
+						who = FROM
+						value = 50
+					}
+				}
+			}
+			has_spy_network_in = {
+				who = FROM
+				value = 50
+			}
+		}
+	}
+	on_accept = {
+		calculate_spy_cost = {
+			base_cost = 50
+			target_country = FROM
+			action = cleared_ae
+		}
+		reverse_add_aggressive_expansion = {
+			who = FROM
+			value = -50
+		}
+	}
+	ai_will_do = {
+		always = no #Ai dosent need to do this
+	}
+}
+action_reinforce_claims = {
+	category = covert
+	require_acceptance = no
+
+	is_visible = {
+		has_idea = claim_fabrication
+		ai = no #AI dosent need this
+		exists = yes
+	}
+	is_allowed = {
+		if = {
+			limit = {
+				NOT = {
+					any_claimed_province = {
+						owned_by = FROM
+						NOT = { is_core = ROOT }
+					}
+				}
+			}
+			custom_trigger_tooltip = {
+				tooltip = lacking_claims_tt
+				always = no
+			}
+		}
+		if = {
+			limit = {
+				NOT = {
+					has_spy_network_in = {
+						who = FROM
+						value = 10
+					}
+				}
+			}
+			has_spy_network_in = {
+				who = FROM
+				value = 10
+			}
+		}
+		if = {
+			limit = {
+				FROM = { is_subject_other_than_tributary_trigger = yes }
+			}
+			custom_trigger_tooltip = {
+				tooltip = CANT_DO_THIS_TO_SUBJECTS
+				always = no
+			}
+		}
+	}
+	on_accept = {
+		#Convert all regular claims in the target country to cores
+		set_variable = {
+			which = spy_network_var
+			value = 0
+		}
+		set_variable = {
+			which = core_claim_cost
+			value = 10
+		}
+		calculate_covert_action_cost = yes
+		multiply_variable = {
+			which = core_claim_cost
+			which = covert_action_cost #Modifies the cost of all covert actions (the ones i can modify...)
+		}
+		#Convert Spy Network to Variable
+		while = {
+			limit = {
+				has_spy_network_in = {
+					who = FROM
+					value = 1
+				}
+			}
+			add_spy_network_in = {
+				who = FROM
+				value = -1
+			}
+			change_variable = {
+				which = spy_network_var
+				value = 1
+			}
+		}
+		#Change claims to cores until you run out of spy network or theres no more provinces to covert
+		while = {
+			limit = {
+				check_variable = {
+					which = spy_network_var
+					which = core_claim_cost
+				}
+				any_claimed_province = {
+					owned_by = FROM
+					NOT = { is_core = ROOT }
+				}
+			}
+			subtract_variable = {
+				which = spy_network_var
+				which = core_claim_cost
+			}
+			random_claimed_province = {
+				limit = {
+					owned_by = FROM
+					NOT = { is_core = ROOT }
+				}
+				remove_claim = ROOT
+				add_core = ROOT
+			}
+		}
+		#Covert Remaining variable back into spynetwork
+		while = {
+			limit = {
+				check_variable = {
+					which = spy_network_var
+					value = 1
+				}
+			}
+			subtract_variable = {
+				which = spy_network_var
+				value = 1
+			}
+			add_spy_network_in = {
+				who = FROM
+				value = 1
+			}
+		}
+	}
+	ai_will_do = {
+		always = no #Ai dosent need this
+	}
+}
+
+############################
+#	Pirate things
+############################
+
+#removed basically, sort of useless and stupid 
+#stop_raiding_me_action = {
+#    category = covert
+#	alert_index = 38 
+#	alert_tooltip = ICON_STOP_RAIDING
+#    require_acceptance = yes
+#    
+#    is_visible = {
+#		always = no
+#    }
+#    is_allowed = {
+#		always = no
+#    }
+#    on_accept = {
+#    }
+#    on_decline = {
+#	}
+#    ai_will_do = {
+#        always = yes
+#    }
+#}
+#leave_piracy_pact_action = { #This is for the country under the pact to become free of it
+#	category = covert
+#    require_acceptance = no
+#    
+#    is_visible = {
+#		always = no
+#    }
+#    is_allowed = {
+#		always = no
+#    }
+#    on_accept = {
+#    }
+#	ai_will_do = {
+#		always = yes
+#	}
+#}
+#abandon_piracy_pact_action = { #This is if the country that established the pact dosent need/want it anymore
+#	category = covert
+#	require_acceptance = no
+#
+#	is_visible = {
+#		always = no
+#	}
+#	is_allowed = {
+#		always = yes
+#	}
+#	on_accept = {
+#	}
+#	ai_will_do = {
+#		always = yes #see is_visible instead
+#	}
+#}
+

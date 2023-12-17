@@ -1,0 +1,7 @@
+#Prov2322 - Wadi Halfa
+culture = nubian
+religion = coptic
+
+base_tax = 1
+base_production = 1
+base_manpower = 1

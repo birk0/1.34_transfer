@@ -1,0 +1,487 @@
+#For 10 Random lucky nations in Age of Discovery
+ai_discovery_buff = {
+   potential = {
+      current_age = age_of_discovery
+      ai = yes
+      normal_or_historical_nations = yes
+      is_free_or_tributary_trigger = yes
+      has_any_disaster = no
+      NOT = { has_global_flag = misc_setup }
+   }
+   trigger = {}
+   #double crownland money
+   build_cost = -0.5
+   development_cost = -0.5
+   trade_efficiency = 0.25
+   global_trade_goods_size_modifier = 0.25
+   global_autonomy = -0.2
+   advisor_cost = -0.5
+}
+
+#Warlords gain meritocracy while at war
+warlord_waging_war_for_china = {
+   potential = {
+      has_reform = chinese_warlord_reform
+      is_at_war = yes
+   }
+   trigger = {}
+   meritocracy = 0.5
+}
+#No Warlords Mandate growth
+mandate_growth_no_warlord = {
+   potential = {
+      is_emperor_of_china = yes
+      NOT = {
+         any_neighbor_country = {
+            has_reform = chinese_warlord_reform
+         }
+      }
+   }
+   trigger = {}
+   imperial_mandate = 0.05
+}
+#Bonuses for fighting EOC 
+trigger_miao_fighting_eoc = {
+   potential = {
+      has_country_flag = miao_fighting_emperor
+      war_with = event_target:EmperorOfChina
+   }
+   trigger = {}
+   land_morale = 0.15
+   shock_damage = 0.15
+   mercenary_cost = -0.25
+   merc_maintenance_modifier = -0.25
+   land_forcelimit = 10
+   defensiveness = 1
+}
+#Tumu Crisis
+mng_tumu_crisis_disaster = {
+   potential = {
+      has_ruler_flag = mng_tumu_crisis
+   }
+   trigger = {
+      war_with = OIR
+   }
+   discipline = -0.1
+}
+
+#Ruler commanding army
+ruler_leading_armies_modifier = {
+   potential = { #If attacker, ruler must be in enemy territory. If defender, ruler may be in both.
+      has_estate_privilege = estate_nobles_royal_leadership
+      is_at_war = yes
+      any_army = {
+         is_ruler_commanding_unit = yes
+      }
+   }
+   trigger = {}
+   land_morale = 0.05
+}
+#Tier 3 cultural centers 
+tier3_manchu_cultural_center = {
+   potential = {
+		any_owned_province = {
+			culture_group = ROOT
+			has_great_project = {
+				tier = 3
+				type = any
+			}
+			NOT = { has_province_flag = monument_destroyed }
+		}
+      OR = {
+         culture_group = evenks
+         culture_group = korean_g
+         AND = {
+            has_country_flag = sino_culture_center_flag
+            OR = {
+               primary_culture = korean_g_new
+               primary_culture = manchu_new
+            }
+         }
+      }
+   }
+   trigger = {}
+   has_banners = yes
+}
+#Korean Inwards perfection penalty
+kor_inwards_perfection = {
+   potential = {
+      tag = KOR
+      is_free_or_tributary_trigger = yes
+   }
+   trigger = {
+      is_at_war = yes
+      has_estate_privilege = estate_church_inwards_perfection
+   }
+   discipline = -0.1
+   light_ship_power = -0.25
+   yearly_army_professionalism = -0.005
+}
+#New harmonization triggered modifiers
+#Shen
+confucianism_harmonized_shen = {
+   potential = {
+      religion = confucianism
+   }
+   trigger = {
+      has_harmonized_with = shen
+   }
+   fire_damage = 0.1
+}
+daoism_harmonized_shen = {
+   potential = {
+      religion = daoism
+   }
+   trigger = {
+      has_harmonized_with = shen
+   }
+   infantry_power = 0.1
+}
+#Confucianism
+daoism_harmonized_confucianism = {
+   potential = {
+      religion = daoism
+   }
+   trigger = {
+      has_harmonized_with = confucianism
+   }
+   technology_cost = -0.1
+}
+#Daoism
+confucianism_harmonized_daoism = {
+   potential = {
+      religion = confucianism
+   }
+   trigger = {
+      has_harmonized_with = daoism
+   }
+   yearly_harmony = 0.5
+}
+#Shinto
+daoism_harmonized_shinto = {
+   potential = {
+      religion = daoism
+   }
+   trigger = {
+      has_harmonized_with = shinto
+   }
+   discipline = 0.03
+}
+confucianism_harmonized_shinto = {
+   potential = {
+      religion = confucianism
+   }
+   trigger = {
+      has_harmonized_with = shinto
+   }
+   infantry_power = 0.1
+}
+#Vajrayana
+daoism_harmonized_vajrayana = {
+   potential = {
+      religion = daoism
+   }
+   trigger = {
+      has_harmonized_with = vajrayana
+   }
+   religious_unity = 0.1
+}
+confucianism_harmonized_vajrayana = {
+   potential = {
+      religion = confucianism
+   }
+   trigger = {
+      has_harmonized_with = vajrayana
+   }
+   production_efficiency = 0.1
+}
+#Theravada
+daoism_harmonized_buddhism = {
+   potential = {
+      religion = daoism
+   }
+   trigger = {
+      has_harmonized_with = buddhism
+   }
+   global_trade_goods_size_modifier = 0.1
+}
+confucianism_harmonized_buddhism = {
+   potential = {
+      religion = confucianism
+   }
+   trigger = {
+      has_harmonized_with = buddhism
+   }
+   advisor_cost = -0.05
+}
+#Mahayana
+daoism_harmonized_mahayana = {
+   potential = {
+      religion = daoism
+   }
+   trigger = {
+      has_harmonized_with = mahayana
+   }
+   tolerance_heathen = 1
+}
+confucianism_harmonized_mahayana = {
+   potential = {
+      religion = confucianism
+   }
+   trigger = {
+      has_harmonized_with = mahayana
+   }
+   idea_cost = -0.1
+}
+#Pagan Group
+daoism_harmonized_pagan = {
+   potential = {
+      religion = daoism
+   }
+   trigger = {
+      has_harmonized_with = pagan
+   }
+   land_morale = 0.1
+}
+confucianism_harmonized_pagan = {
+   potential = {
+      religion = confucianism
+   }
+   trigger = {
+      has_harmonized_with = pagan
+   }
+   global_unrest = -1
+}
+#Dharmic Group
+daoism_harmonized_dharmic = {
+   potential = {
+      religion = daoism
+   }
+   trigger = {
+      has_harmonized_with = dharmic
+   }
+   global_unrest = -1
+}
+confucianism_harmonized_dharmic = {
+   potential = {
+      religion = confucianism
+   }
+   trigger = {
+      has_harmonized_with = dharmic
+   }
+   tolerance_heathen = 1
+}
+#Muslim Group
+daoism_harmonized_muslim = {
+   potential = {
+      religion = daoism
+   }
+   trigger = {
+      has_harmonized_with = muslim
+   }
+   cavalry_cost = -0.1
+}
+confucianism_harmonized_muslim = {
+   potential = {
+      religion = confucianism
+   }
+   trigger = {
+      has_harmonized_with = muslim
+   }
+   trade_efficiency = 0.1
+}
+#Christian Group
+daoism_harmonized_christian = {
+   potential = {
+      religion = daoism
+   }
+   trigger = {
+      has_harmonized_with = christian
+   }
+   advisor_cost = -0.05
+}
+confucianism_harmonized_christian = {
+   potential = {
+      religion = confucianism
+   }
+   trigger = {
+      has_harmonized_with = christian
+   }
+   land_morale = 0.1
+}
+#Rarer groups
+#Jewish Group
+daoism_harmonized_jewish = {
+   potential = {
+      religion = daoism
+   }
+   trigger = {
+      has_harmonized_with = jewish_group
+   }
+   trade_efficiency = 0.2
+   merchants = 1
+}
+confucianism_harmonized_jewish = {
+   potential = {
+      religion = confucianism
+   }
+   trigger = {
+      has_harmonized_with = jewish_group
+   }
+   all_power_cost = -0.1
+}
+#Zoroastrian Group
+daoism_harmonized_zoroastrian = {
+   potential = {
+      religion = daoism
+   }
+   trigger = {
+      has_harmonized_with = zoroastrian_group
+   }
+   production_efficiency = 0.25
+   development_cost = -0.1
+}
+confucianism_harmonized_zoroastrian = {
+   potential = {
+      religion = confucianism
+   }
+   trigger = {
+      has_harmonized_with = zoroastrian_group
+   }
+   artillery_power = 0.2
+}
+sabotaged_recruitment_bonus = {
+   potential = {
+      is_at_war = yes
+      any_known_country = {
+         war_with = ROOT
+         has_opinion_modifier = {
+            who = ROOT
+            modifier = action_sabotaged_recruitment
+         }
+      }
+   }
+   trigger = {
+      custom_trigger_tooltip = {
+         tooltip = enemy_recruitment_sabotaged_tt
+         always = yes
+      }
+      custom_trigger_tooltip = {
+         tooltip = not_gaming_modifier_tt
+         NOT = { #You have to have Sabotaged every war leader that you are currently at war with to keep the modifier
+            any_known_country = {
+               NOT = {
+                  has_opinion_modifier = {
+                     who = ROOT
+                     modifier = action_sabotaged_recruitment
+                  }
+               }
+               OR = {
+                  is_in_war = { defender_leader = THIS attackers = ROOT }
+                  is_in_war = { attacker_leader = THIS defenders = ROOT }
+               }
+            }
+         }
+      }
+   }
+   land_morale = 0.15
+   reinforce_speed = 0.33
+   manpower_recovery_speed = 0.33
+}
+sabotaged_supply_bonus = {
+   potential = {
+      is_at_war = yes
+      any_known_country = {
+         war_with = ROOT
+         has_opinion_modifier = {
+            who = ROOT
+            modifier = action_sabotaged_supply
+         }
+      }
+   }
+   trigger = {
+      custom_trigger_tooltip = {
+         tooltip = enemy_supply_sabotaged_tt
+         always = yes
+      }
+      custom_trigger_tooltip = {
+         tooltip = not_gaming_modifier2_tt
+         NOT = { #You have to have Sabotaged every war leader that you are currently at war with to keep the modifier
+            any_known_country = {
+               NOT = {
+                  has_opinion_modifier = {
+                     who = ROOT
+                     modifier = action_sabotaged_supply
+                  }
+               }
+               OR = {
+                  is_in_war = { defender_leader = THIS attackers = ROOT }
+                  is_in_war = { attacker_leader = THIS defenders = ROOT }
+               }
+            }
+         }
+      }
+   }
+   movement_speed = 0.25
+   land_attrition = -0.25
+   blockade_efficiency = 0.1
+}
+lacking_naval_supremacy = {
+   potential = {
+      is_at_war = yes
+   }
+   trigger = {
+      any_war_enemy_country = {
+         has_naval_supremacy_against = {
+            who = ROOT
+         }
+         hidden_trigger = {
+            any_coastal_seazone = {
+               light_ships_in_province = PREV
+            }
+         }
+      }
+   }
+   trade_efficiency = -0.33
+   reinforce_speed = -0.33
+   recover_army_morale_speed = -0.15
+}
+ai_at_peace = {
+   potential = {
+      ai = yes
+   }
+   trigger={
+      is_at_war = no
+   }
+   land_maintenance_modifier = -0.3
+}
+np_test = {
+   potential = {
+      has_global_flag = misc_setup
+   }
+   trigger = {}
+   relation_with_other_culture = -40
+	relation_with_same_culture_group = -40
+	relation_with_same_culture = -40
+	relation_with_accepted_culture = -40
+	may_explore = yes
+	colonists = 1
+}
+ai_over_naval_fl = {
+   potential = {
+      ai = yes
+   }
+   trigger = {
+      navy_size_percentage = 1.1
+   }
+   naval_maintenance_modifier = -0.6
+}
+ai_low_stability = {
+   potential = {
+      ai = yes
+      NOT = { stability = -1 }
+   }
+   trigger = {
+   }
+   interest = -1.5 # AI is literally retarded
+}

@@ -1,0 +1,21 @@
+# 4575 - Halaba
+
+
+owner = ADA
+controller = ADA
+add_core = ADA
+add_core = AFA
+culture = afar
+religion = sunni
+capital = "Halaba"
+is_city = yes
+base_manpower = 1
+trade_goods = fish
+hre = no
+base_tax = 1 
+base_production = 1
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

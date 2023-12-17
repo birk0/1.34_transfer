@@ -1,0 +1,20 @@
+#2313 - Antioch
+
+owner = MAM
+controller = MAM
+culture = al_suryah_arabic
+religion = sunni
+capital = "Antakya"
+trade_goods = cloth
+hre = no
+base_tax = 4
+base_production = 4
+base_manpower = 3
+is_city = yes
+add_core = SYR
+add_core = MAM
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

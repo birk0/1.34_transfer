@@ -1,0 +1,19 @@
+
+owner = AYU
+controller = AYU
+culture = central_thai
+religion = buddhism
+capital = "Rayong"
+trade_goods = grain
+hre = no
+base_tax = 3 
+base_production = 3
+base_manpower = 3
+is_city = yes
+add_core = AYU
+
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

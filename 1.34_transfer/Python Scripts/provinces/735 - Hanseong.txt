@@ -1,0 +1,7 @@
+#Prov735 - Hanseong
+culture = korean
+religion = confucianism
+
+base_tax = 1
+base_production = 1
+base_manpower = 1

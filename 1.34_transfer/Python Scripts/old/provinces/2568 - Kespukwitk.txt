@@ -1,0 +1,18 @@
+#2568 - Belmullet
+
+owner = CNN
+controller = CNN
+culture = irish
+religion = catholic
+hre = no
+base_tax = 1
+base_production = 1
+trade_goods = livestock
+base_manpower = 1
+capital = "Belmullet"
+is_city = yes
+add_core = CNN
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

@@ -1,0 +1,7 @@
+#Prov135 - Sopron
+culture = hungarian
+religion = catholic
+
+base_tax = 1
+base_production = 1
+base_manpower = 1

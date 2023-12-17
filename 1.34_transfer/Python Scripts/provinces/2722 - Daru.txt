@@ -1,0 +1,5 @@
+#Prov2722 - Daru
+
+base_tax = 1
+base_production = 1
+base_manpower = 1

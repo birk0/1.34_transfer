@@ -1,0 +1,7 @@
+#Prov1112 - Trarza
+culture = mali
+religion = shamanism
+
+base_tax = 1
+base_production = 1
+base_manpower = 1

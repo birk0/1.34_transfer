@@ -1,0 +1,21 @@
+#2406 - Jianchang
+
+owner = MNG
+controller = MNG
+add_core = MNG
+add_core = CYI
+culture = yi
+religion = shen #changes
+capital = "Jianchang"
+trade_goods = grain
+hre = no
+base_tax = 4 
+base_production = 3
+base_manpower = 1
+is_city = yes
+add_local_autonomy = 25 #Ming weak rule over South
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

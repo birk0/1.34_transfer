@@ -1,0 +1,8 @@
+#Prov2733 - Baiali
+religion = catholic
+culture = prussian
+is_city = no
+
+base_tax = 1
+base_production = 1
+base_manpower = 1

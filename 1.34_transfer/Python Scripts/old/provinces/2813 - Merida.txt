@@ -1,0 +1,24 @@
+# 2813 - Gouim
+
+owner = GUR
+controller = GUR
+add_core = GUR
+is_city = yes
+culture = mossi #mossi
+religion = shamanism #Fetishism
+capital = "Gouim"
+trade_goods = ivory
+hre = no
+base_tax = 1 
+base_production = 1
+base_manpower = 1
+
+
+
+native_size = 40
+native_ferocity = 4
+native_hostileness = 9
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

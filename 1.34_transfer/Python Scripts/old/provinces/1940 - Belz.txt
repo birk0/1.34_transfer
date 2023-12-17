@@ -1,0 +1,21 @@
+#Belz
+
+owner = MAZ
+controller = MAZ
+capital= "Belz"
+culture = ruthenian
+religion = orthodox
+trade_goods = livestock
+hre = no
+base_tax = 4 
+base_production = 3
+base_manpower = 2
+is_city = yes
+add_core = MAZ
+add_core = VOL
+
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

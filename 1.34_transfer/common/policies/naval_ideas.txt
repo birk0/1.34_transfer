@@ -1,0 +1,227 @@
+########################################
+#	Policies for the Naval Idea Group
+########################################
+the_nautic_education_act = {
+	monarch_power = MIL
+	
+	potential = {
+		has_idea_group = naval_ideas
+		ai = no
+	}
+	
+	allow = {
+		full_idea_group = naval_ideas
+		hidden_trigger = {
+			NOT = { has_idea_group = indigenous_ideas }
+		}
+		if = {
+			limit = { has_country_modifier = the_nautic_education_act_cooldown }
+			custom_trigger_tooltip = {
+				tooltip = POLICY_ON_COOLDOWN
+				always = no
+			}
+		}
+		if = {
+			limit = {
+				has_country_flag = naval_cd_fl
+			}
+			custom_trigger_tooltip = {
+				tooltip = "We must wait before we can select a policy from this idea group again."
+				always = no
+			}
+		}
+	}	
+	
+	artillery_fire = 1
+	
+	ai_will_do = {
+		factor = 0
+	}
+}
+zealous_captains = {
+	monarch_power = MIL
+	
+	potential = {
+		has_idea_group = naval_ideas
+		ai = no
+	}
+	
+	allow = {
+		full_idea_group = naval_ideas
+		hidden_trigger = {
+			NOT = { has_idea_group = indigenous_ideas }
+		}
+		if = {
+			limit = { has_country_modifier = zealous_captains_cooldown }
+			custom_trigger_tooltip = {
+				tooltip = POLICY_ON_COOLDOWN
+				always = no
+			}
+		}
+		if = {
+			limit = {
+				has_country_flag = naval_cd_fl
+			}
+			custom_trigger_tooltip = {
+				tooltip = "We must wait before we can select a policy from this idea group again."
+				always = no
+			}
+		}
+	}	
+	
+	fire_damage_received = -0.2
+	
+	ai_will_do = {
+		factor = 1 #will do later
+	}
+}
+skilled_cartographers = {
+	monarch_power = DIP
+	
+	potential = {
+		has_idea_group = naval_ideas
+		ai = no
+	}
+	
+	allow = {
+		full_idea_group = naval_ideas
+		hidden_trigger = {
+			NOT = { has_idea_group = indigenous_ideas }
+		}
+		if = {
+			limit = { has_country_modifier = skilled_cartographers_cooldown }
+			custom_trigger_tooltip = {
+				tooltip = POLICY_ON_COOLDOWN
+				always = no
+			}
+		}
+		if = {
+			limit = {
+				has_country_flag = naval_cd_fl
+			}
+			custom_trigger_tooltip = {
+				tooltip = "We must wait before we can select a policy from this idea group again."
+				always = no
+			}
+		}
+	}	
+	
+	global_ship_repair = 1
+	sea_repair = yes
+	
+	ai_will_do = {
+		factor = 1 #will do later
+	}
+}
+supply_convoys = {
+	monarch_power = DIP
+	
+	potential = {
+		has_idea_group = naval_ideas
+		ai = no
+	}
+	
+	allow = {
+		full_idea_group = naval_ideas
+		hidden_trigger = {
+			NOT = { has_idea_group = indigenous_ideas }
+		}
+		if = {
+			limit = { has_country_modifier = supply_convoys_cooldown }
+			custom_trigger_tooltip = {
+				tooltip = POLICY_ON_COOLDOWN
+				always = no
+			}
+		}
+		if = {
+			limit = {
+				has_country_flag = naval_cd_fl
+			}
+			custom_trigger_tooltip = {
+				tooltip = "We must wait before we can select a policy from this idea group again."
+				always = no
+			}
+		}
+	}	
+	
+	development_cost = -0.1
+	
+	ai_will_do = {
+		factor = 0
+	}
+}
+harbour_administration = {
+	monarch_power = ADM
+	
+	potential = {
+		has_idea_group = naval_ideas
+		ai = no
+	}
+	
+	allow = {
+		full_idea_group = naval_ideas
+		hidden_trigger = {
+			NOT = { has_idea_group = indigenous_ideas }
+		}
+		if = {
+			limit = { has_country_modifier = harbour_administration_cooldown }
+			custom_trigger_tooltip = {
+				tooltip = POLICY_ON_COOLDOWN
+				always = no
+			}
+		}
+		if = {
+			limit = {
+				has_country_flag = naval_cd_fl
+			}
+			custom_trigger_tooltip = {
+				tooltip = "We must wait before we can select a policy from this idea group again."
+				always = no
+			}
+		}
+	}
+
+	embracement_cost = -0.5
+	global_institution_spread = 0.3
+	
+	ai_will_do = {
+		factor = 0
+	}
+}
+the_transportation_act = {
+	monarch_power = ADM
+	
+	potential = {
+		has_idea_group = naval_ideas
+		ai = no
+	}
+	
+	allow = {
+		full_idea_group = naval_ideas
+		hidden_trigger = {
+			NOT = { has_idea_group = indigenous_ideas }
+		}
+		if = {
+			limit = { has_country_modifier = the_transportation_act_cooldown }
+			custom_trigger_tooltip = {
+				tooltip = POLICY_ON_COOLDOWN
+				always = no
+			}
+		}
+		if = {
+			limit = {
+				has_country_flag = naval_cd_fl
+			}
+			custom_trigger_tooltip = {
+				tooltip = "We must wait before we can select a policy from this idea group again."
+				always = no
+			}
+		}
+	}	
+	
+	global_tariffs = 5
+	
+	ai_will_do = {
+		factor = 0
+	}
+}

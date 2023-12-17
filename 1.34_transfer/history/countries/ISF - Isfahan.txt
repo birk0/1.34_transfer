@@ -1,0 +1,23 @@
+#This is Balkh
+government = monarchy
+add_government_reform = timurid_prince
+set_ruler_flag = abdal_latif_timurid
+government_rank = 1
+primary_culture = uzbehk
+religion = sunni
+technology_group = muslim
+capital = 450 # Balkh
+religious_school = hanafi_school
+add_accepted_culture = afghani
+
+1435.1.1 = {
+	monarch = {
+		name = "Abdal-Latif" #Also the heir of Transoxiana
+		dynasty = "Timurid"
+		birth_date = 1420.1.1
+		adm = 3
+		dip = 3
+		mil = 5
+		leader = { type = general name = "Abdal-Latif" fire = 3 shock = 3 manuever = 1 siege = 1 }
+	}
+}

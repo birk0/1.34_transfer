@@ -1,0 +1,27 @@
+# 4630 - Al Haybah
+
+culture = beja 
+religion = sunni
+capital = "Al Haybah"
+native_size = 50
+native_ferocity = 4
+native_hostileness = 9 
+base_manpower = 2
+trade_goods = unknown
+hre = no
+base_tax = 1 
+base_production = 1
+
+
+1444.1.1 = {
+	owner = BEJ
+	controller = BEJ
+	add_core = BEJ
+	is_city = yes
+	#discovered_by = ETH
+	trade_goods = livestock
+}
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

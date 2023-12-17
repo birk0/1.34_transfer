@@ -1,0 +1,102 @@
+country_decisions = {
+
+	ruthenian_nation = {
+		major = yes
+		potential = {
+			OR = {
+				has_country_flag = mission_ruthenia_flag
+				AND = { #Ruthenian Minors must do via missions, anyone else can culture flip
+					NOT = { russian_minor_mission_trigger = yes }
+					OR = {
+						primary_culture = ruthenian
+						primary_culture = ryazanian
+						primary_culture = byelorussian
+					}
+				}
+			}
+			exists = yes
+			normal_or_historical_nations = yes
+			was_never_end_game_tag_trigger = yes
+			NOT = { has_country_flag = formed_ruthenia_flag }
+		}
+		provinces_to_highlight = {
+			OR = {
+				region = ruthenia_region
+				area = moscow_area
+				area = novgorod_area
+			}
+			NOT = { owned_by = ROOT }
+		}
+		allow = {
+			NOT = { exists = UKR }
+			is_free_or_tributary_trigger = yes
+			is_at_war = no
+			moscow_area = {
+				type = all
+				owned_by = ROOT
+			}
+			novgorod_area = {
+				type = all
+				owned_by = ROOT
+			}
+			ruthenia_region = {
+				type = all
+				owned_by = ROOT
+			}
+			280 = { #Kiev
+				is_state = yes
+			}
+		}
+		effect = {
+			clr_country_flag = mission_ruthenia_flag
+			280 = {
+				move_capital_effect = yes
+				add_base_tax = 1
+				add_base_manpower = 1
+				add_base_production = 1
+			}
+			change_tag = UKR
+			swap_non_generic_missions = yes
+			if = {
+				limit = {
+					NOT = { technology_group = eastern }
+				}
+				change_technology_group = eastern
+				change_unit_type = eastern
+			}
+			remove_non_electors_emperors_from_empire_effect = yes
+			if = {
+				limit = { 
+					NOT = { government_rank = 3 } 
+				} 
+				set_government_rank = 3
+			}
+			if = {
+				limit = { is_revolutionary = no }
+				change_government_to_monarchy = yes
+				add_government_reform = tsardom
+			}
+			set_country_flag = formed_ruthenia_flag
+			if = {
+				limit = { has_custom_ideas = no }
+				country_event = { id = ideagroups.1 } #Swap Ideas
+			}
+			add_country_modifier = {
+				name = centralization_modifier
+				duration = 3650
+			}
+			ruthenia_region = {
+				limit = { owned_by = ROOT }
+				add_province_modifier = {
+					name = ruthenian_integration
+					duration = 7300
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		ai_importance = 400	
+	}
+	
+}

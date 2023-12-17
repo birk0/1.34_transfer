@@ -1,0 +1,3313 @@
+namespace = new_institution_events
+
+# Replaces the old institution event mess that was in the vanilla/old versions of mod
+# Moreso handles the spread of existing institutions
+
+#######################
+# Feudalism events
+#######################
+#Challenging the Warrior Elites (was old_institution_events.8)
+country_event = {
+	id = new_institution_events.28
+	title = "new_institution_events.28.t"
+	desc = "new_institution_events.28.d"
+	picture = HORDE_ON_HORSEBACK_eventPicture
+
+	is_triggered_only = yes #on_bi_yearly_3
+	goto = feudalism_province
+	
+	trigger = {
+		fire_once_for_country = { event = nie28 }
+		NOT = { has_institution = feudalism }
+		any_owned_province = { feudalism = 25 }
+	}
+
+	mean_time_to_happen = { days = 1 }
+
+	immediate = {
+		hidden_effect = {
+			set_event_flag = { event = nie28 }
+			random_owned_province = {
+				limit = { feudalism = 25 }
+				save_event_target_as = feudalism_province
+			}
+		}
+	}
+
+	option = {
+		name = "new_institution_events.28.a"
+		event_target:feudalism_province = {
+			area = {
+				limit = { 
+					owned_by = ROOT
+					NOT = { feudalism = 100 } 
+				}
+				add_institution_embracement = {
+					value = 100
+					which = "feudalism"
+				}
+			}
+			spawn_rebels = {
+				size = 1
+				type = noble_rebels
+			}
+		}
+		if = {
+			limit = { has_estate = estate_nomadic_tribes }
+			add_estate_loyalty = {
+				estate = estate_nomadic_tribes
+				loyalty = -10
+			}
+		}
+		else = {
+			add_estate_loyalty = {
+				estate = estate_nobles
+				loyalty = -10
+			}
+		}
+		ai_chance = {
+			factor = 10
+		}
+	}
+	option = {
+		name = "new_institution_events.28.b"
+		event_target:feudalism_province = {
+			area = {
+				limit = { owned_by = ROOT }
+				add_institution_embracement = {
+					value = -25
+					which = "feudalism"
+				}
+			}
+		}
+	}
+}
+
+#Growing Urban Influence (was old_institution_events.9)
+country_event = {
+	id = new_institution_events.29
+	title = "new_institution_events.29.t"
+	desc = "new_institution_events.29.d"
+	picture = CITY_VIEW_eventPicture
+	is_triggered_only = yes
+	
+	trigger = {
+		fire_once_for_country = { event = nie29 }
+		NOT = { has_institution = feudalism }
+		any_owned_province = {
+			development = 10
+			NOT = { feudalism = 50 }
+			base_manpower = 2
+		}
+	}
+
+	goto = urban_province
+	mean_time_to_happen = { days = 1 }
+	
+	immediate = {
+		hidden_effect = {
+			set_event_flag = { event = nie29 }
+			random_owned_province = {
+				limit = {
+					development = 10
+					NOT = { feudalism = 50 }
+					base_manpower = 2
+				}
+				save_event_target_as = urban_province
+			}
+		}
+	}
+	option = {
+		name = "new_institution_events.29.a"
+		event_target:urban_province = {
+			area = {
+				limit = { owned_by = ROOT }
+				add_institution_embracement = {
+					value = 100
+					which = "feudalism"
+				}
+			}
+			add_base_manpower = -2
+		}
+		random_estate = {
+			add_loyalty = -10
+			add_land_share = -3
+		}
+		ai_chance = {
+			factor = 10
+		}
+	}
+	option = {
+		name = "new_institution_events.29.b"
+		add_legitimacy_equivalent = { amount = 10 }
+	}
+}
+
+#More Advanced Provinces placing demands on Central Power
+#Sometimes modernizing is hard (was old_institution_events.10)
+country_event = {
+	id = new_institution_events.30
+	title = "new_institution_events.30.t"
+	desc = "new_institution_events.30.d"
+	picture = FEUDALISM_eventPicture
+	is_triggered_only = yes
+
+	trigger = {
+		fire_once_for_country = { event = nie30 }
+		NOT = { has_institution = feudalism }
+		any_owned_province = { feudalism = 100 }
+	}
+
+	goto = feudalism_province
+	mean_time_to_happen = { days = 1 }
+
+	immediate = {
+		hidden_effect = {
+			random_owned_province = {
+				limit = { feudalism = 100 }
+				save_event_target_as = feudalism_province
+			}
+		}
+	}
+	
+	option = {
+		name = "new_institution_events.30.a"
+		event_target:feudalism_province = {
+			area = {
+				limit = {
+					owned_by = ROOT
+					feudalism = 100
+				}
+				add_province_modifier = {
+					name = "unruly_population"
+					duration = 3650
+				}
+			}
+		}
+		ai_chance = {
+			factor = 10
+		}
+	}
+	option = {
+		name = "new_institution_events.30.b"
+		add_legitimacy_equivalent =  { amount = -10 }
+		add_country_modifier = {
+			name = "government_reform_feudalism"
+			duration = 1825
+		}
+	}
+}
+
+#Informal Power Waning (was old_institution_events.11)
+country_event = {
+	id = new_institution_events.31
+	title = "new_institution_events.31.t"
+	desc = "new_institution_events.31.d"
+	picture = FEUDALISM_eventPicture
+	is_triggered_only = yes
+	
+	trigger = {
+		fire_once_for_country = { event = nie31 }
+		NOT = { has_institution = feudalism }
+		OR = {
+			adm = 4
+			monthly_adm = 8
+		}
+	}
+	goto = capital
+
+	mean_time_to_happen = { days = 1 }
+
+	immediate = {
+		hidden_effect = {
+			set_event_flag = { event = nie31 }
+			capital_scope = {
+				save_event_target_as = capital
+			}
+		}
+	}
+
+	option = {
+		name = "new_institution_events.31.a"
+		add_reform_progress_small_effect = yes
+		capital_scope = {
+			area = {
+				limit = { owned_by = ROOT }
+				add_institution_embracement = {
+					which = "feudalism"
+					value = 50
+				}
+			}
+		}
+	}
+}
+
+#######################
+# Renaissance events
+#######################
+
+# Support The Florentine School (was cultural_event.4)
+country_event = {
+	id = new_institution_events.1
+	title = "new_institution_events.1.t"
+	desc = "new_institution_events.1.d"
+	picture = IMPORTANT_STATUE_eventPicture
+    is_triggered_only = yes #on_bi_yearly_pulse_3
+
+	trigger = {
+		fire_once_for_country = { event = nie1 }
+		is_year = 1430
+        religion_group = christian
+        NOT = { has_institution = renaissance }
+        NOT = { religion = orthodox }
+        NOT = { religion = coptic }
+	}
+	
+	mean_time_to_happen = {
+		days = 1
+        modifier = {
+            factor = 0.15
+            NOT = { is_year = 1470 }
+        }
+	}
+
+	immediate = { set_event_flag = { event = nie1 } }
+	
+	option = {
+		ai_chance = {
+			factor = 100
+		}
+		name = "new_institution_events.1.a"
+		custom_tooltip = "renaissance_spread_tooltip"
+		set_country_flag = florentine_school
+		add_country_modifier = {
+			name = florentine_school
+			duration = 14600
+		}
+		add_adm_power = -30
+		add_dip_power = -10
+		add_years_of_income = -0.4
+	}
+	option = {
+		name = "new_institution_events.1.b"
+		add_prestige = -5
+	}
+}
+
+# Diwani Script (was cultural_event.8)
+country_event = {
+	id = new_institution_events.2
+	title = "new_institution_events.2.t"
+	desc = "new_institution_events.2.d"
+	picture = INVENTION_eventPicture
+    is_triggered_only = yes #on_bi_yearly_pulse_3
+
+	trigger = {
+		fire_once_for_country = { event = nie2 }
+		is_year = 1430
+        religion_group = muslim
+        NOT = { has_institution = renaissance }
+        employed_advisor = { category = ADM }
+	}
+	
+	mean_time_to_happen = {
+		days = 1
+        modifier = {
+            factor = 0.15
+            NOT = { is_year = 1470 }
+        }
+	}
+	
+	immediate = {
+		set_event_flag = { event = nie2 }
+	}
+	
+	option = {
+		name = "new_institution_events.2.a"
+		custom_tooltip = "renaissance_spread_tooltip"
+		set_country_flag = diwani_script
+		add_country_modifier = {
+			name = "diwani_script"
+			duration = -1
+		}
+		add_adm_power = -30
+		ai_chance = {
+			factor = 10
+		}
+	}
+	option = {
+		name = "new_institution_events.2.b"
+		add_prestige = -5
+	}
+}
+
+# Formalised Alphabet
+country_event = {
+	id = new_institution_events.3
+	title = "new_institution_events.3.t"
+	desc = "new_institution_events.3.d"
+	picture = INVENTION_eventPicture
+    is_triggered_only = yes #on_bi_yearly_pulse_3
+
+	trigger = {
+		fire_once_for_country = { event = nie3 }
+		is_year = 1430
+        OR = {
+            religion_group = eastern
+            religion = tengri_pagan_reformed
+        }
+        NOT = { has_institution = renaissance }
+        employed_advisor = { category = ADM }
+	}
+	
+	mean_time_to_happen = {
+		days = 1
+        modifier = {
+            factor = 0.15
+            NOT = { is_year = 1470 }
+        }
+	}
+	
+	immediate = {
+		set_event_flag = { event = nie3 }
+	}
+	
+	option = {
+		name = "new_institution_events.3.a"
+		custom_tooltip = "renaissance_spread_tooltip"
+		set_country_flag = formalised_alphabet
+		add_country_modifier = {
+			name = "formalised_alphabet_modifier"
+			duration = 14600
+		}
+        add_adm_power = 35
+        add_prestige = 5
+        add_years_of_income = -0.2
+		ai_chance = {
+			factor = 10
+		}
+	}
+	option = {
+		name = "new_institution_events.3.b"
+		add_prestige = -5
+	}
+}
+
+# Caste Sponsorship
+country_event = {
+	id = new_institution_events.4
+	title = "new_institution_events.4.t"
+	desc = "new_institution_events.4.d"
+	picture = TRADEGOODS_eventPicture
+    is_triggered_only = yes #on_bi_yearly_pulse_3
+
+	trigger = {
+        fire_once_for_country = { event = nie4 }
+		is_year = 1430
+		OR = {
+			religion_group = dharmic
+			religion = zoroastrian
+		}
+        NOT = { has_institution = renaissance }
+	}
+	
+	mean_time_to_happen = {
+		days = 1
+        modifier = {
+            factor = 0.15
+            NOT = { is_year = 1470 }
+        }
+	}
+	
+	immediate = {
+		set_event_flag = { event = nie4 }
+	}
+	
+	option = {
+		name = "new_institution_events.4.a"
+		custom_tooltip = "renaissance_spread_tooltip"
+		set_country_flag = renaissance_caste_sponsorship
+		add_country_modifier = {
+			name = "renaissance_caste_sponsorship_modifier"
+			duration = 14600
+		}
+        add_estate_loyalty = {
+            estate = all
+            loyalty = 5
+        }
+        add_prestige = 5
+        add_adm_power = -50
+        add_years_of_income = -0.2
+		ai_chance = {
+			factor = 10
+		}
+	}
+	option = {
+		name = "new_institution_events.4.b"
+		add_prestige = -5
+	}
+}
+
+# Byzantine Refugees (was cultural_event.3)
+country_event = {
+	id = new_institution_events.5
+	title = "new_institution_events.5.t"
+	desc = "new_institution_events.5.d"
+	picture = BIG_BOOK_eventPicture
+    is_triggered_only = yes #on_bi_yearly_pulse_3
+
+	trigger = {
+		fire_once_for_country = { event = nie5 }
+		is_year = 1430
+        OR = {
+            religion = orthodox
+            religion = coptic
+			religion = jewish
+        }
+        NOT = { has_institution = renaissance }
+		151 = {
+			owner = {
+                NOT = { religion_group = christian }
+            }
+		}
+	}
+	
+	mean_time_to_happen = {
+		days = 1
+        modifier = {
+            factor = 0.15
+            NOT = { is_year = 1470 }
+        }
+	}
+	
+	immediate = {
+		set_event_flag = { event = nie5 }
+	}
+	
+	option = {
+		name = "new_institution_events.5.a"
+		custom_tooltip = "renaissance_spread_tooltip"
+		set_country_flag = received_byzantines
+		add_country_modifier = {
+			name = "byzantine_influx"
+			duration = 10950
+		}
+		add_dip_power = -50
+		add_adm_power = -30
+		add_prestige = 5
+		ai_chance = {
+			factor = 10
+		}
+	}
+	option = {
+		name = "new_institution_events.5.b"
+		add_prestige = -5
+	}
+}
+
+# The Way of Tea (was cultural_event.9)
+country_event = {
+	id = new_institution_events.6
+	title = "new_institution_events.6.t"
+	desc = "new_institution_events.6.d"
+	picture = TRADEGOODS_eventPicture
+	is_triggered_only = yes #on_bi_yearly_pulse_3
+
+	trigger = {
+		fire_once_for_country = { event = nie6 }
+        religion_group = eastern
+        tea = 1
+        NOT = { has_institution = renaissance }
+        is_institution_enabled = renaissance
+	}
+	
+	mean_time_to_happen = {
+		days = 1
+        modifier = {
+            factor = 0.15
+            NOT = { is_year = 1470 }
+        }
+	}
+
+	immediate = {
+		set_event_flag = { event = nie6 }
+	}
+	
+	option = {
+		name = "new_institution_events.6.a"
+		add_country_modifier = {
+			name = "way_of_tea"
+			duration = 3650
+		}
+        random_owned_area = {
+            limit = { NOT = { renaissance = 100 } }
+            add_institution_embracement = {
+                which = renaissance
+                value = 100
+            }
+        }
+        random = {
+            chance = 10
+            random_owned_province = { change_trade_goods = tea }
+        }
+        add_adm_power = -50
+        add_years_of_income = -0.1
+        ai_chance = {
+            factor = 10
+        }
+	}
+	option = {
+		name = "new_institution_events.6.b"
+		add_prestige = -10
+	}
+}
+
+# Endorse Renaissance Philosophy (was cultural_event.10)
+country_event = {
+	id = new_institution_events.7
+	title = "new_institution_events.7.t"
+	desc = "new_institution_events.7.d"
+	picture = ADVISOR_eventPicture
+	is_triggered_only = yes #on_bi_yearly_pulse_3
+
+	trigger = {
+		fire_once_for_country = { event = nie7 }
+        religion_group = christian
+		is_institution_enabled = renaissance
+        NOT = { has_institution = renaissance }
+		employed_advisor = { category = ADM }
+	}
+	
+	mean_time_to_happen = {
+		days = 1
+        modifier = {
+            factor = 0.15
+            NOT = { is_year = 1470 }
+        }
+	}
+	
+	immediate = {
+		set_event_flag = { event = nie7 }
+	}
+	
+	option = {
+		name = "new_institution_events.7.a"
+		random_owned_area = {
+            limit = { NOT = { renaissance = 100 } }
+			add_institution_embracement = {
+				which = "renaissance"
+				value = 100
+			}
+		}
+		add_country_modifier = {
+			name = blooming_renaissance
+			duration = 7300
+		}
+		add_years_of_income = -0.3
+		add_adm_power = -30
+        ai_chance ={
+            factor = 10
+        }
+	}
+	option = {
+		name = "new_institution_events.7.b"
+		add_prestige = -10
+	}
+}
+
+
+###################################
+#       LITERACY EVENTS
+###################################
+
+# Popular Manuscript
+country_event = {
+	id = new_institution_events.8
+	title = "new_institution_events.8.t"
+	desc = "new_institution_events.8.d"
+	picture = BIG_BOOK_eventPicture
+	is_triggered_only = yes #on_bi_yearly_pulse_3
+
+	trigger = {
+		fire_once_for_country = { event = nie8 }
+        OR = {
+			religion_group = christian
+			religion = jewish
+		}
+		is_institution_enabled = renaissance
+        NOT = { has_institution = literacy }
+	}
+	
+	mean_time_to_happen = {
+		days = 1
+        modifier = {
+            factor = 0.15
+            NOT = { is_year = 1510 }
+        }
+	}
+	
+	immediate = {
+		set_event_flag = { event = nie8 }
+	}
+	
+	option = {
+		name = "new_institution_events.8.a"
+		custom_tooltip = "literacy_spread_tooltip"
+		set_country_flag = literacy_popular_manuscript
+		add_country_modifier = {
+			name = "literacy_popular_manuscript"
+			duration = 9125
+		}
+		add_adm_power = -50
+		add_prestige = 5
+        ai_chance ={
+            factor = 10
+        }
+	}
+	option = {
+		name = "new_institution_events.8.b"
+		add_prestige = -5
+	}
+}
+
+# Religious Literature
+country_event = {
+	id = new_institution_events.9
+	title = "new_institution_events.9.t"
+	desc = "new_institution_events.9.d"
+	picture = REFORM_eventPicture
+	is_triggered_only = yes #on_bi_yearly_pulse_3
+
+	trigger = {
+		fire_once_for_country = { event = nie9 }
+        religion_group = muslim
+		is_institution_enabled = renaissance
+        NOT = { has_institution = literacy }
+	}
+	
+	mean_time_to_happen = {
+		days = 1
+        modifier = {
+            factor = 0.15
+            NOT = { is_year = 1510 }
+        }
+	}
+	
+	immediate = {
+		set_event_flag = { event = nie9 }
+	}
+	
+	option = {
+		name = "new_institution_events.9.a"
+		custom_tooltip = "literacy_spread_tooltip"
+		set_country_flag = literacy_religious_literature
+		add_country_modifier = {
+			name = "literacy_religious_literature"
+			duration = 10950
+		}
+		remove_piety_effect = { amount = 0.05 }
+		add_legitimacy_equivalent = { amount = -15 }
+        ai_chance ={
+            factor = 10
+        }
+	}
+	option = {
+		name = "new_institution_events.9.b"
+		add_piety_effect = { amount = 0.05 }
+		add_prestige = 5
+	}
+}
+
+# Pamphlets
+country_event = {
+	id = new_institution_events.10
+	title = "new_institution_events.10.t"
+	desc = "new_institution_events.10.d"
+	picture = REFORM_eventPicture
+	is_triggered_only = yes #on_bi_yearly_pulse_3
+
+	trigger = {
+		fire_once_for_country = { event = nie10 }
+        OR = {
+			religion = tengri_pagan_reformed
+			religion_group = eastern
+		}
+		is_institution_enabled = renaissance
+        NOT = { has_institution = literacy }
+	}
+	
+	mean_time_to_happen = {
+		days = 1
+        modifier = {
+            factor = 0.15
+            NOT = { is_year = 1510 }
+        }
+	}
+	
+	immediate = {
+		set_event_flag = { event = nie10 }
+	}
+	
+	option = {
+		name = "new_institution_events.10.a"
+		custom_tooltip = "literacy_spread_tooltip"
+		set_country_flag = literacy_pamphlets
+		add_country_modifier = {
+			name = "literacy_pamphlets"
+			duration = 9125
+		}
+		add_years_of_income = -0.3
+		add_adm_power = -30
+		add_legitimacy_equivalent = { amount = 10 }
+        ai_chance ={
+            factor = 10
+        }
+	}
+	option = {
+		name = "new_institution_events.10.b"
+		add_prestige = -5
+	}
+}
+
+# Novels
+country_event = {
+	id = new_institution_events.11
+	title = "new_institution_events.11.t"
+	desc = "new_institution_events.11.d"
+	picture = BIG_BOOK_eventPicture
+	is_triggered_only = yes #on_bi_yearly_pulse_3
+
+	trigger = {
+		fire_once_for_country = { event = nie11 }
+        OR = {
+			religion_group = dharmic
+			religion = zoroastrian
+		}
+		is_institution_enabled = renaissance
+        NOT = { has_institution = literacy }
+	}
+	
+	mean_time_to_happen = {
+		days = 1
+        modifier = {
+            factor = 0.15
+            NOT = { is_year = 1510 }
+        }
+	}
+	
+	immediate = {
+		set_event_flag = { event = nie11 }
+	}
+	
+	option = {
+		name = "new_institution_events.11.a"
+		custom_tooltip = "literacy_spread_tooltip"
+		set_country_flag = literacy_novels
+		add_country_modifier = {
+			name = "literacy_novels"
+			duration = 18250
+		}
+		add_prestige = 5
+		add_adm_power = -50
+        ai_chance ={
+            factor = 10
+        }
+	}
+	option = {
+		name = "new_institution_events.11.b"
+		add_prestige = -5
+	}
+}
+
+# Spread of writing
+country_event = {
+	id = new_institution_events.12
+	title = "new_institution_events.12.t"
+	desc = "new_institution_events.12.d"
+	picture = RELIGION_eventPicture
+	is_triggered_only = yes #on_bi_yearly_pulse_3
+
+	trigger = {
+		fire_once_for_country = { event = nie12 }
+        religion_group = pagan
+		is_institution_enabled = renaissance
+        NOT = { has_institution = literacy }
+	}
+	
+	mean_time_to_happen = {
+		days = 1
+        modifier = {
+            factor = 0.15
+            NOT = { is_year = 1510 }
+        }
+	}
+	
+	immediate = {
+		set_event_flag = { event = nie12 }
+	}
+	
+	option = {
+		name = "new_institution_events.12.a"
+		custom_tooltip = "literacy_spread_tooltip"
+		set_country_flag = literacy_writing
+		add_country_modifier = {
+			name = "literacy_writing"
+			duration = 14600
+		}
+		add_adm_power = 50
+		add_prestige = -10
+		add_years_of_income = -0.2
+		add_legitimacy_equivalent = { amount = 10 }
+        ai_chance ={
+            factor = 10
+        }
+	}
+	option = {
+		name = "new_institution_events.12.b"
+		add_prestige = 10
+	}
+}
+
+
+# The South German Organ Tradition (was cultural_event.11)
+country_event = {
+	id = new_institution_events.13
+	title = "new_institution_events.13.t"
+	desc = "new_institution_events.13.d"
+	picture = CULTURE_eventPicture
+	is_triggered_only = yes #on_bi_yearly_pulse_3
+
+	trigger = {
+		fire_once_for_country = { event = nie13 }
+		is_institution_enabled = literacy
+		NOT = { has_institution = literacy }
+		capital_scope = { continent = europe }
+	}
+	
+	mean_time_to_happen = {
+		days = 1
+        modifier = {
+            factor = 0.15
+            NOT = { is_year = 1510 }
+        }
+	}
+	
+	immediate = {
+		set_event_flag = { event = nie13 }
+	}
+	
+	option = {
+		name = "new_institution_events.13.a"
+		add_country_modifier = {
+			name = "south_german_organ_tradition"
+			duration = 10950
+		}
+		random_owned_area = {
+			limit = { NOT = { literacy = 100 } }
+			add_institution_embracement = {
+				which = literacy
+				value = 100
+			}
+		}
+		add_adm_power = -30
+		add_years_of_income = -0.2
+	}
+	option = {
+		name = "new_institution_events.13.b"
+		add_prestige = -5
+	}
+}
+
+# Support Baroque Music (was cultural_event.12)
+country_event = {
+	id = new_institution_events.14
+	title = "new_institution_events.14.t"
+	desc = "new_institution_events.14.d"
+	picture = CULTURE_eventPicture
+	is_triggered_only = yes #on_bi_yearly_pulse_3
+
+	trigger = {
+		fire_once_for_country = { event = nie14 }
+		is_institution_enabled = literacy
+		NOT = { has_institution = literacy }
+	}
+	
+	mean_time_to_happen = {
+		days = 1
+        modifier = {
+            factor = 0.15
+            NOT = { is_year = 1510 }
+        }
+	}
+	
+	immediate = {
+		set_event_flag = { event = nie14 }
+	}
+	
+	option = {
+		name = "new_institution_events.14.a"
+		add_country_modifier = {
+			name = the_sound_of_music
+			duration = 7300
+		}
+		random_owned_area = {
+			limit = { NOT = { literacy = 100 } }
+			add_institution_embracement = {
+				which = literacy
+				value = 100
+			}
+		}
+		add_adm_power = -10
+		add_years_of_income = -0.1
+	}
+	option = {
+		name = "new_institution_events.14.b"
+		add_prestige = -5
+	}
+}
+
+#Mirrors for Princes (was old_institution_events.12)
+country_event = {
+	id = new_institution_events.32
+	title = "new_institution_events.32.t"
+	desc = "new_institution_events.32.d"
+	picture = BIG_BOOK_eventPicture
+	goto = capital
+	is_triggered_only = yes
+
+	trigger = {
+		fire_once_for_country = { event = nie32 }
+		is_institution_enabled = literacy
+		NOT = { has_institution = literacy }
+		has_heir = yes
+		heir_age = 6
+		any_known_country = { has_institution = literacy }
+		NOT = {
+			capital_scope = {
+				literacy = 100
+			}
+		}
+	}
+	
+	immediate = {
+		hidden_effect = {
+			set_event_flag = { event = nie32 }
+			capital_scope = {
+				save_event_target_as = capital
+			}
+		}
+	}
+
+	mean_time_to_happen = { days = 1 }
+	
+	option = {
+		name = "new_institution_events.32.a" #Let us foster a wise Prince.
+		trigger = { has_female_heir = no }
+		ai_chance = {
+			factor = 10
+		}
+		add_adm_power = -50
+		capital_scope = {
+			add_institution_embracement = {
+				which = literacy
+				value = 100
+			}
+		}
+	}
+	option = {
+		name = "new_institution_events.32.b" #Let us foster a wise Princess.
+		trigger = { has_female_heir = yes }
+		ai_chance = {
+			factor = 10
+		}
+		add_adm_power = -50
+		capital_scope = {
+			add_institution_embracement = {
+				which = literacy
+				value = 100
+			}
+		}
+	}
+	option = {
+		name = "new_institution_events.32.c"
+		add_prestige = 5
+	}
+}
+
+#############################
+#	PRINTING PRESS
+#############################
+
+# Advisor's works (was old_institution_events.8)
+country_event = {
+	id = new_institution_events.15
+	title = "new_institution_events.15.t"
+	desc = "new_institution_events.15.t"
+	picture = INVENTION_eventPicture
+	is_triggered_only = yes #on_bi_yearly_pulse_3
+
+	trigger = {
+		fire_once_for_country = { event = nie15 }
+		is_year = 1510
+		is_institution_enabled = printing_press
+		NOT = { has_institution = printing_press }
+		employed_advisor = { category = ADM }
+	}
+
+	immediate = {
+		set_event_flag = { event = nie15 }
+	}
+
+	mean_time_to_happen = {
+		days = 1
+        modifier = {
+            factor = 0.15
+            NOT = { is_year = 1550 }
+        }
+	}
+
+	option = {
+		name = "new_institution_events.15.a" # Patronize his works
+		random_owned_area = {
+			limit = {
+				NOT = { printing_press = 100 }
+			}
+			add_institution_embracement = {
+				which = printing_press
+				value = 100
+			}
+		}
+		add_country_modifier = {
+			name = heeded_theologian_advice
+			duration = 7300
+		}
+		add_years_of_income = -0.3
+		add_adm_power = -50
+		ai_chance = {
+			factor = 10
+		}
+	}
+	option = {
+		name = "new_institution_events.15.b" # Rubbish
+		remove_advisor_by_category = ADM
+		add_prestige = 10
+	}
+}
+
+# Newspapers
+country_event = {
+	id = new_institution_events.16
+	title = "new_institution_events.16.t"
+	desc = "new_institution_events.16.d"
+	picture = REFORM_eventPicture
+	is_triggered_only = yes #on_bi_yearly_pulse_3
+
+	trigger = {
+		fire_once_for_country = { event = nie16 }
+		is_year = 1510
+		is_institution_enabled = printing_press
+		NOT = { has_institution = printing_press }
+		employed_advisor = { category = ADM }
+	}
+
+	mean_time_to_happen = {
+		days = 1
+        modifier = {
+            factor = 0.15
+            NOT = { is_year = 1550 }
+        }
+	}
+
+	immediate = {
+		set_event_flag = { event = nie16 }
+	}
+
+	option = {
+		name = "new_institition_events.16.a"
+		add_country_modifier = {
+			name = printing_press_newspapers
+			duration = 10950
+		}
+		random_owned_area = {
+			limit = {
+				NOT = { printing_press = 100 }
+			}
+			add_institution_embracement = {
+				which = printing_press
+				value = 100
+			}
+		}
+		add_dip_power = -50
+		add_years_of_income = -0.25
+		add_prestige = 5
+		ai_chance = {
+			factor = 10
+		}
+	}
+	option = {
+		name = "new_institution_events.16.b"
+		add_prestige = -5
+	}
+}
+
+# Spreading heresy?
+country_event = {
+	id = new_institution_events.17 # catholics
+	title = "new_institution_events.17.t"
+	desc = "new_institution_events.17.d"
+	picture = PROTESTANT_GREAT_REFORMER_eventPicture
+	is_triggered_only = yes #on_bi_yearly_pulse_3
+
+	trigger = {
+		fire_once_for_country = { event = nie17 }
+		is_year = 1510
+		religion = catholic
+		is_religion_enabled = protestant
+		NOT = { technology_group = nomad_group }
+		NOT = { capital_scope = { superregion = china_superregion } }
+		NOT = { has_institution = printing_press }
+	}
+
+	mean_time_to_happen = {
+		days = 1
+        modifier = {
+            factor = 0.15
+            NOT = { is_year = 1550 }
+        }
+	}
+
+	immediate = {
+		set_event_flag = { event = nie17 }
+	}
+
+	option = {
+		name = "new_institition_events.17.a"
+		custom_tooltip = "printing_press_spread_tooltip"
+		set_country_flag = printing_press_scripture_translated
+		add_country_modifier = {
+			name = printing_press_scripture_translated
+			duration = 7300
+		}
+		add_dip_power = -30
+		add_adm_power = -30
+		add_years_of_income = -0.3
+		ai_chance = {
+			factor = 10
+		}
+	}
+	option = {
+		name = "new_institution_events.17.b"
+		add_country_modifier = {
+			name = printing_press_censorship
+			duration = 7300
+		}
+	}
+}
+
+#Religious pamphlets
+country_event = {
+	id = new_institution_events.18 # reformed christians
+	title = "new_institution_events.18.t"
+	desc = "new_institution_events.18.d"
+	picture = RELIGION_eventPicture
+	is_triggered_only = yes #on_bi_yearly_pulse_3
+
+	trigger = {
+		fire_once_for_country = { event = nie18 }
+		is_year = 1510
+		OR = {
+			religion = protestant
+			religion = anglican
+			religion = hussite
+			religion = reformed
+		}
+		NOT = { technology_group = nomad_group }
+		NOT = { capital_scope = { superregion = china_superregion } }
+		NOT = { has_institution = printing_press }
+	}
+
+	mean_time_to_happen = {
+		days = 1
+        modifier = {
+            factor = 0.15
+            NOT = { is_year = 1550 }
+        }
+	}
+
+	immediate = {
+		set_event_flag = { event = nie18 }
+	}
+
+	option = {
+		name = "new_institition_events.18.a"
+		custom_tooltip = "printing_press_spread_tooltip"
+		set_country_flag = printing_press_religious_pamphlets
+		add_country_modifier = {
+			name = printing_press_religious_pamphlets
+			duration = 10950
+		}
+		add_prestige = 5
+		add_adm_power = -40
+		add_years_of_income = -0.2
+		ai_chance = {
+			factor = 10
+		}
+	}
+	option = {
+		name = "new_institution_events.18.b"
+		add_prestige = -5
+	}
+}
+
+#Ancient Manuscripts
+country_event = {
+	id = new_institution_events.19 # trad christians
+	title = "new_institution_events.19.t"
+	desc = "new_institution_events.19.d"
+	religion = BIG_BOOK_eventPicture
+	is_triggered_only = yes #on_bi_yearly_pulse_3
+
+	trigger = {
+		fire_once_for_country = { event = nie19 }
+		is_year = 1510
+		OR = {
+			religion = orthodox
+			religion = coptic
+			religion = jewish
+		}
+		NOT = { technology_group = nomad_group }
+		NOT = { capital_scope = { superregion = china_superregion } }
+		NOT = { has_institution = printing_press }
+		prestige = 50
+	}
+
+	mean_time_to_happen = {
+		days = 1
+        modifier = {
+            factor = 0.15
+            NOT = { is_year = 1550 }
+        }
+	}
+
+	immediate = {
+		set_event_flag = { event = nie19 }
+	}
+
+	option = {
+		name = "new_institition_events.19.a"
+		custom_tooltip = "printing_press_spread_tooltip"
+		set_country_flag = printing_press_ancient_manuscripts
+		add_country_modifier = {
+			name = printing_press_ancient_manuscripts
+			duration = 12775
+		}
+		add_legitimacy_equivalent = { amount = -10 }
+		add_adm_power = -50
+		add_years_of_income = -0.2
+		add_prestige = -5
+		ai_chance = {
+			factor = 10
+		}
+	}
+	option = {
+		name = "new_institution_events.19.b"
+		add_legitimacy_equivalent = { amount = 10 }
+		add_prestige = 5
+		add_country_modifier = {
+			name = printing_press_sacred_manuscripts
+			duration = 12775
+		}
+	}
+}
+
+#parchment revolution
+country_event = {
+	id = new_institution_events.20 # muslims
+	title = "new_institution_events.20.t"
+	desc = "new_institution_events.20.d"
+	picture = PRINTING_PRESS_eventPicture
+	is_triggered_only = yes #on_bi_yearly_pulse_3
+
+	trigger = {
+		fire_once_for_country = { event = nie20 }
+		is_year = 1510
+		religion_group = muslim
+		NOT = { technology_group = nomad_group }
+		NOT = { capital_scope = { superregion = china_superregion } }
+		NOT = { has_institution = printing_press }
+		paper = 1
+	}
+
+	mean_time_to_happen = {
+		days = 1
+        modifier = {
+            factor = 0.15
+            NOT = { is_year = 1550 }
+        }
+	}
+
+	immediate = {
+		set_event_flag = { event = nie20 }
+	}
+
+	option = {
+		name = "new_institition_events.20.a"
+		custom_tooltip = "printing_press_spread_tooltip"
+		set_country_flag = printing_press_parchment_revolution
+		add_country_modifier = {
+			name = printing_press_parchment_revolution
+			duration = 18250
+		}
+		add_adm_power = -50
+		add_years_of_income = -0.3
+		ai_chance = {
+			factor = 10
+		}
+	}
+	option = {
+		name = "new_institution_events.20.b"
+		add_prestige = -5
+	}
+}
+
+#Growing paper industry
+country_event = {
+	id = new_institution_events.21 # china
+	title = "new_institution_events.21.t"
+	desc = "new_institution_events.21.d"
+	picture = PRINTING_PRESS_eventPicture
+	is_triggered_only = yes #on_bi_yearly_pulse_3
+
+	trigger = {
+		fire_once_for_country = { event = nie21 }
+		is_year = 1510
+		capital_scope = { superregion = china_superregion }
+		NOT = { technology_group = nomad_group }
+		NOT = { has_institution = printing_press }
+		legitimacy_equivalent = 90
+	}
+
+	mean_time_to_happen = {
+		days = 1
+        modifier = {
+            factor = 0.15
+            NOT = { is_year = 1550 }
+        }
+	}
+
+	immediate = {
+		set_event_flag = { event = nie21 }
+	}
+
+	option = {
+		name = "new_institition_events.21.a"
+		custom_tooltip = "printing_press_spread_tooltip"
+		set_country_flag = printing_press_chinese_paper
+		add_country_modifier = {
+			name = printing_press_chinese_paper
+			duration = 10950
+		}
+		add_prestige = 5
+		add_adm_power = -40
+		add_years_of_income = -0.3
+		add_mandate = 5
+		add_legitimacy_equivalent = { amount = 10 }
+		ai_chance = {
+			factor = 10
+		}
+	}
+	option = {
+		name = "new_institution_events.21.b"
+		add_prestige = -5
+	}
+}
+
+# State propaganda
+country_event = {
+	id = new_institution_events.22 # japan
+	title = "new_institution_events.22.t"
+	desc = "new_institution_events.22.d"
+	picture = NEO_CONFUCIANISM_INCIDENT_eventPicture
+	is_triggered_only = yes #on_bi_yearly_pulse_3
+
+	trigger = {
+		fire_once_for_country = { event = nie22 }
+		is_year = 1510
+		religion = shinto
+		NOT = { capital_scope = { superregion = china_superregion } }
+		NOT = { technology_group = nomad_group }
+		NOT = { has_institution = printing_press }
+		employed_advisor = { category = DIP }
+	}
+
+	mean_time_to_happen = {
+		days = 1
+        modifier = {
+            factor = 0.15
+            NOT = { is_year = 1550 }
+        }
+	}
+
+	immediate = {
+		set_event_flag = { event = nie22 }
+	}
+
+	option = {
+		name = "new_institition_events.22.a"
+		custom_tooltip = "printing_press_spread_tooltip"
+		add_country_modifier = {
+			name = printing_press_shogun_propaganda
+			duration = 9125
+		}
+		add_prestige = 5
+		add_dip_power = -30
+		add_years_of_income = -0.2
+		add_legitimacy_equivalent = { amount = 10 }
+		ai_chance = {
+			factor = 10
+		}
+	}
+	option = {
+		name = "new_institution_events.22.b"
+		add_prestige = -5
+	}
+}
+
+#Spreading Technology
+country_event = {
+	id = new_institution_events.23 # easterners (rof asia)
+	title = "new_institution_events.23.t"
+	desc = "new_institution_events.23.d"
+	picture = INVENTION_eventPicture
+	is_triggered_only = yes #on_bi_yearly_pulse_3
+
+	trigger = {
+		fire_once_for_country = { event = nie23 }
+		is_year = 1510
+		religion_group = eastern
+		NOT = { religion = shinto }
+		NOT = { capital_scope = { superregion = china_superregion } }
+		NOT = { technology_group = nomad_group }
+		NOT = { has_institution = printing_press }
+		OR = {
+			is_ahead_of_time = { category = ADM }
+			any_neighbor_country = {
+				is_ahead_of_time = { category = ADM }
+			}
+		}
+	}
+
+	mean_time_to_happen = {
+		days = 1
+        modifier = {
+            factor = 0.15
+            NOT = { is_year = 1550 }
+        }
+	}
+
+	immediate = {
+		set_event_flag = { event = nie23 }
+	}
+
+	option = {
+		name = "new_institition_events.23.a"
+		custom_tooltip = "printing_press_spread_tooltip"
+		set_country_flag = printing_press_SEA
+		add_country_modifier = {
+			name = printing_press_SEA
+			duration = 14600
+		}
+		add_adm_power = -50
+		add_years_of_income = -0.3
+		ai_chance = {
+			factor = 10
+		}
+	}
+	option = {
+		name = "new_institution_events.23.b"
+		add_prestige = -5
+	}
+}
+
+#Sedentary knowledge spreads
+country_event = {
+	id = new_institution_events.24 # tengri/hordes
+	title = "new_institution_events.24.t"
+	desc = "new_institution_events.24.d"
+	picture = INVENTION_eventPicture
+	is_triggered_only = yes #on_bi_yearly_pulse_3
+
+	trigger = {
+		fire_once_for_country = { event = nie24 }
+		is_year = 1510
+		OR = {
+			technology_group = nomad_group
+			AND = {
+				religion = tengri_pagan_reformed
+				NOT = { capital_scope = { superregion = china_superregion } }
+			}
+		}
+		NOT = { has_institution = printing_press }
+		paper = 1
+	}
+
+	mean_time_to_happen = {
+		days = 1
+        modifier = {
+            factor = 0.15
+            NOT = { is_year = 1550 }
+        }
+	}
+
+	immediate = {
+		set_event_flag = { event = nie24 }
+	}
+
+	option = {
+		name = "new_institition_events.24.a"
+		custom_tooltip = "printing_press_spread_tooltip"
+		set_country_flag = printing_press_sedentary_knowledge
+		add_country_modifier = {
+			name = printing_press_sedentary_knowledge
+			duration = 7300
+		}
+		add_adm_power = 30
+		add_years_of_income = -0.2
+		add_prestige = 5
+		ai_chance = {
+			factor = 10
+		}
+	}
+	option = {
+		name = "new_institution_events.24.b"
+		add_prestige = -5
+	}
+}
+
+# Sacred Texts Translated
+country_event = {
+	id = new_institution_events.25 # india
+	title = "new_institution_events.25.t"
+	desc = "new_institution_events.25.d"
+	picture = BIG_BOOK_eventPicture
+	is_triggered_only = yes #on_bi_yearly_pulse_3
+
+	trigger = {
+		fire_once_for_country = { event = nie25 }
+		is_year = 1510
+		OR = {
+			religion_group = dharmic
+			religion = zoroastrian
+		}
+		NOT = { technology_group = nomad_group }
+		NOT = { capital_scope = { superregion = china_superregion } }
+		NOT = { has_institution = printing_press }
+	}
+
+	mean_time_to_happen = {
+		days = 1
+        modifier = {
+            factor = 0.15
+            NOT = { is_year = 1550 }
+        }
+	}
+
+	immediate = {
+		set_event_flag = { event = nie25 }
+	}
+
+	option = {
+		name = "new_institition_events.25.a"
+		custom_tooltip = "printing_press_spread_tooltip"
+		set_country_flag = printing_press_sacred_hindu_texts
+		add_country_modifier = {
+			name = printing_press_sacred_hindu_texts
+			duration = 14600
+		}
+		add_years_of_income = -0.3
+		add_prestige = 10
+		ai_chance = {
+			factor = 10
+		}
+	}
+	option = {
+		name = "new_institution_events.25.b"
+		add_prestige = -5
+		add_years_of_income = 0.2
+	}
+}
+
+# Written traditions
+country_event = {
+	id = new_institution_events.26
+	title = "new_institution_events.26.t"
+	desc = "new_institution_events.26.d"
+	picture = RELIGION_eventPicture
+	is_triggered_only = yes #on_bi_yearly_pulse_3
+
+	trigger = {
+		fire_once_for_country = { event = nie26 }
+		is_year = 1510
+		religion_group = pagan
+		NOT = { technology_group = nomad_group }
+		NOT = { capital_scope = { superregion = china_superregion } }
+		NOT = { has_institution = printing_press }
+	}
+
+	mean_time_to_happen = {
+		days = 1
+        modifier = {
+            factor = 0.15
+            NOT = { is_year = 1550 }
+        }
+	}
+
+	immediate = {
+		set_event_flag = { event = nie26 }
+	}
+
+	option = {
+		name = "new_institition_events.26.a"
+		custom_tooltip = "printing_press_spread_tooltip"
+		set_country_flag = printing_press_written_traditions
+		add_country_modifier = {
+			name = printing_press_written_traditions
+			duration = 14600
+		}
+		add_years_of_income = -0.3
+		add_adm_power = -50
+		add_prestige = 5
+		add_legitimacy_equivalent = { amount = -10 }
+		ai_chance = {
+			factor = 10
+		}
+	}
+	option = {
+		name = "new_institution_events.26.b"
+		add_prestige = -5
+		add_legitimacy_equivalent = { amount = 10 }
+	}
+}
+#######################
+# Global trade events
+#######################
+
+country_event = {
+	id = new_institution_events.27 # Increasing demand for textiles
+	title = "new_institution_events.27.t"
+	desc = "new_institution_events.27.d"
+	picture = TRADEGOODS_eventPicture
+	is_triggered_only = yes
+
+	trigger = {
+		fire_once_for_country = { event = nie27 }
+		is_year = 1550
+		NOT = { has_institution = global_trade }
+		OR = {
+			estate_influence = {
+				estate = estate_church
+				influence = 40
+			}
+			estate_influence = {
+				estate = estate_brahmins
+				influence = 40
+			}
+		}
+		OR = {
+			silk = 3
+			dyes = 3
+			cloth = 3
+			carpet = 3
+		}
+	}
+
+	mean_time_to_happen = {
+		days = 1
+		modifier = {
+			factor = 0.15
+			NOT = { is_year = 1590 }
+		}
+	}
+
+	immediate = {
+		set_event_flag = { event = nie27 }
+	}
+
+	option = {
+		name = "new_institution_events.27.a" # A Good Initiative
+		custom_tooltip = "printing_press_spread_tooltip"
+		set_country_flag = reacted_to_textiles
+		add_country_modifier = {
+			name = increased_demand_for_textiles
+			duration = 10950
+		}
+		custom_tooltip = "halfed_production_in_textile_provinces_tooltip"
+		hidden_effect = {
+			every_owned_province = {
+				limit = {
+					OR = {
+						trade_goods = carpet
+						trade_goods = silk
+						trade_goods = dyes
+						trade_goods = cloth
+					}
+				}
+				add_province_modifier = {
+					name = prov_increased_demand_for_textiles
+					duration = 10950
+				}
+			}
+		}
+		ai_chance = {
+			factor = 10
+		}
+	}
+	option = {
+		name = "new_institution_events.27.b" # What folly!
+		add_country_modifier = {
+			name = textile_demands_unmet
+			duration = 10950
+		}
+	}
+}
+#Colonial Charter (was old_institution_events.20)
+country_event = {
+	id = institution_events.20
+	title = "institution_events.20.t"
+
+	trigger = {
+		always = no
+	}
+	
+	picture = "none"
+	desc = "none"
+	
+	option = {
+	}
+}
+
+#New World Crops
+#Allows for slow spread to non colonizers and ROTW-ers.
+country_event = {
+	id = institution_events.21
+	title = institution_events.21.t
+
+	picture = "none"
+	desc = "none"
+	trigger = {
+		always = no
+	}
+	
+	option = {
+		name = institution_events.21.a #What a remarkable Development
+	}
+}
+
+#Slave Empires
+country_event = {
+	id = institution_events.22
+	title = institution_events.22.t
+	desc = institution_events.22.d
+	
+	picture = {
+		trigger = { NOT = { has_dlc = "Rights of Man" } }
+		picture = CORRUPTION_eventPicture
+	}
+	picture = {
+		trigger = { has_dlc = "Rights of Man" }
+		picture = GLOBAL_TRADE_eventPicture
+	}
+	goto = slaver_capital
+	
+	trigger = {
+		OR = {
+			current_age = age_of_reformation
+			current_age = age_of_absolutism
+		}
+		NOT = { has_country_modifier = slave_empire }
+		num_of_cities = 4
+		any_neighbor_country = {
+			has_institution = feudalism
+			NOT = { war_with = ROOT }
+			NOT = { is_rival = ROOT }
+			NOT = { is_enemy = ROOT }
+			provinces_on_capital_continent_of = ROOT
+			ROOT = {
+				NOT = { provinces_on_capital_continent_of = PREV }
+			}
+			NOT = { any_owned_province = { has_province_modifier = slave_entrepot } }
+			NOT = { has_country_modifier = the_abolish_slavery_act }
+			NOT = { has_reform = war_against_the_world_doctrine_reform }
+		}
+		any_owned_province = {
+			trade_goods = slaves
+			is_colony = no
+		}
+	}
+	
+	immediate = {
+		hidden_effect = {
+			capital_scope = {
+				save_event_target_as = non_european_country_capital
+			}
+			random_neighbor_country = {
+				limit = {
+					has_institution = feudalism
+					NOT = { war_with = ROOT }
+					NOT = { is_rival = ROOT }
+					NOT = { is_enemy = ROOT }
+					provinces_on_capital_continent_of = ROOT
+					ROOT = {
+						NOT = { provinces_on_capital_continent_of = PREV }
+					}
+					NOT = { any_owned_province = { has_province_modifier = slave_entrepot } }
+					NOT = { has_country_modifier = the_abolish_slavery_act }
+					NOT = { has_reform = war_against_the_world_doctrine_reform }
+				}
+				save_event_target_as = slaver_country
+				capital_scope = {
+					save_event_target_as = slaver_capital
+				}
+			}
+			random_owned_province = {
+				limit = {
+					any_neighbor_province = {
+						owned_by = event_target:slaver_country
+					}
+				}
+				save_event_target_as = slaver_province
+			}
+		}
+	}
+	
+	mean_time_to_happen = {
+		months = 250
+		modifier = {
+			factor = 0.8
+			num_of_cities = 10
+		}
+	}
+
+	option = {
+		name = institution_events.22.a #
+		ai_chance = {
+			factor = 90
+		}
+		goto = non_european_country_capital
+		event_target:slaver_country = {
+			country_event = { id = institution_events.23 }
+		}
+		custom_tooltip = institution_events.22.a.tt
+		if = {
+			limit = {
+				NOT = { has_reform = war_against_the_world_doctrine_reform }
+			}
+			tooltip = {
+				capital_scope = {
+					if = {
+						limit = { NOT = { trade_goods = slaves } }
+						change_trade_goods = slaves
+					}
+					add_province_modifier = {
+						name = "major_slave_market"
+						duration = -1
+					}
+				}
+				add_country_modifier = {
+					name = "slave_empire"
+					duration = -1
+				}
+			}
+		}
+	}
+	option = {
+		name = institution_events.22.b #
+		ai_chance = {
+			factor = 10
+		}
+		goto = slaver_province
+		event_target:slaver_province = {
+			add_province_modifier = {
+				name = "local_slave_chief"
+				duration = 5475
+			}
+			add_claim = event_target:slaver_country
+		}
+	}
+}
+
+#The Slave Trade
+country_event = {
+	id = institution_events.23
+	title = institution_events.23.t
+	desc = institution_events.23.d
+	picture = {
+		trigger = { NOT = { has_dlc = "Rights of Man" } }
+		picture = CORRUPTION_eventPicture
+	}
+	picture = {
+		trigger = { has_dlc = "Rights of Man" }
+		picture = GLOBAL_TRADE_eventPicture
+	}
+	goto = non_european_country_capital
+
+	is_triggered_only = yes
+	
+	immediate = {
+		hidden_effect = {
+			random_owned_province = {
+				limit = {
+					any_neighbor_province = {
+						owned_by = FROM
+					}
+				}
+				save_event_target_as = slaving_point
+			}
+		}
+	}
+	
+	option = {
+		name = institution_events.23.a #
+		ai_chance = {
+			factor = 90
+		}
+		goto = slaving_point
+		if = {
+			limit = {
+				NOT = { has_reform = war_against_the_world_doctrine_reform }
+			}
+			FROM = {
+				country_event = { id = institution_events.24 }
+			}
+			event_target:slaving_point = {
+				add_base_production = 2
+				add_province_modifier = {
+					name = "slave_entrepot"
+					duration = -1
+				}
+				if = {
+					limit = { NOT = { trade_goods = slaves } }
+					change_trade_goods = slaves
+				}
+			}
+		}
+	}
+	option = {
+		name = institution_events.23.b #
+		ai_chance = {
+			factor = 10
+		}
+		add_prestige = 10
+		FROM = {
+			country_event = { id = institution_events.25 }
+		}
+	}
+}
+
+#The Royal Monopoly
+country_event = {
+	id = institution_events.24
+	title = institution_events.24.t
+	desc = institution_events.24.d
+	picture = {
+		trigger = { NOT = { has_dlc = "Rights of Man" } }
+		picture = CORRUPTION_eventPicture
+	}
+	picture = {
+		trigger = { has_dlc = "Rights of Man" }
+		picture = GLOBAL_TRADE_eventPicture
+	}
+	goto = capital
+
+	immediate = {
+		hidden_effect = {
+			capital_scope = {
+				save_event_target_as = capital
+			}
+		}
+	}
+
+	is_triggered_only = yes
+	
+	option = {
+		name = institution_events.24.a #
+		if = {			
+			limit = {
+				NOT = { has_reform = war_against_the_world_doctrine_reform }
+			}
+			capital_scope = {
+				if = {
+					limit = { NOT = { trade_goods = slaves } }
+					change_trade_goods = slaves
+				}
+				add_province_modifier = {
+					name = "major_slave_market"
+					duration = -1
+				}
+			}
+			add_country_modifier = {
+				name = "slave_empire"
+				duration = -1
+			}
+		}
+	}
+}
+
+#Offer Refused
+country_event = {
+	id = institution_events.25
+	title = institution_events.25.t
+	desc = institution_events.25.d
+	picture = {
+		trigger = { NOT = { has_dlc = "Rights of Man" } }
+		picture = CORRUPTION_eventPicture
+	}
+	picture = {
+		trigger = { has_dlc = "Rights of Man" }
+		picture = GLOBAL_TRADE_eventPicture
+	}
+	goto = slaver_province
+
+	is_triggered_only = yes
+	
+	immediate = {
+		hidden_effect = {
+			random_owned_province = {
+				limit = {
+					any_neighbor_province = {
+						owned_by = FROM
+					}
+				}
+				save_event_target_as = slaver_province
+			}
+		}
+	}
+	
+	option = {
+		name = institution_events.25.a #Crush them!
+		event_target:slaver_province = {
+			start_revolt = {
+				size = 2
+			}
+		}
+	}
+	option = {
+		name = institution_events.25.b #We must bide our time.
+		event_target:slaver_province = {
+			add_province_modifier = {
+				name = "local_slave_chief"
+				duration = 5475
+			}
+			add_claim = FROM
+		}
+	}
+}
+
+#Rapid Loss of Authority
+province_event = {
+	id = institution_events.26
+	title = institution_events.26.t
+	desc = institution_events.26.d
+	
+	picture = {
+		trigger = { NOT = { has_dlc = "Rights of Man" } }
+		picture = BORDER_TENSION_eventPicture
+	}
+	picture = {
+		trigger = { has_dlc = "Rights of Man" }
+		picture = FEUDALISM_eventPicture
+	}
+	goto = root
+	
+	trigger = {
+		is_capital = no
+		base_manpower = 2
+		owner = { has_country_modifier = slave_empire }
+		NOT = { has_province_flag = had_slave_raids }
+		any_neighbor_province = {
+			NOT = { owned_by = ROOT }
+		}
+	}
+	
+	is_mtth_scaled_to_size = 1
+	
+	mean_time_to_happen = {
+		months = 260
+		modifier = {
+			factor = 0.5
+			owner = {			
+				is_at_war = no
+			}
+		}
+	}
+	
+	option = {
+		name = institution_events.26.a #
+		add_base_manpower = -1
+		add_local_autonomy = 25
+		set_province_flag = had_slave_raids
+	}
+	option = {
+		name = institution_events.26.b #
+		start_revolt = {
+			size = 1
+		}
+		set_province_flag = had_slave_raids
+	}
+}
+
+#Printing Press
+#Circulation of Hostile Publications
+country_event = {
+	id = institution_events.30
+	title = institution_events.30.t
+	desc = institution_events.30.d
+	
+	picture = {
+		trigger = { NOT = { has_dlc = "Rights of Man" } }
+		picture = BANKRUPTCY_eventPicture
+	}
+	picture = {
+		trigger = { has_dlc = "Rights of Man" }
+		picture = PRINTING_PRESS_eventPicture
+	}
+	
+	trigger = {
+		is_institution_enabled = printing_press
+		NOT = { has_institution = printing_press }
+		any_owned_province = {
+			printing_press = 100
+			any_neighbor_province = {
+				owned_by = ROOT
+				area = PREV
+				NOT = { printing_press = 100 }
+			}
+		}
+	}
+	goto = institution_province
+
+	mean_time_to_happen = {
+		months = 200
+		modifier = {
+			factor = 0.8
+			current_age = age_of_reformation
+		}
+	}
+	
+	immediate = {
+		hidden_effect = {
+			random_owned_province = {
+				limit = { printing_press = 100 }
+				save_event_target_as = institution_province
+			}
+		}
+	}
+	
+	option = {
+		name = institution_events.30.a #The time for censorship has come!
+		ai_chance = {
+			factor = 90
+		}
+		event_target:institution_province = {
+			area = {
+				limit = {
+					owned_by = ROOT
+					NOT = { printing_press = 100 }
+				}
+				add_institution_embracement = {
+					which = printing_press
+					value = -25
+				}
+				add_province_modifier = {
+					name = "state_censorship"
+					duration = 5475
+				}
+			}
+		}
+	}
+	option = {
+		name = institution_events.30.b #We cannot control the free word...
+		ai_chance = {
+			factor = 10	
+		}
+		event_target:institution_province = {
+			area = {
+				limit = {
+					owned_by = ROOT
+					NOT = { printing_press = 100 }
+				}
+				add_institution_embracement = {
+					which = printing_press
+					value = 50
+				}
+				add_province_modifier = {
+					name = "hostile_publications"
+					duration = 5475
+				}
+			}
+		}
+	}
+}
+
+#Global Trade
+
+#Grand Tour
+country_event = {
+	id = institution_events.50
+	title = institution_events.50.t
+	desc = institution_events.50.d
+	
+	picture = {
+		trigger = { NOT = { has_dlc = "Rights of Man" } }
+		picture = GOOD_WITH_MONARCH_eventPicture
+	}
+	picture = {
+		trigger = { has_dlc = "Rights of Man" }
+		picture = GLOBAL_TRADE_eventPicture
+	}
+
+	is_triggered_only = yes
+	
+	trigger = {
+		is_institution_enabled = global_trade
+		capital_scope = { continent = europe }
+		NOT = { has_institution = global_trade }
+		has_heir = yes
+		NOT = { has_ruler_flag = heir_went_on_grand_tour }
+		heir_age = 14
+		NOT = { heir_age = 30 } #We can be a bit generous here.
+		any_neighbor_country = {
+			has_institution = global_trade
+			religion_group = ROOT
+		}
+		NOT = {
+			capital_scope = {
+				global_trade = 100
+			}
+		}
+	}
+
+	mean_time_to_happen = {
+		days = 1
+	}
+
+	immediate = {
+		hidden_effect = {
+			capital_scope = {
+				save_event_target_as = capital
+			}
+		}
+	}
+	
+	option = {
+		name = institution_events.50.a
+		goto = capital
+		ai_chance = {
+			factor = 0.15
+		}
+		set_ruler_flag = heir_went_on_grand_tour
+		add_years_of_income = -0.25
+		add_dip_power = -75
+		capital_scope = {
+			add_institution_embracement = {
+				which = global_trade
+				value = 50
+			}
+		}
+	}
+	option = {
+		name = institution_events.50.b
+		ai_chance = {
+			factor = 0.75
+		}
+		add_prestige = 5
+	}
+}
+
+#Grand Tour ROTW to Europe version
+country_event = {
+	id = institution_events.51
+	title = institution_events.51.t
+	desc = institution_events.51.d
+	picture = {
+		trigger = { NOT = { has_dlc = "Rights of Man" } }
+		picture = GOOD_WITH_MONARCH_eventPicture
+	}
+	picture = {
+		trigger = { has_dlc = "Rights of Man" }
+		picture = GLOBAL_TRADE_eventPicture
+	}
+
+	is_triggered_only = yes
+	
+	trigger = {
+		is_institution_enabled = global_trade
+		NOT = {
+			capital_scope = { continent = europe }
+		}
+		NOT = { has_institution = global_trade }
+		has_heir = yes
+		NOT = { has_ruler_flag = heir_went_on_grand_tour }
+		heir_age = 14
+		NOT = { heir_age = 30 } #We can be a bit generous here.
+		any_known_country = {
+			has_institution = global_trade
+			capital_scope = { continent = europe }
+			OR = {
+				overlord_of = ROOT
+				alliance_with = ROOT
+			}
+		}
+		NOT = {
+			capital_scope = {
+				global_trade = 100
+			}
+		}
+	}
+
+	goto = institution_country_capital
+
+	mean_time_to_happen = {
+		days = 1
+	}
+
+	immediate = {
+		hidden_effect = {
+			random_known_country = {
+				limit = {
+					has_institution = global_trade
+					capital_scope = { continent = europe }
+					OR = {
+						overlord_of = ROOT
+						alliance_with = ROOT
+					}
+				}
+				save_event_target_as = institution_country
+				capital_scope = {
+					save_event_target_as = institution_country_capital
+				}
+			}
+			capital_scope = {
+				save_event_target_as = capital
+			}
+		}
+	}
+	
+	option = {
+		name = institution_events.51.a
+		goto = capital
+		ai_chance = {
+			factor = 0.25
+		}
+		set_ruler_flag = heir_went_on_grand_tour
+		add_years_of_income = -0.25
+		add_dip_power = -75
+		capital_scope = {
+			add_institution_embracement = {
+				which = global_trade
+				value = 50
+			}
+		}
+		event_target:institution_country = {
+			add_opinion = {
+				who = ROOT
+				modifier = opinion_went_on_grand_tour
+			}
+		}
+	}
+	option = {
+		name = institution_events.51.b
+		ai_chance = {
+			factor = 0.75
+		}
+		add_prestige = 5
+	}
+}
+
+#Factories Overseas
+country_event = {
+	id = institution_events.52
+	title = institution_events.52.t
+	desc = institution_events.52.d
+	picture = {
+		trigger = { NOT = { has_dlc = "Rights of Man" } }
+		picture = MERCHANTS_TALKING_eventPicture
+	}
+	picture = {
+		trigger = { has_dlc = "Rights of Man" }
+		picture = GLOBAL_TRADE_eventPicture
+	}
+	is_triggered_only = yes
+	
+	trigger = {
+		is_institution_enabled = global_trade
+		NOT = { has_institution = global_trade }
+		any_known_country = {
+			has_institution = global_trade
+			OR = {
+				has_country_modifier = india_trade_co
+				has_country_modifier = dutch_india_trade_co
+				has_country_modifier = hab_ostende_company
+				has_country_modifier = portuguese_india_trade_co
+				has_country_modifier = scottish_india_trade_co
+			}
+			NOT = { war_with = ROOT }
+			NOT = { is_rival = ROOT }
+			NOT = { is_enemy = ROOT }
+			provinces_on_capital_continent_of = ROOT
+			ROOT = {
+				NOT = { provinces_on_capital_continent_of = PREV }
+			}
+		}
+		any_owned_province = {
+			has_port = yes
+			province_trade_power = 10
+			NOT = { global_trade = 100 }
+			NOT = { has_province_flag = foreign_factory }
+		}
+	}
+
+	goto = trade_company_province
+	
+	immediate = {
+		hidden_effect = {
+			random_known_country = {
+				limit = {
+					has_institution = global_trade
+					OR = {
+						has_country_modifier = india_trade_co
+						has_country_modifier = dutch_india_trade_co
+						has_country_modifier = hab_ostende_company
+						has_country_modifier = portuguese_india_trade_co
+						has_country_modifier = scottish_india_trade_co
+					}
+					NOT = { war_with = ROOT }
+					NOT = { is_rival = ROOT }
+					NOT = { is_enemy = ROOT }
+					provinces_on_capital_continent_of = ROOT
+					ROOT = {
+						NOT = { provinces_on_capital_continent_of = PREV }
+					}
+				}
+				save_event_target_as = trade_company_country
+			}
+			random_owned_province = {
+				limit = {
+					has_port = yes
+					province_trade_power = 10
+					NOT = { global_trade = 100 }
+					NOT = { has_province_flag = foreign_factory }
+				}
+				save_event_target_as = trade_company_province
+			}
+		}
+	}
+
+	mean_time_to_happen = {
+		days = 1
+	}
+	
+	option = {
+		name = institution_events.52.a
+		add_years_of_income = 0.1
+		add_prestige = -10
+		event_target:trade_company_country = {
+			add_opinion = {
+				who = ROOT
+				modifier = opinion_traders_in_x
+			}
+			country_event = { id = institution_events.53 }
+		}
+		event_target:trade_company_province = {
+			add_province_modifier = {
+				name = "trade_company_factory"
+				duration = -1
+			}
+			owner = { set_country_flag = indian_trade_company_flag }
+			event_target:trade_company_country = {
+				add_claim = PREV
+			}
+			add_institution_embracement = {
+				which = "global_trade"
+				value = 100
+			}
+			set_province_flag = foreign_factory
+			area = {
+				limit = {
+					owned_by = ROOT
+					NOT = { province_id = PREV }
+				}
+				add_institution_embracement = {
+					which = "global_trade"
+					value = 10
+				}
+				set_province_flag = foreign_factory
+			}
+		}
+	}
+	option = {
+		name = institution_events.52.b
+		add_prestige = 10
+		event_target:trade_company_country = {
+			add_opinion = {
+				who = ROOT
+				modifier = opinion_refused_traders_in_x
+			}
+			country_event = { id = institution_events.54 }
+		}
+	}
+}
+
+#Our traders have managed to aquire substantial concessions in X
+country_event = {
+	id = institution_events.53
+	title = institution_events.53.t
+	desc = institution_events.53.d
+	picture = {
+		trigger = { NOT = { has_dlc = "Rights of Man" } }
+		picture = MERCHANTS_TALKING_eventPicture
+	}
+	picture = {
+		trigger = { has_dlc = "Rights of Man" }
+		picture = GLOBAL_TRADE_eventPicture
+	}
+	is_triggered_only = yes
+	goto = trade_company_province
+	
+	option = {
+		name = institution_events.53.a
+		custom_tooltip = institution_events.53.a.tt
+	}
+}
+
+#Country X has expelled our traders!
+country_event = {
+	id = institution_events.54
+	title = institution_events.54.t
+	desc = institution_events.54.d
+	picture = {
+		trigger = { NOT = { has_dlc = "Rights of Man" } }
+		picture = MERCHANTS_TALKING_eventPicture
+	}
+	picture = {
+		trigger = { has_dlc = "Rights of Man" }
+		picture = GLOBAL_TRADE_eventPicture
+	}
+
+	is_triggered_only = yes
+	goto = trade_company_province
+	
+	option = {
+		name = institution_events.54.a
+		add_opinion = {
+			who = FROM
+			modifier = opinion_refused_traders_in_x
+		}
+	}
+}
+
+#Manufactories
+
+#Proto-Industrialization
+province_event = {
+	id = institution_events.60
+	title = institution_events.60.t
+	picture = {
+		trigger = { NOT = { has_dlc = "Rights of Man" } }
+		picture = TRADEGOODS_eventPicture
+	}
+	picture = {
+		trigger = { has_dlc = "Rights of Man" }
+		picture = GLOBAL_TRADE_eventPicture
+	}
+	
+	desc = {
+		trigger = { trade_goods = iron }
+		desc = institution_events.60.da
+	}
+	desc = {
+		trigger = { trade_goods = copper }
+		desc = institution_events.60.db
+	}
+	desc = {
+		trigger = { trade_goods = silk }
+		desc = institution_events.60.dc
+	}
+	desc = {
+		trigger = { trade_goods = cloth }
+		desc = institution_events.60.dd
+	}
+	goto = root
+	
+	trigger = {
+		is_institution_enabled = manufactories
+		owner = { NOT = { has_institution = manufactories } }
+		NOT = { manufactories = 100 }
+		base_production = 8
+		is_state = yes
+		OR = {
+			trade_goods = iron
+			trade_goods = copper
+			trade_goods = silk
+			trade_goods = cloth
+		}
+	}
+
+	is_mtth_scaled_to_size = 1
+	
+	mean_time_to_happen = {
+		months = 300
+		modifier = {
+			factor = 0.9
+			base_production = 10
+		}
+		modifier = {
+			factor = 0.9
+			base_production = 12
+		}
+		modifier = {
+			factor = 0.9
+			current_age = age_of_absolutism
+		}
+		modifier = {
+			factor = 0.8
+			current_age = age_of_industry
+		}
+	}
+	
+	option = {
+		name = institution_events.60.a
+		ai_chance = {
+			factor = 0.9
+		}
+		owner = {
+			add_dip_power = -100
+			add_years_of_income = -1
+		}
+		add_base_production = 1
+		add_institution_embracement = {
+			which = manufactories
+			value = 100
+		}
+	}
+	option = {
+		name = institution_events.60.b
+		ai_chance = {
+			factor = 0.1
+		}
+		owner = {
+			add_prestige = 10
+		}
+	}
+}
+
+#Enlightenment
+
+#Grand Tour
+country_event = {
+	id = institution_events.70
+	title = institution_events.70.t
+	desc = institution_events.70.d
+	picture = {
+		trigger = { NOT = { has_dlc = "Rights of Man" } }
+		picture = GOOD_WITH_MONARCH_eventPicture
+	}
+	picture = {
+		trigger = { has_dlc = "Rights of Man" }
+		picture = ENLIGHTENMENT_eventPicture
+	}
+
+	is_triggered_only = yes
+	
+	trigger = {
+		is_institution_enabled = enlightenment
+		capital_scope = { continent = europe }
+		NOT = { has_institution = enlightenment }
+		has_heir = yes
+		is_lesser_in_union = no
+		NOT = { has_ruler_flag = heir_went_on_grand_tour }
+		heir_age = 14
+		NOT = { heir_age = 30 } #We can be a bit generous here.
+		any_neighbor_country = {
+			has_institution = enlightenment
+			religion_group = ROOT
+		}
+		NOT = {
+			capital_scope = {
+				enlightenment = 100
+			}
+		}
+	}
+
+	mean_time_to_happen = {
+		days = 1
+	}
+
+	immediate = {
+		hidden_effect = {
+			capital_scope = {
+				save_event_target_as = capital
+			}
+		}
+	}
+	
+	option = {
+		name = institution_events.70.a
+		goto = capital
+		ai_chance = {
+			factor = 0.25
+		}
+		set_ruler_flag = heir_went_on_grand_tour
+		add_years_of_income = -0.25
+		add_dip_power = -75
+		capital_scope = {
+			add_institution_embracement = {
+				which = enlightenment
+				value = 50
+			}
+		}
+	}
+	option = {
+		name = institution_events.70.b
+		ai_chance = {
+			factor = 0.75
+		}
+		add_prestige = 5
+	}
+}
+
+#Grand Tour ROTW to Europe version
+country_event = {
+	id = institution_events.71
+	title = institution_events.71.t
+	desc = institution_events.71.d
+	picture = {
+		trigger = { NOT = { has_dlc = "Rights of Man" } }
+		picture = GOOD_WITH_MONARCH_eventPicture
+	}
+	picture = {
+		trigger = { has_dlc = "Rights of Man" }
+		picture = ENLIGHTENMENT_eventPicture
+	}
+
+	is_triggered_only = yes
+	
+	trigger = {
+		is_institution_enabled = enlightenment
+		NOT = {
+			capital_scope = { continent = europe }
+		}
+		NOT = { has_institution = enlightenment }
+		has_heir = yes
+		NOT = { has_ruler_flag = heir_went_on_grand_tour }
+		heir_age = 14
+		NOT = { heir_age = 30 } #We can be a bit generous here.
+		any_known_country = {
+			has_institution = enlightenment
+			capital_scope = { continent = europe }
+			OR = {
+				overlord_of = ROOT
+				alliance_with = ROOT
+			}
+		}
+		NOT = {
+			capital_scope = {
+				enlightenment = 100
+			}
+		}
+	}
+
+	goto = institution_country_capital
+
+	mean_time_to_happen = {
+		days = 1
+	}
+
+	immediate = {
+		hidden_effect = {
+			random_known_country = {
+				limit = {
+					has_institution = enlightenment
+					capital_scope = { continent = europe }
+					OR = {
+						overlord_of = ROOT
+						alliance_with = ROOT
+					}
+				}
+				save_event_target_as = institution_country
+				capital_scope = {
+					save_event_target_as = institution_country_capital
+				}
+			}
+			capital_scope = {
+				save_event_target_as = capital
+			}
+		}
+	}
+	
+	option = {
+		name = institution_events.71.a
+		goto = capital
+		ai_chance = {
+			factor = 0.25
+		}
+		set_ruler_flag = heir_went_on_grand_tour
+		add_years_of_income = -0.25
+		add_dip_power = -75
+		capital_scope = {
+			add_institution_embracement = {
+				which = enlightenment
+				value = 50
+			}
+		}
+		event_target:institution_country = {
+			add_opinion = {
+				who = ROOT
+				modifier = opinion_went_on_grand_tour
+			}
+		}
+	}
+	option = {
+		name = institution_events.71.b
+		ai_chance = {
+			factor = 0.75
+		}
+		add_prestige = 5
+	}
+}
+
+#Apostles of the Enlightenment
+country_event = {
+	id = institution_events.72
+	title = institution_events.72.t
+	desc = institution_events.72.d
+	picture = {
+		trigger = { NOT = { has_dlc = "Rights of Man" } }
+		picture = WESTERNISATION_eventPicture
+	}
+	picture = {
+		trigger = { has_dlc = "Rights of Man" }
+		picture = ENLIGHTENMENT_eventPicture
+	}
+	is_triggered_only = yes
+
+	trigger = {
+		is_institution_enabled = enlightenment
+		NOT = { has_institution = enlightenment }
+		any_active_trade_node = {
+			any_trade_node_member_country = {
+				has_institution = enlightenment
+				ROOT = {
+					NOT = { provinces_on_capital_continent_of = PREV }
+				}
+			}
+			any_trade_node_member_province = {
+				owned_by = ROOT
+				NOT = { enlightenment = 100 }
+				is_capital = yes
+			}
+		}
+	}
+	goto = capital
+	
+	immediate = {
+		hidden_effect = {
+			random_active_trade_node = {
+				limit = {
+					any_trade_node_member_country = {
+						has_institution = enlightenment
+						ROOT = {
+							NOT = { provinces_on_capital_continent_of = PREV }
+						}
+					}
+					any_trade_node_member_province = {
+						owned_by = ROOT
+						NOT = { enlightenment = 100 }
+						is_capital = yes
+					}
+				}
+				random_trade_node_member_province = {
+					limit = {
+						owned_by = ROOT
+						NOT = { enlightenment = 100 }
+						is_capital = yes
+					}
+					save_event_target_as = capital
+					area = {
+						limit = { owned_by = ROOT }
+						set_province_flag = apostles_of_the_enlightenment_flag
+					}
+				}
+			}
+		}
+	}
+
+	mean_time_to_happen = {
+		days = 1
+	}
+	
+	option = {
+		name = institution_events.72.a
+		ai_chance = {
+			factor = 0.9
+		}
+		add_prestige = -10
+		add_country_modifier = {
+			name = "botanist_secrets_revealed"
+			duration = 5475
+		}
+		random_owned_province = {
+			limit = {
+				has_province_flag = apostles_of_the_enlightenment_flag
+				is_capital = yes
+			}
+			clr_province_flag = apostles_of_the_enlightenment_flag
+			add_institution_embracement = {
+				which = enlightenment
+				value = 100
+			}
+		}
+		every_owned_province = {
+			limit = {
+				has_province_flag = apostles_of_the_enlightenment_flag
+				is_capital = no
+			}
+			clr_province_flag = apostles_of_the_enlightenment_flag
+			add_institution_embracement = {
+				which = enlightenment
+				value = 50
+			}
+		}
+	}
+	option = {
+		name = institution_events.72.b
+		ai_chance = {
+			factor = 0.1
+		}
+		add_prestige = 10
+	}
+}
+
+#Healthy Criticism? - Coffee Houses / Karagöz Etc
+province_event = {
+	id = institution_events.73
+	title = institution_events.73.t #Healthy Criticism?
+	picture = GOOD_WITH_MONARCH_eventPicture
+	
+	desc = {
+		trigger = {
+			owner = {
+				religion_group = christian
+			}
+		}
+		desc = institution_events.73.da #Coffee Houses
+	}
+	desc = {
+		trigger = {
+			owner = {
+				religion_group = muslim
+			}
+		}
+		desc = institution_events.73.db #Shadowplay
+	}
+	
+	#desc = {
+	#	trigger = {
+	#		owner = {
+	#			NOT = { religion_group = muslim }
+	#			NOT = { religion_group = christian }
+	#		}
+	#	}
+	#	desc = institution_events.73.dc #ROTW
+	#}
+
+	goto = root
+	
+	is_mtth_scaled_to_size = 1
+	
+	trigger = {
+		is_institution_enabled = enlightenment
+		enlightenment = 100
+		NOT = { has_province_modifier = coffee_house_culture }
+		NOT = { has_province_modifier = restrictions_on_public_meetings }
+		owner = {
+			NOT = { has_institution = enlightenment }
+		}
+		any_neighbor_province = {
+			owned_by = ROOT
+			NOT = { enlightenment = 100 }
+		}
+		OR = {
+			religion_group = muslim
+			religion_group = christian
+		}
+		religion_group = owner
+	}
+
+	mean_time_to_happen = {
+		months = 360
+	}
+	
+	option = {
+		name = institution_events.73.a
+		ai_chance = {
+			factor = 0.50
+		}
+		area = {
+			limit = { owned_by = ROOT }
+			add_province_modifier = {
+				name = "coffee_house_culture"
+				duration = 3650
+			}
+		}
+		
+	}
+	option = {
+		name = institution_events.73.b
+		ai_chance = {
+			factor = 0.50
+		}
+		area = {
+			limit = { owned_by = ROOT }
+			add_province_modifier = {
+				name = "restrictions_on_public_meetings"
+				duration = 3650
+			}
+			add_institution_embracement = {
+				which = enlightenment
+				value = -25
+			}
+		}
+	}
+}
+
+
+##Industrialization
+
+#Factory adopts new practices
+country_event = {
+	id = institution_events.81
+	title = institution_events.81.t
+	picture = {
+		trigger = { NOT = { has_dlc = "Rule Britannia" } }
+		picture = INVENTION_eventPicture
+	}
+	picture = {
+		trigger = { has_dlc = "Rule Britannia" }
+		picture = TEXTILE_INDUSTRY_eventPicture
+	}
+
+	desc = {
+		trigger = { event_target:industrialisation_province = { trade_goods = iron } }
+		desc = institution_events.81.da
+	}
+	desc = {
+		trigger = { event_target:industrialisation_province = { trade_goods = cloth } }
+		desc = institution_events.81.db
+	}
+	goto = industrialisation_province
+	
+	trigger = {
+		is_institution_enabled = industrialization
+		NOT = { has_institution = industrialization }
+		any_known_country = {
+			has_institution = industrialization
+		}
+		any_owned_province = {
+			NOT = { industrialization = 100 }
+			base_production = 10
+			is_state = yes
+			OR = {
+				trade_goods = iron
+				trade_goods = cloth
+			}
+			has_manufactory_trigger = yes
+			OR = {
+				root = {
+					any_owned_province = {
+						industrialization = 100
+					}
+				}
+				any_province = {
+					is_institution_origin = industrialization
+					same_continent = prev
+				}
+			}
+		}
+	}
+	
+	mean_time_to_happen = {
+		months = 240
+	}
+
+	immediate = {
+		hidden_effect = {
+			random_owned_province = {
+				limit = {
+					NOT = { industrialization = 100 }
+					base_production = 10
+					is_state = yes
+					OR = {
+						trade_goods = iron
+						trade_goods = cloth
+					}
+					has_manufactory_trigger = yes
+					OR = {
+						root = {
+							any_owned_province = {
+								industrialization = 100
+							}
+						}
+						any_province = {
+							is_institution_origin = industrialization
+							same_continent = prev
+						}
+					}
+				}
+				save_event_target_as = industrialisation_province
+			}
+		}
+	}
+	
+	option = {
+		name = institution_events.81.a
+		ai_chance = {
+			factor = 9
+		}
+		add_dip_power = -100
+		add_years_of_income = -1
+		event_target:industrialisation_province = {
+			add_base_production = 1
+			add_institution_embracement = {
+				which = industrialization
+				value = 100
+			}
+		}
+	}
+	option = {
+		name = institution_events.81.b
+		ai_chance = {
+			factor = 1
+		}
+		add_prestige = 10
+	}
+}
+
+#Production shifts as a result of the IR elsewhere
+country_event = {
+	id = institution_events.82
+	title = institution_events.82.name
+	desc = institution_events.82.desc
+	picture = TRADE_GOODS_PLANTATION_GOODS_IN_WAREHOUSE_eventPicture
+	
+	trigger = {
+		is_institution_enabled = industrialization
+		NOT = { has_institution = industrialization }
+		NOT = {
+			any_owned_province = {
+				industrialization = 100
+			}
+		}
+		any_owned_province = {
+			OR = {
+				has_building = trade_depot
+				has_building = plantations
+			}
+			is_state = yes
+			region_for_scope_province = {
+				owned_by = root
+				OR = {
+					has_building = textile
+					has_building = weapons
+					has_building = wharf
+				}
+				is_state = yes
+				base_production = 3
+			}
+		}
+		any_neighbor_country = {
+			has_institution = industrialization
+		}
+	}
+
+	immediate = {
+		hidden_effect = {
+			random_owned_province = {
+				limit = {
+					OR = {
+						has_building = trade_depot
+						has_building = plantations
+					}
+					is_state = yes
+					region_for_scope_province = {
+						owned_by = root
+						OR = {
+							has_building = textile
+							has_building = weapons
+							has_building = wharf
+						}
+						is_state = yes
+						base_production = 3
+					}
+				}
+				save_event_target_as = rural_province
+				random_province = {
+					limit = {
+						region = prev
+						owned_by = root
+						OR = {
+							has_building = textile
+							has_building = weapons
+							has_building = wharf
+						}
+						is_state = yes
+						base_production = 3
+					}
+					save_event_target_as = urban_province
+				}
+			}
+			random_neighbor_country = {
+				limit = {
+					has_institution = industrialization
+				}
+				save_event_target_as = institution_country
+			}
+		}
+	}
+	
+	mean_time_to_happen = {
+		months = 240
+	}
+	
+	option = {
+		name = institution_events.82.a
+		goto = urban_province
+		ai_chance = {
+			factor = 3
+		}
+		add_dip_power = -100
+		add_years_of_income = -1
+		event_target:urban_province = {
+			add_institution_embracement = {
+				which = industrialization
+				value = 100
+			}
+		}
+		event_target:rural_province = {
+			add_unrest = 5
+		}
+	}
+	option = {
+		name = institution_events.82.b
+		goto = rural_province
+		ai_chance = {
+			factor = 1
+		}
+		event_target:rural_province = {
+			add_base_production = 2
+		}
+		event_target:urban_province = {
+			add_base_production = -2
+		}
+	}
+}

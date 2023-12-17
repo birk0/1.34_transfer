@@ -1,0 +1,20 @@
+#Amdo
+government = tribal
+add_government_reform = tribal_kingdom
+primary_culture = tibetan
+religion = vajrayana
+technology_group = chinese
+capital = 2134	# Rebong
+government_rank = 1
+
+
+1422.1.1 = {
+	monarch = {
+		birth_date = 1412.1.1
+		name = "Zen Sonam"
+		dynasty = "Robon"
+		adm = 1
+		dip = 3
+		mil = 0
+	}
+}

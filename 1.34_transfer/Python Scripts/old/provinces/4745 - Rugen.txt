@@ -1,0 +1,21 @@
+# 4745 - Rügen
+
+owner = WOL
+controller = WOL
+add_core = RUG
+add_core = WOL
+culture = pommeranian
+religion = catholic
+hre = yes
+base_tax = 2
+base_production = 1
+trade_goods = fish
+base_manpower = 1
+capital = "Bergen auf Rügen"
+is_city = yes
+
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

@@ -1,0 +1,7 @@
+#Prov1594 - Western Atlantic 6
+religion = sunni
+culture = amhara
+
+base_tax = 1
+base_production = 1
+base_manpower = 1

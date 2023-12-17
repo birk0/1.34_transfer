@@ -1,0 +1,640 @@
+#####################################
+#	Events for the Eunuchs Estate
+#####################################
+namespace = estate_eunuchs
+
+#The Embassy to x
+country_event = {
+	id = estate_eunuchs.1
+	title = "estate_eunuchs.1.t"
+	desc = "estate_eunuchs.1.d"
+	picture = PALACE_eventPicture
+	is_triggered_only = yes
+
+	trigger = {
+		has_estate = estate_eunuchs
+	}
+	immediate = {
+		hidden_effect = {
+			random_neighbor_country = {
+				limit = { is_subject = no }
+				save_event_target_as = eunuch_embassy
+			}
+		}
+	}
+	option = {
+		name = "estate_eunuchs.1.a" #Sounds good
+		add_years_of_income = -0.5
+		add_dip_power = 40
+		boost_eunuchs_effect = yes
+		add_mutual_opinion_modifier_effect = {
+			scope_country = event_target:eunuch_embassy
+			opinion_modifier = successful_embassy
+		}
+		add_country_modifier = {
+			name = eunuch_embassy_mod
+			duration = 1825
+		}
+	}
+	option = {
+		name = "estate_eunuchs.1.b" #We have other things to do
+		add_adm_power = 25
+		reduce_eunuchs_effect = yes
+		add_country_modifier = {
+			name = no_eunuch_embassy_mod
+			duration = 1825
+		}
+	}
+}
+
+#Court Scandal
+country_event = {
+	id = estate_eunuchs.2
+	title = "estate_eunuchs.2.t"
+	desc = "estate_eunuchs.2.d"
+	picture = BAD_WITH_MONARCH_eventPicture
+	is_triggered_only = yes
+	trigger = {
+		has_estate = estate_eunuchs
+	}
+
+	option = {
+		name = "estate_eunuchs.2.a" #Accept it
+		ai_chance = {
+			factor = 5
+		}
+		add_adm_power = -50
+		add_mandate = -5
+		add_corruption = 1
+		add_estate_influence_modifier = {
+			estate = estate_eunuchs
+			duration = 1825
+			influence = 5
+		}
+	}
+	option = {
+		name = "estate_eunuchs.2.b" #Bribe the Eunuchs to take the blame
+		add_corruption = 2
+		change_estate_land_share = {
+			estate = estate_eunuchs
+			share = 3
+		}
+		add_estate_influence_modifier = {
+			estate = estate_eunuchs
+			duration = 1825
+			influence = 10
+		}
+	}
+	option = {
+		name = "estate_eunuchs.2.c" #Purge the court
+		add_stability = -1
+		capital_scope = {
+			start_revolt = {
+				type = particularist_rebels
+				size = 5
+			}
+		}
+	}
+}
+
+#Estate Dispute
+country_event = {
+	id = estate_eunuchs.3
+	title = "estate_eunuchs.3.t"
+	desc = "estate_eunuchs.3.d"
+	picture = CHURCH_ESTATE_UPSET_eventPicture
+	is_triggered_only = yes
+	trigger = {
+		has_estate = estate_eunuchs
+	}
+	immediate = {
+		hidden_effect = {
+			random_owned_province = {
+				limit = {
+					OR = {
+						has_owner_culture = yes
+						is_in_capital_area = yes
+					}
+				}
+				save_event_target_as = dispute_province
+			}
+		}
+	}
+	option = {
+		name = "estate_eunuchs.3.a" #Side with the Eunuchs
+		ai_chance = {
+			factor = 1
+			modifier = {
+				factor = 10
+				estate_influence = {
+					estate = estate_church
+					influence = 50
+				}
+			}
+		}
+		change_estate_land_share = {
+			share = 3
+			estate = estate_eunuchs
+		}
+		change_estate_land_share = {
+			share = -3
+			estate = estate_church
+		}
+		event_target:dispute_province = {
+			area = {
+				limit = {
+					owned_by = ROOT
+				}
+				start_revolt = {
+					type = particularist_rebels
+					size = 2
+					win = yes
+				}
+				add_unrest = 5
+			}
+		}
+		add_estate_loyalty = {
+			estate = estate_church
+			loyalty = -5
+		}
+		add_estate_loyalty = {
+			loyalty = 5
+			estate = estate_eunuchs
+		}
+		add_estate_influence_modifier = {
+			estate = estate_eunuchs
+			influence = 10
+			duration = 1825
+		}
+		add_estate_influence_modifier = {
+			estate = estate_church
+			influence = -10
+			duration = 1825
+		}
+	}
+	option = {
+		name = "estate_eunuchs.3.b" #Side with the Bureaucrats
+		ai_chance = {
+			factor = 1
+			modifier = {
+				factor = 10
+				estate_influence = {
+					estate = estate_eunuchs
+					influence = 50
+				}
+			}
+		}
+		change_estate_land_share = {
+			share = 3
+			estate = estate_church
+		}
+		change_estate_land_share = {
+			share = -3
+			estate = estate_eunuchs
+		}
+		event_target:dispute_province = {
+			area = {
+				limit = {
+					owned_by = ROOT
+				}
+				start_revolt = {
+					type = particularist_rebels
+					size = 2
+					win = yes
+				}
+				add_unrest = 5
+			}
+		}
+		add_estate_loyalty = {
+			estate = estate_eunuchs
+			loyalty = -5
+		}
+		add_estate_loyalty = {
+			loyalty = 5
+			estate = estate_church
+		}
+		add_estate_influence_modifier = {
+			estate = estate_church
+			influence = 10
+			duration = 1825
+		}
+		add_estate_influence_modifier = {
+			estate = estate_eunuchs
+			influence = -10
+			duration = 1825
+		}
+	}
+}
+
+#Disloyal Eunuchs
+country_event = {
+	id = estate_eunuchs.4
+	title = "estate_eunuchs.4.t"
+	desc = "estate_eunuchs.4.d"
+	picture = REVOLT_eventPicture
+	is_triggered_only = yes
+	trigger = {
+		has_estate = estate_eunuchs
+		NOT = {
+			estate_loyalty = {
+				estate = estate_eunuchs
+				loyalty = 20
+			}
+		}
+	}
+	immediate = {
+		hidden_effect = {
+			random_owned_province = {
+				limit = {
+					OR = {
+						has_owner_culture = yes
+						is_in_capital_area = yes
+					}
+				}
+				save_event_target_as = eunuch_revolt
+			}
+		}
+	}
+	option = {
+		name = "estate_eunuchs.4.a" #Damn
+		reduce_eunuchs_effect = yes
+		event_target:eunuch_revolt = {
+			area = {
+				limit = { owned_by = ROOT }
+				start_revolt = {
+					type = particularist_rebels
+					size = 1
+				}
+				random_neighbor_province = {
+					limit = { 
+						owned_by = ROOT
+						NOT = { area = PREV }
+					}
+					area = {
+						limit = {
+							owned_by = ROOT
+						}
+						start_revolt = {
+							type = particularist_rebels
+							size = 1
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+#Wealthy Eunuch
+country_event = {
+	id = estate_eunuchs.5
+	title = "estate_eunuchs.5.t"
+	desc = "estate_eunuchs.5.d"
+	picture = CORRUPTION_eventPicture
+	is_triggered_only = yes
+	trigger = {
+		has_estate = estate_eunuchs
+	}
+	immediate = {
+		hidden_effect = {
+			random_owned_province = {
+				limit = {
+					region_for_scope_province = {
+						is_capital = yes
+						owned_by = ROOT
+					}
+				}
+				save_event_target_as = wealthy_eunuch
+			}
+		}
+	}
+	option = {
+		name = "estate_eunuchs.5.a" #See no evil..
+		ai_chance = {
+			factor = 2
+		}
+		add_years_of_income = 0.6
+		add_mandate = -3
+		add_legitimacy_equivalent = { amount = -5 }
+		add_country_modifier = {
+			name = wealthy_eunuch_corruption
+			duration = 1825
+		}
+		add_adm_power = -30
+		add_mil_power = -30
+		add_dip_power = -30
+		add_estate_influence_modifier = {
+			estate = estate_eunuchs
+			duration = 1825
+			influence = 10
+		}
+		event_target:wealthy_eunuch = {
+			area = {
+				limit = { owned_by = ROOT }
+				add_base_tax = -1
+				add_local_autonomy = 50
+			}
+		}
+	}
+	option = {
+		name = "estate_eunuchs.5.b" #Purge him!
+		event_target:wealthy_eunuch = {
+			area = {
+				limit = { owned_by = ROOT }
+				add_local_autonomy = -50
+				add_base_tax = 1
+				start_revolt = {
+					type = particularist_rebels
+					size = 2
+				}
+			}
+		}
+		add_estate_influence_modifier = {
+			estate = estate_eunuchs
+			duration = 1825
+			influence = -10
+		}
+		change_estate_land_share = {
+			estate = estate_eunuchs
+			share = -3
+		}
+		add_mandate = 5
+		add_legitimacy_equivalent = { amount = 10 }
+	}
+	option = { #Keep your enemies close..
+		highlight = yes
+		trigger = {
+			meritocracy = 50
+		}
+		ai_chance = {
+			factor = 10
+		}
+		name = "estate_eunuchs.5.c"
+		event_target:wealthy_eunuch = {
+			area = {
+				limit = { owned_by = ROOT }
+				add_local_autonomy = -10
+			}
+		}
+		add_estate_influence_modifier = {
+			estate = estate_eunuchs
+			influence = 5
+			duration = 1825
+		}
+		change_estate_land_share = {
+			share = 1
+			estate = estate_eunuchs
+		}
+		add_adm_power = -30
+		add_dip_power = -30
+		add_mil_power = -30
+		remove_advisor_by_category = ADM
+		define_advisor = {
+			type = statesman
+			culture = event_target:wealthy_eunuch
+			religion = event_target:wealthy_eunuch
+			skill = 2
+			cost_multiplier = 1.5
+		}
+		add_mandate = -5
+	}
+}
+
+#Eunuchs Influence Examinations
+country_event = {
+	id = estate_eunuchs.6
+	title = "estate_eunuchs.6.t"
+	desc = {
+		trigger = {
+			has_country_flag = eunuchs_good_influennce
+		}
+		desc = "estate_eunuchs.6.d"
+	}
+	desc = {
+		trigger = {
+			has_country_flag = eunuchs_bad_influence
+		}
+		desc = "estate_eunuchs.6.d.2"
+	}
+	picture = IMPERIAL_EXAMINATION_eventPicture
+	is_triggered_only = yes
+	trigger = {
+		has_estate = estate_eunuchs
+	}
+	immediate = {
+		hidden_effect = {
+			random_list = {
+				60 = { set_country_flag = eunuchs_good_influence }
+				40 = { set_country_flag = eunuchs_bad_influence }
+			}
+		}
+	}
+	option = { #Excellent
+		ai_chance = {
+			factor = 10
+		}
+		trigger =  { has_country_flag = eunuchs_good_influence }
+		name = "estate_eunuchs.6.a"
+		add_legitimacy_equivalent = { amount = 10 }
+		add_country_modifier = {
+			name = eunuchs_good_influence_mod
+			duration = 1825
+		}
+	}
+	option = { #Bring him to court!
+		trigger = { has_country_flag = eunuchs_good_influence }
+		name = "estate_eunuchs.6.b"
+		define_advisor = {
+			type = eoc_imperial_examiner
+			skill = 2
+			cost_multiplier = 0.75
+		}
+	}
+	option = {
+		name = "estate_eunuchs.6.c" #Unfortunate..
+		trigger = { has_country_flag = eunuchs_bad_influence }
+		ai_chance = {
+			factor = 2
+		}
+		add_corruption = 1
+		add_adm_power = -50
+		add_country_modifier = {
+			name = eunuchs_bad_influence_mod
+			duration = 1825
+		}
+		add_estate_influence_modifier = {
+			influence = 5
+			estate = estate_eunuchs
+			duration = 1825
+		}
+	}
+	option = {
+		trigger = { has_country_flag = eunuchs_bad_influence }
+		name = "estate_eunuchs.6.e" #Rehost the examinations
+		add_years_of_income = -1.25
+		add_corruption = -1
+		add_mandate = 5
+		add_estate_loyalty = {
+			estate = estate_eunuchs
+			loyalty = -15
+		}
+	}
+	after = {
+		clr_country_flag  = eunuchs_bad_influence
+		clr_country_flag = eunuchs_good_influence
+	}
+}
+
+#Declining Influence of the Eunuchs
+country_event = {
+	id = estate_eunuchs.7
+	title = "estate_eunuchs.7.t"
+	desc = "estate_eunuchs.7.d"
+	picture = PALACE_eventPicture
+	is_triggered_only = yes
+	trigger = {
+		has_estate = estate_eunuchs
+	}
+	option = {
+		name = "estate_eunuchs.7.a" #Good
+		add_estate_influence_modifier = {
+			duration = 3650
+			influence = -10
+			estate = estate_eunuchs
+			desc = declining_eunuch_power
+		}
+	}
+}
+
+#Growing Influence of the Eunuchs
+country_event = {
+	id = estate_eunuchs.8
+	title = "estate_eunuchs.8.t"
+	desc = "estate_eunuchs.8.d"
+	picture = PALACE_eventPicture
+	is_triggered_only = yes
+	trigger = {
+		has_estate = estate_eunuchs
+	}
+	option = {
+		name = "estate_eunuchs.8.a" #We should be wary
+		add_estate_influence_modifier = {
+			duration = 3650
+			influence = 10
+			estate = estate_eunuchs
+			desc = growing_eunuch_power
+		}
+	}
+}
+
+#Loyal and Influential Eunuchs
+country_event = {
+	id = estate_eunuchs.9
+	title = "estate_eunuchs.9.t"
+	desc = "estate_eunuchs.9.d"
+	picture = PALACE_eventPicture
+	is_triggered_only = yes
+	trigger = {
+		has_estate = estate_eunuchs
+		estate_loyalty = {
+			estate = estate_eunuchs
+			loyalty = 50
+		}
+		estate_influence = {
+			estate = estate_eunuchs
+			influence = 50
+		}
+		num_of_estate_privileges = {
+			estate = estate_eunuchs
+			value = 1
+		}
+	}
+	option = {
+		name = "estate_eunuchs.9.a"
+		add_country_modifier = {
+			name = loyal_eunuchs
+			duration = 1825
+		}
+		add_adm_power = 100
+		add_mandate = 5
+		add_legitimacy_equivalent = { amount = 10 }
+		if = {
+			limit = { has_harmony = yes }
+			add_harmony = 10
+		}
+	}
+}
+
+#The Eunuch Minister
+country_event = {
+	id = estate_eunuchs.10
+	title = "estate_eunuchs.10.t"
+	desc = "estate_eunuchs.10.d"
+	picture = PALACE_eventPicture
+	is_triggered_only = yes
+	trigger = {
+		has_estate = estate_eunuchs
+	}
+	immediate = {
+		hidden_effect = {
+			random_owned_province = {
+				limit = {
+					OR = {
+						has_owner_culture = yes
+						is_in_capital_area = yes
+					}
+				}
+				save_event_target_as = eunuch_minister
+			}
+		}
+	}
+	option = {
+		name = "estate_eunuchs.10.a" #Bring him to court
+		define_advisor = {
+			type = diplomat
+			skill = 1
+			culture = event_target:eunuch_minister
+			religion = event_target:eunuch_minister
+			cost_multiplier = 0.75
+		}
+		add_estate_influence_modifier = {
+			influence = 10
+			estate = estate_eunuchs
+			duration = 3650
+			desc = eunuchs_influential_minister
+		}
+		change_estate_land_share = {
+			share = -3
+			estate = estate_eunuchs
+		}
+	}
+	option = {
+		name = "estate_eunuchs.10.b" #Let him stay home
+		ai_chance = {
+			factor = 1
+			modifier = {
+				factor = 10
+				estate_influence = {
+					influence = 50
+					estate = estate_eunuchs
+				}
+			}
+		}
+		event_target:eunuch_minister = {
+			area = {
+				limit = { owned_by = ROOT }
+				add_local_autonomy = 20
+			}
+		}
+		add_adm_power = 25
+		add_estate_influence_modifier = {
+			influence = -10
+			estate = estate_eunuchs
+			duration = 3650
+		}
+		change_estate_land_share = {
+			estate = estate_eunuchs
+			share = 3
+		}
+	}
+}

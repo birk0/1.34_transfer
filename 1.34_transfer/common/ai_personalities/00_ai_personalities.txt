@@ -1,0 +1,44 @@
+#Entire file reworked
+
+human = {
+	chance = {
+		factor = 0
+	}
+	
+	icon = 1
+}
+
+ai_capitalist = { #Likes playing tall, Typical HRE minor enthusiast
+	chance = {
+		factor = 0
+	}
+	icon = 2
+}
+
+ai_diplomat = { #Falls asleep on keyboard with speed 5 on
+	chance = {
+		factor = 0
+	}
+	icon = 3
+}
+
+ai_colonialist = { #Average Roleplayer and genocide enthusiast
+	chance = {
+		factor = 0
+	}
+	icon = 5
+}
+
+ai_militarist = { #Average pre-1500 Oirat WC enthusiast
+	chance = {
+		factor = 1000 #AI are mindless conquerors that want you dead
+	}
+	icon = 4
+}
+
+ai_balanced = {
+	chance = {
+		factor = 1
+	}
+	icon = 6
+}

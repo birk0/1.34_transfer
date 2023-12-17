@@ -1,0 +1,7 @@
+#Prov2205 - Nakhchivan
+culture = armenian
+religion = coptic
+
+base_tax = 1
+base_production = 1
+base_manpower = 1

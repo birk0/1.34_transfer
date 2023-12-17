@@ -1,0 +1,206 @@
+
+# Find a province to spawn the institution
+
+
+find_province_for_institution = {
+    #worst case scenario
+    random_owned_province = {
+        limit = {
+            has_development_cost_penalty = { value = 0.8 }
+        }
+        save_event_target_as = institution_province
+    }
+    random_owned_province = {
+        limit = {
+            has_development_cost_penalty = { value = 0.6 }
+        }
+        save_event_target_as = institution_province
+    }
+    random_owned_province = {
+        limit = {
+            has_development_cost_penalty = { value = 0.4 }
+        }
+        save_event_target_as = institution_province
+    }
+    random_owned_province = {
+        limit = {
+            has_development_cost_penalty = { value = 0.3 }
+        }
+        save_event_target_as = institution_province
+    }
+    random_owned_province = {
+        limit = {
+            has_development_cost_penalty = { value = 0.2 }
+        }
+        save_event_target_as = institution_province
+    }
+    random_owned_province = {
+        limit = {
+            has_development_cost_penalty = { value = 0.1 }
+        }
+        save_event_target_as = institution_province
+    }
+    random_owned_province = {
+        limit = {
+            OR = {
+                has_development_cost_penalty = { value = 0 }
+                current_institution = 10
+            }
+        }
+        save_event_target_as = institution_province
+    }
+    random_owned_province = {
+        limit = {
+            OR = {
+                has_development_cost_penalty = { value = -1.4 }
+                current_institution = 20
+            }
+        }
+        save_event_target_as = institution_province
+    }
+    random_owned_province = {
+        limit = {
+            OR = {
+                has_development_cost_penalty = { value = -0.2 }
+                current_institution = 30
+            }
+        }
+        save_event_target_as = institution_province
+    }
+    random_owned_province = {
+        limit = {
+            OR = {
+                has_development_cost_penalty = { value = -0.3 }
+                current_institution = 40
+            }
+        }
+        save_event_target_as = institution_province
+    }
+    #best case scenario
+    random_owned_province = {
+        limit = {
+            OR = {
+                has_development_cost_penalty = { value = -0.4 }
+                current_institution = 50
+            }
+        }
+        save_event_target_as = institution_province
+    }
+    if = {
+        limit = { has_saved_event_target = institution_province }
+        event_target:institution_province = {
+            set_province_flag = institution_target
+        }
+    }
+}
+
+# Develop provinces effect
+develop_provinces_with = {
+    develop_provinces_of_type = { development_cost = $development_cost$ }
+}
+develop_provinces_of_type = {
+    develop_provinces_effect = { type = production  power = dip development_cost = $development_cost$ }
+    develop_provinces_effect = { type = manpower    power = mil development_cost = $development_cost$ }
+    develop_provinces_effect = { type = tax         power = adm development_cost = $development_cost$ }
+}
+develop_provinces_effect = {
+    set_variable = { which = loop_fail value = 0 }
+    if = {
+        limit = { $power$_power = 950 }
+        while = {
+            limit = {
+                $power$_power = 200
+                NOT = {
+                    check_variable = { which = loop_fail value = 1 }
+                }
+            }
+            change_variable = { which = loop_fail value = 1 }
+
+            random_owned_province = {
+                limit = {
+                    OR = {
+                        AND = {
+                            NOT = { has_province_flag = institution_target }
+                            NOT = { has_development_cost_penalty = { value = $development_cost$ } }
+                        }
+                        AND = {
+                            ROOT = { has_country_flag = developing_institution }
+                            has_province_flag = institution_target
+                            NOT = { current_institution = 100 }
+                            variable_arithmetic_trigger = {
+                                export_to_variable = {
+                                    which = total_dev
+                                    value = trigger_value:development
+                                }
+                                export_to_variable = {
+                                    which = $type$_dev
+                                    value = trigger_value:base_$type$
+                                }
+                                divide_variable = {
+                                    which = total_dev
+                                    which = $type$_dev
+                                }
+                                check_variable = {
+                                    which = total_dev # So AI doesn't dev a single $type$ to be >> than 50% of the total province dev
+                                    value = 2
+                                }
+                            }
+                        }
+                    }
+                }
+                set_variable = {
+                    which = base_development_cost
+                    value = 50
+                }
+                export_to_variable = {
+                    which = local_development_cost_trigger
+                    value = modifier:local_development_cost
+                }
+                set_variable = {
+                    which = local_development_cost
+                    which = local_development_cost_trigger
+                }
+                change_variable = {
+                    which = local_development_cost
+                    value = 1
+                }
+                multiply_variable = {
+                    which = local_development_cost
+                    which = base_development_cost
+                }
+                add_development_effect = { type = $type$ amount = 1 }
+                ROOT = {
+                    subtract_variable = { which = loop_fail value = 1 }
+                    while = {
+                        limit = {
+                            PREV = {
+                                check_variable = {
+                                    which = local_development_cost
+                                    value = 5
+                                }
+                            }
+                        }
+                        PREV = {
+                            subtract_variable = {
+                                which = local_development_cost
+                                value = 10
+                            }
+                        }
+                        add_$power$_power = -10
+                    }
+                }
+            }
+        }
+    }
+}
+# used to clear the institution target when province hits 100% instutition progress
+clear_institution_target = {
+    if = {
+        limit = { 
+            current_institution = 100
+            has_province_flag = institution_target 
+        }
+        clr_province_flag = institution_target
+        owner = { clr_country_flag = developing_institution }
+    }
+}

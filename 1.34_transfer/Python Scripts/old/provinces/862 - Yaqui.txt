@@ -1,0 +1,19 @@
+# 862 - Muanda
+owner = KON
+controller = KON
+add_core = KON
+add_core = SYO
+culture = kongolese
+religion = shamanism #Fetishism
+capital = "Muanda"
+trade_goods = ivory
+hre = no
+base_tax = 1
+base_production = 1
+base_manpower = 1
+is_city = yes
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

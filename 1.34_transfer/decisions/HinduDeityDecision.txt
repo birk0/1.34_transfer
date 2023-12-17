@@ -1,0 +1,107 @@
+country_decisions = {
+	brahmin_hindu_deity_decision = {
+		potential = {
+			ai = no
+			exists = yes
+			OR = {
+				AND = {
+					religion = hinduism
+					has_estate = estate_brahmins
+				}
+				AND = {
+					religion = shen
+					has_estate = estate_church
+				}
+				AND = {
+					religion = norse_pagan_reformed
+					has_estate = estate_church
+				}
+			}
+		}
+		allow = {
+			has_regency = no
+			OR = {
+				has_estate_privilege = estate_brahmins_flexible_deities
+				has_estate_privilege = estate_church_flexible_deities
+			}
+			if = {
+				limit = {
+					has_estate_privilege = estate_brahmins_flexible_deities
+				}
+				NOT = {
+					estate_influence = {
+						estate = estate_brahmins
+						influence = 90
+					}
+				}
+			}
+			if = {
+				limit = {
+					has_estate_privilege = estate_church_flexible_deities
+				}
+				NOT = {
+					estate_influence = {
+						estate = estate_church
+						influence = 90
+					}
+				}
+			}
+		}
+		effect = {
+			if = {
+				limit = { has_government_attribute = reduce_new_deity_decision_cd }
+				if = {
+					limit = {
+						has_estate_privilege = estate_brahmins_flexible_deities
+					}
+					add_estate_influence_modifier = {
+						estate = estate_brahmins
+						desc = brahmin_changed_deity_influence_desc
+						influence = 5
+						duration = 7300 #20 years
+					}
+				}
+				if = {
+					limit = {
+						has_estate_privilege = estate_church_flexible_deities
+					}
+					add_estate_influence_modifier = {
+						estate = estate_church
+						desc = brahmin_changed_deity_influence_desc
+						influence = 5
+						duration = 7300 #20 years
+					}
+				}
+			}
+			else = {
+				if = {
+					limit = {
+						has_estate_privilege = estate_brahmins_flexible_deities
+					}
+					add_estate_influence_modifier = {
+						estate = estate_brahmins
+						desc = brahmin_changed_deity_influence_desc
+						influence = 10
+						duration = 14600 #40 years
+					}
+				}
+				if = {
+					limit = {
+						has_estate_privilege = estate_church_flexible_deities
+					}
+					add_estate_influence_modifier = {
+						estate = estate_church
+						desc = brahmin_changed_deity_influence_desc
+						influence = 10
+						duration = 14600 #40 years
+					}
+				}
+			}
+			set_country_flag = brahmin_deity_interaction
+			country_event = { id = hindu_events.1 }
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+}

@@ -1,0 +1,789 @@
+######################################################################
+#       Scripted effects which handle things associated to buildings.
+#       Currently handles the Tenaille and fort mechanics.
+#       literally 500+ lines of code just to handle some modifiers applied from forts and tenailles, smh.
+######################################################################
+
+# triggered from on_province_owner_change
+on_province_owner_change_building_conquered = {
+	# current owner
+	owner = {
+		save_event_target_as = owner
+	}
+	on_province_owner_change_fort_conquered = yes
+	on_province_owner_change_tenaille_conquered = yes
+	on_province_owner_change_library_conquered = yes
+}
+# This is triggered when a fort is built, not conquered
+on_fort_built = {
+	hidden_effect = {
+		if = {
+			limit = {
+				NOT = { has_province_modifier = may_not_build_fort }
+			}
+			add_fort_building_effect = {
+				who = FROM
+			}
+		}
+		else_if = {
+			limit = {
+			   	has_province_modifier = may_not_build_fort # Cases where a fort is built on a province with the modifier
+			}
+			if = {
+			   	limit = {
+				  	FROM = {
+					 	ai = no
+					 	NOT = { has_country_flag = fort_tut } 
+				  	}
+			   	}
+			   	FROM = {
+				  	set_country_flag = fort_tut
+			   	}
+			}
+			remove_fort_building_effect = {
+				should_not_trigger_destroyed = yes
+				remove_forts = yes
+				remove_modifiers = FROM
+			}
+		}
+	}
+}
+# This is triggered when a fort is destroyed
+on_fort_destroyed = {
+	hidden_effect = {
+		if = {
+			limit = {
+				NOT = { has_province_modifier = should_not_trigger_destroyed } # If we specified it shouldnt be triggered
+			}
+			remove_fort_building_effect = {
+				remove_modifiers = FROM
+			}
+			if = {
+				limit = {
+					OR = {
+						has_building = tenaille
+						has_building = earthern_rampart
+					}
+				}
+				remove_tenaille_building_effect = {
+					should_not_trigger_destroyed = yes
+					remove_tenaille = yes
+					remove_modifiers = FROM
+				}
+			}
+		}
+	}
+}
+# handles what happens when a fort is conquered via on_province_owner_change
+on_province_owner_change_fort_conquered = {
+   	if = {
+      	limit = { # in the ZoC of an existing fort
+         	OR = {
+            	any_neighbor_province = {
+               		OR = {
+						NOT = { has_province_modifier = recent_ownership_change } 
+						has_province_modifier = recent_ownership_fort_change
+					}
+               		owned_by = event_target:owner
+               		has_fort_building_trigger = yes
+            	}
+            	any_neighbor_province = {
+               		any_neighbor_province = {
+	               		OR = {
+							NOT = { has_province_modifier = recent_ownership_change } 
+							has_province_modifier = recent_ownership_fort_change
+						}
+                  		owned_by = event_target:owner
+                  		has_fort_building_trigger = yes
+               		}
+            	}
+        	}
+    	}
+      	if = {
+         	limit = {
+            	has_fort_building_trigger = yes
+         	}
+         	remove_fort_building_effect = {
+				should_not_trigger_destroyed = yes
+				remove_forts = yes
+				remove_modifiers = FROM
+			}
+      	}
+      	add_province_modifier = {
+         	name = may_not_build_fort
+         	duration = -1
+         	hidden = yes
+      	} 
+		if = {
+			limit = {
+				NOT = { has_fort_area_modifiers = yes }
+				area_for_scope_province = {
+					owned_by = event_target:owner
+					has_fort_building_trigger = yes
+					NOT = { has_province_modifier = may_not_build_fort }
+				}
+			}
+			area = {
+				limit = {
+					has_fort_building_trigger = yes
+					owned_by = event_target:owner
+					NOT = { has_province_modifier = may_not_build_fort }
+				} 
+				add_fort_building_effect = {
+					who = event_target:owner
+				}
+			} 
+		}
+	}
+	if = {
+		limit = { # is not in the ZoC of an existing fort
+			has_fort_building_trigger = yes
+			NOT = { has_province_modifier = may_not_build_fort } 
+		}
+		remove_fort_building_effect = {
+			remove_modifiers = FROM
+		}
+		add_fort_building_effect = {
+			who = event_target:owner
+		}
+		add_province_modifier = {
+			name = recent_ownership_fort_change
+			duration = 1
+			hidden = yes
+		}
+	}
+
+}
+# Used to remove the modifiers that forts apply to neighbouring provinces 
+remove_fort_building_effect = {
+	[[should_not_trigger_destroyed]
+		add_province_modifier = {
+			name = should_not_trigger_destroyed
+			duration = 2
+			hidden = yes
+		}
+	]
+	[[remove_forts]
+		remove_building = fort_15th
+		remove_building = fort_16th
+		remove_building = fort_17th
+		remove_building = fort_18th
+	]
+	remove_fort_building_modifiers = {
+		who = $remove_modifiers$
+	}
+}
+# Triggered from the above effect to actually remove the modifiers.
+remove_fort_building_modifiers = {
+	if = {
+		limit = {
+			NOT = {
+				area_for_scope_province = {
+					has_fort_building_trigger = yes
+					NOT = { has_province_modifier = may_not_build_fort }
+					owned_by = $who$
+				}
+			}
+		}
+		area = {
+			limit = {
+				owned_by = $who$
+			}
+			remove_fort_area_modifiers = yes
+		}
+	}
+	every_neighbor_province = {
+		limit = {
+			owned_by = $who$
+			has_province_modifier = may_not_build_fort
+			NOT = { 
+				any_neighbor_province = { 
+					has_fort_building_trigger = yes
+					NOT = { has_province_modifier = may_not_build_fort }
+					owned_by = $who$
+				}
+			}
+			NOT = {
+				any_neighbor_province = {
+					any_neighbor_province = { 
+						has_fort_building_trigger = yes 
+						NOT = { has_province_modifier = may_not_build_fort }
+						owned_by = $who$
+					}
+				}
+			}
+		}
+		remove_province_modifier = may_not_build_fort
+		remove_province_modifier = fort_block_slave_raid_modifier
+	}
+	every_neighbor_province = {
+		every_neighbor_province = {
+			limit = {
+				owned_by = $who$
+				has_province_modifier = may_not_build_fort
+				NOT = { 
+					any_neighbor_province = { 
+						has_fort_building_trigger = yes
+						owned_by = $who$
+					}
+				}
+				NOT = {
+					any_neighbor_province = {
+						any_neighbor_province = { 
+							has_fort_building_trigger = yes 
+							owned_by = $who$
+						}
+					}
+				}
+			}
+			remove_province_modifier = may_not_build_fort
+		}
+	}
+}
+# Removes area modifiers applied by forts
+remove_fort_area_modifiers = {
+	remove_province_modifier = fort_15th_modifier
+	remove_province_modifier = fort_16th_modifier
+	remove_province_modifier = fort_17th_modifier
+	remove_province_modifier = fort_18th_modifier
+}
+# Applies the modifiers that forts have on neighbouring provinces for $who$
+add_fort_building_effect = {
+	save_event_target_as = root
+	every_neighbor_province = {
+		limit = { 
+			owned_by = $who$
+			NOT = { province_id = event_target:root } 
+		}
+		add_province_modifier = {
+			name = may_not_build_fort
+			duration = -1
+			hidden = yes
+		}
+		if = {
+			limit = { has_port = yes } 
+			add_province_modifier = {
+				name = fort_block_slave_raid_modifier
+				duration = -1
+				hidden = yes
+			}
+		}
+	}
+	every_neighbor_province = {
+		every_neighbor_province = {
+			limit = { 
+				owned_by = $who$ 
+				NOT = { province_id = event_target:root } 
+			}
+			add_province_modifier = {
+				name = may_not_build_fort
+				duration = -1
+				hidden = yes
+			}
+		}
+	}
+	trigger_switch = {
+		on_trigger = has_building
+		
+		fort_18th = {
+			area = {
+			   	limit = { owned_by = $who$ }
+				remove_fort_area_modifiers = yes
+			   	add_province_modifier = {
+				  	name = fort_18th_modifier
+				  	duration = -1
+				  	hidden = yes
+			   	}
+			}
+		}
+		fort_17th = {
+			area = {
+			   	limit = { owned_by = $who$ }
+				remove_fort_area_modifiers = yes 
+			   	add_province_modifier = {
+				  	name = fort_17th_modifier
+				  	duration = -1
+				  	hidden = yes
+			   	}
+			}
+		}
+		fort_16th = {
+			area = {
+			   	limit = { owned_by = $who$ }
+				remove_fort_area_modifiers = yes 
+			   	add_province_modifier = {
+				  	name = fort_16th_modifier
+				  	duration = -1
+				  	hidden = yes
+			   	}
+			}
+		}
+		fort_15th = {
+			area = {
+			   	limit = { owned_by = $who$ }
+				remove_fort_area_modifiers = yes
+			   	add_province_modifier = {
+				  	name = fort_15th_modifier
+				  	duration = -1
+				  	hidden = yes
+			   	}
+			}
+		}
+	}
+}
+
+# Tenailles:
+
+# Triggered from on_province_owner_change when a Tenaille is conquered
+on_province_owner_change_tenaille_conquered = {
+	if = {
+		limit = {
+			OR = {
+				has_building = tenaille
+				has_building = earthern_rampart
+			}
+			NOT = { has_fort_building_trigger = yes }
+		}
+		remove_tenaille_building_effect = {
+			should_not_trigger_destroyed = yes
+			remove_tenaille = yes
+			remove_modifiers = FROM
+		}
+	}
+	else_if = {
+		limit = {
+			OR = {
+				has_building = tenaille
+				has_building = earthern_rampart
+			}
+		}
+		remove_tenaille_building_effect = {
+			remove_modifiers = FROM
+		}
+		add_tenaille_building_effect = {
+			who = event_target:owner
+		}
+	}
+}
+# Effect to add the tenaille modifiers to area.
+add_tenaille_building_effect = {
+	trigger_switch = {
+		on_trigger = has_building
+
+		tenaille = {
+			clear_tenaille_modifiers = yes 
+			add_province_modifier = {
+				name = tenaille_modifier_defender_root
+				duration = -1
+				hidden = yes
+			}
+			area = {
+				limit = {
+					owned_by = $who$
+					NOT = { has_fort_building_trigger = yes }
+				}
+				clear_tenaille_modifiers = yes 
+				add_province_modifier = {
+					name = tenaille_modifier_defender_area
+					duration = -1
+					hidden = yes
+				}
+			}
+		}
+		earthern_rampart = {
+			clear_tenaille_modifiers = yes 
+			add_province_modifier = {
+				name = earthern_rampart_defender_root
+				duration = -1
+				hidden = yes
+			}
+			area = {
+				limit = {
+					owned_by = $who$
+					NOT = { has_fort_building_trigger = yes }
+				}
+				clear_tenaille_modifiers = yes 
+				add_province_modifier = {
+					name = earthern_rampart_defender_area
+					duration = -1
+					hidden = yes
+				}
+			}
+		}
+	}
+}
+# Effect to remove the modifiers applied by Tenailles to provinces
+remove_tenaille_building_effect = {
+	[[should_not_trigger_destroyed] # Specify if we want the on_destroyed effect to fire
+		add_province_modifier = {
+			name = should_not_trigger_destroyed_tenaille
+			duration = 2
+			hidden = yes
+		}
+	]
+	[[remove_tenaille] # Specify if we want the buildings to be destroyed
+		remove_building = tenaille
+		remove_building = earthern_rampart
+		add_province_modifier = {
+			name = remove_tenaille_building_modifier # since remove_building doesnt seem to get rid of them, will remove via keep_trigger
+			duration = 60
+			hidden = yes
+		}
+	]
+	remove_tenaille_modifier_effect = {
+		who = $remove_modifiers$
+	}
+}
+# Used to actually remove the tenaille modifiers
+remove_tenaille_modifier_effect = {
+	if = {
+		limit = {
+			NOT = {
+				area_for_scope_province = {
+					owned_by = $who$
+					OR = {
+						has_building = tenaille
+						has_building = earthern_rampart
+					}
+					has_fort_building_trigger = yes
+				}
+			}
+		}
+		area = {
+			limit = {
+				owned_by = $who$
+				has_tenaille_modifier = yes
+			}
+            clear_tenaille_modifiers = yes
+		}
+	}
+}
+# Scripted effect to remove all of them
+clear_tenaille_modifiers = {
+   remove_province_modifier = tenaille_modifier_defender_root
+   remove_province_modifier = tenaille_modifier_defender_area
+   remove_province_modifier = tenaille_modifier_attacker_root
+   remove_province_modifier = tenaille_modifier_attacker_area
+   remove_province_modifier = earthern_rampart_defender_root
+   remove_province_modifier = earthern_rampart_defender_area
+   remove_province_modifier = earthern_rampart_attacker_root
+   remove_province_modifier = earthern_rampart_defender_area
+}
+# Triggered when a Tenaille is built via on_built to add the necessary modifiers
+on_tenaille_built = {
+	hidden_effect = {
+		if = {
+			limit = {
+				has_fort_building_trigger = yes
+			}
+			add_tenaille_building_effect = {
+				who = FROM
+			}
+		}
+		else = {
+			remove_tenaille_building_effect = {
+				should_not_trigger_destroyed = yes
+				remove_tenaille = yes
+				remove_modifiers = FROM
+			}
+		}
+	}
+}
+# Triggered when a tenaille is destroyed via on_destroyed
+on_tenaille_destroyed = {
+	hidden_effect = {
+		if = {
+			limit = {
+				NOT = { has_province_modifier = should_not_trigger_destroyed_tenaille }
+			}
+			remove_tenaille_building_effect = {
+				remove_modifiers = FROM
+			}
+		}
+	}
+}
+# From on_building_destroyed, used to refund AI
+refund_ai_building_money = {
+   	hidden_effect = {
+   		FROM = {
+   			if = {
+   				limit = { ai = yes }
+   				add_treasury = $amount$
+				[[fort]
+					ROOT = {
+						add_province_modifier = {
+							name = ai_doesnt_want_fort_here
+							duration = -1
+							hidden = yes
+						}
+					}
+				]
+   			}
+   		}
+   	}
+}
+# triggered from on_war_won to ensure all countries swap their tenaille modifiers back to defender mode when at peace.
+on_war_end_change_tenaille_combat_bonus = {
+    every_owned_province = {
+        change_tenaille_combat_bonus = yes
+    }
+}
+# triggered from on_siege_won and on_war_won to swap bonus from defender > attacker mode.
+change_tenaille_combat_bonus = {
+    if = {
+        limit = {
+            has_tenaille_modifier = yes
+            controller = {
+                NOT = { PREV = { owned_by = PREV } }
+            }
+        }
+        swap_tenaille_combat_bonus = {
+            type = defender
+            which = attacker
+        }
+    }
+    else_if = {
+        limit = {
+            has_tenaille_modifier = yes
+            controller = {
+                PREV = { owned_by = PREV }
+            } 
+        }
+        swap_tenaille_combat_bonus = {
+            type = attacker
+            which = defender
+        }
+    }
+}
+# Used to replace $type$ modifiers with $which$ for tenaille area effects.
+swap_tenaille_combat_bonus = {
+    trigger_switch = {
+        on_trigger = has_province_modifier
+
+        tenaille_modifier_$type$_root = {
+            remove_province_modifier = tenaille_modifier_$type$_root
+            add_province_modifier = {
+                name = tenaille_modifier_$which$_root
+                duration = -1
+                hidden = yes
+            }
+        }
+        tenaille_modifier_$type$_area = {
+            remove_province_modifier = tenaille_modifier_$type$_area
+            add_province_modifier = {
+                name = tenaille_modifier_$which$_area
+                duration = -1
+                hidden = yes
+            }
+        }
+        earthern_rampart_$type$_root = {
+            remove_province_modifier = earthern_rampart_$type$_root
+            add_province_modifier = {
+                name = earthern_rampart_$which$_root
+                duration = -1
+                hidden = yes
+            }
+        }
+        earthern_rampart_$type$_area = {
+            remove_province_modifier = earthern_rampart_$type$_area
+            add_province_modifier = {
+                name = earthern_rampart_$which$_area
+                duration = -1
+                hidden = yes
+            }
+        }
+    }
+}
+
+###################################
+#		Libraries go here
+###################################
+on_library_built = { # Triggered from on_built
+	hidden_effect = {
+		if = {
+			limit = {
+				NOT = { has_province_modifier = may_not_build_library } # If there's no library in the area
+			}
+			add_library_building_effect = {
+				who = FROM
+			}
+		}
+		else = {
+			remove_library_building_effect = {
+				should_not_trigger_destroyed = yes
+				remove_library = yes
+				remove_modifiers = FROM
+			}
+		}
+	}
+}
+# Applies the area effect based on the building
+add_library_building_effect = {
+	hidden_effect = {
+		save_event_target_as = root
+		area = {
+			limit = {
+				owned_by = $who$
+				NOT = { province_id = event_target:root }
+			}
+			add_province_modifier = {
+				name = may_not_build_library
+				duration = -1
+				hidden = yes
+			}
+		}  
+		trigger_switch = {
+			on_trigger = has_building
+
+			university = {
+				area = {
+				   	limit = { owned_by = $who$ }
+					remove_library_area_modifiers = yes
+					add_next_institution_embracement = 10
+				   	add_province_modifier = {
+					  	name = university_area_modifier
+					  	duration = -1
+				   	}
+				}
+			}
+			grand_library = {
+				area = {
+				   	limit = { owned_by = $who$ }
+					remove_library_area_modifiers = yes
+					add_next_institution_embracement = 10
+				   	add_province_modifier = {
+					  	name = grand_library_area_modifier
+					  	duration = -1
+				   	}
+				}
+			}
+			library = {
+				area = {
+				   	limit = { owned_by = $who$ }
+					remove_library_area_modifiers = yes 
+					add_next_institution_embracement = 10
+				   	add_province_modifier = {
+					  	name = library_area_modifier
+					  	duration = -1
+				   	}
+				}
+			}
+		}
+	}
+}
+#Removes the library modifiers
+remove_library_building_effect = {
+	[[should_not_trigger_destroyed] # If we specified that we don't want the on_destroyed action to trigger
+		add_province_modifier = {
+			name = should_not_trigger_destroyed_library
+			duration = 2
+			hidden = yes
+		}
+	]
+	[[remove_library] # If we specified we wanted to remove the building
+		add_province_modifier = {
+			name = remove_library_modifier_trigger # Fall back to use keep_trigger in case remove_building doesn't work
+			duration = 40
+			hidden = yes
+		}
+		remove_building = library
+		remove_building = grand_library
+		remove_building = university
+	]
+	remove_library_building_modifiers = {
+		who = $remove_modifiers$
+	}
+}
+# Removes the modifiers by area owner
+remove_library_building_modifiers = {
+	if = {
+		limit = {
+			NOT = {
+				area_for_scope_province = {
+					has_library_building_trigger = yes
+					owned_by = $who$
+				}
+			}
+		}
+		area = {
+			limit = {
+				owned_by = $who$
+			}
+			add_next_institution_embracement = -10
+			remove_library_area_modifiers = yes
+			remove_province_modifier = may_not_build_library
+		}
+	}
+}
+# Library modifiers
+remove_library_area_modifiers = {
+	remove_province_modifier = university_area_modifier
+	remove_province_modifier = grand_library_area_modifier
+	remove_province_modifier = library_area_modifier
+}
+# Triggered when the library is destroyed
+on_library_destroyed = {
+	hidden_effect = {
+		if = {
+			limit = {
+				NOT = { has_province_modifier = should_not_trigger_destroyed_library } # If we specified we didn't want this triggered
+			}
+			remove_library_building_effect = {
+				remove_modifiers = FROM
+			}
+		}
+	}
+}
+# Triggered from on_province_owner_change
+on_province_owner_change_library_conquered = {
+   	if = {
+      	limit = {
+			# If there's already a library in the area
+			area_for_scope_province = {
+				has_library_building_trigger = yes
+				NOT = { has_province_modifier = recent_ownership_change } 
+				owned_by = event_target:owner
+			}
+    	}
+		# If a library was conquered
+      	if = {
+         	limit = {
+            	has_library_building_trigger = yes
+				has_province_modifier = recent_ownership_change
+         	}
+         	remove_library_building_effect = {
+				should_not_trigger_destroyed = yes
+				remove_library = yes
+				remove_modifiers = FROM # FROM is the old owner
+			}
+      	}
+		# Apply the modifiers to the newly conquered provinces
+		if = {
+			limit = {
+				NOT = { has_library_modifier = yes }
+			}
+			area = {
+				limit = {
+					has_library_building_trigger = yes
+					owned_by = event_target:owner
+					NOT = { has_province_modifier = recent_ownership_change }
+				} 
+				add_library_building_effect = {
+					who = event_target:owner
+				}
+			} 
+		}
+	}
+	# If a library was conquered and there wasn't a library in the area
+	else_if = {
+		limit = {
+			has_library_building_trigger = yes
+		}
+		remove_library_building_effect = {
+			remove_modifiers = FROM
+		}
+		add_library_building_effect = {
+			who = event_target:owner
+		}
+	}
+}

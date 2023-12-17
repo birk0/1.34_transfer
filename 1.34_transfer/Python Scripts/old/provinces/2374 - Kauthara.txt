@@ -1,0 +1,19 @@
+#2374 - Kauthara
+
+owner = CHA
+controller = CHA
+culture = cham
+religion = hinduism
+capital = "Kauthara"
+trade_goods = incense
+hre = no
+base_tax = 4 
+base_production = 3
+base_manpower = 3
+is_city = yes
+add_core = CHA
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

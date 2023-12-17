@@ -1,0 +1,19 @@
+#309 - Olonets
+
+owner = NOV
+controller = NOV  
+culture = karelian
+religion = orthodox
+hre = no
+trade_goods = fur 
+capital = "Olonets"
+is_city = yes
+add_core = NOV
+#changes
+base_manpower = 1
+base_tax = 1
+base_production = 1
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

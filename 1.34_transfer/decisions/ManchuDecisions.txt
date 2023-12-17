@@ -1,0 +1,295 @@
+country_decisions = {
+
+	manchu_nation_1 = {
+		major = yes
+		potential = {
+			OR = {
+				primary_culture = manchu
+				primary_culture = manchu_new
+			}
+			exists = yes
+			#normal_or_historical_nations = yes
+			was_never_end_game_tag_trigger = yes
+			NOT = { has_country_flag = formed_manchu_flag }
+			OR = {
+				ai = no
+				is_playing_custom_nation = no
+			}
+			NOT = { exists = MCH }
+		}
+		provinces_to_highlight = {
+			OR = {
+				province_id = 730
+				OR = {
+					AND = {
+						OR = {
+							culture = manchu
+							culture = manchu_new
+						}
+						ROOT = {
+							OR = {
+								is_emperor_of_china = yes
+								AND = {
+									NOT = {
+										num_of_owned_provinces_with = {
+											value = 20
+											OR = {
+												culture = manchu
+												culture = manchu_new
+											}
+											owned_by = ROOT
+										}
+									}
+									owns_core_province = 730
+								}
+							}
+						}
+					}
+				}
+			}
+			OR = {
+				NOT = { owned_by = ROOT }
+				NOT = { is_core = ROOT }
+			}
+		}
+		allow = {
+			is_free_or_tributary_trigger = yes
+			is_at_war = no			
+			owns_or_subject_of = 730 #Girin
+			730 = {							#Girin
+				is_state = yes
+			}
+			OR = {
+				is_emperor_of_china = yes
+				num_of_owned_provinces_with = {
+					is_core = ROOT
+					OR = {
+						culture = manchu
+						culture = manchu_new
+					}
+					value = 20
+				}
+			}
+		}
+		effect = {
+			if = {
+				limit = {
+					ai = yes #AI needs some encouragement to form Qing
+				}
+				add_permanent_claim = 704		# Liaoxi
+				add_permanent_claim = 723		# Xilin Gol
+				add_permanent_claim = 726		# Liaodong
+				add_core = 1816		# Beijing
+				north_china_region = {
+					add_permanent_claim = ROOT
+				}
+			}
+			730 = {
+				if = {
+					limit = { NOT = { owned_by = ROOT } }
+					cede_province = ROOT
+					add_core = ROOT
+				}
+				move_capital_effect = yes
+				add_province_modifier = {
+					name = manchu_beijing_trade_modifier
+					duration = 18250
+				}
+				add_center_of_trade_level = 1
+			}
+			manchuria_region = {
+				limit = {
+					NOT = { is_core = ROOT }
+					is_city = yes
+				}
+				add_core = MCH
+			}
+			add_prestige = 25
+			change_tag = MCH
+			swap_non_generic_missions = yes
+			if = {
+				limit = {
+					NOT = { government_rank = 2 }
+				}
+				set_government_rank = 2
+			}
+			set_country_flag = formed_manchu_flag
+			if = {
+				limit = { 
+					has_custom_ideas = no 
+				}
+				country_event = { id = ideagroups.1 } #Swap Ideas
+			}
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		ai_importance = 500		
+	}
+
+	form_manchu_dynasty = {
+		major = yes
+		potential = {
+			tag = MCH
+			was_never_end_game_tag_trigger = yes
+			#normal_or_historical_nations = yes
+			OR = {
+				ai = no
+				is_playing_custom_nation = no
+			}
+			NOT = { exists = QNG }
+			NOT = { has_country_flag = manchu_dynasty_formed }
+
+			OR = {
+				ai = no
+				AND = {
+					ai = yes
+					num_of_cities = 5
+				}
+			}
+		}
+		provinces_to_highlight = {
+			OR = {
+				province_id = 704		# Liaoxi
+				province_id = 723		# Xilin Gol
+				province_id = 726		# Liaodong
+				province_id = 1816		# Beijing
+			}
+			NOT = { owned_by = ROOT }
+		}
+		allow = {
+			704 = { country_or_subject_holds = ROOT } # Liaoxi
+			723 = { country_or_subject_holds = ROOT } # Xilin Gol
+			726 = { country_or_subject_holds = ROOT } # Liaodong
+			OR = {
+				1816 = { country_or_subject_holds = ROOT } # Beijing
+				any_neighbor_country = {
+					is_emperor_of_china = yes
+					ai = no
+				}
+			}
+			is_at_war = no
+			is_free_or_tributary_trigger = yes
+			NOT = {
+				has_ruler_modifier = tribal_succession_crisis
+			}
+			if = {
+				limit = {
+					any_known_country = {
+						is_emperor_of_china = yes
+						ai = yes #If player is EoC then Manchu dosent need to be EoC to form Qing
+					}
+				}
+				is_emperor_of_china = yes
+			}
+		}
+		effect = {
+			if = {
+				limit = {
+					704 = {
+						NOT = { owned_by = ROOT }
+						owner = { ai = yes }
+					}
+				}
+				704 = {
+					add_core = ROOT
+					cede_province = ROOT
+				}
+			}
+			if = {
+				limit = { 
+					723 = {
+						NOT = { owned_by = ROOT }
+						owner = { ai = yes }
+					}
+				}
+				723 = {
+					add_core = ROOT
+					cede_province = ROOT
+				}
+			}
+			if = {
+				limit = { 
+					726 = {
+						NOT = { owned_by = ROOT }
+						owner = { ai = yes }
+					}
+				}
+				726 = {
+					add_core = ROOT
+					cede_province = ROOT
+				}
+			}
+			if = {
+				limit = { 
+					1816 = {
+						NOT = { owned_by = ROOT }
+						owner = { ai = yes }
+					}
+				}
+				1816 = {
+					add_core = ROOT
+					cede_province = ROOT
+				}
+			}
+			if = {
+				limit = { 
+					owns_core_province = 1816
+				}
+				1816 = {
+					move_capital_effect = yes
+					change_culture = ROOT
+				}
+			}
+			change_tag = QNG
+			swap_non_generic_missions = yes
+			set_government_rank = 3
+			south_china_region = {
+				limit = {
+					NOT = { owned_by = ROOT }
+				}
+				add_permanent_claim = QNG
+			}
+			xinan_region = {
+				limit = {
+					NOT = { owned_by = ROOT }
+				}
+				add_permanent_claim = QNG
+			}
+			north_china_region = {
+				limit = {
+					NOT = { owned_by = ROOT }
+				}
+				add_permanent_claim = QNG
+			}
+			add_country_modifier = {
+				name = "centralization_modifier"
+				duration = 3650
+			}
+			if = {
+				limit = {
+					is_emperor_of_china = yes
+					NOT = { religion = confucianism }
+				}
+				change_religion = confucianism
+				add_harmonized_religion = tengri_pagan_reformed
+			}
+			add_prestige = 10
+			set_country_flag = manchu_dynasty_formed
+			if = {
+				limit = { has_custom_ideas = no }
+				country_event = { id = ideagroups.1 } #Swap Ideas
+			}
+			if = {
+				limit = { is_emperor_of_china = no }
+				event_target:EmperorOfChina = {
+					country_event = { id = eoc_events.34 } #Formation of Qing
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		ai_importance = 400
+	}
+}

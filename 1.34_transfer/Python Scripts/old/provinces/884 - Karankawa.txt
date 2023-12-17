@@ -1,0 +1,19 @@
+# 884 - Sanduwa
+
+owner = NDO
+controller = NDO
+culture = mbundu
+religion = shamanism #Fetishism
+capital = "Sanduwa"
+trade_goods = livestock
+hre = no
+base_tax = 1 
+base_production = 1
+base_manpower = 1
+is_city = yes
+add_core = NDO
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

@@ -1,0 +1,19 @@
+# 2356 - Shymkent
+
+owner = KOK
+controller = KOK
+add_core = KOK
+culture = uzbehk
+religion = sunni
+capital = "Shymkent"
+trade_goods = tea
+hre = no
+base_tax = 1 
+base_production = 1
+base_manpower = 1
+is_city = yes
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

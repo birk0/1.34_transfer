@@ -1,0 +1,19 @@
+#4349 - Laguna
+
+owner = TDO
+controller = TDO
+add_core = TDO
+culture = filipino
+religion = shen #changes
+capital = "Laguna"
+trade_goods = grain
+hre = no
+base_tax = 3
+base_production = 3
+base_manpower = 1
+is_city = yes
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

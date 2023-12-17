@@ -1,0 +1,21 @@
+# 2368 - Karamegdan
+
+culture = khazak
+religion = sunni
+capital = "Karamegdan"
+trade_goods = wool
+hre = no
+base_tax = 2 
+base_production = 1 #changes
+base_manpower = 1
+is_city = yes
+#Changes
+owner = KZH
+controller = KZH
+add_core = KZH
+add_core = MHL
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

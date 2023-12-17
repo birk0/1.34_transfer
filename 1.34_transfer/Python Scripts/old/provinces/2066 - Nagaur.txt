@@ -1,0 +1,19 @@
+#2066 - Nagaur
+
+owner = NGA
+controller = NGA
+culture = rajput
+religion = hinduism
+capital = "Nagaur"
+trade_goods = livestock
+hre = no
+base_tax = 2 
+base_production = 2
+base_manpower = 1
+is_city = yes
+add_core = NGA
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

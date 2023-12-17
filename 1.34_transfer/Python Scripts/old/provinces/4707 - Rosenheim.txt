@@ -1,0 +1,21 @@
+#4907 - Sumy
+
+culture = ryazanian
+religion = orthodox
+hre = no
+capital = "Sumy"
+is_city = yes
+#changes
+owner = CHR
+controller = CHR
+add_core = CHR
+add_core = LIT
+base_tax = 1
+base_manpower = 1
+base_production = 1
+trade_goods = grain
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

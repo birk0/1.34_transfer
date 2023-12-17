@@ -1,0 +1,19 @@
+# - El Aaiun
+
+culture = berber
+religion = sunni
+capital = "El Aaiun"
+trade_goods = fish
+hre = no
+base_tax = 2
+base_production = 2
+base_manpower = 1
+add_core = LAM
+is_city = yes
+owner = LAM
+controller = LAM
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

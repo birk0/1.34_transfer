@@ -1,0 +1,13 @@
+# Open Order Cavalry
+
+unit_type = western	
+type = cavalry
+manpower = 2
+
+maneuver = 6
+offensive_morale = 10
+defensive_morale = 10
+offensive_fire = 4
+defensive_fire = 2
+offensive_shock = 8
+defensive_shock = 8

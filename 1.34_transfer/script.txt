@@ -1,0 +1,129 @@
+
+every_province = {
+	limit = {
+		NOT = { region = ural_region }
+		NOT = { region = arabia_region }
+		OR = {
+			superregion = eastern_europe_superregion
+			superregion = europe_superregion
+			superregion = near_east_superregion
+			region = egypt_region
+			region = maghreb_region
+			region = caucasia_region
+		}
+	}
+	cede_province = D00
+	add_core = D00
+}
+D00 = {
+	change_primary_culture = roman
+	every_owned_province = {
+		add_province_modifier = {
+			name = debug_cn_collapse
+			duration = -1
+		}
+	}
+	every_owned_province = {
+		remove_core = D00
+	}
+}
+every_province = {
+	add_local_autonomy = -100
+}
+every_country = {
+	limit = { NOT = { tag = D00 } }
+	add_treasury = 2000
+	add_yearly_manpower = 20
+	add_country_modifier = {
+		name = cn_gov_capacity
+		duration = -1
+	}
+	add_stability = 3
+	add_prestige = 100
+}
+
+
+
+D00 = {
+	every_province = {
+		limit = {
+			OR = {
+				superregion = china_superregion
+				superregion = far_east_superregion
+				superregion = india_superregion
+				superregion = tartary_superregion
+				superregion = east_indies_superregion
+			}
+		}
+		cede_province = D00
+	}
+	taiwan_area = {
+		type = all
+		add_core = FRM
+	}
+}
+
+MCH = {
+	mongolia_region = {
+		type = all
+		add_permanent_claim = MCH
+	}
+	north_china_region = {
+		type = all
+		add_permanent_claim = MCH
+	}
+	manchuria_region = {
+		type = all
+		add_permanent_claim = MCH
+	}
+	define_general = {
+		shock = 6
+		fire = 6
+		manuever = 6
+		siege = 6
+	}
+}
+KHA = {
+	manchuria_region = {
+		type = all
+		add_permanent_claim = KHA
+	}
+	mongolia_region = {
+		type = all
+		add_permanent_claim = KHA
+	}
+	north_china_region = {
+		type = all
+		add_permanent_claim = KHA
+	}
+	define_general = {
+		shock = 6
+		fire = 6
+		manuever = 6
+		siege = 6
+	}
+}
+BNG = {
+	hindusthan_region = {
+		type = all
+		add_permanent_claim = BNG
+	}
+	bengal_region = {
+		type = all
+		add_permanent_claim = BNG
+	}
+	tibet_region = {
+		type = all
+		add_permanent_claim = BNG
+	}
+	burma_region = {
+		type = all
+		add_permanent_claim = BNG
+	}
+	define_general = {
+		shock = 6
+		fire = 6
+		manuever = 6
+		siege = 6
+	}
+}

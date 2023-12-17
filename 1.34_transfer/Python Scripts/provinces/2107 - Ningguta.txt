@@ -1,0 +1,7 @@
+#Prov2107 - Ningguta
+culture = manchu
+religion = confucianism
+
+base_tax = 1
+base_production = 1
+base_manpower = 1

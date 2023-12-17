@@ -1,0 +1,21 @@
+#1213 - Shoa
+
+owner = ETH
+controller = ETH
+add_core = ETH
+culture = amhara 
+religion = sunni
+capital = "Badeqe"
+is_city = yes
+base_manpower = 2
+trade_goods = grain
+hre = no
+fort_15th = yes
+base_tax = 2
+base_production = 1
+add_local_autonomy = 10
+add_core = SOA
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

@@ -1,0 +1,20 @@
+# - Zwarat
+
+culture = sanhaja
+religion = sunni
+capital = "Zwarat"
+trade_goods = slaves
+hre = no
+base_tax = 1 
+base_production = 1
+base_manpower = 1
+add_core = TRZ
+owner = TRZ
+controller = TRZ
+is_city = yes
+
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

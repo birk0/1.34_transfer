@@ -1,0 +1,7 @@
+#Prov1837 - Etchu
+culture = togoku
+religion = shinto
+
+base_tax = 1
+base_production = 1
+base_manpower = 1

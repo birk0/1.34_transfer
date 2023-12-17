@@ -1,0 +1,15 @@
+# Xiuhtecuhtlian Infantry
+
+unit_type = high_american
+type = infantry
+manpower = 2
+
+maneuver = 1
+
+offensive_fire = 6
+defensive_fire = 6
+offensive_shock = 4
+defensive_shock = 2
+offensive_morale = 8
+defensive_morale = 6
+

@@ -1,0 +1,19 @@
+# 1865 - Ghent
+
+owner = FLA
+controller = FLA
+add_core = FLA
+is_city = yes
+capital = "Ghent"
+culture = flemish
+religion = catholic
+hre = no
+base_tax = 5
+base_production = 5
+trade_goods = cloth
+base_manpower = 3
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

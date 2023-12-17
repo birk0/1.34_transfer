@@ -1,0 +1,19 @@
+#301 - Ryazan
+
+owner = RYA
+controller = RYA   
+culture = ryazanian
+religion = orthodox
+hre = no
+base_tax = 5
+base_production = 5
+trade_goods = wool
+base_manpower = 3
+capital = "Pereyaslavl-Ryazansky"
+is_city = yes
+fort_15th = yes
+add_core = RYA
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

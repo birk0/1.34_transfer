@@ -1,0 +1,22 @@
+# 98 Utrecht - Principal cities: Utrecht
+
+owner = UTR
+controller = UTR 
+capital = "Utrecht"
+is_city = yes
+culture = dutch
+religion = catholic
+hre = yes
+base_tax = 5
+base_production = 5
+trade_goods = cloth
+base_manpower = 2
+add_core = UTR
+fort_15th = yes
+
+1444.12.1 = {
+	trade_goods = unknown
+	owner = ---
+	controller = ---
+	hre = no
+}

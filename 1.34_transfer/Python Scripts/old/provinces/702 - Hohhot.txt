@@ -1,0 +1,20 @@
+#702 - Ulanqab
+
+culture = mongol
+religion = vajrayana
+capital = "Hohhot"
+trade_goods = iron
+hre = no
+base_tax = 2 
+base_production = 1
+base_manpower = 1
+is_city = yes
+#Changes
+add_core = MNG
+add_core = TUM
+owner = TUM
+controller = TUM
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

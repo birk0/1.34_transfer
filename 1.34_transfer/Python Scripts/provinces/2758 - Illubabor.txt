@@ -1,0 +1,7 @@
+#Prov2758 - Illubabor
+culture = amhara
+religion = coptic
+
+base_tax = 1
+base_production = 1
+base_manpower = 1

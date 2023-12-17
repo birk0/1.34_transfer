@@ -1,0 +1,246 @@
+# Chinese alliance
+alliance = {
+	first = CSH
+	second = CXI
+	start_date = 1643.1.1
+	end_date = 1645.12.31
+}
+
+alliance = {
+	first = CZH
+	second = MNG
+	start_date = 1673.1.1
+	end_date = 1681.12.31
+}
+
+#Manchu vassal
+vassal = {
+	first = QNG
+	second = CZH
+	start_date = 1662.1.1
+	end_date = 1672.12.31
+}
+
+#Manchu vassal
+vassal = {
+	first = MCH
+	second = KOR
+	start_date = 1637.1.1
+	end_date = 1645.6.30
+}
+
+#Manchu vassal
+vassal = {
+	first = QNG
+	second = KOR
+	start_date = 1645.7.1
+	end_date = 1895.1.1
+}
+
+# Seven-Year war
+alliance = {
+	first = MNG
+	second = KOR
+	start_date = 1593.1.1
+	end_date = 1598.1.1
+}
+
+# Tibet and Manchu
+vassal = {
+	first = QNG
+	second = UTS
+	start_date = 1724.1.1
+	end_date = 1792.11.1
+}
+
+vassal = {
+	first = QNG
+	second = KAM
+	start_date = 1724.1.1
+	end_date = 1776.1.1
+}
+
+# Mongol Khanate and the Oirats
+vassal = {
+	first = OIR
+	second = KHA
+	start_date = 1444.1.1 #Changes
+	end_date = 1454.1.1
+}
+#Changes
+vassal = { #Kara del now subject to Oirats
+	first = OIR
+	second = HMI
+	start_date = 1444.1.1
+	end_date = 1454.1.1
+}
+vassal = { #Tumed subject to oirats
+	first = OIR
+	second = TUM
+	start_date = 1444.1.1
+	end_date = 1454.1.1
+}
+vassal = { #Korchin subject to oirats
+	first = OIR
+	second = KRC 
+	start_date = 1444.1.1
+	end_date = 1454.1.1
+}
+vassal = { #Dorbet part of Four Oirats
+	first = OIR
+	second = KUL
+	start_date = 1444.1.1
+	end_date = 1454.1.1
+}
+dependency = {
+	subject_type = "tributary_state" #Mughulistan tribute of oirats
+	first = OIR
+	second = MHL
+	start_date = 1444.1.1
+	end_date = 1454.1.1
+}
+dependency = {
+	subject_type = "tributary_state" #Sarig yogir tribute of oirats
+	first = OIR
+	second = SYG
+	start_date = 1444.1.1
+	end_date = 1454.1.1
+}
+dependency = {
+	subject_type = "tributary_state" #Buryatia tribute of Oirats
+	first = OIR
+	second = BRT
+	start_date = 1444.1.1
+	end_date = 1454.1.1
+}
+#Buryatia and Khori
+vassal = {
+	first = BRT
+	second = WRU
+	start_date = 1444.1.1
+	end_date = 1470.1.1
+}
+#Kham and Amdo
+vassal = {
+	first = KAM
+	second = AWN
+	start_date = 1444.1.1
+	end_date = 1474.1.1
+}
+
+#Chagatai Subject
+#vassal = { #Changes, Chagatai no longer exists at game start
+#	first = CHG
+#	second = KAS
+#	start_date = 1444.1.1
+#	end_date = 1462.1.1
+#}
+
+#Chagatayid domains:
+vassal = {
+	first = MHL
+	second = KZH
+	start_date = 1444.1.1
+	end_date = 1454.1.1
+}
+
+dependency = { #Changes, Kham now tributary of ming
+	subject_type = "tributary_state"
+	first = MNG
+	second = KAM
+	start_date = 1444.1.1
+	end_date = 1544.1.1
+}
+dependency = {
+	subject_type = "tributary_state"
+	first = MNG
+	second = KOR
+	start_date = 1444.1.1
+	end_date = 1608.1.1
+}
+#dependency = { Dai Viet no longer tributary of ming #Changes
+#	subject_type = "tributary_state"
+#	first = MNG
+#	second = DAI
+#	start_date = 1444.1.1
+#	end_date = 1644.4.22
+#}
+
+dependency = {
+	subject_type = "tributary_state"
+	first = MNG
+	second = AYU
+	start_date = 1444.1.1
+	end_date = 1644.4.22
+}
+
+#dependency = { #Changes Sarig yogur no longer tributary of ming
+#	subject_type = "tributary_state"
+#	first = MNG
+#	second = SYG
+#	start_date = 1444.1.1
+#	end_date = 1472.1.1
+#}
+
+dependency = {
+	subject_type = "tributary_state"
+	first = MNG
+	second = CHA
+	start_date = 1444.1.1
+	end_date = 1644.4.22
+}
+
+dependency = {
+	subject_type = "tributary_state"
+	first = MNG
+	second = LXA
+	start_date = 1444.1.1
+	end_date = 1644.4.22
+}
+
+dependency = {
+	subject_type = "tributary_state"
+	first = MNG
+	second = KHM
+	start_date = 1444.1.1
+	end_date = 1644.4.22
+}
+dependency = {
+	subject_type = "tributary_state"
+	first = MNG
+	second = MMA
+	start_date = 1444.1.1
+	end_date = 1449.1.1
+}
+
+dependency = {
+	subject_type = "tributary_state"
+	first = MNG
+	second = PGS
+	start_date = 1444.1.1
+	end_date = 1521.1.1
+}
+
+dependency = {
+	subject_type = "tributary_state"
+	first = MNG
+	second = TDO
+	start_date = 1444.1.1
+	end_date = 1521.1.1
+}
+
+dependency = {
+	subject_type = "tributary_state"
+	first = MNG
+	second = MJZ
+	start_date = 1444.1.1
+	end_date = 1618.1.1
+}
+
+dependency = {
+	subject_type = "tributary_state"
+	first = MNG
+	second = MHX
+	start_date = 1444.1.1
+	end_date = 1618.1.1
+}

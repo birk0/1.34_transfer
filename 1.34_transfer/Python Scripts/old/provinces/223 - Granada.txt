@@ -1,0 +1,22 @@
+#223 - Granada
+
+owner = GRA		# Mustapha Sa'd King of Granada
+controller = GRA
+add_core = GRA
+culture = andalucian
+religion = sunni
+hre = no
+base_tax = 4
+base_production = 3
+trade_goods = salt
+base_manpower = 3
+capital = "Granada"
+is_city = yes
+
+1444.12.1 = { # New Bookmark
+	trade_goods = unknown
+	remove_cores = yes
+	owner = ---
+	controller = ---
+	hre = no
+}

@@ -1,0 +1,20 @@
+#705 - Dangla
+
+owner = KAM
+controller = KAM
+add_core = KAM
+culture = tibetan
+religion = vajrayana
+capital = "Gyegu"
+trade_goods = wool
+hre = no
+is_city = yes
+#Changes
+base_tax = 1 
+base_production = 1
+base_manpower = 1
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

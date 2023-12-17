@@ -1,0 +1,29 @@
+# 203 Lyonnais - Principal cities: Lyon
+
+owner = FRA
+controller = FRA
+capital = "Lyon"
+is_city = yes
+culture = occitain
+religion = catholic
+hre = no
+base_tax = 5
+base_production = 4
+trade_goods = paper #Great printing industry form the 15th century and french center of paperproduction in Ambert close by (even though not the main trade good for that province).
+base_manpower = 4
+add_core = FRA
+fort_15th = yes
+#discovered_by = eastern
+#discovered_by = western
+#discovered_by = muslim
+#discovered_by = ottoman
+
+1399.1.1 = { add_core = DAU }
+
+1444.12.1 = { # New Bookmark
+	trade_goods = unknown
+	remove_cores = yes
+	owner = ---
+	controller = ---
+	hre = no
+}

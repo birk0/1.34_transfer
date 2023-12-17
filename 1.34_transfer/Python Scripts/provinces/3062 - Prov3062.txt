@@ -1,0 +1,8 @@
+#Prov3062 - Prov3062
+religion = vajrayana
+culture = mongol
+is_city = no
+
+base_tax = 1
+base_production = 1
+base_manpower = 1

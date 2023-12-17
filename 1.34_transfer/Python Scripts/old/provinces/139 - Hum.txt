@@ -1,0 +1,23 @@
+#139 - Hum
+
+owner = HRZ
+controller = HRZ
+culture = bosnian
+religion = catholic
+capital = "Mostar"	# Unofficial capital of Herzegovina
+trade_goods = wool
+hre = no
+base_tax = 3 
+base_production = 3
+base_manpower = 2
+is_city = yes
+add_core = BOS
+add_core = HRZ
+
+1444.12.1 = {
+	trade_goods = unknown
+	owner = ---
+	controller = ---
+	hre = no
+}
+

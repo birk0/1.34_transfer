@@ -1,0 +1,18 @@
+#449 - Ghor
+
+owner = AFG
+controller = AFG
+add_core = AFG
+culture = afghani
+religion = sunni
+capital = "Ahangaran"
+trade_goods = wool
+hre = no
+base_tax = 2
+base_production = 1
+base_manpower = 2
+is_city = yes
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

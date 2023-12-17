@@ -1,0 +1,20 @@
+#2576 - Sölvesborg
+
+add_core = DAN
+owner = DAN
+controller = DAN
+culture = danish
+religion = catholic
+hre = no
+base_tax = 2
+base_production = 1
+#trade_goods = grain
+trade_goods = naval_supplies
+base_manpower = 1
+capital = "Sölvesborg"
+is_city = yes
+
+1444.12.1 = {
+	add_bookmark_effect = yes
+}
+

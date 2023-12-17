@@ -1,0 +1,13 @@
+# Muslim Dragoon
+	
+type = cavalry
+manpower = 2
+unit_type = muslim
+
+maneuver = 6	
+offensive_morale = 6
+defensive_morale = 8
+offensive_fire = 2
+defensive_fire = 4
+offensive_shock = 6
+defensive_shock = 8

@@ -1,0 +1,274 @@
+#This is read first before other names
+
+chinese_warlord_reform = {
+	rank = {
+		3 = EMPIRE
+		2 = WARLORD
+		1 = WARLORD
+	}
+
+	ruler_male = {
+		3 = EMPEROR
+		2 = SUPREME_WARLORD
+		1 = WARLORD		
+	}
+	
+	ruler_female = {
+		3 = EMPRESS
+		2 = SUPREME_WARLADY
+		1 = WARLADY		
+	}
+	
+	consort_male = {
+		1 = LORD
+		2 = LORD
+		3 = LORD
+	}
+
+	consort_female = {
+		1 = LADY
+		2 = LADY
+		3 = LADY
+	}
+
+	heir_male = {
+		1 = HEIR
+		2 = HEIR
+		3 = HEIR
+	}
+
+	heir_female = {
+		1 = HEIR_fem
+		2 = HEIR_fem
+		3 = HEIR_fem
+	}
+
+	trigger = {
+		OR = {
+			has_reform = chinese_warlord_reform
+			is_indep_daimyo = yes
+		}
+	}
+}
+khaganate_reform = {
+	rank = {
+		1 = HORDE
+		2 = KHANATE
+		3 = KHAGANATE
+	}
+	
+	ruler_male = {
+		1 = JINONG
+		2 = KHAN
+		3 = KHAGAN
+	}
+	
+	ruler_female = {
+		1 = JINONG
+		2 = KHATUN
+		3 = GREAT_KHATUN
+	}
+	
+	consort_male = {
+		1 = BEILE
+		2 = KHAN
+		3 = YEKHE_KHAGAN
+	}
+
+	consort_female = {
+		1 = GEGE
+		2 = KHANUM
+		3 = YEKHE_KHANUM
+	}
+	
+	heir_male = {
+		1 = HEIR
+		2 = KHANZADEH
+		3 = KHANZADEH
+	}
+
+	heir_female = {
+		1 = KHANUM
+		2 = KHANUM
+		3 = KHANUM
+	}
+	
+	trigger = {
+		OR = {
+			tag = YUA
+			has_reform = khanganate_reform
+		}
+	}
+}
+imperial_japan_reform = {
+	rank = {
+		3 = EMPIRE
+		2 = KINGDOM
+		1 = DAIMYO
+	}
+
+	ruler_male = {
+		3 = EMPEROR
+		2 = KING
+		1 = LORD		
+	}
+	
+	ruler_female = {
+		3 = EMPRESS
+		2 = QUEEN
+		1 = LADY		
+	}
+	
+	consort_male = {
+		1 = LORD
+		2 = LORD
+		3 = LORD
+	}
+
+	consort_female = {
+		1 = LADY
+		2 = LADY
+		3 = LADY
+	}
+
+	heir_male = {
+		1 = HEIR
+		2 = HEIR
+		3 = HEIR
+	}
+
+	heir_female = {
+		1 = HEIR_fem
+		2 = HEIR_fem
+		3 = HEIR_fem
+	}
+
+	trigger = {
+		has_reform = imperial_japan
+	}
+}
+pirate_daimyo = {
+	rank = {
+		1 = PIRATE_DAIMYO
+	}
+	
+	ruler_male = {
+		1 = LORD
+	}
+	
+	ruler_female = {
+		1 = LADY
+	}
+	
+	trigger = {
+		is_daimyo = yes
+		OR = {
+			has_reform = pirate_republic_reform
+			has_reform = pirate_king_reform
+			has_reform = war_against_the_world_doctrine_reform
+			has_reform = black_market_consortium_reform
+		}
+	}
+}
+daimyo_reform = {
+	rank = {
+		1 = DAIMYO
+	}
+	
+	ruler_male = {
+		1 = LORD
+	}
+	
+	ruler_female = {
+		1 = LADY
+	}
+	
+	consort_male = {
+		1 = LORD
+	}
+
+	consort_female = {
+		1 = LADY
+	}
+
+	heir_male = {
+		1 = HEIR
+	}
+
+	heir_female = {
+		1 = HEIR_fem
+	}
+	
+	trigger = {
+		is_daimyo = yes
+	}
+}
+timurid_prince_reform = {
+	rank = {
+		1 = PRINCEDOM
+	}
+	
+	ruler_male = {
+		1 = MIRZA
+	}
+	
+	ruler_female = {
+		1 = MIRZADE
+	}
+	
+	consort_male = {
+		1 = MIRZA
+	}
+
+	consort_female = {
+		1 = MIRZADE
+	}
+
+	heir_male = {
+		1 = HEIR
+	}
+
+	heir_female = {
+		1 = HEIR_fem
+	}
+	
+	trigger = {
+		has_reform = timurid_prince
+	}
+}
+mod_asian_monastic_order = {
+	rank = {
+		1 = WARRIOR_MONK_ORDER
+		2 = WARRIOR_MONK_HIGH_ORDER
+		3 = DIVINE_PROTECTORS
+	}
+
+	ruler_male = {
+		1 = MONSHU
+		2 = HIGH_MONSHU
+		3 = SHINRAN
+	}
+
+	ruler_female = {
+		1 = MONSHU
+		2 = HIGH_MONSHUESS
+		3 = SHINRAN
+	}
+	
+	heir_male = {
+		1 = HEIR
+		2 = HEIR
+		3 = HEIR
+	}
+
+	heir_female = {
+		1 = HEIR_fem
+		2 = HEIR_fem
+		3 = HEIR_fem
+	}
+
+	trigger = {
+		has_reform = monastic_order_reform
+		religion_group = eastern
+	}
+}

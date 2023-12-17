@@ -1,0 +1,8 @@
+#Prov3904 - Prov3904
+religion = orthodox
+culture = finnish
+is_city = no
+
+base_tax = 1
+base_production = 1
+base_manpower = 1

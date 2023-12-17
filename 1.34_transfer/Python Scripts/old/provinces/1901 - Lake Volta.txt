@@ -1,0 +1,19 @@
+# - Mpangu
+
+owner = KON
+controller = KON 
+culture = kongolese
+religion = shamanism #Fetishism
+capital = "Sundi"
+trade_goods = copper
+hre = no
+base_tax = 1
+base_production = 1
+base_manpower = 1
+is_city = yes
+add_core = KON
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

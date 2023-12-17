@@ -1,0 +1,236 @@
+##################################################
+#	Policies for the Plutocratic Idea Group
+##################################################
+
+the_mercenary_registration_act = {
+	monarch_power = MIL
+
+	potential = {
+		ai = no
+		has_idea_group = plutocracy_ideas
+	}
+	
+	allow = {
+		full_idea_group = plutocracy_ideas
+		hidden_trigger = {
+			NOT = { has_idea_group = indigenous_ideas }
+		}
+		if = {
+			limit = { has_country_modifier = the_mercenary_registration_act_cooldown }
+			custom_trigger_tooltip = {
+				tooltip = POLICY_ON_COOLDOWN
+				always = no
+			}
+		}
+		if = {
+			limit = {
+				has_country_flag = plutocratic_cd_fl
+			}
+			custom_trigger_tooltip = {
+				tooltip = "We must wait before we can select a policy from this idea group again."
+				always = no
+			}
+		}
+	}
+
+	mercenary_cost = -0.33
+	
+	ai_will_do = {
+		factor = 1
+	}
+}
+unified_army_command = {
+	monarch_power = MIL
+	
+	potential = {
+		ai = no
+		has_idea_group = plutocracy_ideas
+	}
+	
+	allow = {
+		full_idea_group = plutocracy_ideas
+		hidden_trigger = {
+			NOT = { has_idea_group = indigenous_ideas }
+		}
+		if = {
+			limit = { has_country_modifier = unified_army_command_cooldown }
+			custom_trigger_tooltip = {
+				tooltip = POLICY_ON_COOLDOWN
+				always = no
+			}
+		}
+		if = {
+			limit = {
+				has_country_flag = plutocratic_cd_fl
+			}
+			custom_trigger_tooltip = {
+				tooltip = "We must wait before we can select a policy from this idea group again."
+				always = no
+			}
+		}
+	}	
+	
+	reserves_organisation = 0.5
+	movement_speed = 0.25
+	
+	ai_will_do = {
+		factor = 1
+	}
+}
+restrictions_for_colonies = {
+	monarch_power = DIP
+
+	potential = {
+		ai = no
+		has_idea_group = plutocracy_ideas
+	}
+	
+	allow = {
+		full_idea_group = plutocracy_ideas
+		hidden_trigger = {
+			NOT = { has_idea_group = indigenous_ideas }
+		}
+		if = {
+			limit = { has_country_modifier = restrictions_for_colonies_cooldown }
+			custom_trigger_tooltip = {
+				tooltip = POLICY_ON_COOLDOWN
+				always = no
+			}
+		}
+		if = {
+			limit = {
+				has_country_flag = plutocratic_cd_fl
+			}
+			custom_trigger_tooltip = {
+				tooltip = "We must wait before we can select a policy from this idea group again."
+				always = no
+			}
+		}
+	}
+	global_missionary_strength = 0.02
+	colonist_placement_chance = 0.5
+
+	ai_will_do = {
+		factor = 1
+	}
+}
+mandatory_service = {
+	monarch_power = DIP
+	potential = {
+		ai = no
+		has_idea_group = plutocracy_ideas
+	}
+	
+	allow = {
+		full_idea_group = plutocracy_ideas
+		hidden_trigger = {
+			NOT = { has_idea_group = indigenous_ideas }
+		}
+		if = {
+			limit = { has_country_modifier = mandatory_service_cooldown }
+			custom_trigger_tooltip = {
+				tooltip = POLICY_ON_COOLDOWN
+				always = no
+			}
+		}
+		if = {
+			limit = {
+				has_country_flag = plutocratic_cd_fl
+			}
+			custom_trigger_tooltip = {
+				tooltip = "We must wait before we can select a policy from this idea group again."
+				always = no
+			}
+		}
+	}
+	
+	advisor_pool = 3
+	country_military_power = 5
+
+	ai_will_do = {
+		factor = 1
+	}
+}
+formalized_measures = {
+	monarch_power = ADM
+
+
+	potential = {
+		ai = no
+		has_idea_group = plutocracy_ideas
+	}
+	
+	allow = {
+		full_idea_group = plutocracy_ideas
+		hidden_trigger = {
+			NOT = { has_idea_group = indigenous_ideas }
+		}
+		if = {
+			limit = { has_country_modifier = formalized_measures_cooldown }
+			custom_trigger_tooltip = {
+				tooltip = POLICY_ON_COOLDOWN
+				always = no
+			}
+		}
+		if = {
+			limit = {
+				has_country_flag = plutocratic_cd_fl
+			}
+			custom_trigger_tooltip = {
+				tooltip = "We must wait before we can select a policy from this idea group again."
+				always = no
+			}
+		}
+	}	
+
+	expand_administration_cost = -0.5
+
+	ai_will_do = {
+		factor = 1
+	}
+}
+the_tolerance_act = {
+	monarch_power = ADM
+
+	potential = {
+		ai = no
+		has_idea_group = plutocracy_ideas
+	}
+	
+	allow = {
+		full_idea_group = plutocracy_ideas
+		hidden_trigger = {
+			NOT = { has_idea_group = indigenous_ideas }
+		}
+		if = {
+			limit = { has_country_modifier = the_tolerance_act_cooldown }
+			custom_trigger_tooltip = {
+				tooltip = POLICY_ON_COOLDOWN
+				always = no
+			}
+		}
+		if = {
+			limit = {
+				has_country_flag = plutocratic_cd_fl
+			}
+			custom_trigger_tooltip = {
+				tooltip = "We must wait before we can select a policy from this idea group again."
+				always = no
+			}
+		}
+	}
+
+	yearly_harmony = 5
+	devotion = 5
+	yearly_karma_decay = 0.025
+	yearly_patriarch_authority = 0.05
+	monthly_piety = -0.01
+	yearly_authority = 5
+	papal_influence = 3
+	monthly_fervor_increase = 1
+	church_power_modifier = 0.5
+
+	ai_will_do = {
+		factor = 1
+	}
+}

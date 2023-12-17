@@ -1,0 +1,7 @@
+#Prov531 - North Kanara
+culture = kannada
+religion = hinduism
+
+base_tax = 1
+base_production = 1
+base_manpower = 1

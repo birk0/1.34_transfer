@@ -1,0 +1,19 @@
+#692 - Handan
+
+owner = MNG
+controller = MNG
+add_core = MNG
+culture = zhongyuan
+religion = confucianism
+capital = "Huaiqing"
+trade_goods = grain
+hre = no
+base_tax = 3 
+base_production = 5
+base_manpower = 3
+is_city = yes
+add_core = PLW
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

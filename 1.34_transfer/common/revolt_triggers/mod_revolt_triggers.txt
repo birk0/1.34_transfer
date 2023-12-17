@@ -1,0 +1,48 @@
+CHG = { #Chagatai Khanate
+	OR = {
+		is_core = CHG
+		exists = CHG
+	}
+}
+RSM = { #Rustamids
+	OR = {
+		is_core = RSM
+		exists = RSM
+	}
+}
+ALM = { #Almohads
+	OR = {
+		is_core = ALM
+		exists = ALM
+	}
+}
+MJZ = {
+	OR = {
+		NOT = { exists = MCH }
+		exists = MJZ
+	}
+}
+MHX = { 
+	OR = {
+		NOT = { exists = MCH }
+		exists = MHX
+	}
+}
+NHX = {
+	OR = {
+		NOT = { exists = MCH }
+		exists = NHX
+	}
+}
+EJZ = {
+	OR = {
+		NOT = { exists = MCH }
+		exists = EJZ
+	}
+}
+MYR = {
+	OR = {
+		NOT = { exists = MCH }
+		exists = MYR
+	}
+}

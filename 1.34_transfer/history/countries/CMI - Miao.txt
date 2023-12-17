@@ -1,0 +1,7 @@
+government = monarchy
+add_government_reform = chinese_warlord_reform
+primary_culture = miao
+religion = shen #changes
+technology_group = chinese
+capital = 673	# Umung
+

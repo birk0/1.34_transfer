@@ -1,0 +1,19 @@
+#284 - Crimea
+
+owner = CRI
+controller = CRI
+culture = crimean
+religion = sunni
+hre = no
+base_tax = 6
+base_production = 6
+trade_goods = salt
+base_manpower = 6
+capital = "Qirq-Yer"
+is_city = yes
+fort_15th = yes #Qirq-Yer Fortress
+add_core = CRI
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

@@ -1,0 +1,23 @@
+#57 - Brunswick
+
+owner = BRU
+controller = BRU
+culture = lower_saxon
+religion = catholic
+capital = "Braunschweig"
+trade_goods = iron
+hre = yes
+base_tax = 3 
+base_production = 3
+base_manpower = 3
+is_city = yes
+fort_15th = yes #Strong City Fortifications
+add_core = BRU
+
+
+1444.12.1 = {
+	trade_goods = unknown
+	owner = ---
+	controller = ---
+	hre = no
+}

@@ -1,0 +1,157 @@
+###########################################
+# Flavor Events for Morocco
+#
+# BASE GAME EVENTS FROM PARADOX had to remove some evennts for the new ones
+###########################################
+
+namespace = flavor_mor
+normal_or_historical_nations = yes
+
+#Crisis of the Maghreb
+country_event = {
+	id = flavor_mor.1
+	title = flavor_mor.1.t
+	desc = flavor_mor.1.d
+	picture = FAMINE_eventPicture
+	
+	fire_only_once = yes
+	
+	trigger = {
+		tag = MOR
+		NOT = { is_year = 1450 }
+	}
+	
+	mean_time_to_happen = {
+		months = 3
+	}
+
+	option = {
+		name = flavor_mor.1.a #Let them try! We shall rise again!
+		add_country_modifier = {
+			name = "mor_crisis"
+			duration = 1825
+		}
+		every_known_country = {
+			limit = {
+				capital_scope = {
+					region = maghreb_region
+				}
+			}
+			add_country_modifier = {
+				name = "mor_crisis"
+				duration = 1825
+			}
+			country_event = { id = flavor_mor.11 }
+		}
+	}
+}
+
+#Moorish Refugees
+country_event = {
+	id = flavor_mor.2
+	title = flavor_mor.2.t
+	desc = flavor_mor.2.d
+	picture = HARBOUR_eventPicture
+	
+	fire_only_once = yes
+	
+	trigger = {
+		tag = MOR
+		any_known_country = { has_country_flag = end_of_granada }
+	}
+	
+	mean_time_to_happen = {
+		months = 48
+	}
+	
+	option = {
+		name = flavor_mor.2.a #We welcome you with open arms
+		add_country_modifier = {
+			name = "mor_andalucian_moors"
+			duration = 3650
+		}
+	}
+}
+
+#Muhammad al-Jazuli and the Dala'il al-Khayrat
+country_event = {
+	id = flavor_mor.3
+	title = flavor_mor.3.t
+	desc = flavor_mor.3.d
+	picture = BIG_BOOK_eventPicture
+	
+	fire_only_once = yes
+	
+	trigger = {
+		tag = MOR
+		NOT = { is_year = 1465 }
+	}
+	
+	mean_time_to_happen = {
+		months = 63
+	}
+	
+	option = {
+		name = flavor_mor.3.a #Ok
+		add_piety = -0.25
+		add_prestige = 10
+	}
+}
+
+#Idrisid Cult of Fez
+country_event = {
+	id = flavor_mor.4
+	title = flavor_mor.4.t
+	desc = flavor_mor.4.d
+	picture = RELIGIOUS_CONVERSION_eventPicture
+	
+	fire_only_once = yes
+	
+	trigger = {
+		tag = MOR
+		NOT = { is_year = 1500 }
+	}
+	
+	mean_time_to_happen = {
+		months = 168
+	}
+	
+	option = {
+		name = flavor_mor.4.a #Ok
+		add_piety = -0.25
+		add_country_modifier = {
+			name = "mor_idrisid_cult_soaring"
+			duration = 3650
+		}
+	}
+	
+	option = {
+		name = flavor_mor.4.b #Ok
+		add_piety = 0.1
+	}
+}
+
+#Crisis of the Maghreb - Info Popup
+country_event = {
+	id = flavor_mor.11
+	title = flavor_mor.1.t
+	desc = flavor_mor.1.d
+	picture = FAMINE_eventPicture
+	
+	is_triggered_only = yes
+	
+	trigger = {
+		NOT = { tag = MOR }
+	}
+	
+	option = {
+		name = flavor_mor.1.a
+		tooltip = {
+			add_country_modifier = {
+			name = "mor_crisis"
+			duration = 1825
+			}
+		}
+	}
+	
+}

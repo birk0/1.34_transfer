@@ -1,0 +1,19 @@
+#4269 - Al Wajh
+
+owner = MAM
+controller = MAM
+culture = bedouin_arabic
+religion = sunni
+capital = "Al Wajh"
+trade_goods = fish
+hre = no
+base_tax = 1 
+base_production = 1
+base_manpower = 1
+is_city = yes
+add_core = MAM
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

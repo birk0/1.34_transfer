@@ -1,0 +1,23 @@
+# 830 - Ajaka
+
+owner = NUP
+controller = NUP
+add_core = NUP
+is_city = yes
+culture = nupe
+religion = shamanism #Fetishism
+capital = "Ajaka"
+hre = no
+base_tax = 1 
+base_production = 1
+base_manpower = 1
+trade_goods = ivory
+native_size = 50
+native_ferocity = 4
+native_hostileness = 9 
+
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

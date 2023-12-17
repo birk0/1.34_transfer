@@ -1,0 +1,13 @@
+# Flying Battery
+
+type = artillery
+manpower = 0.1
+unit_type = western
+
+maneuver = 2
+offensive_morale = 8 #8
+defensive_morale = 8 #8
+offensive_fire = 8 #8
+defensive_fire = 8 #8
+offensive_shock = 4 #4
+defensive_shock = 4 #4

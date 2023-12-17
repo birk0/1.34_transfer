@@ -1,0 +1,6 @@
+government = tribal
+add_government_reform = tribal_kingdom
+primary_culture = tecos
+religion = nahuatl
+technology_group = mesoamerican
+

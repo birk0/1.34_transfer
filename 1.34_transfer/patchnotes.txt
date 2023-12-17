@@ -1,0 +1,1106 @@
+-Annexing Burgundy as the HRE emperor will now always give the 'ruler_of_burgundy_flag' for the spanish netherlands event chain
+-Spanish netherlands no longer requires Charles to be the ruler of spain, only that has a new monarch and not allied to france
+-Requirement to form Persia no longer locked to non-hordes/tribes
+-If attacker in war, having a ruler leading unit in enemy territory gives +5% morale. Otherwise, any unit led by monarch counts
+-AI now receives +50% privateer efficiency and +100% ship trade power as a base to make trade more competitive
+-Fixed various bugs relating to claiming the Mandate and Warlord mechanics
+-Chinese Warlord reform now gives -33% core creation cost in chinese provinces
+-Taking provinces with the Zhanguo Shidai CB is now 33% cheaper
+-Forcing tributary on a country you have cores/claims on will flip all provinces with cores/claims to you
+-Countries who are not eligible for the mandate can no longer support independence of warlords
+-The Emperor of China and Shogun can no longer be guaranteed
+-Warlord reform morale nerfed from 20% to 10%
+-Banners now give +10% Discipline but cost more manpower and their forcelimits have been nerfed
+-Cawa forcelimit signifigantly nerfed for balance reasons
+-Jianzhou now uses Manchu ideas instead of Jurchen ideas
+-Jurchen, Oirat, Chagatai, Manchu, Mongol, Qing and Yuan ideas have been rebalanced
+-AI now has a method of unconditial surrender if the war is hopelessly lost
+-Warlords can no longer be guaranteed
+-Warlords can no longer form coalitions against non-warlords
+-AI now factors in all independent tags helping them in a war when considering unconditional surrender
+-Fixed a bug where taking the Mandate as a defending warlord didnt actually give you the mandate
+#21.02.22
+-Nerfed various SEA idea groups that were altered in Leviathan to prevent power creep
+-Nerfed Russia's idea group, however buffed Muscovy's to balance it out.
+-Forming Persia now actually gives Persian ideas
+-AI manchu now gets cores over all of north china and provinces required to form Qing when forming Manchu
+-Provinces in Far east with ports can now receive institution progress by discovering a european country with embraced institutions
+-Provinces in Asia can now receive institution progress if a european country with institutions has trade share in the same node
+-Institutions can either spread faster or slower in a provinces depending on its terrain eg: farmlands +10% jungle -30%
+-African and American tech group nations are now penalized in their institution spread to slow down spread in those regions.
+-Court and Country now gives -10% influence to all estates throughout disaster duration. if not enough, will revise some events
+-Reworked the disaster "Empire of China in name"
+-Disaster can start if emperor dosent own at least 1 province in china or the emperor has not enacted the sinify culture decision
+-Yuan is the only tag that can keep the Khaganate reform without getting the disaster, AI Yuan will always sinify though.
+-Collapsing to rebels during the disaster will cause the "dismantle_empire_of_china" effect to occur, effectively losing mandate
+-Disaster will only fire for the AI if they own no chinese provinces and dont border any other chinese country
+-Above stops the AI from "hiding the mandate" and encourages chinese unification
+-Fixed bug where collapsing to rebels in disaster didnt swap the mandate to new tag
+-Removed the event that gives Manchu/EoC institutions since institution spread is reworked could add back if not working 
+#22.02.22
+-Prussia can now be formed by Lower Saxon as well
+-Tribes can only reform into steppe hordes unless they own one steppe province
+-Deccan be formed at tech 10
+-Tweaked AI weighting on some policies
+-AI desire for unconditional surrender now factors countries who own provinces in the same continent as capital helping in war
+#23.02.22
+-Tweaked more policies so AI isnt picking really useless ones
+-Tweaked priority on idea sets so the AI picks innovativeness/maritime/influence less often since these are situational ideas
+-Great powers are more likely to pick Quantity ideas
+-Qing Idea: 'expand the banners' now gives +50% possible banners
+-EoC will now convert tributaries to vassals if it costs below 60 mandate, also fixed bug which made them not perform action.
+-Upon converting tributaries to vassals, vassal gets -25% LD
+-Chagatai now a formable tag for countries with kygrz or ughryz culture
+-Tweaked Chagatai's ideas
+-Renamed "Yarkand" to "Yarkent", now a horde with horde ideas
+-New Country, "Moghulistan" - Horde, tributary of Oirat
+-New Country, "Tumed" - Horde, vassal of Oirat
+-Korchin and Kara del now start as vassals of Oirat
+-Sarig Yogir is now a tributary of Oirat
+-Kham is now a tributary of Ming
+-Kazakh now exists in 1444, vassal of Moghulistan
+-Fergana now exiists in 1444, vassal of Yarkent
+-Changed province boundries and wastelands in tibet
+-Oirat starts with a similiar ruler modifier to Timurids, which gives -50% LD
+-Various Reworks and tweaks to the Tumu Crisis event chain
+#24.2.22
+-Halfed the MTTH of the Tumu Crisis for Oirat
+-Added support for neighbouring AI country's with non-AI overlords in the 'Ming Crisis' disaster script.
+-Ming Crisis now has same end conditions for AI as player unless Ming is lucky nation
+-Tweaked Oirats missions so that completing Tumu Crisis now gives cores on Mongolia if subject
+-Added an Event in Mongolia's missions which allows Qaraqorum to be the capital
+-Added an Event chain for Dzungar after the collapse of Oirats
+-Added Mission trees for Moghulistan and Yarkent and countries with kygrz or ughyrz culture
+-Chagatai now uses Mongol Mission tree
+-Various Map Changes to Manchuria
+-Renamed Donghai to Nanai, changed flag
+-Renamed Yeren to Xibe
+-Deren 1050 is now a trading centre, added amur estuary
+-Development and terrain changes to Manchuria
+-New country, Oroqen, Siberian tribe, Evenk, chinese tech
+-Added unique monarch/leader names for Solon, Nivkh and Oroqen
+-Sakhalin now colonised by Nivikh
+-Kurils now colonised by Ainu
+-Ming begins with a truce with all Oirat federation countries + Dai viet
+#25.2.22
+-Steppe hordes will never reform into monarchies/theocracies or republics
+-Natives can no longer build forts
+-Fixed a bug which allowed Japan to bypass the tributary block by becoming a feudal monarchy
+-Tribal nations are more weighted to become hordes if they own steppe provinces
+-Fixed trigger issue with unconditional surrender
+-Reworked core provinces & culture for all Chinese Revolter tags
+-Warlords can pop out of Ming during the disaster if enough of their core provinces are controlled by Rebels, speeds up collapse
+-If Esen Taishi dies without a tumu crisis victory then all Oirat subjects will gain independence
+-Patched being able to warn Warlords
+-Patched being able to make tributaries out of countries with same primary culture *why do this to yourself Jianzhou..*
+-Tributaries will now cancel if the overlord has cores/perma claims/emperor of china/emperor of japan or primary culture
+-Hordes are much less likely to get diplomatic rulers now..
+-All AI heirs and rulers have the conqueror personality *encourages expansion and not just sitting around doing nothing*
+-Solon and other Manchurians start with a truce with Oirat to stop them blobbing into manchuria
+#26.2.22
+-Conqueror personality includes various other hardcoded traits, AI should be more agressive/behave like scum
+-Khaganate and Mongol state reforms now have reduced chance of diplomat rulers
+-Korea now starts as an ally of Ming to prevent them expanding into manchuria too easy
+-Korea's inwards perfection penalties now apply to all hordes
+-Tributaries completely surrounded by their overlords break free, overlord gets cores on all their land
+-Added wasteland between Ming and Korea to stop Ming breaking alliance and forcing tribute
+-Fixed bug preventing countries allying eoc even though they could
+-Oirat wont declare on Ming if Esen Taishi is already dead
+-Banners no longer has reinforce speed penalty. They are much rarer though highest cap is +120% in age of absolutism as qing
+-AI conquest distance nerfed back to vanilla values since Austria was declaring war on countries on the other side of planet
+-Manchu no longer gets cores everywhere when forming Manchu, they get perma claims to prevent breaking the AI
+-Tweaked AI agressiveness, the conqueror personality and other defines relating to the AI's economy
+-Nerfed Trade power from ships for the AI from 150% to 50%, privateer eff from 50% to 25%, AI now gets +25% domestic trade power
+-Added a CB for the AI thats valid for every neighbour country
+-Various changes to diplomatic actions preventing Warlords from doing certain actions and vise versa
+-Coalitioning, allying, marrying, guaranteeing or warning warlords is the same as declaring war on them
+#27.2.22
+-Fixed Script errors with warlords and diplo actions 
+-Increased the effects of development on banner forcelimit
+-Subjugating Warlords now deletes any active wars they were in before annexing them
+-Qing now has a decision which enables raising banners in chinese provinces
+-Nations now build at least 15% cav
+-Cavalry cost reduction from techs buffed by 50%
+-Idea groups/policy weighting changed for AI
+#28.2.22
+-Nerfed more idea set weighting
+-Halfed disaster progress from Ming Disaster for AI, more reliant on Manchu forming so warlords dont get strong early on
+-Udege and Haixi are now historical rivals to prevent Jurchen alliance blocks
+#3.03.22
+-Completely reworked the Warlord system so that Warlords are not subjects but independent tags with restricted diplomacy
+-Disabled most cbs against warlords to prevent them being made into subjects, instead all countries have new CB against warlords
+-AI Khanganates will never go below 50 mandate
+-Manchu now has core creation in its traditions to help the AI not fall behind admin tech so bad
+-Reworked trade routes in China to prevent Wu from becoming too powerful and beating up Qing
+-Reduced Corruption from banners to stop Manchu having 20+ corruption
+-Removed the Insitution penalty from Khanganate Reform
+-AI hordes can now actually raze!
+-Novgorod is now historical rival of denmark. AI seems to get Denmark as ally consistently and crush Muscovy, making Russia mess
+-AI gets double mandate from annexing warlords
+-Slightly nerfed Wu ideas and made chances of Wu rulers being diplomats higher *Wu is the best positioned Warlord and gets strong*
+-Made Warlords less likely to pick Quantity ideas so outside invaders don't find it hard to unify china
+#4.03.22
+-Denmark now historical rival of Muscovy, Poland and Novgorod to stop breaking balance of power
+-AI Qing gets double banners from the 'Green Standard Army decision'
+-Further reduced weighting on Defensive Ideas
+-AI will not builld above 40% cav
+-Added Mission tree for Evenks
+-Buffed modifiers from harmonizing
+#5.03.22
+-Ming Disaster progress modifiers tweaked so the Disaster ticks slower
+-Added progress modifiers for the Tumu Crisis so that capturing Emperor/Beijing speeds up Disaster progress
+-Notification events rework via the Ming Crisis. fires for the AI too under different conditions. Events grant buffs for both
+Player and AI, they also force the AI into attacking Ming for the Mandate once the disaster ticks to 100.
+-'The Purple Turban Rebellion' no longer fires whilst the Miao revolts OR Ming Disaster are active
+-Failure to defeat Ming in the Tumu Crisis now applies harsher penalties to Oirat to simulate their historical collapse
+-Readjusted Rebel stacks from Ming Crisis so Ming holds out a bit longer
+-Warlords can no longer warn other warlords
+-Warlords can no longer guarantee other warlords
+-Warnings and guarantees now only last 10 years
+-AI now receives +1 yearly meritocracy so it dosent die 
+-Supply limit from development doubled to fix pathing
+-AI conquest CB now restricts force tributary so EoC dosent try to make everyone tributaries with it
+-Manchu separatists will take priority over other Jurchen separatists if they exist and respective Jurchen dosent
+-Ming's rulers have higher chance of being diplomats
+-Added new Diplomatic action for EoC unlocked at 3rd reform. Lets emperor pay mandate to reduce liberty desire by -25
+-Added new modifier 'Mandate Cost Modifier' influences the Mandate cost from diplomatic actions involving Mandate cost
+-Fixed minor bugs with Miao revolts 
+-Encouraging Rebellions now has harsher inpacts and is more worthwhile of Mandate cost
+#6.03.22
+-Less emphasis on rail roading for Manchu, Jianzhou now has same ideas as other Jurchens and tweaked bonuses from ming disaster
+-The event that makes countries dow ming for mandate now fires 1 year after disaster triggers instead of immediately
+-Esen Taishi is 10 years younger so he dosen't die early consistently
+-Added mechanic which forces the Emperor to attack weak warlords if they arent already
+-Hordes shouldnt be picking mil group ideas first anymore so they dont fall behind in tech
+-AI shouldnt spam vassals now when they make tributaries
+-New Government reforms for Warlords, Celestial Empire and Khanganate
+-Corvee system modifiers nerfed, manpower and sailors bonus from buildings scaled to their relative price 
+#7.03.22
+-Removed duplicated Government reforms for Khanganate
+-Cleanup some script in Mandate diplo actions
+-Added MTTH on the Warlord attack event
+-Increased Rebels from Ming Crisis
+-Warlords will pick Quantity ideas again/Wu no longer diplomat
+-Russia can be formed at tech 7
+#17.03.22 
+-Removed over 90+ provinces from colonial regions and distributed them within Greater China
+-Tweaked the event that spawns warlords during the Ming disaster to compensate for new province density
+-Added 100+ development in Korea region and buffed Korea's ideas, autonomy in region increased however
+-The inwards perfection privilege prevents Korea from delcaring war
+-Korea has two new unique government reforms
+-Added/tweaked Korean missions so that it is now focussed on Korea removing autonomy in their provinces early game
+-Event chain similiar to Tumu Crisis for Manchu and Korea to represent the Jin invasion of Joseon
+-Added multiple new tags around the Greater China region
+-Manchu Identity decision now requires 25 jurchen provinces to account for new provinces
+-Added Cultural center for Koreans and Evenks, and tweaked cultural center mechanics to allow for Sinified Cultures
+#19.03.22
+-Added powerbalance mechanics *Animosity* which allows the AI to evaluate when it should gang up on the player and take them down
+-Tweaked various terrains in China 
+-Korea is a historical rival to all the Jurchens
+#6.4.22
+-Added lots of provinces in Russia and Ruthenia
+-Added event chains for the Muscovite civil war and a new tag 'Galich' ruled by Yury I, a contender for the muscovite throne
+-Added various flavour events for Ivan III and Muscow's conquest of Novgorod. Russia forming should be a regular occurence again
+-Added new debuff mechanics for Poland and the Elective Monarchy reform to make the PLC more challenging to survive as
+-Russian AI can get an event which allows them to ally the Ottomans
+-Removed the Buffs Warlords get while at war
+-Warlords will now pick quantity ideas less since its too strong, unaffected if they take the Mandate.
+-Doubled all Unit pips and added unit types for East African and Indonesian technology. Pips are now 2x more inpactful in battle
+-Each tech group now uses their own artillery units and pips instead of being the same across all tech groups
+-New mission tree for Ruthenian and Russian minors
+-All Chinese Warlords now have their own NIs
+-Removed lots of events/missions that give Austria tons of PUs that are just ridiculous and make them ahistorically strong
+-Rum may now be formed by any Levatine country that holds at least 25 provinces in Anatolia and the Ottomans dont exist
+-Bad events associated with low mandate will not fire while the new imperial dynasty modifier is active
+-Warlords can no longer join trade leagues
+#8.4.22 
+-Reworked Unguarded Frontier. Progress is now added or subtracted from events and is only valid if neighbouring a great power, 
+an empire or nation with larger army. Losing battles to these nations increases progress to disaster, which is now worse to fire.
+-Qing can be formed by ai if the player is the EoC and they own the required provinces outside china.
+-Changed building script priority so AI builds sailor buildings before trade and governing buildings. Should increase sailor pool
+-Kurland can be formed by any christian nation with livonian primary culture.
+-Buffed Kurland ideas slightly
+-Added support for new Chinese estates in events that would refer to Non-DLC factions only
+-Tweaked some ai movement evaluations so they tend to hold their ground more 
+-Ais now have more generals 
+#9.4.22
+-Created a forcelimit cap of 3M to prevent lag
+-If a Nomad/Pagan country conquers the Shinto temple, they will become a theocracy instead of monarchy if they decide to convert
+-Changed AI weighting on theocracy reforms so they select the best ones
+#10.4.22 
+-The +1 to disaster progress on Ming no longer applies only to Manchu but any neighbouring horde with 300+ development
+#11.4.22
+-AI EoC will no longer make tributaries vassals if it will put them above relation slot
+-The influence penalty to nobility estate from declaring war has been dropped from 10% to 5% for PLC
+-Elective monarchies can no longer fire the nobles coup disaster since they have sejm events instead
+-Fixed script error with animosity that caused variables to overflow into negatives
+#12.4.22
+-Animosity can no longer be gained with countries that are undiscovered
+#13.4.22
+-'Dispatch Imperial Governors' can be used by the EoC for their tributaries too
+-New state edict for -10% culture conversion cost
+-Nerfed Culture conversion modifiers from influence - religious policy and religious group ideas
+-Harmony now affects religious unity scaled, also culture conversion cost and unrest
+-Halfed the duration of culture conversion
+-Increased max warscore from battles
+-Changed Punitive war CB to be easier in taking land for defender
+-Added new modifier 'Vassal Leader Pool Contribution' which modifies the amount of leader pool scaled on # of vassals
+#14.4.22
+-Added Ideas for Tungning
+-Religion locked monuments can be used by confucian countries that have harmonized with that religion
+#13.5.22
+-abandoned 1.33 project
+-improved the AI combat management and movement evaluation
+-Added new religions to Far east, Shen and Daoism
+-Added loc and script support for Daoism using confucianism events/mechanics
+-Added Shen hindu deities
+-Added support for dynamic Harmonization Mechanics *Daoism and Confucianism have different modifiers*
+-Reworked religion density map in China, added Mahayana majority in south with pockets of Daoism throughout mainland
+-Made Harmonizing Mahayana/Confucianism/Daoism easy if Chinese/Emperor of China via decisions
+#16.5.22
+-Added events associated with Shen deities
+#17.5.22
+-Added new estate privileges for nobility and burghers
+-Added support for Altaic and Tibetan Cultural Centers
+-Improved Cultural Centre Script
+#18.5.22
+-Added support for Japanese Cultural Center
+-Added Ronin Mechanics/units for japan
+#19.5.22
+-Lowered overall tech supply limit
+-Decreased max truce timer to 10 years
+-Rivals can be changed every 10 years
+#3.6.22
+-Fixed CTD when deleting allies
+-Fixed triggers on many Japanese/Daimyo events so that they actually fire now
+-Warlords and Daimyos now have a -100 relations penalty with all neighbours
+-Daimyos are now independent from the Shogun, they now use very similiar mechanics to Chinese Warlords
+-Reworked "Japan is United" decision into "Abolish the Shogunate" which applies the "Imperial Japan" reform, bestowing the old
+Shogunate mechanics.
+-Japan tag exclusive triggers are now extended to any country with the Imperial Japan reform, so the Japan tag change is not required
+-Japanese culture exclusive triggers now extended to Sino-Japanese as well
+-Daimyos and Independent Daimyos can now change their government types to Theocracy/Republic without any issues.
+-Daimyo, Independent Daimyo and Shogunate reforms now have a -25% governing capacity penalty instead of flat -150.
+-Abolishing the Shogunate requires all provinces in Japan to be owned
+-Subjugating the owner of Kyoto at all will trigger the "Fall of Kyoto" if they are the Shogunate.
+-Shogunate Reform grants the "Annex Daimyo" ability, which gives 0% OE and coring cost for taking Daimyo land in peace deal.
+-Wide nerf to all Daimyo ideas seeing as Japanese countries now have access to Ronin units, on top of the Imperial Japan mechanics.
+-Created an Ikko-Ikki disaster for all Japanese countries, triggered from over-reliance on Ronin regiments.
+-The "Onin War" event now enables outside intervention in Japan via the "Intervene in Japan CB"
+-AI no longer requires favours to CTA other AI allies.
+-Being at 100 Harmony enables Harmony mechanics for Confucianism and Daoism
+-Daimyo subjects now basically the same as Vassals
+-Added 5 new Chinese Warlord tags with unique ideas: Wei, Liao, Zhao, Han, Song
+-Warlords can now pick Quantity ideas again since the new tags make China more shattered
+#7.6.22
+-Mercenary companies and associated events/triggers removed instead replaced with new merc system using old mercs
+-Mercs cost no money to reinforce/hire and they dont penalize professionalism. They instead cost Inflation to hire/maintain and have 
+-5% discipline.
+-Mercs have a new forcelimit, which is based off 20% of total tax development * mercenary forcelimit modifiers
+-The Base inflation penalty for upkeeping mercs is scaled on the amount of mercs hired relative to total forcelimit
+-Mercs cannot be hired if 50% of the current amount of troops are already mercs
+-Vanilla merc modifiers also influence the new system and have been adjusted
+-Added new age ability "Mercenary Armies" which grants -33% merc maintenance modifier during Age of Discovery
+-British Tier 3 Monument now removes the Inflation penalty from mercs
+#12.6.22
+-Taught AI how to assault forts
+-Taught AI how to use new merc system & Japanese Ronin units
+-Reworked penalties for exceeding forcelimits and trucebreaking
+-Reworked Merc penalties so using them early game is more viable
+#18.6.22
+-Reworked rebel size formula and changed all references of vanilla sized rebel effects
+-Fixed CTD involved with AI hiring mercs
+-Added new modifier: "Rebel Size Modifier" which modifies the size of the new rebel stacks by x%
+-Fixed invalid character generation in name strings
+#20.6.22
+-Slightly improved AI's dare factor when performing Naval invasions
+-Improved AI's transport fraction so the AI is capable of moving large amounts of troops via transports better
+-Increased the AI's base naval forcelimit
+-All AI countries are militarists again
+-Increased naval supply limit range to help AI perform long distance invasions
+-Conqueror is now a regular trait, Fanatical conqueror is now for the AI, which has all the necessary AI behaviour.
+#22.6.22
+-Improved Government reforms script
+-Improved Ming Crisis Disaster UI and Script
+-Colonialism can now be triggered by anyone with the 'may_explore = yes' idea
+-Improved Institution spread script
+#25.6.22
+-Replaced many province triggered modifier effects with regular scripted effects
+-Improved Casus Belli triggers
+-Added new AI version of Imperialism and changed player interaction with the CB
+-Improved some Scripted effect scripts
+-Improved the AI's evaluation of using peace treaties
+-Removed Regency restriction on Declaring War
+-Added a new modifier: "Possible Revoked Privileges" which modifies the amount of Privileges that can be revoked per monarch
+#27.6.22
+-Improved Cultural Center script again
+-Improved AI fort script
+#29.6.22
+-Removed 90+ native tags
+-Fixed most event scripts
+-Added an Event chain for Yury I dying while fighting the succession war against Muscovy, so that Muscovy can PU them
+-If Galich is a PU from Yury dying, then the option to inherit Galich will come from the Ivan the Great event
+#30.6.22
+-Added events for the Eunuch estate
+#2.7.22
+-Added a new modifier: "Covert Action Cost" which modifies the cost of **most** covert actions
+#8.7.22
+-Completely Reworked and Balanced all Idea groups
+-Completely Reworked and Buffed Spy Networks and added new Esiponage Mechanics
+-Reworked Spy Network growths so they are harder to build at greater rewards
+-Added support for AI using these new mechanics
+-The AI now uses counter-espionage properly
+-Made Marine Units more viable and easily available via ideas
+-Made Drill harder to obtain, but at the plus side of granting +5% discipline
+-The AI will now drill again, but will focus way less on doing it unless it makes tons of money
+-Completing Court and Country now gives +2 Possible Revoked Estate Privileges
+-Rebalanced old assignment of vanilla Policy modifiers to new system
+-Admin Ideas now gives +25% Policies Efficiency
+-Idea Group Ambitions now grant respective Possible Policy modifier for group
+-Pope is now an advocate for Indigenous freedom and hates all Colonizers *AI should colonize better without Treaty of Tordesillas*
+-Removed Indigenous Idea group *Its still used for some mechanics and triggers tho*
+-Removed Theocracy Ideas
+-Removed Aristocratic Ideas
+-Removed Horde Government Ideas
+#9.7.22
+-Created new Policy Mechanic
+-Policies can now be unlocked with just 1 idea group
+-Policy modifiers expire after 5 years
+-Policies are now group associated, meaning you can only have 1 policy from an Idea Group active at once
+-Created Dynamic system for determining Policy cooldowns after theyre revoked *base cooldown is double the time policy was active for*
+-"Free Policy" modifiers changed to "Policy Efficiency" which reduces the Policy cooldown in new code
+-The base amount of Policies available per group is 0. Completing Idea groups in that category now unlocks more policy slots
+-Policies no longer cost Monarch power to maintain
+-Reduced Minimum time to revoke Policies to 1 year to adjust for new changes
+#13.7.22
+-Reworked and coverted all Vanilla Policies into new Policy System
+#15.7.22
+-Setup AI eval for Policies
+#16.7.22
+-Tweaked Policies and AI scoring for Policies
+-Setup AI scoring for reworked Idea Groups
+-Fixed Bug which stopped fort script from upgrading forts for the AI
+#17.7.22
+-Tuned down weighting on Religious & Humanist Ideas
+-Tuned down weighting on Quantity for Warlords
+-Tuned down weighting on Diplomatic and Influence Ideas
+-Tuned down weighting on Innovative Ideas
+-Slightly Buffed and Tuned down weighting on Plutocratic Ideas
+-Tuned up weighting on Defensive and Quality Ideas
+-Tuned down weighting on Espionage Ideas
+-Tuned down weighting on Maritime & Naval Ideas
+-Fixed weighting on AI policy decisions so they pick useful ones
+-AI now has 1 extra policy slot to help them
+-Tuned down Aragon's weighting on Exploration Ideas
+-Increased Cost of all manpower/eco/sailors buildings by 100% to make scaling harder
+-Removed Lucky Nations
+-Halfed Natural Dev cost modifiers and made it harder to stack to make scaling harder as well
+-Non-accepted culture impacts dev cost now too
+#18.7.22
+-Tuned down Admin Ideas
+-Tuned down Exploration Ideas after 1550
+-Boosted Offensive Ideas after Absolutism
+-Increased AI drilling budget
+#19.7.22
+-Added 8 new advisor types
+-Added Advisor Boost decisions, which lets you store the bonuses from the advisor events via decision
+-Fixed bug with Advisor portraits
+-Upped the possible advisor bool base
+-Ikko-Ikki Rebellion can no longer trigger if you've never used Ronin before
+-Annexing Daimyos now gives Legitimacy to the Shogun
+-Sengoku CB now eligible for countries that share a seazone with the player
+#20.7.22
+-The Take Mandate Peace option is now always allowed for the AI if it meets the specific requirements, regardless of CB used
+-The Ming disaster can now be triggered by Manchu/hordes even if there's a player nearby
+-Manchu receives buffs for 30 years when they form and there's a player nearby to help them conquer Ming faster than player can
+-AI that triggers the Ming disaster *usually manchu* will get reduced warscore cost to help them conquer provinces to
+form their respective tag eg; Qing. They will also declare war on Ming for the Mandate if they aren't already at war with them
+-Manchu will now receive a core on Beijing when they form
+-The Abolish Shogunate decision will no longer generate a trash Emperor when it kills your current ruler
+-Added tooltips in Shogunate decision explaining National Idea changes from each option
+-Fixed bug which swapped Ideas to Japanese even if maintain roots was selected
+#23.7.22
+-Upped AI naval forcelimit
+-Nerfed AI maintenance reduction
+-Upped AI build cost reduction
+-The Idea "Land of Opportunity" will make conquered colonial provinces automatically become cores when conquered
+-Added support for AI removing Exploration Ideas later in campaign
+-Tuned down Influence ideas if AI dosent have subjects
+-Tuned down Exploration ideas for Warlords
+-Tuned down Quantity ideas for warlords *again*
+-Conquering Warlords will remove all devastation in their lands for the AI emperor *so they dont die all the time..*
+-Marine forcelimit is now scaled off Naval forcelimits, not army forcelimit
+-Taught the AI how to recruit Marines
+-Buffed Marine shock damage received from -25% to -50%
+#24.7.22
+-Fixed bug which stopped Cbs being allowed for Overlord of Daimyo subjects
+-Upped Naval Attrition reduction and ship repair from Maritime ideas
+-Removed Missionary strength penalty in trade companies
+#29.7.22
+-Reworked War Taxes into a new system that uses Estate Mechanics instead. War Taxes scale based on Focus level
+-Centralize State now costs 10 reform progress and reduces governing capacity by -5 and adds +50% state maintenance
+-Reduced Estate Influence time for summoning the Diet
+-AI will now summon the Diet
+-Crownland no longer affects Territorial Autonomy but instead boosts governing capacity
+-Improved Estates GUI
+-Boosted Crownland modifiers so they're more impactful
+#30.7.22
+-Added Documentation and Tooltips for Shinto incidents so outcomes are better explained
+-Fixed Localisation in Shinto events referring to the Shogun as Overlord since Daimyos are now technically Independent
+-Buffed Modifiers from Shinto Incidents so that changing Isolationism is preferable over maintaining it
+#31.7.22
+-Japan and Oda's colours are swapped
+-Abolishing the Shogunate now has an extra option which lets you keep Daimyo Ideas but still change to Japan
+-Added Estate Interaction "Recruit from Estates", summons a 100 tradition general at the cost of 10% crownland & 20% estate influence
+-Reworked and Buffed some Estate privileges so they're more viable
+-Fixed bug where Trust wasn't calculated in Yearly Animosity gain
+-Fixed bug where Opinion was calculated wrong in Yearly Animosity gain
+-Fixed bug where Animosity Calculations took Ae Impact modifier of the AI country instead of the Player's 
+-Improved AI peace and war enthuasism
+#1.8.22
+-Fixed bug where centralize state was causing AI to bankruptcy spiral
+-Centralize State now costs 75 reform progress and expand admisitration costs a flat 50 reform progress always
+-Expand administration increases governing capacity by +20
+-Centralize state now decreases state governing capacity cost by -50% but increases state maintenance by +2500%
+-AI will now never centralize state
+#2.8.22
+-Taught the AI how to unconditional surrender
+-Added new Peace treaty for AI + disaster system & events linked to it, lets AI collapse a player nation by winning a coalition war
+-AI will now always try to enforce this treaty on the player
+#3.8.22
+-Prussia is now prussian blue
+#4.8.22
+-Heirs generated from Theocracies are no longer hidden
+#7.8.22
+-All religions now have defender of faith
+-Fixed bug where Mandate lost from tags holding land in China wasn't calculated properly
+-Modifying War Taxes no longer hits Stability
+#10.8.22
+-Removed Centralize State
+-Removed Holy Orders
+-Added new mechanic "Promote Officials" which costs 2 corruption and 100 adm power and decreases governing cost in state by -20%
+-Reworked Consecrate Metropolitan, so that Patriarch authority gain is now scaled off development in the state
+-Added modifier "Promote Officials Cost" which modifies the corruption increase from promoting officials
+-Reworked State interface to support new buttons
+#12.8.22
+-Fixed bug with AI which caused transports to "freeze" when assigning an army to naval invade
+#16.8.22
+-Implemented Naval Supremacy Mechanic, which is calculated based off various naval modifiers at the start of wars and after battles.
+-Having Naval Supremacy allows occupying coastal provinces & forts. The time to occupy is modified by blockade efficiency, 
+defensiveness and fort level/development in the province
+-Successfully occupying provinces with navies will automatically transfer all loot in the province to you and apply
++500% friendly movement speed -75% hostile movement speed and +50% local defensiveness until occupied by enemies again.
+-You can gain naval supremacy by defeating enemy ships in battle, providing they have at least 1 galley or 1 heavy ship in the battle.
+Likewise if you lose a battle, naval supremacy will be swapped over to the enemy side
+-The AI as a base has 50% blockade efficiency since they suck at microing their fleets properly to siege provinces
+-If The AI has naval supremacy they will automatically occupy provinces if they have land units performing a naval invasion 
+while they are blockading, to help them perform naval invasions faster
+-The side which dosent have naval supremacy will suffer from "Compromised Logistics" giving -33% reinforce speed, -33% trade efficiency
+and -15% morale recovery speed they also wont be able to perform any of the special naval sieging stuff
+-Provinces that are blockaded now have +100% unit recruitment speed, -50% defensiveness and -50% local trade power
+-The number of home ports being blockaded will now also apply reinforce speed, trade efficiency and ship combat ability penalties
+on top of the original war exhaustion.
+#17.8.22
+ - Fixed freeze related to vanilla Holy Orders not existing
+ - Fixed error log spam related to PlayerCountry event target being unset
+ - Forts now project ZoC on nearby coastal provinces against Naval Occupations
+ - "Naval Invaded" now gives -50% hostile movement speed and +33% defensiveness instead of -75% and +50% respectively
+ - Blockading provinces now only gives -25% local defensiveness instead of -50%
+ - Reduced the recruitment time of all ships so rebuilding fleets after a crushing defeat is more feasiable
+ - The AI can now always enforce unions regardless of CB used if the target has the same dynasty as them with a weak claim/no heir
+ - Corrupt Officials now gives 5 months worth of monarch points instead of 3
+ - Sabotage Recruitment has been buffed to now give +20% Morale of Armies and +33% Manpower Recovery Speed
+ - Bribe Recruits will now give 2 years worth of Manpower instead of 1
+ - Raid Coffers will now give 9 months worth of income and increase target's inflation by 2.
+ - Disrupt Diplomacy now only costs 50 Spy Network instead of 100
+ - Sabotage Supply Lines will now also give -25% Land Attrition and +10% Blockade Efficiency
+ - Sabotage Reputation will now give -33% Core Creation Cost, -50% Aggressive Expansion and -33% warscore cost against target
+ - Steal War Maps now lifts fog of war for 1 year.
+ - Lowering War Taxes no longer impacts Army Tradition
+ - The AI will receive double money from crownland during age of discovery, and also additional economic buffs to help them scale early
+ - Expand Infrastructure will now give +5 gov cost flat, +1 building slot, +1 manufactory slot & -0.025 autonomy and +10% tax. 
+ - Humanist Ideas now gives +3 Tolerance of Heathens and Heretics
+ - Justify Holy War now costs 70 Spy Network instead of 100
+ - Buffed some Religious Policies to make the Idea group more appealing or rewarding if already picked
+ - Fixed Encoding issues again.
+ - Lowered Mean time to happen and conditions for the Protestant Reformation since countries kill eachother off much quicker
+ - Introduced OPM killer, which gives neighbouring AI cores on AI OPMs to help clean up its borders
+ - AI no longer pay for troop recruitment costs, and get manpower back when disbanding troops. To prevent infinite Hire -> Disband loops
+ - Fixed bug with Unconditional Surrender Mechanic which made the winning side want to peace out instead
+ - Made Ming Disaster rebels nastier and more expensive so Ming dosen't hold out too long..
+ - Fixed bug which let AI force abdication on eachother
+#18.8.22
+ - AI gets 1 extra building slot to compensate for them not being able to expand infrastructure
+ - Nerfed Trade Center builds so theyre a bit more balanced
+ - AI no longer builds galleys
+ - Ships sinking in battle now only impacts morale by 25% instead of 100%
+ - Heavy Ships now only use 1 engagement width instead of 3
+ - Manuever pips on admirals are now much rarer
+ - Lowered base tradition gain from naval combat
+ - World ports no longer give naval tradition decay
+ - Blockade force required now impacts naval sieging progress instead of defensiveness
+ - Each point of development now increases Blockade force required by 1%
+ - Blockade efficiency now also impacts naval siege progress as well as sieging time
+ - Naval Tradition now gives +10% max blockade efficiency instead of 100%
+ - Slightly nerfed Maritime Ideas and signifigantly buffed Naval Ideas
+#19.8.22
+ - Improved AI building deleting logic
+ - Slightly buffed docks & tax buildings
+ - Coastal Defences can now be built from tech 3
+#22.8.22
+ - Signifigantly improved the AI's capability of performing long distance naval invasions
+ - Light ships now also function as heavy ships for the AI, improving their battle composistions and forcelimit usage
+ - Taught the AI to disband units if they're island trapped and can't leave
+#24.8.22
+ - AI will now care about uniting regions if it already holds provinces in that region
+#25.8.22
+ - Changed some straits around
+ - Docks give more marines
+ - Completing Naval Ideas allows Coastal Razing *only if you can raid coasts already* Privateer Efficiency impacts the MP raided
+#26.8.22
+ - Introduced Raiding Pact Mechanic, which is a diplomatic option that can be requested of non-pirate countries to pirates
+ - A Raiding Pact can be accepted or rejected by the receiver. If they accept, they won't be able to raid your coasts while the pact
+ is active. If they reject it, a war will start which will allow you to force them into the pact, while giving them debuffs for losing.
+ - The raider bound by the pact can also leave the pact later, when they try to leave it will start a war. If they win, the pact will
+ become null. Otherwise, the pact can be reinforced.
+ - If any of the pact wars are lost, penalties will be applied, such as losing trade efficiency, trade power and devastation in provs
+ while simultaneously boosting the victor.
+#27.8.22
+ - Reworked European trade winds
+ - Begun some Exodus Mechanics, and taught the AI how to use them.
+ - 3rd Exploration Idea unlocks a decision to exodus to the new world
+ - If a nation is annexed and they have colonies they will integrate them and move their capital to the new world
+ - Slightly changed AI weightings on Maritime Naval & Trade Ideas & Plutocratic Ideas
+#28.8.22
+ - Added 9 new colonial regions, Illinois, Venezuela, Great Plains, Chile, Paraguay, Guyana, Central America, Florida and Texas.
+ - Changed liberty desire settings for Colonial nations so they're more likely to rebel
+ - Treaty of Tordesillas **SHOULD** be disabled now even if the pope is annexed
+#1.9.22
+ - Added/tweaked ideas for: America, Canada, California, Cascadia, Alaska, Colombia, Haiti, Chile, Florida and Brazil
+ - Removed Ideas for: Vermont, West Indies, Quebec, Zealandia
+ - Crown Colonies have been rebuffed to their original vanilla values, since New World should be more competitive now with naval AI
+ - Province requirements for colonial nations changed so theyre easier to form 
+#2.9.22
+ - Added Ideas for: Peru, Paraguay, Argentina/La plata, Illinois, Louisania, Guyana *new tag*, Venezuela and Central America
+ - Improved Exodus locations
+#6.9.22
+ - Made AI care less about gold in peace deals
+ - Tweaked Animosity growth if on different continents
+ - Tweaked Animosity growth based on opinion of eachother
+ - Siam is now an end game tag
+#7.9.22
+ - Halfed rebel sizes for AI
+ - Fixed bug where opinion wasn't calculated in Animosity growth
+#8.9.22
+ - The Korean AI should now assign their rulers to armies during the Manchu invasion more often
+ - Defeating Korea in the Manchu invasion now makes them a PU subject rather than a vassal so they're less disloyal
+ - The AI now gets permanent claims on all neighbouring provinces to encourage further conquests
+ - Relation hit from having cores/claims on eachother will no longer incorrectly apply to subjects/allies with high opinion of eachother
+#9.9.22
+ - Transports no longer cost sailors, forcelimit or money to use
+ - Transports are much faster, however their hull size and combat ability is trash so theyll die in combat
+ - Transports now build instantly
+ - Naval Supremacy is now purely based on Light Ships and Heavy Ships, galleys and transports no longer factored
+ - Fixed bug where Naval Supremacy was incorrectly calculated for the player when losing battles
+ - Lowered province requirements for Manchu to form
+ - Increased final buff given to AI when ming begins to collapse so hordes can field larger armies to siege down china
+#18.9.22
+ - Number of Ports is now considered in Naval Supremacy calculations
+ - If one side has exactly 0 Naval Supremacy then naval supremacy is not considered in the war.
+ - Tripled Income from Monopolies but doubled their cooldown
+
+
+##########################
+#		1.34
+##########################
+
+#27.9.22
+ - updated 1.32 advisors with some nerfs
+ - updated 1.32 ruler personalities
+ - updated 1.32 age bonuses
+ - nerfed noble loyalty gain from building forts gov reform.
+#1.10.22
+ - Mod more or less updated to 1.34
+ - Made all trade goods valuable to the AI so it develops more
+#12.10.22
+ - Removed Teleportation due to lag issues
+ - Removed some buffs to the AI
+ - Reworked forcelimit caps to stop AI going over it and gave reinforce buffs to compensate for loss of forcelimit
+ - Experiments started with teleporter provinces instead
+ - Fixed 1.34 bug which made Independent nations in America not declare war on colonies
+ - Added more straits around the map to lessen the need the AI has of its navies
+ - Forts no longer use building slots to encourage the AI to upgrade them
+ - The Protestant Reformation should fire at the correct date more or less
+ - Temporarily fixed a bug created by paradox with the every_ scope, will be re-enabled in 1.34.4
+ - Mercenaries replaced with streltsy because the AI sucks at using old mercs
+
+#15.10.22
+ - Made AI want to colonize Teleporters
+ - Renabled some scripts for 1.34.4
+ - Made AI want to conquer further distances
+ - Added script to encourage disloyal AI colonies to become independent
+ - Fixed multiple province positioning bugs
+ - Altered the Naval Sieging mechanic to use more refined code
+ - Teleporters can always be naval sieged regardless of naval supremacy
+#16.10.22
+ - Fixed another case of AI not colonizing Teleporters
+ - Fixed a bug where teleporters could be used without owning both sides
+ - Fixed a bug where AI would develop teleporters
+ - Austria is no longer locked out of forming Germany
+#18.10.22
+ - Added more Teleporters
+ - AI should no longer abandon Exploration Ideas since spread of discovery is off
+ - Added more straits for the AI to exit teleporters, should stop weird military access scenarios
+ - Fixed a bug where Republics could get the ruler culture and religion event everytime a new ruler was elected, causing minor debuffs.
+#19.10.22
+ - Added more Teleporters
+ - Added a decision which upgrades forts in every owned province
+ - Fixed issue where AI would recruit 700+ units in one province and be stuck in recruitment cycle
+#20.10.22
+ - Exit teleporters can no longer be colonised unless you own the entry teleporter connected to it
+ - Tripled the base flanking range of cavalry
+#21.10.22
+ - The AI can use teleporters if they have military access or alliance with the teleport owner
+#22.10.22
+ - Increased land maintenance costs from technology, so managing armies is more expensive late game
+ - Increased Advisor costs, so they are more expensive to maintain late game
+ - Boosted the maximum advisor skill to 10, so more money can be invested into monarch points
+ - All advisor bonuses now scale with advisor skill, so running level 10 advisors comes with greater bonuses.
+ - Tweaked some advisor modifiers, so they don't provide economical bonuses eg: trade efficiency tax efficiency etc.
+ - Advisors should die less
+ - Made it harder to stack advisor cost reduction modifiers, as recent versions introduced too many.
+#23.10.22
+ - Started tweaking AI usage of privileges and improving lackluster ones
+ - Added tooltips displaying skill scaled modifiers for advisors
+#24.10.22
+ - Made later game institutions slightly harder to spread outside europe
+ - Made tech cost penalty from not embracing later game insitutions more impactful
+#25.10.22
+ - Made it harder to stack institution spread modifiers
+ - Introduced "Skepticism" which affects the spread of institutions outside the continent it spawned in. The penalty to institution spread from Skepticism is modified by technology group, scaling worse for natives and none for western tech
+ - triggers that formerly made spreading institutions outside europe difficult have been removed to now only check tech group, so new world western nations don't fall behind in tech
+ - removed institution spread specific penalties for Emperor of China, so they don't die to their neighbours
+#30.10.22
+ - Fixed case of acceptable balance overflowing, causing units to freeze
+ - Statutory rights now goes to the least influential estate, alongside other changes to make estate influence easier for AI to handle
+ - Fixed case of AI bankruptcy building
+#31.10.22
+ - Fixed bug where EoC could be set to a dead tag
+ - Fixed bug where the Miao revolts could happen by owning tibetan land outside china
+ - Fixed case of Qing always becoming Shinto via the temple of isse event.
+ - Improved AI usage of estate privileges & government reforms
+ - The AI can now use 6 estate privileges
+ - Changed estate UI for the additional 2 privilege slots
+ - AI now uses trade company investments, and buffed trade companies for AI to compensate for them not steering trade properly.
+#2.11.22
+ - AI can now always see teleporters and therefore use them without issues. reasoning is because AI can deny eachother military access meaning there is still a degree of control over the teleporters
+#4.11.22
+ - Completely reworked court and country, improving both its regional localisation and event pictures *for more variety across the globe*
+ - Made the AI better at navigating through court and country events
+ - Court and country can now be completed in the age of revolutions too, in case you weren't able to do it earlier
+ - Any country can go through court and country now, providing they own 5 cities.
+ - Removed timer on court and country, so there's no rush to complete it, however delaying it means delaying absolutism.
+ - Made it generally harder to fail court and country. While it may take longer to complete, AI and player really has to stuff up to somehow fail it.
+ - Added more events to court and country
+#5.11.22
+ - Fixed bug where AI would go bankrupt building universities
+ - Fixed bug where AI wouldn't revoke some privileges
+ - Fixed bug where AI wouldn't build troops while at war with loans
+ - Fixed some old bugs with the Irish cultural centre, so that its mechanics work properly
+ - Changed some requirements for the Irish nation formation
+#7.11.22
+ - Reworked entire trade network, especially europe>asia trade, in attempt to break the importance of the ivory coast and iberian dominance. Steering trade to europe from india & east asia is improved, alongside networks to support colonial Qing & Japan.
+ - English Channel is now an end node again, but is no longer directly connected to new world and asia, instead it is connected to contested nodes which asia and america steers into, so it must compete with lubeck for trade value dominance.
+ - Bordeaux is no longer an end node, but receives more incoming asian and new world trade and is important for steering into E.C 
+ - White sea is now an end node, this is to help Russia establish a stronger economy to be more on par with europe late game
+#8.11.22
+ - Fixed bug where skepticism could be removed from unembraced institutions
+ - better distributed trade power in E.C
+ - Added a national recovery privilege to the Eunuchs, to help the emperor of china handle mandate loss from devastation
+ - Removed some AI exclusive mandate cushions, since theres now a privilege to help them out
+ - Improved brandenburg's starting trade position
+ - Added more trade centres and estuaries around the map, where they were lacking
+ - improved france's starting trade position
+ - forming germany now gives prussian militarization mechanics
+#9.11.22
+ - changed some price changes values
+ - buffed religious culture very slightly
+ - fixed ireland's flag to its historical one
+ - fixed a bug where the treaty of tordesillas could be enabled again by annexing the pope
+#10.11.22
+ - Fixed a bug where naval supremacy was not recalculated after a battle
+ - Fixed issue where smaller colonial AIs were too afraid to declare on colonies because they thought the overlord would come
+ - Added a new "Colonial War" mechanic for the AI, and prevented enforcing peace on this war. AI also can't call allies into this war, it is essentially a 1v1 between the colony and AI.
+ - Colonial Nations can request financial aid from the overlords, which can range from financial to military aid
+ - Players can directly intervene in colonial wars at the cost of -5 stab, 5 war exhaustion and 25 AE. similiar to truce breaking.
+ - Forming breakway colonial nations now always changes your tech group to western, if you arent already
+ - the "Recent Exodus" modifier, is now extended to newly colonised provinces
+ - Extended the economic bonuses from "Exodus Nation", so they can build stronger economies without being food for colonies.
+ - Burgundian AI will no longer abandon their strong NIs when they form another nation
+#11.11.22
+ - Colonial nations will no longer be able to assist in colonial wars
+ - Buffed tarrifs and decreased the liberty desire from them, so colonies are economically stronger due to the recent changes
+ - every colony now gives +1% trade efficiency to their overlord
+ - crown colonies now receive -25% development & building cost
+ - divert trade can now be used on colonies
+ - Fixed a bug where colonial new world nations couldn't declare war on colonies
+ - Colonial nations now use their overlord's national ideas, instead of generic colonial ones.
+ - fixed a bug where new world breakway nations wouldn't declare war on colonies *again*
+ - Tariffs are now free to raise/reduce
+ - AI receives +50% tariff efficiency on their colonies
+ - Tweaked Colonial wars, so that countries with less than 6 colonies can't have their colonial nations attacked and swiped from them.This creates more of a "Colonial Counterbalance" mechanic, where other colonizers will attempt to cut down other colonizer's colonial nations if they feel they are getting too much dominance over NW. Colonies with gold are an exception to this rule however.
+ - Slightly Nerfed the Exodus modifiers again, as they were slightly too strong with the new improved war declarations
+ - Trade company regions now match their new trade nodes
+#12.11.22
+ - Reworked Burgundian Inheritance again, should result in Burgundy been partitioned more and france dying less
+ - Dutch belongs to its own culture group now, so its not conquered by germans all the time
+ - Gave Holland it's own ideas, and buffed the Dutch formable ideas
+ - Netherlands can now be formed by any country that is christian and owns at least 7 dutch culture provinces, providing they aren't an end game tag or one of the regional neighbours eg: "France" or "England" etc
+#13.11.22
+ - Fixed bug where NW breakway tags could truce break colonial nations into death
+ - Prevented NW breakway tags from declaring war on colonies while they have a truce with the overlord, so colonies can stand a chance
+ - Improved EoC imperial reform logic, so the Chinese AI isn't dying to low mandate
+ - Improved the Dutch revolt disaster, increasing the chance of seeing the Netherlands spawn out of Austrian/Spanish netherlands
+ - Removed the "Foreign Aid" event for Sweden, so half of Europe dosen't support their independence from day 1
+ - Fixed a bug where the Emperor of China could have permanent +200 relations with Warlords, making them never dow
+ - Fixed bug where colonies could attack eachother when their overlords were allied
+#14.11.22
+ - Slightly buffed some Anglicanism aspects
+ - England will now always choose to spawn anglicanism, and a centre of reformation
+ - Reduced the mean time to happen for anglicanism, so England dosent go protestant first
+ - Added QoL tooltips for anglicanism aspects, and added more options if you already have the temporary aspect modifiiers
+#15.11.22
+ - Reworked War taxes into "Mobilisation", which functions the same way but is more viable and makes sense gameplay wise
+ - Improved the Mobilisation/War taxes script
+ - Taught the AI how to raise/reduce its mobilisation, since it wasnt doing it properly before
+ - Greatly improved the tooltips explaining Mobilisation/War taxes so its conceptionally easy to understand
+ - Improved Trade Company Investments, so that all of them are useful rather than some
+ - Taught the AI how to build trade company investments
+ - AI now actually pays for trade company investments, rather than getting them for free
+ - Improved the AI building script, so its not as laggy and performance demanding
+#16.11.22
+ - Improved the Gaelic diceroll bonus, so that it now dosent only apply to gaelic provinces, but mountains hills and highlands
+ - Bonus can also apply to enemies in a war, meaning its only use isnt in defensives.
+ - Lowered the culture conversion requirement for upgrading cultural centres, so that achieving tier 3 is reasonable by 1700s.
+#17.11.22
+ - Removed some modifiers that weren't working in trade company investments
+ - Tenailles now give "Friendly Diceroll Bonus" on forts where theyre built
+ - Buildings that apply area modifiers, such as forts, now properly apply their effects to newly conquered provinces
+ - Improved some tooltips explaining area modifiers in the building interface
+ - Taught the AI how to build local administrations and governor's mansions buildings in their trade companies
+#19.11.22
+ - Fixed CTD involving the Burgundian Inheritance? literally imagine
+#22.11.22
+ - Removed heavy ships, everyone now uses the specialised AI light ships which have the same cannons as heavies, can protect trade etc. This is so every ship has a use outside of war, rather than just having heavies sitting in port mothballed while at peace.
+ - Light ships now cost the same as heavy ships, and doubled their trade power gain to compensate. This will make them more useful for securing trade power too
+ - Ships now have a much higher chance of disengaging from naval combat, so entire fleets arent sunk during combat. This does mean that the full morale penalty from ships being sunk is now back.
+ - Reduced the amount of trade power that is stolen from privateers, so pirates can't easily dominate entire nodes. To make up for this, the amount of profits received from privateering has been doubled.
+#23.11.22
+ - tweaked some idea groups
+ - buffed colonial nations again
+#3.12.22
+ - Naval supremacy is now only calculated after a naval battle occurs. This stops countries being slammed with penalties without even fighting a battle.
+ - Guns/naval quality is no longer considered when determining which side has naval supremacy. Skill in winning battles determines which side has supremacy, rather than arbitrary quality vs quantity calculations.
+ - Fixed bug where promote officials cost wasnt working
+#4.12.22
+ - Buffed all references to drill gain modifier
+ - Drill now applies 25% morale damage scaled on individual regiment drill, and 10% discipline scaled on entire army's drill
+ - Drill now adds 3% professionalism yearly scaled to amount of troops drilling
+ - Professionalism now gives 1 extra leader per 20%, up to 5 extra leaders
+ - Professionalism now decays over time, at a maximum of 2% per year at 100% professionalism
+ - Improved the "convert money to dev" script, so its not nearly as laggy
+#10.12.22
+ - Added war objectives, to help the AI reinforce large battles
+ - Taught the AI how to "death war"/commit more troops to a war they're losing
+ - Removed inland seas, since galleys are now defunct
+#19.12.22
+ - Added numerous events for privateering and protecting trade
+ - slightly buffed coptic and zorastrian blessings to make them more equal with other religions
+ - slightly buffed armenian ideas
+#25.12.22
+ - Fixed bug where AI movement evaluations would freeze
+ - Fixed bug where policies could become glitched when setting cooldowns
+ - Buffed/tweaked some policies to make them more useful
+ - Improved the frequency of light ship events
+#30.12.22
+ - Improved government reforms for hordes
+ - Hordes now have the ability to gain the burghers and church estate through reforms
+ - Buffed tengrism syncretic faith bonuses
+ - Secondary religion can now be changed every 5 years instead of 10
+#31.12.22
+ - Fixed crash to desktop involving the fall of kyoto event
+ - The code will no longer generate advisors with unaccepted culture, so you aren't lumped with guys you can't promote
+ - Added two new administrative advisors, the architect and civil engineer
+ - the army organiser advisor now increases mercenary forcelimit instead
+ - raised the base number of advisor slots by 2
+#2.1.23
+ - AI will properly mobilise for death wars
+ - Tuned down ai spending on advisor budget
+ - Tuned down admin tech requirements on nation formables
+ - AI should go bankrupt less often when unconditional surrendering
+ - AI receives lighter penalties from going bankrupt
+ - AI will no longer commit harder to wars if they are bankrupt, or about to lose
+#3.1.23
+ - Fixed bug where mercenary discipline was uncalculated
+ - Streltsy now properly renamed to mercenaries, and use the correct green unit model
+#5.1.23
+ - Fixed bug with Miao revolts where tags wouldn't be released properly if they didn't have cores on the land
+ - Improved Miao revolts event script
+ - Added a new modifier "Harmony Lost On Conversion" and its province equivalent "Local Harmony Lost On Conversion" which modify the amount of harmony lost from converting provinces
+ - Base harmony lost from converting provinces halfed
+ - Religious idea "Inquisition" now gives -75% harmony lost on conversion
+ - Convert the Miao now gives -50% harmony lost in tibetan provinces for 20 years, to help confucian countries be able to convert
+ - Fixed bug where Mongol missions would be removed when capital is moved into China
+ - Improved tooltips on the Quell Miao revolts decision
+ - Fixed exploit where Miao revolts could be quelled by enacting decision before clicking event options
+#9.1.23
+ - Fixed CTD when tibetan rebels rose in provinces affected by the Miao revolts, related to the start_revolt script
+ - When tibetan rebels occupy a province during the Miao revolts they will no longer spawn more rebels unless provinces are in china.
+ - Reorganizing the Mongols will no longer exclude mongol culture from the change list
+ - Reorganize the mongols mission will no longer check for cultures which dont exist
+#10.1.23
+ - Buffed golden horde ideas to make the tag more viable to form
+ - larger nations are less likely to guarantee tags they should be eating 
+ - Khaganates can no longer receive the unguarded frontier disaster, since its meant to counter the bonuses provided by celestial reforms.
+#12.1.23
+ - Fixed issue where events would re-occur during court and country
+ - Slightly buffed Rum ideas
+#14.1.23
+ - Nerfed goods produced from trade companies
+ - trade company merchant requirement increased from 51% share to 70%
+ - Raid coffers now only gives 6 months worth of income instead of 9
+ - Bribe recruits now only gives 1 year worth of manpower instead of 2
+#15.1.23
+ - Slander Merchants now scales up to 2000 trade power, and grants +2 merchants for 15 years per country slandered.
+ - Corrupt Officials now increases target's corruption by 2.
+ - Steal maps now works again
+ - Novgorod is now an end node instead of white sea
+ - reworked some trade routes in europe to buff russia, france and english channel a bit more
+#19.1.23
+ - Entirely reworked rajput units for the Indians
+ - The Rajput estate can now be gained by conquering land in North India, and being either Indian tech or Dharmic religion group
+ - Taught the AI how to recruit rajputs
+ - Maritime idea "merchant traditions" now increases trade range by 25%
+#20.1.23
+ - Every cavalry regiment type now flanks properly
+ - AI will now always re-evaluate it's policies after a war ends, so that it's always using the optimal ones
+#22.1.23
+ - AI more likely to pick espionage ideas
+ - Nerfed espionage "vetting" idea from 25% spy defence to 15%
+ - Nerfed all spy defence modifiers across the board, to make it harder to stack espionage defence
+ - Corrupt officials now gives 4 months of powerpoints instead of 5
+#23.1.23
+ - AI better understands when it should uncon
+ - AI can now commit more troops when it feels it needs to
+#26.1.23
+ - Added new advisor events for new Architect and Civil Engineer Advisors
+ - Completing innovativeness ideas now halfs the mean time to happen for all advisor events, and can also fire previously used advisor events with mmth of 105 years after the first time it triggers.
+ - Every advisor now has unique and good advisor rewards, not just military ones
+ - Taught AI how to dev properly
+ - Improved AI building and spending logic
+#28.1.23
+ - Persia has a new revamped mission tree & flavour events
+ - Persian/Mughal minor states now have a mission tree which guides them into forming either Mughals or Persia
+#30.1.23
+ - Fixed bug with Slander merchants not working
+ - Fixed bug with reinforce claims not working
+ - State Propaganda now only removes 50 aggressive expansion instead of all of it
+ - Taught AI to manage spy networks more efficiently, so they dont stay at 100 and do nothing
+ - Added scripted effects and triggers for spy network actions, to improve readability across files
+ - Increased AI understanding of when to pick espionage ideas
+ - Improved AI logic when using spy network actions, AI will be more likely to want to sabotage recruitment or raid coffers etc
+ - Nerfed sabotage recruitment morale boost from 20% to 15%
+#31.1.23
+ - Improved AI unit disbanding after war
+ - Taught AI how to disinherit heirs
+ - Taught the AI how to abdicate rulers
+ - Removed extra AI monarch power cheat since they will have better rulers on average now
+ - Buffed bribe recruits manpower from 1 to 1.5 years worth of manpower
+ - Increased bribe recruits spy network cost from 50 to 75
+ #3.2.23
+ - Slander merchants nerfed from 15 years to 5 years
+ - Halfed the trade power gained from slander merchants
+ - Slander merchants now gives +10% trade efficiency and +200% embargo efficiency ontop of the extra +2 merchants already granted
+ - +20% morale damage policy moved to maritime ideas and -20% fire damage received policy moved to naval ideas
+ - naval ideas now has -2 landing penalty from 3rd idea
+ - renamed blockade efficiency to ship siege ability
+ - any country can use fleets to occupy provinces now, even without naval supremacy
+ - not having naval supremacy now gives -50% global blockade defensiveness
+ - blockade force required now changed to blockade defensiveness
+#4.2.23
+ - Reduce war exhaustion action nerfed from -2 to -1
+#7.2.23
+ - Overhauled drill, professionalism and mobilisation into one mechanic to better represent drill
+ - Army professionalism is now basically drill
+ - Drill is lost while at war depending on your manpower percentage and war exhaustion, and is also lost from losing wars and battles
+ - drill can be gained by drilling at peace or investing manpower to increase it by 5% and boost forcelimit by 20% for 5 years
+ - overhauled ottoman and rum mission tree
+ - rum now have access to all ottoman events
+ - added new events for rum & ottomans
+ - sort of taught ai to drill
+#9.2.23
+# - Nerfed rush fort meta, so you have to control all provinces owned by the enemy in the area before you can assault a fort (cant blitz krieg ai anymore lol)
+ - nerfed bribe recruits years manpower gain from 1.5 > 1. Changed cost from 75 > 70. hopefully last nerf to balance feature
+
+ 
+
+
+#TODO:
+-entirely rework colonialism
+-entirely rework institutions
+
+
+
+-privateering events
+-fix policy bugs
+-relook agendas 
+-relook idea group events
+-rework colonial nations & usage
+-fix the damn mission trees from 1.34
+-allow cawa for other nations other than ethiopia..
+-relook institution spread
+-rework some trade setups again
+
+#Artyku?y Henrykowskie
+
+
+
+
+#Copy over government reforms from 1.34 when released
+#Integrate some Mechanics and features from 1.34 *the ones that arent broken at least*
+#Also Integrate some stuff added in 1.33 *stuff that isnt broken*
+#Eastern Europe (Relook) (Poland, Lithuania, Prussia, Russia, Denmark, Sweden, Novgorod, Galich, Norway) *after 1.34  releases*
+#Western Steppes Rework (Uzbek, Khazakh, Kazan, Nogai, Bukhara)
+#Middle East Rework (Persia, Mamluks, Ottomans, Arabia, Mughals)
+#North America Rework (Exodus mechanics)
+#Reformation rework
+#More events for Mobilsation
+
+
+
+#formula for coastal raiding
+
+#dev_lost = round(((dev-1)/3)+(dev-1))
+# power = dev_lost*10*(1+privateer_efficiency)
+
+
+
+
+
+# Institutions:
+
+# Each tech group needs their own institutions
+
+
+
+
+#some ideas
+#norse japan/siberia/manchuria?
+#stab hit diplo action
+#no truce timer or lowered truces (to simulate truce breaking in MP)
+
+
+
+
+
+#ctd stuff
+#add a flag for newly created nations to prevent them from forming tags within a month tick of release, apparently there is a ctd when a rebel released tag forms another tag within a month.
+#If you colonize a province with no tradegood possibilities, it crashes the game
+#referencing province IDs without pixels in provinces.bmp anywhere in common will CTD
+#undefined mission_ids can cause crashes
+
+#building triggers kill performance
+#https://youtu.be/3slWJfECsUU?t=595 estate UI
+#approach to bad terrain: eg, desert nomad estate which influence increases from desert provinces and gives camel units which can be recruited from deserts only, just idea to offset very bad development penalties for non-european provinces etc.
+
+#tooltips are computed for the AI and can cause performance hits. Make sure everything is hidden effect
+#warning there is a CTD when a war ends, probs due to the onactions
+
+
+#error log:
+#if you reference disaster progress or active policies in scripted_triggers/effects itll spam the error log
+
+
+#To-do:
+
+#1) add all provinces to areas and assign areas to regions
+#2) add all provinces to trade company regions and trade nodes
+#3) ensure all provinces are in their correct continents
+#4) ensure there are no duplicates in the files
+#5) ensure there are no stray pixels or provinces in the map
+#6) touch-up and change the heightmap, watermap and terrain map
+#7) touch-up wasteland borders in conjuction with step 6
+#8) draw the river map
+#9) touch-up and adjust provinces borders in conjuction with step 8,7 and 6
+#10) adjust province climate and terrain in conjuction with step 6
+#11) touch-up / fix province adjencies
+#12) touch-up / fix province teleporters around the map
+#13) nudge positioning once satisfied with the state of the map
+#14) add all provinces to a native group
+#15) add all provinces to a culture group & religion group
+#16) re-adjust and add province names for all provinces in the map with incorrect names
+#17) add correct province naming conventions for different culture groups
+
+
+
+
+
+#Plains - African version of grasslands, represents the old "drylands"
+#Taiga - Represents northern parts of Russia and Manchuria/mongolia which are a mix of steppe and forest
+#Drylands - Part of deserts now, lesser form
+#Desert - represents the really dry sand dune deserts, picture is of sand dunes
+#Valley - represents areas near mountains/highlands/elevation with bodies of water
+#Mesa - Dry mountains that count as deserts
+
+
+#terrain by dev cost best:
+#1) farmlands 0%
+#2) grasslands 5%
+#3) savannah 10%
+#
+#4) steppe 15%
+#4) woods 15%
+#4) valley 15%
+#4) marsh 15%
+#4) plains 15%
+#
+#5) hills 20%
+#5) coastline 20%
+#5) oasis 20%
+#5) forest 20%
+#
+#6) taiga 25%
+#7) highlands 30%
+#8) coastal_desert 35%
+
+#9) drylands 40%
+#9) jungle 40%
+
+#10) rainforest 50%
+#10) desert 50%
+#10) mountains 50%
+#
+#11) mesa 55%
+#11) glacial 55%
+
+
+#the emperor of china as a decentralised empire:
+#basically with the new 1.35 government mechanics we can setup interactions.
+#with enough government power any warlord can claim to be the emperor of china
+#the current emperor of china has special actions which they can use to affect the government power of other warlords so they cant
+#claim the mandate.
+#things like winning battles/wars/provinces owned in china etc increase government power
+#something like an "influence in china" mechanic, that outsiders can also participate in, and potentially become a warlord themselves
+#or contest interest in china. 
+
+
+
+
+#current to do:
+#re-balance all technologies
+#sort buildings into technology
+#add script for the new latent trade goods
+#add script for price changes
+#rework institutions and tie it in with the price changes and ages
+#one golden era per age
+#rework some of the age bonuses

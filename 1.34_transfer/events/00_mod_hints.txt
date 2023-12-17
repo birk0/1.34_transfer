@@ -1,0 +1,22 @@
+# Hints for the mod
+
+namespace = mod_hints
+
+
+# Hint event for the player when forts are deleted so they learn
+country_event = {
+    id = mod_hints.1
+    title = "mod_hints.1.t"
+    desc = "mod_hints.1.d"
+    picture = ADVISOR_eventPicture
+    trigger = {
+        ai = no
+        has_country_flag = fort_tut
+    }
+    fire_only_once = yes
+
+    option = {
+        name = "mod_hints.1.a"
+        add_treasury = 100
+    }
+}

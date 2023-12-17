@@ -1,0 +1,20 @@
+#4962 - Tianjin
+
+owner = MNG
+controller = MNG
+add_core = MNG
+culture = chihan
+religion = confucianism
+capital = "Tianjin"
+trade_goods = cloth
+hre = no
+base_tax = 3 
+base_production = 4
+base_manpower = 3
+is_city = yes
+add_core = YAN
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

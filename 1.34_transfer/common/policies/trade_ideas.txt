@@ -1,0 +1,226 @@
+##########################################
+#	Policies for the Trade Idea Group
+##########################################
+armed_neutrality_act = {
+	monarch_power = MIL
+	
+	potential = {
+		ai = no
+		has_idea_group = trade_ideas
+	}
+	
+	allow = {
+		full_idea_group = trade_ideas
+		hidden_trigger = {
+			NOT = { has_idea_group = indigenous_ideas }
+		}
+		if = {
+			limit = { has_country_modifier = armed_neutrality_act_cooldown }
+			custom_trigger_tooltip = {
+				tooltip = POLICY_ON_COOLDOWN
+				always = no
+			}
+		}
+		if = {
+			limit = {
+				has_country_flag = trade_cd_fl
+			}
+			custom_trigger_tooltip = {
+				tooltip = "We must wait before we can select a policy from this idea group again."
+				always = no
+			}
+		}
+	}
+	
+	land_morale = 0.1
+	fire_damage = 0.05
+
+	ai_will_do = {
+		factor = 1
+	}
+}
+the_liquor_act = {
+	monarch_power = MIL
+	
+	
+	potential = {
+		ai = no
+		has_idea_group = trade_ideas
+	}
+	
+	allow = {
+		full_idea_group = trade_ideas
+		hidden_trigger = {
+			NOT = { has_idea_group = indigenous_ideas }
+		}
+		if = {
+			limit = { has_country_modifier = the_liquor_act_cooldown }
+			custom_trigger_tooltip = {
+				tooltip = POLICY_ON_COOLDOWN
+				always = no
+			}
+		}
+		if = {
+			limit = {
+				has_country_flag = trade_cd_fl
+			}
+			custom_trigger_tooltip = {
+				tooltip = "We must wait before we can select a policy from this idea group again."
+				always = no
+			}
+		}
+	}	
+	
+	infantry_fire = 0.4
+
+	ai_will_do = {
+		factor = 1
+	}
+}
+solidarity_policy = {
+	monarch_power = DIP
+	
+	potential = {
+		ai = no
+		has_idea_group = trade_ideas
+	}
+	
+	allow = {
+		full_idea_group = trade_ideas
+		hidden_trigger = {
+			NOT = { has_idea_group = indigenous_ideas }
+		}
+		if = {
+			limit = { has_country_modifier = solidarity_policy_cooldown }
+			custom_trigger_tooltip = {
+				tooltip = POLICY_ON_COOLDOWN
+				always = no
+			}
+		}
+		if = {
+			limit = {
+				has_country_flag = trade_cd_fl
+			}
+			custom_trigger_tooltip = {
+				tooltip = "We must wait before we can select a policy from this idea group again."
+				always = no
+			}
+		}
+	}
+	
+	monthly_favor_modifier = 1
+
+	ai_will_do = {
+		factor = 1
+	}
+}
+passport_to_merchants_policy = { 
+	monarch_power = DIP
+	
+	potential = {
+		ai = no
+		has_idea_group = trade_ideas
+	}
+	
+	allow = {
+		full_idea_group = trade_ideas
+		hidden_trigger = {
+			NOT = { has_idea_group = indigenous_ideas }
+		}
+		if = {
+			limit = { has_country_modifier = passport_to_merchants_policy_cooldown }
+			custom_trigger_tooltip = {
+				tooltip = POLICY_ON_COOLDOWN
+				always = no
+			}
+		}
+		if = {
+			limit = {
+				has_country_flag = trade_cd_fl
+			}
+			custom_trigger_tooltip = {
+				tooltip = "We must wait before we can select a policy from this idea group again."
+				always = no
+			}
+		}
+	}
+	
+	merchants = 2
+
+	ai_will_do = {
+		factor = 1
+	}
+}
+cloth_quality_edict = {
+	monarch_power = ADM
+	potential = {
+		ai = no
+		has_idea_group = trade_ideas
+	}
+	
+	allow = {
+		full_idea_group = trade_ideas
+		hidden_trigger = {
+			NOT = { has_idea_group = indigenous_ideas }
+		}
+		if = {
+			limit = { has_country_modifier = cloth_quality_edict_cooldown }
+			custom_trigger_tooltip = {
+				tooltip = POLICY_ON_COOLDOWN
+				always = no
+			}
+		}
+		if = {
+			limit = {
+				has_country_flag = trade_cd_fl
+			}
+			custom_trigger_tooltip = {
+				tooltip = "We must wait before we can select a policy from this idea group again."
+				always = no
+			}
+		}
+	}
+	trade_efficiency = 0.2
+
+	ai_will_do = {
+		factor = 1
+	}
+}
+public_road_act = {
+	monarch_power = ADM
+	
+	potential = {
+		ai = no
+		has_idea_group = trade_ideas
+	}
+	
+	allow = {
+		full_idea_group = trade_ideas
+		hidden_trigger = {
+			NOT = { has_idea_group = indigenous_ideas }
+		}
+		if = {
+			limit = { has_country_modifier = public_road_act_cooldown }
+			custom_trigger_tooltip = {
+				tooltip = POLICY_ON_COOLDOWN
+				always = no
+			}
+		}
+		if = {
+			limit = {
+				has_country_flag = trade_cd_fl
+			}
+			custom_trigger_tooltip = {
+				tooltip = "We must wait before we can select a policy from this idea group again."
+				always = no
+			}
+		}
+	}
+	
+	development_cost = -0.05
+	build_cost = -0.1
+
+	ai_will_do = {
+		factor = 1
+	}
+}

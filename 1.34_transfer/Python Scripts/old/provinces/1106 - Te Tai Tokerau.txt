@@ -1,0 +1,20 @@
+#1106 - Ul-Khan
+
+culture = buryat
+religion = tengri_pagan_reformed
+capital = "Ul-Khan"
+hre = no
+base_tax = 1
+base_production = 1
+base_manpower = 1
+#changes
+owner = BRT
+controller = BRT
+add_core = BRT
+trade_goods = fur
+is_city = yes
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

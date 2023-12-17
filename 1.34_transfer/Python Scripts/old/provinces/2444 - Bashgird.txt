@@ -1,0 +1,21 @@
+#2444 - Bashgird
+
+owner = KAZ
+controller = KAZ
+culture = bashkir
+religion = sunni
+capital = "Bashgird"
+trade_goods = gold
+hre = no
+is_city = yes
+add_core = KAZ
+add_core = BSH
+#changes
+base_tax = 2
+base_production = 4
+base_manpower = 1
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

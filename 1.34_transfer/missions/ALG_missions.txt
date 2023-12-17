@@ -1,0 +1,113 @@
+ALG_slot_1 = {
+	slot = 1
+	generic = no
+	ai = yes
+	potential = {
+		tag = ALG
+		NOT = { map_setup = map_setup_random }
+	}
+	has_country_shield = yes
+	
+	alg_decide_fate = {
+		position = 1
+		icon = mission_konkani_pirates
+		required_missions = { }
+		trigger = {
+			OR = {
+				has_country_modifier = alg_honest_traders
+				has_reform = pirate_republic_reform
+			}
+		}
+		effect = {
+			change_government_reform_progress = 10
+			add_adm_power = 100
+			add_dip_power = 100
+			add_mil_power = 100
+		}
+	}
+
+	alg_aragonese_diplomacy = {
+		position = 2
+		icon = king_of_aragon
+		required_missions = { alg_decide_fate }
+		trigger = {
+			guaranteed_by = ARA
+			ARA = {
+				has_opinion = {
+					who = ROOT 
+					value = 100
+				}
+			}
+		}
+		effect = {
+			country_event = { id = mor_events.73 }
+		}
+	}
+
+	alg_continue_revolt = {
+		position = 3
+		icon = mission_the_battle_for_raichur
+		required_missions = { alg_aragonese_diplomacy }
+		provinces_to_highlight = {
+			OR = {
+				area = barbary_coast_area
+				area = algiers_area
+				area = hautes_plaines_area
+			}
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+		}
+		trigger = {
+			barbary_coast_area = { type = all country_or_non_sovereign_subject_holds = ROOT }
+			algiers_area = { type = all country_or_non_sovereign_subject_holds = ROOT }
+			hautes_plaines_area = { type = all country_or_non_sovereign_subject_holds = ROOT }
+		}
+		effect = {
+			add_country_modifier = {
+				name = alg_dev_cost
+				duration = 5475
+			}
+			country_event = { id = mor_events.74 }
+		}
+	}
+
+	alg_regency_of_alg = {
+		position = 4
+		icon = mission_al_andalus
+		required_missions = { alg_continue_revolt }
+		provinces_to_highlight = {
+			OR = {
+				province_id = 338
+				province_id = 336
+				province_id = 2461
+			}
+			NOT = { 
+				OR = {
+					development = 15
+					has_tax_building_trigger = yes
+				} 
+			}
+		}
+		trigger = {
+			338 = {
+				has_tax_building_trigger = yes
+				development = 15
+			}
+			336 = {
+				has_tax_building_trigger = yes
+				development = 15
+			}
+			2461 = {
+				has_tax_building_trigger = yes
+				development = 15
+			}
+			NOT = { exists = TLC }
+		}
+		effect = {
+			override_country_name = tag_regency_of_algiers
+			add_country_modifier = {
+				name = regency_of_algiers
+				duration = -1
+			}
+		}
+	}
+}

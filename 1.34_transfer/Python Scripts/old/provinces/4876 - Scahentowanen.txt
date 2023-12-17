@@ -1,0 +1,21 @@
+#4876 - Baying
+
+culture = uyghur
+religion = tengri_pagan_reformed
+capital = "Baying"
+trade_goods = salt
+hre = no
+base_tax = 2 
+base_production = 1
+base_manpower = 1
+is_city = yes
+#Changes
+owner = MHL
+controller = MHL
+add_core = MHL
+
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

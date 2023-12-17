@@ -1,0 +1,19 @@
+# 2572 - Hertogenbosch
+
+owner = LIE
+controller = LIE
+add_core = LIE
+is_city = yes
+capital = "Hertogenbosch"
+culture = flemish
+religion = catholic
+hre = yes
+base_tax = 2
+base_production = 2
+trade_goods = grain
+base_manpower = 2
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

@@ -1,0 +1,21 @@
+# 2173 - Yuanling
+
+owner = MNG
+controller = MNG
+add_core = MNG
+add_core = CMI
+culture = miao
+religion = shen #changes
+capital = "Yuanling"
+trade_goods = tea
+hre = no
+base_tax = 4 
+base_production = 4
+base_manpower = 2
+is_city = yes
+add_local_autonomy = 25 #Ming weak rule over South
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

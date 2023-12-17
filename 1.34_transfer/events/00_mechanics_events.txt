@@ -1,0 +1,36 @@
+# Mechanics for the mod
+
+namespace = mechanics
+
+# Record battles won by the monarch. Triggered from on_battle_won_unit
+country_event = {
+    id = mechanics.1
+    title = "none"
+    desc = "none"
+    picture = "none"
+    is_triggered_only = yes
+    hidden = yes
+
+    option = {
+        if = {
+            limit = {
+                NOT = {
+                    check_variable = {
+                        which = monarch_won_battles
+                        value = 1
+                    }
+                }
+            }
+            set_variable = {
+                which = monarch_won_battles
+                value = 1
+            }
+        }
+        else = {
+            change_variable = {
+                which = monarch_won_battles
+                value = 1
+            }
+        }
+    }
+}

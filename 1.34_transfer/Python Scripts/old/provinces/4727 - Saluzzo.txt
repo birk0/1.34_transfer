@@ -1,0 +1,20 @@
+#4727 - Kirov
+
+capital = "Kirov"
+culture = russian
+religion = orthodox
+trade_goods = wool
+hre = no
+is_city = yes
+#changes
+base_tax = 2
+base_production = 1
+base_manpower = 2
+owner = TNK
+controller = TNK
+add_core = TNK
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

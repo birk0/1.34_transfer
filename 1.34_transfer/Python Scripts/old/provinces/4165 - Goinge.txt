@@ -1,0 +1,19 @@
+#Eastern Skåne - More or less Kristianstad Län. Includes Göinge, Gladsax Len, Listerlandet, and others.
+
+add_core = DAN
+owner = DAN
+controller = DAN
+culture = danish
+religion = catholic
+hre = no
+base_tax = 2
+base_production = 2
+trade_goods = livestock
+base_manpower = 2
+capital = "Gladsax"
+is_city = yes
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

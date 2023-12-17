@@ -1,0 +1,19 @@
+#2333 - Abd al-Qays
+
+owner = ORM
+controller = ORM
+culture = gulf_arabic
+religion = shiite
+capital = "Sila"
+trade_goods = fish
+hre = no
+base_tax = 1 
+base_production = 1
+base_manpower = 1
+is_city = yes
+add_core = ORM
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

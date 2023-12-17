@@ -1,0 +1,19 @@
+#262 - Sadecki
+
+owner = POL
+controller = POL
+culture = polish
+religion = catholic
+capital = "Nowy Sacz"
+hre = no
+base_tax = 6
+base_production = 6
+trade_goods = iron
+base_manpower = 2
+is_city = yes
+add_core = POL
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

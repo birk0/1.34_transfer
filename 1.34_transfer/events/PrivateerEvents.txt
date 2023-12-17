@@ -1,0 +1,2269 @@
+namespace = privateers
+
+# Reworked & added to these events to better fit the mod, also moved them to bi_yearly_pulse_2 instead of having them trigger via mtth
+
+# Local Traders Demand Aid - privateered province demands funds for protection
+# This can trigger the privateer captain captured event chain
+country_event = {
+	id = privateers.1
+	title = "privateers.1.t"
+	desc = "privateers.1.d"
+	picture = BARBARY_PIRATES_eventPicture
+	goto = terrorized_port
+
+	trigger = {
+		any_active_trade_node = {
+			any_privateering_country = {
+				NOT = { tag = ROOT }
+				PREV = {
+					privateer_power = {
+						share = 10
+						country = PREV
+					}
+				}
+			}
+			any_trade_node_member_province = {
+				owned_by = ROOT
+				has_port = yes
+			}
+		}
+	}
+
+	immediate = {
+		hidden_effect = {
+			random_active_trade_node = {
+				random_privateering_country = {
+					save_event_target_as = privateer_country
+				}
+				random_trade_node_member_province = {
+					limit = {
+						owned_by = ROOT
+						has_port = yes
+					}
+					save_event_target_as = terrorized_port
+				}
+			}
+		}
+	}
+
+	is_triggered_only = yes
+
+	option = {
+		name = "privateers.1.a" # Increase efforts to hunt the pirates
+		custom_tooltip = "reduced_enemy_privateer_chance_tooltip"
+		event_target:privateer_country = {
+			set_country_flag = privateers_being_hunted
+		}
+		add_years_of_income = -1
+		add_yearly_sailors = 1
+		add_country_modifier = {
+			name = increased_pirate_hunting
+			duration = 3650
+		}
+		event_target:terrorized_port = {
+			area = {
+				limit = { owned_by = ROOT }
+				add_devastation = 10
+				add_province_modifier = {
+					name = terrorized_by_pirates
+					duration = 3650
+				}
+			}
+		}
+		ai_chance = {
+			factor = 5
+			modifier = {
+				factor = 0
+				OR = {
+					num_of_loans = 1
+					NOT = { treasury = 300 }
+				}
+			}
+		}
+	}
+	option = {
+		name = "privateers.1.b" # Ignore them
+		add_country_modifier = {
+			name = rampart_piracy
+			duration = 3650
+		}
+		event_target:privateer_country = {
+			set_country_flag = successful_privateers
+		} 
+		event_target:terrorized_port = {
+			area = {
+				limit = { owned_by = ROOT }
+				add_devastation = 30
+				add_province_modifier = {
+					name = terrorized_by_pirates
+					duration = 7300
+				}
+			}
+			add_trade_modifier = {
+				who = ROOT
+				duration = 7300
+				power = -70
+				key = "Rogue Pirates "
+			}
+			add_base_manpower = -1
+			add_base_production = -1
+		}
+	}
+	option = {
+		name = "privateers.1.c" # Fight piracy with piracy!
+		highlight = yes
+		trigger = {
+			OR = {
+				marauder_captain = 1
+				custom_trigger_tooltip = {
+					tooltip = "Is a Pirate Republic"
+					has_government_attribute = is_pirate_republic_reform
+				}
+			}
+		}
+		add_country_modifier = {
+			name = fighting_piracy_with_piracy
+			duration = 3650
+		}
+		event_target:terrorized_port = {
+			area = {
+				limit = { owned_by = ROOT }
+				add_devastation = 20
+				add_province_modifier = {
+					name = terrorized_by_pirates
+					duration = 3650
+				}
+			}
+			add_trade_modifier = {
+				who = ROOT
+				duration = 3650
+				power = -70
+				key = "Rogue Pirates "
+			}
+		}
+		ai_chance = {
+			factor = 1000
+		}
+	}
+	option = {
+		name = "privateers.1.e" # $TRADER$ knows how to handle this best
+		highlight = yes
+		trigger = {
+			trader = 1
+		}
+		add_country_modifier = {
+			name = trader_ship_building
+			duration = 3650
+		}
+		add_years_of_income = -0.5
+		event_target:terrorized_port = {
+			area = {
+				limit = { owned_by = ROOT }
+				add_devastation = 20
+				add_province_modifier = {
+					name = terrorized_by_pirates
+					duration = 3650
+				}
+			}
+			add_trade_modifier = {
+				who = ROOT
+				duration = 3650
+				power = 70
+				key = "Fortifications against Pirates "
+			}
+		}
+		ai_chance = {
+			factor = 1000
+		}
+	}
+}
+
+# Privateer Captain Captured (event chain)
+country_event = {
+	id = privateers.16
+	title = "privateers.16.t"
+	desc = "privateers.16.d"
+	goto = pirates_hunted_node
+	picture = PIRATES_CAPTURED_eventPicture
+
+	trigger = {
+		has_country_flag = privateers_being_hunted
+		any_trade_node = {
+			privateer_power = {
+				share = 10
+				country = ROOT
+			}
+			any_trade_node_member_country = {
+				has_country_modifier = increased_pirate_hunting
+			}
+		}
+	}
+
+	is_triggered_only = yes
+
+	immediate = {
+		clr_country_flag = privateers_being_hunted
+		hidden_effect = {
+			random_trade_node = {
+				limit = {
+					privateer_power = {
+						share = 10
+						country = ROOT
+					}
+					any_trade_node_member_country = {
+						has_country_modifier = increased_pirate_hunting
+					}
+				}
+				save_event_target_as = pirates_hunted_node
+				random_trade_node_member_country = {
+					limit = {
+						has_country_modifier = increased_pirate_hunting
+					}
+					save_event_target_as = pirated_hunted_country
+				}
+			}
+		}
+	}
+
+	option = {
+		name = "privateers.16.a" # Negotiate his release
+		custom_tooltip = "will_try_to_negotiate_for_privateer_release_tt"
+		set_country_flag = negotiating_for_privateer_release
+		add_years_of_income = -1
+
+		ai_chance = {
+			factor = 2
+			modifier = {
+				factor = 0
+				OR = {
+					num_of_loans = 1
+					NOT = { treasury = 500 }
+				}
+			}
+		}
+	}
+	option = {
+		name = "privateers.16.b" # Abandon him
+		set_country_flag = abandoned_privateer
+		if = {
+			limit = {
+				NOT = { has_country_modifier = abandoned_privateer_captain }
+			}
+			add_country_modifier = {
+				name = abandoned_privateer_captain
+				duration = 7300
+			}
+		}
+		else = {
+			add_country_modifier = {
+				name = abandoned_privateer_captain2
+				duration = 7300
+			}
+		}
+		event_target:pirates_hunted_node = {
+			add_trade_modifier = {
+				key = "Executed Privateer "
+				power = -100
+				duration = 7300
+				who = ROOT
+			}
+		}
+		add_navy_tradition = -10
+	}
+	option = {
+		name = "privateers.16.c" # $MARAUDER_CAPTAIN$ knows how to handle this best
+		highlight = yes
+		trigger = {
+			marauder_captain = 1
+		}
+		custom_tooltip = "will_try_to_negotiate_for_privateer_release_tt"
+		set_country_flag = negotiating_for_privateer_release
+		add_dip_power = -50
+		ai_chance = {
+			factor = 1000
+		}
+	}
+
+	after = {
+		hidden_effect = {
+			event_target:pirated_hunted_country = {
+				country_event = {
+					id = privateers.17
+				}
+			}
+		}
+	}
+}
+
+country_event = { # Enemy Privateer Captured
+	id = privateers.17
+	title = "privateers.17.t"
+	goto = pirates_hunted_node
+	desc = {
+		trigger = {
+			FROM = {
+				has_country_flag = negotiating_for_privateer_release
+			}
+		}
+		desc = "privateers.17.d.negotiations"
+	}
+	desc = {
+		trigger = {
+			always = yes
+		}
+		desc = "privateers.17.d"
+	}
+	picture = PIRATES_CAPTURED_eventPicture
+	is_triggered_only = yes
+
+	option = {
+		name = "privateers.17.a" # Order his execution!
+		set_country_flag = executed_enemy_privateer
+		tooltip = {
+			FROM = {
+				add_country_modifier = {
+					name = abandoned_privateer_captain
+					duration = 7300
+				}
+			}
+		}
+		add_prestige = 10
+		add_navy_tradition = 5
+		add_country_modifier = {
+			name = executed_enemy_privateer
+			duration = 3650
+		}
+		event_target:pirates_hunted_node = {
+			add_trade_modifier = {
+				who = ROOT
+				key = "Executed Enemy Privateer "
+				power = 50
+				duration = 7300
+			}
+		}
+
+		ai_chance = {
+			factor = 1.5
+		}
+	}
+	option = {
+		name = "privateers.17.b" # Perhaps we could make use of his services..
+		set_country_flag = hired_enemy_privateer
+		trigger = {
+			custom_trigger_tooltip = {
+				tooltip = "Is hiring privateers and have at least 10% privateer power in any trade node"
+				any_trade_node = {
+					privateer_power = {
+						share = 10
+						country = ROOT
+					}
+				}
+			}
+		}
+		highlight = yes
+		define_advisor = {
+			type = marauder_captain
+			skill = 2
+			religion = FROM
+			discount = yes
+		}
+		add_dip_power = 50
+
+		ai_chance = {
+			factor = 0 # Ai probs wont hire the advisor im ngl
+		}
+	}
+	option = {
+		name = "privateers.17.c" # Demand monetary compensation!
+		set_country_flag = demanded_monetary_compensation
+		trigger = {
+			FROM = {
+				has_country_flag = negotiating_for_privateer_release
+			}
+		}
+		add_years_of_income = 1
+		custom_tooltip = "privateers_17_e_tooltip1"
+		FROM = {
+			custom_tooltip = "monetary_compensation_privateer_tooltip"
+		}
+		custom_tooltip = "privateers_17_e_tooltip2"
+		tooltip = {
+			FROM = {
+				add_country_modifier = {
+					name = abandoned_privateer_captain
+					duration = 7300
+				}
+			}
+		}
+
+		ai_chance = {
+			factor = 1
+			modifier = {
+				factor = 3 # wants the money
+				OR = {
+					num_of_loans = 1
+					NOT = { treasury = 500 }
+				}
+			}
+		}
+	}
+	option = {
+		name = "privateers.17.e" # Enforce a naval armistice
+		set_country_flag = demanded_naval_armistice
+		trigger = {
+			FROM = {
+				has_country_flag = negotiating_for_privateer_release
+			}
+		}
+		add_years_of_income = 1
+		custom_tooltip = "privateers_17_e_tooltip1"
+		tooltip = {
+			FROM = {
+				add_country_modifier = {
+					name = enforced_naval_armistice
+					duration = 7300
+				}
+			}
+		}
+		custom_tooltip = "privateers_17_e_tooltip2"
+		tooltip = {
+			FROM = {
+				add_country_modifier = {
+					name = abandoned_privateer_captain
+					duration = 7300
+				}
+			}
+		}
+
+		ai_chance = {
+			factor = 1
+			modifier = {
+				factor = 3 # wants the money
+				OR = {
+					num_of_loans = 1
+					NOT = { treasury = 500 }
+				}
+			}
+		}
+	}
+	after = {
+		FROM = {
+			if = {
+				limit = { has_country_flag = abandoned_privateer } 
+				clr_country_flag = abandoned_privateer
+			}
+			else = {
+				hidden_effect = {
+					country_event = {
+						id = privateers.18
+					}
+				}
+			}
+			clr_country_flag = negotiating_for_privateer_release
+		}
+	}
+}
+
+country_event = {
+	id = privateers.18
+	title = "privateers.18.t" # Privateer Captain Captured, response event (end of chain)
+	desc = {
+		trigger = {
+			FROM = { has_country_flag = executed_enemy_privateer }
+		}
+		desc = "privateers.18.d.executed"
+	}
+	desc = {
+		trigger = {
+			FROM = { has_country_flag = hired_enemy_privateer }
+		}
+		desc = "privateers.18.d.hired" # They will assume he was executed since no word will be given
+	}
+	desc = {
+		trigger = {
+			FROM = { 
+				OR = {
+					has_country_flag = demanded_monetary_compensation
+					has_country_flag = demanded_naval_armistice 
+				}
+			}
+		}
+		desc = "privateers.18.d.compensation"
+	}
+	picture = PIRATES_CAPTURED_eventPicture
+	is_triggered_only = yes
+
+	option = {
+		name = "privateers.18.a" # Refuse their demands!
+		trigger = {
+			FROM = {
+				OR = {
+					has_country_flag = demanded_naval_armistice
+					has_country_flag = demanded_monetary_compensation
+				}
+			}
+		}
+		custom_tooltip = "privateer_will_likely_be_executed_tooltip"
+		if = {
+			limit = {
+				NOT = { has_country_modifier = abandoned_privateer_captain }
+			}
+			add_country_modifier = {
+				name = abandoned_privateer_captain
+				duration = 7300
+			}
+		}
+		else = {
+			add_country_modifier = {
+				name = abandoned_privateer_captain2
+				duration = 7300
+			}
+		}
+		event_target:pirates_hunted_node = {
+			add_trade_modifier = {
+				key = "Executed Privateer "
+				power = -100
+				duration = 7300
+				who = ROOT
+			}
+		}
+		add_navy_tradition = -10
+	}
+	option = {
+		name = "privateers.18.b" # Very well
+
+		ai_chance = {
+			factor = 3
+			modifier = {
+				factor = 0
+				FROM = { has_country_flag = demanded_naval_armistice } # this is bad
+			}
+		}
+
+		trigger = {
+			FROM = {
+				OR = {
+					has_country_flag = demanded_naval_armistice
+					has_country_flag = demanded_monetary_compensation
+				}
+			}
+		}
+		if = {
+			limit = {
+				FROM = {
+					has_country_flag = demanded_naval_armistice
+				}
+			}
+			add_country_modifier = {
+				name = enforced_naval_armistice
+				duration = 7300
+			}
+		}
+		else = {
+			custom_tooltip = "monetary_compensation_privateer_tooltip"
+			hidden_effect = {
+				FROM = {
+					while = {
+						limit = {
+							any_active_trade_node = {
+								is_strongest_trade_power = PREV
+								NOT = {
+									has_trade_modifier = {
+										who = ROOT
+										key = "Privateering Compensation "
+									}
+								}
+							}
+						}
+						random_active_trade_node = {
+							limit = {
+								is_strongest_trade_power = PREV
+								NOT = {
+									has_trade_modifier = {
+										who = ROOT
+										key = "Privateering Compensation "
+									}
+								}
+							}
+							add_trade_modifier = {
+								who = ROOT
+								key = "Privateering Compensation "
+								power = -100
+								duration = 7300
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	option = {
+		name = "privateers.18.c" # Curses!
+		trigger = {
+			FROM = {
+				OR = {
+					has_country_flag = hired_enemy_privateer
+					has_country_flag = executed_enemy_privateer
+				}
+			}
+		}
+		if = {
+			limit = {
+				NOT = { has_country_modifier = abandoned_privateer_captain }
+			}
+			add_country_modifier = {
+				name = abandoned_privateer_captain
+				duration = 7300
+			}
+		}
+		else = {
+			add_country_modifier = {
+				name = abandoned_privateer_captain2
+				duration = 7300
+			}
+		}
+		event_target:pirates_hunted_node = {
+			add_trade_modifier = {
+				key = "Executed Privateer "
+				power = -100
+				duration = 7300
+				who = ROOT
+			}
+		}
+		add_navy_tradition = -10
+	}
+	after = {
+		FROM = {
+			clr_country_flag = hired_enemy_privateer
+			clr_country_flag = executed_enemy_privateer
+			clr_country_flag = demanded_monetary_compensation
+			clr_country_flag = demanded_naval_armistice
+		}
+	}
+}
+
+country_event = {
+	id = privateers.2
+	title = "privateers.2.t" # Rogue Privateer Captured (event chain)
+	desc = "privateers.2.d"
+	picture = DEBATE_REPUBLICAN_eventPicture
+	goto = rogue_privateer_node
+
+	trigger = {
+		any_active_trade_node = {
+			any_privateering_country = {
+				NOT = { tag = ROOT }
+				PREV = {
+					privateer_power = {
+						share = 1
+						country = PREV
+					}
+				}
+			}
+			patrolling_or_protecting_trade_in_node = {
+				country = ROOT
+			}
+		}
+	}
+
+	is_triggered_only = yes
+
+	immediate = {
+		hidden_effect = {
+			random_active_trade_node = {
+				limit = {
+					privateer_power = { share = 1 }
+					patrolling_or_protecting_trade_in_node = {
+						country = ROOT
+					}
+				}
+				save_event_target_as = rogue_privateer_node
+				random_privateering_country = {
+					limit = {
+						NOT = { tag = ROOT }
+					}
+					save_event_target_as = rogue_privateer_country
+				}
+			}
+		}
+	}
+
+	option = {
+		name = "privateers.2.a" # Press the issue
+		hidden_effect = {
+			event_target:rogue_privateer_country = {
+				country_event = {
+					id = privateers.3
+				}
+			}
+		}
+		ai_chance = {
+			factor = 3
+		}
+	}
+	option = {
+		name = "privateers.2.b" # Accept the letter of Marque
+		add_prestige = -15
+		add_opinion = {
+			who = event_target:rogue_privateer_country
+			modifier = opinion_pleased
+		}
+	}
+}
+
+# Rogue Privateer Captured ()
+country_event = {
+	id = privateers.3
+	title = "privateers.3.t"
+	desc = "privateers.3.d"
+	picture = DEBATE_REPUBLICAN_eventPicture
+
+	is_triggered_only = yes
+
+	option = {
+		name = "privateers.3.a" # Take responsibility
+		set_country_flag = took_responsibility_for_privateer
+		add_prestige = -10
+		add_navy_tradition = -5
+		add_country_modifier = {
+			name = rogue_privateer_captured
+			duration = 3650
+		}
+		add_opinion = {
+			who = FROM
+			modifier = opinion_pleased
+		}
+	}
+
+	option = {
+		name = "privateers.3.b" # Deny Association
+		set_country_flag = denied_responsibility_for_privateer
+		add_prestige = 10
+		add_opinion = {
+			who = FROM
+			modifier = opinion_displeased
+		}
+		ai_chance = {
+			factor = 3
+		}
+	}
+
+	after = {
+		hidden_effect = {
+			FROM = {
+				country_event = {
+					id = privateers.19
+				}
+			}
+		}
+	}
+}
+
+country_event = { # Rogue Privateer Captured, response
+	id = privateers.19
+	title = "privateers.19.t"
+	desc = {
+		trigger = {
+			FROM = { has_country_flag = denied_responsibility_for_privateer }
+		}
+		desc = "privateers.19.d.denied"
+	}
+	desc = {
+		trigger = {
+			always = yes
+		}
+		desc = "privateers.19.d"
+	}
+	picture = DEBATE_REPUBLICAN_eventPicture
+	is_triggered_only = yes
+
+	option = {
+		name = "privateers.19.a" # Excellent
+		trigger = {
+			FROM = { has_country_flag = took_responsibility_for_privateer }
+		}
+		event_target:rogue_privateer_node = {
+			add_trade_modifier = {
+				who = ROOT
+				key = "Captured Rogue Privateer "
+				power = 60
+				duration = 3650
+			}
+		}
+		add_years_of_income = 0.5
+		add_prestige = 10
+		add_navy_tradition = 5
+		goto = rogue_privateer_node
+	}
+	option = {
+		name = "privateers.19.b" # We care little for such excuses!
+		trigger = {
+			FROM = { has_country_flag = denied_responsibility_for_privateer }
+		}
+		add_casus_belli = {
+    		target = FROM
+    		type = cb_privateers_triggered
+    		months = 60
+		}
+	}
+
+	after = {
+		FROM = {
+			clr_country_flag = took_responsibility_for_privateer
+			clr_country_flag = denied_responsibility_for_privateer
+		}
+	}
+}
+
+# A Reckless Privateer
+country_event = {
+	id = privateers.4
+	title = "privateers.4.t"
+	desc = "privateers.4.d"
+	picture = BORDER_TENSION_eventPicture
+
+	trigger = {
+		has_privateers = yes
+		NOT = { has_country_modifier = reckless_privateer }
+		NOT = { has_country_modifier = curtailed_privateer }
+	}
+
+	is_triggered_only = yes
+
+	# Allow the privateer to continue skirting rules
+	option = {
+		name = "privateers.4.a"
+		add_country_modifier = {
+			name = "reckless_privateer"
+			duration = 3650
+		}
+		set_country_flag = has_reckless_privateer
+	}
+
+	# Revoke his letter of marque
+	option = {
+		name = "privateers.4.b"
+		add_country_modifier = {
+			name = "curtailed_privateer"
+			duration = 3650
+		}
+	}
+}
+
+# Privateer Captain Goes Rogue
+country_event = {
+	id = privateers.5
+	title = "privateers.5.t"
+	desc = "privateers.5.d"
+	picture = SHIP_SAILING_eventPicture
+
+	trigger = {
+		has_privateers = yes
+		NOT = { has_country_modifier = rogue_privateer }
+	}
+
+	mean_time_to_happen = {
+		days = 1
+		modifier = {
+			factor = 2
+			has_country_flag = has_reckless_privateer
+		}
+	}
+
+	immediate = {
+		clr_country_flag = has_reckless_privateer
+	}
+
+	is_triggered_only = yes
+
+	option = {
+		name = "privateers.5.a"
+		add_country_modifier = {
+			name = "rogue_privateer"
+			duration = 3650
+		}
+	}
+}
+
+# Oceans Beyond Privateering - privateer wishes to become explorer (one time)
+country_event = {
+	id = privateers.6
+	title = "privateers.6.t"
+	desc = "privateers.6.d"
+	picture = SHIP_SAILING_eventPicture
+
+	trigger = {
+		has_privateers = yes
+		NOT = { has_country_flag = funded_explorer_privateer }
+		any_trade_node = {
+			privateer_power = {
+				country = ROOT
+				share = 10
+			}
+			any_trade_node_member_province = {
+				NOT = { has_discovered = ROOT }
+			}
+		}
+	}
+
+	is_triggered_only = yes
+
+	mean_time_to_happen = {
+		days = 1
+		modifier = {
+			factor = 1.5
+			has_idea_group = exploration_ideas
+		}
+	}
+
+	# Fund expedition
+	option = {
+		name = "privateers.6.a"
+		add_years_of_income = -0.5
+		set_country_flag = funded_explorer_privateer
+		if = {
+			limit = {
+				culture_group = british
+			}
+			define_explorer = {
+				name = "Francis Drake"
+				fire = 3
+				shock = 3
+				manuever = 3
+				siege = 0
+			}
+		}
+		else = {
+			create_explorer = {
+				tradition = 100
+			}
+		}
+	}
+
+	# Tell the privateer to stay where he is
+	option = {
+		name = "privateers.6.b"
+		add_country_modifier = {
+			name = focussed_privateer_effort
+			duration = 5475
+		}
+		ai_chance = {
+			factor = 2
+		}
+	}
+}
+
+# Pirates Seeking Allegiance - first event, triggers second if declined.
+country_event = {
+	id = privateers.7
+	title = "privateers.7.t"
+	desc = "privateers.7.d"
+	picture = SHIP_SAILING_eventPicture
+
+	trigger = {
+		any_active_trade_node = {
+			any_privateering_country = {
+				NOT = { tag = ROOT }
+				PREV = {
+					privateer_power = {
+						share = 10
+						country = PREV
+					}
+				}
+			}
+		}
+		NOT = { has_country_modifier = employed_pirates }
+	}
+
+	is_triggered_only = yes
+
+	option = {
+		name = "privateers.7.a"
+		add_country_modifier = {
+			name = "employed_pirates"
+			duration = 1825
+		}
+		add_years_of_income = 0.5
+
+		ai_chance = {
+			factor = 1
+			modifier = {
+				factor = 2
+				OR = {
+					num_of_loans = 1
+					NOT = { treasury = 300 }
+				}
+			}
+		}
+	}
+
+	option = {
+		name = "privateers.7.b"
+		add_prestige = 10
+		random_active_trade_node = {
+			limit = {
+				any_privateering_country = {
+					NOT = { tag = ROOT }
+					PREV = {
+						privateer_power = {
+							share = 10
+							country = PREV
+						}
+					}
+				}
+			}
+			random_trade_node_member_country = {
+				limit = {
+					NOT = { tag = ROOT }
+				}
+				country_event = {
+					id = privateers.8
+					days = 7
+					tooltip = privateers.7.b.tt
+				}
+			}
+		}
+	}
+}
+
+# Pirates Seeking Allegiance - second event, triggers when first country  declines.
+country_event = {
+	id = privateers.8
+	title = "privateers.8.t"
+	desc = "privateers.8.d"
+	picture = SHIP_SAILING_eventPicture
+
+	is_triggered_only = yes
+
+	option = {
+		name = "privateers.8.a"
+		add_country_modifier = {
+			name = "employed_pirates"
+			duration = 1825
+		}
+		add_years_of_income = 0.5
+		ai_chance = {
+			factor = 1
+			modifier = {
+				factor = 2
+				OR = {
+					num_of_loans = 1
+					NOT = { treasury = 300 }
+				}
+			}
+		}
+	}
+
+	option = {
+		name = "privateers.8.b"
+		add_prestige = 10
+	}
+}
+
+# Captured Slavers - privateers capture a ship transporting slaves
+country_event = {
+	id = privateers.9
+	title = "privateers.9.t"
+	desc = "privateers.9.d"
+	picture = MERCHANTS_TALKING_eventPicture
+	goto = slaver_node
+
+	trigger = {
+		has_privateers = yes
+		any_trade_node = {
+			privateer_power = {
+				country = ROOT
+				share = 1
+			}
+			any_trade_node_member_province = {
+				trade_goods = slaves
+			}
+		}
+	}
+
+	immediate = {
+		hidden_effect = {
+			random_trade_node = {
+				limit = {
+					privateer_power = {
+						country = ROOT
+						share = 1
+					}
+					any_trade_node_member_province = {
+						trade_goods = slaves
+					}
+				}
+				save_event_target_as = slaver_node
+			}
+		}
+	}
+
+	is_triggered_only = yes
+
+	# Treat the slavers as pirates
+	option = {
+		name = "privateers.9.a"
+		add_dip_power = 50
+		add_country_modifier = {
+			name = captured_slave_traders
+			duration = 3650
+		}
+	}
+
+	option = {
+		name = "privateers.9.c" # Seize the slaves for ourselves!
+		event_target:slaver_node = {
+			add_trade_modifier = {
+				who = ROOT
+				key = "Growth of Slave Trade "
+				power = 75
+				duration = 3650
+			}
+		}
+		add_years_of_income = 0.5
+		add_mil_power = 50
+		random_owned_province = {
+			area = {
+				limit = { owned_by = ROOT } 
+				add_base_manpower = 1
+			}
+		}
+	}
+
+	# This looks like ordinary cargo to me
+	option = {
+		name = "privateers.9.b"
+		add_country_modifier = {
+			name = passing_slavers
+			duration = 3650
+		}
+		add_years_of_income = 0.5
+		ai_chance = {
+			factor = 3
+		}
+	}
+}
+
+country_event = {
+	id = privateers.10 # This is used to preset complex scopes (seriously we need PREVPREV)
+	title = "none"
+	desc = "none"
+	picture = "none"
+	hidden = yes
+	is_triggered_only = yes
+
+	immediate = {
+		every_trade_node = {
+			limit = {
+				patrolling_or_protecting_trade_in_node = {
+					country = ROOT
+				}
+			}
+			every_trade_node_member_country = {
+				limit = { 
+					NOT = { tag = ROOT } 
+					NOT = { is_subject_of = ROOT }
+					NOT = { overlord_of = ROOT }
+					NOT = { alliance_with = ROOT }
+				}
+				save_event_target_as = node_country
+				if = {
+					limit = {
+						PREV = {
+							patrolling_or_protecting_trade_in_node = {
+								country = event_target:node_country
+							}
+						}
+					}
+					save_event_target_as = patroller
+					ROOT = {
+						set_country_flag = found_patroller
+					}
+				}
+			}
+		}
+	}
+	option = {
+		if = {
+			limit = { has_country_flag = found_patroller }
+			clr_country_flag = found_patroller
+			country_event = {
+				id = privateers.20
+			}
+		}
+	}
+}
+
+# Large skirmish
+country_event = {
+	id = privateers.20
+	title = "privateers.20.t"
+	desc = "privateers.20.d"
+	picture = FLAGSHIP_SUNK_eventPicture
+	trigger = {
+		any_trade_node = {
+			patrolling_or_protecting_trade_in_node = {
+				country = ROOT
+			}
+			patrolling_or_protecting_trade_in_node = {
+				country = event_target:patroller
+			}
+		}
+		NOT = { has_country_modifier = hostile_skirmishes }
+		NOT = { has_country_modifier = successful_skirmish }
+	}
+	is_triggered_only = yes
+	goto = battle_node
+	immediate = {
+		hidden_effect = {
+			random_trade_node = {
+				limit = {
+					patrolling_or_protecting_trade_in_node = {
+						country = ROOT
+					}
+					patrolling_or_protecting_trade_in_node = {
+						country = event_target:patroller
+					}
+				}
+				save_event_target_as = battle_node
+			}
+		}
+	}
+
+	option = {
+		name = "privateers.20.a" # Send an admiral to deal with the situation
+		custom_tooltip = may_escalate_conflicts_with_them_tooltip
+		add_country_modifier = {
+			name = skirmish_absent_admiral
+			duration = 3650
+		}
+		add_dip_power = -50
+		add_yearly_sailors = -1
+		hidden_effect = {
+			event_target:patroller = {
+				country_event = {
+					id = privateers.21
+				}
+			}
+		}
+		ai_chance = {
+			factor = 3
+		}
+	}
+	option = {
+		name = "privateers.20.b" # Admit defeat
+		add_prestige = -10
+		add_navy_tradition = -10
+		add_years_of_income = -0.5
+		event_target:battle_node = {
+			add_trade_modifier = {
+				who = ROOT
+				key = "Hostile Skirmishes "
+				duration = 7300
+				power = -75
+			}
+		}
+		add_country_modifier = {
+			name = hostile_skirmishes
+			duration = 3650
+		}
+	}
+}
+
+# Large Skirmish, for receiver
+country_event = {
+	id = privateers.21
+	title = "privateers.20.t"
+	goto = battle_node
+	desc = "privateers.21.d"
+	picture = FLAGSHIP_SUNK_eventPicture
+	is_triggered_only = yes
+
+	option = {
+		name = "privateers.20.a" # Send an admiral to deal with the situation
+		custom_tooltip = may_escalate_conflicts_with_them_tooltip
+		add_country_modifier = {
+			name = skirmish_absent_admiral
+			duration = 3650
+		}
+		add_dip_power = -50
+		add_yearly_sailors = -1
+		hidden_effect = {
+			FROM = {
+				random_list = {
+					37 = {
+						country_event = {
+							id = privateers.22 # Enemy fleet defeated
+							days = 60
+						}
+					}
+					37 = {
+						country_event = {
+							id = privateers.23 # Fleet defeated
+							days = 60
+						}
+					}
+					25 = {
+						country_event = {
+							id = privateers.24 # Battle Escalates
+							days = 60
+						}
+					}
+				}
+			}
+		}
+		ai_chance = {
+			factor = 3
+		}
+	}
+	option = {
+		name = "privateers.20.b" # Admit defeat
+		set_country_flag = battle_escalated_lost
+		add_prestige = -10
+		add_navy_tradition = -10
+		add_years_of_income = -0.5
+		event_target:battle_node = {
+			add_trade_modifier = {
+				who = ROOT
+				key = "Hostile Skirmishes "
+				duration = 7300
+				power = -75
+			}
+		}
+		add_country_modifier = {
+			name = hostile_skirmishes
+			duration = 3650
+		}
+		hidden_effect = {
+			FROM = {
+				country_event = {
+					id = privateers.22
+				}
+			}
+		}
+	}
+}
+
+country_event = { # Enemy fleet defeated
+	id = privateers.22
+	title = "privateers.22.t"
+	desc = {
+		trigger = {
+			FROM = { has_country_flag = battle_escalated_lost }
+		}
+		desc = "privateers.22.d.wuss"
+	}
+	desc = {
+		trigger = { always = yes } 
+		desc = "privateers.22.d"
+	}
+	picture = FLAGSHIP_SUNK_eventPicture
+	is_triggered_only = yes
+	goto = battle_node
+
+	trigger = {
+		NOT = { has_country_flag = fleet_defeated }
+	}
+
+	immediate = {
+		set_country_flag = fleet_defeated
+	}
+
+	option = {
+		name = "privateers.22.a" # We rule battle_node!
+		remove_country_modifier = skirmish_absent_admiral
+		hidden_effect = {
+			FROM = {
+				country_event = {
+					id = privateers.23
+				}
+			}
+		}
+		event_target:battle_node = {
+			add_trade_modifier = {
+				key = "Enemy Skirmish Defeated "
+				power = 75
+				duration = 3650
+				who = ROOT
+			}
+		}
+		add_country_modifier = {
+			name = successful_skirmish
+			duration = 3650
+		}
+		custom_tooltip = hired_admiral_returns_to_us_tooltip
+		tooltip = {
+			create_admiral = {
+				tradition = 100
+			}
+		}
+		hidden_effect = {
+			random_list = {
+				50 = {
+					create_admiral = {
+						tradition = 100
+					}
+				}
+				50 = {
+					create_admiral = {
+						tradition = 100
+						add_manuever = 1 # This is very strong, so its given by chance if lucky
+					}
+				}
+			}
+		}
+	}
+
+	after = {
+		FROM = {
+			clr_country_flag = fleet_defeated
+			if = {
+				limit = { has_country_flag = battle_escalated_lost }
+				clr_country_flag = battle_escalated_lost
+				ROOT = { clr_country_flag = fleet_defeated }
+			}
+		}
+	}
+}
+
+country_event = { # Fleet defeated
+	id = privateers.23
+	title = "privateers.23.t"
+	desc = "privateers.23.d"
+	picture = FLAGSHIP_SUNK_eventPicture
+	is_triggered_only = yes
+	goto = battle_node
+
+	trigger = {
+		NOT = { has_country_flag = fleet_defeated }
+		NOT = { has_country_flag = battle_escalated_lost }
+	}
+
+	immediate = {
+		set_country_flag = fleet_defeated
+	}
+
+	option = {
+		name = "privateers.23.a" # Curses!
+		hidden_effect = {
+			FROM = {
+				country_event = {
+					id = privateers.22
+				}
+			}
+		}
+		custom_tooltip = admiral_was_absent_tt
+		add_prestige = -10
+		add_navy_tradition = -10
+		add_years_of_income = -0.5
+		event_target:battle_node = {
+			add_trade_modifier = {
+				who = ROOT
+				key = "Hostile Skirmishes "
+				duration = 7300
+				power = -75
+			}
+		}
+		add_country_modifier = {
+			name = hostile_skirmishes
+			duration = 3650
+		}
+	}
+
+	after = {
+		FROM = {
+			clr_country_flag = fleet_defeated
+		}
+	}
+}
+
+country_event = { # Battle Escalates
+	id = privateers.24
+	title = "privateers.24.t"
+	desc = "privateers.24.d"
+	picture = FLAGSHIP_SUNK_eventPicture
+	goto = battle_node
+	is_triggered_only = yes
+
+	option = {
+		name = "privateers.24.a" # Settle this on the battlefield!
+		custom_tooltip = may_lead_to_war_with_them_tooltip
+		add_casus_belli = {
+			target = FROM
+			type = cb_privateers_triggered
+			months = 12
+		}
+		custom_tooltip = admiral_will_return_to_us_tooltip
+		hidden_effect = {
+			FROM = {
+				country_event = {
+					id = privateers.25
+				}
+			}
+		}
+	}
+	option = {
+		name = "privateers.24.b" # Admit defeat
+		set_country_flag = battle_escalated_lost
+		add_prestige = -10
+		add_navy_tradition = -10
+		add_years_of_income = -1
+		event_target:battle_node = {
+			add_trade_modifier = {
+				who = ROOT
+				key = "Hostile Skirmishes "
+				duration = 7300
+				power = -75
+			}
+		}
+		add_country_modifier = {
+			name = hostile_skirmishes
+			duration = 3650
+		}
+		hidden_effect = {
+			FROM = {
+				country_event = {
+					id = privateers.22
+				}
+			}
+		}
+		ai_chance = {
+			factor = 1
+			modifier = {
+				factor = 5
+				NOT = {
+					army_strength = {
+						who = FROM
+						value = 2
+					}
+				}
+			}
+		}
+	}
+}
+
+country_event = {
+	id = privateers.25
+	title = "privateers.24.t" # Battle Escalates FROM
+	desc = "privateers.24.d"
+	picture = FLAGSHIP_SUNK_eventPicture
+	is_triggered_only = yes
+	goto = battle_node
+
+	option = {
+		name = "privateers.25.a" # Settle this on the battlefield!
+		FROM = {
+			start_war_effect = {
+				who = ROOT
+				cb = cb_privateers_triggered
+			}
+		}
+		custom_tooltip = hired_admiral_returns_to_us_tooltip
+		tooltip = {
+			create_admiral = {
+				tradition = 100
+			}
+		}
+		hidden_effect = {
+			random_list = {
+				50 = {
+					create_admiral = {
+						tradition = 100
+					}
+				}
+				50 = {
+					create_admiral = {
+						tradition = 100
+						add_manuever = 1 # This is very strong, so its given by chance if lucky
+					}
+				}
+			}
+			FROM = {
+				random_list = {
+					50 = {
+						create_admiral = {
+							tradition = 100
+						}
+					}
+					50 = {
+						create_admiral = {
+							tradition = 100
+							add_manuever = 1 # This is very strong, so its given by chance if lucky
+						}
+					}
+				}	
+			}
+		}
+	}
+	option = {
+		name = "privateers.25.b" # Admit defeat
+		set_country_flag = battle_escalated_lost
+		add_prestige = -10
+		add_navy_tradition = -10
+		add_years_of_income = -1
+		event_target:battle_node = {
+			add_trade_modifier = {
+				who = ROOT
+				key = "Hostile Skirmishes "
+				duration = 7300
+				power = -75
+			}
+		}
+		add_country_modifier = {
+			name = hostile_skirmishes
+			duration = 3650
+		}
+		hidden_effect = {
+			FROM = {
+				country_event = {
+					id = privateers.22
+				}
+			}
+		}
+		ai_chance = {
+			factor = 1
+			modifier = {
+				factor = 5
+				NOT = {
+					army_strength = {
+						who = FROM
+						value = 2
+					}
+				}
+			}
+		}
+	}
+}
+
+# Plausible Deniability - loyal privateer captured without letter of marque
+country_event = {
+	id = privateers.11
+	title = "privateers.11.t"
+	desc = "privateers.11.d"
+	picture = ACCUSATION_eventPicture
+
+	trigger = {
+		has_privateers = yes
+	}
+
+	is_triggered_only = yes
+
+	# Confess and support the privateers
+	option = {
+		name = "privateers.11.a"
+		add_country_modifier = {
+			name = loyal_privateer_captured
+			duration = 3650
+		}
+		add_years_of_income = -0.5
+		add_prestige = -10
+		random_trade_node = {
+			limit = {
+				privateer_power = {
+					country = ROOT
+					share = 10
+				}
+			}
+			add_trade_modifier = {
+				who = PIR
+				key = "Privateer Captains Captured "
+				power = -75
+				duration = 1825
+			}
+			add_trade_modifier = {
+				who = ROOT
+				key = "Privateer Captains Captured "
+				power = -75
+				duration = 3650
+			}
+		}
+	}
+
+	# Deny all knowledge and refuse all responsibility
+	option = {
+		name = "privateers.11.b"
+		add_country_modifier = {
+			name = "denied_knowledge_privateer"
+			duration = 3650
+		}
+		add_dip_power = -75
+		ai_chance = {
+			factor = 2
+		}
+	}
+}
+
+# Privateer Base Discovered
+country_event = {
+	id = privateers.12
+	title = "privateers.12.t"
+	desc = "privateers.12.d"
+	picture = COASTLINE_MAP_eventPicture
+	is_triggered_only = yes
+	goto = pirate_base
+
+	trigger = {
+		any_trade_node = {
+			patrolling_or_protecting_trade_in_node = {
+				country = ROOT
+			}
+			privateer_power = {
+				share = 1
+			}
+		}
+	}
+
+	immediate = {
+		hidden_effect = {
+			random_trade_node = {
+				limit = {
+					patrolling_or_protecting_trade_in_node = {
+						country = ROOT
+					}
+					privateer_power = {
+						share = 1
+					}
+				}
+				random_privateering_country = {
+					save_event_target_as = privateers
+				}
+				random_trade_node_member_province = {
+					limit = {
+						has_port = yes # Fall back
+					}
+					save_event_target_as = pirate_base 
+				}
+				random_trade_node_member_province = {
+					limit = {
+						has_port = yes
+						owned_by = ROOT
+					}
+					save_event_target_as = pirate_base # Best
+				}
+				save_event_target_as = pirate_node
+			}
+		}
+	}
+
+	option = {
+		name = "privateers.12.a" # Organize an assault on their base!
+		custom_tooltip = organise_raid_on_pirates_tooltip
+		add_years_of_income = -0.5
+		add_yearly_sailors = -1
+		add_mil_power = -50
+		hidden_effect = {
+			event_target:privateers = {
+				country_event = {
+					id = privateers.26
+				}
+			}
+		}
+	}
+	option = {
+		name = "privateers.12.b" # It's too risky
+		add_prestige = -10
+		if = {
+			limit = {
+				event_target:pirate_base = {
+					owned_by = ROOT
+				}
+			}
+			event_target:pirate_base = {
+				add_province_modifier = {
+					name = strong_pirate_base
+					duration = 7300
+				}
+			}
+		}
+		event_target:pirate_node = {
+			add_trade_modifier = {
+				who = PIR
+				key = "Strong Pirate Base "
+				duration = 3650
+				power = 75
+			}
+			add_trade_modifier = {
+				who = ROOT
+				key = "Strong Pirate Base "
+				duration = 3650
+				power = -75
+			}
+		}
+	}
+}
+
+country_event = {
+	id = privateers.26 # Privateers request aid
+	title = "privateers.26.t"
+	desc = "privateers.26.d"
+	picture = CARIBBEAN_PIRATE_FORT_eventPicture
+	is_triggered_only = yes
+	goto = pirate_base
+
+	option = {
+		name = "privateers.26.a" # We will naturally aid them
+		custom_tooltip = aid_pirates_tooltip
+		add_years_of_income = -0.5
+		add_dip_power = -50
+		hidden_effect = {
+			FROM = {
+				random_list = {
+					40 = {
+						country_event = {
+							id = privateers.27 # Privateers defeated
+							days = 60
+						}
+					}
+					60 = {
+						country_event = {
+							id = privateers.28 # Privateers win
+							days = 60
+						}
+					}
+				}
+			}
+		}
+	}
+	option = {
+		name = "privateers.26.b" # They can sort this out themselves
+		custom_tooltip = increase_chances_of_pirate_defeat_tooltip
+		hidden_effect = {
+			FROM = {
+				random_list = {
+					60 = {
+						country_event = {
+							id = privateers.27 # Privateers defeated
+							days = 60
+						}
+					}
+					40 = {
+						country_event = {
+							id = privateers.28 # Privateers win
+							days = 60
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+country_event = {
+	id = privateers.27
+	title = "privateers.27.t" # Privateers defeated
+	desc = {
+		trigger = {
+			has_country_flag = privateers_defeated_treasure
+		}
+		desc = "privateers.27.d.treasure"
+	}
+	desc = {
+		trigger = { always = yes }
+		desc = "privateers.27.d"
+	}
+	picture = FLAGSHIP_SUNK_eventPicture
+	is_triggered_only = yes
+	goto = pirate_base
+
+	immediate = {
+		random_list = {
+			90 = {
+				set_country_flag = privateers_defeated_regular
+			}
+			30 = {
+				trigger = {
+					OR = {
+						has_idea_group = naval_ideas
+						dip = 5
+						navigator = 1
+					}
+				}
+				set_country_flag = privateers_defeated_treasure
+			}
+			10 = {
+				set_country_flag = privateers_defeated_treasure
+			}
+		}
+	}
+
+	option = {
+		name = "privateers.27.a" # Victory!
+		trigger = {
+			has_country_flag = privateers_defeated_regular
+		}
+		add_navy_tradition = 10
+		add_country_modifier = {
+			name = defeated_pirates_regular
+			duration = 5475
+		}
+		event_target:pirate_node = {
+			add_trade_modifier = {
+				key = "Pirate Base Destroyed "
+				who = PIR
+				power = -75
+				duration = 2555
+			}
+			add_trade_modifier = {
+				key = "Pirate Base Destroyed "
+				who = ROOT
+				power = 75
+				duration = 2555
+			}
+		}
+	}
+	option = {
+		name = "privateers.27.b" # Treasure!
+		trigger = {
+			has_country_flag = privateers_defeated_treasure
+		}
+		add_years_of_income = 5
+		add_dip_power = 200
+		add_mil_power = 100
+		add_adm_power = 100
+		add_navy_tradition = 25
+		add_country_modifier = {
+			name = defeated_pirates_treasure
+			duration = 7300
+		}
+		event_target:pirate_node = {
+			add_trade_modifier = {
+				key = "Major Pirate Base Destroyed "
+				who = PIR
+				power = -1000
+				duration = 3650
+			}
+			add_trade_modifier = {
+				key = "Major Pirate Base Destroyed "
+				who = ROOT
+				power = 100
+				duration = 3650
+			}
+		}
+		if = {
+			limit = {
+				event_target:pirate_base = {
+					owned_by = ROOT
+				}
+			}
+			event_target:pirate_base = {
+				add_base_tax = 2
+				add_base_production = 2
+				add_base_manpower = 2
+			}
+		}
+	}
+
+	after = {
+		set_country_flag = defeated_pirates
+		clr_country_flag = privateers_defeated_regular
+		clr_country_flag = privateers_defeated_treasure
+		hidden_effect = {
+			FROM = {
+				country_event = {
+					id = privateers.29 # fate of pirates
+				}
+			}
+		}
+	}
+}
+
+country_event = {
+	id = privateers.28
+	title = "privateers.28.t" # Pirates successful
+	desc = "privateers.28.d"
+	picture = FLAGSHIP_SUNK_eventPicture
+	is_triggered_only = yes
+	goto = pirate_base
+
+	option = {
+		name = "privateers.28.a" # Curses
+		add_country_modifier = {
+			name = defeated_by_pirates
+			duration = 1825
+		}
+		if = {
+			limit = {
+				event_target:pirate_base = {
+					owned_by = ROOT
+				}
+			}
+			event_target:pirate_base = {
+				add_province_modifier = {
+					name = strong_pirate_base
+					duration = 7300
+				}
+			}
+		}
+		event_target:pirate_node = {
+			add_trade_modifier = {
+				who = PIR
+				key = "Strong Pirate Base "
+				duration = 3650
+				power = 100
+			}
+			add_trade_modifier = {
+				who = ROOT
+				key = "Strong Pirate Base "
+				duration = 3650
+				power = -100
+			}
+		}
+		set_country_flag = defeated_by_pirates
+		hidden_effect = {
+			FROM = {
+				country_event = {
+					id = privateers.29 # fate of pirates
+				}
+			}
+		}
+	}
+}
+
+country_event = { # Fate of Privateer base
+	id = privateers.29
+	title = "privateers.29.t"
+	desc = {
+		trigger = {
+			FROM = {
+				has_country_flag = defeated_by_pirates
+			}
+		}
+		desc = "privateers.29.d.defeated"
+	}
+	desc = {
+		trigger = {
+			FROM = {
+				has_country_flag = defeated_pirates
+			}
+		}
+		desc = "privateers.29.d.won"
+	}
+	picture = {
+		trigger = {
+			FROM = {
+				has_country_flag = defeated_by_pirates
+			}
+		}
+		picture = "CARIBBEAN_PIRATE_FORT_eventPicture"
+	}
+	picture = {
+		trigger = {
+			FROM = {
+				has_country_flag = defeated_pirates
+			}
+		}
+		picture = "FLAGSHIP_SUNK_eventPicture"
+	}
+	is_triggered_only = yes
+
+	option = {
+		trigger = {
+			FROM = { has_country_flag = defeated_pirates }
+		}
+		name = "privateers.29.a" # Curses
+		custom_tooltip = will_lower_privateer_efficiency_in_node_tt
+		add_country_modifier = {
+			name = hired_privateers_defeated
+			duration = 3650
+		}
+		add_dip_power = -50
+		add_yearly_sailors = -2
+	}
+	option = {
+		trigger = {
+			FROM = { has_country_flag = defeated_by_pirates }
+		}
+		name = "privateers.29.b" # Good
+		add_country_modifier = {
+			name = successful_privateers_node
+			duration = 3650
+		}
+		add_dip_power = 50
+	}
+
+	after = {
+		FROM = {
+			clr_country_flag = defeated_by_pirates
+			clr_country_flag = defeated_pirates
+		}
+	}
+}
+
+# Hostile privateers attack fleet
+country_event = {
+	id = privateers.13
+	title = "privateers.13.t"
+	desc = "privateers.13.d"
+	picture = PIRATE_CAPTAINS_eventPicture
+	is_triggered_only = yes
+	goto = pirates_base
+
+	trigger = {
+		any_trade_node = {
+			patrolling_or_protecting_trade_in_node = {
+				country = ROOT
+			}
+		}
+	}
+
+	immediate = {
+		hidden_effect = {
+			random_trade_node = {
+				limit = {
+					patrolling_or_protecting_trade_in_node = {
+						country = ROOT
+					}
+				}
+				save_event_target_as = pirate_node
+				random_trade_node_member_province = {
+					limit = {
+						has_port = yes
+					}
+					save_event_target_as = pirates_base
+				}
+			}
+			add_country_modifier = {
+				name = fight_the_pirates_timer
+				duration = 365
+				hidden = yes
+			}
+		}
+	}
+
+	option = {
+		name = "privateers.13.a" # Fight them!
+		event_target:pirates_base = {
+			start_revolt = {
+				size = 1
+				pirate = yes
+			}
+		}
+		hidden_effect = {
+			country_event = {
+				id = privateers.31
+				days = 300
+			}
+		}
+	}
+}
+
+country_event = {
+	id = privateers.30
+	title = "privateers.30.t" # Pirate fleet defeated
+	desc = {
+		trigger = { 
+			has_country_flag = pirate_regular 
+		} 
+		desc = "privateers.30.d"
+	}
+	desc = {
+		trigger = {
+			has_country_flag = pirate_treasure
+		}
+		desc = "privateers.30.d.treasure"
+	}
+	picture = PIRATES_CAPTURED_eventPicture
+	is_triggered_only = yes
+
+	trigger = {
+		has_country_modifier = fight_the_pirates_timer
+		FROM = {
+			tag = PIR
+		}
+	}
+
+	immediate = {
+		hidden_effect = {
+			remove_country_modifier = fight_the_pirates_timer
+		}
+		random_list = {
+			25 = {
+				set_country_flag = pirate_treasure
+			}
+			50 = {
+				trigger = {
+					OR = {
+						has_idea_group = naval_ideas
+						has_idea_group = maritime_ideas
+					}
+				}
+				set_country_flag = pirate_treasure
+			}
+			75 = {
+				set_country_flag = pirate_regular
+			}
+		}
+	}
+
+	option = {
+		trigger = {
+			has_country_flag = pirate_regular
+		}
+		name = "privateers.30.a" # Excellent
+		add_dip_power = 30
+		add_navy_tradition = 5
+		add_country_modifier = {
+			name = successful_pirate_hunt
+			duration = 1825
+		}
+	}
+	option = {
+		trigger = {
+			has_country_flag = pirate_treasure
+		}
+		name = "privateers.30.b" # Treasure
+		add_dip_power = 60
+		add_navy_tradition = 10
+		add_years_of_income = 1
+		add_country_modifier = {
+			name = successful_pirate_treasure
+			duration = 3650
+		}
+	}
+
+	after = {
+		clr_country_flag = pirate_treasure
+		clr_country_flag = pirate_regular
+	}
+}
+
+country_event = {
+	id = privateers.31
+	title = "privateers.31.t" # Pirate infested waters
+	desc = "privateers.31.d"
+	picture = BARBARY_PIRATES_eventPicture
+	is_triggered_only = yes
+	goto = pirate_node
+
+	trigger = {
+		has_country_modifier = fight_the_pirates_timer
+	}
+
+	option = {
+		name = "privateers.31.a" # Damn
+		add_country_modifier = {
+			name = pirate_infested_waters
+			duration = 1825
+		}
+		event_target:pirate_node = {
+			add_trade_modifier = {
+				who = ROOT
+				key = "Pirate Waters "
+				duration = 3650
+				power = -75
+			}
+		}
+	}
+}
+
+# Raid on Gold fleet
+
+# Our privateers hired
+
+#patrollers/pirates find x
+
+# merchants request patrol fleet
+
+#large smuggling ring blocks slavers
+
+#14,15

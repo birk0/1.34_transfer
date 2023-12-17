@@ -1,0 +1,20 @@
+# 2358 - Altyn
+
+owner = SHY
+controller = SHY
+culture = khazak
+religion = sunni
+capital = "Altyn"
+trade_goods = livestock
+hre = no
+base_tax = 1
+base_production = 1
+base_manpower = 1
+is_city = yes
+add_core = KZH
+add_core = SHY
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

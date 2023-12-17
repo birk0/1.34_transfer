@@ -1,0 +1,7 @@
+#Prov4226 - Prov4226
+religion = sunni
+culture = mossi
+
+base_tax = 1
+base_production = 1
+base_manpower = 1

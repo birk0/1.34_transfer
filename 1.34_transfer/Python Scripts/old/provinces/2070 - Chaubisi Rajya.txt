@@ -1,0 +1,19 @@
+#2070 - Chaubisi Rayja
+
+owner = GRK
+controller = GRK
+culture = nepali
+religion = hinduism
+capital = "Ghurka"
+trade_goods = naval_supplies
+hre = no
+base_tax = 3 
+base_production = 3
+base_manpower = 2
+is_city = yes
+add_core = GRK
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

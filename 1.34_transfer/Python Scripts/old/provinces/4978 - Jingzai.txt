@@ -1,0 +1,21 @@
+#4978 - Jingzai
+
+owner = MNG
+controller = MNG
+add_core = MNG
+culture = jianghuai
+religion = mahayana #changes
+capital = "Jingzai"
+trade_goods = iron
+hre = no
+base_tax = 4 
+base_production = 5
+base_manpower = 3
+is_city = yes
+add_core = KAU
+
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

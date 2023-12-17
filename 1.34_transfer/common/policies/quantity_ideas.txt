@@ -1,0 +1,225 @@
+###########################################
+#	Policies for the Quantity Idea Group
+###########################################
+field_priests = {
+	monarch_power = MIL
+
+	potential = {
+		ai = no
+		has_idea_group = quantity_ideas
+	}
+	
+	allow = {
+		full_idea_group = quantity_ideas
+		hidden_trigger = {
+			NOT = { has_idea_group = indigenous_ideas }
+		}
+		if = {
+			limit = { has_country_modifier = field_priests_cooldown }
+			custom_trigger_tooltip = {
+				tooltip = POLICY_ON_COOLDOWN
+				always = no
+			}
+		}
+		if = {
+			limit = {
+				has_country_flag = quantity_cd_fl
+			}
+			custom_trigger_tooltip = {
+				tooltip = "We must wait before we can select a policy from this idea group again."
+				always = no
+			}
+		}
+	}
+
+	land_morale = 0.15
+	
+	ai_will_do = {
+		factor = 1 #will do later
+	}
+}
+the_garrison_act = {
+	monarch_power = MIL
+	
+	potential = {
+		ai = no
+		has_idea_group = quantity_ideas
+	}
+	
+	allow = {
+		full_idea_group = quantity_ideas
+		hidden_trigger = {
+			NOT = { has_idea_group = indigenous_ideas }
+		}
+		if = {
+			limit = { has_country_modifier = the_garrison_act_cooldown }
+			custom_trigger_tooltip = {
+				tooltip = POLICY_ON_COOLDOWN
+				always = no
+			}
+		}
+		if = {
+			limit = {
+				has_country_flag = quantity_cd_fl
+			}
+			custom_trigger_tooltip = {
+				tooltip = "We must wait before we can select a policy from this idea group again."
+				always = no
+			}
+		}
+	}
+	
+	land_forcelimit_modifier = 0.5
+	global_regiment_recruit_speed = -0.5
+
+	ai_will_do = {
+		factor = 1 #will do later
+	}
+}
+hired_adventurers_act = {
+	monarch_power = DIP
+	potential = {
+		ai = no
+		has_idea_group = quantity_ideas
+	}
+	
+	allow = {
+		full_idea_group = quantity_ideas
+		hidden_trigger = {
+			NOT = { has_idea_group = indigenous_ideas }
+		}
+		if = {
+			limit = { has_country_modifier = hired_adventurers_act_cooldown }
+			custom_trigger_tooltip = {
+				tooltip = POLICY_ON_COOLDOWN
+				always = no
+			}
+		}
+		if = {
+			limit = {
+				has_country_flag = quantity_cd_fl
+			}
+			custom_trigger_tooltip = {
+				tooltip = "We must wait before we can select a policy from this idea group again."
+				always = no
+			}
+		}
+	}
+
+	colonists = 1
+	global_colonial_growth = 100
+
+	ai_will_do = {
+		factor = 1 #will do later
+	}
+}	
+pen_rely_on_sword_act = {
+	monarch_power = DIP
+	potential = {
+		ai = no
+		has_idea_group = quantity_ideas
+	}
+	
+	allow = {
+		full_idea_group = quantity_ideas
+		hidden_trigger = {
+			NOT = { has_idea_group = indigenous_ideas }
+		}
+		if = {
+			limit = { has_country_modifier = pen_rely_on_sword_act_cooldown }
+			custom_trigger_tooltip = {
+				tooltip = POLICY_ON_COOLDOWN
+				always = no
+			}
+		}
+		if = {
+			limit = {
+				has_country_flag = quantity_cd_fl
+			}
+			custom_trigger_tooltip = {
+				tooltip = "We must wait before we can select a policy from this idea group again."
+				always = no
+			}
+		}
+	}
+	
+	diplomatic_reputation = 3
+	
+	ai_will_do = {
+		factor = 1 #will do later
+	}
+}
+production_quota_act = {
+	monarch_power = ADM
+	potential = {
+		ai = no
+		has_idea_group = quantity_ideas
+	}
+	
+	allow = {
+		full_idea_group = quantity_ideas
+		hidden_trigger = {
+			NOT = { has_idea_group = indigenous_ideas }
+		}
+		if = {
+			limit = { has_country_modifier = production_quota_act_cooldown }
+			custom_trigger_tooltip = {
+				tooltip = POLICY_ON_COOLDOWN
+				always = no
+			}
+		}
+		if = {
+			limit = {
+				has_country_flag = quantity_cd_fl
+			}
+			custom_trigger_tooltip = {
+				tooltip = "We must wait before we can select a policy from this idea group again."
+				always = no
+			}
+		}
+	}
+
+	global_trade_goods_size_modifier = 0.2
+
+	ai_will_do = {
+		factor = 1 #will do later
+	}
+}
+agricultural_cultivations = {
+	monarch_power = ADM
+
+	potential = {
+		ai = no
+		has_idea_group = quantity_ideas
+	}
+	
+	allow = {
+		full_idea_group = quantity_ideas
+		hidden_trigger = {
+			NOT = { has_idea_group = indigenous_ideas }
+		}
+		if = {
+			limit = { has_country_modifier = agricultural_cultivations_cooldown }
+			custom_trigger_tooltip = {
+				tooltip = POLICY_ON_COOLDOWN
+				always = no
+			}
+		}
+		if = {
+			limit = {
+				has_country_flag = quantity_cd_fl
+			}
+			custom_trigger_tooltip = {
+				tooltip = "We must wait before we can select a policy from this idea group again."
+				always = no
+			}
+		}
+	}		
+	
+	build_cost = -0.1
+	build_time = -0.25
+
+	ai_will_do = {
+		factor = 1 #will do later
+	}
+}

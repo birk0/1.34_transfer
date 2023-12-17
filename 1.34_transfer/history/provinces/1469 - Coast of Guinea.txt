@@ -1,0 +1,5 @@
+#Prov1469 - Coast of Guinea
+
+base_tax = 1
+base_production = 1
+base_manpower = 1

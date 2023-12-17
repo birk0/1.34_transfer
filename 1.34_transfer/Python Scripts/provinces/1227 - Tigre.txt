@@ -1,0 +1,7 @@
+#Prov1227 - Tigre
+culture = amhara
+religion = jewish # But also significant Jewish minority
+
+base_tax = 1
+base_production = 1
+base_manpower = 1

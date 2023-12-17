@@ -1,0 +1,17 @@
+owner = KZB
+controller = KZB
+add_core = KZB
+culture = luba
+religion = shamanism #Fetishism
+capital = "Tabwa"
+trade_goods = copper
+hre = no
+base_tax = 1
+base_production = 1
+base_manpower = 1
+is_city = yes
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

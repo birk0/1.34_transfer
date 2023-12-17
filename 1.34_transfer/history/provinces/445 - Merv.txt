@@ -1,0 +1,8 @@
+#Prov445 - Merv
+culture = persian
+religion = sunni
+is_city = no
+
+base_tax = 1
+base_production = 1
+base_manpower = 1

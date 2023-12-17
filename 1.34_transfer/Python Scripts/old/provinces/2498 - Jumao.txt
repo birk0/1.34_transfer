@@ -1,0 +1,19 @@
+# 2498 - Letlhakane
+
+owner = BNY
+controller = BNY
+add_core = BNY
+culture = acholi
+religion = shamanism #Fetishism
+capital = "Letlhakane"
+trade_goods = livestock
+hre = no
+base_tax = 1
+base_production = 1
+base_manpower = 1
+is_city = yes
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

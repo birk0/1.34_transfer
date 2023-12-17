@@ -1,0 +1,21 @@
+# 2169 - Langzhong
+
+owner = MNG
+controller = MNG
+add_core = MNG
+culture = sichuanese
+religion = daoism #changes
+capital = "Langzhong"
+trade_goods = grain
+hre = no
+base_tax = 3 #changes
+base_production = 4
+base_manpower = 2
+is_city = yes
+add_core = GMI
+
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

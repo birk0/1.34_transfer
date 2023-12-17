@@ -1,0 +1,7 @@
+#Prov95 - Breda
+culture = dutch
+religion = catholic
+
+base_tax = 1
+base_production = 1
+base_manpower = 1

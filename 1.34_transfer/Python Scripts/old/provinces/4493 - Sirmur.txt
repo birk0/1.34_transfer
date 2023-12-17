@@ -1,0 +1,17 @@
+#4493 - Sirmur
+
+owner = SRM
+controller = SRM 
+culture = pahari
+religion = hinduism
+capital = "Malaun"
+trade_goods = cotton
+hre = no
+base_tax = 1 
+base_production = 1
+base_manpower = 1
+is_city = yes
+add_core = SRM
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

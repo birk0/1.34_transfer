@@ -1,0 +1,195 @@
+#Country Name: Please see filename.
+
+graphical_culture = asiangfx
+
+color = { 32  119  115 }
+
+historical_idea_groups = {
+	administrative_ideas
+	religious_ideas
+	trade_ideas
+	quantity_ideas
+	offensive_ideas
+	expansion_ideas
+	economic_ideas
+	defensive_ideas
+}
+
+historical_units = {
+	chinese_longspear
+	eastern_bow
+	chinese_footsoldier
+	chinese_steppe
+	asian_arquebusier
+	asian_charge_cavalry
+	asian_mass_infantry
+	manchu_banner
+	han_banner
+	asian_musketeer
+	chinese_dragoon
+	reformed_asian_musketeer
+	reformed_asian_cavalry
+	reformed_manchu_rifle
+}
+
+monarch_names = {
+	"Anguk #0" = 20
+	"Anka #0" = 20
+	"Anyuk #0" = 20
+	"Atvuk #0" = 20
+	"Ayzik #0" = 20
+	"Azmun #0" = 20
+	"Azrun #0" = 20
+	"Azuk #0" = 20
+	"Chalun #0" = 20
+	"Chamuk #0" = 20
+	"Changin #0" = 20
+	"Chavlik #0" = 20
+	"Chuner #0" = 20
+	"Efkuk #0" = 20
+	"Esavura #0" = 20
+	"Ezdanok #0" = 20
+	"Ezguk #0" = 20
+	"Iglik #0" = 20
+	"Itkun #0" = 20
+	"Kaskazik #0" = 20
+	"Kekhan #0" = 20
+	"Kelin #0" = 20
+	"Kenran #0" = 20
+	"Kaylin #0" = 20
+	"Khivchuk #0" = 20
+	"Kokin #0" = 20
+	"Lants #0" = 20
+	"Lergan #0" = 20
+	"Lidik #0" = 20
+	"Liskit #0" = 20
+	"Longun #0" = 20
+	"Lushkura #0" = 20
+	"Luzgin #0" = 20
+	"Lykhtkk #0" = 20
+	"Memzgun #0" = 20
+	"Mufchik #0" = 20
+	"Napuin #0" = 20
+	"Niftyuk #0" = 20
+	"Nyengun #0" = 20
+	"Nygvik #0" = 20
+	"Nyunkin #0" = 20
+	"Ochan #0" = 20
+	"Okhnik #0" = 20
+	"Palgun #0" = 20
+	"Panko #0" = 20
+	"Parkizin #0" = 20
+	"Pilgun #0" = 20
+	"Pineyk #0" = 20
+	"Ponashk #0" = 20
+	"Pulychkn #0" = 20
+	"Pungat #0" = 20
+	"Pygsk #0" = 20
+	"Pygzyk #0" = 20
+	"Pylymk #0" = 20
+	"Rsholin #0" = 20
+	"Smedun #0" = 20
+	"Tatuk #0" = 20
+	"Tavtugin #0" = 20
+	"Tolvin #0" = 20
+	"Tymguk #0" = 20
+	"Tynvin #0" = 20
+	"Ukrin #0" = 20
+	"Ulita #0" = 20
+	"Umkhun #0" = 20
+	"Urkayn #0" = 20
+	"Uryam #0" = 20
+	"Vadun #0" = 20
+	"Vyskan #0" = 20
+	"Ykylak #0" = 20
+	"Yudin #0" = 20
+	"Yurik #0" = 20
+	"Zarun #0" = 20
+	"Zuyuk #0" = 20
+}
+
+leader_names = {
+	"Anguk"
+	"Anka"
+	"Anyuk"
+	"Atvuk"
+	"Ayzik"
+	"Azmun"
+	"Azrun"
+	"Azuk"
+	"Chalun"
+	"Chamuk"
+	"Changin"
+	"Chavlik"
+	"Chuner"
+	"Efkuk"
+	"Esavura"
+	"Ezdanok"
+	"Ezguk"
+	"Iglik"
+	"Itkun"
+	"Kaskazik"
+	"Kekhan"
+	"Kelin"
+	"Kenran"
+	"Kaylin"
+	"Khivchuk"
+	"Kokin"
+	"Lants"
+	"Lergan"
+	"Lidik"
+	"Liskit"
+	"Longun"
+	"Lushkura"
+	"Luzgin"
+	"Lykhtkk"
+	"Memzgun"
+	"Mufchik"
+	"Napuin"
+	"Niftyuk"
+	"Nyengun"
+	"Nygvik"
+	"Nyunkin"
+	"Ochan"
+	"Okhnik"
+	"Palgun"
+	"Panko"
+	"Parkizin"
+	"Pilgun"
+	"Pineyk"
+	"Ponashk"
+	"Pulychkn"
+	"Pungat"
+	"Pygsk"
+	"Pygzyk"
+	"Pylymk"
+	"Rsholin"
+	"Smedun"
+	"Tatuk"
+	"Tavtugin"
+	"Tolvin"
+	"Tymguk"
+	"Tynvin"
+	"Ukrin"
+	"Ulita"
+	"Umkhun"
+	"Urkayn"
+	"Uryam"
+	"Vadun"
+	"Velk"
+	"Vyskan"
+	"Ykylak"
+	"Yudin"
+	"Yurik"
+	"Zarun"
+	"Zuyuk"
+}
+
+ship_names = {
+	Kurkyl Uligery "Abai Geser" "Alamzhi Mergen" "Aiduurai Mergen"
+	Erensei "Bukhu Khaara" "Abai Geser" Dalkha Khormust Erlik
+}
+
+army_names = {
+	"$PROVINCE$ Jalan" 
+}

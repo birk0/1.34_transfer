@@ -1,0 +1,6 @@
+#Gate connecting Iberia to Bengal
+
+add_permanent_province_modifier = {
+	name = teleporter_province_modifier
+	duration = -1
+}

@@ -1,0 +1,168 @@
+#Changes
+destroyed_cultural_center = {
+    opinion = -100
+    yearly_decay = 2
+}
+is_a_warlord = {
+    opinion = 100 
+#Seems nonsensical, but the AI will refuse CTA from its warlords if a foreign power attacks them unless relations are 'good'
+}
+we_are_warlord = {
+    opinion = -100
+}
+emperor_encouraged_revolts = {
+    opinion = -100
+    yearly_decay = 3
+}
+eoc_must_conquer = {
+    opinion = -200
+    yearly_decay = 1
+}
+opinion_refused_low_countries = {
+    opinion = -100
+    yearly_decay = 1
+}
+get_along_temp = {
+    opinion = 200
+    months = 12
+}
+accepted_defectors = {
+    opinion = -100
+    yearly_decay = 1
+}
+lithuanian_duchies = {
+    opinion = 75
+    yearly_decay = 0.5
+}
+abandoned_lubin_union = {
+    opinion = -100
+    yearly_decay = 1
+}
+deposed_vasily_modifier = {
+    opinion = -100
+    yearly_decay = 1
+}
+kazan_broken_promises = {
+    opinion = -100
+    yearly_decay = 1
+}
+#changes
+converted_our_culture = {
+	opinion = -1
+	yearly_decay = 5
+}
+border_ally_mod = {
+    opinion = -100
+}
+daimyo_border_mod = {
+    opinion = -100
+    min = -100
+    max = 0
+}
+warlord_border_mod = {
+    opinion = -100
+    min = -100
+    max = 0
+}
+break_alliance_opinion = {
+    opinion = -200
+    yearly_decay = 10
+}
+successful_embassy = {
+    opinion = 50
+    yearly_decay = 2
+}
+opinion_sabotaged_reputation = { #Other countries toward sabotaged country
+    opinion = -100
+    yearly_decay = 5
+    max = -50
+    min = -100
+    months = 180
+}
+#Used for triggers
+temp_trigger_modifier = {
+    opinion = -1
+}
+agitated_disloyal = {
+    opinion = -25
+}
+agitated_our_liberty = {
+    opinion = 25
+}
+agitated_in_past = {
+    opinion = 10
+}
+naval_supremacy_trigger = {
+    opinion = -5
+}
+opinion_raiding_pact = {
+    opinion = -25
+}
+#Applied to the actor
+action_sabotaged_reputation = {
+    opinion = -25
+}
+action_sabotaged_recruitment = {
+    opinion = -25
+}
+action_slandered_merchants = {
+    opinion = -25
+    months = 240
+}
+action_agitated_liberty = {
+    opinion = -25
+}
+action_stole_war_maps = {
+    opinion = -25
+    months = 5
+}
+action_sabotaged_supply = {
+    opinion = -25
+}
+action_raided_coffers = {
+    opinion = -25
+    months = 60
+}
+action_bribed_recruits = {
+    opinion = -25
+    months = 60
+}
+action_corrupted_officials = {
+    opinion = -25
+    months = 60
+}
+action_disrupted_diplomacy = {
+    opinion = -25
+    months = 240
+}
+action_cleared_ae = {
+    opinion = -25
+    months = 6
+}
+opinion_loyal_subject = {
+    opinion = 100
+    yearly_decay = 3
+}
+tim_accused_of_foreign_plot = {
+    opinion = -100
+    yearly_decay = 5
+}
+colonial_refused_benefits_opinion = {
+    opinion = -100
+    yearly_decay = 5
+}
+mediocre_colonial_benefits_opinion = {
+    opinion = 50
+    yearly_decay = 5
+}
+colonial_benefits_opinion = {
+    opinion = 100
+    yearly_decay = 5
+}
+opinion_released_low_lands = {
+    opinion = 200
+    yearly_decay = 1
+}
+opinion_anglican_league = {
+    opinion = 200
+}

@@ -1,0 +1,8 @@
+#Prov3774 - Prov3774
+religion = sunni
+culture = turkmeni
+is_city = no
+
+base_tax = 1
+base_production = 1
+base_manpower = 1

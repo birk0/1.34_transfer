@@ -1,0 +1,8 @@
+#Prov3890 - Prov3890
+religion = vajrayana
+culture = turkmeni
+is_city = no
+
+base_tax = 1
+base_production = 1
+base_manpower = 1

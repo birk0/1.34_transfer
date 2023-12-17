@@ -1,0 +1,8 @@
+#Prov4270 - Prov4270
+religion = catholic
+culture = polish
+is_city = no
+
+base_tax = 1
+base_production = 1
+base_manpower = 1

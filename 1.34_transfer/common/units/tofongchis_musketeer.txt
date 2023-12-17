@@ -1,0 +1,13 @@
+# Tofongchis Musketeers 
+	
+type = infantry
+manpower = 2
+unit_type = muslim
+
+maneuver = 1	
+offensive_morale = 4
+defensive_morale = 6	
+offensive_fire = 4
+defensive_fire = 2
+offensive_shock = 2
+defensive_shock = 4

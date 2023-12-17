@@ -1,0 +1,19 @@
+# 4570 - Fafa
+
+owner = ETH
+controller = ETH
+add_core = ETH
+culture = amhara 
+religion = coptic
+capital = "Fafa"
+is_city = yes
+base_manpower = 1
+trade_goods = gems
+hre = no
+base_tax = 2
+base_production = 1
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

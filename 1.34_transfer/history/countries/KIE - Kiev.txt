@@ -1,0 +1,28 @@
+government = monarchy
+add_government_reform = principality
+government_rank = 1
+technology_group = eastern
+religion = orthodox
+primary_culture = ruthenian
+capital = 280	# Kiev
+
+1440.1.1 = {
+	monarch = {
+		birth_date = 1420.1.1
+		name = "Olelko I"
+		dynasty = "Vladimirovich"
+		adm = 5
+		dip = 3
+		mil = 2
+	}
+}
+
+1444.1.1 = {
+	monarch = {
+		name = "Olelko I"
+		dynasty = "Vladimirovich"
+		adm = 5
+		dip = 3
+		mil = 2
+	}
+}

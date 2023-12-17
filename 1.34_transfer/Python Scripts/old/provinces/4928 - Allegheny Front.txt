@@ -1,0 +1,21 @@
+#4928 - Zainsk
+
+owner = KAZ
+controller = KAZ
+culture = bashkir
+religion = sunni
+capital = "Zainsk"
+trade_goods = copper
+hre = no
+base_tax = 2 
+base_production = 1
+base_manpower = 1
+is_city = yes
+add_core = KAZ
+add_core = BSH
+
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

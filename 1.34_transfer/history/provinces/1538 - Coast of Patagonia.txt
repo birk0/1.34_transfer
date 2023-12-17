@@ -1,0 +1,7 @@
+#Prov1538 - Coast of Patagonia
+religion = sunni
+culture = berber
+
+base_tax = 1
+base_production = 1
+base_manpower = 1

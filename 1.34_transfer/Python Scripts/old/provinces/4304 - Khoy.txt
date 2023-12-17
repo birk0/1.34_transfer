@@ -1,0 +1,20 @@
+#2035 - Khoy
+
+owner = QAR
+controller = QAR
+culture = azerbaijani
+religion = sunni
+capital = "Khoy"
+trade_goods = wool
+hre = no
+base_tax = 2
+base_production = 2
+base_manpower = 1
+is_city = yes
+add_core = QAR
+add_core = TBR
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

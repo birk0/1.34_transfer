@@ -1,0 +1,5 @@
+#Prov1294 - Gulf of Almeira
+
+base_tax = 1
+base_production = 1
+base_manpower = 1

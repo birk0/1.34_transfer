@@ -1,0 +1,17 @@
+#Merc Companies Scrapped
+
+#AI hires this mercenary company which triggers another event that replaces these mercs with the new ones
+
+trigger_mercs_for_ai = {
+    regiments_per_development = 0.1
+    cost_modifier = 0.01 #DONT MAKE THIS 0 OR THE GAME WILL CRASH (bad programmers)
+	cavalry_weight = 0.2
+
+	trigger = {
+        ai = yes
+    }
+
+    cavalry_cap = 4
+    sprites = { westerngfx_sprite_pack }
+    modifier = {}
+}

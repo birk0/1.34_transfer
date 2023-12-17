@@ -1,0 +1,7 @@
+#Prov2869 - Florida Blanca
+religion = shamanism
+culture = mali
+
+base_tax = 1
+base_production = 1
+base_manpower = 1

@@ -1,0 +1,5 @@
+#Prov1795 - East Sahara
+
+base_tax = 1
+base_production = 1
+base_manpower = 1

@@ -1,0 +1,7 @@
+#Prov1565 - Western Gibbs Fracture
+religion = coptic
+culture = amhara
+
+base_tax = 1
+base_production = 1
+base_manpower = 1

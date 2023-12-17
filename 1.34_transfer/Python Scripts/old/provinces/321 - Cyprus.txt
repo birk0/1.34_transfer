@@ -1,0 +1,19 @@
+#321 - Cyprus
+
+owner = CYP
+controller = CYP
+culture = greek
+religion = orthodox
+capital = "Nicosia"
+trade_goods = wine
+hre = no
+base_tax = 6 
+base_production = 6
+base_manpower = 3
+is_city = yes
+fort_15th = yes
+add_core = CYP
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

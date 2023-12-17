@@ -1,0 +1,27 @@
+#4993 - Hechi
+latent_trade_goods = {
+	coal
+}
+
+owner = MNG
+controller = MNG
+add_core = MNG
+add_core = CYI
+culture = yi
+religion = shen #changes
+capital = "Hechi"
+trade_goods = grain
+hre = no
+base_tax = 5 
+base_production = 4
+base_manpower = 2
+is_city = yes
+center_of_trade = 1
+extra_cost = 5
+add_local_autonomy = 25 #Ming weak rule over South
+
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

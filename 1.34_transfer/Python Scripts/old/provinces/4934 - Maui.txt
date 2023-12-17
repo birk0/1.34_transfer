@@ -1,0 +1,20 @@
+#4934 - Borzya
+
+culture = buryat
+religion = tengri_pagan_reformed
+capital = "Borzya"
+trade_goods = fur
+hre = no
+base_tax = 1 
+base_production = 1
+base_manpower = 1
+is_city = yes
+#changes
+owner = WRU
+controller = WRU
+add_core = WRU
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

@@ -1,0 +1,18 @@
+#511 - Garhwal
+
+owner = GHR
+controller = GHR
+culture = pahari
+religion = hinduism
+capital = "Devalgarh"
+trade_goods = cotton
+hre = no
+base_tax = 1 
+base_production = 1
+base_manpower = 1
+is_city = yes
+add_core = GHR
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

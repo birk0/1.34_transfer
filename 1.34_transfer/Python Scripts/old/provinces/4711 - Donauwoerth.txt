@@ -1,0 +1,19 @@
+#4711 - Pustyn
+
+owner = GOL
+controller = GOL
+culture = mishary
+religion = sunni
+hre = no
+trade_goods = livestock
+base_tax = 1 
+base_production = 1
+base_manpower = 1
+capital = "Pustyn"
+is_city = yes
+add_core = GOL
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

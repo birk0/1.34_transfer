@@ -1,0 +1,18 @@
+#269 - Podlasia
+
+owner = LIT
+controller = LIT
+culture = polish
+religion = catholic
+hre = no
+trade_goods = livestock
+base_tax = 5
+base_production = 5
+base_manpower = 3
+capital = "Drohiczyn"
+is_city = yes
+add_core = LIT
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

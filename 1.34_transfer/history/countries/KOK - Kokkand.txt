@@ -1,0 +1,18 @@
+#This is actually ferghana
+government = monarchy
+add_government_reform = timurid_prince
+technology_group = muslim
+religion = sunni
+primary_culture = uzbehk
+capital = 457	#Tashkent
+#Changes
+religious_school = hanafi_school
+1444.1.1 = {
+	monarch = {
+		name = "Sharim' Ali"
+		dynasty = "Timurid"
+		dip = 1
+		adm = 3
+		mil = 2
+	}
+}

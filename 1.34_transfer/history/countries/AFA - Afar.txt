@@ -1,0 +1,10 @@
+government = monarchy
+add_government_reform = iqta
+technology_group = east_african
+#unit_type = sub_saharan East African has its own units now
+religion = sunni
+primary_culture = afar
+capital = 2764	#Aussa
+religious_school = shafii_school
+
+

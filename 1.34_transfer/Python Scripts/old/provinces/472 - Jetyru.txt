@@ -1,0 +1,18 @@
+#472 - Zhetyru
+
+owner = NOG
+controller = NOG
+culture = nogaybak
+religion = sunni
+capital = "Zhetyru"
+trade_goods = naval_supplies
+hre = no
+base_tax = 2 
+base_production = 1
+base_manpower = 1
+is_city = yes
+add_core = NOG
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

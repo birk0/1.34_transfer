@@ -1,0 +1,8 @@
+#Prov2396 - Mong Kawng
+culture = burmese
+religion = buddhism
+is_city = no
+
+base_tax = 1
+base_production = 1
+base_manpower = 1

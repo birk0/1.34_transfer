@@ -1,0 +1,21 @@
+government = monarchy
+add_government_reform = iqta
+government_rank = 1
+primary_culture = acehnese
+religion = sunni
+technology_group = indonesian
+capital = 617	# Banda Aceh
+religious_school = shafii_school
+
+1399.1.1 = {
+	monarch = {
+		name = "Inayat Shah"
+		dynasty = "Inayat"
+		adm = 2
+		dip = 1
+		mil = 2
+	}
+	add_piety = -0.1
+}
+
+

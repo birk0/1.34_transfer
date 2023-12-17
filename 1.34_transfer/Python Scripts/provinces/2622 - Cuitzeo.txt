@@ -1,0 +1,7 @@
+#Prov2622 - Cuitzeo
+culture = amhara
+religion = shamanism #Fetishism
+
+base_tax = 1
+base_production = 1
+base_manpower = 1

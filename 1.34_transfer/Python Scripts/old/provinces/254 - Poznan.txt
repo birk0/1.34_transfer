@@ -1,0 +1,19 @@
+#254 - Poznan
+
+owner = POL
+controller = POL
+capital = "Poznan"
+culture = polish
+religion = catholic
+trade_goods = salt
+hre = no
+base_tax = 6
+base_production = 6
+base_manpower = 5
+is_city = yes
+add_core = POL
+fort_15th = yes
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

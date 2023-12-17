@@ -1,0 +1,37 @@
+artillery_test = {
+	land_forcelimit = 1000
+	global_tax_income = 9000
+	global_manpower = 9000
+	colonists = -20
+}
+colonist_test = {
+	colonists = 20
+	global_colonial_growth = 1000
+	range = 10
+	may_explore = yes
+}
+lag_test = {
+	land_forcelimit_modifier = -0.5
+}
+dev_test = {
+	local_development_cost_modifier = -0.2
+}
+german_militarization = {
+	discipline = 0.025
+}
+
+# stacks onto persian ideas
+afsharid_morale = {
+	land_morale = 0.1 # 20% morale
+	global_manpower_modifier = 0.1 # 25% manpower
+	cavalry_power = 0.05 # 20% cavalry combat ability
+}
+seljuk_drill = {
+	drill_gain_modifier = 1
+}
+# stacks onto yuan ideas
+yuan_horses = {
+	cav_to_inf_ratio = 0.1
+	cavalry_cost = -0.1
+	movement_speed = 0.05
+}

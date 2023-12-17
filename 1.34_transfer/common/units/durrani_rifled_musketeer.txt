@@ -1,0 +1,14 @@
+# Durrani Rifled Musketeer
+	
+type = infantry
+manpower = 2
+unit_type = muslim
+
+maneuver = 1	
+offensive_morale = 8
+defensive_morale = 6
+offensive_fire = 2
+defensive_fire = 4
+offensive_shock = 6
+defensive_shock = 6
+

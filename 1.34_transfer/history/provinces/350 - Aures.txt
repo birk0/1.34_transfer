@@ -1,0 +1,7 @@
+#Prov350 - Aures
+culture = tuareg
+religion = ibadi
+
+base_tax = 1
+base_production = 1
+base_manpower = 1

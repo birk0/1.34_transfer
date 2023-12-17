@@ -1,0 +1,5 @@
+#Prov1896 - Lake Hongze
+
+base_tax = 1
+base_production = 1
+base_manpower = 1

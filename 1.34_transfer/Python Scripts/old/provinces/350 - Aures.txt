@@ -1,0 +1,19 @@
+#350 - Laghwat
+
+owner = MZB
+controller = MZB 
+culture = algerian
+religion = sunni
+capital = "Laghwat"
+trade_goods = livestock
+hre = no
+base_tax = 1 
+base_production = 1
+base_manpower = 1
+is_city = yes
+add_core = MZB
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}
+

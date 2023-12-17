@@ -1,0 +1,200 @@
+# Handles AI only mechanics.
+
+namespace = ai_events
+
+# Triggers for every AI owned province every 2 years (sad performance noises)
+country_event = {
+    id = ai_events.1
+    title = "none"
+    desc = "none"
+    picture = "none"
+    hidden = yes
+    is_triggered_only = yes # on_bi_yearly_pulse
+
+    trigger = {
+        ai = yes
+        is_at_war = no
+        treasury = 75
+    }
+
+    immediate = {
+        save_event_target_as = owner
+    }
+
+    option = {
+        every_owned_province = {
+            province_event = { id = ai_events.2 } # to triggered a province bi_yearly
+        } 
+    }
+}
+# Handles whether the AI builds the fort
+province_event = {
+    id = ai_events.2
+    title = "none"
+    desc = "none"
+    picture = "none"
+    hidden = yes
+    is_triggered_only = yes
+
+    trigger = {
+        NOT = { has_province_modifier = may_not_build_fort }
+        NOT = { has_fort_building_trigger = yes }
+    }
+
+    option = { # Nothing
+        ai_chance = {
+            factor = 100
+        }
+    }
+    # Building the fort. It'll only build a level 1 fort. This is cause its easier to build that then upgrade it via other scripts.
+    option = {
+        trigger = {
+            can_build = fort_15th
+            owner = { treasury = 75 }
+            NOT = { has_province_modifier = may_not_build_fort } 
+        }
+        ai_chance = {
+            factor = 10
+            modifier = {
+                factor = 5
+                very_defensive_terrain_trigger = yes #+2 diceroll
+            }
+            modifier = {
+                factor = 3
+                defensive_terrain_trigger = yes #+1 diceroll
+            }
+            modifier = {
+                factor = 2 # hostile front
+                OR = {
+                    any_neighbor_province = {
+                        owner = { 
+                            is_hostile_country_of = { 
+                                who = event_target:owner
+                            }
+                        }
+                    }
+                    any_neighbor_province = {
+                        any_neighbor_province = {
+                            owner = {
+                                is_hostile_country_of = {
+                                    who = event_target:owner
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            modifier = {
+                factor = 0.1
+                has_province_modifier = ai_doesnt_want_fort_here
+            }
+        }
+        if = {
+            limit = {
+                NOT = { has_province_modifier = may_not_build_fort }
+                owner = { treasury = 75 } 
+            } 
+            every_neighbor_province = {
+                limit = {
+                    NOT = { province_id = ROOT } 
+                    owned_by = event_target:owner
+                    NOT = { has_province_modifier = may_not_build_fort }
+                    NOT = { has_fort_building_trigger = yes } 
+                }
+                add_province_modifier = {
+                    name = may_not_build_fort
+                    duration = 2 # Temporary so other provinces next to this one dont build forts too
+                    hidden = yes
+                }
+            }
+            every_neighbor_province = {
+                every_neighbor_province = {
+                    limit = {
+                        NOT = { province_id = ROOT } 
+                        owned_by = event_target:owner
+                        NOT = { has_province_modifier = may_not_build_fort }
+                        NOT = { has_fort_building_trigger = yes } 
+                    }
+                    add_province_modifier = {
+                        name = may_not_build_fort
+                        duration = 2 # Temporary so other provinces next to this one dont build forts too
+                        hidden = yes
+                    } 
+                }
+            } 
+            add_building_construction = {
+                building = fort_15th
+                speed = 1
+                cost = 1
+            }
+        }              
+    }
+}
+
+# Logic for AI developing provinces
+country_event = {
+    id = ai_events.3
+    title = "none"
+    desc = "none"
+    picture = "none"
+    hidden = yes
+    #WARNING! Checked every 20 days, no performance hungry things
+    trigger = {
+        ai = yes
+        OR = {
+            adm_power = 950
+            dip_power = 950
+            mil_power = 950
+        }
+    }
+
+    immediate = {
+        every_owned_province = {
+            export_to_variable = {
+                which = local_development_cost_trigger
+                value = modifier:local_development_cost
+            }
+        }
+        if = {
+            limit = {
+                is_lacking_institutions = yes
+                NOT = { has_country_flag = developing_institution } #should be removed in on_institution_embraced
+                NOT = {
+                    any_owned_province = {
+                        OR = {
+                            has_province_flag = institution_target
+                            current_institution = 100
+                        }
+                    }
+                }
+            }
+            set_country_flag = developing_institution
+            find_province_for_institution = yes
+        }
+    }
+
+    option = {
+        # if you have a task to dev the institution, you should do that before other stuff below:
+        develop_provinces_with = { development_cost = -1 }
+
+        # Ordered by the priority the AI places on developing (first to last), values are < LESS_THAN
+        develop_provinces_with = { development_cost = -0.60 }
+        develop_provinces_with = { development_cost = -0.50 }
+        develop_provinces_with = { development_cost = -0.40 }
+        develop_provinces_with = { development_cost = -0.30 }
+        develop_provinces_with = { development_cost = -0.20 }
+        develop_provinces_with = { development_cost = -0.10 }
+        develop_provinces_with = { development_cost = 0.00  }
+        develop_provinces_with = { development_cost = 0.10  }
+        develop_provinces_with = { development_cost = 0.20  }
+        develop_provinces_with = { development_cost = 0.30  }
+        develop_provinces_with = { development_cost = 0.40  }
+        develop_provinces_with = { development_cost = 0.50  }
+        develop_provinces_with = { development_cost = 0.60  }
+        develop_provinces_with = { development_cost = 0.70  }
+        develop_provinces_with = { development_cost = 0.80  }
+        develop_provinces_with = { development_cost = 0.90  }
+        develop_provinces_with = { development_cost = 1.00  }
+        develop_provinces_with = { development_cost = 10.0  } # meant to represent infinity
+    }
+}

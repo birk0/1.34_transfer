@@ -1,0 +1,21 @@
+#Dorpat
+
+owner = LIV
+controller = LIV
+add_core = LIV
+add_core = LVA
+add_core = EST
+culture = estonian
+religion = catholic
+hre = no
+base_tax = 3 
+base_production = 3
+trade_goods = naval_supplies
+base_manpower = 2
+capital = "Dorpat"
+is_city = yes
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

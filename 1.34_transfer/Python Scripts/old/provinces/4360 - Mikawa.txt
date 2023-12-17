@@ -1,0 +1,19 @@
+#4360 - Mikawa
+
+owner = TKG
+controller = TKG
+culture = togoku
+religion = shinto
+capital = "Okazaki"
+trade_goods = grain
+hre = no
+base_tax = 2
+base_manpower = 3
+base_production = 2
+is_city = yes
+add_core = TKG
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

@@ -1,0 +1,19 @@
+#2762 - Damot
+
+owner = DAM
+controller = DAM
+add_core = DAM
+culture = amhara 
+religion = coptic
+capital = "Nekemte"
+is_city = yes
+base_manpower = 2
+trade_goods = gold
+hre = no
+base_tax = 2 
+base_production = 2
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

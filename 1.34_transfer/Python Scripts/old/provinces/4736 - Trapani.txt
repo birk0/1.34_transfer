@@ -1,0 +1,34 @@
+# - Syracusa
+
+owner = SIC
+controller = SIC
+culture = sicilian 
+religion = catholic 
+hre = no 
+base_tax = 2
+base_production = 3
+trade_goods = fish
+base_manpower = 2
+capital = "Trapani"
+is_city = yes
+add_core = SIC
+add_core = NAP
+
+
+
+#discovered_by = western
+#discovered_by = eastern
+#discovered_by = muslim
+#discovered_by = ottoman
+
+
+1409.7.25 = {
+	owner = ARA
+	controller = ARA
+	add_core = ARA
+} # Martin I inherits Sicily from his son
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

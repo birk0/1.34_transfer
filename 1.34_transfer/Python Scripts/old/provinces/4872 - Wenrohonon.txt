@@ -1,0 +1,21 @@
+#4872 - Shalginsky
+
+owner = SHY
+controller = SHY
+culture = khazak
+religion = sunni
+capital = "Shalginsky"
+trade_goods = livestock
+hre = no
+base_tax = 2 
+base_production = 1
+base_manpower = 1
+is_city = yes
+add_core = KZH
+add_core = SHY
+
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

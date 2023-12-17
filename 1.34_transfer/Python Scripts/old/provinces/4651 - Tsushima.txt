@@ -1,0 +1,19 @@
+#4651 - Tsushima
+
+owner = SOO
+controller = SOO
+culture = kyushuan
+religion = shinto
+capital = "Tsushima"
+trade_goods = chinaware
+hre = no
+base_tax = 2
+base_manpower = 1
+base_production = 1
+is_city = yes
+add_core = SOO
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

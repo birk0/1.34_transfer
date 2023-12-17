@@ -1,0 +1,19 @@
+#351 - Biskra
+
+owner = TGT
+controller = TGT 
+culture = berber
+religion = sunni
+capital = "Biskra"
+trade_goods = wool
+hre = no
+base_tax = 1 
+base_production = 1
+base_manpower = 1
+is_city = yes
+add_core = TGT
+add_local_autonomy = 25
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

@@ -1,0 +1,16 @@
+#Heavy Frigate
+type = light_ship # Also functions as a heavy ship
+
+hull_size = 75
+base_cannons = 100
+blockade = 500
+
+sail_speed = 14
+
+sailors = 125
+
+trade_power = 8
+
+sailors = 750
+
+sprite_level = 5

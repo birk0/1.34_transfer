@@ -1,0 +1,19 @@
+# - Nis
+
+owner = SER
+controller = SER
+culture = serbian
+religion = orthodox
+capital = "Nis"
+trade_goods = livestock
+hre = no
+base_tax = 3
+base_production = 3
+base_manpower = 1
+is_city = yes
+add_core = SER
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

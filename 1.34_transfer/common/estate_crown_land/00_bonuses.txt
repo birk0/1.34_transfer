@@ -1,0 +1,267 @@
+
+#Reworked for absolutism changes
+bonus = {
+    key = crown_land_level_0
+    range_from = -100.0
+    range_to = 1.0
+    modifier = {
+        max_absolutism = -75
+        global_autonomy = 0.4
+        liberty_desire_from_subject_development = 1.5
+        global_tax_modifier = -0.3
+    }
+}
+
+bonus = {
+    key = crown_land_level_1
+    range_from = 1.0
+    range_to = 5.0
+    modifier = {
+        max_absolutism = -60
+        global_autonomy = 0.3
+        liberty_desire_from_subject_development = 1.0
+        global_tax_modifier = -0.25
+    }
+}
+
+bonus = {
+    key = crown_land_level_2
+    range_from = 5.0
+    range_to = 10.0
+    modifier = {
+        max_absolutism = -45
+        global_autonomy = 0.2
+        liberty_desire_from_subject_development = 1.0
+        global_tax_modifier = -0.2
+    }
+}
+
+bonus = {
+    key = crown_land_level_3
+    range_from = 10.0
+    range_to = 15.0
+    modifier = {
+        max_absolutism = -30
+        global_autonomy = 0.1
+        liberty_desire_from_subject_development = 0.5
+        global_tax_modifier = -0.15
+    }
+}
+
+bonus = {
+    key = crown_land_level_4
+    range_from = 15.0
+    range_to = 20.0
+    modifier = {
+        max_absolutism = -15
+        liberty_desire_from_subject_development = 0.25
+        global_tax_modifier = -0.15
+    }
+}
+
+bonus = {
+    key = crown_land_level_5
+    range_from = 20.0
+    range_to = 25.0
+    modifier = {
+        max_absolutism = -5
+        liberty_desire_from_subject_development = 0.25
+        global_tax_modifier = -0.1
+    }
+}
+
+bonus = {
+    key = crown_land_level_6
+    range_from = 25.0
+    range_to = 30.0
+    modifier = {
+        liberty_desire_from_subject_development = 0.1
+        global_tax_modifier = -0.05
+    }
+}
+
+bonus = {
+    key = crown_land_level_7
+    range_from = 30.0
+    range_to = 35.0
+    modifier = {
+        max_absolutism = 5
+    }
+}
+
+bonus = {
+    key = crown_land_level_8
+    range_from = 35.0
+    range_to = 40.0
+    modifier = {
+        max_absolutism = 10
+    }
+}
+
+bonus = {
+    key = crown_land_level_9
+    range_from = 40.0
+    range_to = 45.0
+    modifier = {
+        max_absolutism = 15
+        yearly_absolutism = 0.25
+    }
+}
+
+bonus = {
+    key = crown_land_level_10
+    range_from = 45.0
+    range_to = 50.0
+    modifier = {
+        max_absolutism = 20
+        yearly_absolutism = 0.25
+        global_autonomy = -0.01
+    }
+}
+
+bonus = {
+    key = crown_land_level_11
+    range_from = 50.0
+    range_to = 55.0
+    modifier = {
+        max_absolutism = 50
+        yearly_absolutism = 0.5
+        global_autonomy = -0.02
+        global_tax_modifier = 0.05
+    }
+}
+
+bonus = {
+    key = crown_land_level_12
+    range_from = 55.0
+    range_to = 60.0
+    modifier = {
+        max_absolutism = 50
+        yearly_absolutism = 0.5
+        global_autonomy = -0.02
+        global_tax_modifier = 0.05
+    }
+}
+
+bonus = {
+    key = crown_land_level_13
+    range_from = 60.0
+    range_to = 65.0
+    modifier = {
+        max_absolutism = 50
+        yearly_absolutism = 0.6
+        global_autonomy = -0.03
+        global_tax_modifier = 0.075
+    }
+}
+
+bonus = {
+    key = crown_land_level_14
+    range_from = 65.0
+    range_to = 70.0
+    modifier = {
+        max_absolutism = 50
+        yearly_absolutism = 0.65
+        global_autonomy = -0.05
+        global_tax_modifier = 0.075
+    }
+}
+
+bonus = {
+    key = crown_land_level_15
+    range_from = 70.0
+    range_to = 75.0
+    modifier = {
+        max_absolutism = 50
+        yearly_absolutism = 0.7
+        global_autonomy = -0.06
+        global_tax_modifier = 0.1
+    }
+}
+
+bonus = {
+    key = crown_land_level_16
+    range_from = 75.0
+    range_to = 80.0
+    modifier = {
+        max_absolutism = 50
+        yearly_absolutism = 0.75
+        global_autonomy = -0.075
+        global_tax_modifier = 0.15
+        min_autonomy_in_territories = -0.025
+        reform_progress_growth = 0.025
+    }
+}
+
+bonus = {
+    key = crown_land_level_17
+    range_from = 80.0
+    range_to = 85.0
+    modifier = {
+        max_absolutism = 55
+        yearly_absolutism = 0.8
+        global_autonomy = -0.1
+        global_tax_modifier = 0.15
+        min_autonomy_in_territories = -0.025
+        reform_progress_growth = 0.05
+    }
+}
+
+bonus = {
+    key = crown_land_level_18
+    range_from = 85.0
+    range_to = 90.0
+    modifier = {
+        max_absolutism = 60
+        yearly_absolutism = 0.9
+        global_autonomy = -0.125
+        global_tax_modifier = 0.2
+        min_autonomy_in_territories = -0.05
+        reform_progress_growth = 0.1
+    }
+}
+
+bonus = {
+    key = crown_land_level_19
+    range_from = 90.0
+    range_to = 95.0
+    modifier = {
+        max_absolutism = 65
+        yearly_absolutism = 1.25
+        global_autonomy = -0.16
+        global_tax_modifier = 0.25
+        min_autonomy_in_territories = -0.05
+        development_cost = -0.025
+        reform_progress_growth = 0.15
+    }
+}
+
+bonus = {
+    key = crown_land_level_20
+    range_from = 95.0
+    range_to = 100.0
+    modifier = {
+        max_absolutism = 70
+        yearly_absolutism = 1.5
+        global_tax_modifier = 0.33
+        global_autonomy = -0.18
+        min_autonomy_in_territories = -0.05
+        development_cost = -0.025
+        reform_progress_growth = 0.2
+    }
+}
+
+bonus = {
+    key = crown_land_level_21
+    range_from = 100.0
+    range_to = 9001.0
+    modifier = {
+        max_absolutism = 75
+        yearly_absolutism = 2
+        global_tax_modifier = 0.5
+        global_autonomy = -0.2
+        min_autonomy_in_territories = -0.1
+        reform_progress_growth = 0.25
+        development_cost = -0.05
+    }
+}

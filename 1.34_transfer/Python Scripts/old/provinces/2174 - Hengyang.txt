@@ -1,0 +1,21 @@
+# 2174 - Hengyang
+
+owner = MNG
+controller = MNG
+add_core = MNG
+culture = xiang
+religion = mahayana #changes
+capital = "Hengyang"
+trade_goods = gold
+hre = no
+base_tax = 4 
+base_production = 5
+base_manpower = 3
+is_city = yes
+add_core = CHC
+center_of_trade = 1
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

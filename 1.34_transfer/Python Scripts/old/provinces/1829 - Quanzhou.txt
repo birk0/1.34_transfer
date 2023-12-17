@@ -1,0 +1,24 @@
+#1829 - Quanzhou
+
+owner = MNG
+controller = MNG
+add_core = MNG
+culture = chimin
+religion = mahayana #changes
+capital = "Quanzhou"
+trade_goods = tea
+hre = no
+#Changes
+base_tax = 5 
+base_production = 3
+base_manpower = 3
+is_city = yes
+add_core = MIN
+center_of_trade = 1
+extra_cost = 8
+
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

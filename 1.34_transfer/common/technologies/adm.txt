@@ -1,0 +1,223 @@
+monarch_power = ADM
+
+# applied when a country is ahead of time in this technology
+ahead_of_time = {
+	# This is used to create a trigger which checks if the country is ahead of time in tech. See IS_AHEAD_OF_TIME()
+	ahead_of_time_ADM_influence = 1
+}
+
+# Pre-era techs
+technology = { #Tribal Government
+	# Tech 0
+	year = 1356
+
+	may_force_march = yes # actually enabled at adm 17 see scripted functions
+}
+
+technology = { #Advanced Tribes
+	# Tech 1
+	year = 1399
+
+
+	# adm buildings:
+	mills = yes
+	metal_works = yes
+	weapons = yes
+	kiln = yes
+	mint = yes
+	furnace = yes
+	soldier_households = yes
+	state_house = yes
+
+	courthouse = yes
+	town_hall = yes
+
+	workshop = yes
+	counting_house = yes
+	constable = yes
+
+	temple = yes
+	cathedral = yes
+	grand_treasury = yes
+
+	paved_road = yes
+	imperial_road = yes
+}
+
+technology = { #Feudal Monarchy
+	# Tech 2
+	year = 1413
+	may_support_rebels = yes
+}
+
+# The 30 big techs from here on
+
+technology = { #Medieval Administration
+	# Tech 3
+	year = 1426
+	allowed_idea_groups = 1
+}
+ 
+technology = { #Temples
+	# Tech 4
+	year = 1438
+}
+
+technology = { #National Ideas
+	# Tech 5
+	year = 1451
+	allowed_idea_groups = 2	
+}
+
+technology = { #Workshop
+	# Tech 6
+	year = 1463
+	governing_capacity = 100
+}
+
+technology = { #Renaissance Thought
+	# Tech 7
+	year = 1476
+}
+
+technology = { #Courthouse
+	# Tech 8
+	year = 1488
+	allowed_idea_groups = 3
+}
+
+technology = { #The Scythe
+	# Tech 9
+	year = 1501
+}
+
+technology = { #Modern Theocracy
+	# Tech 10
+	year = 1513
+}
+
+technology = { #Textile Manufactory
+	# Tech 11
+	year = 1526
+	governing_capacity = 100
+}
+
+technology = { #Early Modern Administration
+	# Tech 12
+	year = 1538
+	allowed_idea_groups	= 4
+}
+
+technology = { #Improved Drainage
+	# Tech 13
+	year = 1551
+}
+
+technology = { #Scientific Experimentation
+	# Tech 14
+	year = 1563
+	mills = yes
+}
+
+technology = { #Military Administration
+	# Tech 15
+	year = 1576
+	governing_capacity = 250
+}
+
+technology = { #Metallurgy
+	# Tech 16
+	year = 1588
+	allowed_idea_groups	= 5
+}
+
+technology = { #University
+	# Tech 17
+	year = 1601
+	governing_capacity = 250
+	#may_force_march = yes
+}
+
+technology = { #National Sovereignty
+	# Tech 18
+	year = 1613
+}
+
+technology = { #Cathedral
+	# Tech 19
+	year = 1626
+	allowed_idea_groups = 6
+}
+
+technology = { #Absolute Rulership
+	# Tech 20
+	year = 1638
+	administrative_efficiency = 0.05
+}
+
+technology = { #Land Clearance
+	# Tech 21
+	year = 1651
+}
+
+technology = { #The Constitution
+	# Tech 22
+	year = 1663
+}
+
+technology = { #Measuring the World
+	# Tech 23
+	year = 1676
+	allowed_idea_groups = 7
+}
+
+technology = { #Bonds and Tontines
+	# Tech 24
+	year = 1688
+	administrative_efficiency = 0.05
+}
+
+technology = { #Improved Production
+	# Tech 25
+	year = 1701
+}
+
+technology = { #Separation of Powers
+	# Tech 26
+	year = 1713
+	allowed_idea_groups = 8
+}
+
+technology = { #Modern Bureaucracy
+	# Tech 27
+	year = 1726
+	governing_capacity = 250
+}
+
+technology = { #Rotherham Plough
+	# Tech 28
+	year = 1738
+	administrative_efficiency = 0.05
+}
+
+technology = { #Rights of Man
+	# Tech 29
+	year = 1751
+	governing_capacity = 500
+}
+
+technology = { #Advanced Production
+	# Tech 30
+	year = 1763
+	administrative_efficiency = 0.05
+}
+
+technology = { #Revolutionary Ideals
+	# Tech 31
+	year = 1776
+}
+
+technology = { #Four Field Rotation
+	# Tech 32
+	year = 1788
+}

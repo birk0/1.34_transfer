@@ -1,0 +1,22 @@
+#131 - Zagorje
+
+owner = CRO
+controller = CRO
+culture = croatian
+religion = catholic
+capital = "Zagreb"
+trade_goods = cloth
+hre = no
+base_tax = 3 
+base_production = 3
+base_manpower = 1
+is_city = yes
+fort_15th = yes
+add_core = CRO
+
+1444.12.1 = {
+	trade_goods = unknown
+	owner = ---
+	controller = ---
+	hre = no
+}

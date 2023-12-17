@@ -1,0 +1,225 @@
+#############################################
+#	Policies for the Expansion Idea Group
+#############################################
+chaplains_of_the_fleet = {
+	monarch_power = MIL
+
+	potential = {
+		ai = no
+		has_idea_group = expansion_ideas
+	}
+	
+	allow = {
+		full_idea_group = expansion_ideas
+		hidden_trigger = {
+			NOT = { has_idea_group = indigenous_ideas }
+		}
+		if = {
+			limit = { has_country_modifier = chaplains_of_the_fleet_cooldown }
+			custom_trigger_tooltip = {
+				tooltip = POLICY_ON_COOLDOWN
+				always = no
+			}
+		}
+		if = {
+			limit = {
+				has_country_flag = expansion_cd_fl
+			}
+			custom_trigger_tooltip = {
+				tooltip = "We must wait before we can select a policy from this idea group again."
+				always = no
+			}
+		}
+	}
+	
+	global_sailors_modifier = 2.5
+	
+	ai_will_do = {
+		factor = 1
+	}
+}
+war_horses_policy = { 
+	monarch_power = MIL
+
+	potential = {
+		ai = no
+		has_idea_group = expansion_ideas
+	}
+	
+	allow = {
+		full_idea_group = expansion_ideas
+		hidden_trigger = {
+			NOT = { has_idea_group = indigenous_ideas }
+		}
+		if = {
+			limit = { has_country_modifier = war_horses_policy_cooldown }
+			custom_trigger_tooltip = {
+				tooltip = POLICY_ON_COOLDOWN
+				always = no
+			}
+		}
+		if = {
+			limit = {
+				has_country_flag = expansion_cd_fl
+			}
+			custom_trigger_tooltip = {
+				tooltip = "We must wait before we can select a policy from this idea group again."
+				always = no
+			}
+		}
+	}
+
+	cavalry_shock = 0.5
+	cavalry_cost = -0.15
+	
+	ai_will_do = {
+		factor = 1
+	}
+}
+taxation_with_representation = {
+	monarch_power = DIP
+	potential = {
+		ai = no
+		has_idea_group = expansion_ideas
+	}
+	
+	allow = {
+		full_idea_group = expansion_ideas
+		hidden_trigger = {
+			NOT = { has_idea_group = indigenous_ideas }
+		}
+		if = {
+			limit = { has_country_modifier = taxation_with_representation_cooldown }
+			custom_trigger_tooltip = {
+				tooltip = POLICY_ON_COOLDOWN
+				always = no
+			}
+		}
+		if = {
+			limit = {
+				has_country_flag = expansion_cd_fl
+			}
+			custom_trigger_tooltip = {
+				tooltip = "We must wait before we can select a policy from this idea group again."
+				always = no
+			}
+		}
+	}
+	
+	harsh_treatment_cost = -0.75
+
+	ai_will_do = {
+		factor = 1
+	}
+}
+commercial_embassies = {
+	monarch_power = DIP
+	potential = {
+		ai = no
+		has_idea_group = expansion_ideas
+	}
+	
+	allow = {
+		full_idea_group = expansion_ideas
+		hidden_trigger = {
+			NOT = { has_idea_group = indigenous_ideas }
+		}
+		if = {
+			limit = { has_country_modifier = commercial_embassies_cooldown }
+			custom_trigger_tooltip = {
+				tooltip = POLICY_ON_COOLDOWN
+				always = no
+			}
+		}
+		if = {
+			limit = {
+				has_country_flag = expansion_cd_fl
+			}
+			custom_trigger_tooltip = {
+				tooltip = "We must wait before we can select a policy from this idea group again."
+				always = no
+			}
+		}
+	}
+	
+	global_trade_power = 0.1
+	#covert_action_cost = -0.33
+
+	ai_will_do = {
+		factor = 1
+	}
+}
+manueline_architecture = {
+	monarch_power = ADM
+
+	potential = {
+		ai = no
+		has_idea_group = expansion_ideas
+	}
+	
+	allow = {
+		full_idea_group = expansion_ideas
+		hidden_trigger = {
+			NOT = { has_idea_group = indigenous_ideas }
+		}
+		if = {
+			limit = { has_country_modifier = manueline_architecture_cooldown }
+			custom_trigger_tooltip = {
+				tooltip = POLICY_ON_COOLDOWN
+				always = no
+			}
+		}
+		if = {
+			limit = {
+				has_country_flag = expansion_cd_fl
+			}
+			custom_trigger_tooltip = {
+				tooltip = "We must wait before we can select a policy from this idea group again."
+				always = no
+			}
+		}
+	}
+
+	build_cost = -0.15
+	
+	ai_will_do = {
+		factor = 1
+	}
+}
+shared_land_policy = { 
+	monarch_power = ADM
+	
+	potential = {
+		ai = no
+		has_idea_group = expansion_ideas
+	}
+	
+	allow = {
+		full_idea_group = expansion_ideas
+		hidden_trigger = {
+			NOT = { has_idea_group = indigenous_ideas }
+		}
+		if = {
+			limit = { has_country_modifier = shared_land_policy_cooldown }
+			custom_trigger_tooltip = {
+				tooltip = POLICY_ON_COOLDOWN
+				always = no
+			}
+		}
+		if = {
+			limit = {
+				has_country_flag = expansion_cd_fl
+			}
+			custom_trigger_tooltip = {
+				tooltip = "We must wait before we can select a policy from this idea group again."
+				always = no
+			}
+		}
+	}
+	
+	development_cost = -0.05
+
+	ai_will_do = {
+		factor = 1
+	}
+}

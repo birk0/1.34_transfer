@@ -1,0 +1,18 @@
+#1002 - Mörkret
+
+add_core = NOR
+owner = NOR
+controller = NOR
+culture = norwegian
+religion = catholic
+hre = no
+base_tax = 1 
+base_production = 1
+trade_goods = fur
+base_manpower = 1
+capital = "Mörkret"
+is_city = yes
+
+1444.12.1 = {
+	add_bookmark_effect = yes
+}

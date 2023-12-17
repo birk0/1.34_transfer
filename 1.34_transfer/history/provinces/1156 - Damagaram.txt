@@ -1,0 +1,7 @@
+#Prov1156 - Damagaram
+culture = songhai
+religion = sunni
+
+base_tax = 1
+base_production = 1
+base_manpower = 1

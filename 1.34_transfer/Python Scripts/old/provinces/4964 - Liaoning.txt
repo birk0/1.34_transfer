@@ -1,0 +1,19 @@
+#726 - Liaoning
+
+owner = MNG
+controller = MNG
+add_core = MNG
+culture = manchu
+religion = confucianism
+capital = "Liaoning"
+trade_goods = grain
+hre = no
+base_tax = 4
+base_production = 3
+base_manpower = 3
+is_city = yes
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

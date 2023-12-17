@@ -1,0 +1,14 @@
+# Native Iron Cast
+
+type = artillery
+manpower = 0.1
+unit_type = mesoamerican
+
+maneuver = 2
+
+offensive_fire = 2
+defensive_fire = 4
+offensive_shock = 0
+defensive_shock = 0
+offensive_morale = 4
+defensive_morale = 2

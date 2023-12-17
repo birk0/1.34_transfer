@@ -1,0 +1,18 @@
+#660 - Xishuan Banna
+
+owner = MMA
+controller = MMA
+add_core = MMA
+culture = shan
+religion = buddhism
+capital = "Sibsongbanna"
+trade_goods = tea
+hre = no
+base_tax = 3 
+base_production = 3
+base_manpower = 2
+is_city = yes
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

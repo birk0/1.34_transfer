@@ -1,0 +1,23 @@
+#2700 - Panay
+
+culture = filipino
+religion = shen #changes
+capital = "Panay"
+trade_goods = grain
+hre = no
+base_tax = 3 
+base_production = 4
+base_manpower = 2
+add_core = MAS
+owner = MAS
+controller = MAS
+is_city = yes
+#discovered_by = chinese
+#discovered_by = indonesian
+extra_cost = 8
+center_of_trade = 1
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

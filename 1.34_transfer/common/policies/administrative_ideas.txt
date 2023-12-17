@@ -1,0 +1,239 @@
+#################################################
+#	Policies for the Administrative Idea Group
+#################################################
+the_provincial_taxation_system = {
+	monarch_power = MIL
+
+	potential = {
+		ai = no
+		has_idea_group = administrative_ideas
+	}
+	
+	allow = {
+		full_idea_group = administrative_ideas
+		hidden_trigger = {
+			NOT = { has_idea_group = indigenous_ideas }
+		}
+		if = {
+			limit = { has_country_modifier = the_provincial_taxation_system_cooldown }
+			custom_trigger_tooltip = {
+				tooltip = POLICY_ON_COOLDOWN
+				always = no
+			}
+		}
+		if = {
+			limit = {
+				has_country_flag = admin_cd_fl
+			}
+			custom_trigger_tooltip = {
+				tooltip = "We must wait before we can select a policy from this idea group again."
+				always = no
+			}
+		}
+	}
+	
+	drill_decay_modifier = -1
+	
+	ai_will_do = {
+		factor = 1
+	}
+	
+}
+omne_datum_optimum_policy = { 
+	monarch_power = MIL
+
+	potential = {
+		ai = no
+		has_idea_group = administrative_ideas
+	}
+	
+	allow = {
+		full_idea_group = administrative_ideas
+		hidden_trigger = {
+			NOT = { has_idea_group = indigenous_ideas }
+		}
+		if = {
+			limit = { has_country_modifier = omne_datum_optimum_policy_cooldown }
+			custom_trigger_tooltip = {
+				tooltip = POLICY_ON_COOLDOWN
+				always = no
+			}
+		}
+		if = {
+			limit = {
+				has_country_flag = admin_cd_fl
+			}
+			custom_trigger_tooltip = {
+				tooltip = "We must wait before we can select a policy from this idea group again."
+				always = no
+			}
+		}
+	}
+
+	manpower_in_true_faith_provinces = 2
+	
+	ai_will_do = {
+		factor = 1
+	}
+}
+administration_of_sacred_land_policy = {
+	monarch_power = ADM
+	
+	potential = {
+		ai = no
+		has_idea_group = administrative_ideas
+	}
+	
+	allow = {
+		full_idea_group = administrative_ideas
+		hidden_trigger = {
+			NOT = { has_idea_group = indigenous_ideas }
+		}
+		if = {
+			limit = { has_country_modifier = administration_of_sacred_land_policy_cooldown }
+			custom_trigger_tooltip = {
+				tooltip = POLICY_ON_COOLDOWN
+				always = no
+			}
+		}
+		if = {
+			limit = {
+				has_country_flag = admin_cd_fl
+			}
+			custom_trigger_tooltip = {
+				tooltip = "We must wait before we can select a policy from this idea group again."
+				always = no
+			}
+		}
+	}
+	
+	development_cost = -0.05
+	
+	ai_will_do = {
+		factor = 1
+	}
+}
+the_licensing_of_the_press_act = {
+	monarch_power = ADM
+
+	potential = {
+		ai = no
+		has_idea_group = administrative_ideas
+	}
+	
+	allow = {
+		full_idea_group = administrative_ideas
+		hidden_trigger = {
+			NOT = { has_idea_group = indigenous_ideas }
+		}
+		if = {
+			limit = { has_country_modifier = the_licensing_of_the_press_act_cooldown }
+			custom_trigger_tooltip = {
+				tooltip = POLICY_ON_COOLDOWN
+				always = no
+			}
+		}
+		if = {
+			limit = {
+				has_country_flag = admin_cd_fl
+			}
+			custom_trigger_tooltip = {
+				tooltip = "We must wait before we can select a policy from this idea group again."
+				always = no
+			}
+		}
+	}
+	church_influence_modifier = -0.2
+	nobles_influence_modifier = -0.2
+	eunuchs_influence_modifier = -0.2
+	burghers_influence_modifier = -0.2
+	nomadic_tribes_influence_modifier = -0.2
+	jains_influence_modifier = -0.2
+	dhimmi_influence_modifier = -0.2
+	brahmins_hindu_influence_modifier = -0.2
+	brahmins_muslim_influence_modifier = -0.2
+	brahmins_other_influence_modifier = -0.2
+	maratha_influence_modifier = -0.2
+	cossacks_influence_modifier = -0.2
+	vaisyas_influence_modifier = -0.2
+	
+	ai_will_do = {
+		factor = 1
+	}	
+}
+vassal_obligations_act = {
+	monarch_power = DIP
+	
+	potential = {
+		ai = no
+		has_idea_group = administrative_ideas
+	}
+	
+	allow = {
+		full_idea_group = administrative_ideas
+		hidden_trigger = {
+			NOT = { has_idea_group = indigenous_ideas }
+		}
+		if = {
+			limit = { has_country_modifier = vassal_obligations_act_cooldown }
+			custom_trigger_tooltip = {
+				tooltip = POLICY_ON_COOLDOWN
+				always = no
+			}
+		}
+		if = {
+			limit = {
+				has_country_flag = admin_cd_fl
+			}
+			custom_trigger_tooltip = {
+				tooltip = "We must wait before we can select a policy from this idea group again."
+				always = no
+			}
+		}
+	}	
+	
+	vassal_forcelimit_bonus = 2
+	vassal_income = 1
+	
+	ai_will_do = {
+		factor = 1
+	}
+}
+land_inheritance_act = {
+	monarch_power = DIP
+
+	potential = {
+		ai = no
+		has_idea_group = administrative_ideas
+	}
+	
+	allow = {
+		full_idea_group = administrative_ideas
+		hidden_trigger = {
+			NOT = { has_idea_group = indigenous_ideas }
+		}
+		if = {
+			limit = { has_country_modifier = land_inheritance_act_cooldown }
+			custom_trigger_tooltip = {
+				tooltip = POLICY_ON_COOLDOWN
+				always = no
+			}
+		}
+		if = {
+			limit = {
+				has_country_flag = admin_cd_fl
+			}
+			custom_trigger_tooltip = {
+				tooltip = "We must wait before we can select a policy from this idea group again."
+				always = no
+			}
+		}
+	}
+
+	country_admin_power = 5
+	advisor_pool = 3
+	
+	ai_will_do = {
+		factor = 1
+	}
+}

@@ -1,0 +1,22 @@
+# 2535 - Marcilla
+
+owner = NAV		#Juan I de Navarra
+controller = NAV
+add_core = NAV
+culture = basque
+religion = catholic
+hre = no
+base_tax = 2 
+base_production = 1
+trade_goods = iron
+base_manpower = 1
+capital = "Marcilla" 
+is_city = yes
+
+1444.12.1 = { # New Bookmark
+	trade_goods = unknown
+	remove_cores = yes
+	owner = ---
+	controller = ---
+	hre = no
+}

@@ -1,0 +1,819 @@
+#Added reforms
+french_empire = {
+	lock_level_when_selected = yes
+	allow_normal_conversion = yes
+	icon = "french_empire"
+	potential = {
+		always = no
+	}
+	trigger = {
+		always = no
+	}
+	fixed_rank = 3
+	modifiers = {
+	    reduced_liberty_desire = 20
+	    max_absolutism = 5
+	    num_accepted_cultures = 2
+	}
+	custom_attributes = {
+		locked_government_type = yes
+		french_empire_mechanics = yes
+	}
+}
+
+irish_kingdom = {
+	lock_level_when_selected = yes
+	allow_normal_conversion = yes
+	icon = "irish_kingdom"
+	potential = {
+		tag = IRE
+		is_revolutionary = no
+	}
+	modifiers = {
+	    infantry_power = 0.05
+	    autonomy_change_time = -0.25
+	}
+	custom_attributes = {
+		locked_government_type = yes
+	}
+
+	ai = {
+		factor = 1000
+	}
+}
+
+korean_kingdom = {
+	icon = "korean_kingdom"
+	allow_normal_conversion = yes
+	lock_level_when_selected = yes
+	potential = {
+		OR = {
+			AND = {
+				tag = KOR
+				religion_group = eastern
+			}
+			has_reform = korean_kingdom
+		}
+		government = monarchy
+		NOT = { has_reform = korean_kingdom_reformed }
+	}
+	custom_attributes = {
+		can_reduce_autonomy = no
+	}
+	modifiers = {
+		global_tax_modifier = 0.1
+		development_cost = -0.1
+		church_influence_modifier = 0.1
+	}
+	conditional = {
+		allow = { has_dlc = "Mandate of Heaven" }
+		has_meritocracy = yes
+	}
+	ai = { factor = 100 } #always will pick
+}
+
+korean_kingdom_reformed = {
+	icon = "chinese_palace"
+	allow_normal_conversion = yes
+	potential = {
+		OR = {
+			AND = {
+				tag = KOR
+				religion_group = eastern
+			}
+			has_reform = korean_kingdom_reformed
+		}
+		government = monarchy
+	}
+	modifiers = {
+		global_tax_modifier = 0.1
+		church_influence_modifier = -0.1
+	}
+	conditional = {
+		allow = { has_dlc = "Mandate of Heaven" }
+		has_meritocracy = yes
+	}
+	custom_attributes = {
+		kor_remove_korean_kingdom = yes
+	}
+	ai = { factor = 0 } #AI will keep the Korean Bureaucracy reform instead
+}
+
+chinese_warlord_reform = {
+	icon = "chinese_warlord_reform"
+	allow_normal_conversion = no
+	allow_convert = no
+	maintain_dynasty = yes
+	lock_level_when_selected = yes
+	fixed_rank = 2
+	allow_force_tributary = no
+	valid_for_nation_designer = yes
+	
+	potential = {
+		capital_scope = { superregion = china_superregion }
+		is_emperor_of_china = no
+		NOT = { has_global_flag = empire_of_china_dismantled }
+	}
+	modifiers = {
+		land_morale = 0.1
+		governing_capacity = 300
+		land_forcelimit_modifier = -0.5
+	}
+	ai = {
+		factor = 1000 # should always be picked if available
+	}
+	custom_attributes = {
+		locked_government_type = yes
+		relation_hit_with_warlord = yes
+		ccr_in_chinese_land = yes
+	}
+	effect = {
+		if = {
+			limit = { NOT = { meritocracy = 50 } }
+			add_meritocracy = 100
+		}
+	}
+	conditional = {
+		allow = { has_dlc = "Mandate of Heaven" }
+		has_meritocracy = yes
+	}
+	nation_designer_cost = 10
+	nation_designer_trigger = {
+		capital_scope = { superregion = china_superregion }
+		technology_group = chinese
+	}
+}
+
+khanganate_reform = {
+	icon = "khanganate_reform"
+	allow_normal_conversion = no
+
+	potential = {
+		is_emperor_of_china = yes
+		OR = {
+			has_reform = khanganate_reform
+			has_reform = steppe_horde
+			is_tribal = yes
+		}
+		NOT = { has_reform = celestial_empire }
+		NOT = { has_reform = great_mongol_state_reform }
+	}
+
+	maintain_dynasty = yes
+	allow_force_tributary = no
+	valid_for_nation_designer = yes
+	nation_designer_cost = 10
+	lock_level_when_selected = yes
+	fixed_rank = 3
+	start_territory_to_estates = 0.9
+	nomad = yes
+	raze_province = yes
+
+	nation_designer_trigger = {
+		NOT = { culture_group = east_asian }
+		technology_group = nomad_group
+		capital_scope = {
+			superregion = china_superregion
+		}
+	}
+
+	modifiers = {
+		global_manpower_modifier = 0.2
+		land_forcelimit_modifier = 0.2
+		loot_amount = 0.50
+		reinforce_cost_modifier = -0.5
+		cav_to_inf_ratio = 0.25
+		movement_speed = 0.2
+		years_of_nationalism = -5
+	}
+	
+	ai = {
+		factor = 1000 # should always be picked if available
+	}
+
+	custom_attributes = {
+		locked_government_type = yes
+		can_pass_celestial_reform = no
+		unrest_in_chinese_provinces = yes
+	}
+
+	conditional = {
+		allow = { has_dlc = "Mandate of Heaven" }
+		has_meritocracy = yes
+	}
+}
+
+#Tier 2 chinese reforms
+eoc_strengthen_warlord_power = {
+	icon = "people_walking"
+	allow_normal_conversion = yes
+	potential = {
+		OR = {
+			has_reform = chinese_warlord_reform
+			has_reform = celestial_empire
+			culture_group = east_asian
+		}
+	}
+	modifiers = {
+		global_manpower_modifier = 0.1
+		infantry_power = 0.05
+		nobles_influence_modifier = 0.05
+	}
+	ai = {
+		factor = 11 #meta
+	}
+}
+eoc_strengthen_bureaucrat_power = {
+	icon = "paper_with_seal"
+	allow_normal_conversion = yes
+	potential = {
+		OR = {
+			has_reform = chinese_warlord_reform
+			has_reform = celestial_empire
+			culture_group = east_asian
+		}
+	}
+	modifiers = {
+		global_tax_modifier = 0.1
+	}
+	ai = {
+		factor = 0
+	}
+}
+tribe_strengthen_warlord_power = {
+	icon = "people_walking"
+	allow_normal_conversion = yes
+	potential = {
+		has_reform = khanganate_reform
+	}
+	modifiers = {
+		global_manpower_modifier = 0.1
+		cavalry_power = 0.05
+		nobles_influence_modifier = 0.05
+	}
+	ai = {
+		factor = 1
+		modifier = {
+			factor = 2
+			NOT = { max_manpower = 12 }
+		}
+	}
+}
+tribe_strengthen_bureaucrat_power = {
+	icon = "paper_with_seal"
+	allow_normal_conversion = yes
+	potential = {
+		has_reform = khanganate_reform
+	}
+	modifiers = {
+		global_tax_modifier = 0.1
+		church_influence_modifier = 0.05
+	}
+	ai = {
+		factor = 1
+		modifier = {
+			factor = 1.5
+			is_in_deficit = yes
+		}
+	}
+}
+#Tier 3 Chinese reform
+tribe_examination_system = {
+	icon = "asian_scripture"
+	allow_normal_conversion = yes
+	potential = {
+		has_reform = khanganate_reform
+	}
+	modifiers = {
+		#Changes
+		advisor_pool = 1
+		nomadic_tribes_influence_modifier = -0.1
+		meritocracy = 0.5
+	}
+	ai = {
+		factor = 10
+	}
+}
+#Tier 4 Chinese reform
+eoc_strengthen_imperial_officers = {
+	icon = "warrior_monks_reform"
+	allow_normal_conversion = yes
+	potential = {
+		OR = {
+			has_reform = chinese_warlord_reform
+			has_reform = celestial_empire
+			culture_group = east_asian
+		}
+	}
+	effect = {
+		hidden_effect = {
+			subtract_variable = {
+				which = mandate_cost_modifier
+				value = 0.2
+			}
+		}
+	}
+	removed_effect = {
+		hidden_effect = {
+			change_variable = {
+				which = mandate_cost_modifier
+				value = 0.2
+			}
+		}
+	}
+	custom_attributes = {
+		mandate_cost_20 = yes
+	}
+	modifiers = {
+		diplomatic_reputation = 1
+		improve_relation_modifier = 0.1
+		eunuchs_influence_modifier = 0.05
+	}
+	ai = {
+		factor = 11 #meta
+	}
+}
+tribe_strengthen_imperial_officers = {
+	icon = "warrior_monks_reform"
+	allow_normal_conversion = yes
+	potential = {
+		has_reform = khanganate_reform
+	}
+	effect = {
+		hidden_effect = {
+			subtract_variable = {
+				which = mandate_cost_modifier
+				value = 0.2
+			}
+		}
+	}
+	removed_effect = {
+		hidden_effect = {
+			change_variable = {
+				which = mandate_cost_modifier
+				value = 0.2
+			}
+		}
+	}
+	custom_attributes = {
+		mandate_cost_20 = yes
+	}
+	modifiers = {
+		diplomatic_reputation = 1
+		improve_relation_modifier = 0.1
+		eunuchs_influence_modifier = 0.05
+	}
+	ai = {
+		factor = 1
+		modifier = {
+			factor = 5
+			is_emperor_of_china = yes
+		}
+	}
+}
+#Tier 5 Chinese reform
+eoc_son_of_heaven = {
+	icon = "chinese_palace"
+	allow_normal_conversion = yes
+	potential = {
+		OR = {
+			is_emperor_of_china = yes
+			culture_group = east_asian
+		}
+	}
+	modifiers = {
+		imperial_mandate = 0.05
+		global_unrest = -1
+	}
+	ai = {
+		factor = 1
+		modifier = {
+			factor = 11 #meta
+			is_emperor_of_china = yes
+		}
+	}
+}
+tribe_son_of_heaven = {
+	icon = "chinese_palace"
+	allow_normal_conversion = yes
+	potential = {
+		has_reform = khanganate_reform
+	}
+	modifiers = {
+		imperial_mandate = 0.05
+		years_of_nationalism = -2
+	}
+	ai = {
+		factor = 1
+		modifier = {
+			factor = 5
+			is_emperor_of_china = yes
+		}
+	}
+}
+#Tier 6 Chinese reform
+eoc_imperial_governors = {
+	icon = "tribal_centralize_power"
+	allow_normal_conversion = yes
+	potential = {
+		OR = {
+			has_reform = chinese_warlord_reform
+			has_reform = celestial_empire
+			culture_group = east_asian
+		}
+	}
+	effect = {
+		hidden_effect = {
+			every_owned_province = {
+				limit = { 
+					culture_group = east_asian
+				}
+				add_province_modifier = {
+					name = gc_in_chinese_provinces
+					duration = -1
+					hidden = yes
+				}
+			}
+		}
+	}
+	removed_effect =  {
+		hidden_effect = {
+			every_owned_province = {
+				limit = { has_province_modifier  = gc_in_chinese_provinces }
+				remove_province_modifier = gc_in_chinese_provinces
+			}
+		}
+	}
+	custom_attributes = {
+		gc_in_chinese_provinces = yes
+	}
+	ai = {
+		factor = 0
+	}
+}
+#Tier 7 Chinese reform
+eoc_strengthen_mandate = {
+	icon = "shogunate"
+	allow_normal_conversion = yes
+	potential = {
+		OR = {
+			has_reform = chinese_warlord_reform
+			has_reform = celestial_empire
+			culture_group = east_asian
+		}
+	}
+	effect = {
+		hidden_effect = {
+			subtract_variable = {
+				which = mandate_cost_modifier
+				value = 0.1
+			}
+		}
+	}
+	removed_effect = {
+		hidden_effect = {
+			change_variable = {
+				which = mandate_cost_modifier
+				value = 0.1
+			}
+		}
+	}
+	custom_attributes = {
+		mandate_cost_10 = yes
+	}
+	modifiers = {
+		global_autonomy = -0.05
+		global_tax_modifier = 0.15
+		all_estate_loyalty_equilibrium = 0.1
+	}
+	ai = {
+		factor = 15
+		modifier = {
+			factor = 0.1
+			NOT = { has_country_flag = resolved_court_and_country }
+		}
+	}
+}
+######################################################
+#	REMOVED ABSOLUTISM PENALTIES FROM VANILLA REFORMS
+######################################################
+
+#################################################### Other changes
+
+daimyo_reform = { #New
+	icon = "daimyo"
+	allow_normal_conversion = yes
+	potential = {
+		is_country_culture = { type = japanese_g }
+		capital_scope = {
+			region = japan_region
+		}
+		government = monarchy
+		NOT = { has_reform = imperial_japan }
+		NOT = { has_reform = shogunate }
+		NOT = { is_indep_daimyo = yes }
+		is_subject = no
+	}
+	fixed_rank = 1
+	maintain_dynasty = yes
+	valid_for_nation_designer = yes
+	nation_designer_cost = 0
+	lock_level_when_selected = yes
+	can_change_primary_culture = no
+	nation_designer_trigger = {
+		is_country_culture = { type = japanese_g }
+		technology_group = chinese
+		capital_scope = { region = japan_region }
+	}
+	modifiers = {
+		land_morale = 0.1
+		infantry_power = 0.1
+	}
+	custom_attributes = {
+		relation_hit_with_daimyo = yes
+	}
+}
+t_daimyo = { #Theocratic Version
+	icon = "daimyo"
+	allow_normal_conversion = yes
+	potential = {
+		is_country_culture = { type = japanese_g }
+		capital_scope = {
+			region = japan_region
+		}
+		government = theocracy
+		NOT = { has_reform = imperial_japan }
+		NOT = { has_reform = shogunate }
+		NOT = { is_indep_daimyo = yes }
+		is_subject = no
+	}
+	fixed_rank = 1
+	maintain_dynasty = yes
+	lock_level_when_selected = yes
+	can_change_primary_culture = no
+	modifiers = {
+		land_morale = 0.1
+		infantry_power = 0.1
+	}
+	custom_attributes = {
+		relation_hit_with_daimyo = yes
+	}
+}
+r_daimyo = { #Republican Version
+	icon = "daimyo"
+	allow_normal_conversion = yes
+	potential = {
+		is_country_culture = { type = japanese_g }
+		capital_scope = {
+			region = japan_region
+		}
+		government = republic
+		NOT = { has_reform = imperial_japan }
+		NOT = { has_reform = shogunate }
+		NOT = { is_indep_daimyo = yes }
+		is_subject = no
+	}
+	fixed_rank = 1
+	maintain_dynasty = yes
+	lock_level_when_selected = yes
+	can_change_primary_culture = no
+	modifiers = {
+		land_morale = 0.1
+		infantry_power = 0.1
+	}
+	custom_attributes = {
+		relation_hit_with_daimyo = yes
+	}
+}
+japanese_warlord = { #New
+	icon = "samurai"
+	allow_normal_conversion = yes
+	potential = {
+		OR = {
+			has_global_flag = shogunate_abolished
+			#has_country_flag = temp_allow_indep_daimyo
+		}
+		is_country_culture = { type = japanese_g }
+		government = monarchy
+		capital_scope = {
+			region = japan_region
+		}
+		NOT = { has_reform = imperial_japan }
+		is_subject = no
+	}
+	maintain_dynasty = yes
+	fixed_rank = 1
+	lock_level_when_selected = yes
+	can_change_primary_culture = no
+
+	modifiers = {
+		land_morale = 0.1
+		infantry_power = 0.1
+		governing_capacity_modifier = -0.25
+	}
+	custom_attributes = {
+		relation_hit_with_daimyo = yes
+	}
+}
+r_japanese_warlord = { #Republican Version
+	icon = "samurai"
+	allow_normal_conversion = yes
+	potential = {
+		OR = {
+			has_global_flag = shogunate_abolished
+			#has_country_flag = temp_allow_indep_daimyo
+		}
+		is_country_culture = { type = japanese_g }
+		government = republic
+		capital_scope = {
+			region = japan_region
+		}
+		NOT = { has_reform = imperial_japan }
+		is_subject = no
+	}
+	maintain_dynasty = yes
+	fixed_rank = 1
+	lock_level_when_selected = yes
+	can_change_primary_culture = no
+
+	modifiers = {
+		land_morale = 0.1
+		infantry_power = 0.1
+		governing_capacity_modifier = -0.25
+	}
+	custom_attributes = {
+		relation_hit_with_daimyo = yes
+	}
+}
+t_japanese_warlord = { #Theocratic Version
+	icon = "samurai"
+	allow_normal_conversion = yes
+	potential = {
+		OR = {
+			has_global_flag = shogunate_abolished
+			#has_country_flag = temp_allow_indep_daimyo
+		}
+		is_country_culture = { type = japanese_g }
+		capital_scope = {
+			region = japan_region
+		}
+		government = theocracy
+		NOT = { has_reform = imperial_japan }
+		is_subject = no
+	}
+	maintain_dynasty = yes
+	fixed_rank = 1
+	lock_level_when_selected = yes
+	can_change_primary_culture = no
+
+	modifiers = {
+		land_morale = 0.1
+		infantry_power = 0.1
+		governing_capacity_modifier = -0.25
+	}
+	custom_attributes = {
+		relation_hit_with_daimyo = yes
+	}
+}
+imperial_japan = {
+	icon = "imperial_japan"
+	allow_normal_conversion = yes
+	potential = {
+		OR = {
+			has_country_flag = formed_japan_flag
+			AND = {
+				normal_or_historical_nations = no
+				have_had_reform = imperial_japan
+			}
+		}
+	}
+	modifiers = {
+		envoy_travel_time = -0.25
+		diplomats = 1
+		max_absolutism = 10
+	}
+
+	valid_for_nation_designer = yes
+	nation_designer_cost = 50
+	nation_designer_trigger = {
+		is_country_culture = { type = japanese_g }
+		technology_group = chinese
+		capital_scope = { region = japan_region }
+	}
+
+	fixed_rank = 3
+	lock_level_when_selected = yes
+	can_change_primary_culture = no
+	maintain_dynasty = yes
+	allow_vassal_war = yes #Enables Shogun Mechanics
+
+	custom_attributes = {
+		locked_government_type = yes
+		relation_hit_with_daimyo = yes
+	}
+}
+timurid_prince = {
+	icon = "timurid_prince"
+	allow_normal_conversion = no
+	potential = {
+		dynasty = "Timurid"
+		OR = {
+			culture_group = iranian
+			culture_group = altaic
+		}
+		religion_group = muslim
+		OR = {
+			NOT = { tag = TIM }
+			has_country_modifier = timurid_prince_modifier
+			has_disaster = timurid_civil_war
+		}
+	}
+
+	modifiers = {
+		cav_to_inf_ratio = 0.1
+		#monarch_lifespan = -0.5
+	}
+
+	fixed_rank = 1
+	lock_level_when_selected = yes
+	maintain_dynasty = yes
+	queen = no
+
+	custom_attributes = {
+		locked_government_type = yes
+		timurid_cb = yes
+		#increased_stab_on_monarch_death = yes
+		rulers_are_generals = yes
+		disable_regencies = yes
+	}
+	government_abilities = {
+		iqta_mechanic
+	}
+
+	valid_for_nation_designer = yes
+	nation_designer_cost = 10
+	nation_designer_trigger = {
+		dynasty = "Timurid"
+		religion_group = muslim
+	}
+
+	effect = {
+		hidden_effect = {
+			rulers_are_generals_effect = yes
+		}
+	}
+	ai = {
+		factor = 1000
+	}
+}
+great_timurid_state = {
+	icon = "timurid_empire"
+	allow_normal_conversion = no
+
+	potential = {
+		OR = {
+			AND = {
+				tag = TIM
+				religion_group = muslim
+				NOT = { has_reform = timurid_prince }
+			}
+			AND = {
+				have_had_reform = great_timurid_state
+				normal_or_historical_nations = no
+			}
+		}
+	}
+	modifiers = {
+		vassal_income = 0.5
+		cav_to_inf_ratio = 0.1
+		governing_capacity = 150
+		loot_amount = 0.5
+	}
+
+	fixed_rank = 3
+	lock_level_when_selected = yes
+	maintain_dynasty = yes
+	raze_province = yes
+
+	government_abilities = {
+		iqta_mechanic
+	}
+	custom_attributes = {
+		locked_government_type = yes
+		timurid_cb = yes
+		disable_regencies = yes
+	}
+
+	valid_for_nation_designer = yes
+	nation_designer_cost = 50
+	nation_designer_trigger = {
+		religion_group = muslim
+	}
+}
+
+
+
+
+
+
+

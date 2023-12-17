@@ -1,0 +1,8 @@
+#Prov1598 - Central Atlantic 7
+religion = catholic
+culture = lithuanian
+is_city = no
+
+base_tax = 1
+base_production = 1
+base_manpower = 1

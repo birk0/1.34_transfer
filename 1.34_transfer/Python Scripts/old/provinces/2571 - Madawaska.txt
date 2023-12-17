@@ -1,0 +1,18 @@
+#2571 - Emmen
+
+owner = FRI
+controller = FRI
+capital = "Emmen"
+is_city = yes
+culture = frisian
+religion = catholic
+hre = yes
+base_tax = 2
+base_production = 2
+trade_goods = livestock 
+base_manpower = 2
+add_core = FRI
+
+1444.12.1 = {
+	add_bookmark_effect = yes
+}

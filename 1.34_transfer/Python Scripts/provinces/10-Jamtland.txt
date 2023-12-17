@@ -1,0 +1,8 @@
+#Prov10-Jamtland
+culture = danish# They were actually Jämts - the unique blend of Swedish, Norwegian and local tendencies
+religion = catholic
+is_city = no
+
+base_tax = 1
+base_production = 1
+base_manpower = 1

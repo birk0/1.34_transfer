@@ -1,0 +1,7 @@
+#Prov3758 - Prov3758
+religion = coptic
+culture = nubian
+
+base_tax = 1
+base_production = 1
+base_manpower = 1

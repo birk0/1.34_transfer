@@ -1,0 +1,228 @@
+#############################################
+#	Policies for the Espionage Idea Group
+#############################################
+
+deserteur_act = {
+	monarch_power = MIL
+
+	potential = {
+		ai = no
+		has_idea_group = spy_ideas
+	}
+	
+	allow = {
+		full_idea_group = spy_ideas
+		hidden_trigger = {
+			NOT = { has_idea_group = indigenous_ideas }
+		}
+		if = {
+			limit = { has_country_modifier = deserteur_act_cooldown }
+			custom_trigger_tooltip = {
+				tooltip = POLICY_ON_COOLDOWN
+				always = no
+			}
+		}
+		if = {
+			limit = {
+				has_country_flag = espionage_cd_fl
+			}
+			custom_trigger_tooltip = {
+				tooltip = "We must wait before we can select a policy from this idea group again."
+				always = no
+			}
+		}
+	}
+
+	infantry_power = 0.15
+	
+	ai_will_do = {
+		factor = 1
+	}
+}
+psychological_warfare_policy = { 
+	monarch_power = MIL
+
+	potential = {
+		ai = no
+		has_idea_group = spy_ideas
+	}
+	
+	allow = {
+		full_idea_group = spy_ideas
+		hidden_trigger = {
+			NOT = { has_idea_group = indigenous_ideas }
+		}
+		if = {
+			limit = { has_country_modifier = psychological_warfare_policy_cooldown }
+			custom_trigger_tooltip = {
+				tooltip = POLICY_ON_COOLDOWN
+				always = no
+			}
+		}
+		if = {
+			limit = {
+				has_country_flag = espionage_cd_fl
+			}
+			custom_trigger_tooltip = {
+				tooltip = "We must wait before we can select a policy from this idea group again."
+				always = no
+			}
+		}
+	}
+
+	cavalry_power = 0.15
+
+	ai_will_do = {
+		factor = 1
+	}
+}
+black_chamber_act = {
+	monarch_power = DIP
+	
+	potential = {
+		ai = no
+		has_idea_group = spy_ideas
+	}
+	
+	allow = {
+		full_idea_group = spy_ideas
+		hidden_trigger = {
+			NOT = { has_idea_group = indigenous_ideas }
+		}
+		if = {
+			limit = { has_country_modifier = black_chamber_act_cooldown }
+			custom_trigger_tooltip = {
+				tooltip = POLICY_ON_COOLDOWN
+				always = no
+			}
+		}
+		if = {
+			limit = {
+				has_country_flag = espionage_cd_fl
+			}
+			custom_trigger_tooltip = {
+				tooltip = "We must wait before we can select a policy from this idea group again."
+				always = no
+			}
+		}
+	}
+	
+	dip_tech_cost_modifier = -0.25
+
+	ai_will_do = {
+		factor = 1
+	}
+}
+the_maritime_intelligencer_unit = {
+	monarch_power = DIP
+	
+	potential = {
+		ai = no
+		has_idea_group = spy_ideas
+	}
+	
+	allow = {
+		full_idea_group = spy_ideas
+		hidden_trigger = {
+			NOT = { has_idea_group = indigenous_ideas }
+		}
+		if = {
+			limit = { has_country_modifier = the_maritime_intelligencer_unit_cooldown }
+			custom_trigger_tooltip = {
+				tooltip = POLICY_ON_COOLDOWN
+				always = no
+			}
+		}
+		if = {
+			limit = {
+				has_country_flag = espionage_cd_fl
+			}
+			custom_trigger_tooltip = {
+				tooltip = "We must wait before we can select a policy from this idea group again."
+				always = no
+			}
+		}
+	}	
+	
+	unjustified_demands = -0.5
+	naval_morale = 0.15
+	
+	ai_will_do = {
+		factor = 1
+	}
+}
+the_loyalty_act = {
+	monarch_power = ADM
+	potential = {
+		ai = no
+		has_idea_group = spy_ideas
+	}
+	
+	allow = {
+		full_idea_group = spy_ideas
+		hidden_trigger = {
+			NOT = { has_idea_group = indigenous_ideas }
+		}
+		if = {
+			limit = { has_country_modifier = the_loyalty_act_cooldown }
+			custom_trigger_tooltip = {
+				tooltip = POLICY_ON_COOLDOWN
+				always = no
+			}
+		}
+		if = {
+			limit = {
+				has_country_flag = espionage_cd_fl
+			}
+			custom_trigger_tooltip = {
+				tooltip = "We must wait before we can select a policy from this idea group again."
+				always = no
+			}
+		}
+	}
+	
+	global_autonomy = -0.5
+	min_autonomy_in_territories = -0.5
+ 
+	ai_will_do = {
+		factor = 1
+	}
+}
+enforce_religious_law = {
+	monarch_power = ADM
+
+	potential = {
+		ai = no
+		has_idea_group = spy_ideas
+	}
+	
+	allow = {
+		full_idea_group = spy_ideas
+		hidden_trigger = {
+			NOT = { has_idea_group = indigenous_ideas }
+		}
+		if = {
+			limit = { has_country_modifier = enforce_religious_law_cooldown }
+			custom_trigger_tooltip = {
+				tooltip = POLICY_ON_COOLDOWN
+				always = no
+			}
+		}
+		if = {
+			limit = {
+				has_country_flag = espionage_cd_fl
+			}
+			custom_trigger_tooltip = {
+				tooltip = "We must wait before we can select a policy from this idea group again."
+				always = no
+			}
+		}
+	}
+
+	global_missionary_strength = 0.03
+
+	ai_will_do = {
+		factor = 1
+	}
+}
+

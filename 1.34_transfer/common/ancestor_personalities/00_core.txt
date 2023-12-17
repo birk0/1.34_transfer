@@ -1,0 +1,33 @@
+#kept to prevent error log spamming
+ancestor_just_personality 					= { chance = {} allow = {} prestige = 1 }
+ancestor_kind_hearted_personality 			= { chance = {} allow = {} prestige = 1 }
+ancestor_scholar_personality 				= { chance = {} allow = {} prestige = 1 }
+ancestor_well_connected_personality 		= { chance = {} allow = {} prestige = 1 }
+ancestor_lawgiver_personality 		 		= { chance = {} allow = {} prestige = 1 }
+ancestor_careful_personality		 		= { chance = {} allow = {} prestige = 1 }
+ancestor_tolerant_personality 				= { chance = {} allow = {} prestige = 1 }
+ancestor_inspiring_leader_personality 		= { chance = {} allow = {} prestige = 1 }
+ancestor_expansionist_personality 			= { chance = {} allow = {} prestige = 1 }
+ancestor_incorruptible_personality 			= { chance = {} allow = {} prestige = 1 }
+ancestor_free_thinker_personality 			= { chance = {} allow = {} prestige = 1 }
+ancestor_zealot_personality 				= { chance = {} allow = {} prestige = 1 }
+ancestor_entrepreneur_personality			= { chance = {} allow = {} prestige = 1 }
+ancestor_tactical_genius_personality 		= { chance = {} allow = {} prestige = 1 }
+ancestor_silver_tongue_personality 			= { chance = {} allow = {} prestige = 1 }
+ancestor_intricate_web_weaver_personality 	= { chance = {} allow = {} prestige = 1 }
+ancestor_bold_fighter_personality			= { chance = {} allow = {} prestige = 1 }
+ancestor_benevolent_personality				= { chance = {} allow = {} prestige = 1 }
+ancestor_charismatic_negotiator_personality	= { chance = {} allow = {} prestige = 1 }
+ancestor_midas_touched_personality			= { chance = {} allow = {} prestige = 1 }
+ancestor_pious_personality					= { chance = {} allow = {} prestige = 1 }
+ancestor_industrious_personality			= { chance = {} allow = {} prestige = 1 }
+ancestor_secretive_personality				= { chance = {} allow = {} prestige = 1 }
+ancestor_righteous_personality              = { chance = {} allow = {} prestige = 1 }
+ancestor_martial_educator_personality       = { chance = {} allow = {} prestige = 1 }
+ancestor_fierce_negotiator_personality      = { chance = {} allow = {} prestige = 1 }
+ancestor_strict_personality                 = { chance = {} allow = {} prestige = 1 }
+ancestor_conqueror_personality              = { chance = {} allow = {} prestige = 1 }
+ancestor_architectural_visionary_personality= { chance = {} allow = {} prestige = 1 }
+ancestor_navigator_personality              = { chance = {} allow = {} prestige = 1 }
+ancestor_reformist_personality              = { chance = {} allow = {} prestige = 1 }
+ancestor_calm_personality                   = { chance = {} allow = {} prestige = 1 }

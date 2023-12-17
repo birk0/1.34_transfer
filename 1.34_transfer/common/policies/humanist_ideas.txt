@@ -1,0 +1,227 @@
+#############################################
+#	Policies for the Humanist Idea Group
+#############################################
+underhanded_diplomacy_act = {
+	monarch_power = MIL
+	potential = {
+		ai = no
+		has_idea_group = humanist_ideas
+	}
+	
+	allow = {
+		full_idea_group = humanist_ideas
+		hidden_trigger = {
+			NOT = { has_idea_group = indigenous_ideas }
+		}
+		if = {
+			limit = { has_country_modifier = underhanded_diplomacy_act_cooldown }
+			custom_trigger_tooltip = {
+				tooltip = POLICY_ON_COOLDOWN
+				always = no
+			}
+		}
+		if = {
+			limit = {
+				has_country_flag = humanist_cd_fl
+			}
+			custom_trigger_tooltip = {
+				tooltip = "We must wait before we can select a policy from this idea group again."
+				always = no
+			}
+		}
+	}
+	
+	mercenary_discipline = 0.075
+	merc_maintenance_modifier = -0.33
+
+	ai_will_do = {
+		factor = 1
+	}
+}
+by_the_people_for_the_people_policy = {
+	monarch_power = MIL
+
+	potential = {
+		ai = no
+		has_idea_group = humanist_ideas
+	}
+	
+	allow = {
+		full_idea_group = humanist_ideas
+		hidden_trigger = {
+			NOT = { has_idea_group = indigenous_ideas }
+		}
+		if = {
+			limit = { has_country_modifier = by_the_people_for_the_people_policy_cooldown }
+			custom_trigger_tooltip = {
+				tooltip = POLICY_ON_COOLDOWN
+				always = no
+			}
+		}
+		if = {
+			limit = {
+				has_country_flag = humanist_cd_fl
+			}
+			custom_trigger_tooltip = {
+				tooltip = "We must wait before we can select a policy from this idea group again."
+				always = no
+			}
+		}
+	}
+
+	artillery_shock = 1
+	
+	ai_will_do = {
+		factor = 1
+	}
+}
+multilingual_diplomats = {
+	monarch_power = DIP
+	
+	potential = {
+		ai = no
+		has_idea_group = humanist_ideas
+	}
+	
+	allow = {
+		full_idea_group = humanist_ideas
+		hidden_trigger = {
+			NOT = { has_idea_group = indigenous_ideas }
+		}
+		if = {
+			limit = { has_country_modifier = multilingual_diplomats_cooldown }
+			custom_trigger_tooltip = {
+				tooltip = POLICY_ON_COOLDOWN
+				always = no
+			}
+		}
+		if = {
+			limit = {
+				has_country_flag = humanist_cd_fl
+			}
+			custom_trigger_tooltip = {
+				tooltip = "We must wait before we can select a policy from this idea group again."
+				always = no
+			}
+		}
+	}	
+	
+	improve_relation_modifier = 0.5
+	
+	ai_will_do = {
+		factor = 1
+	}
+}
+omnism_policy = {
+	monarch_power = DIP
+	
+	potential = {
+		ai = no
+		has_idea_group = humanist_ideas
+	}
+	
+	allow = {
+		full_idea_group = humanist_ideas
+		hidden_trigger = {
+			NOT = { has_idea_group = indigenous_ideas }
+		}
+		if = {
+			limit = { has_country_modifier = omnism_policy_cooldown }
+			custom_trigger_tooltip = {
+				tooltip = POLICY_ON_COOLDOWN
+				always = no
+			}
+		}
+		if = {
+			limit = {
+				has_country_flag = humanist_cd_fl
+			}
+			custom_trigger_tooltip = {
+				tooltip = "We must wait before we can select a policy from this idea group again."
+				always = no
+			}
+		}
+	}
+
+	monthly_reform_progress_modifier = 2
+	
+	ai_will_do = {
+		factor = 1
+	}
+}
+calming_the_tides_policy = { 
+	monarch_power = ADM
+	
+	potential = {
+		ai = no
+		has_idea_group = humanist_ideas
+	}
+	
+	allow = {
+		full_idea_group = humanist_ideas
+		hidden_trigger = {
+			NOT = { has_idea_group = indigenous_ideas }
+		}
+		if = {
+			limit = { has_country_modifier = calming_the_tides_policy_cooldown }
+			custom_trigger_tooltip = {
+				tooltip = POLICY_ON_COOLDOWN
+				always = no
+			}
+		}
+		if = {
+			limit = {
+				has_country_flag = humanist_cd_fl
+			}
+			custom_trigger_tooltip = {
+				tooltip = "We must wait before we can select a policy from this idea group again."
+				always = no
+			}
+		}
+	}
+	
+	caravan_power = 1.5
+	
+	ai_will_do = {
+		factor = 1
+	}
+}
+the_banking_system = {
+	monarch_power = ADM
+
+
+	potential = {
+		ai = no
+		has_idea_group = humanist_ideas
+	}
+	
+	allow = {
+		full_idea_group = humanist_ideas
+		hidden_trigger = {
+			NOT = { has_idea_group = indigenous_ideas }
+		}
+		if = {
+			limit = { has_country_modifier = the_banking_system_cooldown }
+			custom_trigger_tooltip = {
+				tooltip = POLICY_ON_COOLDOWN
+				always = no
+			}
+		}
+		if = {
+			limit = {
+				has_country_flag = humanist_cd_fl
+			}
+			custom_trigger_tooltip = {
+				tooltip = "We must wait before we can select a policy from this idea group again."
+				always = no
+			}
+		}
+	}
+
+	inflation_action_cost = -0.5
+
+
+	ai_will_do = {
+		factor = 1
+	}
+}

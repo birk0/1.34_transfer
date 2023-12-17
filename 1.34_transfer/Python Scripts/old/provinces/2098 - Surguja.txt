@@ -1,0 +1,21 @@
+#2098 - Surguja
+
+owner = NGP
+controller = NGP
+culture = jharkhandi
+religion = hinduism
+capital = "Surguja"
+trade_goods = cotton
+hre = no
+base_tax = 1 
+base_production = 1
+base_manpower = 1
+is_city = yes
+add_core = NGP
+add_core = SRG
+add_core = RTT
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

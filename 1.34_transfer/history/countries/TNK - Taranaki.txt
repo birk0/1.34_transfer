@@ -1,0 +1,33 @@
+#Galich
+government = monarchy
+add_government_reform = principality
+government_rank = 1
+primary_culture = russian
+religion = orthodox
+technology_group = eastern
+capital = 1957 #Galich
+national_focus = MIL
+add_historical_rival = MOS
+set_country_flag = yury_dmitrievich
+
+1443.1.1 = {
+	monarch = {
+		name = "Yury I"
+		dynasty = "Dmitrievich"
+		adm = 0
+		dip = 2
+		mil = 4
+		birth_date = 1374.1.1
+	}
+	heir = {
+		name = "Vasily Kosoy"
+		dynasty = "Dmitrievich"
+		adm = 2
+		dip = 1
+		mil = 3
+		birth_date = 1401.1.1
+		death_date = 1454.1.1
+	}
+}
+
+

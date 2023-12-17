@@ -1,0 +1,8 @@
+#Prov3319 - Prov3319
+religion = shinto
+culture = kyushuan
+is_city = no
+
+base_tax = 1
+base_production = 1
+base_manpower = 1

@@ -1,0 +1,19 @@
+#1859 - Torun
+
+owner = TEU
+controller = TEU
+capital = "Torun"
+is_city = yes
+culture = polish
+religion = catholic
+trade_goods = grain
+hre = no
+base_tax = 4
+base_production = 4
+base_manpower = 2
+add_core = TEU
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

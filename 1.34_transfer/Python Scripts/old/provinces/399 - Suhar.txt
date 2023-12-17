@@ -1,0 +1,19 @@
+#399 - Suhar
+
+owner = ORM
+controller = ORM
+culture = omani_culture
+religion = ibadi
+capital = "Suhar"
+trade_goods = grain #And pearls
+hre = no
+base_tax = 3 
+base_production = 3
+base_manpower = 3
+is_city = yes
+add_core = ORM
+add_core = OMA
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

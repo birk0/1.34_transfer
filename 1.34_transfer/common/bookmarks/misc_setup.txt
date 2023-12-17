@@ -1,0 +1,15 @@
+bookmark =
+{
+	name = "IDK"
+	desc = "IDK_DESC"
+	date = 1402.08.20
+	
+	center = 112
+	default = yes
+	
+	country = TUR
+
+    effect = {
+        set_global_flag = misc_setup
+    }
+}

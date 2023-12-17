@@ -1,0 +1,20 @@
+#2563 - Wick
+
+owner = SCO
+controller = SCO
+culture = highland_scottish
+religion = catholic
+hre = no
+base_tax = 1
+base_production = 1
+trade_goods = fish
+base_manpower = 1
+capital = "Wick"
+is_city = yes
+add_core = SCO
+add_core = HSC
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

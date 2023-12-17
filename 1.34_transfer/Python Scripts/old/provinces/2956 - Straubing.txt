@@ -1,0 +1,19 @@
+#64 - Straubing
+
+owner = UBV
+controller = UBV
+add_core = UBV
+culture = bavarian
+religion = catholic
+base_tax = 3 
+base_production = 3
+trade_goods = glass
+base_manpower = 3
+capital	= "Straubing" 
+is_city = yes
+hre = yes
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

@@ -1,0 +1,13 @@
+# French Carabinier
+
+type = cavalry
+manpower = 2
+unit_type = western
+
+maneuver = 6	
+offensive_morale = 6
+defensive_morale = 8
+offensive_fire = 4
+defensive_fire = 2
+offensive_shock = 10
+defensive_shock = 8

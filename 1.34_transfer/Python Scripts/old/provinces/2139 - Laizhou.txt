@@ -1,0 +1,23 @@
+# 2139 - Laizhou
+
+owner = MNG
+controller = MNG
+add_core = MNG
+culture = shandong_culture
+religion = daoism #changes
+capital = "Laizhou"
+trade_goods = fish
+hre = no
+#Changes
+base_tax = 2 
+base_production = 3
+base_manpower = 3
+is_city = yes
+add_core = QIC
+extra_cost = 8
+center_of_trade = 1
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

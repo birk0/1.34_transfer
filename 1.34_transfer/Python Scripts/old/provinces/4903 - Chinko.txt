@@ -1,0 +1,20 @@
+#4903 - Zibo
+
+owner = MNG
+controller = MNG
+add_core = MNG
+culture = shandong_culture
+religion = confucianism
+capital = "Zibo"
+trade_goods = grain
+hre = no
+base_tax = 3 #changes
+base_production = 2
+base_manpower = 1
+is_city = yes
+add_core = QIC
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

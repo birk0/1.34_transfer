@@ -1,0 +1,14 @@
+#Frigate
+type = light_ship # Functions as a heavy ship too
+
+hull_size = 60
+base_cannons = 80 
+blockade = 400
+
+trade_power = 7
+
+sail_speed = 13
+
+sailors = 600
+
+sprite_level = 4

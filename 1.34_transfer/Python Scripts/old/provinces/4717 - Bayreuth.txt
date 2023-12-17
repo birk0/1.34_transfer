@@ -1,0 +1,19 @@
+#4717 - Merhkpol
+
+owner = CRI
+controller = CRI
+culture = crimean
+religion = sunni
+hre = no
+base_tax = 3
+base_production = 1
+trade_goods = salt
+base_manpower = 2
+capital = "Merhkpol"
+is_city = yes
+add_core = CRI
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

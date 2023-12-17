@@ -1,0 +1,7 @@
+#Prov3730 - Prov3730
+religion = shamanism
+culture = nubian
+
+base_tax = 1
+base_production = 1
+base_manpower = 1

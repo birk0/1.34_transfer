@@ -1,0 +1,10 @@
+#Prov366 - The Canarias
+culture = berber
+religion = catholic
+religion = catholic
+culture = castillian
+is_city = no
+
+base_tax = 1
+base_production = 1
+base_manpower = 1

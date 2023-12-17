@@ -1,0 +1,22 @@
+#1757 - Oberpfalz
+
+owner = PAL
+controller = PAL
+add_core = PAL
+culture = bavarian
+religion = catholic
+base_tax = 3
+base_production = 3
+trade_goods = iron
+base_manpower = 3
+capital	= "Amberg" 
+is_city = yes
+fort_15th = yes
+hre = yes
+
+
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

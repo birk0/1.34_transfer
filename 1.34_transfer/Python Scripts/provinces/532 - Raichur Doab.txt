@@ -1,0 +1,7 @@
+#Prov532 - Raichur Doab
+culture = kannada
+religion = hinduism
+
+base_tax = 1
+base_production = 1
+base_manpower = 1

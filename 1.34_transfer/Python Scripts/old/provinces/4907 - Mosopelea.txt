@@ -1,0 +1,21 @@
+#4907 - Taishun
+
+owner = MNG
+controller = MNG
+add_core = MNG
+culture = wu
+religion = mahayana #changes
+capital = "Taishun"
+trade_goods = tea
+hre = no
+base_tax = 2  
+base_production = 3
+base_manpower = 2
+is_city = yes
+add_core = WUU
+
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

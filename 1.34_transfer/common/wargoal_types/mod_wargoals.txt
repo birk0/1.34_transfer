@@ -1,0 +1,619 @@
+take_capital_unify_faithful = {
+	type = take_capital
+	
+	attacker = {
+		badboy_factor = 0.5
+		prestige_factor = 2
+		peace_cost_factor = 0.5
+		
+		allowed_provinces = {
+			religion_group = muslim
+		}
+		
+		peace_options = {
+			po_demand_provinces
+		}
+		
+		country_desc = ALL_MUSLIM_COUNTRIES
+		prov_desc = ALL_MUSLIM_PROVS
+	}
+	
+	defender = {
+		badboy_factor = 0.5
+		prestige_factor = 2
+		peace_cost_factor = 0.5
+		
+		allowed_provinces = {
+			religion_group = muslim
+		}
+		
+		peace_options = {
+			po_demand_provinces
+		}
+		
+		country_desc = ALL_MUSLIM_COUNTRIES
+		prov_desc = ALL_MUSLIM_PROVS
+	}
+	
+	war_name = UNIFY_FAITHFUL_WAR_NAME	
+}
+
+take_celestial_capital = {
+	type = take_capital
+
+	attacker = {
+		badboy_factor = 0
+		prestige_factor = 2
+		peace_cost_factor = 1.0
+
+		peace_options = {
+			po_take_mandate_warlord #Attacker (Warlord) may claim the Mandate of Heaven
+		}
+		country_desc = CHINESE_EMPIRE_COUNTRY
+		prov_desc = CLAIM_MANDATE_OF_HEAVEN
+	}
+	defender = {
+		badboy_factor = 0.25
+		prestige_factor = 2
+		peace_cost_factor = 1.0
+
+		peace_options = {
+			po_annex_warlord #Defender (Emperor) may annex the Warlord
+		}
+		country_desc = WARLORD_COUNTRY
+		prov_desc = ANNEX_WARLORD
+	}
+
+	war_name = CLAIM_MANDATE_WARLORD_WAR_NAME
+}
+
+take_warlord_capital = {
+	type = take_capital
+
+	attacker = {
+		badboy_factor = 0.25
+		prestige_factor = 2
+		peace_cost_factor = 1.0
+
+		peace_options = {
+			po_annex_warlord #Attacker (Emperor) may annex the Warlord
+		}
+		country_desc = WARLORD_COUNTRY
+		prov_desc = ANNEX_WARLORD
+	}
+	defender = {
+		badboy_factor = 0
+		prestige_factor = 2
+		peace_cost_factor = 1.0
+
+		peace_options = {
+			po_take_mandate_warlord #Defender (Warlord) may claim the Mandate of Heaven
+		}
+		country_desc = CHINESE_EMPIRE_COUNTRY
+		prov_desc = CLAIM_MANDATE_OF_HEAVEN
+	}
+
+	war_name = CRUSH_REBEL_WARLORD_WAR_NAME
+}
+
+warlord_show_superiority = {
+	type = superiority
+
+	attacker = {
+		badboy_factor = 0.5
+		prestige_factor = 1
+		peace_cost_factor = 0.66
+		peace_options =  {
+			po_demand_provinces
+		}
+		allowed_provinces = {
+			superregion = china_superregion
+		}
+		country_desc = WARLORD_COUNTRY
+		prov_desc = ALL_CHINESE_PROVS
+		allow_annex = yes
+	}
+	defender = {
+		badboy_factor = 0.5
+		prestige_factor = 1
+		peace_cost_factor = 0.66
+		peace_options =  {
+			po_demand_provinces
+		}
+		allowed_provinces = {
+			superregion = china_superregion
+		}
+		country_desc = WARLORD_COUNTRY
+		prov_desc = ALL_CHINESE_PROVS
+	}
+	war_name = ZHANGUO_SHIDAI_WAR_NAME
+}
+ai_show_superiority = {
+	type = superiority
+	attacker = {
+		badboy_factor = 0.5
+		prestige_factor = 1
+		peace_cost_factor = 1
+		peace_options = {
+			po_demand_provinces
+		}
+		prov_desc = ALL_PROVS
+	}
+	defender = {
+		badboy_factor = 0.5
+		prestige_factor = 1
+		peace_cost_factor = 1
+		peace_options = {
+			po_demand_provinces
+		}
+		prov_desc = ALL_PROVS
+	}
+	war_name = AI_CONQUEST_WAR_NAME
+}
+player_show_superiority = {
+	type = superiority
+	attacker = {
+		badboy_factor = 0.5
+		prestige_factor = 1
+		peace_cost_factor = 1
+		peace_options = {
+			po_demand_provinces
+		}
+		prov_desc = ALL_PROVS
+	}
+	defender = {
+		badboy_factor = 1
+		prestige_factor = 1
+		peace_cost_factor = 1
+		peace_options = {
+			po_demand_provinces
+		}
+		prov_desc = ALL_PROVS
+	}
+	war_name = AI_CONQUEST_WAR_NAME
+}
+ai_imperialism_show_superiority = {
+	type = superiority
+	attacker = {
+		badboy_factor = 0.5
+		prestige_factor = 1
+		peace_cost_factor = 0.75
+		peace_options = {
+			po_demand_provinces
+		}
+		prov_desc = ALL_PROVS
+	}
+	defender = {
+		badboy_factor = 0.5
+		prestige_factor = 1
+		peace_cost_factor = 0.75
+		peace_options = {
+			po_demand_provinces
+		}
+		prov_desc = ALL_PROVS
+	}
+	war_name = AI_IMPERIAL_CONQUEST_WAR_NAME
+}
+player_imperialism_show_superiority = {
+	type = superiority
+	attacker = {
+		badboy_factor = 0.5
+		prestige_factor = 1
+		peace_cost_factor = 0.75
+		peace_options = {
+			po_demand_provinces
+		}
+		prov_desc = ALL_PROVS
+	}
+	defender = {
+		badboy_factor = 1
+		prestige_factor = 1
+		peace_cost_factor = 0.85
+		peace_options = {
+			po_demand_provinces
+		}
+		prov_desc = ALL_PROVS
+	}
+	war_name = AI_IMPERIAL_CONQUEST_WAR_NAME
+}
+warlord_conquest = {
+	type = take_province
+
+	attacker = {
+		badboy_factor = 0.75
+		prestige_factor = 1
+		peace_cost_factor = 1
+		
+		allowed_provinces = {
+			always = yes
+		}
+
+		peace_options = {
+			po_demand_provinces
+		}
+		
+		prov_desc = ALL_PROVS
+		country_desc = WARLORD_COUNTRY
+	}
+	
+	defender = {
+		badboy_factor = 0.75
+		prestige_factor = 1
+		peace_cost_factor = 1
+		
+		allowed_provinces = {
+			superregion = china_superregion
+		}
+
+		peace_options = {
+			po_demand_provinces
+		}
+		
+		prov_desc = ALL_CHINESE_PROVS
+	}
+	
+	war_name = CONQUER_WARLORD_WAR_NAME
+}
+annex_daimyo_japan = {
+	type = take_capital
+
+	attacker = {
+		badboy_factor = 0.25
+		prestige_factor = 2
+		peace_cost_factor = 1.0
+
+		peace_options = {
+			po_annex_daimyo #Attacker (Shogun) may annex the Daimyo
+		}
+		country_desc = DAIMYO_COUNTRY
+		prov_desc = ANNEX_DAIMYO
+	}
+	defender = {
+		badboy_factor = 0.9
+		prestige_factor = 1
+		peace_cost_factor = 1
+		allowed_provinces = {
+			region = japan_region
+		}
+		peace_options = {
+			po_demand_provinces #Defender (Daimyo) may take provinces from Shogun
+		}
+	}
+
+	war_name = ANNEX_DAIMYO_WAR_NAME
+}
+take_shogunate_japan = {
+	type = take_capital
+	
+	defender = {
+		badboy_factor = 0.25
+		prestige_factor = 2
+		peace_cost_factor = 1
+		peace_options = {
+			po_annex_daimyo #Defender (Shogun) may annex the Daimyo
+		}
+	}
+	attacker = {
+		badboy_factor = 0.75
+		prestige_factor = 2
+		peace_cost_factor = 0.75
+		allowed_provinces = {
+			region = japan_region
+		}
+		peace_options = {
+			po_demand_provinces #Attacker (Daimyo) may take provinces from Shogun
+		}
+		allow_annex = yes
+		country_desc = SHOGUN_COUNTRY
+		prov_desc = ANNEX_DAIMYO
+	}
+	
+	war_name = TAKE_SHOGUNATE_WAR_NAME
+}
+unify_japan = {
+	type = take_province
+
+	attacker = {
+		badboy_factor = 0.5
+		prestige_factor = 2
+		peace_cost_factor = 0.5
+		
+		allowed_provinces = {
+			region = japan_region
+		}
+
+		peace_options = {
+			po_demand_provinces
+		}
+		
+		prov_desc = ALL_JAPANESE_PROVS
+		country_desc = ALL_JAP_INVADERS
+	}
+	
+	defender = {
+		badboy_factor = 1
+		prestige_factor = 1
+		peace_cost_factor = 1
+		
+		allowed_provinces = {
+			always = yes
+		}
+
+		peace_options = {
+			po_demand_provinces
+		}
+	}
+	
+	war_name = UNIFY_JAPAN_WAR_NAME
+}
+daimyo_conquest = {
+	type = take_province
+
+	attacker = {
+		badboy_factor = 1
+		prestige_factor = 1
+		peace_cost_factor = 1
+		
+		allowed_provinces = {
+			if = {
+				limit = { ROOT = { ai = yes } }
+				always = yes
+			}
+			else = {
+				is_claim = ROOT
+			}
+		}
+
+		peace_options = {
+			po_demand_provinces
+		}
+		
+		prov_desc = ALL_PROVS
+		country_desc = DAIMYO_COUNTRY
+	}
+	
+	defender = {
+		badboy_factor = 0.75
+		prestige_factor = 2
+		peace_cost_factor = 0.75
+		
+		allowed_provinces = {
+			region = japan_region
+		}
+
+		peace_options = {
+			po_demand_provinces
+		}
+	}
+	
+	war_name = CONQUER_DAIMYO_WAR_NAME
+}
+reputation_sabotaged_war_goal = {
+	type = superiority
+
+	attacker = {
+		badboy_factor = 0.5
+		peace_cost_factor = 0.66
+		prestige_factor = 1
+		allowed_provinces = {
+			always = yes
+		}
+		peace_options = {
+			po_demand_provinces
+		}
+	}
+	defender = {
+		badboy_factor = 1
+		peace_cost_factor = 1
+		prestige_factor = 1
+	}
+
+	war_name = REPUTATION_WAR_NAME
+}
+slandered_merchants_war_goal = {
+	type = take_capital
+
+	attacker = {
+		badboy_factor = 0
+		peace_cost_factor = 1
+		prestige_factor = 1
+		allowed_provinces = {
+			always = no
+		}
+		allowed_provinces_are_eligible = yes
+		peace_options = {
+			po_slandered_merchants
+		}
+	}
+	defender = {
+		badboy_factor = 1
+		prestige_factor = 1
+		peace_cost_factor = 1
+		allowed_provinces = {
+			always = no
+		}
+		allowed_provinces_are_eligible = yes
+	}
+
+	war_name = SLANDERED_MERCHANTS_WAR_NAME
+}
+agitated_subject_war_goal = {
+	type = superiority
+
+	attacker = {
+		badboy_factor = 0
+		peace_cost_factor = 1
+		prestige_factor = 1
+		allowed_provinces = {
+			always = no
+		}
+		allowed_provinces_are_eligible = yes
+		peace_options = {
+			po_annex_subject
+		}
+	}
+	defender = {
+		badboy_factor = 0
+		prestige_factor = 1
+		peace_cost_factor = 1
+		allowed_provinces = {
+			always = no
+		}
+		allowed_provinces_are_eligible = yes
+		peace_options = {
+			po_agitate_independence
+		}
+	}
+
+	war_name = AGITATE_WAR_NAME
+}
+holy_war_war_goal = {
+	type = superiority
+
+	attacker = {
+		badboy_factor = 0.5
+		peace_cost_factor = 0.75
+		prestige_factor = 1.5
+		peace_options = {
+			po_demand_provinces
+			po_return_cores
+		}
+	}
+	defender = {
+		badboy_factor = 1
+		peace_cost_factor = 1
+		prestige_factor = 1
+	}
+
+	war_name = HOLY_WAR
+}
+enforce_piracy_pact_war_goal = {
+	type = naval_superiority
+
+	attacker = {
+		badboy_factor = 0.5
+		peace_cost_factor = 1
+		prestige_factor = 1
+		allowed_provinces = {
+			always = no
+		}
+		allowed_provinces_are_eligible = yes
+		peace_options = {
+			po_enforce_piracy_pact
+		}
+	}
+	defender = {
+		badboy_factor = 0.5
+		prestige_factor = 1
+		peace_cost_factor = 1
+		allowed_provinces = {
+			always = no
+		}
+		allowed_provinces_are_eligible = yes
+		peace_options = {
+			po_free_reign_piracy
+		}
+	}
+	war_name = ENFORCE_PIRACY_WAR_NAME
+}
+#Reversed so attacker can enforce piracy on defender rather than previous cb
+reverse_enforce_piracy_pact_war_goal = {
+	type = naval_superiority
+
+	attacker = {
+		badboy_factor = 0.5
+		peace_cost_factor = 1
+		prestige_factor = 1
+		allowed_provinces = {
+			always = no
+		}
+		allowed_provinces_are_eligible = yes
+		peace_options = {
+			po_free_reign_piracy
+		}
+	}
+	defender = {
+		badboy_factor = 0.5
+		prestige_factor = 1
+		peace_cost_factor = 1
+		allowed_provinces = {
+			always = no
+		}
+		allowed_provinces_are_eligible = yes
+		peace_options = {
+			po_enforce_piracy_pact
+		}
+	}
+	war_name = REVERSE_ENFORCE_PIRACY_WAR_NAME
+}
+#Timurid Conquest
+timurid_conquest = {
+	type = take_province
+
+	attacker = {
+		badboy_factor = 1
+		peace_cost_factor = 1
+		prestige_factor = 1
+
+		allowed_provinces = {
+			owner = { dynasty = "Timurid" }
+		}
+
+		peace_options = {
+			po_demand_provinces
+		}
+
+		prov_desc = ALL_PROVS
+		country_desc = TIMURID_PRINCES
+	}
+	defender = {
+		badboy_factor = 1
+		peace_cost_factor = 1
+		prestige_factor = 1
+
+		allowed_provinces = {
+			always = yes
+		}
+
+		peace_options = {
+			po_demand_provinces
+		}
+
+		prov_desc = ALL_PROVS
+		country_desc = TIMURID_PRINCES
+	}
+
+	war_name = CLAIM_WAR_NAME
+}
+privateers_triggered_war_goal = {
+	type = naval_superiority
+
+	attacker = {
+		badboy_factor = 1
+		peace_cost_factor = 0.5
+		prestige_factor = 1
+
+		allowed_provinces = {
+			always = yes
+		}
+
+		peace_options = {
+			po_demand_provinces
+		}
+
+		prov_desc = ALL_PROVS
+	}
+	defender = {
+		badboy_factor = 1
+		peace_cost_factor = 0.5
+		prestige_factor = 1
+
+		allowed_provinces = {
+			always = yes
+		}
+
+		prov_desc = ALL_PROVS
+	}
+
+	war_name = ENFORCE_PIRACY_WAR_NAME
+}

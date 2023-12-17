@@ -1,0 +1,17 @@
+owner = KHA
+controller = KHA
+add_core = KHA
+culture = khalkha
+religion = tengri_pagan_reformed
+capital = "Barag"
+trade_goods = livestock
+hre = no
+base_tax = 1 
+base_production = 1
+base_manpower = 1
+is_city = yes
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

@@ -1,0 +1,20 @@
+#1077 - Solikamsk
+
+owner = PRM
+controller = PRM
+capital = "Usolye Kamskoye"
+culture = uralic
+religion = tengri_pagan_reformed #Sami Shamanism
+trade_goods = salt # was center of salt mining
+hre = no
+is_city = yes
+add_core = PRM
+#changes
+base_tax = 2 
+base_production = 3
+base_manpower = 1
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

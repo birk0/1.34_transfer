@@ -1,0 +1,190 @@
+country_decisions = {
+	
+	enthrone_timurid_prince = {
+		major = yes
+		potential = {
+			normal_or_historical_nations = yes
+			was_never_end_game_tag_trigger = yes
+			exists = yes
+			OR = {
+				ai = no
+				capital_scope = { 
+					OR = {
+						region = khorasan_region
+						area = isfahan_area
+						area = kerman_area
+						area = persian_gulf_coast
+						area = farsistan_area
+						area = mogostan_area
+					}
+				}
+				AND = {
+					is_nomad = no
+					capital_scope = { region = central_asia_region }
+					any_neighbor_country = {
+						dynasty = "Timurid"
+					}
+				}
+			}
+			NOT = { total_own_and_non_tributary_subject_development = 200 }
+			NOT = { dynasty = "Timurid" }
+			any_known_country = {
+				dynasty = "Timurid"
+			}
+			NOT = { tag = HLR }
+			NOT = { tag = ROM }
+			NOT = { tag = MUG }
+			NOT = { tag = PER }
+			NOT = { tag = TIM }
+			OR = {
+				culture_group = iranian
+				primary_culture = uzbehk
+				primary_culture = turkmeni
+			}
+			religion_group = muslim
+		}
+		provinces_to_highlight = {
+			is_core = TIM
+			OR = {
+				NOT = { owned_by = ROOT }
+				NOT = { is_core = ROOT }
+			}
+		}
+		allow = {
+			OR = {
+				any_owned_province = {
+					is_core = TIM
+				}
+				is_subject_of = TIM
+			}
+			NOT = { dynasty = "Timurid" }
+		}
+		effect = {
+			custom_tooltip = tooltip_about_timurid_empire
+			change_government_to_monarchy = yes
+			define_ruler = {
+				dynasty = "Timurid"
+			}
+			if = {
+				limit = {
+					has_heir = yes
+				}
+				remove_heir = {}
+			}
+			define_heir = {
+				dynasty = "Timurid"
+			}
+			add_government_reform = timurid_prince
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		ai_importance = 400
+	}
+
+	timurid_nation = {
+		major = yes
+		potential = {
+			OR = {
+				culture_group = iranian
+				primary_culture = uzbehk
+				primary_culture = turkmeni
+			}
+			exists = yes
+			normal_or_historical_nations = yes
+			was_never_end_game_tag_trigger = yes
+			NOT = { has_country_flag = formed_timurids_flag }
+			OR = {
+				ai = no
+				is_playing_custom_nation = no
+			}
+			NOT = { tag = PAP }
+			NOT = { tag = HLR }
+			NOT = { tag = ROM }
+			NOT = { tag = MUG }
+			NOT = { tag = PER }
+			NOT = { tag = TIM }
+			NOT = { tag = ARB }
+			is_colonial_nation = no
+			religion_group = muslim
+			has_reform = timurid_prince
+		}
+		provinces_to_highlight = {
+			owner = { has_reform = timurid_prince }
+			OR = {
+				NOT = { owned_by = ROOT }
+				NOT = { is_core = ROOT }
+			}
+		}
+		allow = {
+			NOT = { exists = TIM }
+			all_known_country = {
+				NOT = { has_reform = timurid_prince }
+			}
+			is_free_or_tributary_trigger = yes
+			is_at_war = no
+			OR = {
+				owns_core_province = 446	# Herat
+				owns_core_province = 454	# Samarkand
+			}
+		}
+		effect = {
+			if = {
+				limit = {
+					owns_core_province = 454
+				}
+				454 = {
+					move_capital_effect = yes
+				}
+			}
+			else = {
+				446 = {
+					move_capital_effect = yes
+				}
+			}
+			change_tag = TIM
+			swap_non_generic_missions = yes
+			remove_non_electors_emperors_from_empire_effect = yes
+			if = {
+				limit = {
+					NOT = { government_rank = 3 }
+				}
+				set_government_rank = 3
+			}
+			add_prestige = 25
+			add_country_modifier = {
+				name = centralization_modifier
+				duration = 3650
+			}
+			if = {
+				limit = {
+					NOT = { primary_culture = uzbehk }
+				}
+				change_primary_culture = uzbehk
+			}
+			persia_region = {
+				limit = {
+					NOT = { is_core = TIM }
+					NOT = { owned_by = TIM }
+				}
+				add_core = TIM
+			}
+			khorasan_region = {
+				limit = {
+					NOT = { is_core = TIM }
+					NOT = { owned_by = TIM }
+				}
+				add_core = TIM
+			}
+			if = {
+				limit = { has_custom_ideas = no }
+				country_event = { id = ideagroups.1 } #Swap Ideas
+			}
+			set_country_flag = formed_timurids_flag
+		}
+		ai_will_do = {
+			factor = 400
+		}
+		ai_importance = 600
+	}
+}

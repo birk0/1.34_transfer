@@ -1,0 +1,180 @@
+regulate_imperial_princes_decision = {
+	empire = celestial_empire
+	potential = {
+		NOT = { has_estate_privilege = estate_eunuchs_mng_powerful_eunuchs }
+		NOT = { has_reform = khanganate_reform }
+		if = {
+			limit = { ai = yes }
+			emperor_has_stable_mandate = yes # Trigger which prevents AI from passing reforms if it'll die from it
+		}
+	}
+	emperor = {
+		land_morale = 0.2
+	}
+	on_effect = {
+		if = {
+			limit = { ai = yes }
+			add_country_modifier = {
+				name = ai_passed_celestial_reform_buff
+				duration = 1825
+				hidden = yes
+			}
+		}
+	}
+}
+
+seaban_decision = {
+	empire = celestial_empire
+	potential = {
+		NOT = { has_reform = khanganate_reform }
+		if = {
+			limit = { has_mission = eoc_mission_reform_the_seaban }
+			mission_completed = eoc_mission_reform_the_seaban
+		}
+		if = {
+			limit = { ai = yes }
+			emperor_has_stable_mandate = yes # Trigger which prevents AI from passing reforms if it'll die from it
+		}
+	}
+	emperor = {
+		merchants = 1
+		global_trade_power = 0.33
+	}
+	on_effect = {
+		if = {
+			limit = { ai = yes }
+			add_country_modifier = {
+				name = ai_passed_celestial_reform_buff
+				duration = 1825
+				hidden = yes
+			}
+		}
+	}
+	required_reform = regulate_imperial_princes_decision
+}
+
+new_centralizing_top_government_decision = {
+	empire = celestial_empire
+	potential = {
+		NOT = { has_reform = khanganate_reform }
+		if = {
+			limit = { ai = yes }
+			emperor_has_stable_mandate = yes # Trigger which prevents AI from passing reforms if it'll die from it
+		}
+	}
+	emperor = {
+		monarch_admin_power = 1
+	}
+	on_effect = {
+		if = {
+			limit = { ai = yes }
+			add_country_modifier = {
+				name = ai_passed_celestial_reform_buff
+				duration = 1825
+				hidden = yes
+			}
+		}
+	}
+	required_reform = seaban_decision
+}
+
+structure_diplomatic_corps_decision = {
+	empire = celestial_empire
+	potential = {
+		NOT = { has_reform = khanganate_reform }
+		if = {
+			limit = { ai = yes }
+			emperor_has_stable_mandate = yes # Trigger which prevents AI from passing reforms if it'll die from it
+		}
+	}
+	emperor = {
+		diplomatic_reputation = 2
+		diplomatic_annexation_cost = -0.3
+	}
+	on_effect = {
+		if = {
+			limit = { ai = yes }
+			add_country_modifier = {
+				name = ai_passed_celestial_reform_buff
+				duration = 1825
+				hidden = yes
+			}
+		}
+	}
+	required_reform = new_centralizing_top_government_decision
+}
+
+establish_gaituguiliu_decision = {
+	empire = celestial_empire
+	potential = {
+		NOT = { has_reform = khanganate_reform }
+		if = {
+			limit = { ai = yes }
+			emperor_has_stable_mandate = yes # Trigger which prevents AI from passing reforms if it'll die from it
+		}
+	}
+	emperor = {
+		core_creation = -0.1
+	}
+	on_effect = {
+		if = {
+			limit = { ai = yes }
+			add_country_modifier = {
+				name = ai_passed_celestial_reform_buff
+				duration = 1825
+				hidden = yes
+			}
+		}
+	}
+	required_reform = structure_diplomatic_corps_decision
+}
+
+reform_land_tax_decision = {
+	empire = celestial_empire
+	potential = {
+		NOT = { has_reform = khanganate_reform }
+		if = {
+			limit = { ai = yes }
+			emperor_has_stable_mandate = yes # Trigger which prevents AI from passing reforms if it'll die from it
+		}
+	}
+	emperor = {
+		administrative_efficiency = 0.05
+		years_of_nationalism = -5
+	}
+	on_effect = {
+		if = {
+			limit = { ai = yes }
+			add_country_modifier = {
+				name = ai_passed_celestial_reform_buff
+				duration = 1825
+				hidden = yes
+			}
+		}
+	}
+	required_reform = establish_gaituguiliu_decision
+}
+
+military_governors_decision = {
+	empire = celestial_empire
+	potential = {
+		NOT = { has_reform = khanganate_reform }
+		if = {
+			limit = { ai = yes }
+			emperor_has_stable_mandate = yes # Trigger which prevents AI from passing reforms if it'll die from it
+		}
+	}
+	emperor = {
+	}
+	on_effect = {
+		if = {
+			limit = { ai = yes }
+			add_country_modifier = {
+				name = ai_passed_celestial_reform_buff
+				duration = 1825
+				hidden = yes
+			}
+		}
+	}
+	required_reform = reform_land_tax_decision
+}

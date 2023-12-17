@@ -1,0 +1,23 @@
+# 929 - Anchuras
+
+owner = CAS		#Juan II of Castille
+controller = CAS
+add_core = CAS
+culture = castillian
+religion = catholic
+hre = no
+base_tax = 2
+base_production = 1
+trade_goods = iron 
+base_manpower = 1
+capital = "Anchuras" 
+is_city = yes
+
+1444.12.1 = { # New Bookmark
+	trade_goods = unknown
+	remove_cores = yes
+	owner = ---
+	controller = ---
+	hre = no
+}
+

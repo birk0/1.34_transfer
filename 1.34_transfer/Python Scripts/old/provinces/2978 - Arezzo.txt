@@ -1,0 +1,19 @@
+# 2978 - Arezzo
+
+owner = LAN
+controller = LAN
+culture = tuscan 
+religion = catholic 
+hre = yes 
+base_tax = 6
+base_production = 6
+trade_goods = livestock
+base_manpower = 2
+capital = "Arezzo" 
+is_city = yes # Estimated 
+add_core = LAN
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

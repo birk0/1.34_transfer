@@ -1,0 +1,20 @@
+# 2150 - Jinhua
+
+owner = MNG
+controller = MNG
+add_core = MNG
+culture = wu
+religion = mahayana #changes
+capital = "Jinhua"
+trade_goods = grain
+hre = no
+base_tax = 3 
+base_production = 4
+base_manpower = 1 #changes
+is_city = yes
+add_core = WUU
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

@@ -1,0 +1,21 @@
+owner = JNN
+controller = JNN
+add_core = JNN
+add_core = SOF
+is_city = yes
+culture = bambara 
+religion = shamanism #Fetishism
+capital = "Sah"
+trade_goods = grain
+hre = no
+base_tax = 3 
+base_production = 3
+native_size = 40
+native_ferocity = 4
+native_hostileness = 9
+base_manpower = 1
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

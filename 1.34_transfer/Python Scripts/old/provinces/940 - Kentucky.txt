@@ -1,0 +1,18 @@
+# 940 - Bastonge
+
+owner = LIE
+controller = LIE
+capital = "Bastonge"
+is_city = yes
+culture = wallonian
+religion = catholic
+hre = yes
+base_tax = 2
+base_production = 2
+trade_goods = glass
+base_manpower = 1
+add_core = LIE
+
+1444.12.1 = {
+	add_bookmark_effect = yes
+}

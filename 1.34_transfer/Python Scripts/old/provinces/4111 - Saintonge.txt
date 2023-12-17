@@ -1,0 +1,19 @@
+# 4111 - Saintonge and Aunis
+
+owner = FRA
+controller = FRA
+capital = "Saintes"
+is_city = yes
+culture = cosmopolitan_french
+religion = catholic 
+hre = no
+base_tax = 4
+base_production = 4
+trade_goods = grain
+base_manpower = 2
+add_core = FRA
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

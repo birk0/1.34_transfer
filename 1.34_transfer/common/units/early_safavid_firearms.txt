@@ -1,0 +1,13 @@
+# Early Safavid Firearms
+
+type = artillery
+manpower = 0.1
+unit_type = muslim
+
+maneuver = 2
+offensive_morale = 0
+defensive_morale = 2
+offensive_fire = 2
+defensive_fire = 0
+offensive_shock = 0
+defensive_shock = 2

@@ -1,0 +1,7 @@
+#Prov1234 - Qasr Ibrim
+culture = nubian
+religion = coptic # To represent tenous hold over the province.
+
+base_tax = 1
+base_production = 1
+base_manpower = 1

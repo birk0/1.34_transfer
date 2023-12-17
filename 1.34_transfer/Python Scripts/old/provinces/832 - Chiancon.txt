@@ -1,0 +1,19 @@
+# 832 - Anyigba
+
+owner = KAN
+controller = KAN
+add_core = KAN
+culture = hausa 
+religion = sunni
+capital = "Anyigba"
+trade_goods = dyes
+hre = no
+base_tax = 1 
+base_production = 1
+is_city = yes
+base_manpower = 1
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

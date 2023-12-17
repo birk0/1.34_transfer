@@ -1,0 +1,2621 @@
+#All buildings reworked
+
+# Generally avoid using complex triggers in the buildings, this interface is very performance hungry. Most complex stuff done via onactions/scripted effects behind scenes.
+
+# ai_will_do stuff here is kind of deprecated and hardcoded. It works but there's an improved script which controls much of the AI's building behavior via decisions instead.
+
+####################################
+#       FORTS
+####################################
+
+fort_15th = {
+	cost = 75
+	time = 2
+	#tech_requirement = mil_1
+	modifier = {
+		fort_level = 1
+		allowed_num_of_buildings = 1
+	}
+	on_built = {
+		on_fort_built = yes
+	}
+	build_trigger = {
+		FROM = { is_at_war = no }
+		may_have_fort_trigger = yes
+	}
+	keep_trigger = {
+		may_have_fort_trigger = yes
+	}
+	on_destroyed = {
+		on_fort_destroyed = yes
+		refund_ai_building_money = {
+			fort = yes
+			amount = 75
+		}
+	}
+	on_obsolete = {
+	}
+
+	onmap = yes
+	influencing_fort = yes
+
+	ai_will_do = { #This is hardcoded and isn't affected
+		factor = 1000
+	}
+}
+
+fort_16th = {
+	cost = 150
+	time = 2
+	make_obsolete = fort_15th
+	#tech_requirement = mil_8
+	build_trigger = {
+		FROM = { is_at_war = no }
+		may_have_fort_trigger = yes
+	}
+	keep_trigger = {
+		may_have_fort_trigger = yes
+	}
+	modifier = {
+		fort_level = 2
+		allowed_num_of_buildings = 1
+	}
+	on_built = {
+		on_fort_built = yes
+	}
+	on_destroyed = {
+		on_fort_destroyed = yes
+		refund_ai_building_money = { 
+			fort = yes
+			amount = 150 
+		}
+	}
+	on_obsolete = {
+	}
+	onmap = yes
+	influencing_fort = yes
+	ai_will_do = { #hardcoded
+		factor = 1000
+	}
+}
+
+fort_17th = {
+	cost = 300
+	time = 2
+	#tech_requirement = mil_16
+	make_obsolete = fort_16th
+
+	build_trigger = {
+		FROM = { is_at_war = no }
+		may_have_fort_trigger = yes
+	}
+	keep_trigger = {
+		may_have_fort_trigger = yes
+	}
+	modifier = {
+		fort_level = 3
+		allowed_num_of_buildings = 1
+	}
+	on_built = {
+		on_fort_built = yes
+	}
+	on_destroyed = {
+		on_fort_destroyed = yes
+		refund_ai_building_money = { 
+			fort = yes
+			amount = 300
+		}
+	}
+	on_obsolete = {
+	}
+
+	onmap = yes
+	influencing_fort = yes
+
+	ai_will_do = { 
+		factor = 1000
+	}
+}
+
+fort_18th = {
+	cost = 450
+	time = 2
+	#tech_requirement = mil_24
+
+	make_obsolete = fort_17th
+
+	modifier = {
+		fort_level = 4
+		allowed_num_of_buildings = 1
+	}
+
+	build_trigger = {
+		FROM = { is_at_war = no }
+		may_have_fort_trigger = yes
+	}
+	keep_trigger = {
+		may_have_fort_trigger = yes
+	}
+	on_built = {
+		on_fort_built = yes
+	}
+	on_destroyed = {
+		on_fort_destroyed = yes
+		refund_ai_building_money = { 
+			fort = yes
+			amount = 450 
+		}
+	}
+	on_obsolete = {
+	}
+
+	onmap = yes
+	influencing_fort = yes
+
+	ai_will_do = { 
+		factor = 1000
+	}
+}
+
+#######################################
+#				DEFENCES
+#######################################
+
+earthern_rampart = {
+	cost = 100
+	time = 3
+	#tech_requiriement = mil_4
+	build_trigger = {
+		has_fort_building_trigger = yes
+	}
+	keep_trigger = {
+		NOT = { has_province_modifier = remove_tenaille_building_modifier } 
+	}
+	modifier = {
+	}
+	on_built = {
+		on_tenaille_built = yes
+	}
+	on_destroyed = {
+		on_tenaille_destroyed = yes
+		refund_ai_building_money = {
+			amount = 100
+		}
+	}
+	on_obsolete = {
+	}
+	ai_will_do = {
+		factor = 1000
+		modifier = {
+			factor = 0
+			NOT = { can_build = earthern_rampart }
+		} 
+		#LIMIT
+		modifier = {
+			factor = 0 # Will only build this on borders near a hostile front
+			NOT = {
+				OR = {
+					any_neighbor_province = {
+						owner = {
+							is_hostile_country_of = { who = FROM }
+						}
+					}
+					any_neighbor_province = {
+						any_neighbor_province = {
+							owner = {
+								is_hostile_country_of = { who = FROM }
+							}
+						}
+					}
+				}
+			} 
+		}
+		modifier = {
+			factor = 0
+			NOT = { has_fort_building_trigger = yes }
+		} 
+	}
+}
+
+tenaille = {
+	cost = 300
+	time = 3
+	#tech_requiriement = mil_14
+	make_obsolete = earthern_rampart
+	build_trigger = {
+		has_fort_building_trigger = yes
+	}
+	keep_trigger = {
+		NOT = { has_province_modifier = remove_tenaille_building_modifier } 
+	}
+	modifier = {
+	}
+	on_built = {
+		on_tenaille_built = yes
+	}
+	on_destroyed = {
+		on_tenaille_destroyed = yes
+		refund_ai_building_money = {
+			amount = 300
+		}
+	}
+	on_obsolete = {
+	}
+	ai_will_do = {
+		factor = 1000
+		modifier = {
+			factor = 0
+			NOT = { can_build = tenaille }
+		} 
+		#LIMIT
+		modifier = {
+			factor = 0 # Will only build this on borders near a hostile front
+			NOT = {
+				OR = {
+					any_neighbor_province = {
+						owner = {
+							is_hostile_country_of = { who = FROM }
+						}
+					}
+					any_neighbor_province = {
+						any_neighbor_province = {
+							owner = {
+								is_hostile_country_of = { who = FROM }
+							}
+						}
+					}
+				}
+			} 
+		}
+		modifier = {
+			factor = 0
+			NOT = { has_fort_building_trigger = yes }
+		} 
+	}
+}
+
+####################
+#		Navy:
+####################
+dock = {
+	cost = 100
+	time = 12
+	#tech_requirement = dip_1
+	build_trigger = {
+		has_port = yes
+	}
+	modifier = {
+		local_sailors = 250
+		local_sailors_modifier = 0.25
+	}
+	on_built = {
+	}
+	on_destroyed = {
+		refund_ai_building_money = {
+			amount = 100
+		}
+	}
+	on_obsolete = {
+	}
+	ai_will_do = {
+		factor = 0
+	}
+}
+
+drydock = {
+	cost = 200
+	time = 12
+	#tech_requirement = dip_8
+
+	make_obsolete = dock
+
+	build_trigger = {
+		has_port = yes
+	}
+	modifier = {
+		local_sailors_modifier = 0.5
+		local_sailors = 500
+	}
+	on_built = {
+	}
+	on_destroyed = {
+		refund_ai_building_money = {
+			amount = 200
+		}
+	}
+	on_obsolete = {
+	}
+	ai_will_do = {
+		factor =0
+	}
+}
+
+naval_arsenal = {
+	cost = 500
+	time = 12
+	#tech_requirement = dip_17
+
+	make_obsolete = drydock
+
+	build_trigger = {
+		has_port = yes
+	}
+
+	modifier = {
+		local_sailors_modifier = 1
+		local_sailors = 1000
+	}
+	on_built = {
+	}
+	on_destroyed = {
+		refund_ai_building_money = {
+			amount = 500
+		}
+	}
+	on_obsolete = {
+	}
+
+	ai_will_do = {
+		factor = 0
+	}
+}
+
+shipyard = {
+	cost = 200
+	time = 12
+	#tech_requirement = dip_1
+	build_trigger = {
+		has_port = yes
+	}
+	modifier = {
+		naval_forcelimit = 0.5
+		ship_recruit_speed = -0.25
+		local_ship_repair = 0.25
+	}
+	on_built = {
+	}
+	on_destroyed = {
+		refund_ai_building_money = {
+			amount = 200
+		}
+	}
+	on_obsolete = {
+	}
+	ai_will_do = {
+		factor = 0
+	}
+}
+
+grand_shipyard = {
+	cost = 600
+	time = 12
+    #tech_requirement = dip_1
+
+	make_obsolete = shipyard
+
+	build_trigger = {
+		has_port = yes
+	}
+	modifier = {
+		naval_forcelimit = 1
+		ship_recruit_speed = -0.50
+		local_ship_repair = 0.50
+	}
+	on_built = {
+	}
+	on_destroyed = {
+		refund_ai_building_money = {
+			amount = 600
+		}
+	}
+	on_obsolete = {
+	}
+	ai_will_do = {
+		factor = 0
+	}
+}
+
+###########################
+#		Army 
+###########################
+
+barracks = {
+	cost = 120
+	time = 12
+	#tech_requirement = mil_1
+	modifier = {
+		local_manpower_modifier = 0.25
+	}
+	on_built = {
+	}
+	on_destroyed = {
+		refund_ai_building_money = {
+			amount = 120
+		}
+	}
+	on_obsolete = {
+	}
+
+	ai_will_do = {
+		factor = 1000
+		modifier = {
+			factor = 0
+			NOT = { can_build = barracks }
+		} 
+		modifier = { #limit
+			factor = 0.2
+			FROM = { manpower_percentage = 0.5 }
+		}
+		modifier = { #Makes building VITAL
+			factor = 10
+			FROM = { #big army, small reserve.
+				army_size_percentage = 0.75
+				NOT = { manpower_percentage = 0.2 }
+			}
+		}
+		modifier = {
+			factor = 0.5
+			local_autonomy = 50 #centralised provinces first.
+		}
+	}
+}
+
+training_fields = {
+	cost = 350
+	time = 12
+	#tech_requirement = mil_8
+
+	make_obsolete = barracks
+
+	modifier = {
+		local_manpower_modifier = 0.6
+	}
+	
+	on_built = {
+	}
+	on_destroyed = {
+		refund_ai_building_money = {
+			amount = 350
+		}
+	}
+	on_obsolete = {
+	}
+
+	ai_will_do = {
+		factor = 1000
+		modifier = {
+			factor = 0
+			NOT = { can_build = training_fields }
+		} 
+		modifier = { #limit
+			factor = 0.2
+			FROM = { manpower_percentage = 0.5 }
+		}
+		modifier = { #Makes building VITAL
+			factor = 10
+			FROM = { #big army, small reserve.
+				army_size_percentage = 0.75
+				NOT = { manpower_percentage = 0.2 }
+			}
+		}
+		modifier = {
+			factor = 0.5
+			local_autonomy = 50 #centralised provinces first.
+		}
+	}
+}
+
+weapons_arsenal = {
+	cost = 800
+	time = 12
+	#tech_requirement = mil_19
+
+	make_obsolete = training_fields
+
+	modifier = {
+		local_manpower_modifier = 1.25
+	}
+	on_built = {
+	}
+	on_destroyed = {
+		refund_ai_building_money = {
+			amount = 800
+		}
+	}
+	on_obsolete = {
+	}
+
+	ai_will_do = {
+		factor = 1000
+		modifier = {
+			factor = 0
+			NOT = { can_build = weapons_arsenal }
+		} 
+		modifier = { #limit
+			factor = 0.2
+			FROM = { manpower_percentage = 0.5 }
+		}
+		modifier = { #Makes building VITAL
+			factor = 10
+			FROM = { #big army, small reserve.
+				army_size_percentage = 0.75
+				NOT = { manpower_percentage = 0.2 }
+			}
+		}
+		modifier = {
+			factor = 0.5
+			local_autonomy = 50 #centralised provinces first.
+		}
+	}
+}
+
+regimental_camp = {
+	cost = 400
+	time = 12
+	#tech_requirement = mil_1
+	modifier = {
+		land_forcelimit = 0.5
+	}
+	on_built = {
+	}
+	on_destroyed = {
+		refund_ai_building_money = {
+			amount = 400
+		}
+	}
+	on_obsolete = {
+	}
+	ai_will_do = {
+		factor = 1000
+		modifier = {
+			factor = 0
+			NOT = { can_build = regimental_camp }
+		} 
+		modifier = { #limit
+			factor = 0.2
+			FROM = { NOT = { army_size_percentage = 0.9 } }
+		}
+		modifier = { #Makes building VITAL
+			factor = 10
+			OR = {
+				FROM = { #rival has a bigger army than us.
+					army_size_percentage = 1
+					any_rival_country = {
+						army_size = FROM
+					}
+				}
+				FROM = { #player is scary.
+					any_neighbor_country = {
+						ai = no
+						army_size = FROM
+					}
+				}
+			}
+		}
+		modifier = {
+			factor = 0.5 #centralised provinces first.
+			local_autonomy = 50
+		}
+	}
+}
+
+conscription_center = {
+	cost = 800
+	time = 12
+	#tech_requirement = mil_1
+	make_obsolete = regimental_camp
+
+	on_built = {
+	}
+	on_destroyed = {
+		refund_ai_building_money = {
+			amount = 800
+		}
+	}
+	modifier = {
+		land_forcelimit = 1
+	}
+	on_obsolete = {
+	}
+
+	ai_will_do = {
+		factor = 1000
+		modifier = {
+			factor = 0.2
+			NOT = { can_build = conscription_center }
+		} 
+		modifier = { #limit
+			factor = 0
+			FROM = { NOT = { army_size_percentage = 0.9 } }
+		}
+		modifier = { #Makes building VITAL
+			factor = 10
+			OR = {
+				FROM = { #rival has a bigger army than us.
+					army_size_percentage = 1
+					any_rival_country = {
+						army_size = FROM
+					}
+				}
+				FROM = { #player is scary.
+					any_neighbor_country = {
+						ai = no
+						army_size = FROM
+					}
+				}
+			}
+		}
+		modifier = {
+			factor = 0.5 #centralised provinces first.
+			local_autonomy = 50
+		}
+	}
+}
+
+################################################
+# Manufactories
+################################################
+
+manufactory = {
+	cost = 1000
+	time = 60
+	modifier = {
+		trade_goods_size = 1
+	}
+}
+
+#If trade good assignment changes, also update scripted trigger "has_manufactory trigger"!
+
+fishery = {
+	#tech_requirement = dip_1
+	manufactory = {
+		fish
+		seafood
+	}
+	onmap = yes
+	on_destroyed = {
+		refund_ai_building_money = {
+			amount = 1000
+		}
+	}
+	ai_will_do = {
+		factor = 1000
+		modifier = {
+			factor = 0
+			NOT = { can_build = fishery }
+		}
+		#no limit
+		modifier = { #Makes building VITAL
+			factor = 10
+			FROM = { #50%+ trade share in node.
+				any_trade_node = {
+					any_trade_node_member_province = {
+						province_id = ROOT
+					}
+					trade_share = {
+						country = FROM
+						share = 50
+					}
+				}
+			}
+		}
+		modifier = {
+			factor = 0.5
+			FROM = { #higher trade share nodes first.
+				any_trade_node = {
+					any_trade_node_member_province = {
+						province_id = ROOT
+					}
+					NOT = {
+						trade_share = {
+							country = FROM
+							share = 10
+						}
+					}
+				}
+			}
+		}
+	}
+}
+mills = {
+	#tech_requirement = adm_1
+	manufactory = {
+		lumber
+		tropical_wood
+		wood
+		paper
+	}
+	onmap = yes
+	on_destroyed = {
+		refund_ai_building_money = {
+			amount = 1000
+		}
+	}
+	ai_will_do = {
+		factor = 1000
+		modifier = {
+			factor = 0
+			NOT = { can_build = mills }
+		}
+		#no limit
+		modifier = { #Makes building VITAL
+			factor = 10
+			FROM = { #50%+ trade share in node.
+				any_trade_node = {
+					any_trade_node_member_province = {
+						province_id = ROOT
+					}
+					trade_share = {
+						country = FROM
+						share = 50
+					}
+				}
+			}
+		}
+		modifier = {
+			factor = 0.5
+			FROM = { #higher trade share nodes first.
+				any_trade_node = {
+					any_trade_node_member_province = {
+						province_id = ROOT
+					}
+					NOT = {
+						trade_share = {
+							country = FROM
+							share = 10
+						}
+					}
+				}
+			}
+		}
+	}
+}
+granary = {
+	#tech_requirement = dip_1
+	manufactory = {
+		rye
+		maize
+		grain
+		rice
+		millet
+	}
+	onmap = yes
+	on_destroyed = {
+		refund_ai_building_money = {
+			amount = 1000
+		}
+	}
+	ai_will_do = {
+		factor = 1000
+		modifier = {
+			factor = 0
+			NOT = { can_build = granary }
+		}
+		#no limit
+		modifier = { #Makes building VITAL
+			factor = 10
+			FROM = { #50%+ trade share in node.
+				any_trade_node = {
+					any_trade_node_member_province = {
+						province_id = ROOT
+					}
+					trade_share = {
+						country = FROM
+						share = 50
+					}
+				}
+			}
+		}
+		modifier = {
+			factor = 0.5
+			FROM = { #higher trade share nodes first.
+				any_trade_node = {
+					any_trade_node_member_province = {
+						province_id = ROOT
+					}
+					NOT = {
+						trade_share = {
+							country = FROM
+							share = 10
+						}
+					}
+				}
+			}
+		}
+	}
+}
+brewery = {
+	#tech_requirement = dip_1
+	manufactory = {
+		alcohol
+		wine
+	}
+	onmap = yes
+	on_destroyed = {
+		refund_ai_building_money = {
+			amount = 1000
+		}
+	}
+	ai_will_do = {
+		factor = 1000
+		modifier = {
+			factor = 0
+			NOT = { can_build = brewery }
+		}
+		#no limit
+		modifier = { #Makes building VITAL
+			factor = 10
+			FROM = { #50%+ trade share in node.
+				any_trade_node = {
+					any_trade_node_member_province = {
+						province_id = ROOT
+					}
+					trade_share = {
+						country = FROM
+						share = 50
+					}
+				}
+			}
+		}
+		modifier = {
+			factor = 0.5
+			FROM = { #higher trade share nodes first.
+				any_trade_node = {
+					any_trade_node_member_province = {
+						province_id = ROOT
+					}
+					NOT = {
+						trade_share = {
+							country = FROM
+							share = 10
+						}
+					}
+				}
+			}
+		}
+	}
+}
+agreopy = {
+	#tech_requirement = dip_1
+	manufactory = {
+		fruit
+		honey
+		dates
+	}
+	onmap = yes
+	on_destroyed = {
+		refund_ai_building_money = {
+			amount = 1000
+		}
+	}
+	ai_will_do = {
+		factor = 1000
+		modifier = {
+			factor = 0
+			NOT = { can_build = agreopy }
+		}
+		#no limit
+		modifier = { #Makes building VITAL
+			factor = 10
+			FROM = { #50%+ trade share in node.
+				any_trade_node = {
+					any_trade_node_member_province = {
+						province_id = ROOT
+					}
+					trade_share = {
+						country = FROM
+						share = 50
+					}
+				}
+			}
+		}
+		modifier = {
+			factor = 0.5
+			FROM = { #higher trade share nodes first.
+				any_trade_node = {
+					any_trade_node_member_province = {
+						province_id = ROOT
+					}
+					NOT = {
+						trade_share = {
+							country = FROM
+							share = 10
+						}
+					}
+				}
+			}
+		}
+	}
+}
+wharf = {
+	#tech_requirement = dip_1
+	manufactory = {
+		naval_supplies
+		salt
+	}
+	onmap = yes
+	on_destroyed = {
+		refund_ai_building_money = {
+			amount = 1000
+		}
+	}
+	ai_will_do = {
+		factor = 1000
+		modifier = {
+			factor = 0
+			NOT = { can_build = wharf }
+		}
+		#no limit
+		modifier = { #Makes building VITAL
+			factor = 10
+			FROM = { #50%+ trade share in node.
+				any_trade_node = {
+					any_trade_node_member_province = {
+						province_id = ROOT
+					}
+					trade_share = {
+						country = FROM
+						share = 50
+					}
+				}
+			}
+		}
+		modifier = {
+			factor = 0.5
+			FROM = { #higher trade share nodes first.
+				any_trade_node = {
+					any_trade_node_member_province = {
+						province_id = ROOT
+					}
+					NOT = {
+						trade_share = {
+							country = FROM
+							share = 10
+						}
+					}
+				}
+			}
+		}
+	}
+}
+farm_estate = {
+	#tech_requirement = dip_1
+	manufactory = {
+		vegetables
+		olives
+		oils
+		nuts
+	}
+	onmap = yes
+	on_destroyed = {
+		refund_ai_building_money = {
+			amount = 1000
+		}
+	}
+	ai_will_do = {
+		factor = 1000
+		modifier = {
+			factor = 0
+			NOT = { can_build = farm_estate }
+		}
+		#no limit
+		modifier = { #Makes building VITAL
+			factor = 10
+			FROM = { #50%+ trade share in node.
+				any_trade_node = {
+					any_trade_node_member_province = {
+						province_id = ROOT
+					}
+					trade_share = {
+						country = FROM
+						share = 50
+					}
+				}
+			}
+		}
+		modifier = {
+			factor = 0.5
+			FROM = { #higher trade share nodes first.
+				any_trade_node = {
+					any_trade_node_member_province = {
+						province_id = ROOT
+					}
+					NOT = {
+						trade_share = {
+							country = FROM
+							share = 10
+						}
+					}
+				}
+			}
+		}
+	}
+}
+ranch = {
+	#tech_requirement = dip_1
+	manufactory = {
+		horses
+		camels
+		elephants
+		livestock
+		leather
+		ivory
+	}
+	onmap = yes
+	on_destroyed = {
+		refund_ai_building_money = {
+			amount = 1000
+		}
+	}
+	ai_will_do = {
+		factor = 1000
+		modifier = {
+			factor = 0
+			NOT = { can_build = ranch }
+		}
+		#no limit
+		modifier = { #Makes building VITAL
+			factor = 10
+			FROM = { #50%+ trade share in node.
+				any_trade_node = {
+					any_trade_node_member_province = {
+						province_id = ROOT
+					}
+					trade_share = {
+						country = FROM
+						share = 50
+					}
+				}
+			}
+		}
+		modifier = {
+			factor = 0.5
+			FROM = { #higher trade share nodes first.
+				any_trade_node = {
+					any_trade_node_member_province = {
+						province_id = ROOT
+					}
+					NOT = {
+						trade_share = {
+							country = FROM
+							share = 10
+						}
+					}
+				}
+			}
+		}
+	}
+}
+textile = {
+	#tech_requirement = dip_1
+	manufactory = {
+		fur
+		wool
+		cotton
+		cloth
+		silk
+		carpet
+	}
+	onmap = yes
+	on_destroyed = {
+		refund_ai_building_money = {
+			amount = 1000
+		}
+	}
+	ai_will_do = {
+		factor = 1000
+		modifier = {
+			factor = 0
+			NOT = { can_build = textile }
+		}
+		#no limit
+		modifier = { #Makes building VITAL
+			factor = 10
+			FROM = { #50%+ trade share in node.
+				any_trade_node = {
+					any_trade_node_member_province = {
+						province_id = ROOT
+					}
+					trade_share = {
+						country = FROM
+						share = 50
+					}
+				}
+			}
+		}
+		modifier = {
+			factor = 0.5
+			FROM = { #higher trade share nodes first.
+				any_trade_node = {
+					any_trade_node_member_province = {
+						province_id = ROOT
+					}
+					NOT = {
+						trade_share = {
+							country = FROM
+							share = 10
+						}
+					}
+				}
+			}
+		}
+	}
+}
+metal_works = {
+	#tech_requirement = adm_1
+	manufactory = {
+		iron
+		copper
+		steel
+	}
+	onmap = yes
+	on_destroyed = {
+		refund_ai_building_money = {
+			amount = 1000
+		}
+	}
+	ai_will_do = {
+		factor = 1000
+		modifier = {
+			factor = 0
+			NOT = { can_build = metal_works }
+		}
+		#no limit
+		modifier = { #Makes building VITAL
+			factor = 10
+			FROM = { #50%+ trade share in node.
+				any_trade_node = {
+					any_trade_node_member_province = {
+						province_id = ROOT
+					}
+					trade_share = {
+						country = FROM
+						share = 50
+					}
+				}
+			}
+		}
+		modifier = {
+			factor = 0.5
+			FROM = { #higher trade share nodes first.
+				any_trade_node = {
+					any_trade_node_member_province = {
+						province_id = ROOT
+					}
+					NOT = {
+						trade_share = {
+							country = FROM
+							share = 10
+						}
+					}
+				}
+			}
+		}
+	}
+}
+weapons = {
+	#tech_requirement = adm_1
+	manufactory = {
+		explosives
+		gunpowder
+	}
+	onmap = yes
+	on_destroyed = {
+		refund_ai_building_money = {
+			amount = 1000
+		}
+	}
+	ai_will_do = {
+		factor = 1000
+		modifier = {
+			factor = 0
+			NOT = { can_build = weapons }
+		}
+		#no limit
+		modifier = { #Makes building VITAL
+			factor = 10
+			FROM = { #50%+ trade share in node.
+				any_trade_node = {
+					any_trade_node_member_province = {
+						province_id = ROOT
+					}
+					trade_share = {
+						country = FROM
+						share = 50
+					}
+				}
+			}
+		}
+		modifier = {
+			factor = 0.5
+			FROM = { #higher trade share nodes first.
+				any_trade_node = {
+					any_trade_node_member_province = {
+						province_id = ROOT
+					}
+					NOT = {
+						trade_share = {
+							country = FROM
+							share = 10
+						}
+					}
+				}
+			}
+		}
+	}
+}
+tradecompany = {
+	#tech_requirement = dip_1
+	manufactory = {
+		spices
+		cloves
+		tobacco
+		opium
+	}
+	onmap = yes
+	on_destroyed = {
+		refund_ai_building_money = {
+			amount = 1000
+		}
+	}
+	ai_will_do = {
+		factor = 1000
+		modifier = {
+			factor = 0
+			NOT = { can_build = tradecompany }
+		}
+		#no limit
+		modifier = { #Makes building VITAL
+			factor = 10
+			FROM = { #50%+ trade share in node.
+				any_trade_node = {
+					any_trade_node_member_province = {
+						province_id = ROOT
+					}
+					trade_share = {
+						country = FROM
+						share = 50
+					}
+				}
+			}
+		}
+		modifier = {
+			factor = 0.5
+			FROM = { #higher trade share nodes first.
+				any_trade_node = {
+					any_trade_node_member_province = {
+						province_id = ROOT
+					}
+					NOT = {
+						trade_share = {
+							country = FROM
+							share = 10
+						}
+					}
+				}
+			}
+		}
+	}
+}
+plantations = {
+	#tech_requirement = dip_1
+	manufactory = {
+		cocoa
+		coffee
+		tea
+		chocolate
+		sugar
+	}
+	onmap = yes
+	on_destroyed = {
+		refund_ai_building_money = {
+			amount = 1000
+		}
+	}
+	ai_will_do = {
+		factor = 1000
+		modifier = {
+			factor = 0
+			NOT = { can_build = plantations }
+		}
+		#no limit
+		modifier = { #Makes building VITAL
+			factor = 10
+			FROM = { #50%+ trade share in node.
+				any_trade_node = {
+					any_trade_node_member_province = {
+						province_id = ROOT
+					}
+					trade_share = {
+						country = FROM
+						share = 50
+					}
+				}
+			}
+		}
+		modifier = {
+			factor = 0.5
+			FROM = { #higher trade share nodes first.
+				any_trade_node = {
+					any_trade_node_member_province = {
+						province_id = ROOT
+					}
+					NOT = {
+						trade_share = {
+							country = FROM
+							share = 10
+						}
+					}
+				}
+			}
+		}
+	}
+}
+atelier = {
+	#tech_requirement = dip_1
+	manufactory = {
+		incense
+		dyes
+		gems
+	}
+	onmap = yes
+	on_destroyed = {
+		refund_ai_building_money = {
+			amount = 1000
+		}
+	}
+	ai_will_do = {
+		factor = 1000
+		modifier = {
+			factor = 0
+			NOT = { can_build = atelier }
+		}
+		#no limit
+		modifier = { #Makes building VITAL
+			factor = 10
+			FROM = { #50%+ trade share in node.
+				any_trade_node = {
+					any_trade_node_member_province = {
+						province_id = ROOT
+					}
+					trade_share = {
+						country = FROM
+						share = 50
+					}
+				}
+			}
+		}
+		modifier = {
+			factor = 0.5
+			FROM = { #higher trade share nodes first.
+				any_trade_node = {
+					any_trade_node_member_province = {
+						province_id = ROOT
+					}
+					NOT = {
+						trade_share = {
+							country = FROM
+							share = 10
+						}
+					}
+				}
+			}
+		}
+	}
+}
+kiln = {
+	#tech_requirement = adm_1
+	manufactory = {
+		clay
+		glass
+		chinaware
+	}
+	onmap = yes
+	on_destroyed = {
+		refund_ai_building_money = {
+			amount = 1000
+		}
+	}
+	ai_will_do = {
+		factor = 1000
+		modifier = {
+			factor = 0
+			NOT = { can_build = kiln }
+		}
+		#no limit
+		modifier = { #Makes building VITAL
+			factor = 10
+			FROM = { #50%+ trade share in node.
+				any_trade_node = {
+					any_trade_node_member_province = {
+						province_id = ROOT
+					}
+					trade_share = {
+						country = FROM
+						share = 50
+					}
+				}
+			}
+		}
+		modifier = {
+			factor = 0.5
+			FROM = { #higher trade share nodes first.
+				any_trade_node = {
+					any_trade_node_member_province = {
+						province_id = ROOT
+					}
+					NOT = {
+						trade_share = {
+							country = FROM
+							share = 10
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+mint = {
+	#tech_requirement = adm_1
+	manufactory = {
+		silver
+		gold
+	}
+	potential = {
+	}
+	modifier = {
+		gold_depletion_chance_modifier = -0.05
+		trade_goods_size = 0.5
+	}
+	onmap = yes
+	show_separate = yes # Means as a manufactory it will be shown according to the old way
+	on_built = {}
+	on_destroyed = {
+		refund_ai_building_money = {
+			amount = 1000
+		}
+	}
+	on_obsolete = {}
+
+	ai_will_do = {
+		factor = 9999 #AI always wants this building if available
+		modifier = {
+			factor = 0
+			NOT = { can_build = mint }
+		} 
+	}
+}
+
+furnace = {
+	#tech_requirement = adm_1
+	manufactory = {
+		coal
+	}
+	potential = {
+	}
+	modifier = {
+		global_trade_goods_size_modifier = 0.01
+		trade_goods_size = 0.5
+	}
+	onmap = yes
+	show_separate = yes # Means as a manufactory it will be shown according to the old way
+	on_built = {
+		
+	}
+	on_destroyed = {
+		refund_ai_building_money = {
+			amount = 1000
+		}
+	}
+	on_obsolete = {
+	}
+
+	ai_will_do = { 
+		factor = 9999 #AI always wants this building if available
+		modifier = {
+			factor = 0
+			NOT = { can_build = furnace }
+		}
+	}
+}
+
+soldier_households = {
+	#tech_requirement = adm_1
+	manufactory = {
+		all
+	}
+
+	bonus_manufactory = { # Will apply an extra modifier if these goods
+		#food
+		grain
+		millet
+		rye
+		fish
+		seafood
+		maize
+		rice
+		vegetables
+		fruit
+		dates
+		livestock
+	}
+
+	modifier = {
+		local_manpower = 1
+	}
+	bonus_modifier = {
+		local_manpower = 1
+	}
+	onmap = no
+	show_separate = yes # Means as a manufactory it will be shown according to the old way
+	on_built = {
+	}
+	on_destroyed = {
+		refund_ai_building_money = {
+			amount = 1000
+		}
+	}
+	on_obsolete = {
+	}
+
+	ai_will_do = {
+		factor = 1000
+		modifier = {
+			factor = 0
+			NOT = { can_build = soldier_households }
+		} 
+		#LIMIT:
+		modifier = {
+			factor = 0 # Won't build it on provinces where it doesn't get the bonus
+			NOT = {
+				OR = {
+					trade_goods = grain
+					trade_goods = millet
+					trade_goods = rye
+					trade_goods = fish
+					trade_goods = seafood
+					trade_goods = maize
+					trade_goods = rice
+					trade_goods = vegetables
+					trade_goods = fruit
+					trade_goods = dates
+					trade_goods = livestock
+					NOT = { has_manufactory_trigger = yes } 
+				}
+			}
+		}
+	}
+}
+state_house = {
+	#tech_requirement = adm_1
+	manufactory = {
+		all
+	}
+
+	bonus_manufactory = { # Will apply an extra modifier if these goods
+		paper
+		glass
+		gems
+	}
+
+	build_trigger = {
+	}
+	
+	keep_trigger = {
+	}
+
+	modifier = {
+		statewide_governing_cost = -0.2
+	}
+	bonus_modifier = {
+		statewide_governing_cost = -0.2
+	}
+	onmap = no
+	show_separate = yes # Means as a manufactory it will be shown according to the old way
+	on_built = {
+	}
+	on_destroyed = {
+	}
+	on_obsolete = {
+	}
+
+	ai_will_do = {
+		factor = 0 #This is useless for the AI, they will build courthouses etc instead
+	}
+}
+
+##################################
+#				TRADE
+##################################
+
+marketplace = {
+	cost = 150
+	time = 12
+	#tech_requirement = dip_1
+	modifier = {
+		province_trade_power_modifier = 0.4
+	}
+	on_built = {
+	}
+	on_destroyed = {
+		refund_ai_building_money = {
+			amount = 200
+		}
+	}
+	on_obsolete = {
+	}
+
+	ai_will_do = {
+		factor = 1000
+		modifier = {
+			factor = 0
+			NOT = { can_build = marketplace }
+		} 
+		modifier = { #limit
+			factor = 0
+			NOT = {
+				FROM = {
+					home_trade_node = {
+						any_trade_node_member_province = {
+							province_id = ROOT
+						}
+					}
+				}
+			}
+			OR = {
+				NOT = {
+					calc_true_if = {
+						amount = 10
+						all_trade_node_member_province = {
+							owned_by = FROM
+						}
+					}
+				}
+				NOT = {
+					calc_true_if = {
+						amount = 5
+						all_trade_node_member_province = {
+							has_manufactory_trigger = yes
+						}
+					}
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			trade_share = {
+				country = FROM
+				share = 80
+			}
+		}
+		modifier = { #Makes building VITAL
+			factor = 10
+			OR = {
+				province_has_center_of_trade_of_level = 1
+				province_trade_power = 5
+				calc_true_if = {
+					amount = 20
+					all_trade_node_member_province = {
+						owned_by = FROM
+						has_manufactory_trigger = yes
+					}
+				}
+			}
+		}
+		modifier = {
+			factor = 0.5 #cot's first.
+			NOT = { 
+				OR = {
+					province_has_center_of_trade_of_level = 1 
+					province_trade_power = 5
+				}
+			}
+		}
+	}
+}
+
+trade_depot = {
+	cost = 400
+	time = 12
+	#tech_requirement = dip_1
+	make_obsolete = marketplace
+
+	modifier = {
+		province_trade_power_modifier = 0.8
+	}
+
+	on_built = {
+	}
+	on_destroyed = {
+		refund_ai_building_money = {
+			amount = 400
+		}
+	}
+	on_obsolete = {
+	}
+
+	ai_will_do = {
+		factor = 1000
+		modifier = {
+			factor = 0
+			NOT = { can_build = trade_depot }
+		} 
+		modifier = { #limit
+			factor = 0
+			NOT = {
+				FROM = {
+					home_trade_node = {
+						any_trade_node_member_province = {
+							province_id = ROOT
+						}
+					}
+				}
+			}
+			OR = {
+				NOT = {
+					calc_true_if = {
+						amount = 10
+						all_trade_node_member_province = {
+							owned_by = FROM
+						}
+					}
+				}
+				NOT = {
+					calc_true_if = {
+						amount = 5
+						all_trade_node_member_province = {
+							has_manufactory_trigger = yes
+						}
+					}
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			trade_share = {
+				country = FROM
+				share = 80
+			}
+		}
+		modifier = { #Makes building VITAL
+			factor = 10
+			OR = {
+				province_has_center_of_trade_of_level = 1
+				province_trade_power = 5
+				calc_true_if = {
+					amount = 20
+					all_trade_node_member_province = {
+						owned_by = FROM
+						has_manufactory_trigger = yes
+					}
+				}
+			}
+		}
+		modifier = {
+			factor = 0.5 #cot's first.
+			NOT = { 
+				OR = {
+					province_has_center_of_trade_of_level = 1 
+					province_trade_power = 5
+				}
+			}
+		}
+	}
+}
+
+stock_exchange = {
+	cost = 750
+	time = 12
+	#tech_requirement = dip_1
+	make_obsolete = trade_depot
+
+	modifier = {
+		province_trade_power_modifier = 1.25
+	}
+
+	on_built = {
+	}
+	on_destroyed = {
+		refund_ai_building_money = {
+			amount = 750
+		}
+	}
+	on_obsolete = {
+	}
+
+	ai_will_do = {
+		factor = 1000
+		modifier = {
+			factor = 0
+			NOT = { can_build = stock_exchange }
+		} 
+		modifier = { #limit
+			factor = 0
+			NOT = {
+				FROM = {
+					home_trade_node = {
+						any_trade_node_member_province = {
+							province_id = ROOT
+						}
+					}
+				}
+			}
+			OR = {
+				NOT = {
+					calc_true_if = {
+						amount = 10
+						all_trade_node_member_province = {
+							owned_by = FROM
+						}
+					}
+				}
+				NOT = {
+					calc_true_if = {
+						amount = 5
+						all_trade_node_member_province = {
+							has_manufactory_trigger = yes
+						}
+					}
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			trade_share = {
+				country = FROM
+				share = 80
+			}
+		}
+		modifier = { #Makes building VITAL
+			factor = 10
+			OR = {
+				province_has_center_of_trade_of_level = 1
+				province_trade_power = 5
+				calc_true_if = {
+					amount = 20
+					all_trade_node_member_province = {
+						owned_by = FROM
+						has_manufactory_trigger = yes
+					}
+				}
+			}
+		}
+		modifier = {
+			factor = 0.5 #cot's first.
+			NOT = { 
+				OR = {
+					province_has_center_of_trade_of_level = 1 
+					province_trade_power = 5
+				}
+			}
+		}
+	}
+}
+
+town_center = {
+	cost = 200
+	time = 24
+	#tech_requirement = dip_12
+	modifier = {
+	   trade_value_modifier = 0.15
+	}
+	on_built = {
+	}
+	on_destroyed = {
+		refund_ai_building_money = {
+			amount = 200
+		}
+	}
+	on_obsolete = {
+	}
+
+	ai_will_do = {
+		factor = 1000
+		modifier = {
+			factor = 0
+			NOT = { can_build = town_center }
+		} 
+		#no limit
+		modifier = { #Makes building VITAL
+			factor = 10 
+			has_manufactory_trigger = yes
+		}
+		modifier = {
+			factor = 0.5 #centralised provinces first
+			local_autonomy = 50
+		}
+		modifier = { #focus on tax if tax is higher 
+			factor = 0.25
+			NOT = { has_tax_building_trigger = yes } 
+			variable_arithmetic_trigger = {
+				export_to_variable = {
+					which = production_dev
+					value = trigger_value:base_production
+				}
+				export_to_variable = {
+					which = tax_dev
+					value = trigger_value:base_tax
+				}
+				OR = {
+					check_variable = {
+						which = tax_dev
+						which = production_dev
+					}
+					is_variable_equal = {
+						which = tax_dev
+						which = production_dev
+					}
+				}
+			}
+		}
+	}
+}
+
+trade_center = {
+	cost = 400
+	time = 24
+	make_obsolete = town_center
+	#tech_requirement = dip_12
+	modifier = {
+	   trade_value_modifier = 0.25
+	}
+	on_built = {
+	}
+	on_destroyed = {
+		refund_ai_building_money = {
+			amount = 400
+		}
+	}
+	on_obsolete = {
+	}
+
+	ai_will_do = {
+		factor = 1000
+		modifier = {
+			factor = 0
+			NOT = { can_build = trade_center }
+		} 
+		#no limit
+		modifier = { #Makes building VITAL
+			factor = 10 
+			has_manufactory_trigger = yes
+		}
+		modifier = {
+			factor = 0.5 #centralised provinces first
+			local_autonomy = 50
+		}
+		modifier = { #focus on tax if tax is higher 
+			factor = 0.25
+			NOT = { has_tax_building_trigger = yes } 
+			variable_arithmetic_trigger = {
+				export_to_variable = {
+					which = production_dev
+					value = trigger_value:base_production
+				}
+				export_to_variable = {
+					which = tax_dev
+					value = trigger_value:base_tax
+				}
+				OR = {
+					check_variable = {
+						which = tax_dev
+						which = production_dev
+					}
+					is_variable_equal = {
+						which = tax_dev
+						which = production_dev
+					}
+				}
+			}
+		}
+	}
+}
+
+global_trade_center = {
+	cost = 850
+	time = 24
+	make_obsolete = trade_center
+	#tech_requirement = dip_22
+	modifier = {
+	   trade_value_modifier = 0.4
+	}
+	on_built = {
+	}
+	on_destroyed = {
+		refund_ai_building_money = {
+			amount = 850
+		}
+	}
+	on_obsolete = {
+	}
+
+	ai_will_do = {
+		factor = 1000
+		modifier = {
+			factor = 0
+			NOT = { can_build = global_trade_center }
+		} 
+		#no limit
+		modifier = { #Makes building VITAL
+			factor = 10 
+			has_manufactory_trigger = yes
+		}
+		modifier = {
+			factor = 0.5 #centralised provinces first
+			local_autonomy = 50
+		}
+		modifier = { #focus on tax if tax is higher 
+			factor = 0.25
+			NOT = { has_tax_building_trigger = yes } 
+			variable_arithmetic_trigger = {
+				export_to_variable = {
+					which = production_dev
+					value = trigger_value:base_production
+				}
+				export_to_variable = {
+					which = tax_dev
+					value = trigger_value:base_tax
+				}
+				OR = {
+					check_variable = {
+						which = tax_dev
+						which = production_dev
+					}
+					is_variable_equal = {
+						which = tax_dev
+						which = production_dev
+					}
+				}
+			}
+		}
+	}
+}
+
+#######################################
+#				GOVERNMENT
+#######################################
+
+courthouse = {
+	cost = 100
+	time = 12
+	#tech_requirement = adm_1
+	modifier = {
+		local_state_maintenance_modifier = -0.25
+		local_autonomy = -0.1
+		local_governing_cost = -0.25
+	}
+	on_built = {
+		
+	}
+	on_destroyed = {
+		refund_ai_building_money = {
+			amount = 100
+		}
+	}
+	on_obsolete = {
+	}
+	build_trigger = {
+	}
+
+	ai_will_do = {
+		factor = 1
+	}
+}
+
+town_hall = {
+	cost = 200
+	time = 12
+	#tech_requirement = adm_1
+
+	make_obsolete = courthouse
+
+	modifier = {
+		local_state_maintenance_modifier = -0.5
+		local_autonomy = -0.2
+		local_governing_cost = -0.5
+	}
+
+	on_built = {
+		
+	}
+	on_destroyed = {
+		refund_ai_building_money = {
+			amount = 200
+		}
+	}
+	on_obsolete = {
+	}
+	build_trigger = {
+	}
+
+	ai_will_do = {
+		factor = 1
+	}
+}
+
+
+################################
+#			PRODUCTION 
+#################################
+
+workshop = {
+	cost = 200
+	time = 12
+	#tech_requirement = adm_6
+	modifier = {
+		local_production_efficiency = 0.3
+	}
+	on_built = {
+	}
+	on_destroyed = {
+		refund_ai_building_money = {
+			amount = 200
+		}
+	}
+	on_obsolete = {
+	}
+
+	allow_in_gold_provinces = no #Production dosent affect gold
+	ai_will_do = {
+		factor = 1000
+		modifier = {
+			factor = 0
+			NOT = { can_build = workshop }
+		} 
+		modifier = { #Less likely to build it if there's no manufactory
+			factor = 0.2
+			NOT = { has_manufactory_trigger = yes }
+			can_build_manufactory = yes
+		}
+		modifier = {
+			factor = 3 # Makes building VITAL
+			base_production = 5
+		}
+		modifier = { #centralised provinces first.
+			factor = 0.5
+			local_autonomy = 50
+		}
+	}
+}
+
+counting_house = {
+	cost = 450
+	time = 12
+	#tech_requirement = adm_12
+
+	make_obsolete = workshop
+	modifier = {
+		local_production_efficiency = 0.6
+	}
+
+	on_built = {
+		
+	}
+	on_destroyed = {
+		refund_ai_building_money = {
+			amount = 450
+		}
+	}
+	on_obsolete = {
+	}
+	allow_in_gold_provinces = no #Production dosent affect gold
+
+	ai_will_do = {
+		factor = 1000
+		modifier = {
+			factor = 0
+			NOT = { can_build = counting_house }
+		} 
+		modifier = { #Less likely to build it if there's no manufactory
+			factor = 0.2
+			NOT = { has_manufactory_trigger = yes }
+			can_build_manufactory = yes
+		}
+		modifier = {
+			factor = 3 # Makes building VITAL
+			base_production = 5
+		}
+		modifier = { #centralised provinces first.
+			factor = 0.5
+			local_autonomy = 50
+		}
+	}
+}
+
+constable = {
+	cost = 900
+	time = 12
+	#tech_requirement = adm_24
+	make_obsolete = counting_house
+	on_destroyed = {
+		refund_ai_building_money = {
+			amount = 900
+		}
+	}
+	on_built = {  }
+	modifier = {
+		local_production_efficiency = 1
+	}
+	allow_in_gold_provinces = no #Production dosent affect gold
+	
+	ai_will_do = {
+		factor = 1000
+		modifier = {
+			factor = 0
+			NOT = { can_build = constable }
+		} 
+		modifier = { #Less likely to build it if there's no manufactory
+			factor = 0.2
+			NOT = { has_manufactory_trigger = yes }
+			can_build_manufactory = yes
+		}
+		modifier = {
+			factor = 3 # Makes building VITAL
+			base_production = 5
+		}
+		modifier = { #centralised provinces first.
+			factor = 0.5
+			local_autonomy = 50
+		}
+	}
+}
+
+#################################
+#			TAXATION 
+#################################
+
+temple = {
+	cost = 250
+	time = 12
+	#tech_requirement = adm_1
+	modifier = {
+		local_tax_modifier = 0.3
+		tax_income = 1
+	}
+	on_built = {
+	}
+	on_destroyed = {
+		refund_ai_building_money = {
+			amount = 250
+		}
+	}
+	on_obsolete = {
+	}
+
+	ai_will_do = {
+		factor = 1000
+		modifier = {
+			factor = 0
+			NOT = { can_build = temple }
+		} 
+		modifier = {
+			factor = 0.2 # Less likely to build in provinces with better production and no manufactory
+			NOT = { has_manufactory_trigger = yes } 
+			can_build_manufactory = yes
+			variable_arithmetic_trigger = {
+				export_to_variable = {
+					which = production_dev
+					value = trigger_value:base_production
+				}
+				export_to_variable = {
+					which = tax_dev
+					value = trigger_value:base_tax
+				}
+				check_variable = {
+					which = production_dev
+					which = tax_dev
+				}
+			}
+		}
+		modifier = { #centralised provinces first.
+			factor = 0.5
+			local_autonomy = 50
+		}
+	}
+}
+
+cathedral = {
+	make_obsolete = temple
+
+	cost = 600
+	#tech_requirement = adm_12
+	time = 12
+	modifier = {
+		local_tax_modifier = 0.6
+		tax_income = 3
+	}
+	on_built = {
+	}
+	on_destroyed = {
+		refund_ai_building_money = {
+			amount = 600
+		}
+	}
+	on_obsolete = {
+	}
+
+	ai_will_do = {
+		factor = 1000
+		modifier = {
+			factor = 0
+			NOT = { can_build = cathedral }
+		} 
+		modifier = {
+			factor = 0.2 # Less likely to build in provinces with better production and no manufactory
+			NOT = { has_manufactory_trigger = yes } 
+			can_build_manufactory = yes
+			variable_arithmetic_trigger = {
+				export_to_variable = {
+					which = production_dev
+					value = trigger_value:base_production
+				}
+				export_to_variable = {
+					which = tax_dev
+					value = trigger_value:base_tax
+				}
+				check_variable = {
+					which = production_dev
+					which = tax_dev
+				}
+			}
+		}
+		modifier = { #centralised provinces first.
+			factor = 0.5
+			local_autonomy = 50
+		}
+	}
+}
+
+grand_treasury = {
+	make_obsolete = cathedral
+
+	cost = 1000
+	#tech_requirement = adm_19
+	time = 12
+	modifier = {
+		local_tax_modifier = 1
+		tax_income = 6
+	}
+	on_built = {
+	}
+	on_destroyed = {
+		refund_ai_building_money = {
+			amount = 1000
+		}
+	}
+	on_obsolete = {
+	}
+
+	ai_will_do = {
+		factor = 1000
+		modifier = {
+			factor = 0
+			NOT = { can_build = grand_treasury }
+		} 
+		modifier = {
+			factor = 0.2 # Less likely to build in provinces with better production and no manufactory
+			NOT = { has_manufactory_trigger = yes } 
+			can_build_manufactory = yes
+			variable_arithmetic_trigger = {
+				export_to_variable = {
+					which = production_dev
+					value = trigger_value:base_production
+				}
+				export_to_variable = {
+					which = tax_dev
+					value = trigger_value:base_tax
+				}
+				check_variable = {
+					which = production_dev
+					which = tax_dev
+				}
+			}
+		}
+		modifier = { #centralised provinces first.
+			factor = 0.5
+			local_autonomy = 50
+		}
+	}
+}
+
+############################################
+#				DEVELOPMENT 
+############################################
+
+paved_road = {
+	cost = 150
+	time = 12
+	#tech_requirement = adm_1
+	modifier = {
+		local_development_cost = -0.05
+		local_build_time = -0.15
+		local_friendly_movement_speed = 0.15
+		allowed_num_of_buildings = 1
+	}
+	on_destroyed = {
+		refund_ai_building_money = {
+			amount = 150
+		}
+	}
+	on_built = {  }
+
+	ai_will_do = {
+		factor = 1
+	}
+}
+
+imperial_road = {
+	cost = 600
+	#tech_requirement = adm_15
+	make_obsolete = paved_road
+	time = 12
+	modifier = {
+		local_development_cost = -0.1
+		local_build_time = -0.25
+		local_friendly_movement_speed = 0.25
+		allowed_num_of_buildings = 2
+	}
+
+	on_built = {
+		
+	}
+	on_destroyed = {
+		refund_ai_building_money = {
+			amount = 600
+		}
+	}
+	on_obsolete = {
+	}
+
+	ai_will_do = {
+		factor = 1000
+		modifier = {
+			factor = 0
+			NOT = { can_build = imperial_road }
+		}
+		modifier = { #limit
+			factor = 0 
+			num_free_building_slots = 1
+		}
+		modifier = {
+			factor = 10 #Makes building VITAL
+			NOT = { num_free_building_slots = 1 }
+		}
+	}
+}
+###################################
+#			EDUCATION
+###################################
+
+library = {
+	cost = 200
+	time = 12
+	#tech_requirement = dip_1
+
+	modifier = {}
+	build_trigger = {
+		may_have_library_trigger = yes
+	}
+	keep_trigger = {
+		may_have_library_trigger = yes
+		NOT = { has_province_modifier = remove_library_modifier_trigger } 
+	}
+	on_built = {
+		on_library_built = yes
+	}
+	on_destroyed = {
+		on_library_destroyed = yes
+		refund_ai_building_money = {
+			amount = 200
+		}
+	}
+
+	ai_will_do = {
+		factor = 1
+		modifier = {
+			factor = 0
+			NOT = { can_build = library }
+		}
+		modifier = {
+			factor = 1000
+			NOT = { owner_or_harmonized_religion = yes }
+			FROM = { is_lacking_institutions = yes } 
+			NOT = {
+				area_for_scope_province = {
+					owned_by = FROM
+					has_construction = building
+				}
+			}
+		}  
+	}
+}
+grand_library = {
+	cost = 450
+	time = 12
+	make_obsolete = library
+	#tech_requirement = dip_1
+
+	modifier = {
+	}
+	build_trigger = {
+		may_have_library_trigger = yes
+	}
+	keep_trigger = {
+		may_have_library_trigger = yes
+		NOT = { has_province_modifier = remove_library_modifier_trigger } 
+	}
+	on_built = {
+		on_library_built = yes
+	}
+	on_destroyed = {
+		on_library_destroyed = yes
+		refund_ai_building_money = {
+			amount = 450
+		}
+	}
+
+	ai_will_do = {
+		factor = 1
+		modifier = {
+			factor = 0
+			NOT = { can_build = grand_library }
+		}
+		modifier = {
+			factor = 1000
+			NOT = { owner_or_harmonized_religion = yes }
+			FROM = { is_lacking_institutions = yes } 
+			NOT = {
+				area_for_scope_province = {
+					owned_by = FROM
+					has_construction = building
+				}
+			}
+		}  
+	}
+}
+university = {
+	cost = 800
+	#tech_requirement = dip_1
+	time = 12
+	make_obsolete = grand_library
+	modifier = {
+	}
+
+	build_trigger = {
+		may_have_library_trigger = yes
+	}
+	keep_trigger = {
+		may_have_library_trigger = yes
+		NOT = { has_province_modifier = remove_library_modifier_trigger } 
+	}
+	on_built = {
+		on_library_built = yes
+	}
+	on_destroyed = {
+		on_library_destroyed = yes
+		refund_ai_building_money = {
+			amount = 800
+		}
+	}
+
+	ai_will_do = {
+		factor = 1
+		modifier = {
+			factor = 0
+			NOT = { can_build = university }
+		}
+		modifier = {
+			factor = 1000
+			NOT = { owner_or_harmonized_religion = yes }
+			FROM = { is_lacking_institutions = yes } 
+			NOT = {
+				area_for_scope_province = {
+					owned_by = FROM
+					has_construction = building
+				}
+			}
+		}  
+	}
+}
+

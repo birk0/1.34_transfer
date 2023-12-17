@@ -1,0 +1,18 @@
+#384 - Medina
+
+owner = MDA
+controller = MDA
+culture = hejazi_culture
+religion = sunni
+capital = "Medina"
+trade_goods = cloth
+hre = no
+base_tax = 3 
+base_production = 3
+base_manpower = 3
+is_city = yes
+add_core = MDA
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

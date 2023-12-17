@@ -1,0 +1,23 @@
+# 89 Picardie - Principal cities: Amiens
+
+owner = FRA
+controller = FRA
+add_core = FRA
+capital = "Amiens"
+is_city = yes
+culture = cosmopolitan_french
+religion = catholic
+hre = no
+base_tax = 6 
+base_production = 6
+trade_goods = grain
+base_manpower = 5
+add_core = PIC
+fort_15th = yes
+
+1444.12.1 = {
+	trade_goods = unknown
+	owner = ---
+	controller = ---
+	hre = no
+}

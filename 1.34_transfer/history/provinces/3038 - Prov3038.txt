@@ -1,0 +1,8 @@
+#Prov3038 - Prov3038
+religion = tengri_pagan_reformed
+culture = manchu
+is_city = no
+
+base_tax = 1
+base_production = 1
+base_manpower = 1

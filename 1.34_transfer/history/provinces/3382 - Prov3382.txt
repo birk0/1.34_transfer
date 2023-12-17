@@ -1,0 +1,8 @@
+#Prov3382 - Prov3382
+religion = orthodox
+culture = russian
+is_city = no
+
+base_tax = 1
+base_production = 1
+base_manpower = 1

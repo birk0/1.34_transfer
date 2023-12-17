@@ -1,0 +1,19 @@
+#4786 - Prignitz
+
+owner = BRA
+controller = BRA
+add_core = BRA
+culture = saxon
+religion = catholic
+hre = yes
+base_tax = 2 
+base_production = 2
+trade_goods = livestock
+base_manpower = 1
+capital = "Pankow"
+is_city = yes
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

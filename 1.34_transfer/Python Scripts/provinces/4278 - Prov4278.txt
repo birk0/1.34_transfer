@@ -1,0 +1,8 @@
+#Prov4278 - Prov4278
+religion = catholic
+culture = danish
+is_city = no
+
+base_tax = 1
+base_production = 1
+base_manpower = 1

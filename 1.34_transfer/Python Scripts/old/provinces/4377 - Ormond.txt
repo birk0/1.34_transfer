@@ -1,0 +1,19 @@
+#4377 - Ormond
+
+owner = ORD
+controller = ORD
+culture = irish
+religion = catholic
+hre = no
+base_tax = 3
+base_production = 3
+trade_goods = livestock
+base_manpower = 1
+capital = "Kilkenny"
+is_city = yes
+add_core = ORD
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

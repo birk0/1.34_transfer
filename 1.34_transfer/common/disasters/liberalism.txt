@@ -1,0 +1,38 @@
+aspiration_for_liberty = {
+	potential = {
+		always = no
+	}
+
+	
+	
+	can_start = {
+		always = no
+	}
+	
+	can_stop = { 
+	}
+	
+	
+	progress = {
+		modifier = {
+			factor = 1
+			is_bankrupt = yes
+		} 
+	}
+	
+
+	
+	can_end = {
+	}
+	
+
+	modifier = {
+		global_unrest = 10
+		legitimacy = -3
+	}
+	
+	
+	on_start = aspiration_for_liberty.1
+	on_end = aspiration_for_liberty.4
+}
+

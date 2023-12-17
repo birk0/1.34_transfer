@@ -1,0 +1,19 @@
+#2211 - Ardalan
+
+owner = ARD
+controller = ARD
+culture = kurdish
+religion = sunni
+capital = "Sanandaj"
+trade_goods = cloth
+hre = no
+base_tax = 3 
+base_production = 3
+base_manpower = 1
+is_city = yes
+add_core = ARD
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

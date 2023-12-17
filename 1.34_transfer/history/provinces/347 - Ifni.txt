@@ -1,0 +1,7 @@
+#Prov347 - Ifni
+culture = berber
+religion = shiite
+
+base_tax = 1
+base_production = 1
+base_manpower = 1

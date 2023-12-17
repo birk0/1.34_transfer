@@ -1,0 +1,21 @@
+# 949 - Piennes
+
+owner = BAR
+controller = BAR
+capital = "Piennes"
+is_city = yes
+culture = burgundian
+religion = catholic
+hre = no
+base_tax = 2
+base_production = 2
+trade_goods = cloth
+base_manpower = 2
+add_core = BAR
+
+
+1430.6.26 = { owner = PRO controller = PRO add_core = PRO }
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

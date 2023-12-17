@@ -1,0 +1,18 @@
+#4514 - Sakya
+
+owner = UTS
+controller = UTS
+add_core = UTS
+add_core = PHA
+culture = tibetan
+religion = vajrayana
+capital = "Sakya"
+trade_goods = livestock
+hre = no
+base_tax = 2
+base_production = 2
+base_manpower = 1
+is_city = yes
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

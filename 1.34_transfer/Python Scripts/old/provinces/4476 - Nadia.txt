@@ -1,0 +1,17 @@
+#4476 - Nadia
+
+owner = BNG
+controller = BNG
+culture = bengali
+religion = hinduism
+capital = "Nadia"
+trade_goods = silk
+hre = no
+base_tax = 7
+base_production = 7
+base_manpower = 3
+is_city = yes
+add_core = BNG
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

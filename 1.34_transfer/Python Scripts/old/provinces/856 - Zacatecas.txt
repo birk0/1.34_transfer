@@ -1,0 +1,18 @@
+#856 - Quilabila
+
+owner = KON
+controller = KON
+culture = mbundu
+religion = shamanism #Fetishism
+capital = "Quilabila"
+is_city = yes
+trade_goods = grain
+hre = no
+base_tax = 1 
+base_production = 1
+base_manpower = 1
+add_core = KON
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

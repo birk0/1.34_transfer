@@ -1,0 +1,19 @@
+#2400 - Hsipaw
+
+owner = HSI
+controller = HSI
+culture = shan
+religion = buddhism
+capital = "Hsipaw"
+trade_goods = grain
+hre = no
+base_tax = 3 
+base_production = 3
+base_manpower = 2
+is_city = yes
+add_core = HSI
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

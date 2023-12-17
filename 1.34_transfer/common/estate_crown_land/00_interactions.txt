@@ -1,0 +1,627 @@
+#Reworked for absolutism changes/AI
+interaction = {
+    key = sale_of_titles
+    random_seed = crown_land_share
+	cooldown_months = 60
+
+    trigger = {
+        crown_land_share = 0.1
+        NOT = { num_of_rebel_armies = 1 }
+		NOT = { num_of_rebel_controlled_provinces = 1 }
+		hidden_trigger = { has_any_estates = yes }
+    }
+    effect = {
+		if = {
+            limit = { current_age = age_of_discovery }
+			if = {
+				limit = { ai = yes }
+				add_years_of_estate_land_income = 5
+			}
+			else = {
+				add_years_of_estate_land_income = 2.5
+			}
+        }
+        else_if = {
+            limit = { current_age = age_of_reformation }
+            add_years_of_estate_land_income = 2.0
+        }
+        else_if = {
+            limit = { 
+				current_age = age_of_absolutism
+				ai = no
+			}
+            add_years_of_estate_land_income = 1.5
+            add_absolutism = -1
+        }
+		else_if = {
+			limit = {
+				current_age = age_of_absolutism
+				ai = yes
+			}
+			add_years_of_estate_land_income = 1.5
+			#AI wont lose absolutism from selling land. AI finds it harder to gain absolutism because it cant use many of the player methods.
+		}
+        else_if = {
+            limit = { 
+				current_age = age_of_industry
+				ai = no
+			}
+            add_years_of_estate_land_income = 1.0
+            add_absolutism  = -1
+        }
+		else_if = {
+			limit = {
+				current_age = age_of_industry
+				ai = yes
+			}
+			add_years_of_estate_land_income = 1.0
+		}
+        custom_tooltip = ESTATES_SALE_OF_TITLES_DESC
+        give_estate_land_share_gigantic = { estate = all }
+        add_estate_loyalty = {
+            estate = all
+            loyalty = 10
+            short = yes
+        }
+		if = {
+			limit = {
+				has_government_attribute = selling_titles_increases_pa
+			}
+			add_patriarch_authority = 0.05
+		}
+		if = {
+			limit = {
+				has_country_flag = recent_land_distribution
+			}
+			clr_country_flag = recent_land_distribution
+		}
+		set_country_flag = recent_land_distribution
+    }
+	ai_will_do = {
+		factor = 100 #This is free money for the AI so theyll do it more often
+		modifier = {
+			factor = 0
+			NOT = {
+				is_year = 1446 #AI will sort out estate privileges first
+			}
+		}
+		modifier = { #OPMs wont sell crownland since they cant seize it back and end up on 0% land all game
+			factor = 0
+			NOT = { num_of_cities = 2 }
+		}
+		#AI wont sell crownland above this treasury amount 
+		modifier = {
+			factor = 0
+			treasury = 1000
+		}
+		modifier = {
+			factor = 0 #AI wont sell crown land if its below 20%. If absolutism is active, it wont sell below 60%
+			OR = {
+				NOT = { crown_land_share = 20 }
+				AND = {
+					is_absolutism_active = yes
+					NOT = { crown_land_share = 60 }
+					NOT = { has_disaster = court_and_country }
+				}
+			}
+		}
+		modifier = {
+			factor = 0 #AI will sell its crownland in CAC to revoke privileges. It will not sell it below 20% land or if no estate has influence above 50% however.
+			has_disaster = court_and_country
+			estate_influence = {
+				estate = all
+				influence = 50
+			}
+		}
+		modifier = {
+			factor = 0.5
+			OR = {
+				AND = {
+				   NOT = { crown_land_share = 25 } #Less likely to sell crownland before absolutism if its between 20-25%
+				   NOT = { is_absolutism_active = yes }
+				}
+				AND = {
+					is_absolutism_active = yes
+					NOT = { crown_land_share = 70 } #Less likely to sell crown land if absolutism is active and itll drop below 60%
+					NOT = { has_disaster = court_and_country }
+				}
+			}
+		}
+		modifier = {
+			factor = 2
+			num_of_loans = 2
+			is_in_deficit = yes
+		}
+		modifier = {
+			factor = 2
+			num_of_loans = 5
+		}
+		modifier = {
+			factor = 2
+			num_of_loans = 10
+		}
+		modifier = {
+			factor = 2
+			num_of_loans = 15
+		}
+		modifier = {
+			factor = 2
+			num_of_loans = 20
+		}
+		modifier = {
+			factor = 1.5
+			NOT = {
+				estate_loyalty = {
+					estate = all
+					loyalty = 25
+				}
+			}
+		}
+		modifier = {
+			factor = 0.25 #AI will avoid making estates too powerful
+			num_of_powerful_estates = 1
+			NOT = { has_disaster = court_and_country }
+		}
+	}
+}
+
+interaction = {
+    key = summon_the_diet
+    random_seed = random
+	cooldown_months = 60
+
+    trigger = {
+        NOT = { has_any_active_estate_agenda = yes }
+		hidden_trigger = { has_any_estates = yes }
+		NOT = { has_government_attribute = blocked_call_diet }
+    }
+
+    effect = {
+        custom_tooltip = ESTATES_SUMMON_THE_DIET_DESC
+        hidden_effect = {
+	        country_event = { id = estate_privileges_and_agendas_events.3 }               
+        }
+        custom_tooltip = SEPERATOR_TOOLTIP
+        
+		if = {
+			limit = {
+				has_country_flag = recent_estate_agenda
+			}
+			clr_country_flag = recent_estate_agenda
+		}
+		set_country_flag = recent_estate_agenda
+
+		if = {
+			limit = { NOT = { has_government_attribute = diet_increases_not_influence } }
+			tooltip = {
+				add_diet_influence_per_estate = yes
+			}
+		}
+		tooltip = {
+        	add_estate_loyalty = {
+            	estate = all
+            	loyalty = 5
+            	short = yes
+        	}
+		}
+		if = {
+			limit = {
+				has_government_attribute = republican_tradition_from_diets
+			}
+			tooltip = { add_scaled_republican_tradition = 2 }
+		}
+    }
+	ai_will_do = {
+		factor = 1
+	}
+}
+
+interaction = {
+    key = seize_land
+    random_seed = random
+	cooldown_months = 60
+
+    trigger = {
+		hidden_trigger = { has_any_estates = yes }
+        NOT = { crown_land_share = 100 }
+        NOT = { num_of_rebel_armies = 1 }
+		NOT = { num_of_rebel_controlled_provinces = 1 }
+		if = {
+			limit = {
+				ai = no #The AI struggles to revoke this more than a player would. They still get autonomy penalties but wont die to low crownland from it.
+				OR = {
+					has_estate_privilege = estate_brahmins_statutory_rights
+					AND = {
+						religion = hinduism
+						has_estate = estate_brahmins
+					}
+				}
+				has_estate = estate_brahmins
+			}
+			NOT = { has_estate_privilege = estate_brahmins_statutory_rights }
+		}
+		else_if = {
+			limit = {
+				ai = no
+				OR = {
+					has_estate_privilege = estate_nobles_statutory_rights
+					AND = {
+						has_estate = estate_nobles
+						government = monarchy
+					}
+				}
+			}
+			NOT = { has_estate_privilege = estate_nobles_statutory_rights }
+		}
+		else_if = {
+			limit = {
+				ai = no
+				OR = {
+					has_estate_privilege = estate_burghers_statutory_rights
+					AND = {
+						has_estate = estate_burghers
+						government = republic
+					}
+				}
+			}
+			NOT = { has_estate_privilege = estate_burghers_statutory_rights }
+		}
+		else_if = {
+			limit = {
+				ai = no
+				OR = {
+					has_estate_privilege = estate_church_statutory_rights
+					AND = {
+						has_estate = estate_church
+						government = theocracy
+					}
+				}
+			}
+			NOT = { has_estate_privilege = estate_church_statutory_rights }
+		}
+        is_at_war = no
+		if = {
+			limit = { has_government_attribute = can_not_seize_land }
+			NOT = { has_government_attribute_short_desc = can_not_seize_land }
+		}
+    }
+    effect = {
+        custom_tooltip = ESTATES_SEIZE_LAND_DESC
+        take_estate_land_share_massive = { estate = all }
+		custom_tooltip = SEPERATOR_TOOLTIP
+		
+		if = {
+			limit = {
+				has_country_flag = recent_land_seizure
+			}
+			clr_country_flag = recent_land_seizure
+		}
+		set_country_flag = recent_land_seizure
+
+        if = {
+			limit = { ai = yes }
+			
+			add_estate_loyalty = {
+            	estate = all
+            	loyalty = -10 #Player is capable of handling estates much better than the AI and can easily avoid them dropping below 30
+            	short = yes
+			}
+        }
+		else_if = {
+			limit = { has_government_attribute = seizing_land_loyalty }
+			add_estate_loyalty = {
+				estate = all
+				loyalty = -15
+				short = yes
+			}
+		}
+		else = {
+			add_estate_loyalty = {
+				estate = all
+				loyalty = -20
+				short = yes
+			}
+		}
+		custom_tooltip = ESTATES_SEIZE_LAND_EXCEPTION_DESC
+		re_add_loyalty_from_seized_land = yes
+		custom_tooltip = seize_land_rebels_tt
+		if = { 
+			limit = {
+				NOT = {
+					estate_loyalty = {
+						estate = all
+						loyalty = 30
+					}
+				}
+				estate_influence = {
+					estate = all
+					influence = 1
+				}				
+			}
+			spawn_rebels_seize_land_switch = yes
+		}
+		if = {
+			limit = {
+				has_government_attribute = seizing_land_takes_karma
+			}
+			add_karma = -10
+		}
+		if = {
+			limit = { 
+				is_absolutism_active = yes
+				ai = no 
+			}
+			add_absolutism = 1
+		}
+		else_if = {
+			limit = {
+				is_absolutism_active = yes
+				ai = yes
+			}
+			add_absolutism = 5
+			#AI cant use many of the player methods to gain absolutism so it ends up falling behind the player.
+		}
+	}
+	ai_will_do = {
+		factor = 50
+		#AI wont seize land if its above 30% pre absolutism or above 60% post absolutism
+		modifier = {
+			factor = 0
+			OR = {
+			   	AND = {
+			      	NOT = { is_absolutism_active = yes }
+			      	crown_land_share = 30
+			   	}
+			   	AND = {
+			      	is_absolutism_active = yes
+			      	crown_land_share = 60
+			    }
+			}
+			has_any_disaster = yes
+		}
+		modifier = {
+			factor = 0.2
+
+			# This custom event target is set by code. If ai_will_do is higher when this is set (and >50) than when it isn't,
+			# the AI will raise maintenance and wait until the event target doesn't increase the ai_will_do score
+			NOT = { has_saved_event_target = ai_suppose_full_maintenance }
+
+			NOT = {
+				estate_loyalty = {
+					estate = all
+					loyalty = 50
+				}
+			}
+
+			OR = {
+				NOT = { land_maintenance = 0.9 }
+				num_mothballed_forts = 1
+				NOT = { all_regiments_morale_percent = 90 }
+				any_owned_province = {
+					fort_level = 1
+					NOT = { garrison = 400 }
+				}
+			}
+		}
+		#AI will not seize land during the 'Court and Country' disaster
+		modifier = {
+			factor = 0
+			has_disaster = court_and_country
+		}
+		#AI will sort out privileges/sell titles etc before seizing land
+		modifier = {
+			factor = 0
+			NOT = { is_year = 1446 }
+		}
+		#AI will seize land if it has estate disasters
+		modifier = {
+			factor = 10
+			seize_land_disaster_trigger = yes
+		}
+		#AI will want to seize land more when absolutism is active
+		modifier = {
+			factor = 1.5
+			is_absolutism_active = yes
+		}
+		modifier = {
+			factor = 1.5
+			is_absolutism_active = yes
+			NOT = { average_unrest = 1 }
+		}
+		modifier = {
+			factor = 2
+			is_absolutism_active = yes
+			NOT = { crown_land_share = 50 }
+		 }
+		#AI will seize land scaled on its current crownland
+		modifier = {
+			factor = 2
+			NOT = { crown_land_share = 15 }
+		}
+		modifier = {
+			factor = 1.5
+			NOT = { crown_land_share = 20 }
+		}
+		modifier = {
+			factor = 1.5
+			NOT = { crown_land_share  = 30 }
+		}
+		modifier = {
+			factor = 1.2
+			NOT = { crown_land_share = 35 }
+		}
+		modifier = {
+			factor = 1.2
+			NOT = { crown_land_share = 50 }
+		}
+		#AI will try to seize land after it sells titles
+		modifier = {
+			factor = 10
+			has_country_flag = recent_land_distribution
+			NOT = {
+				had_country_flag = {
+					flag = recent_land_distribution
+					days = 1825
+				}
+			}
+		}
+		#AI will be less likely to seize land with lots of unrest/disloyal estates
+		modifier = {
+			factor = 0.5
+			NOT = {
+				estate_loyalty = {
+					estate = all
+					loyalty = 35
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			NOT = {
+				estate_loyalty = {
+					estate = all
+					loyalty = 30
+				}
+			}
+		}
+		modifier = {
+			factor = 0.5
+			average_unrest = 3
+		}
+		#Small countries wont seize land to prevent them from dying to rebels
+		modifier = {
+			factor = 0
+			OR = {
+				NOT = { num_of_cities = 2 }
+				NOT = { army_size_percentage = 0.2 }
+			}
+		}
+	}
+}
+#####################################
+#	NEW INTERACTIONS
+#####################################
+interaction = {
+	key = raise_war_taxes
+	random_seed = random
+	cooldown_months = 0
+	trigger = {
+		manpower_percentage = 0.2
+		OR = {
+			hidden_trigger = { NOT = { has_country_flag = raise_mobilisation_timer } }
+			custom_trigger_tooltip = {
+				tooltip = "Has NOT raised mobilisation in the past 5 years"
+				had_country_flag = {
+					flag = raise_mobilisation_timer
+					days = 1825
+				}
+			}
+			is_at_war = yes
+		}
+		custom_trigger_tooltip = {
+			tooltip = army_drill_not_96_tt
+			NOT = { army_professionalism = 0.96 }
+		}
+	}
+	effect = {
+		clr_country_flag = raise_mobilisation_timer
+		set_country_flag = raise_mobilisation_timer
+		add_yearly_manpower = -2
+		add_army_professionalism = 0.05
+		capital_scope = {
+			add_or_extend_province_modifier_effect = {
+				DURATION = 1825
+				MODIFIER = raised_mobilisation_modifier
+			}
+		}
+		add_estate_loyalty = {
+			estate = all
+			loyalty = -2
+		}
+	}
+	ai_will_do = {
+		factor = 0
+	}
+}
+interaction = {
+	key = reduce_war_taxes
+	random_seed = random
+	cooldown_months = 0
+	trigger = {
+		custom_trigger_tooltip = {
+			tooltip = army_drill_at_least_5_tt
+			army_professionalism = 0.05
+		}
+	}
+	effect = {
+		add_army_professionalism = -0.05
+		add_yearly_manpower = 0.5
+		capital_scope = {
+			add_or_extend_province_modifier_effect = {
+				DURATION = 1825
+				MODIFIER = slackened_recruitment_standards
+			}
+		}
+		add_estate_loyalty = {
+			estate = all
+			loyalty = 2
+		}
+	}
+	ai_will_do = {
+		factor = 0
+	}
+}
+interaction = {
+    key = recruit_from_estates
+    random_seed = crown_land_share
+	cooldown_months = 60
+
+    trigger = {
+		if = {
+			limit = {
+				current_age = age_of_discovery
+			}
+			crown_land_share = 10
+		}
+		else = {
+			crown_land_share = 5
+		}
+		hidden_trigger = { has_any_estates = yes }
+    }
+    effect = {
+		create_general = {
+			tradition = 100
+			add_shock = 1
+			add_siege = -1
+		}
+		if = {
+			limit = { current_age = age_of_discovery }
+			custom_tooltip = ESTATES_SALE_OF_TITLES_DESC
+        	give_estate_land_share_gigantic = { estate = all }
+			add_estate_influence_modifier = {
+            	estate = all
+				desc = est_recruit_inf_tt
+            	duration = 7300
+            	influence = 20
+            	short = yes
+        	}
+		}
+		else = {
+			custom_tooltip = give_5_crown_land_tooltip
+			change_estate_land_share = {
+				estate = all
+				share = -5
+			}
+			add_estate_influence_modifier = {
+            	estate = all
+				desc = est_recruit_inf_tt
+            	duration = 7300
+            	influence = 10
+            	short = yes
+        	}
+		}
+	}
+	ai_will_do = {
+		factor = 0 #unlike you they cant crash their game
+	}
+}

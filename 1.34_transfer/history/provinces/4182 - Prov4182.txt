@@ -1,0 +1,5 @@
+#Prov4182 - Prov4182
+
+base_tax = 1
+base_production = 1
+base_manpower = 1

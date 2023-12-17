@@ -1,0 +1,75 @@
+country_decisions = {
+
+	bukharan_nation = {
+		major = yes
+		potential = {
+			tag = SHY
+			NOT = { exists = BUK }
+			normal_or_historical_nations = yes
+			was_never_end_game_tag_trigger = yes
+			OR = {
+				ai = no
+				is_playing_custom_nation = no
+			}
+			is_emperor_of_china = no
+		}
+		provinces_to_highlight = {
+			province_id = 442
+		}
+		allow = {
+			has_institution = feudalism
+			is_free_or_tributary_trigger = yes
+			is_at_war = no
+			owns_core_province = 442 	#Bukhara
+			442 = {						#Bukhara				
+				is_state = yes
+			}
+			NOT = { 
+				overlord_of = SIB
+			}
+		}
+		effect = {
+			set_country_flag = bukharan_nation
+			442 = {
+				move_capital_effect = yes
+			}
+			change_tag = BUK
+			remove_non_electors_emperors_from_empire_effect = yes
+			if = {
+				limit = {
+					NOT = { government_rank = 2 }
+				}
+				set_government_rank = 2
+			}
+			add_prestige = 25
+			add_permanent_claim = 441 #Khiva
+			add_permanent_claim = 444 #Charjuy
+			add_permanent_claim = 453 #Qarshi
+			add_permanent_claim = 454 #Samarkand
+			add_permanent_claim = 457 #Tashkent
+			add_permanent_claim = 1967 #Khujand
+			add_permanent_claim = 1973 #Urgench
+			add_permanent_claim = 2363 #Khujand
+
+			#This is all gonna be reworked in the future after 1.34 is fully updated but for now ill do this
+			#if = {
+			#	limit = { 
+			#		NOT = { government = monarchy }
+			#		is_revolutionary = no
+			#	}
+			#	change_government_to_monarchy = yes
+			#}
+			#if = {
+			#	limit = { is_revolutionary = no }
+			#	add_government_reform = iqta
+			#}
+			#change_technology_group = muslim
+			#change_unit_type = muslim
+			country_event = { id = ideagroups.1 } #Swap Ideas
+		}
+
+		ai_will_do = {
+			factor = 1
+		}
+	}
+}

@@ -1,0 +1,23 @@
+# 185 Nemours
+
+owner = FRA
+controller = FRA
+capital = "Nemours"
+is_city = yes
+culture = cosmopolitan_french
+religion = catholic
+hre = no
+base_tax = 5
+base_production = 3
+trade_goods = paper
+base_manpower = 3
+add_core = CHP
+add_core = FRA
+
+1444.12.1 = { # New Bookmark
+	trade_goods = unknown
+	remove_cores = yes
+	owner = ---
+	controller = ---
+	hre = no
+}

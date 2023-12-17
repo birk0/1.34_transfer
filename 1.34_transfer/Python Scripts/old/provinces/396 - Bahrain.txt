@@ -1,0 +1,19 @@
+#396 - Bahrain
+
+owner = ALH
+controller = ALH
+culture = gulf_arabic
+religion = shiite
+capital = "Manama"
+trade_goods = gems #Pearls
+hre = no
+base_tax = 1 
+base_production = 1
+base_manpower = 2
+is_city = yes
+add_core = ALH
+add_core = ORM #Tributary to Hormuz up until conquest by Jabrids
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

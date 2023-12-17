@@ -1,0 +1,19 @@
+#548 - Illichpur
+
+owner = BAH
+controller = BAH
+culture = marathi
+religion = hinduism
+capital = "Illichpur"
+trade_goods = copper
+hre = no
+base_tax = 2
+base_production = 2
+base_manpower = 1
+is_city = yes
+add_core = BAH
+add_core = BRR
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

@@ -1,0 +1,22 @@
+#1949 - Penukonda
+
+owner = VIJ
+controller = VIJ
+culture = telegu
+religion = hinduism
+capital = "Chandragiri"
+trade_goods = cotton
+hre = no
+base_tax = 4
+base_production = 3
+base_manpower = 2
+is_city = yes
+add_core = KRK
+add_core = VIJ
+add_core = YOR
+add_brahmins_or_church_effect = yes #Tirupati
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

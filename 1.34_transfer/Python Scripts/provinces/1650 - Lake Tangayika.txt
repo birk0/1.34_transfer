@@ -1,0 +1,8 @@
+#Prov1650 - Lake Tangayika
+religion = mahayana
+culture = vietnamese
+is_city = no
+
+base_tax = 1
+base_production = 1
+base_manpower = 1

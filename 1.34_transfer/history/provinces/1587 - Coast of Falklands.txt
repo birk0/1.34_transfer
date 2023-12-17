@@ -1,0 +1,7 @@
+#Prov1587 - Coast of Falklands
+religion = coptic
+culture = nubian
+
+base_tax = 1
+base_production = 1
+base_manpower = 1

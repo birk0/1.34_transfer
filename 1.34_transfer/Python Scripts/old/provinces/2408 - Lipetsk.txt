@@ -1,0 +1,19 @@
+#2408 - Yelets
+
+owner = RYA
+controller = RYA
+culture = mishary
+religion = sunni
+hre = no
+base_tax = 3
+base_production = 3
+trade_goods = livestock
+base_manpower = 1
+capital = "Yelets"
+is_city = yes
+add_core = RYA
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

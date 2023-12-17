@@ -1,0 +1,8 @@
+#Prov3287 - Prov3287
+religion = catholic
+culture = castillian
+is_city = no
+
+base_tax = 1
+base_production = 1
+base_manpower = 1

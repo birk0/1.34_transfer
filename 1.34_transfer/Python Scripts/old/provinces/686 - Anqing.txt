@@ -1,0 +1,20 @@
+#686 - Anqing (can't change file name)
+
+owner = MNG
+controller = MNG
+add_core = MNG
+culture = jianghuai
+religion = mahayana #changes
+capital = "Anqing"
+trade_goods = cloth
+hre = no
+base_tax = 5 
+base_production = 7
+base_manpower = 3
+is_city = yes
+center_of_trade = 1
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

@@ -1,0 +1,8 @@
+#Prov3497 - Prov3497
+religion = shinto
+culture = togoku
+is_city = no
+
+base_tax = 1
+base_production = 1
+base_manpower = 1

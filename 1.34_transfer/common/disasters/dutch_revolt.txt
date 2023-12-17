@@ -1,0 +1,70 @@
+# Tweaked
+dutch_revolt_disaster = {
+
+	potential = {
+		has_country_flag = dream_of_dutch_liberty # Triggered from an event
+	}
+
+	can_start={
+		has_country_flag = dream_of_dutch_liberty
+	}
+	
+	can_stop = {
+		OR = {
+			custom_trigger_tooltip = {
+				tooltip = lowlands_unrest_tooltip
+				NOT = {
+					low_countries_region = {
+						culture_group = swamp
+						country_or_non_sovereign_subject_holds = ROOT
+						unrest = 1
+					}
+				}
+			}
+			culture_group = swamp
+		}
+		stability = 3
+	}
+	
+	progress = {
+		modifier = {
+			factor = 100
+			always = yes
+		}
+	}
+	
+	can_end = {
+		OR = {
+			custom_trigger_tooltip = {
+				tooltip = lowlands_unrest_tooltip
+				NOT = {
+					low_countries_region = {
+						culture_group = swamp
+						country_or_non_sovereign_subject_holds = ROOT
+						unrest = 1
+					}
+				}
+			}
+			culture_group = swamp
+		}
+		stability = 3
+	}
+	
+	modifier = {
+		stability_cost_modifier = 2
+		global_trade_goods_size_modifier = -0.20
+	}
+	
+	on_end = dutch_revolt.1
+	
+	on_monthly = {
+		events = {
+			flavor_bur.10 # netherlands declare independence
+		}
+		random_events = {
+			100 = 0
+			10 = flavor_bur.9 # random rebels spawn
+		}	
+	}
+
+}

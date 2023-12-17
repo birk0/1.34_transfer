@@ -1,0 +1,22 @@
+#4980 - Enshi
+
+owner = MNG
+controller = MNG
+add_core = MNG
+culture = sichuanese
+religion = mahayana #changes
+capital = "Enshi"
+trade_goods = tea
+hre = no
+base_tax = 5 
+base_production = 3
+base_manpower = 2
+is_city = yes
+add_core = GMI
+add_local_autonomy = 25
+
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

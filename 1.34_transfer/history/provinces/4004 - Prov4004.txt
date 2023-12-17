@@ -1,0 +1,8 @@
+#Prov4004 - Prov4004
+religion = catholic
+culture = polish
+is_city = no
+
+base_tax = 1
+base_production = 1
+base_manpower = 1

@@ -1,0 +1,18 @@
+#4512 - Bharuch/Broach
+
+owner = GUJ
+controller = GUJ
+culture = gujarati
+religion = hinduism
+capital = "Bharuch"
+trade_goods = silk #Silk
+hre = no
+base_tax = 4
+base_production = 4
+base_manpower = 1
+is_city = yes
+add_jains_or_burghers_effect = yes
+add_core = GUJ
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

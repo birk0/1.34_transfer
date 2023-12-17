@@ -1,0 +1,22 @@
+owner = KHA	# The Oirads united much of Mongolia
+controller = KHA
+add_core = KHA
+culture = mongol
+religion = vajrayana
+capital = "Ujimqin"
+trade_goods = livestock
+hre = no
+base_tax = 1 
+base_production = 1
+base_manpower = 2
+is_city = yes
+#discovered_by = chinese
+#discovered_by = indonesian
+#discovered_by = nomad_group
+add_core = CHH
+
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

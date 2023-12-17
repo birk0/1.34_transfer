@@ -1,0 +1,22 @@
+#1833 - Ji'an
+
+owner = MNG
+controller = MNG
+add_core = MNG
+culture = gan
+religion = daoism #changes
+capital = "Ji'an"
+trade_goods = cloth
+hre = no
+base_tax = 3 #changes
+base_production = 3
+base_manpower = 2
+is_city = yes
+add_core = NNG
+
+
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

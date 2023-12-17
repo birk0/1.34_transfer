@@ -1,0 +1,19 @@
+# 4381 - Oversticht
+
+owner = UTR
+controller = UTR 
+capital = "Zwolle"
+is_city = yes
+culture = dutch
+religion = catholic
+hre = yes
+base_tax = 3
+base_production = 3
+trade_goods = livestock
+base_manpower = 2
+add_core = UTR
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

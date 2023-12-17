@@ -1,0 +1,20 @@
+# 2178 - Lu'an
+
+owner = MNG
+controller = MNG
+add_core = MNG
+culture = jin
+religion = confucianism
+capital = "Lu'an"
+trade_goods = iron
+hre = no
+base_tax = 4 #changes 
+base_production = 3
+base_manpower = 2
+is_city = yes
+add_core = JIN
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

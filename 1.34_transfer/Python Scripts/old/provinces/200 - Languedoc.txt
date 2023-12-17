@@ -1,0 +1,19 @@
+# 200 Languedoc - Principal cities: Montpellier
+
+owner = FRA
+controller = FRA
+capital = "Montpellier"
+is_city = yes
+culture = occitain
+religion = catholic
+hre = no
+base_tax = 4
+base_production = 4
+trade_goods = cloth
+base_manpower = 3
+add_core = FRA
+add_core = TOU
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

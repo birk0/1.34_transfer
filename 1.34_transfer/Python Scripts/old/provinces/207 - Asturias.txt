@@ -1,0 +1,28 @@
+#207 - Asturias
+
+latent_trade_goods = {
+	coal
+}
+
+owner = CAS		#Juan II of Castille
+controller = CAS
+add_core = CAS
+add_core = LON
+add_core = ASU
+culture = leonese
+religion = catholic
+hre = no
+base_tax = 3
+base_production = 3
+trade_goods = livestock 
+base_manpower = 2
+capital = "Oviedo" 
+is_city = yes
+
+1444.12.1 = { # New Bookmark
+	trade_goods = unknown
+	remove_cores = yes
+	owner = ---
+	controller = ---
+	hre = no
+}

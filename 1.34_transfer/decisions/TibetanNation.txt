@@ -1,0 +1,96 @@
+country_decisions = {
+	#Tibetan version of Qing & Yuan, dosen't neccessarily represent historical Tibetan Empire
+	tibetan_nation = {
+		major = yes
+		potential = {
+			culture_group = tibetan_group
+			exists = yes
+			normal_or_historical_nations = yes
+			was_never_end_game_tag_trigger = yes
+			NOT = { has_country_flag = formed_tibet_flag }
+			NOT = { exists = TIB }
+			OR = {
+				ai = no
+				AND = {
+					ai = yes
+					num_of_cities = 5
+				}
+			}
+			is_colonial_nation = no
+			OR = {
+				is_former_colonial_nation = no
+				AND = {
+					is_former_colonial_nation = yes
+					ai = no
+				}
+			}
+		}
+		provinces_to_highlight = {
+			province_id = 677 #Lhasa
+			OR = {
+				NOT = { owned_by = ROOT }
+				NOT = { is_core = ROOT }
+			}
+		}
+		allow = {
+			if = {
+				limit = {
+					any_country = {
+						is_emperor_of_china = yes
+					}
+				}
+				is_emperor_of_china = yes
+			}
+			num_of_owned_provinces_with = {
+				value = 25
+				culture_group = tibetan_group
+			}
+			is_at_war = no
+			is_free_or_tributary_trigger = yes
+			owns_core_province = 677 #Lhasa
+			677 = {
+				is_state = yes
+			}
+		}
+		effect = {
+			677 = {
+				add_base_tax = 1
+				add_base_production = 1
+				add_base_manpower = 1
+				move_capital_effect = yes
+			}
+			change_tag = TIB
+			swap_non_generic_missions = yes
+			remove_non_electors_emperors_from_empire_effect = yes
+			if = {
+				limit = { is_emperor_of_china = no }
+				set_government_rank = 3
+			}
+			if = {
+				limit = { is_emperor_of_china = yes }
+				add_mandate = 20
+			}
+			custom_tooltip = cores_to_tibet_tt
+			hidden_effect = {
+				every_province = {
+					limit = {
+						culture_group = tibetan_group
+						NOT = { is_core = ROOT }
+					}
+					add_core = ROOT
+				}
+			}
+			add_prestige = 25
+			set_country_flag = formed_tibet_flag
+			if = {
+				limit = { has_custom_ideas = no }
+				country_event = { id = ideagroups.1 } #Swap Ideas
+			}
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		ai_importance = 400
+	}
+
+}

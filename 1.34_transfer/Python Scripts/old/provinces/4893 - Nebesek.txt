@@ -1,0 +1,21 @@
+#4893 - Taian
+
+owner = MNG
+controller = MNG
+add_core = MNG
+culture = zhongyuan
+religion = confucianism
+capital = "Taian"
+trade_goods = iron
+hre = no
+base_tax = 3
+base_production = 3
+base_manpower = 2
+is_city = yes
+add_core = PLW
+
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

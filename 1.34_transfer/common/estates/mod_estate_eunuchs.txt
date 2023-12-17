@@ -1,0 +1,70 @@
+estate_eunuchs = {
+	icon = 8
+	trigger = {
+		#NOT = { has_government_attribute = disables_estate_eunuchs }
+		NOT = { has_country_flag = disables_estate_eunuchs_flag }
+		OR = {
+			is_emperor_of_china = yes
+			#has_government_attribute = enables_estate_eunuchs
+			has_country_flag = enables_estate_eunuchs_flag
+		}
+	}
+
+	# These scale with loyalty & power
+	country_modifier_happy = {
+		meritocracy = 0.25
+		global_tax_modifier = 0.25
+		improve_relation_modifier = 0.15
+	}
+	country_modifier_neutral = {
+		meritocracy = 0.25
+	}	
+	country_modifier_angry = {
+		global_tax_modifier = -0.25
+		meritocracy = -0.25
+		improve_relation_modifier = -0.15
+		imperial_mandate = -0.05
+	}
+	land_ownership_modifier = {
+		yearly_corruption = 0.5
+	}
+
+	#For each province bordering another country, the neighboring provinces with the highest weights are added, until (share of land ownership * total development) is reached. From all these tries (It will do 32 of the highest weight border provinces at most), the result with the highest total sum of weights is then selected and these provinces then become the new country.
+	province_independence_weight = {
+		factor = 0
+	}
+
+	# Influence modifiers
+	base_influence = 0
+	
+	privileges = {
+		estate_eunuchs_land_rights
+		estate_eunuchs_legitimacy_to_rule
+		estate_eunuchs_eunuch_leadership
+		estate_eunuchs_loyalty_privilege
+		estate_eunuchs_mng_powerful_eunuchs
+		estate_eunuchs_harmonize_folk_religions
+		estate_eunuchs_supremacy_over_eunuchs
+		estate_eunuchs_flexible_harmony
+		estate_eunuchs_national_recovery
+	}
+
+	agendas = {
+		estate_eunuchs_reduce_war_exhaustion
+		estate_eunuchs_recover_stability
+		estate_eunuchs_increase_stability
+		estate_eunuchs_reduce_overextension
+		estate_eunuchs_get_allies
+		estate_eunuchs_befriend_rival_of_rival
+		estate_eunuchs_relations_with_X
+		estate_eunuchs_break_coalition
+		estate_eunuchs_restore_legitimacy
+		estate_eunuchs_stop_converting_province_x
+		estate_eunuchs_hire_advisor
+		estate_eunuchs_fire_advisor
+	}
+
+	color = { 43 173 204 }
+
+	influence_from_dev_modifier = 1.0
+}

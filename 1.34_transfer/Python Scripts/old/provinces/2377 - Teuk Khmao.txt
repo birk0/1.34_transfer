@@ -1,0 +1,19 @@
+#2377- Teuk Khmao
+
+owner = KHM
+controller = KHM
+culture = khmer
+religion = hinduism
+capital = "Oc Eo"
+trade_goods = fish
+hre = no
+base_tax = 4
+base_production = 4
+base_manpower = 2
+is_city = yes
+add_core = KHM
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

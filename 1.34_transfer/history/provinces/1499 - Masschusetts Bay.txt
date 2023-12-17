@@ -1,0 +1,7 @@
+#Prov1499 - Masschusetts Bay
+religion = shiite
+culture = bedouin_arabic
+
+base_tax = 1
+base_production = 1
+base_manpower = 1

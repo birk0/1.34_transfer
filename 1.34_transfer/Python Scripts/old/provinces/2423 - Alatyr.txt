@@ -1,0 +1,21 @@
+#2423 - Alatyr
+
+hre = no
+base_tax = 3 
+base_production = 3
+trade_goods = grain
+base_manpower = 2
+capital = "Alatyr"
+is_city = yes
+add_core = MOS
+#changes
+owner = QAS
+controller = QAS
+add_core = QAS
+culture = kazani
+religion = sunni
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

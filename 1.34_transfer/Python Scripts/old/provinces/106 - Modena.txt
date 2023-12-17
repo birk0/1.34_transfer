@@ -1,0 +1,22 @@
+#106 - Modena
+
+owner = FER
+controller = FER
+culture = romagnan 
+religion = catholic 
+hre = yes 
+base_tax = 5 
+base_production = 5  
+trade_goods = livestock
+base_manpower = 2  
+capital = "Modena" 
+is_city = yes
+add_core = FER
+add_core = MOD
+
+1444.12.1 = {
+	trade_goods = unknown
+	owner = ---
+	controller = ---
+	hre = no
+}

@@ -1,0 +1,100 @@
+country_decisions = {
+
+	restore_chagatai_khanate = {
+		major = yes
+		potential = {
+			OR = {
+				primary_culture = uyghur
+				primary_culture = kirgiz
+			}
+			exists = yes
+			was_never_end_game_tag_trigger = yes
+			NOT = { has_country_flag = formed_chagatai_flag }
+			OR = {
+				ai = no
+				NOT = { exists = CHG }
+			}
+			is_emperor_of_china = no
+			NOT = { has_country_flag = formed_chagatai_flag }
+		}
+		provinces_to_highlight = {
+			OR = {
+				province_id = 739 #Kashgar
+				province_id = 2124 #Yarkand
+				province_id = 715 #Urumqi
+			}
+			OR = {
+				NOT = { owned_by = ROOT }
+				NOT = { is_core = ROOT }
+			}
+		}
+		allow = {
+			NOT = { exists = CHG }
+			is_free_or_tributary_trigger = yes
+			is_at_war = no
+			owns_core_province = 739 #Kashgar
+			owns_core_province = 2124 #Yarkand
+			owns_core_province = 715 #Urumqi
+			739 = {
+				is_state = yes
+			}
+		}
+		effect = {
+			set_country_flag = formed_chagatai_flag
+			739 = {
+				move_capital_effect = yes
+			}
+			change_tag = CHG
+			swap_non_generic_missions = yes
+			remove_non_electors_emperors_from_empire_effect = yes
+			if = {
+				limit = {
+					NOT = { government_rank = 2 }
+				}
+				set_government_rank = 2
+			}
+			add_prestige = 25
+			739 = {
+				add_base_tax = 1
+				add_base_production = 1
+				add_base_manpower = 1
+			}
+			shanshan_area = {
+				add_permanent_claim = ROOT
+			}
+			kashgaria_area = {
+				add_permanent_claim = ROOT
+			}
+			tarim_basin_area = {
+				add_permanent_claim = ROOT
+			}
+			jetysuu_area = {
+				add_permanent_claim = ROOT
+			}
+			zungaria_area = {
+				add_permanent_claim = ROOT
+			}
+			if = {
+				limit = { 
+					NOT = { government = tribal }
+				}
+				change_government_to_tribal = yes
+			}
+			if = {
+				limit = { 
+					NOT = { has_reform = steppe_horde } 
+				}
+				add_government_reform = steppe_horde
+				change_unit_type = nomad_group
+				change_technology_group = nomad_group
+			}
+			country_event = { id = ideagroups.1 } #Swap Ideas
+		}
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		ai_importance = 400
+	}
+}

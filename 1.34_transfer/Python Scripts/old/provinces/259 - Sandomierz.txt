@@ -1,0 +1,18 @@
+#259 - Sandomierz
+
+owner = POL
+controller = POL
+capital = "Sandomierz"
+culture = polish
+religion = catholic
+trade_goods = cloth
+hre = no
+base_tax = 4
+base_production = 4
+base_manpower = 1
+is_city = yes
+add_core = POL
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

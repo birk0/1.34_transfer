@@ -1,0 +1,19 @@
+#Romsdal
+
+owner = NOR
+controller = NOR
+add_core = NOR
+culture = norwegian
+religion = catholic
+hre = no
+base_tax = 1
+base_production = 1
+trade_goods = fish
+base_manpower = 1
+is_city = yes
+capital = "Molde"
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

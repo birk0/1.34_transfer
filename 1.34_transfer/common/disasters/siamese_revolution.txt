@@ -1,0 +1,30 @@
+siamese_revolution = {
+	potential = {
+		always = no
+	}
+
+	can_start = {
+		always = no
+	}
+	
+	can_stop = {
+	}
+	
+	progress = {
+		modifier = {
+			factor = 1
+		}
+	}
+	
+	can_end = {
+	}
+
+	modifier = {
+		diplomatic_reputation = -1
+		tolerance_own = -1
+	}	
+	
+	on_start = siamese_rev.1
+	on_end = siamese_rev.2
+}
+

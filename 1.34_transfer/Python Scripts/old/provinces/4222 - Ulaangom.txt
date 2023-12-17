@@ -1,0 +1,19 @@
+#4222 - Ulaangom
+
+owner = OIR		# The Oirads united much of Mongolia
+controller = OIR
+add_core = OIR
+culture = oirats
+religion = tengri_pagan_reformed
+capital = "Ulaangom"
+trade_goods = livestock
+hre = no
+base_tax = 1 
+base_production = 1
+base_manpower = 2
+is_city = yes
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

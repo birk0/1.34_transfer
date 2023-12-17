@@ -1,0 +1,17 @@
+#857 - Quimbele
+owner = KON
+controller = KON
+culture = mbundu
+religion = shamanism #Fetishism
+capital = "Quimbele"
+is_city = yes
+trade_goods = livestock
+hre = no
+base_tax = 1 
+base_production = 1
+base_manpower = 1
+add_core = KON
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

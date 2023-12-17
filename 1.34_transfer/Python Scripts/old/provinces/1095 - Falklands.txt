@@ -1,0 +1,23 @@
+# 1095 - Gunmi
+
+owner = ZZZ
+controller = ZZZ
+add_core = ZZZ
+add_core = HAU
+is_city = yes
+culture = hausa 
+religion = shamanism #Fetishism
+capital = "Gunmi"
+trade_goods = grain
+hre = no
+base_tax = 1
+base_production = 1
+native_size = 40
+native_ferocity = 4
+native_hostileness = 9
+base_manpower = 1
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

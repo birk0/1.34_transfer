@@ -1,0 +1,389 @@
+#The following provinces are available for re-use in more useful locations 
+
+#The following have already been used around the map:
+
+#4861;117;158;119;Waveroo;x > Guyuan
+#1085;163;150;173;Paredarerme;x > Qingyang
+#4868;136;85;174;Pyemmairrener;x > Linxia
+#4859;44;179;51;Gundungurra;x > Huangnan
+#1088;36;156;126;Wergaia;x > Qu Nakuoqu
+#4857;88;140;91;Bundjalung;x > Budong
+#1089;164;158;173;Wiradjuri;x > Tumu
+#1091;164;34;79;Kamilaroi;x Shuozhou
+#4862;9;63;12;Ngadjuri;x > Liaoxi Corridor
+#4856;74;74;198;Barunggam;x > Kubuqi Desert
+#4855;62;74;151;Yiman;x > Weinan
+#1093;165;38;173;Barunggam;x > Si Lung
+#4853;88;95;140;Bidjara;x > Diqing
+#4852;55;67;139;WuliWuli;x > Xueshan
+#4863;179;87;31;Nyaki;x > Golmud
+#4854;73;93;221;Badtjala;x > Daiwei
+#1790;73;36;126;Western Australia;x > Gobi Desert
+#4858;137;231;142;Tharawal;x > Wengyuan
+#4850;174;141;221;Biri;x > Shajing
+#4848;29;162;89;Mingin;x > Xihao
+#2736;253;255;158;Nukunu;x > Tashir
+#2731;53;255;77;Guugu Yimithirr;x > Kultuk
+#1106;38;164;32;Whangarei;x > Ul-Khan
+#2729;255;102;79;Yolngu;x > Chita 
+#4934;210;10;1;Maui;x > Borzya
+#4935;210;40;41;Oahu;x > Segelen
+#4936;210;70;81;Kauai;x > Tynda
+#4846;229;139;97;Woolna;x > Shangdao
+#1094;37;240;32;Gubbi Gubbi;x > Woji Mountains
+#4937;210;20;121;Lau;x > Lidoga
+#4938;210;50;161;Vanua Levu;x > Yongji
+#4939;210;80;11;Te Moana-a-Toi;x > Hegang
+#4625;167;69;225;Mayaca;x > Altai Mountains
+#4626;247;176;150;Potano;x > Karamay
+#2534;118;131;196;Yustaga;x > Shanshan
+#4881;101;70;200;Sawokli;x > Ruoqiang
+#2533;181;201;246;Chatot;x > Yumlin
+#4884;141;110;200;Houma;x > Khotont
+#2530;97;12;145;Biloxi;x > Mogod
+#4880;91;110;175;Combahee;x > Burukan
+#4882;111;80;225;Etali;x > Ekim
+#2541;163;191;95;Saluda;x > Tyr
+#4913;192;80;175;Aniyutsi;x > Tsagaan
+#4931;200;30;91;Cumberland Mountains;x > Chemal
+#4878;71;90;225;Eno;x > Sheregesh
+#4933;200;90;171;Blue Ridge;x > Mysk
+#2548;19;131;246;Tutelo;x > Abakan
+#4889;12;70;175;Mohetan;x > Iskra
+#4875;41;110;150;Minqua;x > Mazul
+#4921;131;100;175;Kuttawa;x > Kaltan
+#4887;241;100;225;Cochati;x > Habahe
+#2552;40;61;46;Manahoac;x > Karakol
+#4929;200;50;11;Appalachian Ridges;x > Bishkek
+#4926;200;70;81;Adirondacks;x > Yuchang
+#4639;209;14;225;Paipai;x > Kepyure
+#4877;61;80;200;Nottoway;x > Chaek
+#4876;51;70;175;Scahentowanen;x > Baying
+#4922;23;110;175;Pepikokia;x > Arshan
+#4914;202;90;200;Neosho;x > Kirshim
+#4905;181;100;200;Tapouaro;x > Biysk
+#2543;226;41;246;Waccamaw;x > Tulun
+#4888;2;110;150;Tatteroa;x > Uzhur
+#2553;166;31;246;Potomac;x > Arkhust
+#4883;121;90;150;Napochi;x > Khangai
+#4885;151;70;225;Avoyel;x > Hansu
+#4895;72;80;225;Batiscan;x > Subei
+#4924;200;10;1;Laurentian Massif;x > Urgun
+#4907;201;70;150;Mosopelea;x > Taishun
+#4925;200;40;41;White Mountains;x > Chuzhou
+#4871;1;70;150;Cowasuk;x > Luochuan
+#4873;21;90;200;Pegwaki;x > Xingtang
+#4912;182;70;150;Ahkwesahsne;x > Jiewei
+#4893;52;110;175;Nebesek;x > Taian
+#4903;152;110;225;Chinko;x > Zibo
+#2551;208;199;95;Monongahela;x >Zhengzhou
+#4894;62;70;200;Ottagotouemin;x > Jincheng
+#4874;31;100;225;Westenhuck;x > Ankang
+#4904;171;90;175;Espeminkia;x > Yueyang
+#4899;112;70;225;Mamaceqtaw;x > Xiushui
+#4915;212;100;225;Pitahawirata;x > Liuyang
+#4901;132;90;175;Saone;x > Mianyang
+#2545;184;31;145;Waxhaw;x > Shilin
+#2562;65;133;46;Pennacook;x > Maozhu
+#2549;145;255;196;Moratok;x > Zhumadian
+#2519;220;44;196;Kilatika;x > Songxi
+#4896;82;90;150;Meductic;x > Putian
+#4742;24;36;126;Nordhausen;x > Zavodske
+#4718;8;175;128;Aschaffenburg;x > Tserkva
+#4707;86;92;128;Rosenheim;x > Sumy
+#4715;135;130;221;Rothenburg;x > Kromy
+#4774;175;138;37;Fulda;x > Lepiel
+#4768;253;215;143;Julich;x > Begoml
+#2975;42;231;108;Kleves;x > Rudnya
+#4770;181;160;75;s-Hertogenbosch;x > Yelnya
+#4717;184;22;22;Bayreuth;x > Merhkpol
+#4722;33;178;172;Illanz;x > Dnipro
+#4775;199;14;89;Bielefeld;x > Dugino
+#4744;35;63;199;Zwickau;x > Yazhel
+#2965;52;253;37;Vogtland;x > Plosk
+#4773;70;135;54;G�ttingen;x > Pestovo
+#4716;223;230;73;Coburg;x > Rybinsk
+#4767;253;135;143;Zweibrucken;x > Lukin
+#4721;192;98;255;Fribourg;x > Girvhask
+#4712;27;146;0;Konstanz;x > Hehokba
+#4771;52;36;48;Verden;x > Vazhgort
+#4741;206;82;89;Halle;x > Bereznik
+#4708;136;148;128;Freising;x > Lyskovo
+#4772;228;189;115;Celle;x > Sarov
+#4749;39;120;238;Stargardland;x > Vetluzh
+#4778;32;31;94;G�rlitz;x > Neya
+#4769;125;215;143;Lille;x > Kotlas
+#4765;255;253;196;Mulhouse;x > Vizinga
+#2981;222;108;69;Asti;x > Glazov
+#4709;71;104;32;Passau;x > Chebok
+#4739;255;193;31;Bergamo;x > Ulyan
+#4727;11;159;77;Saluzzo;x > Kirov
+#1760;69;104;32;Koblenz;x > Poldarsa
+#4759;220;54;163;Upper Carinthia;x > Yemva
+#4724;28;140;117;Pardubice;x > Berdysh
+#4738;110;243;21;Trieste;x > Yus'va
+#4723;63;106;212;Opole;x > Ufa
+#4748;170;79;248;Brandenburg;x > Polevsk
+#4711;226;210;106;Donauw�rth;x > Pustyn
+#4766;138;136;91;Verdun;x > Derga
+#4524;77;251;233;Dobrzyn;x > Volga
+#4523;192;6;69;Inowroclaw;x > Enotaevka
+#4932;200;60;131;Smoky Mountains;x > Kamyshin
+#2540;37;6;145;Coweta;x > Morshan
+#4930;200;80;51;Alleghenies;x > Elista
+#2542;100;3;46;Cusabo;x > Krasnodar
+#2546;121;161;95;Chicora;x > Pomor'ye
+#2554;103;21;196;Nanticoke;x > Ledmozero
+#4928;200;20;161;Allegheny Front;x > Zainsk
+#4636;89;69;150;Choinumni;x > Orsk
+#4638;169;176;200;Wintun;x > Aktobe
+#4927;200;100;121;Blue Mountains;x > Qaratobe
+
+
+#4807;4807;185;69;211;North Borneo;x > Khar Turan
+#2691;216;58;34;Kediri;x > Kuh e Birk
+#4792;153;169;173;East Kendal;x > Zehkalut
+#2689;198;98;83;Kendal;x > Zahedan
+#4793;237;108;140;South Demak;x > Mehrestan
+#2688;130;85;130;Cirebon;x > R?sk
+#4790;170;98;56;West Java;x > Turbat
+#624;89;128;255;Banten;x > Khuzdar
+#646;92;44;64;Ambom;x > Aliabad
+#4815;150;40;142;Singapura;x > Charak
+#2686;44;214;56;Bintan;x > Nehbandan
+#659;222;70;255;Riau;x > Qaderabad
+#4831;207;79;128;Bangkok;x > Qal'eh
+#4560;118;241;78;Ibiza;x > Marwa
+#4559;0;63;140;Minorca;x > Godar
+#959;145;154;79;Cayuga;x > Fayzabad
+#2561;128;181;95;Wampanoag;x > Yoloten
+#2560;2;131;145;Quinnipiac;x > Lashkar
+#2586;71;194;95;Tionontate;x > Gazik
+#2670;111;61;95;Tkaronto;x > Andara
+#960;18;156;126;Onondaga;x > Bala Deh
+#970;19;48;32;Pennacook;x > Tejen
+#955;145;146;79;Susquehanna;x > Ashgabat
+#2550;82;31;145;Doeg;x > Erbent
+#2584;8;121;196;Loup;x > Kaplankyr
+#2528;34;122;246;Yazoo;x > Awaza
+#4632;208;69;175;Keres;x > Bereket
+#2495;214;231;145;Acoma;x > Lebap
+#2616;56;31;95;Seri;x > Chardzou
+#4634;9;176;225;Tsekaadn;x > Navoi
+#4637;129;137;175;Ohlone;x > Koshrabad
+#2485;169;2;145;Chehalis;x > Jizzakh
+#925;141;86;173;Tuskegee;x > Zafar
+#2023;55;14;120;Munsee;x > Raz
+#4891;32;90;225;Piktuk;x > Kyzyly
+#4631;168;14;150;Towa;x > Gizil Qala
+#2492;25;191;46;Chiricahua;x > Aqcha
+#4923;45;70;200;Pacaha;x > Behbahan
+#918;12;72;32;Tennessee;x > Babash Ata
+#4633;248;137;200;Sobaipuri;x > Bekdash
+#2671;237;231;46;Missisage;x > Aktau
+#2559;250;141;196;Adirondack;x > Beyneu
+#917;139;70;173;Cahokia;x > Isatay
+#2547;247;131;46;Roanoke;x > Barshakelmes
+#934;14;104;32;Shawnee;x > Sagiz
+#2478;64;119;246;Tachi;x > Oyyl
+#1797;74;52;126;Inner Kongo;x > Konstanu
+#1798;202;54;173;Imatong;x > Yrgyz
+#1799;74;56;32;Urgoma;x > Urals
+#963;146;34;79;Mahican;x > Ayteke
+#1803;75;64;32;Southern Amazonas;x > Kyzylorda
+#2523;241;101;246;Piankeshaw;x > Koskol
+#4911;172;80;175;Nabaydacu;x > Ak-Mulla
+#4879;81;100;150;Kituwah;x > Zhairem
+#4872;11;80;175;Wenrohronon;x > Shalginsky
+#84;12;72;255;Berg;x > Akzhal
+#67;137;38;128;Franken;x > Aktogay
+#4710;48;231;108;Bregenz;x > Zhorga
+#1742;66;68;126;Limburg;x > Betpak-Dala
+#74;10;52;255;Baden;x > Tokmok
+#1981;98;0;244;Bornholm;x > Zban
+#4753;144;219;143;Zadar;x > Irbit
+#922;12;80;32;RNW; > Chataeux
+#920;12;76;126;RNW; > Laval
+#924;12;84;126;RNW; > Soissons
+#2532;55;131;46;RNW; > Montargis
+#923;140;82;79;RNW; > Luzy
+#930;13;96;32;RNW; > Issoire
+#928;13;92;126;RNW; > Mende
+#2537;142;31;46;RNW; > Sabres
+#2539;205;1;196;RNW; > Tonneins
+#927;141;90;79;RNW; > Loches
+#926;13;88;32;RNW; > Sanguesa
+#2535;244;231;145;RNW; > Marcilla
+#2536;16;19;95;RNW; > Luzaga
+#2538;79;131;246;RNW; > Belmonte
+#929;141;94;173;RNW; > Anchuras
+#932;14;100;126;RNW; > Abenojar
+#2531;223;132;95;RNW; > Monesterio
+#931;141;98;79;RNW; > Grandola
+#919;140;74;79;RNW; > Zujar
+#895;136;154;79;RNW; > Siles
+#938;14;112;32;RNW; > Sallano
+#937;142;110;173;RNW; > Trancoso
+#2544;58;1;196;RNW; > Benavente
+
+
+
+
+#Available TAGs: lol who even plays these tags anyway??
+#SAL - Salish
+#HDA - Haida
+#CNK - Chinook
+#BLA - Blackfoot
+#NEH - Nehiyaw
+#KIO - Kiowa
+#SHO - Shoshone
+#COM - Comanche
+#NAH - Navajo
+#KER - Zia
+#ZNI - Zuni
+#ACO - Acoma
+#APA - Apache
+#PIM - Pima
+#MSC - Mescalero
+#YAQ - Yaqui
+#LIP - Lipan
+#WIC - Wichita
+#ANL - Anilco
+#CAQ - Casqui
+#PCH - Pacaha
+#QUI - Quizquiz
+#CHI - Chickasaw
+#ABI - Abikha
+#COW - Coweta
+#KSI - Kashita
+#COO - Coosa
+#SAT - Satapo
+#CIA - Chiaha
+#JOA - Joara
+#TSC - Tuscaroara
+#POW - Powhattan
+#KSP - Kispoko
+#OSA - Osage
+#MMI - Miammi
+#KSK - Kaskaskia
+#CAO - Cahokia
+#PEO - Peoria
+#PAW - Pawnee
+#LAK - Lakota
+#ASI - Assiniboine
+#SIO - Sioux
+#NAK - Nakawe
+#OJI - Ojibwe
+#POT - Potawanoi
+#OTT - Ottowa
+#TIO - Tionontake
+#ATT - Attignwagattan
+#TAH - Tahonerat
+#MSG - Missiage
+#ARN - Arenadroron
+#AGG - Attigenorac
+#WCR - Cree
+#WEN - Wenro
+#SEN - Seneca
+#SUS - Susquehannock
+#CAY - Cayuga
+#ONO - Onodaga
+#ONE - Oneida
+#MOH - Mohawk
+#PEQ - Pequot
+#WAM - Wampanoag
+#MAH - Mahican
+#STA - Stadacona
+#INN - Innu
+#MLS - Maliseet
+#MIK - Mikmaq
+#NTC - Natchitoches
+#OHK - Ohkay Owingeh
+#ISL - Isleta
+#HNI - Hasinai
+#NTZ - Natchez
+#CHO - Choctaw
+#ATW - Attiwadron
+#ALT - Altamaha
+#ICH - Ichisi
+#ATA - Atahachi
+#CHE - Cherokee (will add back later)
+#CAD - Caddo (will add back later)
+#MIS - Misquito
+#ARW - Arawak
+#TAI - Tairona
+#TPA - Tupinamba
+#PTG - Potiguara
+#TPQ - Tupinuqum
+#TUA -Tapuia
+#GUA - Guiarani
+#CUA - Charrua
+#MPC - Mapuche
+#CHV - Chavchenuy
+#HOD - Khodynt
+#CHU - Chukchi
+#NUM - Nuremberg
+#MBZ - Bregenz
+#BRG - Berg
+
+
+#Illegal province: 2710, File: BEU - Berau.txt
+#Illegal province: 4795, File: BNE - Bone.txt
+#Illegal province: 4811, File: BRS - Barus.txt
+#Illegal province: 618, File: DLI - Deli.txt
+#Illegal province: 915, File: ILI - Illinois.txt
+#Illegal province: 4818, File: IND - Indrapura.txt
+#Illegal province: 2677, File: JMB - Jambi.txt
+#Illegal province: 4024, File: LIB - Libertatia.txt
+#Illegal province: 4028, File: MFY - Mahafaly.txt
+#Illegal province: 1171, File: NDO - Ndongo.txt
+#Illegal province: 598, File: PAH - Pahang.txt
+#Illegal province: 640, File: SMB - Sambas.txt
+#Illegal province: 18, File: SMI - Sami.txt
+#Illegal province: 888, File: TEX - Texas.txt
+#Illegal province: 1196, File: ZAN - Zwahili.txt
+#Illegal province: 1196, File: ZAP - Zapotec.txt
+#Illegal province: 4026, File: ANT - Antemoro.txt
+#Illegal province: 4859, File: AUS - Australia.txt
+#Illegal province: 4795, File: BNE - Bone.txt
+#Illegal province: 4065, File: BNY - Bunyoro.txt
+#Illegal province: 4811, File: BRS - Barus.txt
+#Illegal province: 4062, File: BSG - Basoga.txt
+#Illegal province: 4025, File: BTS - Betsimisaraka.txt
+#Illegal province: 4064, File: BUG - Buganda.txt
+#Illegal province: 4070, File: BUU - Burundi.txt
+#Illegal province: 4637, File: CAL - California.txt
+#Illegal province: 4791, File: CRB - Cirebon.txt
+#Illegal province: 4491, File: DNG - Dang.txt
+#Illegal province: 4492, File: DTI - Doti.txt
+#Illegal province: 4141, File: DTT - Ditmarschen.txt
+#Illegal province: 4936, File: KAA - Kauai.txt
+#Illegal province: 4096, File: KLD - Kalundwe.txt
+#Illegal province: 4063, File: KRW - Karagwe.txt
+#Illegal province: 4082, File: KSJ - Kasanje.txt
+#Illegal province: 4089, File: KUB - Kuba.txt
+#Illegal province: 4100, File: KZB - Kazembe.txt
+#Illegal province: 4937, File: LAI - Lau.txt
+#Illegal province: 4846, File: LAR - Larrakia.txt
+#Illegal province: 4039, File: LDU - Lundu.txt
+#Illegal province: 4092, File: LND - Lunda.txt
+#Illegal province: 4097, File: LUB - Luba.txt
+#Illegal province: 4939, File: MAA - Mataatua.txt
+#Illegal province: 4934, File: MAU - Maui.txt
+#Illegal province: 4028, File: MFY - Mahafaly.txt
+#Illegal province: 4066, File: NKO - Nkore.txt
+#Illegal province: 4935, File: OAH - Oahu.txt
+#Illegal province: 4467, File: PAN - Panna.txt
+#Illegal province: 4067, File: RWA - Rwanda.txt
+#Illegal province: 4182, File: SHN - Shoni.txt
+#Illegal province: 4080, File: SYO - Soyo.txt
+#Illegal province: 4045, File: TBK - Tumbuka.txt
+#Illegal province: 4072, File: UBH - Buha.txt
+#Illegal province: 4938, File: VNL - Vanua Levu.txt
+#Illegal province: 4085, File: YAK - Yaka.txt
+#Illegal province: 4847, File: YNU - Yanuwa.txt
+
+
+
+
+#3156

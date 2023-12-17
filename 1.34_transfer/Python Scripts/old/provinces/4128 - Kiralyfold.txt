@@ -1,0 +1,21 @@
+#1951 - Hunyad
+
+owner = HUN
+controller = HUN 
+culture = transylvanian #Transylvanian Saxons
+religion = catholic
+capital = "Sibiu"
+trade_goods = cloth
+hre = no
+base_tax = 3
+base_production = 3
+base_manpower = 2
+is_city = yes
+fort_15th = yes #Fortified Region
+add_core = HUN
+add_core = TRA
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

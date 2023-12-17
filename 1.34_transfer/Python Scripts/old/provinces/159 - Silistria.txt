@@ -1,0 +1,23 @@
+#159 - Silistria
+
+owner = TUR
+controller = TUR
+culture = bulgarian
+religion = orthodox
+capital = "Silistra"
+trade_goods = fish
+hre = no
+base_tax = 2
+base_production = 2
+base_manpower = 2
+is_city = yes
+add_core = TUR
+add_core = BUL
+
+1444.12.1 = { # New Bookmark
+	trade_goods = unknown
+	remove_cores = yes
+	owner = ---
+	controller = ---
+	hre = no
+}

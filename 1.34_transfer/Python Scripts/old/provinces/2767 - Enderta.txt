@@ -1,0 +1,19 @@
+#2767 - Enderta
+
+owner = ETH
+controller = ETH
+add_core = ETH
+culture = tigray 
+religion = coptic
+capital = "Antalo"
+is_city = yes
+base_manpower = 2
+trade_goods = copper
+hre = no
+base_tax = 1 
+base_production = 1
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

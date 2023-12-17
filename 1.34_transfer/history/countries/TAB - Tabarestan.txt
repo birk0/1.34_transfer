@@ -1,0 +1,44 @@
+government = monarchy
+primary_culture = uzbehk
+religion = sunni
+technology_group = muslim
+add_accepted_culture = mazandarani
+capital = 426 # Mazandaran
+religious_school = hanafi_school
+add_government_reform = timurid_prince
+
+1433.1.1 = {
+	monarch = { #Ala al-Dawla is appointed governor over Mazandaran (He is also appointed governor of Herat by Shah Rukh in 1445)
+		name = "Ala al-Dawla Abd Allah" 
+		dynasty = "Timurid"
+		birth_date = 1417.1.1
+		adm = 3
+		dip = 3
+		mil = 2
+		leader = { type = general name = "Ala al-Dawla" fire = 2 shock = 3 manuever = 4 siege = 1 }
+	}
+	queen = {
+		name = "Murad"
+		dynasty = "Agha"
+		female = yes
+		country_of_origin = TAB
+		birth_date = 1433.1.1
+		death_date = 1457.1.1
+		adm = 0
+		mil = 0
+		dip = 4
+	}
+}
+1440.1.1 = {
+	heir = {
+		name = "Ibrahim"
+		dynasty = "Timurid"
+		birth_date = 1440.1.1
+		death_date = 1474.1.1
+		claim = 90
+		adm = 3
+		dip = 4
+		mil = 2
+	}
+}
+

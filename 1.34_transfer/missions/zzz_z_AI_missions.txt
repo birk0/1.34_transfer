@@ -1,0 +1,55 @@
+ai_branch_1 = {
+	slot = 1
+	generic = no
+	ai = yes
+	potential = {
+	}
+	has_country_shield = yes
+
+	ai_conquest_mission = {
+		icon = mission_chinese_general_riding
+		position = 15
+		required_missions = {}
+		#This will make the AI obsessed with conquering every province in a region if it holds at least one province in the region
+		ai_weight = {
+			factor = 1000
+		}
+
+		trigger = {
+			all_owned_province = {
+				all_neighbor_province = {
+					owned_by = ROOT
+				}
+				area_for_scope_province = {
+					type = all
+					owned_by = ROOT
+				}
+			}
+		}
+		effect = {
+		}
+	}
+}
+ai_branch_2 = {
+	slot = 2
+	generic = no
+	ai = yes
+	potential = {
+	}
+	has_country_shield = yes
+
+	ai_war_commit = {
+		icon = mission_chinese_general_riding
+		position = 15
+		required_missions = {}
+		ai_weight = {
+			factor = 1000
+		}
+		trigger = {
+			army_size_percentage = 1
+			artillery_fraction = 1
+			NOT = { army_size_percentage = 1 }
+		}
+		effect = {}
+	}
+}

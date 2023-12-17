@@ -1,0 +1,22 @@
+#4196 - Haizhou
+
+owner = MNG
+controller = MNG
+add_core = MNG
+culture = zhongyuan
+religion = confucianism
+capital = "Haizhou"
+trade_goods = fish
+hre = no
+base_tax = 6 
+base_production = 5
+base_manpower = 4
+is_city = yes
+add_core = TNG
+
+extra_cost = 10
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

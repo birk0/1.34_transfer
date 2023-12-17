@@ -1,0 +1,1248 @@
+#############################################
+#	Flavour events for the Timurids & Princes
+#############################################
+
+namespace = flavor_tim
+normal_or_historical_nations = yes
+
+# Shah Rukh's Ultimatum
+country_event = {
+	id = flavor_tim.1
+	title = "flavor_tim.1.t"
+	desc = "flavor_tim.1.d"
+	picture = OVEREXTENSION_eventPicture
+	
+	fire_only_once = yes
+	
+	trigger = {
+		tag = QOM #Ajam
+		exists = TIM
+		always = no
+	}
+	
+	option = { 
+		name = "flavor_tim.1.a" #Accept his demands
+		ajam_accept_ultimatum_effect = yes
+		if = {
+			limit = { overlord_of = LRI }
+			add_truce_with = LRI
+			LRI = { 
+			   	grant_independence = yes
+				hidden_effect = {
+					country_event = {
+						id = flavor_tim.2 #The Arrival of Muhammad bin Baysonqor
+				  	}
+			   	}
+			}
+		}
+		TIM = { vassalize = ROOT }
+		hidden_effect = {
+			TIM = {
+				set_country_flag = tim_ajam_surrenders
+				country_event = {
+					id = flavor_tim.3 #Muhammad bin Baysonqor's Rebellion
+				}
+			}
+		}
+	}
+	option = {
+		name = "flavor_tim.1.b" #Refuse!
+		ai_chance = {
+			factor = 10 #Historical reasons
+		}
+		custom_tooltip = "This could lead to war with the Timurids!"
+		hidden_effect = {
+			TIM = {
+				set_country_flag = tim_ajam_fights
+				country_event = {
+					id = flavor_tim.3 #Muhammad bin Baysonqor's Rebellion
+				}
+			}
+			every_owned_province = {
+				add_core = TIM
+			}
+		}
+		define_ruler_to_general = {
+			shock = 6
+			fire = 3
+			manuever = 6
+			siege = 1
+		}
+	}
+	option = {
+		name = "flavor_tim.1.c" #Flee to Luristan!
+		trigger = { ai = no }
+		ajam_accept_ultimatum_effect = yes
+		TIM = { vassalize = QOM }
+		hidden_effect = {
+			TIM = {
+				set_country_flag = tim_ajam_surrenders
+				country_event = {
+					id = flavor_tim.3 #Muhammad bin Baysonqor's Rebellion
+				}
+			}
+		}
+		switch_tag = LRI
+		LRI = {
+			country_event = {
+				id = flavor_tim.2 #The Arrival of Muhammad bin Baysonqor
+				days = 1
+			}
+		}
+	}
+}
+
+#The Arrival of Muhammad bin Baysonqor
+country_event = {
+	id = flavor_tim.2
+	title = "flavor_tim.2.t"
+	desc = "flavor_tim.2.d"
+	picture = MILITARY_CAMP_eventPicture
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	immediate = {
+		hidden_effect = {
+			if = {
+				limit = { is_subject = yes }
+				grant_independence = yes
+			}
+		}
+	}
+
+	option = {
+		name = "flavor_tim.2.a" #Welcome him!
+		ai_chance = {
+			factor = 10 #historical
+		}
+		set_ruler = muhammad_bin_baysonqor
+		if = {
+			limit = {
+				has_heir = yes
+			}
+			kill_heir = {}
+		}
+		define_ruler_to_general = {
+			shock = 6
+			fire = 3
+			manuever = 6
+			siege = 1
+		}
+	}
+	option = {
+		name = "flavor_tim.2.b" #Turn this pretender away!
+		trigger = { ai = yes }
+		reverse_add_opinion = {
+			who = TIM
+			modifier = opinion_turned_away_exiles
+		}
+	}
+}
+
+#Muhammad bin Baysonqor's Rebellion
+country_event = {
+	id = flavor_tim.3
+	title = "flavor_tim.3.t"
+	desc = {
+		trigger = { has_country_flag = tim_ajam_surrenders }
+		desc = "flavor_tim.3.d.1"
+	}
+	desc = {
+		trigger = { has_country_flag = tim_ajam_fights }
+		desc = "flavor_tim.3.d.2"
+	}
+	picture = {
+		trigger = { has_country_flag = tim_ajam_surrenders }
+		picture = CONQUEST_eventPicture
+	}
+	picture = {
+		trigger = { has_country_flag  = tim_ajam_fights }
+		picture = REVOLT_eventPicture
+	}
+
+	is_triggered_only = yes
+
+	option = {
+		trigger = { has_country_flag = tim_ajam_surrenders }
+		name = "flavor_tim.3.a" #Cowardly as always..
+		tooltip = {
+			azerbaijan_area = {
+				limit = {
+				   owned_by = QOM
+				}
+				remove_core = QOM
+				add_core = TAB
+				cede_province = TAB
+			}
+			vassalize = FROM
+		}
+	}
+	option = {
+		trigger = { has_country_flag = tim_ajam_fights }
+		ai_chance = {
+			factor = 10
+		}
+		name = "flavor_tim.3.b" #Crush him!
+		start_war_effect = {
+			who = FROM
+			cb = cb_vassalize_mission
+			war_goal = 2213
+		}
+	}
+	option = {
+		trigger = { has_country_flag = tim_ajam_fights }
+		name = "flavor_tim.3.c" #We have other concerns..
+		add_country_modifier = {
+			name = tim_backed_down_against_ajam
+			duration = 3650
+		}
+	}
+	after = {
+		clr_country_flag = tim_ajam_fights
+		clr_country_flag = tim_ajam_surrenders
+	}
+}
+
+# Death of Shah Rukh
+country_event = {
+	id = flavor_tim.4
+	title = "flavor_tim.4.t"
+	desc = "flavor_tim.4.d"
+	picture = DEATH_OF_HEIR_eventPicture
+	
+	is_triggered_only = yes
+	fire_only_once = yes
+	major = yes
+	major_trigger = {
+		NOT = { dynasty = "Timurid" }
+		NOT = {
+			border_distance = {
+				who = FROM
+				distance = 150
+			}
+		}
+	}
+	
+	trigger = {
+		tag = TIM
+		NOT = { has_global_flag = death_of_shah_rukh }
+	}
+	
+	immediate = { set_global_flag = death_of_shah_rukh }
+	
+	option = { 
+		name = "flavor_tim.4.a" #Dire times lie ahead..
+		custom_tooltip = flavor_tim.1.a.tt
+		hidden_effect = {
+			every_known_country = {
+				limit = {
+					dynasty = "Timurid"
+					NOT = { tag = TAB }
+				}
+				country_event = { id = flavor_tim.5 } #The Death of Shah Rukh - Notification
+			}
+			TAB = {
+				country_event = { id = flavor_tim.6 } #Ala al-Dawla Abd Allah's Insurrection
+			}
+		}
+	}
+}
+
+# Death of Shah Rukh - Notification
+country_event = {
+	id = flavor_tim.5
+	title = "flavor_tim.5.t"
+	desc = "flavor_tim.5.d"
+	picture = DEATH_OF_HEIR_eventPicture
+	major = yes
+	major_trigger = {
+		tag = TIM
+	}
+	
+	is_triggered_only = yes
+
+	option = {
+		name = "flavor_tim.5.a" #The Throne is ours!
+		trigger = { NOT = { has_country_flag = new_governorship_of_ajam } }
+		ai_chance = {
+			factor = 5
+			modifier = {
+				factor = 2
+				TIM = { has_estate_privilege = estate_nobles_timurid_leadership }
+			}
+		}
+		grant_independence = yes
+		if = {
+			limit = {
+				is_at_war = yes
+			}
+			white_peace = QOM
+		}
+		if = {
+			limit = {
+				mil = 6
+			}
+			add_mil_power = 200
+		}
+		else = {
+			change_mil = 1
+		}
+		hidden_effect = {
+			every_owned_province = {
+				add_core = TIM
+			}
+		}
+	}
+	option = {
+		name = "flavor_tim.5.b" #Honour [From.Monarch.GetName]'s authority
+		add_mutual_opinion_modifier_effect = {
+			scope_country = FROM
+			opinion_modifier = opinion_loyal_subject
+		}
+		clr_country_flag = new_governorship_of_ajam
+	}
+}
+
+#Ala al-Dawla Abd Allah's Insurrection
+country_event = {
+	id = flavor_tim.6
+	title = "flavor_tim.6.t"
+	desc = "flavor_tim.6.d"
+	picture = SIEGE_eventPicture
+	is_triggered_only = yes
+	
+	option = {
+		name = "flavor_tim.6.a" #[Root.Monarch.GetName] will rule from Herat
+		trigger = { ai = yes }
+		FROM = { inherit = ROOT }
+	}
+	option = {
+		name = "flavor_tim.6.a" #[Root.Monarch.GetName] will rule from Herat
+		trigger = { ai = no }
+		switch_tag = TIM
+		TIM = { inherit = TAB }
+	}
+	option = {
+		name = "flavor_tim.6.b" #Refuse to recognise [Root.Monarch.GetName]'s authority!
+		trigger = { ai = no }
+		grant_independence = yes
+		kill_ruler = yes
+		define_ruler = {
+			dynasty = "Timurid"
+			change_mil = 1
+		}
+	}
+}
+
+# Ulugh Beg's Observatory
+country_event = {
+	id = flavor_tim.7
+	title = "flavor_tim.EVTNAME3"
+	desc = "flavor_tim.EVTDESC3"
+	picture = UNIVERSITY_eventPicture
+	
+	fire_only_once = yes
+	
+	trigger = {
+		owns_core_province = 454 #Samarkand
+		NOT = { is_year = 1465 }
+	}
+
+	mean_time_to_happen = {
+		months = 60
+	}
+	
+	option = {
+		name = "flavor_tim.EVTOPTA3" # Build it!
+		add_years_of_income = -1
+		add_dip_power = 50
+		add_mil_power = 50
+		add_adm_power = 50
+		add_innovativeness_big_effect = yes
+	}
+	option = {
+		name = "flavor_tim.EVTOPTB3" # We don't have the time or the money for such foolishness!
+		add_prestige = -5
+	}
+}
+
+################################################
+#		Timurid Civil War
+################################################
+
+#Timurid Civil War
+
+country_event = {
+	id = flavor_tim.8
+	title = "flavor_tim.8.t"
+	desc = "flavor_tim.8.d"
+	picture = COUNTRY_COLLAPSE_eventPicture
+	is_triggered_only = yes
+	major = yes
+	major_trigger = {
+		OR = {
+			is_neighbor_of = FROM
+			dynasty = "Timurid"
+		}
+	}
+
+	immediate = {
+		hidden_effect = {
+			add_country_modifier = { name = timurid_prince_modifier hidden = yes duration = 1 }
+			add_government_reform = timurid_prince
+		}
+	}
+
+	option = {
+		name = "flavor_tim.8.a"
+		tooltip = {
+			add_government_reform = timurid_prince
+		}
+		add_stability = -2
+	}
+}
+
+#Order Restored
+country_event = {
+	id = flavor_tim.9
+	title = "flavor_tim.9.t"
+	is_triggered_only = yes
+	desc = {
+		trigger = { has_country_flag = tim_resolved_civil_war }
+		desc = "flavor_tim.9.d"
+	}
+	desc = {
+		trigger = { NOT = { has_country_flag = tim_resolved_civil_war } }
+		desc = "flavor_tim.9.d.2"
+	}
+	picture = {
+		trigger = { has_country_flag = tim_resolved_civil_war }
+		picture = GOOD_WITH_MONARCH_eventPicture
+	}
+	picture = {
+		trigger = { NOT = { has_country_flag = tim_resolved_civil_war } }
+		picture = BAD_WITH_MONARCH_eventPicture
+	}
+
+	immediate = {
+		hidden_effect = {
+			set_country_flag = had_timurid_civil_war
+			if = {
+				limit = {
+					has_country_flag = tim_resolved_civil_war
+					religion_group = muslim
+					NOT = { has_reform = great_timurid_state }
+				}
+				add_government_reform = great_timurid_state
+			}
+		}
+	}
+
+	option = {
+		name = "flavor_tim.9.a"
+		trigger = { has_country_flag = tim_resolved_civil_war }
+		tooltip = {
+			add_government_reform = great_timurid_state
+		}
+		add_stability = 1
+	}
+	option = {
+		name = "flavor_tim.9.b"
+		trigger = { NOT = { has_country_flag = tim_resolved_civil_war } }
+		add_country_modifier = {
+			name = tim_disintegrating_empire
+			duration = 18250
+		}
+		add_stability = -2
+		change_government_reform_progress = -50
+		define_ruler = {
+			dynasty = "Timurid"
+			change_mil = -3
+			change_dip = -3
+			change_adm = -3
+			claim = 0
+		}
+		if = {
+			limit = {
+				has_heir = yes
+			}
+			kill_heir = {}
+			define_heir = {
+				dynasty = "Timurid"
+				change_mil = -3
+				change_dip = -3
+				change_adm = -3
+				claim = 0
+			}
+		}
+	}
+}
+
+#Pretenders rise
+country_event = {
+	id = flavor_tim.10
+	title = "flavor_tim.10.t"
+	desc = "flavor_tim.10.d"
+	picture = REVOLT_eventPicture
+	is_triggered_only = yes #on_monarch_death
+
+	trigger = {
+		tag = TIM
+		has_disaster = timurid_civil_war
+	}
+
+	immediate = {
+		hidden_effect = {
+			random_owned_province = {
+				limit = {
+					region_for_scope_province = {
+						is_capital_of = ROOT
+					}
+				}
+				save_event_target_as = tim_pretenders
+			}
+		}
+	}
+
+	option = {
+		name = "flavor_tim.10.a"
+		event_target:tim_pretenders = {
+			start_revolt = {
+				type = pretender_rebels
+				size = 5
+				win = yes
+			}
+		}
+		capital_scope = {
+			start_revolt = {
+				type = pretender_rebels
+				size = 5
+			}
+		}
+	}
+}
+
+#Foreign plot
+country_event = {
+	id = flavor_tim.11
+	title = "flavor_tim.11.t"
+	desc = "flavor_tim.11.d"
+	picture = SPY_eventPicture
+
+	trigger = {
+		has_reform = timurid_prince
+		always = no
+	}
+	mean_time_to_happen = {
+		months = 720
+		modifier = {
+			factor = 1.1
+			stability = 1
+		}
+		modifier = {
+			factor = 1.1
+			stability = 2
+		}
+		modifier = {
+			factor = 1.1
+			stability = 3
+		}
+		modifier = {
+			factor = 0.15
+			has_disaster = timurid_civil_war
+		}
+	}
+
+	option = {
+		name = "flavor_tim.11.a" #Order an Investigation!
+		every_neighbor_country = {
+			add_opinion = {
+				who = ROOT
+				modifier = tim_accused_of_foreign_plot
+			}
+			add_country_modifier = {
+				name = tim_accused_foreign_plot
+				duration = 1825
+			}
+			set_country_flag = tim_accused_of_foreign_plot
+		}
+		random = {
+			chance = 75
+			kill_ruler = yes
+		}
+	}
+	option = {
+		name = "flavor_tim.11.b" #We cant afford this
+		ai_chance = {
+			factor = 4
+		}
+		random = {
+			chance = 25
+			kill_ruler = yes
+		}
+		every_neighbor_country = {
+			limit = {
+				is_free_or_tributary_trigger = yes
+			}
+			add_spy_network_in = {
+				who = ROOT
+				value = 100
+			}
+			set_country_flag = tim_foreign_plot
+		}
+		add_country_modifier = {
+			name = tim_foreign_plot
+			duration = 1825
+		}
+	}
+	after = {
+		hidden_effect = {
+			every_neighbor_country = {
+				limit = {
+					OR = {
+						has_country_flag = tim_foreign_plot
+						has_country_flag = tim_accused_of_foreign_plot
+					}
+				}
+				country_event = {
+					id = flavor_tim.12 #Foreign plot - Notification
+				}
+			}
+		}
+	}
+}
+
+#A Foreign Plot
+country_event = {
+	id = flavor_tim.12
+	title = "flavor_tim.12.t"
+	desc = {
+		trigger = { has_country_flag = tim_foreign_plot } 
+		desc = "flavor_tim.12.d"
+	}
+	desc = {
+		trigger = { has_country_flag = tim_accused_of_foreign_plot }
+		desc = "flavor_tim.12.d.2"
+	}
+	picture = SPY_eventPicture
+	is_triggered_only = yes
+
+	option = {
+		trigger = { has_country_flag = tim_accused_of_foreign_plot }
+		clr_country_flag = tim_accused_of_foreign_plot
+		name = "flavor_tim.12.a" #Outrageous!
+		tooltip = {
+			add_country_modifier = {
+				name = tim_accused_foreign_plot
+				duration = 1825
+			}
+			add_opinion = {
+				who = FROM
+				modifier = tim_accused_of_foreign_plot
+			}
+		}
+	}
+	option = {
+		trigger = { has_country_flag = tim_foreign_plot }
+		clr_country_flag = tim_foreign_plot
+		name = "flavor_tim.12.b" #Most interesting...
+		tooltip = {
+			add_spy_network_in = {
+				who = FROM
+				value = 100
+			}
+			FROM = {
+				add_country_modifier = {
+					name = tim_foreign_plot
+					duration = 1825
+				}
+			}
+		}
+	}
+}
+
+#Sufi Movements in Mazandaran
+country_event = {
+	id = flavor_tim.13
+	title = "flavor_tim.13.t"
+	desc = "flavor_tim.13.d"
+	picture = REVOLT_eventPicture
+	fire_only_once = yes
+
+	major = yes
+	major_trigger = {
+		OR = {
+			is_neighbor_of = FROM
+			dynasty = "Timurid"
+		}
+		NOT = { owns_core_province = 424 } #Own event
+	}
+
+	trigger = {
+		tag = TIM
+		has_global_flag = death_of_shah_rukh
+		OR = {
+			tabarestan_area = { country_or_non_sovereign_subject_holds = ROOT }
+			azerbaijan_area = { country_or_non_sovereign_subject_holds = ROOT }
+			iraq_e_ajam_area = { country_or_non_sovereign_subject_holds = ROOT }
+		}
+	}
+
+	mean_time_to_happen = {
+		months = 12
+	}
+
+	immediate = {
+		set_global_flag = had_sufi_movements_in_mazandaran
+		hidden_effect = {
+			if = {
+				limit = {
+					any_known_country = {
+						owns_core_province = 424 #Ardabil
+						religion = shiite
+					}
+				}
+				random_known_country = {
+					limit = {
+						owns_core_province = 424 #Ardabil
+						religion = shiite
+					}
+					save_event_target_as = sufi_order #This can be Ardabil but also any Shia nation that owns the province
+				}
+			}
+			else = {
+				ARL = { save_event_target_as = sufi_order } #Otherwise if the Shia's are dead Ardabil will come back to life
+			}
+		}
+	}
+
+	option = {
+		name = "flavor_tim.13.a" #Expel them!
+		ai_chance = {
+			factor = 10 #Less punishing in grand scheme of things
+		}
+		custom_tooltip = "WILL_AFFECT_MISSION_TREE"
+		hidden_effect = {
+			set_country_flag = tim_sufi_expel_path
+			swap_non_generic_missions = yes
+		}
+
+		tabarestan_area = {
+			limit = {
+				country_or_non_sovereign_subject_holds = ROOT
+				owner = { 
+					OR = {
+						ai = yes  #Dont want to give away player land randomly
+						tag = TIM
+					}
+				}
+			}
+			remove_core = owner
+			remove_core = ROOT
+			add_core = event_target:sufi_order
+			cede_province = event_target:sufi_order
+		}
+		azerbaijan_area = {
+			limit = {
+				country_or_non_sovereign_subject_holds = ROOT
+				owner = { 
+					OR = {
+						ai = yes  
+						tag = TIM
+					}
+				}
+			}
+			remove_core = owner
+			remove_core = ROOT
+			add_core = event_target:sufi_order
+			cede_province = event_target:sufi_order
+		}
+		iraq_e_ajam_area = {
+			limit = {
+				country_or_non_sovereign_subject_holds = ROOT
+				owner = { 
+					OR = {
+						ai = yes  
+						tag = TIM
+					}
+				}
+			}
+			remove_core = owner
+			remove_core = ROOT
+			add_core = event_target:sufi_order
+			cede_province = event_target:sufi_order
+		}
+		add_truce_with = event_target:sufi_order
+		event_target:sufi_order = {
+			set_country_flag = tim_expelled_sufis
+		}
+	}
+
+	option = {
+		name = "flavor_tim.13.b" #Accept their demands
+		custom_tooltip = "WILL_AFFECT_MISSION_TREE"
+		hidden_effect = {
+			set_country_flag = tim_sufi_privilege_path
+			swap_non_generic_missions = yes
+		}
+		set_estate_privilege = estate_church_tim_sufi_autonomy
+		tabarestan_area = {
+			limit = {
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			add_core = event_target:sufi_order
+		}
+		azerbaijan_area = {
+			limit = {
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			add_core = event_target:sufi_order
+		}
+		iraq_e_ajam_area = {
+			limit = {
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			add_core = event_target:sufi_order
+		}
+		add_truce_with = event_target:sufi_order
+		event_target:sufi_order = {
+			set_country_flag = tim_sufi_demands
+		}
+	}
+	after = {
+		hidden_effect = {
+			event_target:sufi_order = {
+				country_event = {
+					id = flavor_tim.14 #Sufi Movement in Mazandaran
+				}
+			}
+		}
+	}
+}
+
+#Sufi Movement in Mazandaran - Notification
+country_event = {
+	id = flavor_tim.14
+	title = "flavor_tim.14.t"
+	desc = {
+		trigger = { has_country_flag = tim_sufi_demands }
+		desc = "flavor_tim.14.d"
+	}
+	desc = {
+		trigger = { has_country_flag = tim_expelled_sufis }
+		desc = "flavor_tim.14.d.1"
+	}
+	picture = REVOLT_eventPicture
+	is_triggered_only = yes
+
+	immediate = {
+		hidden_effect = {
+			#No Atheists...
+			if = {
+				limit = {
+					religion = noreligion
+				}
+				change_religion = shiite
+				set_religious_school = {
+					group = muslim
+					school = jafari_school
+				}
+			}
+		}
+	}
+
+	option = {
+		trigger = { has_country_flag = tim_expelled_sufis }
+		clr_country_flag = tim_expelled_sufis
+		name = "flavor_tim.14.a" #They are most welcome
+		tooltip = {
+			tabarestan_area = {
+				limit = {
+					country_or_non_sovereign_subject_holds = FROM
+					owner = { ai = yes }
+				}
+				add_core = event_target:sufi_order
+				cede_province = event_target:sufi_order
+			}
+			azerbaijan_area = {
+				limit = {
+					country_or_non_sovereign_subject_holds = FROM
+					owner = { ai = yes }
+				}
+				add_core = event_target:sufi_order
+				cede_province = event_target:sufi_order
+			}
+			iraq_e_ajam_area = {
+				limit = {
+					country_or_non_sovereign_subject_holds = FROM
+					owner = { ai = yes }
+				}
+				add_core = event_target:sufi_order
+				cede_province = event_target:sufi_order
+			}
+		}
+		tabarestan_area = {
+			limit = {
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			add_base_tax = 1
+			add_base_production = 1
+			add_base_manpower = 1
+			if = {
+				limit = { NOT = { religion = shiite } }
+				add_province_modifier = {
+					name = tim_influx_of_sufis
+					duration = 7300
+				}
+			}
+		}
+		azerbaijan_area = {
+			limit = {
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			add_base_tax = 1
+			add_base_production = 1
+			add_base_manpower = 1
+			if = {
+				limit = { NOT = { religion = shiite } }
+				add_province_modifier = {
+					name = tim_influx_of_sufis
+					duration = 7300
+				}
+			}
+		}
+		iraq_e_ajam_area = {
+			limit = {
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			add_base_tax = 1
+			add_base_production = 1
+			add_base_manpower = 1
+			if = {
+				limit = { NOT = { religion = shiite } }
+				add_province_modifier = {
+					name = tim_influx_of_sufis
+					duration = 7300
+				}
+			}
+		}
+	}
+	option = {
+		name = "flavor_tim.14.b" #We must liberate them!
+		trigger = { has_country_flag = tim_sufi_demands }
+		clr_country_flag = tim_sufi_demands
+		tooltip = {
+			tabarestan_area = {
+				limit = {
+					country_or_non_sovereign_subject_holds = FROM
+				}
+				add_core = event_target:sufi_order
+			}
+			azerbaijan_area = {
+				limit = {
+					country_or_non_sovereign_subject_holds = FROM
+				}
+				add_core = event_target:sufi_order
+			}
+			iraq_e_ajam_area = {
+				limit = {
+					country_or_non_sovereign_subject_holds = FROM
+				}
+				add_core = event_target:sufi_order
+			}
+		}
+	}
+}
+
+#A Successful campaign
+country_event = {
+	id = flavor_tim.15
+	title = "flavor_tim.15.t"
+	desc = "flavor_tim.15.d"
+	picture = MILITARY_CAMP_eventPicture
+	is_triggered_only = yes #on_battle_won
+
+	trigger = {
+		OR = {
+			tag = TIM
+			has_reform = timurid_prince
+		}
+		is_at_war = yes
+	}
+
+	immediate = {
+		hidden_effect = {
+			set_country_flag = tim_successful_campaign
+			random_list = {
+				30 = { set_country_flag = tim_add_stability }
+				25 = { set_country_flag = tim_add_mil_power }
+				20 = { set_country_flag = tim_add_manpower }
+				15 = { set_country_flag = tim_add_morale }
+				10 = { set_country_flag = tim_add_ruler_skill }
+			}
+		}
+	}
+
+	option = {
+		trigger = { has_country_flag = tim_add_stability }
+		name = "flavor_tim.15.a" #There is hope for our nation left
+		add_stability_or_adm_power = yes
+		clr_country_flag = tim_add_stability
+	}
+	option = {
+		trigger = { has_country_flag = tim_add_mil_power }
+		name = "flavor_tim.15.b" #Excellent
+		add_mil_power = 75
+		clr_country_flag = tim_add_mil_power
+	}
+	option = {
+		trigger = { has_country_flag = tim_add_manpower }
+		name = "flavor_tim.15.c" #There is glory for everyone!
+		add_yearly_manpower = 5
+		clr_country_flag = tim_add_manpower
+	}
+	option = {
+		trigger = { has_country_flag = tim_add_morale }
+		name = "flavor_tim.15.e" #Hold the line!
+		add_country_modifier = {
+			name = tim_morale_event
+			duration = 1825
+		}
+		clr_country_flag = tim_add_morale
+	}
+	option = {
+		trigger = { has_country_flag = tim_add_ruler_skill }
+		name = "flavor_tim.15.f" #[Root.Monarch.GetName] shall learn from this tactical victory
+		add_ruler_skill_or_mil_power = yes
+		clr_country_flag = tim_add_ruler_skill
+	}
+}
+
+#Influential Court Officials
+country_event = {
+	id = flavor_tim.16
+	title = "flavor_tim.16.t"
+	desc = "flavor_tim.16.d"
+	picture = NOBLE_ESTATE_eventPicture
+	is_triggered_only = yes
+
+	option = {
+		name = "flavor_tim.16.a" #We must curb their influence!
+		add_estate_loyalty = {
+			estate = all
+			loyalty = -10
+		}
+		add_country_modifier = {
+			name = tim_defiant_court_officials
+			duration = 1825
+		}
+		add_years_of_income = -0.75
+	}
+	option = {
+		ai_chance = {
+			factor = 2
+		}
+		name = "flavor_tim.16.b" #Regrettable
+		add_estate_influence_modifier = {
+			estate = all
+			desc = tim_influential_court_officials
+			influence = 10
+			duration = 3650
+		}
+	}
+}
+
+#Succession of Abdal-Latif
+country_event = {
+	id = flavor_tim.17
+	title = "flavor_tim.17.t"
+	desc = "flavor_tim.17.d"
+	picture = GOOD_WITH_MONARCH_eventPicture
+
+	is_triggered_only = yes #new monarch
+	fire_only_once = yes
+
+	trigger = {
+		tag = TRS
+		has_ruler_flag = abdal_latif_timurid
+	}
+
+	option = {
+		name = "flavor_tim.17.a"
+		add_stability = 2
+		hidden_effect = {
+			ISF = {
+				country_event = {
+					id = flavor_tim.18 #Succession of Abdal-Latif in Transoxiana
+				}
+			}
+		}
+	}
+}
+
+#Abdal-Latif succeeds to the throne of Transoxiana
+country_event = {
+	id = flavor_tim.18
+	title = "flavor_tim.18.t"
+	desc = "flavor_tim.18.d"
+	picture = GOOD_WITH_MONARCH_eventPicture
+	is_triggered_only = yes
+
+	immediate = {
+		set_global_flag = abdal_latif_succession_happened
+	}
+
+	option = {
+		trigger = { ai = yes }
+		name = "flavor_tim.18.a"
+		TRS = { inherit = ISF }
+	}
+	option = {
+		trigger = { ai = no }
+		name = "flavor_tim.18.a"
+		TRS = { create_union = ISF }
+	}
+	option = {
+		trigger = { 
+			ai = no 
+			NOT = { truce_with = TRS }
+		}
+		name = "flavor_tim.18.b" #Never!
+		kill_ruler = yes
+		if = {
+			limit = {
+				alliance_with = TRS
+			}
+			break_alliance_with = { who = TRS }
+		}
+		declare_war_with_cb = {
+			casus_belli = cb_timurid_conquest
+			who = TRS
+		}
+	}
+}
+
+#The Governorship of Ajam
+country_event = {
+	id = flavor_tim.19
+	title = "flavor_tim.19.t"
+	desc = "flavor_tim.19.d"
+	picture = CONQUEST_eventPicture
+	is_triggered_only = yes
+
+	option = {
+		name = "flavor_tim.19.a" #Keep it for ourselves
+		ai_chance = {
+			factor = 10
+		}
+		custom_tooltip = autonomy_in_ajams_land_tooltip
+		hidden_effect = {
+			every_owned_province = {
+				limit = {
+					is_core = QOM
+				}
+				add_local_autonomy = 75
+			}
+		}
+	}
+	option = {
+		name = "flavor_tim.19.b" #Install A New Governor
+		#This is mostly flavour but 200 adm power is nice
+		if = {
+			limit = { NOT = { has_global_flag = death_of_shah_rukh } }
+			custom_tooltip = ajam_cant_rebel_tooltip
+		}
+		add_adm_power = 200
+		if = {
+			limit = {
+				NOT = { exists = QOM }
+			}
+			release = QOM
+			vassalize = QOM
+			hidden_effect = {
+				QOM = {
+					if = { #no atheists
+						limit = {
+							religion = noreligion
+						}
+						change_religion = sunni
+						change_primary_culture = uzbehk
+					}
+					set_country_flag = new_governorship_of_ajam
+					define_ruler = {
+						dynasty = "Timurid"
+					}
+					if = {
+						limit = { has_heir = yes }
+						remove_heir = {}
+						define_heir = {
+							dynasty = "Timurid"
+						}
+					}
+					add_government_reform = timurid_prince
+				}
+			}
+		}
+		else = {
+			every_owned_province = {
+				limit = { is_core = QOM }
+				cede_province = QOM
+			}
+			hidden_effect = {
+				QOM = {
+					set_country_flag = new_governorship_of_ajam
+					country_event = {
+						id = flavor_tim.20
+					}
+				}
+			}
+		}
+	}
+}
+#The Governorship of Ajam
+country_event = {
+	id = flavor_tim.20
+	title = "flavor_tim.20.t"
+	desc = "flavor_tim.20.d"
+	picture = CONQUEST_eventPicture
+	is_triggered_only = yes
+
+	option = {
+		name = "flavor_tim.20.a" #A Sad Day
+		define_ruler = {
+			dynasty = "Timurid"
+		}
+		if = {
+			limit = { has_heir = yes }
+			kill_heir = {}
+		}
+		if = {
+			limit = {
+				NOT = { has_reform = timurid_prince }
+			}
+			add_government_reform = timurid_prince
+		}
+	}
+	option = {
+		name = "flavor_tim.1.c" #Flee to Luristan!
+		trigger = { ai = no }
+		exile_ruler_as = { name = muhammad_bin_baysonqor }
+		define_ruler = {
+			dynasty = "Timurid"
+		}
+		if = {
+			limit = {
+				has_heir = yes
+			}
+			kill_heir = {}
+		}
+		switch_tag = LRI
+		LRI = {
+			country_event = {
+				id = flavor_tim.2 #The Arrival of Muhammad bin Baysonqor
+				days = 1
+			}
+		}
+	}
+}

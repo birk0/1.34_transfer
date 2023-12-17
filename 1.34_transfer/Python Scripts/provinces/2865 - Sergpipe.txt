@@ -1,0 +1,7 @@
+#Prov2865 - Sergpipe
+religion = shamanism
+culture = mali
+
+base_tax = 1
+base_production = 1
+base_manpower = 1

@@ -1,0 +1,20 @@
+# 2497 - Orapa
+
+owner = BSG
+controller = BSG
+add_core = BSG
+culture = masaba
+religion = shamanism #Fetishism
+capital = "Orapa"
+trade_goods = ivory
+hre = no
+base_tax = 1
+base_production = 1
+base_manpower = 2
+is_city = yes
+#discovered_by = central_african
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

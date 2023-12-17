@@ -1,0 +1,7 @@
+#Prov1220 - Dar Jaal
+culture = nubian
+religion = shiite
+
+base_tax = 1
+base_production = 1
+base_manpower = 1

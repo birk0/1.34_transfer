@@ -1,0 +1,6501 @@
+namespace = eoc_events
+#General flavor events for Celestial Emperor and neighbours
+
+country_event = { #Begins the Miao revolts
+	id = eoc_events.1
+	title = "eoc_events.1.t"
+	desc = "eoc_events.1.d"
+	picture = REVOLT_HUGUENOTS_eventPicture
+	trigger = {
+		is_emperor_of_china = yes
+		NOT = {
+			OR = {
+				has_country_flag = eoc_miao_revolts
+				has_country_flag = eoc_resolved_miao_revolts
+				culture_group = tibetan_group
+				primary_culture = tibetan_group_new
+			}
+		}
+		china_superregion = {
+			culture_group = tibetan_group
+			owned_by = ROOT
+			NOT = { province_is_or_accepts_culture = yes }
+		}
+		NOT = { has_country_modifier = new_mandate_holder }
+		if = {
+			limit = { NOT = { tag = MNG } }
+			NOT = {
+				calc_true_if = {
+					amount = 2
+					all_known_country = {
+						has_reform = chinese_warlord_reform
+					}
+				}
+			}
+		}
+	}
+	mean_time_to_happen = {
+		months = 60
+		modifier = {
+			factor = 0.1
+			ai = no
+		}
+	}
+	immediate = {
+		hidden_effect = {
+			set_country_flag = eoc_miao_revolts
+			add_country_modifier = {
+				name = eoc_miao_revolts_modifier
+				duration = -1
+				hidden = yes 
+			}
+			every_owned_province = {
+				trigger_switch = {
+					on_trigger = culture
+					miao = {
+						add_core = CMI
+					}
+					yi = {
+						add_core = CYI
+					}
+					bai = {
+						add_core = CDL
+					}
+					zhuang = {
+						add_core = CGS
+					}
+				}
+			}
+		}
+	}
+	option = {
+		ai_chance = { factor = 1 } 
+		name = "eoc_events.1.a" #Fight them!
+		set_country_flag = eoc_not_exterminating_miao
+		if = {
+			limit = { tag = MNG }
+			custom_tooltip = mng_not_exterminating_miao_tooltip
+		}
+		else = {
+			custom_tooltip = eoc_not_exterminating_miao_tooltip
+		}
+		custom_tooltip = eoc_can_play_as_warlords_tooltip
+		hidden_effect = {
+			add_country_modifier = {
+				name = eoc_fighting_miao_rebels
+				duration = -1 
+			}
+			random_owned_province = {
+				limit = { culture = miao }
+				start_revolt = {
+					type = nationalist_rebels
+					size = 3
+				}
+			}
+			random_owned_province = {
+				limit = { culture = miao }
+				start_revolt = {
+					type = nationalist_rebels
+					size = 3
+				}
+			}
+			random_owned_province = {
+				limit = { culture = miao }
+				start_revolt = {
+					type = nationalist_rebels
+					size = 4
+				}
+			}
+			china_superregion = {
+				limit = {
+					owned_by = ROOT
+					culture_group = tibetan_group
+					NOT = { province_is_or_accepts_culture = yes }
+				}
+				set_province_flag = local_miao_revolts
+				add_province_modifier = {
+					name = eoc_local_miao_revolts
+					duration = -1
+					desc = prov_miao_revolts_desc
+				}
+			}
+		}
+	}
+	option = {
+		name = "eoc_events.1.b" #Exterminate them!
+		if = {
+			limit = {
+				any_owned_province = {
+					is_core = CMI
+				}
+			}
+			set_country_flag = spawn_miao_flag
+		}
+		else_if = {
+			limit = {
+				any_owned_province = {
+					is_core = CYI
+				}
+			}
+			set_country_flag = spawn_yi_flag
+		}
+		else_if = {
+			limit = {
+				any_owned_province = {
+					is_core = CDL
+				}
+			}
+			set_country_flag = spawn_dali_flag
+		}
+		else_if = {
+			limit = {
+				any_owned_province = {
+					is_core = CGS
+				}
+			}
+			set_country_flag = spawn_changseng_flag
+		}
+		ai_chance = { factor = 0 }
+		set_country_flag = eoc_exterminating_miao 
+		if = {
+			limit = { tag = MNG }
+			custom_tooltip = mng_exterminating_miao_tooltip
+		}
+		else = { custom_tooltip = eoc_exterminating_miao_tooltip }
+		hidden_effect = {
+			country_event = { id = eoc_events.2 } #Miao declare independence
+		}
+	}
+	after = {
+		if = {
+			limit = { tag = MNG } 
+			swap_non_generic_missions = yes
+		}
+	}
+}
+country_event = { #Miao declare Independence
+	id = eoc_events.2
+	title = "eoc_events.2.t"
+	desc = "eoc_events.2.d"
+	picture = CHINESE_GENERAL_eventPicture
+	is_triggered_only = yes
+	
+	immediate = {
+		hidden_effect = {
+			if = {
+				limit = {
+					has_country_flag = spawn_miao_flag
+					NOT = { has_country_flag = eoc_defeated_miao }
+				}
+				release_rebel_warlord = {
+					who = CMI
+					miao_revolts = yes
+					dynasty = "Miao"
+				}
+			}
+			if = {
+				limit = {
+					has_country_flag = spawn_yi_flag
+					NOT = { has_country_flag = eoc_defeated_yi }
+				}
+				release_rebel_warlord = {
+					who = CYI
+					miao_revolts = yes
+					dynasty = "Yi"
+				}
+			}
+			if = {
+				limit = {
+					has_country_flag = spawn_dali_flag
+					NOT = { has_country_flag = eoc_defeated_bai }
+				}
+				release_rebel_warlord = {
+					who = CDL
+					miao_revolts = yes
+					dynasty = "Dali"
+				}
+			}
+			if = {
+				limit = {
+					has_country_flag = spawn_changseng_flag
+					NOT = { has_country_flag = eoc_defeated_zhuang }
+				}
+				release_rebel_warlord = {
+					who = CGS
+					miao_revolts = yes
+					dynasty = "Zhuang"
+				}
+			}
+		}
+	}
+
+	option = {
+		name = "eoc_events.2.a" # Fight Miao
+		custom_tooltip = eoc_miao_declares_independence_tooltip
+		trigger = { 
+			has_country_flag = spawn_miao_flag
+			NOT = { has_country_flag = eoc_defeated_miao }
+		}
+		clr_country_flag = spawn_miao_flag
+		declare_war_with_cb = {
+			casus_belli = cb_crush_rebel_warlord
+			who = CMI
+		}
+	}
+	option = {
+		name = "eoc_events.2.a.2" # Play as Miao
+		trigger = { 
+			has_country_flag = spawn_miao_flag
+			NOT = { has_country_flag = eoc_defeated_miao }
+			ai = no
+		}
+		clr_country_flag = spawn_miao_flag
+		custom_tooltip = play_as_miao_tooltip
+		eoc_play_as_warlord_effect = {
+			who = CMI
+		}
+	}
+	option = {
+		name = "eoc_events.2.b" # Fight Yi
+		trigger = {
+			has_country_flag = spawn_yi_flag
+			NOT = { has_country_flag = eoc_defeated_yi }
+		}
+		clr_country_flag = spawn_yi_flag
+		custom_tooltip = eoc_yi_declares_independence_tooltip
+		declare_war_with_cb = {
+			casus_belli = cb_crush_rebel_warlord
+			who = CYI
+		}
+	}
+	option = {
+		name = "eoc_events.2.b.2" # Play as Yi
+		trigger = { 
+			has_country_flag = spawn_yi_flag
+			NOT = { has_country_flag = eoc_defeated_yi }
+			ai = no
+		}
+		clr_country_flag = spawn_yi_flag
+		custom_tooltip = play_as_yi_tooltip
+		eoc_play_as_warlord_effect = {
+			who = CYI
+		}
+	}
+	option = {
+		name = "eoc_events.2.c" # Fight Dali
+		trigger = {
+			has_country_flag = spawn_dali_flag
+			NOT = { has_country_flag = eoc_defeated_bai }
+		}
+		clr_country_flag = spawn_dali_flag
+		custom_tooltip = eoc_dali_declares_independence_tooltip
+		declare_war_with_cb = {
+			casus_belli = cb_crush_rebel_warlord
+			who = CDL
+		}
+	}
+	option = {
+		name = "eoc_events.2.c.2" # Play as Dali
+		trigger = { 
+			has_country_flag = spawn_dali_flag
+			NOT = { has_country_flag = eoc_defeated_bai }
+			ai = no
+		}
+		clr_country_flag = spawn_dali_flag
+		custom_tooltip = play_as_dali_tooltip
+		eoc_play_as_warlord_effect = {
+			who = CDL
+		}
+	}
+	option = {
+		name = "eoc_events.2.e" # Fight Changseng
+		trigger = {
+			has_country_flag = spawn_changseng_flag
+			NOT = { has_country_flag = eoc_defeated_zhuang }
+		}
+		clr_country_flag = spawn_changseng_flag
+		custom_tooltip = eoc_changseng_declares_independence_tooltip
+		declare_war_with_cb = {
+			casus_belli = cb_crush_rebel_warlord
+			who = CGS
+		}
+	}
+	option = {
+		name = "eoc_events.2.e.2" # Play as Changseng
+		trigger = { 
+			has_country_flag = spawn_changseng_flag
+			ai = no
+		}
+		clr_country_flag = spawn_changseng_flag
+		custom_tooltip = play_as_changseng_tooltip
+		eoc_play_as_warlord_effect = {
+			who = CGS
+		}
+	}
+}
+country_event = {
+	id = eoc_events.3 #Ends the Miao revolts
+	title = "eoc_events.3.t"
+	desc = "eoc_events.3.d"
+	picture = GOOD_WITH_MONARCH_eventPicture
+	is_triggered_only = yes
+	immediate = {
+		set_country_flag = eoc_resolved_miao_revolts
+		clr_country_flag = eoc_miao_revolts
+	}
+	option = {
+		name = "eoc_events.3.a"
+		custom_tooltip = eoc_miao_penalties_clear_tt
+	}
+	after = {
+		clr_miao_revolts_effects = yes
+	}
+}
+country_event = {
+	id = eoc_events.4 #Yi, Dali and Changseng join the rebellion
+	title = "eoc_events.4.t"
+	desc = "eoc_events.4.d"
+	picture = CHINESE_GENERAL_eventPicture
+	trigger = {
+		any_war_enemy_country = {
+			has_country_flag = miao_fighting_emperor
+			is_in_war = { defender_leader = THIS casus_belli = cb_crush_rebel_warlord }
+		}
+		has_country_flag = eoc_miao_revolts
+		has_country_flag = eoc_exterminating_miao
+		OR = {
+			AND = {
+				NOT = { exists = CYI }
+				NOT = { has_country_flag = eoc_defeated_yi }
+				any_owned_province = {
+					is_core = CYI
+				}
+			}
+			AND = {
+				NOT = { exists = CMI }
+				NOT = { has_country_flag = eoc_defeated_yi }
+				any_owned_province = {
+					is_core = CMI
+				}
+			}
+			AND = {
+				NOT = { exists = CDL }
+				NOT = { has_country_flag = eoc_defeated_bai }
+				any_owned_province = {
+					is_core = CDL
+				}
+			}
+			AND = {
+				NOT = { exists = CGS }
+				NOT = { has_country_flag = eoc_defeated_zhuang }
+				any_owned_province = {
+					is_core = CGS
+				}
+			}
+		}
+	}
+
+	immediate = {
+		hidden_effect = {
+			random_war_enemy_country = {
+				limit = {
+					has_country_flag = miao_fighting_emperor
+					is_in_war = { defender_leader = THIS casus_belli = cb_crush_rebel_warlord }
+				}
+				save_event_target_as = miao_leader
+			}
+		}
+	}
+	mean_time_to_happen = {
+		months = 12
+	}
+	option = {
+		name = "eoc_events.4.a"
+		if = {
+			limit = {
+				NOT = { exists = CYI }
+				NOT = { has_country_flag = eoc_defeated_yi }
+				any_owned_province = {
+					is_core = CYI
+				}
+			}
+			custom_tooltip = eoc_yi_declares_independence_tooltip
+			hidden_effect = {
+				release_rebel_warlord = {
+					who = CYI
+					miao_revolts = yes
+					dynasty = "Yi"
+					join_wars_of = event_target:miao_leader
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				NOT = { exists = CDL }
+				NOT = { has_country_flag = eoc_defeated_bai }
+				any_owned_province = {
+					is_core = CDL
+				}
+			}
+			custom_tooltip = eoc_dali_declares_independence_tooltip
+			hidden_effect = {
+				release_rebel_warlord = {
+					who = CDL
+					miao_revolts = yes
+					dynasty = "Dali"
+					join_wars_of = event_target:miao_leader
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				NOT = { exists = CGS }
+				NOT = { has_country_flag = eoc_defeated_zhuang }
+				any_owned_province = {
+					is_core = CGS
+				}
+			}
+			custom_tooltip = eoc_changseng_declares_independence_tooltip
+			hidden_effect = {
+				release_rebel_warlord = {
+					who = CGS
+					miao_revolts = yes
+					dynasty = "Zhuang"
+					join_wars_of = event_target:miao_leader
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				NOT = { exists = CMI }
+				NOT = { has_country_flag = eoc_defeated_miao }
+				any_owned_province = {
+					is_core = CMI
+				}
+			}
+			custom_tooltip = eoc_miao_declares_independence_tooltip
+			hidden_effect = {
+				release_rebel_warlord = {
+					who = CMI
+					miao_revolts = yes
+					dynasty = "Zhuang"
+					join_wars_of = event_target:miao_leader
+				}
+			}
+		}
+	}
+}
+country_event = {
+	id = eoc_events.32 #Miao people revolt in <province>
+	title = "eoc_events.32.t"
+	desc = "eoc_events.32.d"
+	picture = REVOLT_eventPicture
+	trigger = {
+		has_country_flag = eoc_miao_revolts
+		is_emperor_of_china = yes
+		any_owned_province = {
+			culture_group = tibetan_group
+			superregion = china_superregion
+		}
+	}
+	immediate = {
+		hidden_effect = {
+			random_owned_province = {
+				limit = {
+					superregion = china_superregion
+					culture_group = tibetan_group
+				}
+				save_event_target_as = miao_revolt
+			}
+		}
+	}
+	mean_time_to_happen = {
+		months = 60
+	}
+	option = {
+		name = "eoc_events.32.a" #Kill them!
+		event_target:miao_revolt = {
+			start_revolt = {
+				type = nationalist_rebels
+				size = 5
+			}
+		}
+		add_years_of_income = -0.5
+		add_yearly_manpower = -0.5
+	}
+	option = {
+		name = "eoc_events.32.b" #Appease them
+		ai_chance = {
+			factor = 0
+		}
+		event_target:miao_revolt = {
+			area = {
+				limit = { owned_by = ROOT }
+				add_local_autonomy = 20
+				add_unrest = -5
+			}
+		}
+	}
+}
+country_event = { 
+	id = eoc_events.5 #Curbing the Eunuchs
+	title = "eoc_events.5.t"
+	desc = "eoc_events.5.d"
+	picture = CHURCH_ESTATE_UPSET_eventPicture
+	is_triggered_only = yes
+	option = {
+		name = "eoc_events.5.a"
+		custom_tooltip = eoc_revoking_eunuch_privilege_tt
+		capital_scope =  {
+			start_revolt = {
+				type = particularist_rebels
+				size = 3
+			}
+		}
+		random_owned_province = {
+			start_revolt = {
+				type = particularist_rebels
+				size = 3
+			}
+		}
+	}
+}
+country_event = {
+	id = eoc_events.6 #Resurgence of the Ming
+	title = "eoc_events.6.t"
+	desc = "eoc_events.6.d"
+	picture = GOOD_WITH_MONARCH_eventPicture
+	is_triggered_only = yes
+	major = yes
+	option = {
+		name = "eoc_events.6.a" #Army bonuses
+		ai_chance = { factor = 85 } #Ming getting this is a fun endgame boss
+		add_country_modifier = {
+			name = eoc_resurgence_of_ming_mil
+			duration = -1
+		}
+	}
+	option = {
+		name = "eoc_events.6.b" #Stability bonuses
+		ai_chance = { factor = 15 }
+		add_country_modifier = {
+			name = eoc_resurgence_of_ming_adm
+			duration = -1
+		}
+	}
+}
+country_event = {
+	id = eoc_events.7 #Imperial Seal of the Yuan
+	title = "eoc_events.7.t"
+	desc = "eoc_events.7.d"
+	picture = GOOD_WITH_MONARCH_eventPicture
+	is_triggered_only = yes
+	option = {
+		name = "eoc_events.7.a" #Add the Seal to our own
+		add_country_modifier = {
+			name = eoc_mng_seal_of_yuan
+			duration = -1
+		}
+	}
+	option = {
+		name = "eoc_events.7.b" #Destroy the seal
+		add_prestige = 100
+		add_country_modifier = {
+			name = eoc_mng_destroyed_yuan
+			duration = -1
+		}
+	}
+}
+country_event = {
+	id = eoc_events.8 #Bureaucrats demand titles
+	title = "eoc_events.8.t"
+	desc = "eoc_events.8.d"
+	picture = PALACE_eventPicture
+	
+    trigger = {
+		is_emperor_of_china = yes
+		NOT = {
+			OR = {
+				has_country_modifier = eoc_sold_bureaucrats_titles
+				has_country_modifier = eoc_didnt_sell_bureaucrats_titles
+			}
+		}
+	}
+	
+	is_triggered_only = yes
+
+	option = {
+		name = "eoc_events.8.a"
+		add_country_modifier = {
+			name = eoc_sold_bureaucrats_titles
+			duration = 3650
+		}
+		add_estate_influence_modifier = {
+			influence = 10
+			duration = 3650
+			estate = estate_church
+			desc = eoc_sold_bureaucrats_titles_influence
+		}
+	}
+	
+	option = {
+		name = "eoc_events.8.b"
+		add_country_modifier = {
+			name = eoc_didnt_sell_bureaucrats_titles
+			duration = 3650
+		}
+		add_estate_loyalty = {
+			estate = estate_church
+			loyalty = -10
+		}
+	}
+}
+country_event = {
+	id = eoc_events.9 #Eunuchs trade rights
+	title = "eoc_events.9.t"
+	desc = "eoc_events.9.d"
+	picture = PALACE_eventPicture
+	
+    trigger = {
+		is_emperor_of_china = yes
+		NOT = {
+			OR = {
+				has_country_modifier = eoc_granted_eunuchs_trade
+				has_country_modifier = eoc_refused_eunuchs_trade
+			}
+		}
+	}
+	is_triggered_only = yes
+
+	option = {
+		name = "eoc_events.9.a"
+		add_country_modifier = {
+			name = eoc_granted_eunuchs_trade
+			duration = 3650
+		}
+		add_estate_loyalty = {
+			estate = estate_eunuchs
+			loyalty = 5
+		}
+		add_estate_influence_modifier = {
+			influence = 10
+			duration = 3650
+			desc = eoc_granted_eunuchs_trade_influence
+			estate = estate_eunuchs
+		}
+	}
+	
+	option = {
+		name = "eoc_events.9.b"
+		add_country_modifier = {
+			name = eoc_refused_eunuchs_trade
+			duration = 3650
+		}
+		add_estate_loyalty = {
+			estate = estate_eunuchs
+			loyalty = -5
+		}
+		add_estate_influence_modifier = {
+			influence = -10
+			duration = 3650
+			desc = eoc_refused_eunuchs_trade_influence
+			estate = estate_eunuchs
+		}
+	}
+}
+country_event = {
+	id = eoc_events.10 #Bureaucrats Isolationism
+	title = "eoc_events.10.t"
+	desc = "eoc_events.10.d"
+	picture = PALACE_eventPicture
+	
+    trigger = {
+		is_emperor_of_china = yes
+		NOT = {
+			OR = {
+				has_country_modifier = eoc_bureaucrats_isolationism
+				has_country_modifier = eoc_refused_bureaucrats_isolationism
+			}
+		}
+	}
+	is_triggered_only = yes
+
+	option = {
+		name = "eoc_events.10.a"
+		add_country_modifier = {
+			name = eoc_bureaucrats_isolationism
+			duration = 3650
+		}
+		add_estate_loyalty = {
+			estate = estate_church
+			loyalty = 10
+		}
+		add_estate_influence_modifier = {
+			influence = 5
+			duration = 3650
+			desc = eoc_bureaucrats_isolationism_influence
+			estate = estate_church
+		}
+	}
+	
+	option = {
+		name = "eoc_events.10.b"
+		add_country_modifier = {
+			name = eoc_refused_bureaucrats_isolationism
+			duration = 3650
+		}
+		add_estate_influence_modifier = {
+			influence = -10
+			duration = 3650
+			desc = eoc_refused_bureaucrats_isolationism_influence
+			estate = estate_church
+		}
+	}
+}
+country_event = {
+	id = eoc_events.11
+	title = "eoc_events.11.t" #Feng Shui
+	desc = "eoc_events.11.d"
+	picture = CITY_DEVELOPMENT_eventPicture
+	
+    trigger = {
+		is_emperor_of_china = yes
+		has_harmony = yes
+		culture_group = east_asian
+		NOT = { has_country_modifier = eoc_good_feng_shui }
+	}
+	is_triggered_only = yes
+
+	option = {
+		name = "eoc_events.11.a"
+		add_country_modifier = {
+			name = eoc_good_feng_shui
+			duration = 3650
+		}
+		add_adm_power = 50
+	}
+}
+country_event = {
+	id = eoc_events.12 #Corrupt Eunuchs
+	title = "eoc_events.12.t"
+	desc = "eoc_events.12.d"
+	picture = ACCUSATION_eventPicture
+	
+    trigger = {
+		ruler_has_personality = naive_personality
+		is_emperor_of_china = yes
+		NOT = { has_country_modifier = eoc_eunuchs_corrupt_the_country }
+	}
+	is_triggered_only = yes
+
+	option = {
+		name = "eoc_events.12.a"
+		add_country_modifier = {
+			name = eoc_eunuchs_corrupt_the_country
+			duration = 9125
+		}
+		add_estate_influence_modifier = {
+			influence = 20
+			duration = 9125
+			estate = estate_eunuchs
+			desc = eoc_eunuchs_corrupt_the_country_influence
+		}
+		add_meritocracy = -10
+		add_years_of_income = -0.2
+		add_mandate = -5
+		add_corruption = 5
+	}
+}
+country_event = {
+	id = eoc_events.13 #New Emperor
+	title = "eoc_events.13.t"
+	desc = "eoc_events.13.d"
+	picture = NEW_EMPEROR_eventPicture
+	
+	trigger = {
+		is_emperor_of_china = yes
+	}	
+	is_triggered_only = yes #ruler death
+	
+	option = {
+		name = "eoc_events.13.a"
+		add_mandate = 5
+		add_meritocracy = 5
+	}
+}
+country_event = {
+	id = eoc_events.14 #Purple Turban Rebellion
+	title = "eoc_events.14.t"
+	desc = "eoc_events.14.d"
+	picture = COUNTRY_COLLAPSE_eventPicture
+	
+	trigger = {
+		is_emperor_of_china = yes
+		tag = MNG
+		NOT = { 
+			OR = {
+				has_country_flag = purple_turban_rebellion
+				has_country_flag = resolved_purple_turban_rebellion 
+			}
+		}
+		NOT = { has_country_flag = eoc_miao_revolts } #Cant happen during Miao revolts
+		NOT = { 
+			has_disaster_progress = {
+				disaster = ming_crisis #Wont happen while Ming crisis is ticking
+				value = 1
+			}
+		}
+		is_year = 1470
+	}
+	mean_time_to_happen = { months = 120 }
+	
+	option = {
+		name = "eoc_events.14.a"
+		add_country_modifier = {
+			name = eoc_purple_turban_rebellion
+			duration = 9125
+		}
+		add_meritocracy = -10
+		add_years_of_income = -0.1
+		add_mandate = -5
+		add_corruption = 2
+		set_country_flag = purple_turban_rebellion
+	}
+}
+country_event = {
+	id = eoc_events.15
+	title = "eoc_events.15.t"
+	desc = "eoc_events.15.d" #Purple Turbans corrupt officials
+	picture = CORRUPTION_eventPicture
+	
+	trigger = { has_country_flag = purple_turban_rebellion }
+
+	mean_time_to_happen = {
+		months = 60
+	}
+	
+	option = {
+		name = "eoc_events.15.a"
+		add_years_of_income = -0.2
+		add_corruption = 0.5
+	}
+	
+	option = {
+		name = "eoc_events.15.b"
+		add_meritocracy = -5
+		add_years_of_income = -0.05
+		add_corruption = 2
+	}
+}
+country_event = {
+	id = eoc_events.16
+	title = "eoc_events.16.t" # Purple Turbans besiege capital
+	desc = "eoc_events.16.d"
+	picture = FORT_eventPicture
+	
+	trigger = { has_country_flag = purple_turban_rebellion }
+	
+	mean_time_to_happen = {
+		months = 60
+	}
+	
+	option = {
+		name = "eoc_events.16.a"
+		capital_scope = {
+			start_revolt = {
+				type = nationalist_rebels
+				size = 2
+			}
+		}
+	}
+}
+country_event = {
+	id = eoc_events.17
+	title = "eoc_events.17.t" # Purple Turbans rise in <province>
+	desc = "eoc_events.17.d"
+	picture = FORT_eventPicture
+	
+	trigger = { has_country_flag = purple_turban_rebellion }
+	immediate = {
+		hidden_effect = {
+			random_owned_province = {
+				limit = { superregion = china_superregion }
+				save_event_target_as = revolt1
+			}
+			random_owned_province = {
+				limit = { superregion = china_superregion }
+				save_event_target_as = revolt2
+			}
+			random_owned_province = {
+				limit = { superregion = china_superregion }
+				save_event_target_as = revolt3
+			}
+			random_owned_province = {
+				limit = { superregion = china_superregion }
+				save_event_target_as = revolt4
+			}
+		}
+	}
+	
+	mean_time_to_happen = {
+		months = 60
+	}
+	
+	option = {
+		name = "eoc_events.17.a"
+		event_target:revolt1 = {
+			if = {
+				limit = { owner = { ai = no } }
+				start_revolt = {
+					type = nationalist_rebels
+					size = 3
+				}
+			}
+			else = {
+				start_revolt = {
+					type = particularist_rebels
+					size = 1
+				}
+			}
+		}
+		event_target:revolt2 = {
+			if = {
+				limit = { owner = { ai = no } }
+				start_revolt = {
+					type = nationalist_rebels
+					size = 3
+				}
+			}
+			else = {
+				start_revolt = {
+					type = particularist_rebels
+					size = 1
+				}
+			}
+		}
+		event_target:revolt3 = {
+			if = {
+				limit = { owner = { ai = no } }
+				start_revolt = {
+					type = nationalist_rebels
+					size = 3
+				}
+			}
+			else = {
+				start_revolt = {
+					type = particularist_rebels
+					size = 1
+				}
+			}
+		}
+		event_target:revolt4 = {
+			if = {
+				limit = { owner = { ai = no } }
+				start_revolt = {
+					type = nationalist_rebels
+					size = 3
+				}
+			}
+			else = {
+				start_revolt = {
+					type = particularist_rebels
+					size = 1
+				}
+			}
+		}
+	}
+}
+country_event = {
+	id = eoc_events.18
+	title = "eoc_events.18.t" # The Shaanxi earthquake
+	desc = "eoc_events.18.d"
+	picture = COUNTRY_COLLAPSE_eventPicture
+	fire_only_once = yes
+
+    trigger = {
+		NOT = { current_age = age_of_discovery }
+		tag = MNG
+		any_owned_province = {
+			area = shaanxi_area
+		}
+	}
+	mean_time_to_happen = {
+		months = 600
+		modifier = {
+			factor = 0.5
+			has_country_flag = eoc_yellow_river_floods
+		}
+	}
+	immediate = { set_country_flag = eoc_shaanxi_earthquake }
+
+	option = {
+		name = "eoc_events.18.a"
+		add_mandate = -10
+		add_treasury = -500
+		add_stability = -1
+		shaanxi_area = {
+			limit = { owned_by = ROOT }
+			add_province_modifier = {
+				name = eoc_shaanxi_earthquake
+				duration = 9125
+			}
+		}
+	}
+	option = {
+		name = "eoc_events.18.b"
+		add_mandate = -10
+		add_treasury = -250
+		add_stability = -1
+		add_yearly_manpower = -0.5
+		shaanxi_area = {
+			limit = { owned_by = ROOT }
+			add_province_modifier = {
+				name = eoc_shaanxi_earthquake
+				duration = 9125
+			}
+		}
+	}
+}
+country_event = { #End of the Purple Turban Rebellion
+	id = eoc_events.19
+	title = "eoc_events.19.t"
+	desc = "eoc_events.19.d"
+	picture = GOOD_WITH_MONARCH_eventPicture
+	fire_only_once = yes
+	trigger = {
+		had_country_flag = {
+			flag = purple_turban_rebellion
+			days = 9125
+		}
+	}
+	immediate = { 
+		clr_country_flag = purple_turban_rebellion
+		set_country_flag = resolved_purple_turban_rebellion
+	}
+	option = {
+		name = "eoc_events.19.a"
+		add_stability = 1
+	}
+}
+country_event = { #Flooding of the Yellow River
+	id = eoc_events.20
+	title = "eoc_events.20.t"
+	desc = "eoc_events.20.d"
+	picture = COUNTRY_COLLAPSE_eventPicture
+	trigger = {
+		NOT = { current_age = age_of_discovery }
+		tag = MNG
+		any_owned_province = {
+			OR = {
+				area = shaanxi_area
+				area = gansu_area
+				area = north_henan_area
+				area = jiangsu_area
+			}
+		}
+	}
+	fire_only_once = yes
+	mean_time_to_happen = {
+		months = 240
+	}
+	immediate = { set_country_flag = eoc_yellow_river_floods }
+	
+	option = {
+		name = "eoc_events.20.a"
+		add_mandate = -10
+		add_treasury = -500
+		add_stability = -1
+		shaanxi_area = {
+			limit = { owned_by = ROOT }
+			add_province_modifier = {
+				name = eoc_yellow_river_floods
+				duration = 7300
+			}
+		}
+		gansu_area = {
+			limit = { owned_by = ROOT }
+			add_province_modifier = {
+				name = eoc_yellow_river_floods
+				duration = 7300
+			}
+		}
+		north_henan_area = {
+			limit = { owned_by = ROOT }
+			add_province_modifier = {
+				name = eoc_yellow_river_floods
+				duration = 7300
+			}
+		}
+		jiangsu_area = {
+			limit = { owned_by = ROOT }
+			add_province_modifier = {
+				name = eoc_yellow_river_floods
+				duration = 7300
+			}
+		}
+	}
+	option = {
+		name = "eoc_events.20.b"
+		add_mandate = -10
+		add_treasury = -250
+		add_stability = -1
+		add_yearly_manpower = -0.5
+		shaanxi_area = {
+			limit = { owned_by = ROOT }
+			add_province_modifier = {
+				name = eoc_yellow_river_floods
+				duration = 7300
+			}
+		}
+		gansu_area = {
+			limit = { owned_by = ROOT }
+			add_province_modifier = {
+				name = eoc_yellow_river_floods
+				duration = 7300
+			}
+		}
+		north_henan_area = {
+			limit = { owned_by = ROOT }
+			add_province_modifier = {
+				name = eoc_yellow_river_floods
+				duration = 7300
+			}
+		}
+		jiangsu_area = {
+			limit = { owned_by = ROOT }
+			add_province_modifier = {
+				name = eoc_yellow_river_floods
+				duration = 7300
+			}
+		}
+	}
+}
+country_event = {
+	id = eoc_events.21 #Silver shortages
+	title = "eoc_events.21.t"
+	desc = "eoc_events.21.d"
+	picture = BANKRUPTCY_eventPicture
+	fire_only_once = yes
+	trigger = {
+		tag = MNG
+		NOT = { current_age = age_of_discovery }
+		any_known_country = {
+			capital_scope = { continent = europe }
+		}
+	}
+	immediate = { set_country_flag = eoc_silver_shortage }
+	
+	mean_time_to_happen = {
+		months = 240
+	}
+	
+	option = {
+		name = "eoc_events.21.a" #There isnt much we can do
+		add_mandate = -15
+		add_meritocracy = -15
+		add_inflation = 30
+		add_country_modifier = {
+			name = eoc_silver_shortages
+			duration = 5475
+		}
+	}
+	option = {
+		name = "eoc_events.21.b" #Debase the currency with copper
+		ai_chance = { factor = 100 }
+		add_mandate = -15
+		add_years_of_income = -1.5
+		add_meritocracy = -15
+		add_inflation = 15
+		add_corruption = 5
+		add_country_modifier = {
+			name = eoc_silver_shortages
+			duration = 5475
+		}
+	}
+}
+country_event = {
+	id = eoc_events.22 #Wokou Pirates
+	title = "eoc_events.22.t"
+	desc = "eoc_events.22.d"
+	picture = WOKOU_INCIDENT_eventPicture
+	fire_only_once = yes
+	trigger = {
+		NOT = { current_age = age_of_discovery }
+		NOT = { empire_of_china_reform_passed = seaban_decision }
+		tag = MNG
+	}
+	mean_time_to_happen = {
+		months = 240
+	}
+	immediate = { set_country_flag = eoc_wokou_pirates }
+	option = {
+		name = "eoc_events.22.a" #Nothing we can do
+		custom_tooltip = eoc_all_chinese_ports_devastation_tt
+		hidden_effect = {
+			every_owned_province = {
+				limit = {
+					superregion = china_superregion
+					has_port = yes
+				}
+				add_province_modifier = {
+					name = eoc_raided_by_wokou_pirates
+					duration = 10950
+				}
+			}
+		}
+		add_country_modifier = {
+			name = eoc_wokou_pirates
+			duration = 10950
+		}
+		add_mandate = -10
+		add_stability = -1
+		add_meritocracy = -10
+	}
+	option = {
+		name = "eoc_events.22.b" #Stop them!
+		add_years_of_income = -5
+		add_country_modifier = {
+			name = eoc_wokou_pirates
+			duration = 10950
+		}
+		add_mandate = -5
+		add_stability = -1
+		add_meritocracy = -5
+	}
+}
+country_event = {
+	id = eoc_events.23 #Little ice age (china)
+	title = "eoc_events.23.t"
+	desc = "eoc_events.23.d"
+	picture = FAMINE_eventPicture
+	fire_only_once = yes
+	trigger = {
+		is_emperor_of_china = yes
+		NOT = { current_age = age_of_discovery }
+		tag = MNG
+	}
+	mean_time_to_happen = {
+		months = 240
+	}
+	immediate = { set_country_flag = eoc_little_ice_age }
+	option = {
+		name = "eoc_events.23.a" #Pray for the best
+		add_mandate = -15
+		add_stability = -2
+		add_meritocracy = -15
+		add_country_modifier = {
+			name = eoc_little_ice_age_modifier
+			duration = 5475
+		}
+	}
+	option = {
+		name = "eoc_events.23.b" #Organise relief effort
+		add_yearly_manpower = -3
+		add_years_of_income = -3
+		add_stability = -1
+		add_mandate = -5
+		add_meritocracy = -5
+		add_country_modifier = {
+			name = eoc_little_ice_age_modifier
+			duration = 3650
+		}
+	}
+}
+
+#Ming Disaster events
+country_event = {
+	id = eoc_events.24
+	title = "eoc_events.24.t" #Starts disaster
+	desc = "eoc_events.24.d"
+	picture = CIVIL_WAR_eventPicture
+	
+	is_triggered_only = yes
+	fire_only_once = yes
+	major = yes
+	major_trigger = {
+		is_neighbor_of = ROOT
+	}
+
+	immediate = {
+		hidden_effect = {
+			random_owned_province = {
+				limit = {
+					superregion = china_superregion
+				}
+				start_revolt = {
+					type = particularist_rebels
+					size = 5
+				}
+			}
+			random_owned_province = {
+				limit = {
+					superregion = china_superregion
+				}
+				start_revolt = {
+					type = particularist_rebels
+					size = 5
+				}
+			}
+			random_owned_province = {
+				limit = {
+					superregion = china_superregion
+				}
+				start_revolt = {
+					type = particularist_rebels
+					size = 5
+				}
+			}
+			random_owned_province = {
+				limit = {
+					superregion = china_superregion
+				}
+				start_revolt = {
+					type = particularist_rebels
+					size = 5
+				}
+			}
+			random_owned_province = {
+				limit = {
+					superregion = china_superregion
+				}
+				start_revolt = {
+					type = particularist_rebels
+					size = 5
+				}
+			}
+		}
+	}
+	
+	option = {
+		name = "eoc_events.24.a"
+		add_stability = -2
+		add_mandate = -25
+		add_corruption = 5
+	}
+}
+country_event = {
+	id = eoc_events.25
+	title = "eoc_events.25.t" #End of the Crisis (If you kept the Mandate)
+	desc = "eoc_events.25.d"
+	picture = CIVIL_WAR_eventPicture
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "eoc_events.25.a"
+		add_stability = 1
+		add_mandate = 25
+	}
+}
+
+country_event = {
+	id = eoc_events.26 #Chinese Warlords break free
+	title = "eoc_events.26.t"
+	desc = "eoc_events.26.d"
+	picture = ANGRY_MOB_eventPicture
+	is_triggered_only = yes
+	trigger = {
+		OR = {
+			AND = {
+				any_owned_province = { is_core = CDL } #Dali
+				num_of_owned_provinces_with = {
+					value = 7
+					is_core = CDL
+					controlled_by = REB
+				}
+			}
+			AND = {
+				any_owned_province = { is_core = CXI } #Xi
+				num_of_owned_provinces_with = {
+					value = 5
+					is_core = CXI
+					controlled_by = REB
+				}
+			}
+			AND = {
+				any_owned_province = { is_core = CSH } #Shun
+				num_of_owned_provinces_with = {
+					value = 5
+					is_core = CSH
+					controlled_by = REB
+				}
+			}
+			AND = {
+				any_owned_province = { is_core = CGS } #Changseng
+				num_of_owned_provinces_with = {
+					value = 5
+					is_core = CGS
+					controlled_by = REB
+				}
+			}
+			AND = {
+				any_owned_province = { is_core = YUE } #Yue
+				num_of_owned_provinces_with = {
+					value = 5
+					is_core = YUE
+					controlled_by = REB
+				}
+			}
+			AND = {
+				any_owned_province = { is_core = WUU } #Wu
+				num_of_owned_provinces_with = {
+					value = 5
+					is_core = WUU
+					controlled_by = REB
+				}
+			}
+			AND = {
+				any_owned_province = { is_core = CYI } #Yi
+				num_of_owned_provinces_with = {
+					value = 5
+					is_core = CYI
+					controlled_by = REB
+				}
+			}
+			AND = {
+				any_owned_province = { is_core = MLG } #Liao
+				num_of_owned_provinces_with = {
+					value = 5
+					is_core = MLG
+					controlled_by = REB
+				}
+			}
+			AND = {
+				any_owned_province = { is_core = NOO } #Wei
+				num_of_owned_provinces_with = {
+					value = 4
+					is_core = NOO
+					controlled_by = REB
+				}
+			}
+			AND = {
+				any_owned_province = { is_core = GMI } #Song
+				num_of_owned_provinces_with = {
+					value = 4
+					is_core = GMI
+					controlled_by = REB
+				}
+			}
+			AND = {
+				any_owned_province = { is_core = CMI } #Miao
+				num_of_owned_provinces_with = {
+					value = 4
+					is_core = CMI
+					controlled_by = REB
+				}
+			}
+			AND = {
+				any_owned_province = { is_core = CHC } #Chu
+				num_of_owned_provinces_with = {
+					value = 4
+					is_core = CHC
+					controlled_by = REB
+				}
+			}
+			AND = {
+				any_owned_province = { is_core = QIC } #Qi
+				num_of_owned_provinces_with = {
+					value = 4
+					is_core = QIC
+					controlled_by = REB
+				}
+			}
+			AND = {
+				any_owned_province = { is_core = SHU } #Shu
+				num_of_owned_provinces_with = {
+					value = 4
+					is_core = SHU
+					controlled_by = REB
+				}
+			}
+			AND = {
+				any_owned_province = { is_core = MIN } #Min
+				num_of_owned_provinces_with = {
+					value = 4
+					is_core = MIN
+					controlled_by = REB
+				}
+			}
+			AND = {
+				any_owned_province = { is_core = QIN } #Qin
+				num_of_owned_provinces_with = {
+					value = 4
+					is_core = QIN
+					controlled_by = REB
+				}
+			}
+			AND = {
+				any_owned_province = { is_core = JIN } #Jin
+				num_of_owned_provinces_with = {
+					value = 4
+					is_core = JIN
+					controlled_by = REB
+				}
+			}
+			AND = {
+				any_owned_province = { is_core = PLW } #Zhao
+				num_of_owned_provinces_with = {
+					value = 3
+					is_core = PLW
+					controlled_by = REB
+				}
+			}
+			AND = {
+				any_owned_province = { is_core = KAU } #Han
+				num_of_owned_provinces_with = {
+					value = 3
+					is_core = KAU
+					controlled_by = REB
+				}
+			}
+			AND = {
+				any_owned_province = { is_core = YAN } #Yan
+				num_of_owned_provinces_with = {
+					value = 3
+					is_core = YAN
+					controlled_by = REB
+				}
+			}
+			AND = {
+				any_owned_province = { is_core = LNG } #Liang
+				num_of_owned_provinces_with = {
+					value = 3
+					is_core = LNG
+					controlled_by = REB
+				}
+			}
+			AND = {
+				any_owned_province = { is_core = TNG } #Tang
+				num_of_owned_provinces_with = {
+					value = 3
+					is_core = TNG
+					controlled_by = REB
+				}
+			}
+			AND = {
+				any_owned_province = { is_core = HUA } #Huai
+				num_of_owned_provinces_with = {
+					value = 3
+					is_core = HUA
+					controlled_by = REB
+				}
+			}
+			AND = {
+				any_owned_province = { is_core = NNG } #Ning
+				num_of_owned_provinces_with = {
+					value = 3
+					is_core = NNG
+					controlled_by = REB
+				}
+			}
+			AND = {
+				any_owned_province = { is_core = CZH } #Zhou
+				num_of_owned_provinces_with = {
+					value = 1
+					is_core = CZH
+					controlled_by = REB
+				}
+			}
+		}
+	}
+	immediate = {
+		hidden_effect = {
+			if = { #Yunnan protectorate
+				limit = { 
+					num_of_owned_provinces_with = {
+						value = 7
+						is_core = CDL
+						controlled_by = REB
+					}
+				}
+				release_rebel_warlord = { who = CDL }
+			}
+			else_if = { #Li Zicheng's rebellion
+				limit = { 
+					num_of_owned_provinces_with = {
+						value = 5
+						is_core = CSH
+						controlled_by = REB
+					}
+				}
+				release_rebel_warlord = { who = CSH }
+				CSH = {
+					define_ruler = { name = "Zicheng" dynasty = "Li" }
+					define_ruler_to_general = { fire = 2 shock = 3 manuever = 2 siege = 2 } 
+				}
+			}
+			else_if = { #Yellow Tiger Rebellion
+				limit = { 
+					num_of_owned_provinces_with = {
+						value = 5
+						is_core = CXI
+						controlled_by = REB
+					}
+				}
+				release_rebel_warlord = { who = CXI }
+				CXI = {
+					define_ruler = { name = "Xianzhong" dynasty = "Zhang" }
+					define_ruler_to_general = { fire = 3 shock = 4 manuever = 3 siege = 0 }
+				}
+			}
+			else_if = { #Changseng
+				limit = { 
+					num_of_owned_provinces_with = {
+						value = 5
+						is_core = CGS
+						controlled_by = REB
+					}
+				}
+				release_rebel_warlord = { who = CGS }
+			}
+			else_if = { #Yue
+				limit = { 
+					num_of_owned_provinces_with = {
+						value = 5
+						is_core = YUE
+						controlled_by = REB
+					}
+				}
+				release_rebel_warlord = { who = YUE }
+			}
+			else_if = { #Wu
+				limit = { 
+					num_of_owned_provinces_with = {
+						value = 5
+						is_core = WUU
+						controlled_by = REB
+					}
+				}
+				release_rebel_warlord = { who = WUU }
+			}
+			else_if = { #Yi
+				limit = { 
+					num_of_owned_provinces_with = {
+						value = 5
+						is_core = CYI
+						controlled_by = REB
+					}
+				}
+				release_rebel_warlord = { who = CYI }
+			}
+			else_if = { #Wei
+				limit = {
+					num_of_owned_provinces_with = {
+						value = 5
+						is_core = NOO
+						controlled_by = REB
+					}
+				}
+				release_rebel_warlord = { who = NOO }
+			}
+			else_if = {
+				limit = {
+					num_of_owned_provinces_with = {
+						value = 5
+						is_core = MLG
+						controlled_by = REB
+					}
+				}
+				release_rebel_warlord = { who = MLG }
+			}
+			else_if = { #Song
+				limit = {
+					num_of_owned_provinces_with = {
+						value = 5
+						is_core = GMI
+						controlled_by = REB
+					}
+				}
+				release_rebel_warlord = { who = GMI }
+			}
+			else_if = { #Miao
+				limit = { 
+					num_of_owned_provinces_with = {
+						value = 4
+						is_core = CMI
+						controlled_by = REB
+					}
+				}
+				release_rebel_warlord = { who = CMI }
+			}
+			else_if = { #Chu
+				limit = { 
+					num_of_owned_provinces_with = {
+						value = 4
+						is_core = CHC
+						controlled_by = REB
+					}
+				}
+				release_rebel_warlord = { who = CHC }
+			}
+			else_if = { #Qi
+				limit = { 
+					num_of_owned_provinces_with = {
+						value = 4
+						is_core = QIC
+						controlled_by = REB
+					}
+				}
+				release_rebel_warlord = { who = QIC }
+			}
+			else_if = { #Shu
+				limit = { 
+					num_of_owned_provinces_with = {
+						value = 4
+						is_core = SHU
+						controlled_by = REB
+					}
+				}
+				release_rebel_warlord = { who = SHU }
+			}
+			else_if = { #Min
+				limit = { 
+					num_of_owned_provinces_with = {
+						value = 4
+						is_core = MIN
+						controlled_by = REB
+					}
+				}
+				release_rebel_warlord = { who = MIN }
+			}
+			else_if = { #Qin
+				limit = { 
+					num_of_owned_provinces_with = {
+						value = 4
+						is_core = QIN
+						controlled_by = REB
+					}
+				}
+				release_rebel_warlord = { who = QIN }
+			}
+			else_if = { #Jin
+				limit = { 
+					num_of_owned_provinces_with = {
+						value = 4
+						is_core = JIN
+						controlled_by = REB
+					}
+				}
+				release_rebel_warlord = { who = JIN }
+			}
+			else_if = { #Zhao
+				limit = { 
+					num_of_owned_provinces_with = {
+						value = 3
+						is_core = PLW
+						controlled_by = REB
+					}
+				}
+				release_rebel_warlord = { who = PLW }
+			}
+			else_if = { #Han
+				limit = { 
+					num_of_owned_provinces_with = {
+						value = 3
+						is_core = KAU
+						controlled_by = REB
+					}
+				}
+				release_rebel_warlord = { who = KAU }
+			}
+			else_if = { #Yan
+				limit = { 
+					num_of_owned_provinces_with = {
+						value = 3
+						is_core = YAN
+						controlled_by = REB
+					}
+				}
+				release_rebel_warlord = { who = YAN }
+			}
+			else_if = { #Liang
+				limit = { 
+					num_of_owned_provinces_with = {
+						value = 3
+						is_core = LNG
+						controlled_by = REB
+					}
+				}
+				release_rebel_warlord = { who = LNG }
+			}
+			else_if = { #Tang
+				limit = { 
+					num_of_owned_provinces_with = {
+						value = 3
+						is_core = TNG
+						controlled_by = REB
+					}
+				}
+				release_rebel_warlord = { who = TNG }
+			}
+			else_if = { #Huai
+				limit = { 
+					num_of_owned_provinces_with = {
+						value = 3
+						is_core = HUA
+						controlled_by = REB
+					}
+				}
+				release_rebel_warlord = { who = HUA }
+			}
+			else_if = { #Ning
+				limit = { 
+					num_of_owned_provinces_with = {
+						value = 3
+						is_core = NNG
+						controlled_by = REB
+					}
+				}
+				release_rebel_warlord = { who = NNG }
+			}
+			else_if = { #Zhou
+				limit = { 
+					num_of_owned_provinces_with = {
+						value = 1
+						is_core = CZH
+						controlled_by = REB
+					}
+				}
+				release_rebel_warlord = { who = CZH }
+			}
+		}
+	}
+	option = {
+		name = "eoc_events.26.a" #Kill them!
+		trigger = { ai = no }
+		declare_war_with_cb = {
+			who = event_target:rebeller
+			casus_belli = cb_crush_rebel_warlord
+		}
+	}
+	option = {
+		name = "eoc_events.26.b" #Do nothing
+		add_mandate = -5
+		add_stability = -1
+	}
+	option = {
+		name = "eoc_events.26.c" #Play as Warlord
+		trigger = { 
+			ai = no
+			NOT = {
+				event_target:rebeller = { #Player has option of playing these tags in Miao revolts, won't be offered again.
+					OR = {
+						tag = CDL
+						tag = CMI
+						tag = CGS
+						tag = CYI
+					}
+				}
+			}
+		}
+		hidden_effect = {
+			declare_war_with_cb = {
+				who = event_target:rebeller
+				casus_belli = cb_crush_rebel_warlord
+			}
+		}
+		switch_tag = event_target:rebeller
+	}
+}
+
+# Peasants revolt in [area]
+country_event = {
+	id = eoc_events.29
+	title = "eoc_events.29.t"
+	desc = "eoc_events.29.d"
+	picture = ANGRY_MOB_eventPicture
+	
+	is_triggered_only = yes
+	
+	immediate = {
+		hidden_effect = {
+			random_owned_province = {
+				limit = {
+					superregion = china_superregion
+				}
+				save_event_target_as = ming_disaster_rebel_province
+			}
+		}
+	}
+	
+	option = {
+		name = "eoc_events.29.a"
+		ai_chance = { factor = 1 }
+		add_mandate = 5
+		event_target:ming_disaster_rebel_province = {
+			area = {
+				limit = {
+					controlled_by = ROOT
+					owned_by = ROOT
+					superregion = china_superregion
+				}
+				start_revolt = {
+					type = particularist_rebels
+					size = 3
+				}
+			}
+		}
+	}
+	option = {
+		name = "eoc_events.29.b"
+		ai_chance = { factor = 0 }
+		add_mandate = -10
+		event_target:ming_disaster_rebel_province = {
+			area = {
+				limit = {
+					owned_by = ROOT
+				}
+				add_local_autonomy = 50
+			}
+		}
+	}
+}
+# End of the Ming Crisis, checks if the mandate is still held
+country_event = {
+	id = eoc_events.30
+	title = none
+	desc = none
+	picture = none
+	hidden = yes
+	
+	is_triggered_only = yes
+	fire_only_once = yes
+	
+	immediate = {
+		if = {
+			limit = {
+				is_emperor_of_china = yes
+			}
+			country_event = { id = eoc_events.25 } #End of the Crisis (kept Mandate)
+		}
+		else = {
+			country_event = { id = eoc_events.31 } #End of the Crisis (Lost mandate)
+		}
+	}
+	option = { }
+}
+
+# End of the Crisis - Lost mandate
+country_event = {
+	id = eoc_events.31
+	title = "eoc_events.31.t"
+	desc = "eoc_events.31.d"
+	picture = CIVIL_WAR_eventPicture
+	
+	is_triggered_only = yes
+
+	immediate = {
+		hidden_effect = {
+			random_country = {
+				limit = {
+					is_emperor_of_china = yes
+				}
+				save_event_target_as = emperor_of_china
+			}
+		}
+	}
+	
+	option = {
+		name = "eoc_events.31.a"
+		add_stability = 1
+	}
+}
+
+# Koxinga Flees to Taiwan
+country_event = {
+	id = eoc_events.35
+	title = "eoc_events.35.t"
+	desc = "eoc_events.35.d"
+	picture = NAVAL_MILITARY_eventPicture
+	
+	fire_only_once = yes
+	major = yes
+	
+	trigger = {
+		tag = MNG
+		NOT = {
+			total_development = 600
+		}
+		any_province = {
+			area = taiwan_area
+			is_empty = yes
+		}
+	}
+	mean_time_to_happen = {
+		months = 120
+	}
+	immediate = {
+		hidden_effect = {
+			every_province = {
+				limit = {
+					area = taiwan_area
+					is_empty = yes
+				}
+				add_core = FRM
+				cede_province = FRM
+			}
+			FRM = {
+				define_ruler = {
+					name = "Koxinga"
+					dynasty = "Zheng"
+				}
+				hidden_effect = {
+					define_ruler_to_general = {
+						fire = 3
+						shock = 4
+						manuever = 1
+						siege = 2
+					}
+				}
+				add_accepted_culture = polynesian
+				add_harmonized_religion = shen
+				capital_scope = {
+					build_to_forcelimit = {
+						infantry = 0.6
+						cavalry = 0.3
+						artillery = 0.1
+					}
+				}
+				random_owned_province = {
+					limit = {
+						has_port = yes
+					}
+					build_to_forcelimit = {
+						light_ship = 0.3
+						transport = 0.2
+					}
+				}
+			}
+		}
+	}
+	option = {
+		name = "eoc_events.35.a"
+		if = {
+			limit = {
+				is_emperor_of_china = yes
+			}
+			add_mandate = -10
+		}
+		else = {
+			add_prestige = -10
+		}
+		add_casus_belli = {
+			type = cb_insult
+			target = FRM
+		}
+	}
+	option = {
+		name = "eoc_events.35.b" #Play as Tungning
+		trigger = {
+			ai = no
+		}
+		switch_tag = FRM
+	}
+}
+###########################################
+#	Reworked Unguarded Frontier for EoC
+###########################################
+
+country_event = {
+	id = eoc_events.36
+	title = "eoc_events.36.t" #Starts Unguarded Frontier
+	desc = "eoc_events.36.d"
+	picture = SUFFERING_CHINESE_VILLAGE_eventPicture
+
+	major = yes
+	major_trigger = {
+		is_neighbor_of_or_shares_seazone_with = {
+			who = ROOT
+		}
+	}
+	
+	is_triggered_only = yes
+
+	option = {		
+		name = "eoc_events.36.a"
+		add_stability = -1
+		add_mandate = -10
+	}
+}
+
+#End of Disaster
+country_event = {
+	id = eoc_events.37
+	title = "eoc_events.37.t"
+	desc = {
+		trigger = {
+			is_emperor_of_china = yes
+		}
+		desc = "eoc_events.37.d"
+	}
+	desc = {
+		trigger = {
+			is_emperor_of_china = no
+		}
+		desc = "eoc_events.37.d.2"
+	}
+	picture = CHINESE_GENERAL_eventPicture
+	
+	is_triggered_only = yes
+	
+	major = yes
+	major_trigger = {
+		is_neighbor_of_or_shares_seazone_with = {
+			who = ROOT
+		}
+	}
+	
+	option = {
+		name = "eoc_events.37.a"
+		if = {
+			limit = {
+				is_emperor_of_china = yes
+			}
+			add_mandate = 10
+			add_stability = 1
+		}
+		else = {
+			add_stability = -1
+		}
+	}
+}
+
+country_event = {
+	id = eoc_events.38 #Alert notifying that the EoC has 10% towards unguarded frontier
+	title = "eoc_events.38.t"
+	desc = "eoc_events.38.d"
+	picture = CHINESE_GENERAL_eventPicture
+
+	is_triggered_only = yes
+
+	option = {
+		name = "eoc_events.38.a"
+		custom_tooltip = eoc_unguarded_frontier_10_tooltip
+	}
+}
+
+country_event = {
+	id = eoc_events.39 #Alert notifying that the EoC has 75% towards unguarded frontier
+	title = "eoc_events.39.t"
+	desc = "eoc_events.39.d"
+	picture = CHINESE_GENERAL_eventPicture
+
+	is_triggered_only = yes
+
+	option = {
+		trigger = {
+			OR = {
+				primary_culture = manchu
+				primary_culture = manchu_new
+			}
+		}
+		name = "eoc_events.39.a"
+		custom_tooltip = eoc_unguarded_frontier_higher_tooltip
+	}
+	option = {
+		trigger = {
+			NOT = {
+				primary_culture = manchu
+				primary_culture = manchu_new
+			}
+		}
+		name = "eoc_events.39.b"
+		custom_tooltip = eoc_unguarded_frontier_higher_tooltip
+	}
+}
+
+
+country_event = {
+	id = eoc_events.40
+	title = "eoc_events.40.t" #Notifier that the Emperor is stronger
+	desc = {
+		desc = "eoc_events.40.d"
+		trigger = {
+			any_country = {
+				is_emperor_of_china = yes
+				has_any_disaster = no
+			}
+		}
+	}
+	desc = {
+		desc = "eoc_events.40.d.2"
+		trigger = {
+			any_country = {
+				is_emperor_of_china = yes
+				has_any_disaster = yes
+			}
+		}
+	}
+	picture = CHINESE_GENERAL_eventPicture
+
+	trigger = {
+		has_country_flag = eoc_unguarded_frontier_cause
+		any_known_country = {
+			is_emperor_of_china = yes
+			OR = {
+				NOT = {
+					check_variable = {
+						which = empire_of_china_nomadic_border_progress
+						value = 5
+					}
+				}
+				has_any_disaster = yes
+			}
+		}
+	}
+
+	mean_time_to_happen = {
+		days = 180
+	}
+
+	immediate = {
+		hidden_effect = {
+			clr_country_flag = eoc_unguarded_frontier_cause
+			random_country = {
+				limit = {
+					is_emperor_of_china = yes
+				}
+				clr_country_flag = eoc_unguarded_frontier_started_ticker
+				clr_country_flag = eoc_unguarded_frontier_higher_ticker
+
+				save_event_target_as = emperor_of_china
+			}
+		}
+	}
+
+	option = {
+		trigger = {
+			any_country = {
+				is_emperor_of_china = yes
+				has_any_disaster = no
+			}
+		}
+		name = "eoc_events.40.a"
+	}
+	option = {
+		trigger = {
+			any_country = {
+				is_emperor_of_china = yes
+				has_any_disaster = yes
+			}
+			OR = {
+				primary_culture = manchu
+				primary_culture = manchu_new
+			}
+		}
+		name = "eoc_events.40.b"
+	}
+	option = {
+		trigger = {
+			any_country = {
+				is_emperor_of_china = yes
+				has_any_disaster = yes
+			}
+			NOT = {
+				primary_culture = manchu
+				primary_culture = manchu_new
+			}
+		}
+		name = "eoc_events.40.c"
+	}
+}
+country_event = {
+	id = eoc_events.41
+	title = "eoc_events.41.t" #Panic on the Frontier
+	desc = "eoc_events.41.d"
+	picture = BAD_WITH_MONARCH_eventPicture
+	is_triggered_only = yes
+	trigger = {
+		NOT = { has_country_modifier = eoc_unguarded_frontier_unrest }
+	}
+	option = {
+		name = "eoc_events.41.a"
+		add_mandate = -5
+	}
+	option = {
+		name = "eoc_events.41.b"
+		add_country_modifier = {
+			name = eoc_unguarded_frontier_unrest
+			duration = 1825
+		}
+	}
+}	
+country_event = {
+	id = eoc_events.42
+	title = "eoc_events.42.t"
+	desc = "eoc_events.42.d"
+	picture = GOOD_WITH_MONARCH_eventPicture
+	is_triggered_only = yes
+	trigger = {
+		is_at_war = no
+		NOT = {
+			any_owned_province = {
+				has_province_modifier = eoc_unguarded_frontier_local_security
+			}
+		}
+	}
+	option = {
+		name = "eoc_events.42.a"
+		add_mandate = 3
+		custom_tooltip = eoc_every_frontier_province_modifier_tt
+		hidden_effect = {
+			every_owned_province = {
+				limit = {
+					any_neighbor_province = {
+						NOT = { owned_by = ROOT }
+					}
+				}
+				add_province_modifier = {
+					name = eoc_unguarded_frontier_local_security
+					duration = 1095
+				}
+			}
+		}
+	}
+}
+country_event = { #Raiding parties 
+	id = eoc_events.43
+	title = "eoc_events.43.t"
+	desc = "eoc_events.43.d"
+	picture = CHINESE_GENERAL_eventPicture
+	is_triggered_only = yes
+	trigger = {
+		any_owned_province = {
+			any_neighbor_province = {
+				owner = {
+					NOT = {
+						OR = {
+							alliance_with = ROOT
+							truce_with = ROOT
+							is_subject_of = ROOT
+						}
+					}
+					OR = {
+						total_own_and_non_tributary_subject_development = 500
+						total_development = ROOT
+						army_size = ROOT
+					}
+				}
+			}
+		}
+		NOT = {
+			any_owned_province = {
+				has_province_modifier = eoc_unguarded_frontier_raiding_parties
+			}
+		}
+	}
+	option = {
+		name = "eoc_events.43.a"
+		random_owned_province = {
+			limit = {
+				any_neighbor_province = {
+					owner = {
+						NOT = {
+							OR = {
+								alliance_with = ROOT
+								truce_with = ROOT
+								is_subject_of = ROOT
+							}
+						}
+						OR = {
+							total_own_and_non_tributary_subject_development = 500
+							total_development = ROOT
+							army_size = ROOT
+						}
+					}
+				}
+			}
+			area = {
+				limit = { owned_by = ROOT }
+				add_devastation = 5
+				add_province_modifier = {
+					name = eoc_unguarded_frontier_raiding_parties
+					duration = 1825
+				}
+			}
+		}
+	}
+}
+country_event = {
+	id = eoc_events.44
+	title = "eoc_events.44.t" #Skirmishes along the Frontier
+	desc = "eoc_events.44.d"
+	picture = CHINESE_GENERAL_eventPicture
+	is_triggered_only = yes
+	trigger = {
+		any_known_country = {
+			is_neighbor_of_or_shares_seazone_with = { who = ROOT }
+			NOT = {
+				OR = {
+					alliance_with = ROOT
+					truce_with = ROOT
+					is_subject_of = ROOT
+				}
+			}
+			OR = {
+				total_own_and_non_tributary_subject_development = 500
+				total_development = ROOT
+				army_size = ROOT
+			}
+		}
+	}
+	immediate = {
+		hidden_effect = {
+			random_known_country = {
+				limit = {
+					is_neighbor_of_or_shares_seazone_with = {
+						who = ROOT
+					}
+					NOT = {
+						OR = {
+							alliance_with = ROOT
+							truce_with = ROOT
+							is_subject_of = ROOT
+						}
+					}
+					OR = {
+						total_own_and_non_tributary_subject_development = 500
+						total_development = ROOT
+						army_size = ROOT
+					}
+				}
+				save_event_target_as = border_country
+			}
+		}
+	}
+	option = {
+		name = "eoc_events.44.a"
+		add_casus_belli = {
+			type = cb_border_war
+			target = event_target:border_country
+		}
+		add_years_of_income = -0.25
+	}
+}
+country_event = {
+	id = eoc_events.45
+	title = "eoc_events.45.t" #Rebellions on the Frontier
+	desc = "eoc_events.45.d"
+	picture = ANGRY_MOB_eventPicture
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			random_owned_province = {
+				limit = { 
+					superregion = china_superregion 
+					any_neighbor_province = {
+						NOT = { owned_by = ROOT }
+					}
+				}
+				save_event_target_as = eoc_frontier_1
+			}
+			random_owned_province = {
+				limit = { 
+					superregion = china_superregion 
+					any_neighbor_province = {
+						NOT = { owned_by = ROOT }
+					}
+				}
+				save_event_target_as = eoc_frontier_2
+			}
+			random_owned_province = {
+				limit = { 
+					superregion = china_superregion 
+					any_neighbor_province = {
+						NOT = { owned_by = ROOT }
+					}
+				}
+				save_event_target_as = eoc_frontier_3
+			}
+		}
+	}
+	option = {
+		name = "eoc_events.45.a"
+		event_target:eoc_frontier_1 = {
+			start_revolt = {
+				type = particularist_rebels
+				size = 5
+			}
+		}
+		event_target:eoc_frontier_2 = {
+			start_revolt = {
+				type = particularist_rebels
+				size = 5
+			}
+		}
+		event_target:eoc_frontier_3 = {
+			start_revolt = {
+				type = particularist_rebels
+				size = 5
+			}
+		}
+	}
+	option = {
+		name = "eoc_events.45.b"
+		add_years_of_income = -0.3
+		add_mandate = -5
+		add_stability = -1
+	}
+}
+country_event = {
+	id = eoc_events.46 
+	title = "eoc_events.46.t" #Cities of China
+	desc = "eoc_events.46.d"
+	picture = PALACE_eventPicture
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = "eoc_events.46.a" #Nanjing
+		1821 = {
+			move_capital_effect = yes
+			add_base_tax = 2
+			add_base_production = 2
+			add_base_manpower = 2
+			add_province_modifier = {
+				name = shun_growth_of_capital
+				duration = 7300
+			}
+		}
+	}
+	option = {
+		name = "eoc_events.46.b" #Canton
+		667 = {
+			move_capital_effect = yes
+			add_base_tax = 2
+			add_base_production = 2
+			add_base_manpower = 2
+			add_province_modifier = {
+				name = shun_growth_of_capital
+				duration = 7300
+			}
+		}
+	}
+	option = {
+		name = "eoc_events.46.c" #Beijing
+		1816 = {
+			move_capital_effect = yes
+			add_base_tax = 2
+			add_base_production = 2
+			add_base_manpower = 2
+			add_province_modifier = {
+				name = shun_growth_of_capital
+				duration = 7300
+			}
+		}
+	}
+	option = {
+		name = "eoc_events.46.e" #Xi'an
+		700 = {
+			move_capital_effect = yes
+			add_base_tax = 2
+			add_base_production = 2
+			add_base_manpower = 2
+			add_province_modifier = {
+				name = shun_growth_of_capital
+				duration = 7300
+			}
+		}
+	}
+	option = {
+		name = "eoc_events.46.f" #Luoning
+		679 = {
+			move_capital_effect = yes
+			add_base_tax = 2
+			add_base_production = 2
+			add_base_manpower = 2
+			add_province_modifier = {
+				name = shun_growth_of_capital
+				duration = 7300
+			}
+		}
+	}
+	option = {
+		name = "eoc_events.46.g"
+		1836 = {
+			move_capital_effect = yes
+			add_base_tax = 2
+			add_base_production = 2
+			add_base_manpower = 2
+			add_province_modifier = {
+				name = shun_growth_of_capital
+				duration = 7300
+			}
+		}
+	}
+	option = {
+		name = "eoc_events.46.h"
+	}
+}
+country_event = {
+	id = eoc_events.47 #Chaos in Manchuria
+	title = "eoc_events.47.t"
+	desc = "eoc_events.47.d"
+	picture = CHINESE_GENERAL_eventPicture
+	is_triggered_only = yes
+	fire_only_once = yes
+	option = {
+		name = "eoc_events.47.a" #Welcome them
+		add_army_professionalism = 0.05
+		define_general = {
+			fire = 5
+			shock = 6
+			manuever = 4
+			siege = 3
+		}
+	}
+	option = {
+		name = "eoc_events.47.b" #Dont need them
+		add_army_tradition = 30
+	}
+}
+
+#####################################################################
+#						SINIFICATION EVENTS
+#	These events allow foreign dynasties to become Chinese over time
+#####################################################################
+
+country_event = { #Han land rights
+	id = eoc_events.51
+	title = "eoc_events.51.t"
+	desc = "eoc_events.51.d"
+	picture = DHIMMI_ESTATE_UPSET_eventPicture
+	trigger = {
+		has_country_flag = eoc_sinification_flag
+		NOT = { has_country_modifier = sinification_cooldown_dummy }
+	}
+	mean_time_to_happen = {
+		months = 60
+	}
+	immediate = {
+		add_country_modifier = {
+			name = sinification_cooldown_dummy
+			duration = 1825
+			hidden = yes
+		}
+	}
+	option = {
+		name = "eoc_events.51.a"
+		add_mandate = 5
+		hidden_effect = {
+			change_variable = {
+				which = eoc_sinification_var
+				value = 1
+			}
+		}
+		if = {
+			limit = { has_estate = estate_nomadic_tribes }
+			add_estate_loyalty = {
+				estate = estate_nomadic_tribes
+				loyalty = -5
+			}
+		}
+		else = {
+			add_estate_loyalty = {
+				estate = estate_church
+				loyalty = -5
+			}
+		}
+		random_owned_province = {
+			limit = {
+				has_owner_culture = yes
+				NOT = { culture_group = east_asian }
+				NOT = { has_province_modifier = eoc_angry_province_sinification }
+			}
+			add_province_modifier = {
+				name = eoc_angry_province_sinification
+				duration = 3650
+			}
+		}
+	}
+	option = {
+		name = "eoc_events.51.b" 
+		trigger = { ai = no } #AI will always sinify
+		add_mandate = -5
+		if = {
+			limit = { has_estate = estate_nomadic_tribes }
+			add_estate_loyalty = {
+				estate = estate_nomadic_tribes
+				loyalty = 5
+			}
+		}
+		else = {
+			add_estate_loyalty = {
+				estate = estate_church
+				loyalty = 5
+			}
+		}
+		random_owned_province = {
+			limit = { culture_group = east_asian }
+			start_revolt = {
+				type = nationalist_rebels
+				size = 4
+			}
+		}
+	}
+}
+
+country_event = { #Han migrations
+	id = eoc_events.52
+	title = "eoc_events.52.t"
+	desc = "eoc_events.52.d"
+	picture = PALACE_eventPicture
+	trigger = {
+		has_country_flag = eoc_sinification_flag
+		NOT = { has_country_modifier = sinification_cooldown_dummy }
+		any_owned_province = {
+			culture_group = east_asian
+			any_neighbor_province = {
+				owned_by = ROOT
+				NOT = { culture_group = east_asian }
+				OR = {
+					has_owner_culture = yes
+					has_owner_accepted_culture = yes
+				}
+			}
+		}
+	}
+	mean_time_to_happen = {
+		months = 60
+	}
+	immediate = {
+		add_country_modifier = {
+			name = sinification_cooldown_dummy
+			duration = 1825
+			hidden = yes
+		}
+		hidden_effect = {
+			random_owned_province = {
+				limit = {
+					culture_group = east_asian
+					any_neighbor_province = {
+						owned_by = ROOT
+						NOT = { culture_group = east_asian }
+						OR = {
+							has_owner_culture = yes
+							has_owner_accepted_culture = yes
+						}
+					}
+				}
+				save_event_target_as = han_migration_province
+				random_neighbor_province = {
+					limit = {
+						owned_by = ROOT
+						NOT = { culture_group = east_asian }
+						OR = {
+							has_owner_culture = yes
+							has_owner_accepted_culture = yes
+						}
+					}
+					save_event_target_as = han_target_province
+				}
+			}
+		}
+	}
+	option = {
+		name = "eoc_events.52.a"
+		event_target:han_target_province = {
+			start_revolt = {
+				type = particularist_rebels
+				size = 1
+			}
+			change_culture = event_target:han_migration_province
+			add_base_tax = 1
+			add_province_modifier = {
+				name = eoc_han_migrations
+				duration = 1825
+			}
+		}
+		add_mandate = 5
+		if = {
+			limit = { has_estate = estate_nomadic_tribes }
+			change_estate_land_share = {
+				estate = estate_nomadic_tribes
+				share = -2
+			}
+		}
+		else = {
+			change_estate_land_share = {
+				estate = estate_church
+				share = -2
+			}
+		}
+		hidden_effect = {
+			change_variable = {
+				which = eoc_sinification_var
+				value = 2
+			}
+		}
+	}
+	option = {
+		name = "eoc_events.52.b"
+		trigger = { ai = no }
+		add_mandate = -5
+		if = {
+			limit = { has_estate = estate_nomadic_tribes }
+			add_estate_loyalty = {
+				estate = estate_nomadic_tribes
+				loyalty = 5
+			}
+		}
+		else = {
+			add_estate_loyalty = {
+				estate = estate_church
+				loyalty = 5
+			}
+		}
+		event_target:han_migration_province = {
+			start_revolt = {
+				size = 4
+				type = nationalist_rebels
+			}
+		}
+	}
+}
+country_event = { #Eunuchs dispute
+	id = eoc_events.53
+	title = "eoc_events.53.t"
+	desc = "eoc_events.53.d"
+	picture = BAD_WITH_MONARCH_eventPicture
+	trigger = {
+		has_country_flag = eoc_sinification_flag
+		NOT = { has_country_modifier = sinification_cooldown_dummy }
+	}
+	mean_time_to_happen = {
+		months = 60
+	}
+	immediate = {
+		add_country_modifier = {
+			name = sinification_cooldown_dummy
+			duration = 1825
+			hidden = yes
+		}
+	}
+	option = {
+		name = "eoc_events.53.a"
+		add_mandate = 5
+		if = {
+			limit = { has_estate = estate_nomadic_tribes }
+			change_estate_land_share = {
+				estate = estate_nomadic_tribes
+				share = -3
+			}
+		}
+		else = {
+			change_estate_land_share = {
+				estate = estate_nobles
+				share = -3
+			}
+		}
+		add_yearly_manpower = -0.5
+		change_estate_land_share = {
+			share = 3
+			estate = estate_eunuchs
+		}
+		add_estate_loyalty = {
+			estate = estate_eunuchs
+			loyalty = 5
+		}
+		hidden_effect = {
+			change_variable = {
+				which = eoc_sinification_var
+				value = 2
+			}
+		}
+	}
+	option = {
+		name = "eoc_events.53.b"
+		trigger = { ai = no }
+		random_owned_province = {
+			limit = { culture_group = east_asian }
+			start_revolt = {
+				size = 4
+				type = nationalist_rebels
+			}
+		}
+		random_owned_province = {
+			limit = { culture_group = east_asian }
+			start_revolt = {
+				size = 4
+				type = nationalist_rebels
+			}
+		}
+		add_mandate = -5
+		if = {
+			limit = { has_estate = estate_nomadic_tribes }
+			change_estate_land_share = {
+				estate = estate_nomadic_tribes
+				share = 3
+			}
+		}
+		else = {
+			change_estate_land_share = {
+				estate = estate_nobles
+				share = 3
+			}
+		}
+		add_yearly_manpower = 0.5
+		change_estate_land_share = {
+			share = -3
+			estate = estate_eunuchs
+		}
+		add_estate_loyalty = {
+			estate = estate_eunuchs
+			loyalty = -10
+		}
+		add_country_modifier = {
+			name = eoc_resisting_sinification
+			duration = 1825
+		}
+	}
+}
+country_event = {
+	id = eoc_events.54 #Han court
+	title = "eoc_events.54.t"
+	desc = "eoc_events.54.d"
+	picture = PALACE_eventPicture
+	trigger = {
+		has_country_flag = eoc_sinification_flag
+		NOT = { has_country_modifier = sinification_cooldown_dummy }
+		has_advisor = yes
+		has_heir = yes
+		heir_culture = ROOT
+	}
+	mean_time_to_happen = {
+		months = 60
+	}
+	immediate = {
+		add_country_modifier = {
+			name = sinification_cooldown_dummy
+			duration = 1825
+			hidden = yes
+		}
+		hidden_effect = {
+			set_saved_name = {
+				key = sino_advisor
+				type = advisor
+			}
+			random_owned_province = {
+				limit = { 
+					culture_group = east_asian
+				}
+				save_event_target_as = chinese_province
+			}
+		}
+	}
+	option = {
+		name = "eoc_events.54.a"
+		add_mandate = 5
+		add_adm_power = -100
+		set_heir_culture = event_target:chinese_province
+		random_estate = { add_land_share = 3 }
+		hidden_effect = {
+			change_variable = {
+				which = eoc_sinification_var
+				value = 3
+			}
+		}
+	}
+	option = {
+		name = "eoc_events.54.b"
+		trigger = { ai = no }
+		add_mandate = -5
+		event_target:chinese_province = {
+			start_revolt = {
+				type = nationalist_rebels
+				size = 4
+			}
+		}
+		random_estate = { add_land_share = -3 }
+	}
+	after = {
+		clear_saved_name = sino_advisor
+	}
+}
+country_event = {
+	id = eoc_events.55 #Expand elite units
+	title = "eoc_events.55.t"
+	desc = "eoc_events.55.d"
+	picture = CHINESE_GENERAL_eventPicture
+	trigger = {
+		has_country_flag = eoc_sinification_flag
+		NOT = { has_country_modifier = sinification_cooldown_dummy }
+	}
+	immediate = {
+		add_country_modifier = {
+			name = sinification_cooldown_dummy
+			duration = 1825
+			hidden = yes
+		}
+	}
+	mean_time_to_happen = {
+		months = 60
+	}
+	option = {
+		name = "eoc_events.55.a"
+		add_mandate = 5
+		add_meritocracy = 10
+		if = {
+			limit = {
+				OR = {
+					tag = MCH
+					tag = QNG
+				}
+			}
+			if = {
+				limit = { has_country_modifier = eoc_sinification_banners }
+				add_yearly_manpower = 0.5
+			}
+			else = {
+				add_country_modifier = {
+					name = eoc_sinification_banners
+					duration = 7300
+				}
+			}
+		}
+		else_if = {
+			limit = { has_reform = khanganate_reform }
+			if = {
+				limit = { has_country_modifier = eoc_sinification_cav }
+				add_yearly_manpower = 0.5
+			}
+			else = {
+				add_country_modifier = {
+					name = eoc_sinification_cav
+					duration = 7300
+				}
+			}
+		}
+		else = {
+			if = {
+				limit = { has_country_modifier = eoc_sinification_regular }
+				add_yearly_manpower = 1
+			}
+			else = {
+				add_country_modifier = {
+					name = eoc_sinification_regular
+					duration = 7300
+				}
+			}
+		}
+		hidden_effect = {
+			change_variable = {
+				which = eoc_sinification_var
+				value = 1
+			}
+		}
+	}
+	option = {
+		name = "eoc_events.55.b"
+		trigger = { ai = no }
+		add_mandate = -10
+		add_meritocracy = -10
+		add_army_tradition = 25
+		add_army_professionalism = 0.1
+		add_country_modifier = {
+			name = eoc_sinification_discipline
+			duration = 1825
+		}
+	}
+}
+country_event = {
+	id = eoc_events.56 #Notification for Sinified culture
+	title = "eoc_events.56.t"
+	desc = "eoc_events.56.d"
+	picture = PALACE_eventPicture
+	trigger = {
+		has_country_flag = eoc_sinification_flag
+		check_variable = {
+			which = eoc_sinification_var
+			value = 10
+		}
+	}
+	mean_time_to_happen = {
+		months = 60
+	}
+	immediate = {
+		clr_country_flag = eoc_sinification_flag
+		hidden_effect = {
+			set_variable = {
+				which = eoc_sinification_var
+				value = 0
+			}
+			remove_country_modifier = sinification_cooldown_dummy
+		}
+		set_country_flag = eoc_sinified_culture_flag
+	}
+	option = {
+		name = "eoc_events.56.a"
+		custom_tooltip = eoc_can_sinify_culture_tt
+		random = {
+			chance = 50
+			change_adm = 1
+		}
+		random = {
+			chance = 50
+			change_dip = 1
+		}
+		random = {
+			chance = 50
+			change_mil = 1
+		}
+	}
+}
+
+#Ming Crisis Notification events
+country_event = {
+	id = eoc_events.57 #Ming Disaster at 10%
+	title = "eoc_events.57.t"
+	desc = "eoc_events.57.d"
+	picture = CHINESE_GENERAL_eventPicture
+	is_triggered_only = yes
+
+	option = {
+		name = "eoc_events.57.a"
+		custom_tooltip = ming_disaster_10_progress_tooltip
+		if = {
+			limit = { 
+				OR = {
+					tag = MCH 
+					primary_culture = manchu
+				}
+			}
+			add_country_modifier = {
+				name = ming_crisis_call_of_the_banners_mod
+				duration = 5475
+			}
+		}
+		else = {
+			add_yearly_manpower = 1
+		}
+		add_mil_power = 100
+		MNG = {
+			random_owned_province = {
+				limit = { superregion = china_superregion }
+				start_revolt = { size = 2 }
+			}
+		}
+	}
+}
+country_event = {
+	id = eoc_events.81 #Ming Crisis at 25%
+	title = "eoc_events.81.t"
+	desc = "eoc_events.81.d"
+	picture = CHINESE_GENERAL_eventPicture
+	is_triggered_only = yes
+
+	option = {
+		name = "eoc_events.81.a"
+		custom_tooltip = ming_disaster_25_progress_tooltip
+		if = {
+			limit = { ai = yes }
+			add_adm_power = 200
+			add_mil_power = 200
+			add_dip_power = 200
+			add_country_modifier = {
+				name = ming_crisis_morale_boost_mod
+				duration = 5475
+			}
+		}
+		else = {
+			add_adm_power = 100
+			add_mil_power = 100
+			add_dip_power = 100
+		}
+		add_country_modifier = {
+			name = ming_crisis_tech_cost_mod
+			duration = 3650
+		}
+		add_years_of_income = 1
+		MNG = {
+			random_owned_province = {
+				limit = { superregion = china_superregion }
+				start_revolt = { size = 2 }
+			}
+		}
+	}
+}
+country_event = { #Ming Crisis at 50%
+	id = eoc_events.58
+	title = "eoc_events.58.t"
+	desc = "eoc_events.58.d"
+	picture = CHINESE_GENERAL_eventPicture
+	is_triggered_only = yes
+	
+	option = {
+		name = "eoc_events.58.a"
+		trigger = { 
+			NOT = { 
+				OR = {
+					tag = MCH
+					primary_culture = manchu
+				} 
+			} 
+		}
+		custom_tooltip = ming_disaster_50_progress_tooltip
+		add_years_of_income = 2
+		add_army_professionalism = 0.025
+	}
+	option  = {
+		name = "eoc_events.58.b"
+		trigger = { 
+			OR = {
+				tag = MCH
+				primary_culture = manchu
+			} 
+		}
+		custom_tooltip = ming_disaster_50_progress_tooltip
+		add_country_modifier = {
+			name = eoc_ming_collapsing_manchu_modifier
+			duration = 3650
+		}
+	}
+	after = {
+		hidden_effect = {
+			MNG = {
+				random_owned_province = {
+					limit = { superregion = china_superregion }
+					start_revolt = { size = 2 }
+				}
+			}
+		}
+	}
+}
+country_event = { #Ming Crisis at 75%
+	id = eoc_events.59
+	title = "eoc_events.59.t"
+	desc = "eoc_events.59.d"
+	picture = CHINESE_GENERAL_eventPicture
+	is_triggered_only = yes
+
+	option = {
+		name = "eoc_events.59.a"
+		custom_tooltip = ming_disaster_75_progress_tooltip
+		add_country_modifier = {
+			name = ming_crisis_siege_mod
+			duration = 3650
+		}
+		add_mil_power = 100
+		add_adm_power = 100
+		add_dip_power = 100
+		if = {
+			limit = { has_reform = steppe_horde }
+			add_horde_unity = 100
+		}
+		else = {
+			add_legitimacy = 100
+		}
+		MNG = {
+			add_war_exhaustion = 10
+			random_owned_province = {
+				limit = { superregion = china_superregion }
+				start_revolt = { size = 2 }
+			}
+		}
+	}
+}
+country_event = { #Ming Crisis at 100%
+	id = eoc_events.60
+	title = "eoc_events.60.t"
+	desc = "eoc_events.60.d"
+	picture = CHINESE_GENERAL_eventPicture
+	is_triggered_only = yes
+
+	option = {
+		name = "eoc_events.60.a"
+		add_prestige = 50
+		add_country_modifier = {
+			name = mng_crisis_100
+			duration = 1825
+		}
+		hidden_effect = {
+			if = {
+				limit = { ai = yes }
+				country_event = {
+					id = eoc_events.82 #Declare on Ming
+					days = 30
+				}
+			}
+			else = {
+				country_event = {
+					id = eoc_events.82 #Defecting Ming Generals
+					days = 365
+				}
+			}
+		}
+	}
+}
+country_event = {
+	id = eoc_events.82 #Defecting Generals
+	title = "eoc_events.82.t"
+	desc = "eoc_events.82.d"
+	picture = CHINESE_GENERAL_eventPicture
+	is_triggered_only = yes
+	option = {
+		ai_chance = {
+			factor = 50
+		}
+		name = "eoc_events.82.a" #Welcome them
+		define_general = {
+			name = "Yongfang Li"
+			fire = 6
+			shock = 4
+			manuever = 2
+			siege = 1
+		}
+		define_general = {
+			name = "Liangzuo Liu"
+			fire = 2
+			shock = 2
+			manuever = 4
+			siege = 3
+		}
+		define_general = {
+			name = "Chengdong Yuan"
+			fire = 4
+			shock = 3
+			manuever = 3
+			siege = 2
+		}
+		add_yearly_manpower = 5
+		add_opinion = {
+			who = MNG
+			modifier = accepted_defectors
+		}
+	}
+	option = {
+		name = "eoc_events.82.b" #Send them away
+		add_army_professionalism = 0.15
+		if = {
+			limit = {
+				primary_culture = manchu
+			}
+			add_country_modifier = {
+				name = rejected_ming_defectors
+				duration = 7300
+			}
+		}
+		else = {
+			add_country_modifier = {
+				name = rejected_ming_defectors2
+				duration = 7300
+			}
+		}
+	}
+	after = {
+		hidden_effect = {
+			if = {
+				limit = { ai = yes }
+				add_country_modifier = {
+					name = ai_take_mandate_modifier
+					duration = 3650
+				}
+			}
+		}
+	}
+}
+country_event = { #Ming has overcome the disaster
+	id = eoc_events.61
+	title = "eoc_events.61.t"
+	desc = "eoc_events.61.d"
+	picture = CHINESE_GENERAL_eventPicture
+	is_triggered_only = yes
+
+	option = {
+		name = "eoc_events.61.a"
+		custom_tooltip = ming_disaster_lost_progress_tooltip
+	}
+}
+########################################
+# Emperor of China in Name
+########################################
+country_event = { #starts disaster
+	id = eoc_events.62
+	title = "eoc_events.62.t"
+	desc = "eoc_events.62.d"
+	picture = IMPERIAL_SEAL_eventPicture
+
+	major = yes
+	major_trigger = {
+		capital_scope = { continent = asia }
+	}
+	
+	is_triggered_only = yes
+
+	immediate = {
+		hidden_effect = {
+			random_owned_province = {
+				limit = {
+					NOT = { has_owner_culture = yes }
+					culture_group = east_asian
+				}
+				set_province_flag = revolt_by_separatists
+			}
+			random_owned_province = {
+				limit = {
+					NOT = { has_owner_culture = yes }
+					culture_group = east_asian
+					NOT = { has_province_flag = revolt_by_separatists }
+				}
+				set_province_flag = revolt_by_separatists
+			}
+		}
+	}
+	
+	option = {		
+		name = "eoc_events.62.a"
+		add_stability = -1
+		add_mandate = -25
+		every_owned_province = {
+			limit = { has_province_flag = revolt_by_separatists }
+			clr_province_flag = revolt_by_separatists
+			start_revolt = {
+				type = nationalist_rebels
+				size = 3
+			}
+		}
+	}
+}
+#End of Disaster
+country_event = {
+	id = eoc_events.63
+	title = "eoc_events.63.t"
+	desc = "eoc_events.63.d"
+	picture = GIFTS_TO_EMPEROR_eventPicture
+	
+	is_triggered_only = yes
+
+	major = yes
+	major_trigger = {
+		capital_scope = { continent = asia }
+	}
+	trigger = {
+		NOT = { has_country_flag = eoc_in_name_broke_to_rebels }
+	}
+	immediate = { 
+		if = { 
+			limit = { has_country_flag = lacking_provinces_in_china_cause }
+			clr_country_flag = lacking_provinces_in_china_cause
+		}
+	}
+
+	option = {			
+		name = "eoc_events.63.a"
+		add_mandate = 25
+	}
+}
+#End of disaster (Broke to rebels)
+country_event = {
+	id = eoc_events.64
+	title = "eoc_events.64.t"
+	desc = "eoc_events.64.d"
+	picture = IMPERIAL_SEAL_eventPicture
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			if = {
+				limit = { has_country_flag = lacking_provinces_in_china_cause }
+				clr_country_flag = lacking_provinces_in_china_cause
+			}
+			clr_country_flag = eoc_in_name_broke_to_rebels
+			set_country_flag = guy_who_lost_mandate
+			random_neighbor_country = {
+				country_event  = { id = eoc_events.66 } #so that old emperor uses FROM scope
+			}
+		}
+	}
+	option = {
+		name = "eoc_events.64.a"
+		add_stability = -2
+		kill_ruler = yes
+		custom_tooltip = eoc_in_name_mandate_lost_tt
+	}
+}
+#Peasants/separatists rise up
+country_event = {
+	id = eoc_events.65
+	title = "eoc_events.65.t"
+	desc = "eoc_events.65.d"
+	picture = REVOLT_HUGUENOTS_eventPicture
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			if = {
+				limit = { 
+					any_owned_province = { can_spawn_rebels = nationalist_rebels }
+				}
+				random_owned_province = {
+					limit = { can_spawn_rebels = nationalist_rebels }
+					save_event_target_as = nationalist_province
+				}
+			}
+			else = {
+				random_owned_province = {
+					save_event_target_as = nationalist_province
+				}
+			}
+		}
+	}
+	option = {
+		name = "eoc_events.65.a"
+		ai_chance = {
+			factor = 100
+			modifier = {
+				factor = 0
+				OR = {
+					is_bankrupt = yes
+					NOT = { army_size = 5 }
+				}
+			}
+		}
+		add_mandate = 5
+		event_target:nationalist_province = {
+			if = {
+				limit = { can_spawn_rebels = nationalist_rebels }
+				start_revolt = {
+					size = 3
+					type = nationalist_rebels
+				}
+			}
+			else = {
+				start_revolt = {
+					size = 3
+					type = particularist_rebels
+				}
+			}
+		}
+	}
+	option = {
+		name = "eoc_events.65.b"
+		ai_chance = {
+			factor = 1
+		}
+		add_mandate = -5
+		event_target:nationalist_province = {
+			add_local_autonomy = 25
+		}
+	}
+}
+country_event = {
+	id = eoc_events.66
+	title = "none"
+	desc = "none"
+	picture = "none"
+	hidden = yes
+	is_triggered_only = yes
+	immediate = {
+		if = {
+			limit = {
+				FROM = { is_emperor_of_china = yes }
+			}
+			country_event = { id = cultural_events.92 } #empire dismantled
+			dismantle_empire_of_china_effect = yes
+		}
+	}
+	option = {}
+}
+############################
+#	REWORKED TUMU CRISIS
+############################
+country_event = { #Invade the Ming Empire (Oirat)
+	id = eoc_events.67
+	title = "eoc_events.67.t"
+	desc = "eoc_events.67.d"
+	picture = CHINESE_GENERAL_eventPicture
+	fire_only_once = yes
+	trigger = {
+		tag = OIR
+		exists = MNG
+		normal_or_historical_nations = yes
+		has_country_flag = esen_taishi_is_ruler
+	}
+	mean_time_to_happen = {
+		months = 18
+	}
+	major = yes
+	major_trigger = {
+		capital_scope = {
+			continent = asia
+		}
+	}
+	option = {
+		name = "eoc_events.67.a" #Declare war!
+		ai_chance = {
+			factor = 1
+		}
+		hidden_effect = {
+			MNG = {
+				country_event = { id = eoc_events.48 } #Notification for Ming
+			}
+		}
+		start_war_effect = {
+			cb = cb_horde_vs_civ
+			who = MNG
+			war_goal = 1089 #Tumu Fort
+		}
+	}
+	option = {
+		name = "eoc_events.67.b" #Perhaps not
+		ai_chance = {
+			factor = 0
+		}
+		remove_country_modifier = esen_taishis_four_oirats
+	}
+}
+
+country_event = {
+	id = eoc_events.48 #Tumu Crisis (Notification for Ming)
+	title = "eoc_events.48.t"
+	desc = "eoc_events.48.d"
+	picture = CHINESE_GENERAL_eventPicture
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		name = "eoc_events.48.a"
+		if = {
+			limit = {
+				NOT = { is_monarch_leader = yes }
+			}
+			define_ruler_to_general = {
+				fire = 1
+				shock = 0
+				manuever = 0
+				siege = 0
+			}
+		}
+		set_ruler_flag = mng_tumu_crisis
+		add_corruption = 4
+		add_estate_influence_modifier = {
+			influence = 20
+			duration = 5475
+			estate = estate_eunuchs
+			desc = eunuchs_tumu_crisis_influence
+		}
+	}
+}
+
+# Emperor captured in battle (notification for Oirat)
+country_event = {
+	id = eoc_events.68
+	title = "eoc_events.68.t"
+	desc = "eoc_events.68.d"
+	picture = MONGOL_BANNERS_eventPicture
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	major = yes
+	major_trigger = {
+		capital_scope = {
+			continent = asia 
+		}
+	}
+	
+	immediate = {
+		hidden_effect = {
+			set_country_flag = captured_mng_emperor
+			MNG = {
+				set_country_flag = mng_emperor_captured
+				country_event = { id = eoc_events.69 } #Emperor Captured! (ming)
+			}
+		}
+	}	
+	option = { # Onward to Beijing!
+		name = "eoc_events.68.a"
+		custom_tooltip = oir_emperor_captured_tt
+		MNG = {
+			add_disaster_progress = {
+				value = 5
+				disaster = ming_crisis
+			}
+		}
+	}
+}
+
+# Notification for Ming
+country_event = {
+	id = eoc_events.69
+	title = "eoc_events.69.t"
+	desc = "eoc_events.69.d"
+	picture = MONGOL_BANNERS_eventPicture
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	option = { # Disastrous!
+		name = "eoc_events.69.a"
+		if = {
+			limit = {
+				is_emperor_of_china = yes
+			}
+			add_mandate = -20
+		}
+		add_stability = -1
+		hidden_effect = {
+			if = {
+				limit = {
+					has_heir = yes
+				}
+				exile_heir_as = mng_exiled_heir
+				set_country_flag = mng_exiled_heir_flag
+			}
+			exile_ruler_as = { name = mng_exiled_ruler }
+		}
+		define_ruler = {
+			regency = yes
+			ADM = 0
+			DIP = 0
+			MIL = 0
+		}
+	}
+}
+	
+# Ming appoints new Emperor
+country_event = {
+	id = eoc_events.70
+	title = "eoc_events.70.t"
+	desc = {
+		trigger = {
+			has_heir = yes
+		}
+		desc = "eoc_events.70.d"
+	}
+	desc = {
+		trigger = {
+			has_heir = no
+		}
+		desc = "eoc_events.70.d.2"
+	}
+	picture = BAD_WITH_MONARCH_eventPicture
+	
+	fire_only_once = yes
+	major = yes
+	major_trigger = {
+		capital_scope = {
+			continent = asia 
+		}
+	}
+	
+	trigger = {
+		tag = MNG
+		war_with = OIR
+		had_country_flag = {
+			flag = mng_emperor_captured
+			days = 1825
+		}
+		NOT = { OIR = { has_country_flag = oir_demands_sent } }
+		NOT = {
+			1816 = {
+				num_of_units_in_province = {
+					who = OIR
+					amount = 9
+				}
+			}
+		}
+	}
+	
+	immediate = {
+		hidden_effect = {
+			set_country_flag = mng_appointed_new_emperor
+			OIR = {
+				clr_country_flag = captured_mng_emperor
+				set_country_flag = tumu_crisis_failure
+			}
+			clr_country_flag = mng_emperor_captured
+		}
+	}
+	
+	option = { # May he have better judgement than his predecessor
+		name = "eoc_events.70.a"
+		if = {
+			limit = {
+				has_country_flag = mng_exiled_heir_flag
+			}
+			set_heir = mng_exiled_heir
+		}
+		else = {
+			add_stability = -1
+			define_ruler = {
+				dynasty = "Zhu"
+				culture = ROOT
+				religion = ROOT
+				male = yes
+			}
+		}
+	}
+}
+	
+# Oirats capture Beijing
+country_event = {
+	id = eoc_events.71
+	title = "eoc_events.71.t"
+	desc = "eoc_events.71.d"
+	picture = MONGOL_BANNERS_eventPicture
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		hidden_effect = {
+			set_country_flag = oir_demands_sent
+			clr_country_flag = captured_mng_emperor
+			set_country_flag = tumu_crisis_victory
+		}
+	}
+	
+	trigger = {
+		tag = OIR
+		FROM = {
+			province_id = 1816
+		}
+		MNG = {
+			has_country_flag = mng_emperor_captured
+		}
+	}
+	
+	option = { # Demand unconditional surrender
+		name = "eoc_events.71.a"
+		MNG = { country_event = { id = eoc_events.72 } }
+		custom_tooltip = ming_surrender_tt
+		hidden_effect = {
+			MNG = {
+				every_province = {
+					limit = {
+						controlled_by = MNG
+					}
+					change_controller = OIR
+				}
+				add_war_exhaustion = 20
+			}
+		}
+	}
+}
+	
+# Ming accepts demands
+country_event = {
+	id = eoc_events.72
+	title = "eoc_events.72.t"
+	desc = "eoc_events.72.d"
+	picture = MONGOL_BANNERS_eventPicture
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	option = { # We have no choice but to accept
+		name = "eoc_events.72.a"
+		tooltip = {
+			every_province = {
+				limit = {
+					controlled_by = MNG
+				}
+				change_controller = OIR
+			}
+			add_war_exhaustion = 20
+		}
+		if = {
+			limit = {
+				is_emperor_of_china = yes
+			}
+			add_mandate = -50
+		}
+		set_ruler = mng_exiled_ruler
+		if = {
+			limit = {
+				has_country_flag = mng_exiled_heir_flag
+			}
+			set_heir = mng_exiled_heir
+		}
+		clr_country_flag = mng_emperor_captured
+	}
+}
+
+#Death of Esen Taishi (oirat)
+country_event = {
+	#His death is inevitable, but can be delayed and the penalties can be lessened.
+	id = eoc_events.73
+	title = "eoc_events.73.t"
+	desc = {
+		trigger = { NOT = { has_country_flag = tumu_crisis_victory } }
+		desc = "eoc_events.73.d" #Dissolution of the Four Oirats
+	}
+	desc = {
+		trigger = { has_country_flag = tumu_crisis_victory }
+		desc = "eoc_events.73.d.2" #Death of Esen Taishi
+	}
+	fire_only_once = yes
+	picture = DEATH_OF_HEIR_eventPicture
+	major = yes
+	major_trigger = {
+		capital_scope = {
+			continent = asia
+		}
+	}
+	immediate = {
+		hidden_effect = {
+			if = {
+				limit = { has_country_flag = esen_taishi_is_ruler }
+				clr_country_flag = esen_taishi_is_ruler
+				kill_ruler = yes
+			}
+		}
+	}
+	trigger = {
+		#This can be triggered via on_monarch_death, the appointment of a new Ming Emperor or naturally via MTTH.
+		tag = OIR
+		normal_or_historical_nations = yes
+		NOT = { is_year = 1500 }
+		OR = {
+			NOT = { has_country_flag = esen_taishi_is_ruler }
+			is_year = 1450
+		}
+	}
+	mean_time_to_happen = {
+		days = 36000 #Basically wont fire unless conditions are met
+		modifier = {
+			factor = 0.05 #12.5 years
+			had_country_flag = {
+				flag = captured_mng_emperor
+				days = 730 #Captured Ming emperor at least 2 years ago
+			}
+		}
+		modifier = {
+			factor = 0.01 #2.5 year
+			has_country_flag = tumu_crisis_failure #Ming appointed new Emperor
+		}
+		modifier = {
+			factor = 0.1 #25 years
+			has_country_flag = tumu_crisis_victory #Defeated Ming
+		}
+	}
+	option = {
+		trigger = { has_country_flag = tumu_crisis_victory }
+		name = "eoc_events.73.a" #We have lost a great man
+		custom_tooltip = remove_esen_taishi_modifier_tt
+	}
+	option = {
+		trigger = { NOT = { has_country_flag = tumu_crisis_victory } }
+		name = "eoc_events.73.b" #His empire shall surely crumble..
+		custom_tooltip = remove_esen_taishi_modifier_tt
+		if = {
+			limit = { war_with = MNG }
+			custom_tooltip = tumu_crisis_failed_tooltip
+		}
+		add_country_modifier = {
+			name = death_of_esen_taishi
+			duration = 5475
+		}
+		every_subject_country = {
+			grant_independence = yes
+		}
+		random_owned_province = { start_revolt = { size = 3 } }
+		random_owned_province = { start_revolt = { size = 3 } }
+	}
+	after = {
+		hidden_effect = { clr_tumu_crisis_triggers = yes } #Ends the Tumu Crisis
+	}
+}
+#Capital in Qaraqorum
+country_event = {
+	id = eoc_events.74
+	title = "eoc_events.74.t"
+	desc = "eoc_events.74.d"
+	picture = MONGOL_BANNERS_eventPicture
+	is_triggered_only = yes
+	trigger = {
+		is_emperor_of_china = no
+		is_free_or_tributary_trigger = yes
+		NOT = { 
+			2190 = { 
+				is_capital_of = ROOT
+			}
+		}
+	}
+	option = {
+		name = "eoc_events.74.a" #Move capital
+		2190 = {
+			move_capital_effect = yes
+			add_base_tax = 1
+			add_base_manpower = 1
+			add_base_production = 1
+			add_province_modifier = {
+				name = eoc_refounding_of_qaraqorum
+				duration = 3650
+			}
+		}
+	}
+	option = {
+		name = "eoc_events.74.b" #dont
+		capital_scope = {
+			add_base_tax = 1
+			add_base_manpower = 1
+			add_base_production = 1
+		}
+	}
+}
+
+# The Dzunghars
+country_event = {
+	id = eoc_events.75
+	title = "eoc_events.75.t"
+	desc = "eoc_events.75.d"
+	picture = MONGOL_BANNERS_eventPicture
+	
+	fire_only_once = yes
+	
+	trigger = {
+		OR = {
+			is_year = 1600
+			OIR = { has_country_modifier = death_of_esen_taishi }
+		}
+		NOT = { exists = ZUN }
+		any_owned_province = {
+			area = north_zungaria
+		}
+		OR = {
+			NOT = { exists = OIR }
+			NOT = {
+				OIR = {
+					num_of_cities = 10
+				}
+			}
+			tag = OIR
+		}
+	}
+	
+	mean_time_to_happen = {
+		months = 24
+		modifier = {
+			factor = 0.5
+			num_of_owned_provinces_with = {
+				OR = {
+					area = north_zungaria
+					area = zungaria_area
+				}
+				value = 5
+			}
+		}
+	}
+	
+	option = {
+		name = "eoc_events.75.a"
+		north_zungaria = {
+			add_core = ZUN
+		}
+		zungaria_area = {
+			add_core = ZUN
+		}
+		set_country_flag = arrival_of_the_dzungars
+	}
+}
+#Arrival of the Dzungars
+country_event = {
+	id = eoc_events.76
+	title = "eoc_events.76.t"
+	desc = {
+		trigger = {
+			has_country_flag = dzungar_hostility
+		}
+		desc = "eoc_events.76.d"
+	}
+	desc = {
+		trigger = {
+			has_country_flag = dzungars_peaceful
+		}
+		desc = "eoc_events.76.d.2"
+	}
+	picture = MONGOL_BANNERS_eventPicture
+	trigger = {
+		has_country_flag = arrival_of_the_dzungars
+		any_owned_province = {
+			is_core = ZUN
+			NOT = { is_capital_of = ROOT }
+		}
+	}
+	mean_time_to_happen = {
+		months = 60
+	}
+	immediate = {
+		hidden_effect = {
+			random_list = {
+				50 = {
+					modifier = {
+						factor = 1.5
+						tag = OIR
+					}
+					set_country_flag = dzungar_hostility
+				}
+				50 = {
+					set_country_flag = dzungars_peaceful
+				}
+			}
+			release = ZUN
+			ZUN = {
+				adopt_reform_progress = ROOT
+				capital_scope = {
+					build_to_forcelimit = {
+						infantry = 0.4
+						cavalry = 0.6
+					}
+				}
+				add_yearly_manpower = 10
+				add_treasury = 100
+				if = {
+					limit = {
+						NOT = { government = tribal }
+					}
+					change_government_to_tribal = yes
+				}
+				if = {
+					limit = {
+						NOT = { has_reform = steppe_horde }
+					}
+					add_government_reform = steppe_horde
+					change_technology_group = nomad_group
+					change_unit_type = nomad_group
+				}
+				if = {
+					limit = { NOT = { religion = tengri_pagan_reformed } }
+					change_religion = tengri_pagan_reformed
+				}
+			}
+		}
+	}
+	option = {
+		name = "eoc_events.76.a" #Fight them
+		trigger = { has_country_flag = dzungar_hostility }
+		ai_chance = {
+			factor = 0
+		}
+		if = {
+			limit = { is_nomad = yes }
+			start_war_effect = {
+				cb = cb_tribal_feud
+				who = ZUN
+				war_goal = 715
+			}
+		}
+		else = {
+			start_war_effect = {
+				cb = cb_core
+				who = ZUN
+				war_goal = 715
+			}
+		}
+	}
+	option = {
+		name = "eoc_events.76.b" #Leave them be
+		trigger = {
+			has_country_flag = dzungar_hostility
+		}
+		add_prestige = -25
+	}
+	option = {
+		name = "eoc_events.76.c" #Accept their offer
+		trigger = {
+			has_country_flag = dzungars_peaceful
+		}
+		create_subject = {
+			subject_type = march
+			subject = ZUN
+		}
+	}
+	option = {
+		name = "eoc_events.76.e" #Drive them out
+		trigger = {
+			has_country_flag = dzungars_peaceful
+		}
+		ai_chance = {
+			factor = 0
+		}
+		start_war_effect = {
+			cb = cb_core
+			who = ZUN
+			war_goal = 714
+		}
+	}
+	option = {
+		name = "eoc_events.76.f" #Play as Dzungar
+		trigger = {
+			ai = no
+		}
+		if = {
+			limit = { has_reform = steppe_horde }
+			start_war_effect = {
+				cb = cb_tribal_feud
+				who = ZUN
+				war_goal = 714
+			}
+		}
+		else = {
+			start_war_effect = {
+				cb = cb_core
+				who = ZUN
+				war_goal = 714
+			}
+		}
+		switch_tag = ZUN
+	}
+	after = {
+		hidden_effect = {
+			every_country = {
+				limit = {
+					OR = {
+						has_country_flag = arrival_of_the_dzungars
+						has_country_flag = dzungars_peaceful
+						has_country_flag = dzungar_hostility
+					}
+				}
+				clr_country_flag = arrival_of_the_dzungars
+				clr_country_flag = dzungars_peaceful
+				clr_country_flag = dzungar_hostility
+			}
+		}
+	}
+}
+country_event = { #Reform the Government (From Evenks Mission tree)
+	id = eoc_events.77
+	title = "eoc_events.77.t"
+	desc = "eoc_events.77.d"
+	picture = REFORM_eventPicture
+	is_triggered_only = yes
+	trigger = {
+		is_emperor_of_china = no
+		is_revolutionary = no
+		NOT = { has_reform = great_mongol_state_reform }
+		NOT = { has_reform = shogunate }
+		NOT = { has_reform = pirate_republic_reform }
+	}
+
+	option = {
+		name = "eoc_events.77.a" #Become Horde
+		trigger = {
+			NOT = { has_reform = steppe_horde }
+			OR = {
+				ai = no
+				any_owned_province = {
+					has_terrain = steppe
+				}
+			}
+		}
+		ai_chance = {
+			factor = 100
+		}
+		change_government_to_tribal = yes
+		add_government_reform = steppe_horde
+		change_technology_group = nomad_group
+		change_unit_type = nomad_group
+	}
+	option = {
+		name = "eoc_events.77.b" #Become Monarchy
+		change_government_to_monarchy = yes
+		trigger = {
+			NOT = { government = monarchy }
+		}
+		if = {
+			limit = { NOT = { technology_group = chinese } }
+			change_technology_group = chinese
+			change_unit_type = chinese
+		}
+	}
+	option = {
+		name = "eoc_events.77.c" #Become republic
+		change_government_to_republic = yes
+		trigger = {
+			NOT = { government = republic }
+		}
+		ai_chance = {
+			factor = 0.5
+		}
+		if = {
+			limit = { NOT = { technology_group = chinese } }
+			change_technology_group = chinese
+			change_unit_type = chinese
+		}
+	}
+	option = {
+		name = "eoc_events.77.e" #Become Theocracy
+		change_government_to_theocracy = yes
+		trigger = {
+			NOT = { government = theocracy }
+		}
+		ai_chance = {
+			factor = 0.5
+		}
+		if = {
+			limit = { NOT = { technology_group = chinese } }
+			change_technology_group = chinese
+			change_unit_type = chinese
+		}
+	}
+	option = {
+		name = "eoc_events.77.f" #Dont reform
+		change_government_reform_progress = 100
+		add_stability = 1
+		ai_chance = {
+			factor = 0
+		}
+	}
+}
+country_event = { #Smuggling VS trading path for Evenks
+	id = eoc_events.78
+	title = "eoc_events.78.t"
+	desc = "eoc_events.78.d"
+	picture = TRADE_GOODS_eventPicture
+	is_triggered_only = yes
+	
+	option = {
+		name = "eoc_events.78.a" #Smugglers
+		custom_tooltip = evenks_pirate_republic_decision_tt
+		set_country_flag = evenks_pirate_decision
+		add_country_modifier = {
+			name = evenks_privateer_power_mod
+			duration = 3650
+		}
+	}
+	option = {
+		name = "eoc_events.78.b" #traders
+		add_country_modifier = {
+			name = evenks_trade_power_mod
+			duration = 9125
+		}
+		add_years_of_income = 3
+	}
+}
+country_event = { #Evenks Invasion of Korea
+	id = eoc_events.79 
+	title = "eoc_events.79.t"
+	desc = "eoc_events.79.d"
+	picture = BATTLE_eventPicture
+	is_triggered_only = yes
+
+	option = {
+		name = "eoc_events.79.a" #Ravage the Coastline
+		custom_tooltip = ravage_korean_ports_tt
+		hidden_effect = {
+			KOR = {
+				every_owned_province = {
+					limit = {
+						region = korea_region
+						has_port = yes
+					}
+					add_devastation = 50
+					if = {
+						limit = {
+							base_tax = 2
+						}
+						add_base_tax = -1
+					}
+				}
+				country_event = {
+					id = eoc_events.80 #Ports ravaged
+				}
+			}
+		}
+		add_years_of_income = 5
+		capital_scope = {
+			add_base_tax = 10
+		}
+		add_country_modifier = {
+			name = evenks_ravaged_kor_mod
+			duration = 10950
+		}
+	}
+	option = { #Focus on army
+		name = "eoc_events.79.b"
+		add_army_professionalism = 0.1
+		add_mil_tech = 1
+		add_country_modifier = {
+			name = evenks_invaded_kor_mod
+			duration = 3650
+		}
+	}
+}
+country_event = { #Notification for Korea
+	id = eoc_events.80
+	title = "eoc_events.80.t"
+	desc = "eoc_events.80.d"
+	picture = WOKOU_PIRATES_eventPicture
+	is_triggered_only = yes
+	option = {
+		name = "eoc_events.80.a"
+		custom_tooltip = evenks_ravaged_ports_tt
+		add_opinion = {
+			who = FROM
+			modifier = pirated_us
+		}
+	}
+}
+################################
+#		KOREAN EVENTS
+################################
+country_event = { #Form the Joseon Dynasty (Korea)
+	id = eoc_events.27 
+	title = "eoc_events.27.t"
+	desc = "eoc_events.27.d"
+	picture = PALACE_eventPicture
+	is_triggered_only = yes #mission
+	trigger = {
+		is_emperor_of_china = yes
+		tag = KOR
+	}
+	option = {
+		name = "eoc_events.27.a" #Form Joseon
+		set_country_flag = formed_joseon_dynasty
+		change_adm = 1
+		change_dip = 1
+		change_mil = 1
+		hidden_effect = {
+			if = {
+				limit = {
+					NOT = { has_country_flag = enacted_sinified_culture_decision }
+					NOT = { has_country_flag = eoc_sinified_culture_flag }
+					NOT = { culture_group = east_asian }
+				}
+				country_event = {
+					id = eoc_events.56 #Can Sinify culture
+				}
+			}
+		}
+		override_country_name = JOSEON_DYNASTY
+		if = {
+			limit = {
+				has_custom_ideas = no
+			}
+			country_event = { id = ideagroups.1 } #swap ideas
+		}
+		add_country_modifier = {
+			name = centralization_modifier
+			duration = 1825
+		}
+	}
+	option = {
+		name = "eoc_events.27.b" #Decision to form later
+		set_country_flag = joseon_dynasty_decision
+		custom_tooltip = joseon_dynasty_decision_tt
+	}
+}
+country_event = { #Men deserting
+	id = eoc_events.28
+	title = "eoc_events.28.t"
+	desc = "eoc_events.28.d"
+	picture = BATTLE_eventPicture
+	trigger = {
+		has_country_modifier = kor_inwards_perfection
+	}
+	is_triggered_only = yes #pulse
+	option = {
+		name = "eoc_events.28.a"
+		add_country_modifier = {
+			name = kor_inwards_perfection1 #shock damage
+			duration = 1825
+		}
+		add_yearly_manpower = -1
+	}
+	option = {
+		name = "eoc_events.28.b"
+		ai_chance = { 
+			factor = 0
+		}
+		random_owned_province = {
+			limit = { has_owner_culture = yes }
+			area = {
+				limit = { owned_by = ROOT }
+				start_revolt = {
+					type = noble_rebels
+					size = 1
+				}
+			}
+		}
+	}
+}
+country_event = {
+	id = eoc_events.83 #Court factions disagree
+	title = "eoc_events.83.t"
+	desc = "eoc_events.83.d"
+	picture = BAD_WITH_MONARCH_eventPicture
+	trigger = {
+		has_country_modifier = kor_inwards_perfection
+	}
+	is_triggered_only = yes #pulse
+	option = {
+		name = "eoc_events.83.a"
+		add_country_modifier = {
+			name = kor_inwards_perfection2 #reinforce cost
+			duration = 1825
+		}
+		add_years_of_income = -0.5
+		add_adm_power = -50
+	}
+	option = {
+		name = "eoc_events.28.b"
+		ai_chance = { 
+			factor = 0
+		}
+		random_owned_province = {
+			limit = { has_owner_culture = yes }
+			area = {
+				limit = { owned_by = ROOT }
+				start_revolt = {
+					type = noble_rebels
+					size = 1
+				}
+			}
+		}
+	}
+}
+country_event = {
+	id = eoc_events.84 #War weary population
+	title = "eoc_events.84.t"
+	desc = "eoc_events.84.d"
+	picture = FAMINE_eventPicture
+	is_triggered_only = yes  #pulse
+	trigger = {
+		has_country_modifier = kor_inwards_perfection
+	}
+	option = {
+		name = "eoc_events.84.a"
+		add_war_exhaustion = 5
+		add_years_of_income = -1
+		add_yearly_manpower = -1
+	}
+	option = {
+		name = "eoc_events.28.b"
+		ai_chance = { 
+			factor = 0
+		}
+		random_owned_province = {
+			limit = { has_owner_culture = yes }
+			area = {
+				limit = { owned_by = ROOT }
+				start_revolt = {
+					type = noble_rebels
+					size = 1
+				}
+			}
+		}
+	}
+}
+country_event = {
+	id = eoc_events.85 #Draft evasion
+	title = "eoc_events.85.t"
+	desc = "eoc_events.85.d"
+	picture = BAD_WITH_MONARCH_eventPicture
+	is_triggered_only = yes #pulse
+	trigger = {
+		has_country_modifier = kor_inwards_perfection
+	}
+	option = {
+		name = "eoc_events.85.a"
+		random_owned_province = {
+			limit = {
+				base_manpower = 2
+			}
+			add_base_manpower = -1
+		}
+		add_yearly_manpower = -1
+		add_country_modifier = {
+			name = kor_inwards_perfection3
+			duration = 1825
+		}
+	}
+	option = {
+		name = "eoc_events.28.b"
+		ai_chance = { 
+			factor = 0
+		}
+		random_owned_province = {
+			limit = { has_owner_culture = yes }
+			area = {
+				limit = { owned_by = ROOT }
+				start_revolt = {
+					type = noble_rebels
+					size = 1
+				}
+			}
+		}
+	}
+}
+country_event = { #Manchu invasion of Joseon 
+	id = eoc_events.87
+	title = "eoc_events.87.t"
+	desc = "eoc_events.87.d"
+	picture = MONGOL_BANNERS_eventPicture
+	fire_only_once = yes
+	trigger = {
+		tag = MCH
+		war_with = KOR
+	}
+	option = {
+		name = "eoc_events.87.a"
+		custom_tooltip = capture_korean_ruler_tt
+		korea_region = {
+			limit = {
+				owned_by = KOR
+			}
+			add_province_modifier = {
+				name = kor_manchu_invasion #defensiveness
+				duration = 1825
+			}
+		}
+		if = {
+			limit = { ai = yes }
+			KOR = {
+				add_country_modifier = {
+					name = kor_manchu_invasion2
+					duration = 1825
+				}
+			}
+		}
+		hidden_effect = {
+			KOR = {
+				country_event = {
+					id = eoc_events.86 #Notification for Korea
+				}
+			}
+		}
+	}
+}
+country_event = {
+	id = eoc_events.86 #Manchu conflict escalates
+	title = "eoc_events.86.t"
+	desc = "eoc_events.86.d"
+	picture = MONGOL_BANNERS_eventPicture
+	fire_only_once = yes
+	is_triggered_only = yes
+	option = {
+		set_country_flag = kor_mch_conflict
+		custom_tooltip = capture_korean_ruler_tt
+		name = "eoc_events.86.a"
+		#has to be good so the AI uses it
+		if = {
+			limit = { 
+				has_regency = no 
+				is_monarch_leader = no
+			} 
+			define_ruler_to_general = {
+				fire = 6
+				shock = 1
+				manuever = 6
+				siege = 1
+			}
+		}
+		else_if = {
+			limit = {
+				has_heir = yes
+			}
+			define_heir_to_general = {
+				fire = 6
+				shock = 1
+				manuever = 6
+				siege = 1
+			}
+		}
+		else = {
+			set_country_flag = kor_mch_conflict2
+			define_general = {
+				name = "Injo"
+				fire = 6
+				shock = 1
+				manuever = 6
+				siege = 1
+			}
+		}
+		tooltip = {
+			korea_region = {
+				limit = {
+					owned_by = KOR
+				}
+				add_province_modifier = {
+					name = kor_manchu_invasion #defensiveness
+					duration = 1825
+				}
+			}
+			if = {
+				limit = {
+					FROM = { ai = yes }
+				}
+				add_country_modifier = {
+					name = kor_manchu_invasion2
+					duration = 1825
+				}
+			}
+		}
+	}
+}
+country_event = {
+	id = eoc_events.88 #Capture of Korean King (Manchu)
+	title = "eoc_events.88.t"
+	desc = "eoc_events.88.d"
+	picture = MONGOL_BANNERS_eventPicture
+	is_triggered_only = yes
+	fire_only_once = yes
+	major = yes
+	major_trigger = {
+		capital_scope = {
+			continent = asia
+		}
+	}
+	option = {
+		name = "eoc_events.88.a"
+		custom_tooltip = subjugate_kor_tt
+		hidden_effect = {
+			KOR = {
+				clr_country_flag = kor_mch_conflict
+				clr_country_flag = kor_mch_conflict2
+				country_event = {
+					id = eoc_events.89 #Manchus Capture Ruler (Korea)
+				}
+			}
+		}
+		KOR = {
+			exile_ruler_as = { name = manchu_captured_ruler }
+			if = {
+				limit = { has_heir = yes }
+				exile_heir_as = manchu_captured_heir
+			}
+			if = {
+				limit = {
+					capital_scope = {
+						controlled_by = KOR
+					}
+				}
+				capital_scope = {
+					change_controller = ROOT
+					add_devastation = 10
+				}
+				ROOT = {
+					add_years_of_income = 2
+				}
+			}
+		}
+	}
+}
+country_event = {
+	id = eoc_events.89 #Manchu Ultimatum (Korea)
+	title = "eoc_events.89.t"
+	desc = "eoc_events.89.d"
+	picture = BAD_WITH_MONARCH_eventPicture
+	is_triggered_only = yes
+	option = {
+		name = "eoc_events.89.a" #Accept Subjugation
+		ai_chance = {
+			factor = 1
+			modifier = {
+				factor = 5
+				FROM = { ai = yes } # "historical reasons"
+			}
+		}
+		white_peace = FROM
+		FROM = {
+			create_union = ROOT #until i make a better subject type for this
+			hidden_effect = {
+				country_event = {
+					id = eoc_events.90 #Korea accepts Subjugation
+				}
+			}
+		}
+		add_liberty_desire = -100
+		#set_ruler = manchu_captured_ruler
+		#set_heir = manchu_captured_heir
+	}
+	option = {
+		name = "eoc_events.89.b" #Refuse!
+		ai_chance = {
+			factor = 1
+			modifier = {
+				factor = 0.25
+				NOT = { #less likely to refuse if not primary targets in war
+					OR = {
+						is_in_war = { attacker_leader = KOR defender_leader = MCH }
+						is_in_war = { defender_leader = KOR attacker_leader = MCH }
+					}
+				}
+			}
+		}
+		custom_tooltip = manchu_execute_ruler_tt
+		add_war_exhaustion = 5
+		add_stability = -3
+		hidden_effect = {
+			FROM = {
+				country_event = {
+					id = eoc_events.91 #Korea refuses surrender
+				}
+			}
+		}
+	}
+}
+country_event = {
+	id = eoc_events.90 #Korea accepts subjugation (manchu)
+	title = "eoc_events.90.t"
+	desc = "eoc_events.90.d"
+	picture = CONQUEST_eventPicture
+	is_triggered_only = yes
+	option = {
+		name = "eoc_events.90.a"
+		tooltip = {
+			white_peace = FROM
+			vassalize = FROM
+			FROM = {
+				add_liberty_desire = -100
+			}
+		}
+	}
+}
+country_event = {
+	id = eoc_events.91 #Korea refuses surrender (manchu)
+	title = "eoc_events.91.t"
+	desc = "eoc_events.91.d"
+	picture = BATTLE_eventPicture
+	is_triggered_only = yes
+	option = {
+		name = "eoc_events.91.a"
+		custom_tooltip = mch_invasion_wsc_tt
+		hidden_effect = {
+			korea_region = {
+				limit = { owned_by = FROM }
+				add_province_modifier = {
+					name = mch_invasion_wsc
+					duration = 1825
+					hidden = yes
+				}
+			}
+		}
+		tooltip = {
+			FROM = {
+				add_war_exhaustion = 5
+				add_stability = -3
+			}
+		}
+	}
+}
+country_event = {
+	id = eoc_events.92 #Capture of Joseon Capital (manchu)
+	title = "eoc_events.92.t"
+	desc = "eoc_events.92.d"
+	picture = NOT_DISCIPLINED_SOLDIERS_eventPicture
+	is_triggered_only = yes
+	fire_only_once = yes
+	trigger = {
+		tag = MCH
+		FROM = {
+			is_capital_of = KOR
+		}
+	}
+	option = {
+		name = "eoc_events.92.a" #pillage
+		ai_chance = {
+			factor = 5
+		}
+		KOR = {
+			capital_scope = {
+				add_base_tax = -2
+				add_base_production = -2
+				add_base_manpower  = -2
+				add_devastation = 50
+				add_province_modifier = {
+					name = mch_sack_capital
+					duration = 7300
+				}
+			}
+			hidden_effect = {
+				country_event = {
+					id = eoc_events.93 #Manchus sack city
+				}
+			}
+		}
+		add_opinion = {
+			who = KOR
+			modifier = sack_of_x
+		}
+		add_years_of_income = 2
+		add_adm_power = 50
+		add_mil_power = 50
+		add_dip_power = 50
+		capital_scope = {
+			add_base_tax = 2
+			add_base_manpower = 2
+			add_base_production = 2
+		}
+	}
+	option = {
+		name = "eoc_events.92.b" #prevent conduct
+		add_army_professionalism = 0.1
+		add_years_of_income = -2
+		add_country_modifier = {
+			name = mch_invasion_discipline
+			duration = 7300
+		}
+	}
+}
+country_event = {
+	id = eoc_events.93 #Manchus sack city (Korea)
+	title = "eoc_events.93.t"
+	desc = "eoc_events.93.d"
+	picture = NOT_DISCIPLINED_SOLDIERS_eventPicture
+	is_triggered_only = yes
+	option = {
+		name = "eoc_events.93.a"
+		tooltip = {
+			capital_scope = {
+				add_base_tax = -2
+				add_base_production = -2
+				add_base_manpower  = -2
+				add_devastation = 50
+				add_province_modifier = {
+					name = mch_sack_capital
+					duration = 7300
+				}
+			}
+		}
+	}
+}
+country_event = {
+	id = eoc_events.33 #Reforms of <Korean Monarch>
+	title = "eoc_events.33.t"
+	desc = "eoc_events.33.d"
+	picture = REFORM_eventPicture
+	is_triggered_only = yes #pulse
+	trigger = {
+		tag = KOR
+		has_estate_privilege = estate_church_inwards_perfection
+		any_owned_province = {
+			local_autonomy = 10
+			region = korea_region
+		}
+		NOT = { num_of_rebel_armies = 1 }
+		is_at_war = no
+	}
+	immediate = {
+		hidden_effect = {
+			random_owned_province = {
+				limit = {
+					region = korea_region
+					local_autonomy = 10
+				}
+				save_event_target_as = korean_province
+			}
+		}
+	}
+	option = {
+		name = "eoc_events.33.a" #Enact them
+		ai_chance = {
+			factor = 0
+		}
+		event_target:korean_province = {
+			add_local_autonomy = -15
+			start_revolt = {
+				type = particularist_rebels
+				size = 4
+			}
+		}
+		add_country_modifier = {
+			name = kor_autonomy_reforms
+			duration = 1825
+		}
+	}
+	option = {
+		name = "eoc_events.33.b" #Focus efforts elsewhere
+		random_list = {
+			50 = { add_adm_power = 50 }
+			50 = { add_dip_power = 50 }
+			50 = { add_mil_power = 50 }
+			5 = {
+				add_adm_power = 50
+				add_dip_power = 50
+				add_mil_power = 50
+			}
+		}
+	}
+}
+#######################################
+# Additional Unguarded Frontier Events
+#######################################
+
+country_event = {
+	id = eoc_events.34 #Qing Dynasty formed - Notification
+	title = "eoc_events.34.t"
+	desc = "eoc_events.34.d"
+	picture = MONGOL_BANNERS_eventPicture
+	is_triggered_only = yes
+
+	option = {
+		name = "eoc_events.34.a" #Worrisome
+		add_mandate = -10
+	}
+}
+country_event = {
+	id = eoc_events.49 #Territorial dispute
+	title = "eoc_events.49.t"
+	desc = "eoc_events.49.d"
+	picture = MONGOL_BANNERS_eventPicture
+	trigger = {
+		is_emperor_of_china = yes
+		any_neighbor_country = {
+			valid_for_unguarded_frontier = yes
+		}
+		NOT = { has_country_modifier = new_mandate_holder }
+	}
+	is_triggered_only = yes
+	immediate = {
+		hidden_effect = {
+			random_neighbor_country = {
+				limit = { valid_for_unguarded_frontier = yes }
+				save_event_target_as = frontier_country
+				random_owned_province = {
+					limit = {
+						any_neighbor_province = {
+							owned_by = ROOT
+						}
+					}
+					save_event_target_as = frontier_province
+				}
+			}
+		}
+	}
+	option = {
+		name = "eoc_events.49.a" #Back down
+		ai_chance = {
+			factor = 1
+		}
+		add_estate_loyalty = {
+			estate = estate_church
+			loyalty = 10
+		}
+		add_years_of_income = 0.5
+	}
+	option = {
+		name = "eoc_events.49.b" #Escalate dispute
+		ai_chance = {
+			factor = 10
+		}
+		add_mil_power = -50
+		event_target:frontier_province = {
+			area = {
+				limit = {
+					owned_by = event_target:frontier_country
+				}
+				add_claim = ROOT
+			}
+		}
+	}
+}
+country_event = {
+	id = eoc_events.50 #Generals defect
+	title = "eoc_events.50.t"
+	desc = "eoc_events.50.d"
+	picture = MILITARY_CAMP_eventPicture
+	is_triggered_only = yes
+	trigger = {
+		is_emperor_of_china = yes
+		NOT = { has_country_modifier = new_mandate_holder }
+		any_neighbor_country = {
+			valid_for_unguarded_frontier = yes
+		}
+		any_owned_province = {
+			unit_has_leader = yes
+			num_of_units_in_province = {
+				who = ROOT
+				amount = 1
+			}
+		}
+	}
+	immediate = {
+		hidden_effect = {
+			random_known_country = {
+				limit = { valid_for_unguarded_frontier = yes }
+				save_event_target_as = frontier_country
+			}
+			random_owned_province = {
+				limit = {
+					unit_has_leader = yes
+					num_of_units_in_province = {
+						who = ROOT
+						amount = 1
+					}
+				}
+				save_event_target_as = defecting_province
+			}
+		}
+	}
+	option = {
+		name = "eoc_events.50.a" #Kill him!
+		ai_chance = {
+			factor = 10
+		}
+		kill_leader = {
+			type = general
+		}
+		if = {
+			limit = { ai = no }
+			event_target:defecting_province = {
+				kill_units = {
+					who = ROOT
+				}
+				start_revolt = {
+					type = pretender_rebels
+					size = 5
+					win = yes
+				}
+			}
+		}
+		add_army_tradition = -10
+		add_mandate = 5
+	}
+	option = {
+		name = "eoc_events.50.b" #Honourable Discharge
+		ai_chance = {
+			factor = 1
+		}
+		add_army_tradition = 10
+		add_years_of_income = 0.2
+		add_mil_power = 25
+		add_meritocracy = 5
+		event_target:frontier_country = {
+			country_event = {
+				id = eoc_events.94 #Defecting General
+			}
+		}
+	}
+}
+country_event = {
+	id = eoc_events.94 #Defecting General - Notification
+	title = "eoc_events.94.t"
+	desc = "eoc_events.94.d"
+	picture = LAND_MILITARY_eventPicture
+	is_triggered_only = yes
+
+	option = {
+		name = "eoc_events.94.a" #He is most welcome
+		create_general = { tradition = 100 }
+	}
+}
+country_event = {
+	id = eoc_events.95 #Province defects
+	title = "eoc_events.95.t"
+	desc = "eoc_events.95.d"
+	picture = ANGRY_MOB_eventPicture
+	is_triggered_only = yes
+	trigger = {
+		is_emperor_of_china = yes
+		NOT = { has_country_modifier = new_mandate_holder }
+		any_neighbor_country = {
+			valid_for_unguarded_frontier = yes
+		}
+		num_of_cities = 2
+	}
+	immediate = {
+		hidden_effect = {
+			random_neighbor_country = {
+				limit = {
+					valid_for_unguarded_frontier = yes
+				}
+				save_event_target_as = frontier_country
+			}
+			random_owned_province = {
+				limit = {
+					any_neighbor_province = {
+						owned_by = event_target:frontier_country
+					}
+					is_capital = no
+				}
+				save_event_target_as = frontier_province
+			}
+		}
+	}
+	option = {
+		name = "eoc_events.95.a" #Prevent this!
+		ai_chance = {
+			factor = 10
+		}
+		event_target:frontier_province = {
+			start_revolt = {
+				type = particularist_rebels
+				size = 3
+			}
+			add_core = event_target:frontier_country
+			if = {
+				limit = {
+					owner = { ai = no }
+				}
+				area = {
+					limit = { owned_by = ROOT }
+					add_unrest = 20
+				}
+			}
+		}
+	}
+	option = {
+		name = "eoc_events.95.b" #Allow it
+		ai_chance = {
+			factor = 1
+		}
+		event_target:frontier_province = {
+			remove_core = ROOT
+			add_core = event_target:frontier_country
+			cede_province = event_target:frontier_country
+			set_province_flag = defecting_citizens
+			area = {
+				limit = {
+					owned_by = ROOT
+				}
+				add_local_autonomy = 30
+				add_province_modifier = {
+					name = eoc_defecting_area_mod
+					duration = 3650
+				}
+			}
+			hidden_effect = {
+				event_target:frontier_country = {
+					country_event = {
+						id = eoc_events.103 #Defecting citizens
+					}
+				}
+			}
+		}
+		capital_scope = {
+			add_base_tax = 3
+		}
+		add_years_of_income = 0.5
+		add_adm_power = 75
+	}
+}
+country_event = {
+	id = eoc_events.103 #Defecting Citizens - Notification
+	title = "eoc_events.103.t"
+	desc = "eoc_events.103.d"
+	picture = CITY_DEVELOPMENT_eventPicture
+	is_triggered_only = yes
+
+	immediate = {
+		hidden_effect = {
+			random_province = {
+				limit = {
+					has_province_flag = defecting_citizens
+				}
+				save_event_target_as = defecting_citizens
+			}
+		}
+	}
+	option = {
+		name = "eoc_events.103.a" #Welcome them
+		tooltip = {
+			event_target:defecting_citizens = {
+				remove_core = FROM
+				add_core = ROOT
+				cede_province = ROOT
+			}
+		}
+	}
+}
+country_event = {
+	id = eoc_events.96 #Minor skirmishes
+	title = "eoc_events.96.t"
+	desc = "eoc_events.96.d"
+	picture = COSSACK_ESTATE_RAIDERS_eventPicture
+	is_triggered_only = yes
+	trigger = {
+		is_emperor_of_china = yes
+		NOT = { has_country_modifier = new_mandate_holder }
+		any_neighbor_country = {
+			valid_for_unguarded_frontier = yes
+		}
+	}
+	immediate = {
+		hidden_effect = {
+			random_owned_province = {
+				limit = {
+					any_neighbor_province = {
+						NOT = { owned_by = ROOT }
+					}
+				}
+				save_event_target_as = frontier_province
+			}
+		}
+	}
+	option = {
+		name = "eoc_events.96.a" #Alleviate their suffering
+		ai_chance = {
+			factor = 10
+		}
+		event_target:frontier_province = {
+			add_base_tax = 1
+			add_devastation = 5
+		}
+		add_years_of_income = -0.2
+		add_mandate = 3
+	}
+	option = {
+		name = "eoc_events.96.b" #There's nothing we can do
+		ai_chance = {
+			factor = 1
+		}
+		event_target:frontier_province = {
+			add_devastation = 20
+		}
+	}
+}
+country_event = {
+	id = eoc_events.97 #Court faction foreign policy
+	title = "eoc_events.97.t"
+	desc = "eoc_events.97.d"
+	picture = PALACE_eventPicture
+	is_triggered_only = yes
+	trigger = {
+		is_emperor_of_china = yes
+		NOT = { has_country_modifier = new_mandate_holder }
+		any_neighbor_country = {
+			valid_for_unguarded_frontier = yes
+		}
+		NOT = { has_country_modifier = eoc_ministry_for_foreign_defence }
+	}
+	option = {
+		name = "eoc_events.97.a" #Favour the Warlords
+		ai_chance = {
+			factor = 10
+		}
+		add_estate_influence_modifier = {
+			influence = 10
+			duration = 3650
+			desc = warlord_frontier_influence_desc
+			estate = estate_nobles
+		}
+		add_estate_loyalty = {
+			estate = estate_nobles
+			loyalty = 5
+		}
+		add_estate_loyalty = {
+			estate = estate_eunuchs
+			loyalty = -5
+		}
+		add_estate_loyalty = {
+			estate = estate_church
+			loyalty = -5
+		}
+		add_estate_loyalty = {
+			estate = estate_burghers
+			loyalty = -5
+		}
+		add_mil_power = 50
+		add_corruption = -1
+		add_country_modifier = {
+			name = eoc_ministry_for_foreign_defence
+			duration = 3650
+		}
+	}
+	option = {
+		ai_chance = {
+			factor = 1
+		}
+		name = "eoc_events.97.b" #Favour court factions
+		add_estate_influence_modifier = {
+			influence = 10
+			duration = 3650
+			estate = estate_burghers
+			desc = court_faction_frontier_influence_desc
+		}
+		add_estate_influence_modifier = {
+			influence = 10
+			duration = 3650
+			estate = estate_eunuchs
+			desc = court_faction_frontier_influence_desc
+		}
+		add_estate_influence_modifier = {
+			influence = 10
+			duration = 3650
+			estate = estate_church
+			desc = court_faction_frontier_influence_desc
+		}
+		add_estate_loyalty = {
+			estate = estate_nobles
+			loyalty = -5
+		}
+		add_years_of_income = 1
+		add_corruption = 2
+	}
+}
+country_event = {
+	id = eoc_events.98 #Advisor critizes weak frontier
+	title = "eoc_events.98.t"
+	desc = "eoc_events.98.d"
+	picture = BAD_WITH_MONARCH_eventPicture
+	is_triggered_only = yes
+	trigger = {
+		is_emperor_of_china = yes
+		any_neighbor_country = {
+			valid_for_unguarded_frontier = yes
+		}
+		has_any_advisor = yes
+		NOT = { has_country_modifier = new_mandate_holder }
+		NOT = { has_country_modifier = eoc_advisor_criticism_mod }
+	}
+	option = {
+		name = "eoc_events.98.a" #Off with his head!
+		add_meritocracy = 10
+		add_mandate = 5
+		add_adm_power = 50
+		kill_advisor = random
+		ai_chance = {
+			factor = 1
+		}
+	}
+	option = {
+		name = "eoc_events.98.b" #Heed his advise
+		add_country_modifier = {
+			name = eoc_advisor_criticism_mod
+			duration = 3650
+		}
+		ai_chance = {
+			factor = 10
+		}
+	}
+}
+country_event = {
+	id = eoc_events.99 #Army reforms of Frontier enemies
+	title = "eoc_events.99.t"
+	desc = "eoc_events.99.d"
+	picture = LAND_MILITARY_eventPicture
+	is_triggered_only = yes
+	trigger = {
+		is_emperor_of_china = yes
+		any_neighbor_country = {
+			valid_for_unguarded_frontier = yes
+		}
+		NOT = { has_country_modifier = new_mandate_holder }
+		NOT = { has_country_modifier = eoc_frontier_army_reforms }
+	}
+	immediate = {
+		hidden_effect = {
+			random_neighbor_country = {
+				limit = { valid_for_unguarded_frontier = yes }
+				save_event_target_as = frontier_country
+			}
+		}
+	}
+	option = {
+		name = "eoc_events.99.a" #Enact reforms
+		ai_chance = {
+			factor = 10
+		}
+		if = {
+			limit = { ai = no }
+			add_country_modifier = {
+				name = eoc_frontier_army_reforms
+				duration = 3650
+			}
+		}
+		add_army_professionalism = 0.03
+	}
+	option = {
+		name = "eoc_events.99.b" #Nothing to worry about
+		ai_chance = {
+			factor = 1
+		}
+	}
+}
+country_event = {
+	id = eoc_events.100
+	title = "eoc_events.100.t" #Enemies offer to defect
+	desc = "eoc_events.100.d"
+	picture = DEBATE_REPUBLICAN_eventPicture
+	is_triggered_only = yes
+	trigger = {
+		is_emperor_of_china = yes
+		any_neighbor_country = {
+			valid_for_unguarded_frontier = yes
+		}
+		NOT = { has_country_modifier = new_mandate_holder }
+	}
+	immediate = {
+		hidden_effect = {
+			random_neighbor_country = {
+				limit = { valid_for_unguarded_frontier = yes }
+				save_event_target_as = frontier_country
+				random_owned_province = {
+					limit = {
+						any_neighbor_province = {
+							owned_by = ROOT
+						}
+						NOT = { is_capital = yes }
+					}
+					save_event_target_as = frontier_province
+				}
+			}
+		}
+	}
+	option = {
+		name = "eoc_events.100.a" #Welcome them!
+		ai_chance = {
+			factor = 1
+		}
+		random_list = {
+			50 = {
+				custom_tooltip = rebels_help_us_tt
+				event_target:frontier_province = {
+					add_base_tax = 1
+					add_base_manpower = 1
+					add_base_production = 1
+					add_core = ROOT
+					change_religion = ROOT
+					cede_province = ROOT
+					set_province_flag = eoc_defecting_rebels_prov
+				}
+				hidden_effect = {
+					event_target:frontier_country = {
+						country_event = {
+							id = eoc_events.101 #defecting province
+						}
+					}
+				}
+			}
+			50 = {
+				custom_tooltip = rebels_betray_us_tt
+				add_mandate = -5
+				event_target:frontier_country = {
+					add_spy_network_in = {
+						who = ROOT
+						value = 50
+					}
+				}
+				add_estate_loyalty = {
+					estate = estate_eunuchs
+					loyalty = -10
+				}
+				hidden_effect = {
+					event_target:frontier_country = {
+						country_event = {
+							id = eoc_events.102 #Rebels betray emperor
+						}
+					}
+				}
+			}
+		}
+	}
+	option = {
+		name = "eoc_events.100.b" #Testament to our security
+		ai_chance = {
+			factor = 10
+		}
+		random_list = {
+			75 = {
+				custom_tooltip = rebels_help_us_tt
+				add_mandate = 5
+				add_spy_network_in = {
+					who = event_target:frontier_country
+					value = 50
+				}
+				add_core = event_target:frontier_province
+			}
+			25 = {
+				custom_tooltip = rebels_betray_us_tt
+				add_mandate = -5
+				event_target:frontier_country = {
+					add_spy_network_in = {
+						who = ROOT
+						value = 25
+					}
+				}
+				hidden_effect = {
+					event_target:frontier_country = {
+						country_event = {
+							id = eoc_events.102 #Rebels betray emperor
+						}
+					}
+				}
+			}
+		}
+	}
+	option = {
+		name = "eoc_events.100.c" #We cannot associate with dangerous people
+		ai_chance = {
+			factor = 1
+		}
+		add_estate_loyalty = {
+			estate = estate_eunuchs
+			loyalty = 10
+		}
+		add_years_of_income = 0.5
+		add_dip_power = 50
+	}
+}
+country_event = {
+	id = eoc_events.101 #Rebels defect to Emperor - Notification
+	title = "eoc_events.101.t"
+	desc = "eoc_events.101.d"
+	picture = SIEGE_eventPicture
+	is_triggered_only = yes
+
+	immediate = {
+		hidden_effect = {
+			random_province = {
+				limit = { has_province_flag = eoc_defecting_rebels_prov }
+				save_event_target_as = defecting_province
+				clr_province_flag = eoc_defecting_rebels_prov
+			}
+		}
+	}
+
+	option = {
+		name = "eoc_events.101.a" #Damn them!
+		tooltip = {
+			event_target:defecting_province = {
+				add_core = FROM
+				cede_province = FROM
+			}
+		}
+	}
+}
+country_event = {
+	id = eoc_events.102 #Rebels betray Emperor - Notification
+	title = "eoc_events.102.t"
+	desc = "eoc_events.102.d"
+	picture = GOOD_WITH_MONARCH_eventPicture
+	is_triggered_only = yes
+	
+	option = {
+		name = "eoc_events.102.a" #Excellent
+		tooltip = {
+			add_spy_network_in = {
+				who = FROM
+				value = 25
+			}
+		}
+	}
+}
+country_event = {
+	id = eoc_events.104 #Stability on Frontier
+	title = "eoc_events.104.t"
+	desc = "eoc_events.104.d"
+	picture = LAND_MILITARY_eventPicture
+	is_triggered_only = yes
+	trigger = {
+		is_emperor_of_china = yes
+		any_neighbor_country = {
+			valid_for_unguarded_frontier = yes
+		}
+		NOT = { has_country_modifier = new_mandate_holder }
+	}
+	option = {
+		name = "eoc_events.104.a" #Great
+		add_mandate = 3
+	}
+}
+country_event = {
+	id = eoc_events.105 #Tactical Genius
+	title = "eoc_events.105.t"
+	desc = "eoc_events.105.d"
+	picture = ADVISOR_eventPicture
+	is_triggered_only = yes
+	trigger = {
+		is_emperor_of_china = yes
+		any_neighbor_country = {
+			valid_for_unguarded_frontier = yes
+		}
+		NOT = { has_country_modifier = new_mandate_holder }
+	}
+	immediate = {
+		hidden_effect = {
+			random_list = {
+				50 = { set_country_flag = tactical_advisor }
+				50 = { set_country_flag = tactical_general }
+				50 = { set_country_flag = tactical_admiral }
+			}
+		}
+	}
+	option = {
+		name = "eoc_events.105.a" #Hire him
+		trigger = {
+			has_country_flag = tactical_advisor
+		}
+		clr_country_flag = tactical_advisor
+		define_advisor = {
+			type = fortification_expert
+			skill = 2
+			culture = ROOT
+			religion = ROOT
+			cost_multiplier = 0.2
+		}
+		add_years_of_income = -0.2
+		add_mil_power = -50
+		ai_chance = {
+			factor = 10
+		}
+		add_estate_loyalty = {
+			estate = estate_eunuchs
+			loyalty = -5
+		}
+	}
+	option = {
+		name = "eoc_events.105.b" #Hire him
+		trigger = {
+			has_country_flag = tactical_general
+		}
+		clr_country_flag = tactical_general
+		create_general = { tradition = 50 }
+		add_years_of_income = -0.2
+		add_mil_power = -50
+		ai_chance = {
+			factor = 10
+		}
+		add_estate_loyalty = {
+			estate = estate_eunuchs
+			loyalty = -5
+		}
+	}
+	option = {
+		name = "eoc_events.105.c" #Hire him
+		trigger = {
+			has_country_flag = tactical_admiral
+		}
+		create_admiral = { tradition = 50 }
+		add_years_of_income = -0.2
+		add_mil_power = -50
+		ai_chance = {
+			factor = 10
+		}
+		add_estate_loyalty = {
+			estate = estate_eunuchs
+			loyalty = -5
+		}
+	}
+	option = {
+		name = "eoc_events.105.e" #We have no need of his services
+		clr_country_flag = tactical_admiral
+		clr_country_flag = tactical_general
+		clr_country_flag = tactical_advisor
+		add_meritocracy = 5
+		add_mil_power = 50
+		ai_chance = {
+			factor = 1
+		}
+		add_estate_loyalty = {
+			estate = estate_eunuchs
+			loyalty = 5
+		}
+	}
+}
+country_event = {
+	id = eoc_events.106 #Harmony Mechanics
+	trigger = {
+		OR = {
+			AND = {
+				harmony = 100
+				NOT = { has_country_modifier = harmony_mechanic_cd }
+			}
+			has_country_flag = eunuchs_flexible_harmony_flag
+		}
+	}
+	title = "eoc_events.106.t"
+	desc = "eoc_events.106.d"
+	picture = GOOD_WITH_MONARCH_eventPicture
+	is_triggered_only = yes
+
+	option = {
+		trigger = { religion = confucianism }
+		name = "eoc_events.106.a" #Confucian Work Ethic
+		add_stability = 1
+		if = {
+			limit = {
+				NOT = { has_country_flag = eunuchs_flexible_harmony_flag }
+			}
+			add_harmony = -20
+		}
+	}
+	option = {
+		trigger = { religion = confucianism }
+		name = "eoc_events.106.b" #The Art of War
+		add_country_modifier = {
+			name = conf_harmony_the_art_of_war
+			duration = 3650
+		}
+		if = {
+			limit = {
+				NOT = { has_country_flag = eunuchs_flexible_harmony_flag }
+			}
+			add_harmony = -20
+		}
+		ai_chance = {
+			factor = 10
+		}
+	}
+	option = {
+		trigger = { religion = confucianism }
+		name = "eoc_events.106.c" #The Examination System
+		add_adm_power = 100
+		add_country_modifier = {
+			name = conf_harmony_examination_system
+			duration = 3650
+		}
+		if = {
+			limit = {
+				NOT = { has_country_flag = eunuchs_flexible_harmony_flag }
+			}
+			add_harmony = -20
+		}
+	}
+	option = {
+		trigger = { religion = confucianism }
+		name = "eoc_events.106.e" #Scholarly Elite
+		add_country_modifier = {
+			name = conf_harmony_scholarly_elite
+			duration = 1825
+		}
+		if = {
+			limit = {
+				NOT = { has_country_flag = eunuchs_flexible_harmony_flag }
+			}
+			add_harmony = -20
+		}
+	}
+	option = {
+		trigger = { religion = confucianism }
+		name = "eoc_events.106.f" #Enforce Confucian thought
+		custom_tooltip = enforce_confucian_thought_tt
+		hidden_effect = {
+			every_province = {
+				limit = {
+					any_neighbor_province = { owned_by = ROOT }
+					owner = { 
+						NOT = { is_subject_of = ROOT }
+						NOT = { religion = confucianism }
+					}
+					NOT = { owned_by = ROOT }
+					NOT = { is_claim = ROOT }
+					NOT = { is_core = ROOT }
+				}
+				add_claim = ROOT
+			}
+		}
+		if = {
+			limit = {
+				NOT = { has_country_flag = eunuchs_flexible_harmony_flag }
+			}
+			add_harmony = -50
+		}
+	}
+	option = {
+		name = "eoc_events.106.h"
+		trigger = { religion = daoism } #Taoist thought
+		add_country_modifier = {
+			name = daoism_taoist_thought
+			duration = 1825
+		}
+		if = {
+			limit = {
+				NOT = { has_country_flag = eunuchs_flexible_harmony_flag }
+			}
+			add_harmony = -20
+		}
+	}
+	option = {
+		name = "eoc_events.106.i"
+		trigger = { religion = daoism } #Promote Harmony
+		custom_tooltip = dao_5_provinces_tooltip
+		hidden_effect = {
+			set_variable = {
+				which = dao_prov_convert
+				value = 5
+			}
+			while = {
+				limit = {
+					check_variable = {
+						which = dao_prov_convert
+						value = 1
+					}
+					any_owned_province = {
+						NOT = { owner_or_harmonized_religion = yes }
+					}
+				}
+				random_owned_province = {
+					limit = {
+						NOT = { owner_or_harmonized_religion = yes }
+					}
+					change_religion = daoism
+				}
+				subtract_variable = {
+					which = dao_prov_convert
+					value = 1
+				}
+			}
+			set_variable = {
+				which = dao_prov_convert
+				value = 0
+			}
+		}
+		if = {
+			limit = {
+				NOT = { has_country_flag = eunuchs_flexible_harmony_flag }
+			}
+			add_harmony = -20
+		}
+	}
+	option = {
+		name = "eoc_events.106.j" #Promote Religion in Governance
+		trigger = { religion = daoism }
+		add_dip_power = 100
+		add_harmony = -20
+	}
+	option = {
+		name = "eoc_events.106.k" #Promote Unity in Faith
+		trigger = { religion = daoism }
+		add_country_modifier = {
+			name = daoism_unity_in_faith
+			duration = 1825
+		}
+		if = {
+			limit = {
+				NOT = { has_country_flag = eunuchs_flexible_harmony_flag }
+			}
+			add_harmony = -20
+		}
+	}
+	option = {
+		name = "eoc_events.106.l"
+		trigger = { religion = daoism } #Strengthen Priests
+		change_estate_land_share = {
+			estate = estate_church
+			share = 5
+		}
+		add_estate_influence_modifier = {
+			estate = estate_church
+			influence = 10
+			duration = 3650
+			desc = daoism_strengthen_priests_tt
+		}
+		custom_tooltip = daoism_development_tooltip
+		hidden_effect = {
+			set_variable = {
+				which = development_dist_var
+				value = 10
+			}
+			export_to_variable = {
+				which = daoism_adm_var
+				value = ADM
+			}
+			multiply_variable = {
+				which = development_dist_var
+				which = daoism_adm_var
+			}
+			while = {
+				limit = {
+					check_variable = {
+						which = development_dist_var
+						value = 1
+					}
+				}
+				random_owned_province = {
+					limit = {
+						owner_or_harmonized_religion = yes
+					}
+					random_list = {
+						50 = { add_base_tax = 1 }
+						50 = { add_base_production = 1 }
+						50 = { add_base_manpower = 1 }
+						10 = {
+							add_base_tax = 1
+							add_base_manpower = 1
+							add_base_production = 1
+						}
+					}
+				}
+				subtract_variable = {
+					which = development_dist_var
+					value = 1
+				}
+			}
+			set_variable = {
+				which = development_dist_var
+				value = 0
+			}
+			set_variable = {
+				which = daoism_adm_var
+				value = 0
+			}
+		}
+		ai_chance = {
+			factor = 10
+			modifier = {
+				factor = 0
+				NOT = { crown_land_share = 15 }
+			}
+		}
+		if = {
+			limit = {
+				NOT = { has_country_flag = eunuchs_flexible_harmony_flag }
+			}
+			add_harmony = -50
+		}
+	}
+	option = {
+		name = "eoc_events.106.g" #Later
+		trigger = { NOT = { has_country_flag = eunuchs_flexible_harmony_flag } }
+		custom_tooltip = harmony_later_tt
+	}
+
+	after = {
+		hidden_effect = {
+			add_country_modifier = {
+				name = harmony_mechanic_cd
+				duration = 3650
+				hidden = yes
+			}
+		}
+		clr_country_flag = eunuchs_flexible_harmony_flag
+	}
+}
+#Shen Harmonization
+country_event = {
+	id = eoc_events.107
+	title = "eoc_events.107.t"
+	desc = "eoc_events.107.d"
+	picture = NEO_CONFUCIANISM_INCIDENT_eventPicture
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "eoc_events.107.a"
+		clr_harmonization_flags = yes
+	}
+}
+#Confucian Harmonization
+country_event = {
+	id = eoc_events.108
+	title = "eoc_events.108.t"
+	desc = "eoc_events.108.d"
+	is_triggered_only = yes
+	picture = NEO_CONFUCIANISM_INCIDENT_eventPicture
+
+	option = {
+		name = "eoc_events.108.a"
+		clr_harmonization_flags = yes
+	}
+}
+#Daoist Harmonization
+country_event = {
+	id = eoc_events.109
+	title = "eoc_events.109.t"
+	desc = "eoc_events.109.d"
+	is_triggered_only = yes
+	picture = NEO_CONFUCIANISM_INCIDENT_eventPicture
+
+	option = {
+		name = "eoc_events.109.a"
+		clr_harmonization_flags = yes
+	}
+}
+##########################
+#		JAPANESE STUFF
+##########################
+province_event = {
+	id = eoc_events.110 #Fall of Kyoto
+	title = "eoc_events.110.t"
+	desc = {
+		trigger = {
+			owner = {
+				OR = {
+					is_daimyo = yes
+					is_indep_daimyo = yes
+					has_reform = shogunate
+				}
+			}
+		}
+		desc = "eoc_events.110.d"
+	}
+	desc = {
+		trigger = {
+			owner = {
+				NOT = { is_indep_daimyo = yes }
+				NOT = { is_daimyo = yes }
+			}
+		}
+		desc = "eoc_events.110.d.2"
+	}
+	picture = COURT_eventPicture
+	is_triggered_only = yes
+	major = yes
+	major_trigger = {
+		1020 = {
+			has_discovered = PREV
+		}
+	}
+	trigger = {
+		province_id = 1020 #kyoto
+		owner = {
+			has_country_flag = fall_of_kyoto_fl
+		}
+	}
+	goto = ROOT
+	immediate = {
+		owner = {clr_country_flag = fall_of_kyoto_fl} # used because code can't handle calling this event via scripted effect (bad programmers)
+		hidden_effect = {
+			owner = {
+				#Daimyo Conquers the Shogunate
+				save_event_target_as = kyoto_owner
+				if = {
+					limit = {
+						OR = {
+							is_indep_daimyo = yes
+							is_daimyo = yes
+						}
+					}
+					remove_daimyo_reform = yes
+					if = {
+						limit = { 
+							NOT = { government = monarchy }
+						}
+						change_government_to_monarchy = yes
+					}
+					ROOT = {
+						add_core = PREV
+						PREV = {
+							set_capital = PREV
+						}
+					}
+					add_government_reform = shogunate
+					if = {
+						limit = {
+							NOT = { has_global_flag = shogunate_abolished }
+						}
+						event_target:ShogunOfJapan = {
+							if = {
+								limit = {
+									NOT = { tag = event_target:kyoto_owner }
+								}
+								set_daimyo_reform = {
+									daimyo  = yes
+								}
+							}
+						}
+					}
+					every_country = {
+						limit = {
+							is_indep_daimyo = yes
+						}
+						remove_daimyo_reform = yes
+						set_daimyo_reform = {
+							daimyo  = yes
+						}
+						if = {
+							limit = {
+								num_of_allies = 1
+							}
+							every_ally = {
+								break_alliance_with = { who = PREV }
+							}
+						}
+						if = {
+							limit = {
+								num_of_subjects = 1
+							}
+							every_subject_country = {
+								grant_independence = yes
+							}
+						}
+					}
+					if = {
+						limit = { has_global_flag = shogunate_abolished }
+						clr_global_flag = shogunate_abolished
+					}
+					clear_global_event_target = ShogunOfJapan
+					save_global_event_target_as = ShogunOfJapan
+					if = {
+						limit = {
+							NOT = { has_country_flag = transfer_from_subject }
+						}
+						set_country_flag = daimyo_took_shogun
+					}
+				}
+				#Outsider Conquers Kyoto
+				else_if = {
+					limit = {
+						NOT = { is_daimyo = yes }
+						NOT = { is_indep_daimyo = yes }
+						NOT = { has_reform = shogunate }
+					}
+					set_global_flag = shogunate_abolished
+					event_target:ShogunOfJapan = {
+						remove_government_reform = shogunate
+						set_daimyo_reform = {
+							indep_daimyo = yes
+						}
+					}
+					clear_global_event_target = ShogunOfJapan
+					every_country = {
+						limit = {
+							is_daimyo = yes
+						}
+						remove_daimyo_reform = yes
+						set_daimyo_reform = {
+							indep_daimyo = yes
+						}
+					}
+					if = {
+						limit = {
+							NOT = { has_country_flag = transfer_from_subject }
+						}
+						set_country_flag = outsider_took_shogun
+					}
+				}
+			}
+		}
+	}
+	option = {
+		trigger = { owner = { has_country_flag = daimyo_took_shogun } }
+		name = "eoc_events.110.a" #Long reign the [Root.GetAdjective] Shogunate
+		owner = {
+			tooltip = {
+				add_government_reform = shogunate
+			}
+			add_adm_power = 30
+			add_mil_power = 30
+			add_prestige = 10
+			clr_country_flag = daimyo_took_shogun
+		}
+	}
+	option = {
+		trigger = { owner = { has_country_flag = outsider_took_shogun } }
+		name = "eoc_events.110.b" #We will prevail!
+		owner = {
+			add_adm_power = 30
+			add_mil_power = 30
+			add_prestige = 10
+			clr_country_flag = outsider_took_shogun
+		}
+	}
+	option = {
+		trigger = { 
+			owner = { 
+				OR = {
+					has_country_flag = transfer_from_subject
+				}
+			}
+		}
+		name = "eoc_events.110.c" #We will prevail!
+		owner = {
+			clr_country_flag = transfer_from_subject
+		}
+	}
+}
+country_event = { #Adds the Daimyo reform if requirements met
+	id = eoc_events.111
+	title = "eoc_events.111.t"
+	desc = "eoc_events.111.d"
+	picture = SHOGUNATE_AUTHORITY_INCIDENT_eventPicture
+	trigger = {
+		capital_scope = { region = japan_region }
+		is_country_culture = { type = japanese_g }
+		NOT = { is_daimyo = yes }
+		NOT = { is_indep_daimyo = yes }
+		NOT = { has_reform = shogunate }
+		NOT = { has_reform = imperial_japan }
+		is_subject = no
+	}
+	
+	option = {
+		trigger = { NOT = { has_global_flag = shogunate_abolished } }
+		name = "eoc_events.111.a" #We will recognise the Shogun
+		set_daimyo_reform = {
+			daimyo  = yes
+		}
+	}
+	option = {
+		trigger = { has_global_flag = shogunate_abolished }
+		name = "eoc_events.111.b" #Embrace Bushido
+		set_daimyo_reform = {
+			indep_daimyo = yes
+		}
+	}
+}
+country_event = { #Fired when Japan is united
+	id = eoc_events.112
+	title = "eoc_events.112.t"
+	desc = "eoc_events.112.d"
+	picture = COURT_eventPicture
+	is_triggered_only = yes
+
+	option = {
+		name = "eoc_events.112.a" #We shall embrace the Japanese Identity
+		change_tag = JAP
+		custom_tooltip = japanese_ideas_tooltip
+		add_adm_power = 50
+		add_dip_power = 50
+		add_mil_power = 50
+		hidden_effect = { swap_free_idea_group = yes }
+	}
+	option = {
+		name = "eoc_events.112.c" #Selective Integration is best
+		change_tag = JAP
+		custom_tooltip = current_ideas_tooltip
+	}
+	option = {
+		name = "eoc_events.112.b" #We cannot abandon our roots
+		ai_chance = {
+			factor = 0
+		}
+		custom_tooltip = current_ideas_tooltip
+	}
+}
+#######################
+# Ikko Ikki Rebellion
+#######################
+country_event = {
+	id = eoc_events.113 #Ikko Ikki Rebellion
+	title = "eoc_events.113.t"
+	desc = "eoc_events.113.d"
+	picture = IKKO_IKKI_INCIDENT_eventPicture
+	is_triggered_only = yes
+
+	option = {
+		name = "eoc_events.113.a"
+		add_disaster_modifier = {
+			name = ronin_disaster_penalty
+			disaster = ikko_ikki_rebellion
+			duration = -1
+		}
+		add_legitimacy_equivalent = {
+			amount = -100
+		}
+		add_stability = -1
+	}
+}
+country_event = {
+	id = eoc_events.114 #End of the Ikki-Ikko Rebellion
+	title = "eoc_events.114.t"
+	desc = "eoc_events.114.d"
+	picture = IKKO_IKKI_INCIDENT_eventPicture
+	is_triggered_only = yes
+
+	option = {
+		name = "eoc_events.114.a"
+		add_country_modifier = {
+			name = ronin_disaster_reward
+			duration = 3650
+		}
+		add_stability = 1
+	}
+}
+country_event = {
+	id = eoc_events.115 #Ronin Rebels
+	title = "eoc_events.115.t"
+	desc = "eoc_events.115.d"
+	picture = IKKO_IKKI_INCIDENT_eventPicture
+	is_triggered_only = yes
+	trigger = {
+		num_of_cities = 2
+	}
+	immediate = {
+		hidden_effect = {
+			random_owned_province = {
+				limit = { NOT = { has_province_flag = already_selected } }
+				save_event_target_as = ronin1
+				set_province_flag = already_selected
+			}
+			random_owned_province = {
+				limit = { NOT = { has_province_flag = already_selected } }
+				save_event_target_as = ronin2
+				set_province_flag = already_selected
+			}
+		}
+	}
+	option = {
+		name = "eoc_events.115.a" #Kill them!
+		event_target:ronin1 = {
+			start_revolt = {
+				type = ikko_ikki_rebels
+				size = 3
+			}
+			clr_province_flag = already_selected
+		}
+		event_target:ronin2 = {
+			start_revolt = {
+				type = ikko_ikki_rebels
+				size = 3
+			}
+			clr_province_flag = already_selected
+		}
+		add_years_of_income = -0.6
+	}
+}
+country_event = {
+	id = eoc_events.116 #Ikko-Ikki rebels
+	title = "eoc_events.116.t"
+	desc = "eoc_events.116.d"
+	picture = IKKO_IKKI_INCIDENT_eventPicture
+	is_triggered_only = yes
+	trigger = {
+		any_owned_province = {
+			NOT = { religion = mahayana }
+		}
+	}
+	immediate = {
+		hidden_effect = {
+			random_owned_province = {
+				limit = { NOT = { religion = mahayana } }
+				save_event_target_as = mahayana_prov
+			}
+		}
+	}
+	option = {
+		name = "eoc_events.116.a" #Allow it, for now..
+		event_target:mahayana_prov = {
+			area = {
+				limit = { 
+					owned_by = ROOT 
+					NOT = { religion = mahayana }
+				}
+				change_religion = mahayana
+				add_unrest = 20
+			}
+		}
+		add_prestige = -10
+		ai_chance = { factor = 2 }
+	}
+	option = {
+		name = "eoc_events.116.b" #Stop them!!
+		event_target:mahayana_prov = {
+			area = {
+				limit = {
+					owned_by = ROOT
+				}
+				add_base_tax = -1
+				start_revolt = {
+					size = 2
+					type = ikko_ikki_rebels
+				}
+			}
+		}
+	}
+}
+country_event = {
+	id = eoc_events.117
+	title =  "eoc_events.117.t" #Ronin forces
+	desc = "eoc_events.117.d"
+	picture = IKKO_IKKI_INCIDENT_eventPicture
+	is_triggered_only = yes
+	trigger = {
+		NOT = { has_country_modifier = ronin_payment_mod }
+	}
+
+	option = {
+		name = "eoc_events.117.a" #Perhaps payment is due..
+		add_disaster_modifier = {
+			name = ronin_payment_mod
+			duration = 1825
+			disaster = ikko_ikki_rebellion
+		}
+		add_years_of_income = -0.75
+		add_legitimacy_equivalent = { amount = -5 }
+	}
+	option = {
+		name = "eoc_events.117.b" #This is exactly what got us into this situation..
+		add_prestige = 10
+		random_owned_province = {
+			start_revolt = {
+				size = 4
+				type = ikko_ikki_rebels
+			}
+		}
+		add_legitimacy_equivalent = { amount = 5 }
+		ai_chance = {
+			factor = 2
+		}
+	}
+}

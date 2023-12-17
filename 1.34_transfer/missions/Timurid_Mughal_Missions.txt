@@ -1,0 +1,833 @@
+# This is now the Persian and Timurid princes missions
+
+prince_slot_1 = {
+	slot = 1
+	generic = no
+	ai = yes
+	potential = {
+		culture_group = iranian
+		NOT = {
+			OR = {
+				tag = MUG
+				tag = PER
+				tag = TIM
+			}
+		}
+	}
+	has_country_shield = yes
+
+	tim_freedom = {
+		icon = mission_have_two_subjects
+		required_missions = {}
+		position = 1
+		
+		trigger = {
+			army_size_percentage = 1
+			employed_advisor = {
+				category = MIL
+			}
+		}
+		
+		effect = {
+			create_general = { tradition = 50 }
+			add_mil_power = 50
+		}
+	}
+}
+prince_slot_2 = {
+	slot = 2
+	generic = no
+	ai = yes
+	potential = {
+		culture_group = iranian
+		NOT = {
+			OR = {
+				tag = MUG
+				tag = PER
+				tag = TIM
+			}
+		}
+	}
+	has_country_shield = yes
+
+	tim_rival_princes = {
+		icon = mission_unite_home_region
+		required_missions = {}
+		position = 1
+
+		trigger = {
+			if = {
+				limit = {
+					ai = no
+				}
+				any_neighbor_country = {
+					has_insulted_or_is_insulted_by = {
+						who = ROOT
+					}
+					is_subject = no
+				}
+			}
+		}
+		effect = {
+			add_country_modifier = {
+				name = "tim_princes_spies"
+				duration = 1825
+			}
+			if = {
+				limit = {
+					ai = yes
+				}
+				random_neighbor_country = {
+					limit = {
+						is_subject = no
+					}
+					save_event_target_as = claim_country
+					add_spy_network_from = {
+						who = ROOT
+						value = 50
+					}
+					random_owned_province = {
+						limit = {
+							any_neighbor_province = {
+								owned_by = ROOT
+							}
+						}
+						every_neighbor_province = {
+							limit = {
+								owned_by = event_target:claim_country
+							}
+							add_permanent_claim = ROOT
+						}
+						area = {
+							limit = {
+								owned_by = event_target:claim_country
+							}
+							add_permanent_claim = ROOT
+						}
+					}
+				}
+			}
+			else = {
+				custom_tooltip = claims_and_spy_network_tooltip
+				hidden_effect = {
+					random_neighbor_country = {
+						limit = {
+							is_subject = no
+							has_insulted_or_is_insulted_by = {
+								who = ROOT
+							}
+						}
+						save_event_target_as = claim_country
+						add_spy_network_from = {
+							who = ROOT
+							value = 50
+						}
+						random_owned_province = {
+							limit = {
+								any_neighbor_province = {
+									owned_by = ROOT
+								}
+							}
+							every_neighbor_province = {
+								limit = {
+									owned_by = event_target:claim_country
+								}
+								add_permanent_claim = ROOT
+							}
+							area = {
+								limit = {
+									owned_by = event_target:claim_country
+								}
+								add_permanent_claim = ROOT
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+prince_slot_3 = {
+	slot = 3
+	generic = no
+	ai = yes
+	potential = {
+		culture_group = iranian
+		NOT = {
+			OR = {
+				tag = MUG
+				tag = PER
+				tag = TIM
+			}
+		}
+	}
+	has_country_shield = yes
+
+	tim_professional_army = {
+		icon = mission_non-western_soldiers
+		required_missions = {}
+		position = 1
+
+		trigger = {
+			OR = {
+				army_professionalism = 0.05
+				custom_trigger_tooltip = {
+					tooltip = "Has won at least one war"
+					check_variable = {
+						which = tim_war_counter_variable
+						value = 1
+					}
+				}
+			}
+		}
+
+		effect = {
+			add_yearly_manpower = 4
+		}
+	}
+	
+}
+prince_slot_4 = {
+	slot = 4
+	generic = no
+	ai = yes
+	potential = {
+		culture_group = iranian
+		NOT = {
+			OR = {
+				tag = MUG
+				tag = PER
+				tag = TIM
+			}
+		}
+	}
+	has_country_shield = yes
+
+	tim_stability = {
+		icon = mission_arabian_fort
+		required_missions = { }
+		position = 1
+		
+		trigger = {
+			stability = 1
+		}
+		
+		effect = {
+			define_advisor = {
+				type = master_of_mint
+				skill = 1
+				discount = yes
+			}
+		}
+	}
+}
+prince_slot_5 = {
+	slot = 5
+	generic = no
+	ai = yes
+	potential = {
+		culture_group = iranian
+		NOT = {
+			OR = {
+				tag = MUG
+				tag = PER
+				tag = TIM
+			}
+		}
+	}
+	has_country_shield = yes
+
+	tim_develop_the_capt = {
+		icon = mission_central_asian_city
+		required_missions = {}
+		position = 1
+
+		trigger = {
+			capital_scope = {
+				OR = {
+					development = 10
+					num_of_times_improved = 5
+					hidden_trigger = {
+						AND = {
+							num_of_times_improved = 1
+							owner = { ai = yes } # stupid
+						}
+					}
+				}
+			}
+		}
+
+		effect = {
+			capital_scope = {
+				area = {
+					limit = {
+						owned_by = ROOT
+					}
+					add_province_modifier = {
+						name = "tim_growth_of_capital"
+						duration = 3650
+					}
+				}
+			}
+		}
+	}
+}
+prince_branching_1 = {
+	slot = 3
+	generic = no
+	ai = yes
+	potential = {
+		culture_group = iranian
+		NOT = {
+			OR = {
+				tag = MUG
+				tag = PER
+				tag = TIM
+			}
+		}
+		NOT = { has_country_flag = persian_path }
+		NOT = { has_country_flag = mughal_path }
+		NOT = { has_country_flag = timurid_path }
+	}
+	has_country_shield = yes
+
+	tim_branching_1 = {
+		position = 2
+		required_missions = {
+			tim_develop_the_capt
+			tim_professional_army
+			tim_rival_princes
+			tim_freedom
+			tim_stability
+		}
+		icon = mission_unknown_mission
+		trigger = {}
+		effect = {
+			country_event = {
+				id = new_persian_events.1 # Deciding Fate
+			}
+			custom_tooltip = change_of_national_focus_tooltip
+			hidden_effect = {
+				add_country_modifier = {
+					name = "tim_national_focus_time_mod"
+					duration = 50
+					hidden = yes
+				}
+			}
+		}
+	}
+
+}
+persian_prince_3 = {
+	slot = 3
+	generic = no
+	ai = yes
+	potential = {
+		culture_group = iranian
+		has_country_flag = persian_path
+		NOT = { tag = PER }
+		NOT = { tag = MUG }
+		NOT = { tag = TIM }
+	}
+	has_country_shield = yes
+
+	persian_begin_campaign = {
+		position = 2
+		required_missions = {
+			tim_develop_the_capt
+			tim_professional_army
+			tim_rival_princes
+			tim_freedom
+			tim_stability
+		}
+		icon = mission_non-western_cavalry_raid
+
+		trigger = {
+			OR = {
+				national_focus = MIL
+				manpower_percentage = 0.5
+				hidden_trigger = {
+					AND = {
+						ai = yes
+						manpower_percentage = 0.25
+					}
+				}
+			}
+		}
+
+		effect = {
+			persia_region = {
+				limit = {
+					NOT = { is_permanent_claim = ROOT }
+					NOT = { country_or_non_sovereign_subject_holds = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			birjand_area = {
+				limit = {
+					NOT = { is_permanent_claim = ROOT }
+					NOT = { country_or_non_sovereign_subject_holds = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			mashhad_area = {
+				limit = {
+					NOT = { is_permanent_claim = ROOT }
+					NOT = { country_or_non_sovereign_subject_holds = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+		}
+	}
+	persian_conquer_tabriz = {
+		icon = mission_persian_soldiers
+		position = 3
+		required_missions = { persian_begin_campaign }
+
+		provinces_to_highlight = {
+			area = tabriz_area
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+		}
+
+		trigger = {
+			tabriz_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+
+		effect = {
+			country_event = {
+				id = new_persian_events.4 # Conquest of Tabriz
+			}
+		}
+	}
+}
+persian_prince_1 = {
+	slot = 1
+	generic = no
+	ai = yes
+	potential = {
+		culture_group = iranian
+		has_country_flag = persian_path
+		NOT = { tag = PER }
+		NOT = { tag = MUG }
+		NOT = { tag = TIM }
+	}
+	has_country_shield = yes
+
+	persian_conquer_isfahan = {
+		icon = mission_persianate_empire
+		position = 3
+		required_missions = { persian_begin_campaign }
+
+		provinces_to_highlight = {
+			area = isfahan_area
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+		}
+
+		trigger = {
+			isfahan_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+
+		effect = {
+			country_event = {
+				id = new_persian_events.2 # Conquest of Isfahan
+			}
+		}
+	}
+}
+
+persian_prince_2 = {
+	slot = 2
+	generic = no
+	ai = yes
+	potential = {
+		culture_group = iranian
+		has_country_flag = persian_path
+		NOT = { tag = PER }
+		NOT = { tag = MUG }
+		NOT = { tag = TIM }
+	}
+	has_country_shield = yes
+
+	persian_conquer_tabarestan = {
+		icon = mission_arabian_fort
+		position = 3
+		required_missions = { persian_begin_campaign }
+
+		provinces_to_highlight = {
+			area = tabarestan_area
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+		}
+
+		trigger = {
+			tabarestan_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+
+		effect = {
+			country_event = {
+				id = new_persian_events.3 # Conquest of Tabarestan
+			}
+		}
+	}
+}
+persian_prince_4 = {
+	slot = 4
+	generic = no
+	ai = yes
+	potential = {
+		culture_group = iranian
+		has_country_flag = persian_path
+		NOT = { tag = PER }
+		NOT = { tag = MUG }
+		NOT = { tag = TIM }
+	}
+	has_country_shield = yes
+
+	persian_conquer_mashhad = {
+		icon = mission_non-western_cavalry_raid
+		position = 3
+		required_missions = { persian_begin_campaign }
+
+		provinces_to_highlight = {
+			area = mashhad_area
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+		}
+
+		trigger = {
+			mashhad_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+
+		effect = {
+			country_event = {
+				id = new_persian_events.5 # Conquest of Mashhad
+			}
+		}
+	}
+}
+persian_prince_5 = {
+	slot = 5
+	generic = no
+	ai = yes
+	potential = {
+		culture_group = iranian
+		has_country_flag = persian_path
+		NOT = { tag = PER }
+		NOT = { tag = MUG }
+		NOT = { tag = TIM }
+	}
+	has_country_shield = yes
+
+	persian_conquer_yazd = {
+		icon = mission_early_game_buildings
+		position = 3
+		required_missions = { persian_begin_campaign }
+
+		provinces_to_highlight = {
+			area = birjand_area
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+		}
+
+		trigger = {
+			birjand_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+
+		effect = {
+			country_event = {
+				id = new_persian_events.6 # Conquest of Yazd
+			}
+		}
+	}
+}
+mughal_prince_3 = {
+	ai = yes
+	has_country_shield = yes
+	generic = no
+	slot = 3
+	potential = {
+		has_country_flag = mughal_path
+		culture_group = iranian
+		NOT = { tag = MUG }
+		NOT = { tag = PER }
+		NOT = { tag = TIM }
+	}
+
+	mughal_campaign = {
+		icon = mission_conquer_malwa_mer
+		position = 2
+		required_missions = {
+			tim_develop_the_capt
+			tim_professional_army
+			tim_rival_princes
+			tim_freedom
+			tim_stability
+		}
+
+		trigger = {
+			OR = {
+				army_size_percentage = 1
+				national_focus = MIL
+			}
+			if = {
+				limit = { ai = no } 
+				mil_power = 400
+			}
+		}
+
+		effect = {
+			khorasan_region = {
+				limit = {
+					NOT = { country_or_non_sovereign_subject_holds = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+					NOT = { is_core = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			kashmir_area = {
+				limit = {
+					NOT = { country_or_non_sovereign_subject_holds = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+					NOT = { is_core = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			sind_sagar_area = {
+				limit = {
+					NOT = { country_or_non_sovereign_subject_holds = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+					NOT = { is_core = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			lahore_area = {
+				limit = {
+					NOT = { country_or_non_sovereign_subject_holds = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+					NOT = { is_core = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			sirhind_area = {
+				limit = {
+					NOT = { country_or_non_sovereign_subject_holds = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+					NOT = { is_core = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			upper_doab_area = {
+				limit = {
+					NOT = { country_or_non_sovereign_subject_holds = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+					NOT = { is_core = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+		}
+	}
+
+	dh_indian_raid = {
+		icon = mission_indian_stateman
+		position = 3
+		required_missions = { mughal_campaign }
+		
+		
+		provinces_to_highlight = {
+			OR = {
+				area = ghor_area
+				area = kabulistan_area
+				area = balkh_area
+			}
+			NOT = { owned_by = ROOT }
+		}
+		
+		trigger = {
+			num_of_owned_provinces_with = {
+				value = 7
+				OR = {
+					area = ghor_area
+					area = kabulistan_area
+					area = balkh_area
+				}
+			}
+		}
+		
+		effect = {
+			add_country_modifier = {
+				name = "mug_formation_hope"
+				duration = 9125 #25 years
+			}
+			if = {
+				limit = { is_year = 1750 }
+				define_general = {
+					name = "Ahmad Khan Abdali"
+					shock = 1
+					fire = 5
+					manuever = 5
+					siege = 2
+					trait = master_of_arms_personality
+				}
+			}
+			else_if = {
+				limit = { is_year = 1700 }
+				define_general = {
+					name = "Nadir Quli Beg"
+					fire = 3
+					shock = 5
+					manuever = 5
+					siege = 1
+					trait = master_of_arms_personality
+				}
+			}
+			else_if = {
+				limit = { is_year = 1650 }
+				define_general = {
+					name = "Aurangzîb Timurid"
+					shock = 5
+					fire = 5
+					manuever = 2
+					siege = 0
+					trait = master_of_arms_personality
+				}
+			}
+			else_if = {
+				limit = { is_year = 1600 }
+				define_general = {
+					name = "Akbar Timurid"
+					shock = 4
+					fire = 4
+					manuever = 2
+					siege = 2
+					trait = master_of_arms_personality
+				}
+			}
+			else_if = {
+				limit = { is_year = 1550 }
+				define_general = {
+					name = "Humayun Timurid"
+					shock = 4
+					fire = 4
+					manuever = 2
+					siege = 2
+					trait = master_of_arms_personality
+				}
+			}
+			else_if = {
+				limit = { is_year = 1500 }
+				define_general = {
+					name = "Babur Timurid"
+					shock = 5
+					fire = 5
+					manuever = 3
+					siege = 1
+					trait = master_of_arms_personality
+				}
+			}
+			else_if = {
+				limit = { is_year = 1450 }
+				define_general = {
+					name = "Abu Said Timurid"
+					shock = 5
+					fire = 4
+					manuever = 3
+					siege = 1
+					trait = master_of_arms_personality
+				}
+			}
+			else = {
+				define_general = {
+					name = "Abu Said Timurid"
+					shock = 5
+					fire = 4
+					manuever = 3
+					siege = 1
+					trait = master_of_arms_personality
+				}
+			}
+		}
+	}
+	
+	dh_conquer_punjab_MUG = {
+		icon = mission_indian_soldier_elephant
+		required_missions = { dh_indian_raid }
+		position = 4
+		
+		provinces_to_highlight = {
+			OR = {
+				area = lahore_area
+				area = sind_sagar_area
+			}
+			NOT = { owned_by = ROOT }
+		}
+		trigger = {
+			lahore_area = {
+				type = all
+				owned_by = ROOT
+			}
+			sind_sagar_area = {
+				type = all
+				owned_by = ROOT
+			}
+		}
+		
+		effect = {
+			add_country_modifier = {
+				name = "mug_looting"
+				duration = 9125 #25 years
+			}
+		}
+		ai_weight = {
+			factor = 500	#Reasonable conquest
+		}
+	}
+	
+	dh_conquer_delhi = {
+		icon = mission_monarch_in_throne_room
+		required_missions = { dh_conquer_punjab_MUG }
+		position = 5
+		
+		provinces_to_highlight = {
+			OR = {
+				area = sirhind_area
+				area = upper_doab_area
+			}
+			NOT = { owned_by = ROOT }
+		}
+		
+		trigger = {
+			sirhind_area = {
+				type = all
+				owned_by = ROOT
+			}
+			upper_doab_area = {
+				type = all
+				owned_by = ROOT
+			}
+		}
+		
+		effect = {
+			add_country_modifier = {
+				name = "mug_fall_of_delhi"
+				duration = 9125 #25 years
+			}
+			add_treasury = 500
+			add_prestige = 20
+		}
+		ai_weight = {
+			factor = 500	#Reasonable conquest
+		}
+	}
+}

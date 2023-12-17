@@ -1,0 +1,8 @@
+#Prov3620 - Prov3620
+religion = vajrayana
+culture = bengali
+is_city = no
+
+base_tax = 1
+base_production = 1
+base_manpower = 1

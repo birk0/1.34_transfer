@@ -1,0 +1,18 @@
+#628 - Surabaya
+
+owner = MAJ
+controller = MAJ
+add_core = MAJ
+culture = javanese
+religion = hinduism
+capital = "Surabaya"
+trade_goods = cotton
+hre = no
+base_tax = 5
+base_production = 5
+base_manpower = 3
+is_city = yes
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

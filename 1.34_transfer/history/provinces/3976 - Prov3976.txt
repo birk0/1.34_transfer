@@ -1,0 +1,7 @@
+# Prov3976 - Prov3976
+culture = shan
+is_city = no
+religion = shen
+base_tax = 1
+base_production = 1
+base_manpower = 1

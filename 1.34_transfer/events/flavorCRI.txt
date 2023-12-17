@@ -1,0 +1,39 @@
+#Ottoman-Crimean events removed so Ottomans dont kill Russia/PLC every game
+# Restoration of the Ilkhanate
+namespace = flavor_cri
+country_event = {
+	id = flavor_cri.8
+	title = "flavor_cri.8.t"
+	desc = "flavor_cri.8.d"
+	picture = MONGOL_BANNERS_eventPicture
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	major = yes
+	
+	option = {
+		name = flavor_cri.8.a
+		persia_region = {
+			limit = {
+				owned_by = ROOT
+			}
+			add_core = ILK
+			remove_core = ROOT
+		}
+		release = ILK
+		create_march = ILK
+		ILK = {
+			change_government_to_monarchy = yes
+			change_primary_culture = ROOT
+			change_religion = ROOT
+			define_ruler = {
+				dynasty = ROOT
+				culture = ROOT
+				religion = ROOT
+			}
+		}
+	}
+	option = {
+		name = flavor_cri.8.b
+	}
+}

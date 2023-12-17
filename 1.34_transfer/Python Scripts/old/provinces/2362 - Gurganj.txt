@@ -1,0 +1,19 @@
+# 2362 - Gurganj
+
+owner = NOG
+controller = NOG
+add_core = NOG
+culture = turkmeni
+religion = sunni
+capital = "Gurganj"
+trade_goods = wool
+hre = no
+base_tax = 1 
+base_production = 1
+base_manpower = 1
+is_city = yes
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

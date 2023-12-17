@@ -1,0 +1,21 @@
+#2418 - Ukek
+
+owner = GOL
+controller = GOL
+culture = astrakhani
+religion = sunni
+hre = no
+capital = "Ukek"
+is_city = yes
+add_core = GOL
+add_core = AST
+trade_goods = iron 
+#changes
+base_tax = 1 
+base_production = 1
+base_manpower = 2
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

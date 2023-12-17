@@ -1,0 +1,24 @@
+#4778 - Neya
+
+capital = "Neya"
+culture = russian
+religion = orthodox
+trade_goods = salt
+hre = no
+is_city = yes
+#discovered_by = eastern
+#discovered_by = western
+#discovered_by = GOL
+#discovered_by = nomad_group
+#changes
+base_tax = 2
+base_production = 3
+base_manpower = 2
+owner = TNK
+controller = TNK
+add_core = TNK
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

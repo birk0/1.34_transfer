@@ -1,0 +1,23 @@
+#128 - Kärnten
+
+owner = HAB
+controller = HAB
+add_core = HAB
+add_core = STY
+culture	= austrian
+religion = catholic
+base_tax = 4
+base_production = 3
+trade_goods = iron 
+base_manpower = 3
+fort_15th = yes #Hochosterwitz Castle
+capital = "Klagenfurt" 
+is_city = yes
+hre = yes
+
+1444.12.1 = {
+	trade_goods = unknown
+	owner = ---
+	controller = ---
+	hre = no
+}

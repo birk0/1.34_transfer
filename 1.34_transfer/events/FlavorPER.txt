@@ -1,0 +1,2739 @@
+########################################
+# Major Flavor Events                  #
+########################################
+
+namespace = flavor_per
+namespace = new_persian_events
+normal_or_historical_nations = yes
+
+# Turko-Persian Conflicts: Shiite rebels
+country_event = {
+	id = flavor_per.3560
+	title = "flavor_per.EVTNAME3560"
+	desc = "flavor_per.EVTDESC3560"
+	picture = ANGRY_MOB_eventPicture
+
+	trigger = {
+		NOT = { has_country_flag = PER_had_event_3560 }
+		is_year = 1450
+		NOT = { is_year = 1550 }
+		tag = PER
+		religion = shiite
+		any_neighbor_country = {
+			tag = TUR
+			religion = sunni
+			any_owned_province = {
+				religion = shiite
+			}
+		}
+		TUR = { is_free_or_tributary_trigger = yes }
+		NOT = { alliance_with = TUR }
+		NOT = { war_with = TUR }
+	}
+
+	mean_time_to_happen = {
+		months = 2000
+	}
+	
+	immediate = {
+		set_country_flag = PER_had_event_3560
+	}
+	
+	option ={ # Support the Turkish Shiites
+		name = "flavor_per.EVTOPTA3560"
+		add_stability_or_adm_power = yes
+		add_years_of_income = -0.2
+		TUR = {
+			add_opinion = {
+				who = ROOT
+				modifier = supported_rebels
+			}
+			country_event = { id = flavor_tur.3360 days = 10 tooltip = "flavor_per.EVTTOOLTIP3560" }
+		}
+	}
+	option = { # Leave them to their fate
+		name = "flavor_per.EVTOPTB3560"
+		add_stability = -1
+	}
+	option = {		# Betray the Turkish rebels
+		name = "flavor_per.EVTOPTC3560"
+		add_stability = -2
+		add_opinion = {
+			who = ROOT
+			modifier = did_not_support_rebels
+		}
+	}
+}
+
+# Murad III's campaigns against Persia
+country_event = {
+	id = flavor_per.3562
+	title = "flavor_per.EVTNAME3562"
+	desc = "flavor_per.EVTDESC3562"
+	picture = BATTLE_eventPicture
+
+	is_triggered_only = yes
+
+	option = { # Teach the Turks a lesson!
+		name = "flavor_per.EVTOPTA3562"
+		add_stability_or_adm_power = yes
+		TUR = {
+			random_owned_province = {
+				limit = {
+					NOT = { is_core = PER }
+					NOT = { is_claim = PER }
+					any_neighbor_province = {
+						owned_by = PER
+					}
+				}
+				add_claim = PER
+			}
+			add_opinion = {
+				who = ROOT
+				modifier = border_aggression
+			}
+		}
+	}
+	option = {		# Ignore the Turkish threats
+		name = "flavor_per.EVTOPTB3562"
+		add_stability = -1
+	}
+	option = {		# Seek a diplomatic solution
+		name = "flavor_per.EVTOPTC3562"
+		TUR = {
+			add_opinion = {
+				who = ROOT
+				modifier = successful_diplomacy
+			}
+		}
+	}
+}
+
+# Turko-Persian Tension
+country_event = {
+	id = flavor_per.3563
+	title = "flavor_per.EVTNAME3563"
+	desc = "flavor_per.EVTDESC3563"
+	picture = LAND_MILITARY_eventPicture
+
+	trigger = {
+		NOT = { has_country_flag = PER_had_event_3563 }
+		is_year = 1600
+		NOT = { is_year = 1650 }
+		tag = PER
+		any_neighbor_country = {
+			tag = TUR
+			any_owned_province = {
+				controlled_by = REB
+			}
+		}
+		TUR = { is_free_or_tributary_trigger = yes }
+		NOT = { alliance_with = TUR }
+		NOT = { war_with = TUR }
+	}
+
+	mean_time_to_happen = {
+		months = 1000
+	}
+	
+	immediate = {
+		set_country_flag = PER_had_event_3563
+	}
+
+	option = {		# Support the Turkish rebels and prepare for war
+		name = "flavor_per.EVTOPTA3563"
+		add_years_of_income = -0.2
+		TUR = {
+			add_opinion = {
+				who = ROOT
+				modifier = supported_rebels
+			}
+			country_event = { id = flavor_tur.3363 days = 10 tooltip = "flavor_per.EVTTOOLTIP3560" }
+		}
+	}
+	option = {		# Concentrate on internal issues
+		name = "flavor_per.EVTOPTB3563"
+		add_adm_power = 25
+	}
+}
+
+
+########################################
+# Flavor Events for Persia
+#
+# written by Sara Wendel-Örtqvist & Henrik Lohmander
+########################################
+
+#The Reforms of Ismail
+country_event = {
+	id = flavor_per.1
+	title = "flavor_per.EVTNAME1"
+	desc = "flavor_per.EVTDESC1"
+	picture = REFORM_eventPicture
+	
+	is_triggered_only = yes
+	
+	option = { #Reform
+		name = "flavor_per.EVTOPTA1"
+		if = {
+			limit = {
+				NOT = { has_completed_all_reforms_trigger = yes }
+			}
+			add_reform_progress_small_effect = yes
+		}
+		if = {
+			limit = {
+				NOT = { government_rank = 3 }
+			}
+			set_government_rank = 3
+		}
+		416 = { #Tabriz
+			add_base_tax = 2
+			add_base_production = 2
+			add_base_manpower = 1
+		}
+		429 = { #Isfahan
+			add_base_tax = 3
+			add_base_production = 3
+			add_base_manpower = 1
+		}
+		2215 = { #Qazvin
+			add_base_tax = 2
+			add_base_production = 2
+			add_base_manpower = 1
+		}
+		2218 = { #Shiraz
+			add_base_tax = 2
+			add_base_production = 2
+		}
+		428 = { #Teheran
+			add_base_tax = 1
+			add_base_production = 1
+			add_base_manpower = 1
+		}
+		433 = { #Yazd
+			add_base_tax = 1
+			add_base_production = 1
+		}
+		2213 = { #Qom
+			add_base_tax = 1
+			add_base_production = 1
+			add_base_manpower = 1
+		}
+		2212 = { #Zanjan
+			add_base_tax = 1
+			add_base_production = 1
+			add_base_manpower = 1
+		}
+	}
+}
+
+#The Reforms of Abbas the Great
+country_event = {
+	id = flavor_per.2
+	title = "flavor_per.EVTNAME2"
+	desc = "flavor_per.EVTDESC2"
+	picture = REFORM_eventPicture
+	
+	fire_only_once = yes
+	
+	trigger = {
+		tag = PER
+		is_year = 1580
+		owns = 429
+	}
+
+	mean_time_to_happen = {
+		months = 150
+	}
+	
+	option = { #Reform
+		name = "flavor_per.EVTOPTA1"
+		if = {
+			limit = {
+				NOT = { has_completed_all_reforms_trigger = yes }
+			}
+			add_reform_progress_small_effect = yes
+		}
+		add_piety = 0.25
+		add_adm_power = 50
+		add_mil_power = 50
+		add_dip_power = 50
+	}
+}
+
+# The Advisors of Abbas the Great
+country_event = {
+	id = flavor_per.3
+	title = "flavor_per.EVTNAME3"
+	desc = "flavor_per.EVTDESC3"
+	picture = ADVISOR_eventPicture
+	
+	fire_only_once = yes
+	
+	trigger = {
+		tag = PER
+		is_year = 1590
+		owns = 429
+	}
+
+	mean_time_to_happen = {
+		months = 150
+	}
+	
+	option = { # Hire the English advisors
+		name = "flavor_per.EVTOPTA3"
+		if = {
+			limit = {
+				NOT = { has_completed_all_reforms_trigger = yes }
+			}
+			add_reform_progress_small_effect = yes
+		}
+		add_ruler_modifier = { name = per_abbas_advisors }
+		add_stability = -1
+	}
+	option = { # Rely on ones
+		name = "flavor_per.EVTOPTB3"
+		add_stability_or_adm_power = yes
+	}
+}
+
+# Political Turmoil
+country_event = {
+	id = flavor_per.4
+	title = "flavor_per.EVTNAME4"
+	desc = "flavor_per.EVTDESC4"
+	picture = LIBERUM_VETO_eventPicture
+	
+	trigger = {
+		tag = PER
+		is_year = 1580
+		NOT = {
+			has_country_modifier = per_political_turmoil_timer
+		}
+		NOT = {
+			mil = 4
+		}
+		NOT = {
+			dip = 4
+		}
+		NOT = {
+			adm = 4
+		}
+		has_regency = no
+	}
+	
+	mean_time_to_happen = {
+		months = 500
+	}
+	
+	option = { #Let the Clans fight
+		name = "flavor_per.EVTOPTA4"
+		hidden_effect = {
+			add_country_modifier = {
+				name = per_political_turmoil_timer
+				duration = 365
+				hidden = yes
+			}
+		}
+		add_stability = -1
+	}
+	option = { #Buy the loyalty of the Clans
+		name = "flavor_per.EVTOPTB4"
+		hidden_effect = {
+			add_country_modifier = {
+				name = per_political_turmoil_timer
+				duration = 365
+				hidden = yes
+			}
+		}
+		add_years_of_income = -1
+	}
+}
+
+# Political Fragmentation
+country_event = {
+	id = flavor_per.5
+	title = "flavor_per.EVTNAME5"
+	desc = "flavor_per.EVTDESC5"
+	picture = LIBERUM_VETO_eventPicture
+	
+	fire_only_once = yes
+	
+	trigger = {
+		tag = PER
+		is_year = 1635
+		NOT = {
+			has_country_modifier = per_political_fragmentation_timer
+		}
+	}
+
+	mean_time_to_happen = {
+		months = 500
+	}
+	
+	option = { # Let the factions conspire
+		name = "flavor_per.EVTOPTA5"
+		hidden_effect = {
+			add_country_modifier = {
+				name = per_political_fragmentation_timer
+				duration = 365
+				hidden = yes
+			}
+		}
+		add_stability_or_adm_power = yes
+	}
+	option = { # Tighten state control
+		name = "flavor_per.EVTOPTB5"
+		hidden_effect = {
+			add_country_modifier = {
+				name = per_political_fragmentation_timer
+				duration = 365
+				hidden = yes
+			}
+		}
+		add_stability = -1
+		random_owned_province = {
+			limit = {
+				is_core = PER
+			}
+			add_base_tax = 1
+			add_base_manpower = 1
+		}
+	}
+}
+
+#The Afghan Rebellions
+country_event = {
+	id = flavor_per.6
+	title = "flavor_per.EVTNAME6"
+	desc = "flavor_per.EVTDESC6"
+	picture = ANGRY_MOB_eventPicture
+	
+	fire_only_once = yes
+	
+	trigger = {
+		tag = PER
+		NOT = { primary_culture = afghani }
+		NOT = { exists = AFG }
+		any_owned_province = { culture = afghani }
+	}
+
+	mean_time_to_happen = {
+		months = 2000
+	}
+	
+	option = { #Curses!
+		name = "flavor_per.EVTOPTA6"
+		random_owned_province = {
+			limit = { culture = afghani }
+			area = {
+				limit = {
+					owned_by = ROOT
+				}
+				add_province_modifier = {
+					name = add_unrest_10_modifier
+					duration = 1825
+				}
+			}
+		}
+	}
+}
+
+########################################
+# Additional Flavor Events for Persia
+#
+# written by Henrik Lohmander
+########################################
+
+#Persian Miniature Painting
+country_event = {
+	id = flavor_per.7
+	title = flavor_per.7.t
+	desc = flavor_per.7.d
+	picture = BIG_BOOK_eventPicture
+	
+	fire_only_once = yes
+	
+	trigger = {
+		tag = PER
+	}
+
+	mean_time_to_happen = {
+		months = 300
+	}
+	
+	option = { #Ok
+		name = flavor_per.7.a
+		add_prestige = 10
+		add_country_modifier = {
+				name = per_miniature_school
+				duration = 3650
+		}
+	}
+}
+
+#Iskander Munshi
+country_event = {
+	id = flavor_per.8
+	title = flavor_per.8.t
+	desc = flavor_per.8.d
+	picture = BIG_BOOK_eventPicture
+	
+	fire_only_once = yes
+	
+	trigger = {
+		tag = PER
+		is_year = 1600
+	}
+
+	mean_time_to_happen = {
+		months = 45
+	}
+	
+	option = { #
+		name = flavor_per.8.a
+		add_legitimacy = 10
+		add_prestige = 5
+	}
+}
+
+#The Shrines of Najaf
+country_event = {
+	id = flavor_per.9
+	title = flavor_per.9.t
+	desc = flavor_per.9.d
+	picture = PRAYING_eventPicture
+	
+	is_triggered_only = yes
+
+	
+	option = { #Whatever is needed we must provide.
+		name = flavor_per.9.a
+		ai_chance = {
+			factor = 1
+		}
+		add_years_of_income = -0.1
+		2311 = {
+			add_province_modifier = {
+				name = "per_najaf"
+				duration = -1
+			}
+		}
+	}
+	
+	option = { #We must practice restraint.
+		name = flavor_per.9.b
+		ai_chance = {
+			factor = 0
+		}
+		2311 = {
+			add_province_modifier = {
+				name = "per_najaf"
+				duration = 7300
+			}
+		}
+	}
+}
+
+#Rise of the Mushashaiya
+country_event = {
+	id = flavor_per.10
+	title = flavor_per.10.t
+	desc = flavor_per.10.d
+	picture = RELIGIOUS_CONVERSION_eventPicture
+	
+	fire_only_once = yes
+	
+	trigger = {
+		NOT = { tag = MSY }
+		is_year = 1445
+		NOT = { is_year = 1455 }
+		any_owned_province = {
+			is_core = MSY
+		}
+	}
+
+	mean_time_to_happen = {
+		months = 30
+	}
+	
+	option = { #
+		name = flavor_per.10.a
+		every_province = {
+			limit = {
+				is_core = MSY
+				NOT = { owned_by = MSY }
+			}
+			add_province_modifier = {
+				name = "per_mushashaiya"
+				duration = 3650
+			}
+		}
+	}
+	
+}
+
+#Rise of the Safawiya
+country_event = {
+	id = flavor_per.11
+	title = flavor_per.11.t
+	desc = flavor_per.11.d
+	picture = RELIGIOUS_CONVERSION_eventPicture
+	
+	fire_only_once = yes
+	
+	trigger = {
+		NOT = { tag = ARL }
+		is_year = 1455
+		NOT = { is_year = 1465 }
+		OR = {
+			any_neighbor_country = {
+					tag = ARL
+			}
+			any_owned_province = {
+				is_core = ARL
+			}
+		}
+	}
+
+	mean_time_to_happen = {
+		months = 30
+	}
+	
+	option = { #
+		name = flavor_per.11.a
+		every_province = {
+			limit = {
+				NOT = { owned_by = ARL }
+				OR = {
+					is_core = ARL
+					AND = {
+						religion = shiite
+						any_neighbor_province = {
+							owned_by = ARL
+						}
+					}
+				}
+			}
+			add_province_modifier = {
+				name = "per_safawiya"
+				duration = 3650
+			}
+		}
+	}
+}
+
+#Qizilbash Tribesmen Assemble
+country_event = {
+	id = flavor_per.12
+	title = flavor_per.12.t
+	desc = flavor_per.12.d
+	picture = RELIGIOUS_TURMOIL_eventPicture
+	
+	fire_only_once = yes
+	
+	trigger = {
+		NOT = { has_global_flag = flavor_per_12 }
+		exists = PER
+		NOT = { tag = PER }
+		is_year = 1450
+		num_of_owned_provinces_with = {
+			value = 6
+			culture = persian
+		}
+	}
+
+	mean_time_to_happen = {
+		months = 390
+		
+		modifier = {
+			factor = 0.75
+			any_owned_province = {
+				has_province_modifier = per_mushashaiya
+			}
+		}
+		modifier = {
+			factor = 0.75
+			any_owned_province = {
+				has_province_modifier = per_safawiya
+			}
+		}
+		modifier = {
+			factor = 0.75
+			num_of_owned_provinces_with = {
+				value = 8
+				culture = persian
+			}
+		}
+	}
+	
+	immediate = {
+		set_global_flag = flavor_per_12
+		hidden_effect = {
+			random_owned_province = {
+				limit = {
+					is_capital = no
+					culture = persian
+				}
+				set_province_flag = per_qizilbash
+			}
+			random_owned_province = {
+				limit = {
+					is_capital = no
+					culture = persian
+					NOT = { has_province_flag = per_qizilbash }
+				}
+				set_province_flag = per_qizilbash
+			}
+			random_owned_province = {
+				limit = {
+					is_capital = no
+					culture = persian
+					NOT = { has_province_flag = per_qizilbash }
+				}
+				set_province_flag = per_qizilbash
+			}
+			random_owned_province = {
+				limit = {
+					is_capital = no
+					is_core = PER
+					culture = azerbaijani
+					NOT = { has_province_flag = per_qizilbash }
+				}
+				set_province_flag = per_qizilbash
+			}
+		}
+	}
+	
+	option = { #Ok.
+		name = flavor_per.12.a
+		random_owned_province = {
+			limit = {
+				has_province_flag = per_qizilbash
+			}
+			start_revolt = {
+				type = nationalist_rebels
+				size = 1
+				friend = PER
+				
+			}
+		}
+		every_owned_province = {
+			limit = {
+				has_province_flag = per_qizilbash
+			}
+			start_revolt = {
+				type = nationalist_rebels
+				size = 1
+				friend = PER
+				
+			}
+			clr_province_flag = per_qizilbash
+		}
+	}
+}
+
+#Persia and Shiism
+
+country_event = {
+	id = flavor_per.13
+	title = flavor_per.13.t
+	desc = flavor_per.13.d
+	picture = RELIGIOUS_CONVERSION_eventPicture
+	
+	fire_only_once = yes
+	
+	trigger = {
+		tag = PER
+		is_free_or_tributary_trigger = yes
+	}
+
+	mean_time_to_happen = {
+		months = 30
+	}
+	
+	option = { #
+		name = flavor_per.13.a
+		ai_chance = { factor = 1 }
+		if = {
+			limit = {
+				NOT = { religion = shiite }
+			}
+			change_religion = shiite
+		}
+		add_country_modifier = {
+			name = per_shia_conversion_policy
+			duration = 3650
+		}
+		set_country_flag = per_shiite_policies
+	}
+	
+	option = { #
+		name = flavor_per.13.b
+		ai_chance = { factor = 0 }
+		add_stability_or_adm_power = yes
+	}
+}
+
+#The Sunni Ulema
+country_event = {
+	id = flavor_per.14
+	title = flavor_per.14.t
+	desc = flavor_per.14.d
+	picture = ADVISOR_eventPicture
+	
+	fire_only_once = yes
+	
+	trigger = {
+		tag = PER
+		religion = shiite
+		has_country_flag = per_shiite_policies
+	}
+
+	mean_time_to_happen = {
+		months = 30
+	}
+	
+	option = { # Carrot
+		name = flavor_per.14.a
+		ai_chance = { factor = 1 }
+		add_country_modifier = {
+			name = per_pragmatic_ulema
+			duration = 3650
+		}
+	}
+	
+	option = { # Whip
+		name = flavor_per.14.b
+		ai_chance = { factor = 0 }
+		add_country_modifier = {
+			name = per_conversion_of_the_clergy
+			duration = 1825
+		}
+	}
+}
+
+#Shiite Brain Drain
+
+country_event = {
+	id = flavor_per.15
+	title = flavor_per.15.t
+	desc = flavor_per.15.d
+	picture = ADVISOR_eventPicture
+	
+	fire_only_once = yes
+	
+	trigger = {
+		tag = PER
+		religion = shiite
+		has_country_flag = per_shiite_policies
+	}
+
+	mean_time_to_happen = {
+		months = 30
+	}
+	
+	option = { # Welcome them with open arms
+		name = flavor_per.15.a
+		ai_chance = { factor = 1 }
+		add_piety = 0.1
+		every_country = {
+			limit = {
+				OR = {
+					religion = shiite
+					any_owned_province = {
+						religion = shiite
+					}
+				}
+			}
+			add_opinion = { who = PER modifier = opinion_irritated }
+		}
+		add_country_modifier = {
+			name = per_shiite_immigration
+			duration = 7300
+		}
+	}
+	
+	#option = { # Turn them away
+	#	name = flavor_per.15.b
+	#	ai_chance = { factor = 0 }
+	#	add_piety = -0.25
+	#	add_stability_or_adm_power = yes
+	#}
+}
+
+#Restructuring of Isfahan
+country_event = {
+	id = flavor_per.16
+	title = flavor_per.16.t
+	desc = flavor_per.16.d
+	picture = CITY_VIEW_eventPicture
+	
+	fire_only_once = yes
+	
+	trigger = {
+		tag = PER
+		religion = shiite
+		is_year = 1580
+		owns_core_province = 429
+		years_of_income = 0.2
+	}
+
+	mean_time_to_happen = {
+		months = 150
+	}
+	
+	option = { #Let us build a new, truly Persian capital.
+		name = flavor_per.16.a
+		ai_chance = {
+			factor = 1
+		}
+		add_years_of_income = -0.15
+		set_country_flag = per_isfahan_construction
+		set_capital = 429
+		429 = {
+			add_province_modifier = {
+				name = "per_building_isfahan"
+				duration = -1
+			}
+		}
+	}
+	
+	option = { #Our current capital fit our current needs
+		name = flavor_per.16.b
+		ai_chance = {
+			factor = 0
+		}
+		add_stability_or_adm_power = yes
+	}
+}
+
+#Isfahan - Finished
+country_event = {
+	id = flavor_per.17
+	title = flavor_per.17.t
+	desc = flavor_per.17.d
+	picture = CITY_VIEW_eventPicture
+	
+	fire_only_once = yes
+	
+	trigger = {
+		tag = PER
+		had_country_flag = { flag = per_isfahan_construction days = 3650 }
+		owns_core_province = 429
+		429 = {
+			has_province_modifier = per_building_isfahan
+		}
+	}
+
+	mean_time_to_happen = {
+		months = 168
+	}
+	
+	option = { #Great!
+		name = flavor_per.17.a
+		add_prestige = 20
+		429 = {
+			remove_province_modifier = per_building_isfahan
+			add_province_modifier = {
+				name = "per_isfahan_maidan"
+				duration = -1
+			}
+		}
+	}
+	
+}
+
+##################################################
+#	MOD NEW
+#################################################
+country_event = {
+	id = new_persian_events.1 # Decide Fate
+	title = "new_persian_events.1.t"
+	desc = "new_persian_events.1.d"
+	picture = REFORM_eventPicture
+
+	is_triggered_only = yes
+
+	option = {
+		name = "new_persian_events.1.a" # Persian Path
+		ai_chance = {
+			factor = 1
+			modifier = {
+				factor = 1000
+				capital_scope = {
+					OR = {
+						region = persia_region
+						area = merv_area
+						area = herat_area
+						area = birjand_area
+						area = mashhad_area
+						area = makran_area
+					}
+				}
+			}
+		}
+		set_country_flag = persian_path
+		custom_tooltip = unlock_persian_path_tooltip
+	}
+	option = {
+		name = "new_persian_events.1.b" # Mughal Path
+		set_country_flag = mughal_path
+		custom_tooltip = unlock_mughal_path_tooltip
+		ai_chance = {
+			factor = 1
+			modifier = {
+				factor = 1000
+				capital_scope = {
+					OR = {
+						AND = {
+							region = khorasan_region
+							NOT = {
+								OR = {
+									area = merv_area
+									area = herat_area
+									area = birjand_area
+									area = mashhad_area
+									area = makran_area
+								}
+							}
+						}
+						area = termez_area
+						area = transoxiana_area
+						area = bukhara_area
+						area = ferghana_area
+						area = kashgaria_area
+						area = arys_area
+						region = hindusthan_region
+					}
+				}
+			}
+		}
+	}
+	option = {
+		name = "new_persian_events.1.c" # Timurid Path
+		set_country_flag = timurid_path
+		custom_tooltip = unlock_timurid_path_tooltip
+		ai_chance = {
+			factor = 0 # for now
+		}
+	}
+
+	after = {
+		swap_non_generic_missions = yes
+	}
+}
+country_event = {
+	id = new_persian_events.2 # Conquest of Isfahan
+	title = "new_persian_events.2.t"
+	desc = "new_persian_events.2.d"
+	picture = CITY_VIEW_eventPicture
+	is_triggered_only = yes
+
+	option = {
+		name = "new_persian_events.2.a" # Make Isfahan the capital!
+		429 = {
+			move_capital_effect = yes
+		}
+	}
+	option = {
+		name = "new_persian_events.2.b" # Nah
+		429 = {
+			add_base_tax = 2
+			add_province_modifier = {
+				name = "tim_growth_of_capital"
+				duration = 7300
+			}
+		}
+	}
+}
+country_event = {
+	id = new_persian_events.3
+	title = "new_persian_events.3.t" # Conquest of Tabarestan
+	desc = "new_persian_events.3.d"
+	picture = TRADE_GOODS_eventPicture
+	is_triggered_only = yes
+
+	option = {
+		name = "new_persian_events.3.a" # Invest in the Silk industry
+	}
+	option = {
+		name = "new_persian_events.3.b" # Nah
+		add_country_modifier = {
+			name = "prince_silk_industry"
+			duration = 3650
+		}
+	}
+}
+country_event = {
+	id = new_persian_events.4 # Conquest of Tabriz
+	title = "new_persian_events.4.t"
+	desc = "new_persian_events.4.d"
+	picture = FORT_eventPicture
+	is_triggered_only = yes
+
+	option = {
+		name = "new_persian_events.4.a" # Establish a ground of recruitment
+		416 = {
+			add_building = training_fields
+		}
+	}
+	option = {
+		name = "new_persian_events.4.b" # Setup a base of operations
+		416 = {
+			add_province_modifier = {
+				name = "fortified_city_tabriz"
+				duration = -1
+			}
+		}
+	}
+}
+country_event = {
+	id = new_persian_events.5
+	title = "new_persian_events.5.t" # Conquest of Khorasan
+	desc = "new_persian_events.5.d"
+	picture = FORT_eventPicture
+	is_triggered_only = yes
+
+	option = {
+		name = "new_persian_events.5.a" # Fortify the area
+		2221 = {
+			add_building = fort_16th
+		}
+	}
+	option = {
+		name = "new_persian_events.5.b" # Employ techniques statewide
+		add_country_modifier = {
+			name = "conquest_of_khorasan"
+			duration = 7300
+		}
+	}
+}
+country_event = {
+	id = new_persian_events.6
+	title = "new_persian_events.6.t" # Conquest of Yazd
+	desc = "new_persian_events.6.d"
+	picture = RELIGION_eventPicture
+	is_triggered_only = yes
+
+	option = {
+		name = "new_persian_events.6.a" # Upkeep the shrines
+		add_piety = -0.25
+		433 = {
+			add_base_tax = 2
+		}
+	}
+	option = {
+		name = "new_persian_events.6.b" # Increase [root.religion] influence
+		433 = {
+			add_building = cathedral
+		}
+		add_piety = 0.25
+	}
+}
+country_event = { #Georgian Slaves in the Persian Empire
+	id = new_persian_events.7
+	title = "new_persian_events.7.t" 
+	desc = "new_persian_events.7.d"
+	picture = CITY_VIEW_eventPicture
+	
+	is_triggered_only = yes 
+	
+	option = {
+		name = "new_persian_events.7.a"
+
+		trigger = {
+			any_owned_province = {
+				culture = georgian
+			}
+		}
+		
+		if = {
+			limit = { 
+				NOT = { accepted_culture = georgian } 
+			}
+			custom_tooltip = per_accept_georgian_culture_without_slot_tt
+			hidden_effect = {
+				add_accepted_culture = georgian 
+				add_country_modifier = {
+					name = per_accepted_georgian_culture 
+					duration = -1 
+					hidden = yes 
+				}
+			}
+		}
+		custom_tooltip = per_lenient_towards_georgians_tt
+		hidden_effect = {
+			every_owned_province = {
+				limit = { culture = georgian } 
+				random_list = {
+					50 = {
+						add_base_manpower = 1 
+					}
+					50 = {
+						add_base_production = 1 
+					}
+				}
+			}
+			random_owned_area = {
+				limit = { 
+					religion = ROOT 
+					culture = ROOT 
+					owned_by = ROOT 
+				}
+				add_base_tax = 1 
+			}
+		}
+	}
+	
+	option = {
+		name = "new_persian_events.7.b"
+		
+		custom_tooltip = per_change_culture_religion_in_georgian_provinces_tt
+		hidden_effect = {
+			every_owned_province = {
+				limit = {
+					culture = georgian 
+				}
+				change_culture = ROOT 
+				change_religion = ROOT 
+				add_nationalism = -5
+			}
+		}
+		add_ruler_skill_or_mil_power = yes
+		add_ruler_personality = conqueror_personality
+		if = {
+			limit = {
+				has_estate = estate_nobles 
+				NOT = { mission_completed = per_curb_qizilbash_influence } 
+			}
+			add_country_modifier = {
+				name = per_assured_qizilbash_authority_modifier
+				duration = -1 
+				desc = per_until_we_complete_curb_qizilbash_influence_mission_desc
+			}
+		}
+	}
+}
+country_event = { #Armenian Slaves in the Persian Empire
+	id = new_persian_events.8
+	title = "new_persian_events.8.t"
+	desc = "new_persian_events.8.d"
+	picture = SOUP_KITCHEN_eventPicture
+	
+	is_triggered_only = yes 
+	
+	option = {
+		name = "new_persian_events.8.a"
+		
+		ai_chance = { factor = 0.75 }
+
+		trigger = {
+			any_owned_province = {
+				culture = armenian
+			}
+		}
+		add_country_modifier = {
+			name = per_sponsorship_of_christian_armenians_modifier 
+			duration = 9125
+		}
+		if = {
+			limit = {
+				NOT = { accepted_culture = armenian }
+			}
+			hidden_effect = {
+				add_country_modifier = {
+					name = per_accepted_armenian_culture_modifier
+					duration = -1
+				}
+				add_accepted_culture = armenian 
+			}
+			custom_tooltip = per_accept_armenian_culture_tt 
+		}
+		custom_tooltip = per_armenian_labor_tt 
+		hidden_effect = {
+			random_owned_area = {
+				limit = { 
+					religion = ROOT 
+					culture = ROOT
+					owned_by = ROOT 
+				}
+				add_base_production = 1  
+			}
+		}
+	}
+	
+	option = {
+		name = "new_persian_events.8.b"
+		
+		ai_chance = { factor = 0.25 }
+		
+		if = {
+			limit = {
+				armenia_area = {
+					type = all 
+					owned_by = ROOT
+					NOT = { culture = ROOT }
+				}
+			}
+			armenia_area = { change_culture = ROOT }
+		}
+		add_country_modifier = {
+			name = per_elitist_caste_modifier 
+			duration = 7300 
+		}
+		add_ruler_skill_or_mil_power = yes
+		if = {
+			limit = {
+				has_estate = estate_nobles 
+				NOT = { mission_completed = per_curb_qizilbash_influence } 
+			}
+			add_country_modifier = {
+				name = per_ensured_armenian_qizilbash_rights_modifier 
+				duration = -1 
+				desc = per_until_we_complete_curb_qizilbash_influence_mission_desc
+			}
+		}
+	}
+}
+country_event = { #Turkmen Recruits Flock to the Banners
+	id = new_persian_events.9
+	title = "new_persian_events.9.t"
+	desc = "new_persian_events.9.d"
+	picture = MAMLUK_WARRIORS_eventPicture
+	
+	is_triggered_only = yes 
+	
+	option = {
+		name = "new_persian_events.9.a"
+		north_kurdistan_area = {
+			add_province_modifier = {
+				name = per_turkmen_recruits_modifier
+				duration = 9125
+			}
+			add_nationalism = -10 
+		}
+		erzurum_area = {
+			add_province_modifier = {
+				name = per_turkmen_recruits_modifier
+				duration = 9125
+			}
+			add_nationalism = -10 
+		}
+		if = {	
+			limit = { has_estate = estate_nobles }
+			add_estate_loyalty = {
+				estate = estate_nobles
+				loyalty = 10
+			}
+		}
+	}
+}
+country_event = { #The Two Rivers of the Fertile Crescent 
+	id = new_persian_events.10
+	title = "new_persian_events.10.t"
+	desc = "new_persian_events.10.d"
+	picture = COLONIZATION_eventPicture 
+	
+	is_triggered_only = yes 
+	
+	option = {
+		name = "new_persian_events.10.a"
+		
+		1335 = {
+			add_trade_modifier = {
+				who = ROOT
+				duration = 7300
+				power = 50
+				key = per_persian_basra_modifier
+			}
+		}
+		add_country_modifier = {
+			name = per_trade_in_persian_gulf_modifier
+			duration = 9125
+		}
+		add_mercantilism = 3
+	}
+}
+country_event = { #Victory in Chaldiran
+	id = new_persian_events.11
+	title = "new_persian_events.11.t"
+	desc = "new_persian_events.11.d"
+	picture = QIZILBASH_CAVALRY_CHARGING_eventPicture
+	
+	is_triggered_only = yes 
+	
+	option = {
+		name = "new_persian_events.11.a"
+		
+		add_country_modifier = {
+			name = per_collapse_ottoman_empire_modifier
+			duration = 10950
+		}
+	}
+}
+country_event = { #Al Quds as-Sharif
+	id = new_persian_events.12
+	title = "new_persian_events.12.t"
+	desc = "new_persian_events.12.d"
+	picture = BYZ_JERUSALEM_eventPicture
+	
+	is_triggered_only = yes 
+	
+	option = {	
+		name = "new_persian_events.12.a"
+		
+		add_ruler_modifier = {
+			name = per_powerful_religious_doctrine_modifier
+			duration = -1 
+		}
+		379 = {
+			add_base_tax = 1 
+			add_base_production = 1 
+			add_base_manpower = 1 
+		}
+	}
+}
+country_event = {
+	id = new_persian_events.13 # Hormuz stuff
+	title = "new_persian_events.13.t"
+	desc = "new_persian_events.13.d"
+	picture = HARBOUR_eventPicture
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "new_persian_events.13.a"
+		
+		ai_chance = {
+			factor = 0.5
+			
+			modifier = {
+				factor = 0
+				NOT = { num_of_free_diplomatic_relations = 1 }
+			}
+		}
+		
+		pirate_coast_area = {
+			limit = {
+				NOT = { is_core = ORM }
+				owned_by = ROOT
+			}
+			add_core = ORM
+		}
+		mogostan_area = {
+			limit = {
+				NOT = { is_core = ORM }
+				owned_by = ROOT
+			}
+			add_core = ORM
+		}
+		mascat_area = {
+			limit = {
+				NOT = { is_core = ORM }
+				owned_by = ROOT
+			}
+			add_core = ORM
+		}
+		oman_area = {
+			limit = {
+				NOT = { is_core = ORM }
+				owned_by = ROOT
+			}
+			add_core = ORM
+		}
+		if = {
+			limit = {
+				NOT = { exists = ORM } 
+			}
+			release = ORM
+		}
+		else = {
+			every_owned_province = {
+				limit = {
+					is_core = ORM
+				}
+				cede_province = ORM
+			}
+		}
+		ORM = {
+			change_government = monarchy
+			add_government_reform = feudalism_reform
+			change_religion = ROOT 
+		}
+		vassalize = ORM
+		ORM = {
+			add_country_modifier = {
+				name = per_naval_command_modifier
+				duration = -1 
+			}
+		}
+	}
+	
+	option = {
+		name = "new_persian_events.13.b"
+		
+		ai_chance = { factor = 10 }
+		
+		pirate_coast_area = {
+			add_province_modifier = {
+				name = per_kingdom_of_hormuz_province_modifier
+				duration = 7300
+			}
+		}
+		mogostan_area = {
+			add_province_modifier = {
+				name = per_kingdom_of_hormuz_province_modifier
+				duration = 7300
+			}
+		}
+		mascat_area = {
+			add_province_modifier = {
+				name = per_kingdom_of_hormuz_province_modifier
+				duration = 7300
+			}
+		}
+	}
+}
+country_event = { #Victory in Egypt 
+	id = new_persian_events.14
+	title = "new_persian_events.14.t"
+	desc = "new_persian_events.14.d"
+	picture = BIG_ARABIAN_CITY_eventPicture
+	
+	is_triggered_only = yes 
+	
+	option = {
+		name = "new_persian_events.14.a"
+		
+		add_country_modifier = {
+			name = per_triumph_in_cairo_modifier
+			duration = 7300 
+		}
+	}
+}
+country_event = { #The End of the Timurid Dynasty
+	id = new_persian_events.15
+	title = "new_persian_events.15.t"
+	desc = "new_persian_events.15.d"
+	picture = KING_OF_FOREIGN_CUSTOMS_eventPicture
+	
+	is_triggered_only = yes 
+	
+	option = {
+		name = "new_persian_events.15.a"
+		sistan_area = {
+			add_province_modifier = {
+				name = per_persian_reign_modifier 
+				duration = 7300
+			}
+		}
+		merv_area = {
+			add_province_modifier = {
+				name = per_persian_reign_modifier 
+				duration = 7300
+			}
+		}
+		ghor_area = {
+			add_province_modifier = {
+				name = per_persian_reign_modifier 
+				duration = 7300
+			}
+		}
+		herat_area = {
+			add_province_modifier = {
+				name = per_persian_reign_modifier 
+				duration = 7300
+			}
+		}
+		custom_tooltip = per_5_random_provinces_gain_random_dev_tt
+		hidden_effect = {
+			random_owned_province = {
+				limit = { 
+					region = khorasan_region 
+					country_or_non_sovereign_subject_holds = ROOT
+				}
+				add_base_production = 1 
+			}
+			random_owned_province = {
+				limit = { 
+					region = khorasan_region 
+					country_or_non_sovereign_subject_holds = ROOT
+				}
+				add_base_production = 1 
+			}
+			random_owned_province = {
+				limit = { 
+					region = khorasan_region 
+					country_or_non_sovereign_subject_holds = ROOT
+				}
+				add_base_tax = 1 
+			}
+			random_owned_province = {
+				limit = { 
+					region = khorasan_region 
+					country_or_non_sovereign_subject_holds = ROOT
+				}
+				add_base_manpower = 1 
+			}
+			random_owned_province = {
+				limit = { 
+					region = khorasan_region 
+					country_or_non_sovereign_subject_holds = ROOT
+				}
+				add_base_manpower = 1 
+			}
+		}	
+	}
+}
+country_event = { #Sarkhej Roza and the City of Ahmedabad
+	id = new_persian_events.16
+	title = "new_persian_events.16.t"
+	desc = "new_persian_events.16.d"
+	picture = indiangfx_GREAT_BUILDING_eventPicture
+	
+	is_triggered_only = yes 
+	
+	option = {
+		name = "new_persian_events.16.a"
+		
+		2054 = {
+			if = { 
+				limit = { has_building = temple }
+				remove_building = temple 
+				add_building = cathedral 
+			}
+			add_province_modifier = { 
+				name = per_muzaffarid_centre_of_admin_modifier
+				duration = -1 
+			}
+		}
+	}
+}
+country_event = { #Legacy of the Delhi Empire 
+	id = new_persian_events.17 
+	title = "new_persian_events.17.t"
+	desc = "new_persian_events.17.d"
+	picture = 13_Maratha_Estate_eventPicture
+	
+	is_triggered_only = yes 
+	
+	option = {
+		name = "new_persian_events.17.a"
+		
+		add_country_modifier = {
+			name = per_guardians_of_the_grand_trunk_road_modifier 
+			duration = -1 
+		}
+	}
+}
+country_event = { #Observatory of Ulugh Bek 
+	id = new_persian_events.18
+	title = "new_persian_events.18.t" 
+	desc = "new_persian_events.18.d"
+	picture = ASTRONOMER_eventPicture
+	
+	is_triggered_only = yes 
+	
+	option = {
+		name = "new_persian_events.18.a"
+		
+		454 = { 
+			add_base_tax = 2 
+			add_base_production = 1
+		}
+		change_innovativeness = 5
+		add_adm_power = 50
+	}
+}
+country_event = { #Wealth of Bengal (technically this was moved to the mughal mission tree)
+	id = new_persian_events.19
+	title = "new_persian_events.19.t" 
+	desc = "new_persian_events.19.d"
+	picture = SULTAN_AND_MERCHANT_eventPicture 
+	
+	is_triggered_only = yes 
+	
+	option = {
+		name = "new_persian_events.19.a"
+		
+		add_country_modifier = {
+			name = per_continental_trading_modifier
+			duration = 7300
+		}
+		add_mercantilism = 5 
+	}
+}
+country_event = { #Hindu Influences in the Persian Court
+	id = new_persian_events.20
+	title = "new_persian_events.20.t"
+	desc = "new_persian_events.20.d"
+	picture = KING_OF_FOREIGN_CUSTOMS_eventPicture
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = "new_persian_events.20.a"
+		unlock_estate = {
+			estate = estate_rajput
+		}
+	}
+	
+	option = {
+		name = "new_persian_events.20.b"
+		add_dip_power = 200 
+		add_stability_or_adm_power = yes 
+	}
+}
+country_event = { #Royal Poetry of the Safavid Era
+	id = new_persian_events.21
+	title = "new_persian_events.21.t"
+	desc = "new_persian_events.21.d"
+	picture = BIG_BOOK_eventPicture 
+	
+	is_triggered_only = yes 
+	
+	option = {
+		name = "new_persian_events.21.a"
+		
+		add_ruler_modifier = {
+			name = per_sponsored_the_arts_modifier
+			duration = -1 
+		}
+	}
+}
+country_event = { #Military Reforms of $MONARCH$
+	id = new_persian_events.22
+	title = "new_persian_events.22.t" 
+	desc = "new_persian_events.22.d"
+	picture = DISCIPLINED_SOLDIERS_eventPicture
+	
+	fire_only_once = yes
+
+	trigger = {
+		NOT = {
+			has_country_flag = persian_military_reforms
+		}
+		OR = {
+			tag = PER
+			tag = MUG
+			tag = TIM
+			culture_group = iranian
+		}
+		mil = 6
+	}
+
+	immediate = {
+		set_country_flag = persian_military_reforms
+	}
+
+	mean_time_to_happen = {
+		months = 600
+	}
+	
+	option = {
+		name = "new_persian_events.22.a"
+		
+		ai_chance = { factor = 0.4 }
+		
+		add_ruler_modifier = {
+			name = per_expanded_the_royal_qurci_guard_modifier
+			duration = -1
+		}
+		add_army_professionalism = 0.05
+	}
+	
+	option = {
+		name = "new_persian_events.22.b"
+		
+		ai_chance = { factor = 0.3 }
+		
+		add_ruler_modifier = {
+			name = per_cavalry_muskets_modifier
+			duration = -1 
+		}
+		add_army_professionalism = 0.05
+	}
+	
+	option = {
+		name = "new_persian_events.22.c"
+		
+		ai_chance = { factor = 0.3 }
+		
+		add_ruler_modifier = {
+			name = per_wasp_artillery_modifier
+			duration = -1 
+		}
+		add_army_professionalism = 0.05
+	}
+}
+country_event = { #Chinese Blue-and-White Porcelains
+	id = new_persian_events.23
+	title = "new_persian_events.23.t"
+	desc = "new_persian_events.23.d" 
+	picture = IMPERIAL_SEAL_eventPicture
+
+	trigger = {
+		NOT = {
+			has_country_flag = chinese_porcelain
+		}
+		OR = {
+			tag = PER
+			tag = MUG
+			tag = TIM
+			culture_group = iranian
+		}
+		any_known_country = {
+			is_emperor_of_china = yes
+		}
+	}
+
+	mean_time_to_happen = {
+		months = 1200
+	}
+	
+	option = {
+		set_country_flag = chinese_porcelain
+		name = "new_persian_events.23.a"
+		
+		add_country_modifier = {
+			name = per_royal_porcelain_collection_modifier 
+			duration = 9125
+		}
+		add_ruler_skill_or_dip_power = yes
+	}
+}
+country_event = { #Architecture of the Safavid Period
+	id = new_persian_events.24
+	title = "new_persian_events.24.t"
+	desc = "new_persian_events.24.d"
+	picture = GREAT_BUILDING_eventPicture
+	fire_only_once = yes 
+	trigger = {
+		is_year = 1470 
+		tag = PER 
+		OR = {
+			is_great_power = yes 
+			total_development = 300 
+		}
+		num_of_owned_provinces_with = {
+			OR = {
+				has_tax_building_trigger = yes
+				has_building = courthouse
+				has_building = town_hall
+			}
+			value = 6 
+		}
+		has_regency = no 
+	}
+	
+	mean_time_to_happen = {
+		months = 36
+	}
+	
+	option = {
+		name = "new_persian_events.24.a"
+		random_owned_province = {
+			limit = {
+				OR = {
+					has_tax_building_trigger = yes
+					has_building = courthouse
+					has_building = town_hall
+				}
+			}
+			add_base_tax = 1 
+		}
+		random_owned_province = {
+			limit = {
+				OR = {
+					has_tax_building_trigger = yes
+					has_building = courthouse
+					has_building = town_hall
+				}
+			}
+			add_base_tax = 1 
+		}
+		set_country_flag = per_architecture_flag
+	}
+}
+country_event = { #Imamzadeh Harun-i Vilayat
+	id = new_persian_events.25
+	title = "new_persian_events.25.t" 
+	desc = "new_persian_events.25.d"
+	picture = BIG_ARABIAN_CITY_eventPicture 
+	fire_only_once = yes 
+	trigger = {
+		is_year = 1475 
+		tag = PER
+		has_country_flag = per_architecture_flag
+		429 = {
+			OR = {
+				is_capital_of = PER
+				development = 30
+			}
+		}
+		OR = {
+			has_global_modifier_value = {
+				which = tolerance_heathen 
+				value = 1 
+			}
+			religion_group = muslim 
+		} 
+	}
+	
+	mean_time_to_happen = {
+		months = 72 
+	}
+	
+	option = {
+		name = "new_persian_events.25.a"
+		
+		429 = {
+			add_province_modifier = {
+				name = per_harun_i_vilayat_tomb_modifier
+				duration = 5475
+			}
+		}
+		add_dip_power = 25 
+	}
+}
+country_event = { #Masjid-i Ali
+	id = new_persian_events.26
+	title = "new_persian_events.26.t" 
+	desc = "new_persian_events.26.d"
+	picture = PRAYING_eventPicture 
+	fire_only_once = yes 
+	trigger = {
+		is_year = 1480 
+		tag = PER
+		has_country_flag = per_architecture_flag
+		429 = {
+			OR = {
+				is_capital_of = PER
+				development = 30
+			}
+		}
+		OR = {
+			has_global_modifier_value = {
+				which = tolerance_heathen 
+				value = 1
+			}
+			religion_group = muslim 
+		}
+	}
+	
+	mean_time_to_happen = { 
+		months = 60 
+	}
+	
+	option = {
+		name = "new_persian_events.26.a"
+		
+		add_estate_loyalty = {
+			estate = estate_church 
+			loyalty = 15 
+		}
+		add_prestige = 5 
+	}
+}
+country_event = { #Tomb of Amin al-Din Jibrail
+	id = new_persian_events.27
+	title = "new_persian_events.27.t"
+	desc = "new_persian_events.27.d"
+	picture = ADVISOR_eventPicture 
+	fire_only_once = yes 
+	trigger = {
+		tag = PER 
+		OR = {
+			has_global_modifier_value = {
+				which = tolerance_heathen 
+				value = 1 
+			}
+			religion_group = muslim 
+		}
+		has_country_flag = per_architecture_flag
+		424 = {
+			owned_by = ROOT 
+			has_tax_building_trigger = yes
+		}
+		is_year = 1472 
+	}
+	
+	mean_time_to_happen = {
+		months = 14 
+	}
+	
+	option = {
+		name = "new_persian_events.27.a"
+		
+		424 = { add_base_tax = 2 }
+		add_prestige = 5 
+	}
+}
+country_event = { #Jannat-sara Mosque
+	id = new_persian_events.28
+	title = new_persian_events.28.t 
+	desc = new_persian_events.28.d 
+	picture = CULTURE_eventPicture
+	fire_only_once = yes 
+	trigger = {
+		tag = PER 
+		OR = {
+			has_global_modifier_value = {
+				which = tolerance_heathen 
+				value = 1 
+			}
+			religion_group = muslim 
+		}
+		has_country_flag = per_architecture_flag
+		424 = {
+			owned_by = ROOT 
+			has_tax_building_trigger = yes
+		}
+		is_year = 1474 
+	}
+	
+	mean_time_to_happen = {
+		months = 6 
+	}
+	
+	option = {
+		name = new_persian_events.28.a 
+		
+		424 = {
+			if = { 
+				limit = { has_building = temple } 
+				remove_building = temple 
+				add_building = cathedral 
+			}
+			else = { add_base_tax = 2 }
+		}
+		424 = { add_prosperity = 20 }
+	}
+}
+country_event = { #Abbas I Safavid 
+	id = new_persian_events.29
+	title = new_persian_events.29.t 
+	desc = new_persian_events.29.d 
+	picture = HEIR_AND_FOREIGN_ADVISOR_eventPicture 
+	fire_only_once = yes 
+	trigger = {
+		tag = PER 
+		is_year = 1571 
+		NOT = { is_year = 1615 } 
+		government = monarchy 
+	}
+	
+	mean_time_to_happen = {
+		months = 24 
+	}
+	
+	option = {
+		name = new_persian_events.29.a 
+		
+		kill_ruler = yes
+		define_ruler = {
+			name = "Abbas I" 
+			dynasty = ROOT 
+			claim = 95 
+			male = yes 
+			change_adm = 2 
+			change_dip = 2 
+			change_mil = 2 
+			age = 15 
+		}
+		if = {
+			limit = { has_dlc = "Rights of Man" }
+			custom_tooltip = per_abbas_architectural_visionary_tt
+			hidden_effect = { add_ruler_personality = architectural_visionary_personality }
+		}
+		set_ruler_flag = per_abbas_lives_flag 
+	}
+	
+	option = {
+		name = new_persian_events.29.b 
+		
+		add_prestige = 15 
+		add_stability_or_adm_power = yes 
+	}
+}	
+country_event = { #Abbas I’s Expansion of Isfahan
+	id = new_persian_events.30
+	title = new_persian_events.30.t 
+	desc = new_persian_events.30.d 
+	picture = CITY_DEVELOPMENT_eventPicture 
+	fire_only_once = yes 
+	
+	trigger = {
+		tag = PER
+		has_ruler_flag = per_abbas_lives_flag
+	}
+	
+	mean_time_to_happen = {
+		months = 12
+	}
+	
+	option = {
+		name = new_persian_events.30.a 
+		
+		capital_scope = {
+			add_province_modifier = {
+				name = per_urban_planning_of_shah_abbas_modifier 
+				duration = 5475 
+			}
+		}
+	}
+}
+country_event = { #Gardens of Chahar Bagh Avenue
+	id = new_persian_events.31
+	title = new_persian_events.31.t 
+	desc = new_persian_events.31.d 
+	picture = CITY_VIEW_eventPicture
+	fire_only_once = yes 
+	
+	trigger = {
+		tag = PER
+		has_ruler_flag = per_abbas_lives_flag
+	}
+	
+	mean_time_to_happen = {
+		months = 26 
+	}
+	
+	option = {
+		name = new_persian_events.31.a 
+		
+		capital_scope = {	
+			add_province_modifier = {
+				name = per_gardens_of_chahar_bagh_modifier
+				duration = -1 
+			}
+		}
+	}
+}
+country_event = { #Naqsh-e Jahan Square
+	id = new_persian_events.32
+	title = new_persian_events.32.t 
+	desc = new_persian_events.32.d 
+	picture = CITY_VIEW_eventPicture
+	
+	fire_only_once = yes 
+	
+	trigger = {
+		tag = PER
+		OR = {
+			mission_completed = per_worthy_capital 
+			has_ruler_flag = per_abbas_lives_flag 
+		}
+		OR = {
+			has_global_modifier_value = {
+				which = tolerance_heathen 
+				value = 1 
+			}
+			religion_group = muslim 
+		} 
+	}
+	
+	mean_time_to_happen = {
+		months = 48 
+	}
+	
+	option = {
+		name = new_persian_events.32.a 
+		
+		429 = {
+			add_province_modifier = {
+				name = per_nashq_e_jahan_square_modifier 
+				duration = 7300 
+			}
+			add_base_production = 1 
+		}
+	}
+}
+country_event = { #The Shah's Mosque in Isfahan
+	id = new_persian_events.33 
+	title = new_persian_events.33.t 
+	desc = new_persian_events.33.d 
+	picture = PRAYER_IN_MOSQUE_eventPicture 
+	fire_only_once = yes 
+	
+	trigger = {
+		tag = PER
+		has_ruler_flag = per_abbas_lives_flag 
+		429 = { has_tax_building_trigger = yes }
+		OR = {
+			has_global_modifier_value = {
+				which = tolerance_heathen 
+				value = 1 
+			}
+			religion_group = muslim 
+		} 
+	}
+	
+	mean_time_to_happen = {
+		months = 48 
+	}
+	
+	option = {
+		name = new_persian_events.33.a 
+		
+		429 = {
+			if = { 
+				limit = { has_building = temple } 
+				remove_building = temple 
+				add_building = cathedral 
+			}
+			else = { add_base_tax = 2 } 
+		}
+		add_prestige = 5 
+	}
+}
+country_event = { #Madrasa-e Khan
+	id = new_persian_events.34
+	title = new_persian_events.34.t 
+	desc = new_persian_events.34.d 
+	picture = COURT_eventPicture 
+	fire_only_once = yes 
+	
+	trigger = {
+		tag = PER
+		is_year = 1600 
+		2218 = { 
+			owned_by = PER 
+			OR = { 
+				development = 25 
+				has_building = university 
+			}
+		}
+		OR = {
+			has_global_modifier_value = {
+				which = tolerance_heathen 
+				value = 1 
+			}
+			religion_group = muslim 
+		} 
+	}
+	
+	mean_time_to_happen = {
+		months = 120 
+	}
+	
+	option = {
+		name = new_persian_events.34.a 
+		
+		if = {
+			limit = { 
+				has_dlc = "Cradle of Civilization" 
+				religion_group = muslim 
+			}
+			add_piety = 0.25 
+		}
+		2218 = {
+			if = {
+				limit = { 
+					has_building = university 
+				}
+				owner = { add_adm_power = 50 }
+			}
+			else = {
+				add_building = university 
+			}
+		}
+		define_advisor = {
+			type = natural_scientist 
+			cost_multiplier = 0.25 
+		}
+	}
+}
+country_event = { #Chehel Sotoun
+	id = new_persian_events.35
+	title = new_persian_events.35.t 
+	desc = new_persian_events.35.d 
+	picture = UNIVERSITY_eventPicture
+	
+	fire_only_once = yes 
+	
+	trigger = {
+		tag = PER 
+		OR = {
+			has_ruler_flag = per_abbas_lives_flag
+			mission_completed = per_worthy_capital 
+		}
+		OR = {
+			has_global_modifier_value = {
+				which = tolerance_heathen 
+				value = 1 
+			}
+			religion_group = muslim 
+		} 
+		429 = {
+			OR = { 
+				has_building = courthouse 
+				has_building = town_hall 
+			}
+		}
+	}
+	
+	mean_time_to_happen = {	
+		months = 120 
+	}
+	
+	option = {
+		name = new_persian_events.35.a 
+		
+		add_ruler_skill_or_dip_power = yes
+	}
+}
+country_event = { #The Shah's Academy
+	id = new_persian_events.36
+	title = new_persian_events.36.t 
+	desc = new_persian_events.36.d 
+	picture = WESTERNISATION_eventPicture
+	fire_only_once = yes 
+	
+	trigger = {
+		is_year = 1600 
+		tag = PER 
+		429 = { 
+			owned_by = ROOT 
+			OR = {
+				development = 35 
+				has_building = university 
+			}
+		}
+		OR = {
+			has_global_modifier_value = {
+				which = tolerance_heathen 
+				value = 1 
+			}
+			religion_group = muslim 
+		} 
+	}
+	
+	mean_time_to_happen = {
+		months = 120 
+	}
+	
+	option = {
+		name = new_persian_events.36.a 
+
+		add_adm_power = 50
+		change_innovativeness = 2
+		if = {
+			limit = { 
+				429 = { has_building = university } 
+			}
+			add_ruler_personality = scholar_personality 
+		}
+		else = {
+			429 = { add_building = university }
+		}
+	}
+}
+country_event = { #Safavid Painting Under Abbas I 
+	id = new_persian_events.37
+	title = new_persian_events.37.t 
+	desc = new_persian_events.37.d 
+	picture = GOOD_WITH_MONARCH_eventPicture
+	fire_only_once = yes 
+	
+	trigger = {
+		tag = PER 
+		has_ruler_flag = per_abbas_lives_flag 
+		is_at_war = no 
+	}
+	
+	mean_time_to_happen = { 
+		months = 50 
+	}
+	
+	option = {
+		name = new_persian_events.37.a 
+		
+		define_advisor = {
+			type = artist 
+			cost_multiplier = 0.5
+		}
+		change_innovativeness = 5 
+	}
+}
+country_event = { #Shahnameh of Shah $RULER$
+	id = new_persian_events.38 
+	title = new_persian_events.38.t 
+	desc = new_persian_events.38.d 
+	picture = BIG_BOOK_eventPicture 
+	fire_only_once = yes 
+	
+	trigger = {
+		is_year = 1482 
+		OR = {
+			tag = PER 
+			tag = ARL 
+		}
+		total_development = 200 
+	}
+	mean_time_to_happen = {
+		months = 36 
+	}
+	
+	option = {
+		name = new_persian_events.38.a 
+		
+		add_ruler_modifier = {	
+			name = per_shahnameh_modifier
+			duration = -1 
+		}
+	}
+}
+country_event = { #Rise of the Persian Arquebus
+	id = new_persian_events.39 
+	title = new_persian_events.39.t 
+	desc = new_persian_events.39.d 
+	picture = CIVIL_WAR_eventPicture
+	fire_only_once = yes 
+	trigger = {
+		is_year = 1600
+		tag = PER 
+	}
+	
+	mean_time_to_happen = {
+		months = 120 
+	}
+	
+	option = {
+		name = new_persian_events.39.a 
+		
+		add_country_modifier = {
+			name = per_persian_arquebusiers_modifier
+			duration = 7300 
+		}
+		if = {
+			limit = { has_dlc = "Cradle of Civilization" }
+			add_army_professionalism = 0.05 
+		}
+		else = { add_army_tradition = 10 }
+	}
+}
+country_event = { #The Arrival of the Shirley Brothers
+	id = new_persian_events.40
+	title = new_persian_events.40.t 
+	desc = new_persian_events.40.d 
+	picture = GENERALS_DISCUSSING_eventPicture
+	fire_only_once = yes 
+	
+	trigger = {
+		tag = PER 
+		has_ruler_flag = per_abbas_lives_flag
+		OR = { 
+			army_professionalism = 0.6
+			army_tradition = 80 
+		}
+	}
+	
+	mean_time_to_happen = {
+		months = 120 
+	}
+	
+	option = {
+		name = new_persian_events.40.a 
+		
+		add_country_modifier = {
+			name = per_shirley_reforms_the_army1_modifier
+			duration = 7300 
+		}
+		define_advisor = {
+			name = "Robert Shirley"
+			culture = english 
+			religion = anglican
+			type = army_reformer
+			skill = 3 
+			cost_multiplier = 0.5
+		}
+	}
+}
+country_event = {
+	id = new_persian_events.41
+	title = "flavor_per.EVTNAME1"
+	desc = "flavor_per.EVTDESC1"
+	picture = REFORM_eventPicture
+	fire_only_once = yes 
+	
+	trigger = {
+		is_year = 1490 
+		tag = PER 
+		NOT = { is_year = 1530 }
+		stability = 1 
+		adm = 5
+	}
+	
+	mean_time_to_happen = {
+		months = 60 
+	}
+	
+	option = { #Reform
+		name = "flavor_per.EVTOPTA1"
+		if = {
+			limit = {
+				NOT = { has_completed_all_reforms_trigger = yes }
+			}
+			add_reform_progress_big_effect = yes
+		}
+		if = {
+			limit = {
+				NOT = { government_rank = 3 }
+			}
+			set_government_rank = 3
+		}
+		416 = { #Tabriz
+			add_base_tax = 2
+			add_base_production = 2
+			add_base_manpower = 1
+		}
+		429 = { #Isfahan
+			add_base_tax = 1
+			add_base_production = 1
+			add_base_manpower = 1
+		}
+		2215 = { #Qazvin
+			add_base_tax = 1
+			add_base_production = 1
+			add_base_manpower = 1
+		}
+		2218 = { #Shiraz
+			add_base_tax = 1
+			add_base_production = 1
+		}
+		428 = { #Teheran
+			add_base_tax = 1
+			add_base_production = 1
+			add_base_manpower = 1
+		}
+		433 = { #Yazd
+			add_base_tax = 1
+			add_base_production = 1
+		}
+		2213 = { #Qom
+			add_base_tax = 1
+			add_base_production = 1
+			add_base_manpower = 1
+		}
+		2212 = { #Zanjan
+			add_base_tax = 1
+			add_base_production = 1
+			add_base_manpower = 1
+		}
+	}
+}
+
+# The Qizilbash
+country_event = {
+	id = new_persian_events.42
+	title = new_persian_events.42.t
+	desc = new_persian_events.42.d
+	picture = HORDE_ON_HORSEBACK_eventPicture
+
+	fire_only_once = yes
+
+	trigger = {
+		tag = PER
+	}
+
+	mean_time_to_happen = {
+		months = 4
+	}
+
+	option = { #They are here for us now, that is all that matters.
+		name = new_persian_events.42.a
+
+		add_mil_power = 50
+		add_country_modifier = {
+			name = fee_per_the_qizilbash
+			duration = -1
+		}
+	}
+}
+
+# The Qizilbash Lend Their Support
+country_event = {
+	id = new_persian_events.43
+	title = new_persian_events.43.t
+	desc = new_persian_events.43.d
+	picture = MILITARY_CAMP_eventPicture
+
+	trigger = {
+		tag = PER
+		NOT = { has_country_flag = fee_per_end_qizilbash_influence }
+		has_country_modifier = fee_per_the_qizilbash
+		any_war_enemy_country = {
+			ROOT = {
+				OR = {
+					core_claim = PREV
+					claim = PREV
+				}
+			}
+		}
+	}
+
+	mean_time_to_happen = {
+		months = 360
+	}
+
+	option = { #United for the Shah!
+		name = new_persian_events.43.a
+
+		ai_chance = {
+			factor = 10
+		}
+
+		add_manpower = 0.5
+	}
+
+	option = { # Ask for their guidance
+		name = new_persian_events.43.b
+
+		add_mil_power = 50
+		create_general = {
+			tradition = 30
+			add_shock = 1
+		}
+	}
+}
+
+# The Qizilbash Fight for Power
+country_event = {
+	id = new_persian_events.44
+	title = new_persian_events.44.t
+	desc = new_persian_events.44.d
+	picture = HORDE_ON_HORSEBACK_eventPicture
+
+	trigger = {
+		tag = PER
+		has_country_modifier = fee_per_the_qizilbash
+		NOT = {	legitimacy = 80 }
+		NOT = { has_country_flag = fee_per_end_qizilbash_influence }
+	}
+
+	mean_time_to_happen = {
+		months = 360
+	}
+
+	option = { # Long live the Shah!
+		name = new_persian_events.44.a
+		random_owned_province = {
+			start_revolt = {
+				type = pretender_rebels
+				size = 2
+			}
+			add_unrest = 15
+		}
+	}
+
+	option = { # Let us ensure the loyalty of the tribes.
+		name = new_persian_events.44.b
+		add_dip_power = -75
+	}
+}
+
+# Qizilbash Plot!
+country_event = {
+	id = new_persian_events.45
+	title = new_persian_events.45.t
+	desc = new_persian_events.45.d
+	picture = LIBERUM_VETO_eventPicture
+
+	trigger = {
+		tag = PER
+		NOT = { has_country_flag = fee_per_end_qizilbash_influence }
+		has_country_modifier = fee_per_the_qizilbash
+		has_advisor = yes
+	}
+
+	mean_time_to_happen = {
+		months = 500
+	}
+
+	option = { # The situation will only get worse if we interfere.
+		name = new_persian_events.45.a
+
+		kill_advisor = random
+		reduce_stability_or_adm_power = yes
+	}
+
+	option = { # We will not be slaves to the whims of the tribes!
+		name = new_persian_events.45.b
+
+		kill_advisor = random
+		random_owned_province = {
+			start_revolt = {
+				type = noble_rebels
+				size = 1
+			}
+		}
+	}
+}
+
+# The Third Force	
+country_event = {
+	id = new_persian_events.46
+	title = new_persian_events.46.t
+	desc = new_persian_events.46.d
+	picture = FARMING_eventPicture
+
+	fire_only_once = yes
+
+	trigger = {
+		tag = PER
+		has_country_modifier = fee_per_the_qizilbash	
+		is_year = 1580
+		mil = 3
+		dip = 3
+		adm = 3
+	}
+
+	mean_time_to_happen = {
+		months = 240
+	}
+
+	option = { # We need them to reform our society!
+		name = new_persian_events.46.a
+
+		add_yearly_manpower = 2
+		random_owned_province = {
+			change_culture = armenian
+			add_base_tax = 1
+		}
+		change_government_reform_progress = 100
+		set_country_flag = fee_per_the_third_force
+	}
+}
+
+#Decline of the Qizilbash	
+country_event = {
+	id = new_persian_events.47
+	title = new_persian_events.47.t
+	desc = new_persian_events.47.d
+	picture = REFORM_eventPicture
+
+	fire_only_once = yes
+
+	trigger = {
+		tag = PER
+		has_country_flag = fee_per_the_third_force
+	}
+
+	mean_time_to_happen = {
+		months = 240
+	}
+
+	option = { # IT is time Persia looked to the future.
+		name = new_persian_events.47.a
+
+		hidden_effect = {
+			set_country_flag = fee_per_end_qizilbash_influence
+		}
+		remove_country_modifier = fee_per_the_qizilbash
+		add_stability_or_adm_power = yes
+		clr_country_flag = fee_per_the_third_force
+	}
+}

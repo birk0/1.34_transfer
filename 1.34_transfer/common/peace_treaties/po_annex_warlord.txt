@@ -1,0 +1,30 @@
+po_annex_warlord = {
+
+	prestige_base = 0.5
+	ae_base = 1.0
+	power_projection = humiliated_rival
+	warscore_cost = {
+		no_provinces = 100.0
+	}
+	warscore_cap = 100
+	requires_is_allowed = yes
+	effect = { #Complete Subjugation
+		add_mandate = 10
+		FROM = {
+			every_owned_province = {
+				limit = { superregion = china_superregion }
+				cede_province = ROOT
+				add_core = ROOT
+			}
+		}
+	}
+	ai_weight = {
+		export_to_variable = {
+			variable_name = ai_value
+			value = 1000
+		}
+		limit = {
+			always = yes
+		}
+	}
+}

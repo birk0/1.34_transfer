@@ -1,0 +1,19 @@
+#Uppland, contains Stockholm, Uppsala & Nyköping.
+
+add_core = SWE
+owner = SWE
+controller = SWE
+culture = swedish
+religion = catholic
+hre = no
+base_tax = 3
+base_production = 3
+trade_goods = grain
+base_manpower = 3
+capital = "Stockholm"
+is_city = yes
+center_of_trade = 2
+
+1444.12.1 = {
+	add_bookmark_effect = yes
+}

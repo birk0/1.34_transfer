@@ -1,0 +1,8 @@
+#Prov1602 - Eastern Atlantic 3
+religion = catholic
+culture = finnish
+is_city = no
+
+base_tax = 1
+base_production = 1
+base_manpower = 1

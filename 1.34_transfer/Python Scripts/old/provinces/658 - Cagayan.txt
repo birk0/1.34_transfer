@@ -1,0 +1,17 @@
+#658 - Cagayan
+
+culture = filipino
+religion = shen #changes
+capital = "Cagayan"
+trade_goods = unknown
+hre = no
+base_tax = 2 
+base_production = 2
+base_manpower = 2
+native_size = 50
+native_ferocity = 1
+native_hostileness = 3
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

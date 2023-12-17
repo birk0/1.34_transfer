@@ -1,0 +1,42 @@
+po_enforce_piracy_pact = { #Forces the loser into a non-raiding pact
+	prestige_base = 1
+	ae_base = 1
+	power_projection = humiliated_rival
+	warscore_cost = {
+		no_provinces = 50.0
+	}
+	requires_is_allowed = yes
+	is_visible = {
+        always = yes
+	}
+	effect = {
+        reverse_add_opinion = {
+            who = FROM
+            modifier = opinion_raiding_pact
+        }
+		FROM = {
+			add_country_modifier = {
+				name = enforced_piracy_pact
+				duration = 7300
+			}
+			if = {
+				limit = {
+					has_country_modifier = enforced_free_reign_piracy
+				}
+				remove_country_modifier = enforced_free_reign_piracy
+			}
+		}
+		add_adm_power = 100
+		add_dip_power = 100
+		add_mil_power = 100
+	}
+	ai_weight = {
+		export_to_variable = {
+			variable_name = ai_value
+			value = 1000
+		}
+		limit = {
+			always = yes
+		}
+	}
+}

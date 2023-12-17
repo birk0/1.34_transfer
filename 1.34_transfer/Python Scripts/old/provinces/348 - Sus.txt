@@ -1,0 +1,32 @@
+#348 - Sus
+
+owner = MOR
+controller = MOR
+culture = berber
+religion = sunni
+capital = "Taroudant"
+trade_goods = sugar
+hre = no
+base_tax = 5 
+base_production = 5
+base_manpower = 2
+is_city = yes
+add_core = MOR
+add_core = SOS
+add_core = TFL
+
+
+
+#discovered_by = western
+#discovered_by = muslim
+#discovered_by = ottoman
+
+1444.1.1 = {
+	owner = SOS
+	controller = SOS
+	add_core = SOS
+}
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

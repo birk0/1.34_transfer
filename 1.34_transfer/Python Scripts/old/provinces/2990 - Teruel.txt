@@ -1,0 +1,19 @@
+#214 - Teruel
+
+owner = ARA		# Alfons V of Aragon
+controller = ARA
+add_core = ARA
+culture = aragonese
+religion = catholic
+hre = no
+base_tax = 3
+base_production = 3
+trade_goods = cloth
+base_manpower = 3
+capital = "Teruel"
+is_city = yes
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

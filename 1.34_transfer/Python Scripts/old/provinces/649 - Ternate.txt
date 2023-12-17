@@ -1,0 +1,18 @@
+#649 - Ternate
+
+owner = TER
+controller = TER
+culture = moluccan
+religion = animism
+capital = "Ternate"
+trade_goods = cloves
+hre = no
+base_tax = 5
+base_production = 5
+base_manpower = 3
+is_city = yes
+add_core = TER
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

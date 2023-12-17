@@ -1,0 +1,19 @@
+# 2145 - Zhenjiang
+
+owner = MNG
+controller = MNG
+add_core = MNG
+culture = jianghuai
+religion = mahayana #changes
+capital = "Zhenjiang"
+trade_goods = naval_supplies
+hre = no
+base_tax = 5 
+base_production = 5
+base_manpower = 3
+is_city = yes
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

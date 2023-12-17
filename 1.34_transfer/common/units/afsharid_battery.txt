@@ -1,0 +1,13 @@
+# Afsharid battery
+
+type = artillery
+manpower = 0.1
+unit_type = muslim
+
+maneuver = 2
+offensive_fire = 8
+defensive_fire = 8
+offensive_shock = 2
+defensive_shock = 4
+offensive_morale = 8
+defensive_morale = 6

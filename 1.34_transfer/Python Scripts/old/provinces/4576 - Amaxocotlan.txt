@@ -1,0 +1,19 @@
+#4576 - Bambasi
+
+owner = DAM
+controller = DAM
+add_core = DAM
+culture = amhara 
+religion = coptic
+capital = "Bambasi"
+is_city = yes
+base_manpower = 1
+trade_goods = incense
+hre = no
+base_tax = 2
+base_production = 1
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

@@ -1,0 +1,53 @@
+########################################
+# Flavor Events for Vientiane
+#
+# Scripted by Sara Wendel-Örtqvist
+########################################
+
+namespace = flavor_vie
+normal_or_historical_nations = yes
+
+# The Succession Crisis
+country_event = {
+	id = flavor_vie.1 # id = 3903
+	title = "flavor_vie.EVTNAME1"
+	desc = "flavor_vie.EVTDESC1"
+	picture = ANGRY_MOB_eventPicture
+	
+	fire_only_once = yes
+	
+	trigger = {
+		NOT = { has_global_flag = flavor_vie_1 }
+		NOT = { exists = LUA }
+		tag = VIE
+		is_year = 1700
+		NOT = { is_year = 1750 }
+	}
+	immediate = {
+		set_global_flag = flavor_vie_1
+	}
+	
+	mean_time_to_happen = {
+		months = 200
+	}
+	
+	option = {
+		name = "flavor_vie.EVTOPTA1"
+		random_owned_province = {
+			limit = { is_in_capital_area = yes }
+			start_revolt = {
+				type = pretender_rebels
+				size = 2
+				culture = ROOT
+				religion = ROOT
+				leader = "Kitsarat"
+				leader_dynasty = "Viet"
+			}
+		}
+	}
+	option = {
+		name = "flavor_vie.EVTOPTB1"
+		add_stability = -1
+		every_owned_province = { add_unrest = 5 }
+	}
+}

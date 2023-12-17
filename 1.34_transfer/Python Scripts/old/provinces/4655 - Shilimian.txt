@@ -1,0 +1,20 @@
+# Shilimian
+
+culture = manchu
+religion = tengri_pagan_reformed
+capital = "Shilimian"
+trade_goods = fish
+hre = no
+is_city = yes
+#Changes
+owner = NHX
+controller = NHX
+add_core = NHX
+base_tax = 3 
+base_production = 4
+base_manpower = 3
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

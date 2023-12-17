@@ -1,0 +1,8 @@
+#Prov4169 - Prov4169
+religion = buddhism
+culture = tibetan
+is_city = no
+
+base_tax = 1
+base_production = 1
+base_manpower = 1

@@ -1,0 +1,20 @@
+#2412 - Kyzyl-Yar
+
+owner = CRI
+controller = CRI
+culture = crimean
+religion = sunni
+hre = no
+capital = "Kyzyl-Yar"
+is_city = yes
+add_core = CRI
+trade_goods = salt
+#changes
+base_tax = 3
+base_production = 3
+base_manpower = 2
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

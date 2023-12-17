@@ -1,0 +1,21 @@
+# 2496 - Madista
+
+#Buganda
+
+owner = BUG
+controller = BUG
+add_core = BUG
+culture = ganda
+religion = shamanism #Fetishism
+capital = "Madista" #Should really change with each monarch
+trade_goods = salt
+hre = no
+base_tax = 2
+base_production = 2
+base_manpower = 1
+is_city = yes
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

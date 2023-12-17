@@ -1,0 +1,35 @@
+###################
+# Zoroastrian Events #
+###################
+
+namespace = zoroastrian
+
+# Parsi Safe Haven in Sanjan
+country_event = {
+	id = zoroastrian.1
+	title = zoroastrian.1.t
+	desc = zoroastrian.1.d
+	picture = THEATRE_eventPicture
+	fire_only_once = yes
+
+	trigger = {
+		employed_advisor = {
+			religion = zoroastrian
+			culture = parsi
+		}
+	}
+	
+	mean_time_to_happen = {
+		months = 180
+	}
+		
+	option = {
+		name = zoroastrian.1.a
+		add_legitimacy = -10
+		add_republican_tradition = -5
+	}
+	option = {
+		name = zoroastrian.1.b
+		add_stability = -1
+	}
+}

@@ -1,0 +1,19 @@
+#Minsk
+government = monarchy
+add_government_reform = principality
+government_rank = 1
+primary_culture = byelorussian
+religion = orthodox
+technology_group = eastern
+capital = 276	# Minsk
+
+1430.1.1 = {
+	monarch = {
+		birth_date = 1411.1.1
+		name = "Ivan VIII"
+		dynasty = "Borskcha"
+		adm = 1
+		dip = 1
+		mil = 2
+	}
+}

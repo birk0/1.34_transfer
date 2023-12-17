@@ -1,0 +1,18 @@
+#324 - Karaman
+
+owner = KAR
+controller = KAR
+culture = turkish
+religion = sunni
+capital = "Karaman"
+trade_goods = livestock
+hre = no
+base_tax = 5 
+base_production = 5
+base_manpower = 4
+is_city = yes
+add_core = KAR
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

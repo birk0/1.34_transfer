@@ -1,0 +1,7 @@
+# Prov1477 - Coast of Iceland
+culture = tibetan
+is_city = no
+religion = shen
+base_tax = 1
+base_production = 1
+base_manpower = 1

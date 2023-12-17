@@ -1,0 +1,7 @@
+# Prov1015 - Okinawa
+culture = kyushuan # changes
+is_city = no
+religion = shen
+base_tax = 1
+base_production = 1
+base_manpower = 1

@@ -1,0 +1,8 @@
+#Prov318 - Sugla
+culture = greek# Should not be Greek or Orthodox in 1444. Its status as a majority Greek city dates to at least after the 17th Century
+religion = orthodox
+is_city = no
+
+base_tax = 1
+base_production = 1
+base_manpower = 1

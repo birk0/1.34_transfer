@@ -1,0 +1,19 @@
+# 2600 - Banjira
+
+owner = MLI
+controller = MLI
+add_core = MLI
+culture = swahili
+religion = sunni
+capital = "Banjira"
+is_city = yes
+base_manpower = 1
+trade_goods = gold
+hre = no
+base_tax = 1
+base_production = 1
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

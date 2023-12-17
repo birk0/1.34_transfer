@@ -1,0 +1,18 @@
+#4618 - Tono
+
+culture = nubian 
+religion = sunni
+capital = "Tono"
+owner = ABB
+controller = ABB
+add_core = ABB
+is_city = yes
+trade_goods = livestock
+base_manpower = 1
+hre = no
+base_tax = 2
+base_production = 1
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

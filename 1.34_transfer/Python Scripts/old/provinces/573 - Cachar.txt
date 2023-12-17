@@ -1,0 +1,18 @@
+#573 - Cachar
+
+owner = KAC
+controller = KAC
+culture = chin
+religion = shen #changes
+capital = "Maibang"
+trade_goods = grain
+hre = no
+base_tax = 1 
+base_production = 1
+base_manpower = 1
+is_city = yes
+add_core = KAC
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

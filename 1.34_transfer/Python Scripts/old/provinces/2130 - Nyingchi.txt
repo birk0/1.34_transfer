@@ -1,0 +1,20 @@
+# 2130 - Nyingchi
+
+owner = UTS
+controller = UTS
+add_core = UTS
+culture = tibetan
+religion = vajrayana
+capital = "Nyingchi"
+trade_goods = grain
+hre = no
+base_tax = 1 
+base_production = 1
+base_manpower = 2
+is_city = yes
+
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

@@ -1,0 +1,5 @@
+#Prov1300 - Western Mediterranean
+
+base_tax = 1
+base_production = 1
+base_manpower = 1

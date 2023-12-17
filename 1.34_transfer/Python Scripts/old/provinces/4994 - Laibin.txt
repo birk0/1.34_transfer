@@ -1,0 +1,22 @@
+# 4994 - Laibin
+
+owner = MNG
+controller = MNG
+add_core = MNG
+culture = zhuang
+religion = shen #changes
+capital = "Laibin"
+trade_goods = incense
+hre = no
+base_tax = 4 
+base_production = 4
+base_manpower = 2
+is_city = yes
+add_local_autonomy = 25 #Ming weak rule over South
+add_core = CGS
+
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

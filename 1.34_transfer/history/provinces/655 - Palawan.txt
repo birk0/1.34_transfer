@@ -1,0 +1,7 @@
+#Prov655 - Palawan
+culture = filipino
+religion = shen
+
+base_tax = 1
+base_production = 1
+base_manpower = 1

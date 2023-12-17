@@ -1,0 +1,19 @@
+#990 - Randers
+
+owner = DAN
+controller = DAN
+add_core = DAN
+culture = danish
+religion = catholic
+hre = no
+base_tax = 2
+base_production = 1
+trade_goods = naval_supplies
+base_manpower = 1
+capital = "Randers"
+is_city = yes
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

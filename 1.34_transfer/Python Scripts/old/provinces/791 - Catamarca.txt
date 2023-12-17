@@ -1,0 +1,22 @@
+# 791 - Kazer
+
+owner = WAD
+controller = WAD
+add_core = WAD
+culture = tunjur 
+religion = shamanism #Fetishism
+capital = "Kazer"
+native_size = 50
+native_ferocity = 4
+native_hostileness = 9 
+trade_goods = unknown
+hre = no
+base_tax = 1 
+base_production = 1
+base_manpower = 1
+
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

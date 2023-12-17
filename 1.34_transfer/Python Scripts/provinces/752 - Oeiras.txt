@@ -1,0 +1,7 @@
+#Prov752 - Oeiras
+culture = songhai#bagirmi
+religion = shamanism#Fetishism
+
+base_tax = 1
+base_production = 1
+base_manpower = 1

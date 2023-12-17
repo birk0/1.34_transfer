@@ -1,0 +1,11 @@
+
+ALM = "countries/Almohads.txt"
+RSM = "countries/Rustamids.txt"
+LAM = "countries/Lamtuna.txt"
+TRZ = "countries/Trarza.txt"
+KIF = "countries/Kiffa.txt"
+BEB = "countries/Berabish.txt"
+TUM = "countries/Tumed.txt"
+MHL = "countries/Mughulistan.txt"
+ORQ = "countries/Oroqen.txt"
+DUM = "countries/Dummy_country.txt"

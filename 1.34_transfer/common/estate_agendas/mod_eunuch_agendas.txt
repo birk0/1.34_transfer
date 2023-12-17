@@ -1,0 +1,959 @@
+
+#This one or the next one will always be valid
+estate_eunuchs_hire_advisor = {
+	can_select = {
+		NOT = {
+			employed_advisor = {
+				category = ADM
+			}
+		}
+	}
+	selection_weight = {
+		factor = 1
+	}
+	task_requirements = {
+		employed_advisor = {
+			category = ADM
+		}
+		is_in_deficit = no
+	}
+    task_completed_effect = {
+		add_estate_loyalty = {
+			estate = estate_eunuchs
+			loyalty = 10
+		}
+    }
+    failing_effect = {
+        add_estate_loyalty_modifier = {
+            estate = estate_eunuchs
+			desc = EST_VAL_AGENDA_DENIED
+			loyalty = -5
+			duration = 7300
+        }
+    }
+}
+
+estate_eunuchs_fire_advisor = {
+	can_select = {
+		employed_advisor = {
+			category = ADM
+		}
+	}
+	selection_weight = {
+		factor = 1
+		modifier = {
+			factor = 0.5
+			always = yes
+		}
+		modifier = {
+			factor = 0.5
+			employed_advisor = {
+				type = theologian
+				religion = ROOT
+			}
+		}
+		modifier = {
+			factor = 2
+			advisor = theologian
+			NOT = {
+				employed_advisor = {
+					type = theologian
+					religion = ROOT
+				}
+			}
+		}
+	}
+	immediate_effect = {
+		hidden_effect = {
+			set_country_flag = need_to_fire_adm_advisor
+		}
+	}
+	on_invalid = {
+		clr_country_flag = need_to_fire_adm_advisor
+	}
+	task_requirements = {
+		custom_trigger_tooltip = {
+			tooltip = fire_adm_advisor_tooltip
+			has_country_flag = just_fired_adm_advisor
+		}
+	}
+    task_completed_effect = {
+		add_estate_loyalty = {
+			estate = estate_eunuchs
+			loyalty = 10
+		}
+		clr_country_flag = just_fired_adm_advisor
+		clr_country_flag = need_to_fire_adm_advisor
+	}
+	invalid_trigger = {
+		NOT = {
+			employed_advisor = {
+				category = ADM
+			}
+		}
+		NOT = { has_country_flag = just_fired_adm_advisor }
+	}
+    failing_effect = {
+        add_estate_loyalty_modifier = {
+            estate = estate_eunuchs
+			desc = EST_VAL_AGENDA_DENIED
+			loyalty = -5
+			duration = 7300
+        }
+		clr_country_flag = need_to_fire_adm_advisor
+    }
+}
+
+#Stop Converting a province
+estate_eunuchs_stop_converting_province_x = {
+	can_select = {
+		NOT = { has_harmony = yes }
+		num_of_missionaries = 1
+		any_owned_province = {
+			has_missionary = yes
+			has_harmony = yes
+			missionary_strength = 0.01
+		}
+		is_free_or_tributary_trigger = yes
+	}
+	selection_weight = {
+		factor = 5
+	}
+	pre_effect = {
+		random_owned_province = {
+			limit = {
+				has_missionary = yes
+				has_harmony = yes
+				missionary_strength = 0.01
+			}
+			save_event_target_as = agenda_province
+		}
+	}
+	provinces_to_highlight = {
+		province_id = event_target:agenda_province
+	}
+	fail_if = {
+		event_target:agenda_province = {
+			OR = {
+				NOT = { owned_by = root }
+				NOT = { has_harmony = yes }
+			}
+		}
+	}
+	task_requirements = {
+		event_target:agenda_province = {
+			has_missionary = no
+			has_harmony = yes
+		}
+	}
+    task_completed_effect = {
+		add_estate_loyalty = {
+			estate = estate_eunuchs
+			loyalty = 15
+		}
+		event_target:agenda_province = {
+			add_province_modifier = {
+				name = agenda_hinduist_rallying
+				duration = 7300
+			}
+		}
+    }
+    failing_effect = {
+        add_estate_loyalty_modifier = {
+            estate = estate_eunuchs
+			desc = EST_VAL_AGENDA_DENIED
+			loyalty = -5
+			duration = 7300
+        }
+    }
+}
+
+#Reduce War Exhaustion
+estate_eunuchs_reduce_war_exhaustion = {
+	can_select = {
+		war_exhaustion = 5
+		is_at_war = no
+		NOT = { has_country_modifier = national_recovery }
+	}
+	selection_weight = {
+		factor = 2
+		modifier = {
+			factor = 1.5
+			war_exhaustion = 7.5
+		}
+		modifier = {
+			factor = 1.5
+			war_exhaustion = 10
+		}
+	}
+	fail_if = {
+		is_at_war = yes
+	}
+	task_requirements = {
+		NOT = { war_exhaustion = 1 }
+	}
+    task_completed_effect = {
+		add_estate_loyalty = {
+			estate = estate_eunuchs
+			loyalty = 10
+		}
+		add_country_modifier = {
+			name = national_recovery
+			duration = 5475
+		}
+    }
+    failing_effect = {
+        add_estate_loyalty_modifier = {
+            estate = estate_eunuchs
+			desc = EST_VAL_AGENDA_DENIED
+			loyalty = -5
+			duration = 7300
+        }
+    }
+}
+
+#Stabilise Country
+estate_eunuchs_recover_stability = {
+	can_select = {
+		NOT = { stability = 0 }
+	}
+	selection_weight = {
+		factor = 2
+		modifier = {
+			factor = 1.5
+			NOT = { stability = -1 }
+		}
+	}
+	task_requirements = {
+		stability = 1
+	}
+    task_completed_effect = {
+		add_estate_loyalty = {
+			estate = estate_eunuchs
+			loyalty = 10
+		}
+		add_prestige = 10
+    }
+    failing_effect = {
+        add_estate_loyalty_modifier = {
+            estate = estate_eunuchs
+			desc = EST_VAL_AGENDA_DENIED
+			loyalty = -5
+			duration = 7300
+        }
+    }
+}
+
+#Stabilise Country II
+estate_eunuchs_increase_stability = {
+	can_select = {
+		NOT = { stability = 2 }
+		stability = 1
+	}
+	selection_weight = {
+		factor = 1
+	}
+	fail_if = {
+		NOT = { stability = 0 }
+	}
+	task_requirements = {
+		stability = 3
+	}
+    task_completed_effect = {
+		add_estate_loyalty = {
+			estate = estate_eunuchs
+			loyalty = 10
+		}
+		add_prestige = 10
+    }
+    failing_effect = {
+        add_estate_loyalty_modifier = {
+            estate = estate_eunuchs
+			desc = EST_VAL_AGENDA_DENIED
+			loyalty = -5
+			duration = 7300
+        }
+    }
+}
+
+#Reduce overextension
+estate_eunuchs_reduce_overextension = {
+	can_select = {
+		overextension_percentage = 0.50
+	}
+	selection_weight = {
+		factor = 2
+		modifier = {
+			factor = 1.5
+			overextension_percentage = 0.75
+		}
+		modifier = {
+			factor = 1.5
+			overextension_percentage = 1
+		}
+	}
+	provinces_to_highlight = {
+		owned_by = root
+		NOT = { is_core = root }
+	}
+	task_requirements = {
+		NOT = { overextension_percentage = 0.01 }
+	}
+    task_completed_effect = {
+		add_estate_loyalty = {
+			estate = estate_eunuchs
+			loyalty = 10
+		}
+		add_adm_power = 50
+    }
+    failing_effect = {
+        add_estate_loyalty_modifier = {
+            estate = estate_eunuchs
+			desc = EST_VAL_AGENDA_DENIED
+			loyalty = -5
+			duration = 7300
+        }
+    }
+}
+
+#Get allies
+estate_eunuchs_get_allies = {
+	can_select = {
+		has_harmony = yes
+		NOT = { num_of_allies = 3 }
+		NOT = { num_of_subjects = 3 }
+		is_at_war = no
+		num_of_free_diplomatic_relations = 1
+		NOT = { has_country_modifier = foreign_contacts }
+	}
+	selection_weight = {
+		factor = 1
+		modifier = {
+			factor = 2
+			NOT = { num_of_allies = 1 }
+			NOT = { num_of_subjects = 1 }
+		}
+	}
+	pre_effect = {
+		set_variable = {
+			which = estate_eunuchs_get_allies_variable
+			value = 0
+		}
+		if = {
+			limit = {
+				OR = {
+					NOT = { num_of_allies = 1 }
+					AND = {
+						num_of_subjects = 2
+						NOT = { num_of_allies = 2 }
+					}
+					AND = {
+						NOT = { num_of_allies = 2 }
+						NOT = { num_of_free_diplomatic_relations = 2 }
+					}
+				}
+			}
+			set_variable = {
+				which = estate_eunuchs_get_allies_variable
+				value = 1
+			}
+		}
+		else = {
+			set_variable = {
+				which = estate_eunuchs_get_allies_variable
+				value = 2
+			}
+		}
+	}
+	fail_if = {
+		is_free_or_tributary_trigger = no
+	}
+	task_requirements = {
+		if = {
+			limit = {
+				check_variable = {
+					which = estate_eunuchs_get_allies_variable
+					value = 2
+				}
+			}
+			num_of_allies = 3
+		}
+		else = {
+			num_of_allies = 2
+		}
+	}
+	task_completed_effect = {
+		add_estate_loyalty = {
+			estate = estate_eunuchs
+			loyalty = 10
+		}
+		add_country_modifier = {
+			name = foreign_contacts
+			duration = 3650
+		}
+	}
+    failing_effect = {
+        add_estate_loyalty_modifier = {
+            estate = estate_eunuchs
+			desc = EST_VAL_AGENDA_DENIED
+			loyalty = -5
+			duration = 7300
+        }
+    }
+}
+
+
+#Befriend Rival of Rival
+estate_eunuchs_befriend_rival_of_rival = {
+	can_select = {
+		has_harmony = yes
+		any_rival_country = {
+			any_rival_country = {
+				has_harmony = yes
+				NOT = { tag = root }
+				root = { knows_country = prev }
+				NOT = { is_rival = root }
+				NOT = { ROOT = { is_rival = prev } }
+				NOT = { alliance_with = root }
+				has_opinion = {
+					who = root
+					value = -50
+				}
+				NOT = {
+					has_opinion = {
+						who = root
+						value = 50
+					}
+				}
+			}
+		}
+	}
+	selection_weight = {
+		factor = 2
+		modifier = {
+			factor = 1.5
+			any_rival_country = {
+				army_size = root
+				any_rival_country = {
+					has_harmony = yes
+					NOT = { tag = root }
+					root = { knows_country = prev }
+					NOT = { is_rival = root }
+					NOT = { ROOT = { is_rival = prev } }
+					NOT = { alliance_with = root }
+					has_opinion = {
+						who = root
+						value = -50
+					}
+					NOT = {
+						has_opinion = {
+							who = root
+							value = 50
+						}
+					}
+				}
+			}
+		}
+		modifier = {
+			factor = 0.5
+			NOT = { num_of_free_diplomatic_relations = 1 }
+		}
+	}
+	pre_effect = {
+		random_rival_country = {
+			limit = {
+				any_rival_country = {
+					has_harmony = yes
+					NOT = { tag = root }
+					root = { knows_country = prev }
+					NOT = { is_rival = root }
+					NOT = { ROOT = { is_rival = prev } }
+					NOT = { alliance_with = root }
+					has_opinion = {
+						who = root
+						value = -50
+					}
+					NOT = {
+						has_opinion = {
+							who = root
+							value = 50
+						}
+					}
+				}
+			}
+			save_event_target_as = rival_country
+			random_rival_country = {
+				limit = {
+					has_harmony = yes
+					NOT = { tag = root }
+					root = { knows_country = prev }
+					NOT = { is_rival = root }
+					NOT = { ROOT = { is_rival = prev } }
+					NOT = { alliance_with = root }
+					has_opinion = {
+						who = root
+						value = -50
+					}
+					NOT = {
+						has_opinion = {
+							who = root
+							value = 50
+						}
+					}
+				}
+				save_event_target_as = agenda_country
+			}
+		}
+		random_rival_country = {
+			limit = {
+				any_rival_country = {
+					has_harmony = yes
+					NOT = { tag = root }
+					army_size = root
+					root = { knows_country = prev }
+					NOT = { is_rival = root }
+					NOT = { ROOT = { is_rival = prev } }
+					NOT = { alliance_with = root }
+					has_opinion = {
+						who = root
+						value = -50
+					}
+					NOT = {
+						has_opinion = {
+							who = root
+							value = 50
+						}
+					}
+				}
+			}
+			save_event_target_as = rival_country
+			random_rival_country = {
+				limit = {
+					has_harmony = yes
+					NOT = { tag = root }
+					army_size = root
+					root = { knows_country = prev }
+					NOT = { is_rival = root }
+					NOT = { ROOT = { is_rival = prev } }
+					NOT = { alliance_with = root }
+					has_opinion = {
+						who = root
+						value = -50
+					}
+					NOT = {
+						has_opinion = {
+							who = root
+							value = 50
+						}
+					}
+				}
+				save_event_target_as = agenda_country
+			}
+		}
+	}
+	fail_if = {
+		event_target:agenda_country = {
+			OR = {
+				NOT = { num_of_cities = 1 }
+				war_with = root
+				NOT = { has_opinion = { who = root value = -100 } }
+			}
+		}
+	}
+	provinces_to_highlight = {
+		is_capital_of = event_target:agenda_country
+	}
+	task_requirements = {
+		event_target:agenda_country = {
+			has_opinion = {
+				who = root
+				value = 100
+			}
+		}
+	}
+	task_completed_effect = {
+		add_estate_loyalty = {
+			estate = estate_eunuchs
+			loyalty = 10
+		}
+		generate_scaled_advisor_of_type_and_religion_effect = {
+			type = diplomat
+			religion = ROOT
+			discount = yes
+		}
+	}
+    failing_effect = {
+        add_estate_loyalty_modifier = {
+            estate = estate_eunuchs
+			desc = EST_VAL_AGENDA_DENIED
+			loyalty = -5
+			duration = 7300
+        }
+    }
+}
+
+#Improve Relations with X
+estate_eunuchs_relations_with_X = {
+	can_select = {
+		any_known_country = {
+			NOT = { is_rival = root }
+			ROOT = { NOT = { is_rival = prev } }
+			OR = {
+				is_free_or_tributary_trigger = yes
+				is_subject_of = root
+			}
+			NOT = { war_with = root }
+			NOT = { has_opinion = { who = root value = 50 } }
+			has_opinion = { who = root value = -50 }
+			religion_group = root
+			NOT = {
+				any_owned_province = {
+					is_core = root
+				}
+			}
+			NOT = {
+				border_distance = {
+					who = root
+					distance = 200
+				}
+			}
+		}
+	}
+	selection_weight = {
+		factor = 1
+		modifier = {
+			factor = 1.5
+			any_known_country = {
+				OR = {
+					army_size = root
+					alliance_with = root
+				}
+				NOT = { is_rival = root }
+				ROOT = { NOT = { is_rival = prev } }
+				OR = {
+					is_free_or_tributary_trigger = yes
+					is_subject_of = root
+				}
+				NOT = { war_with = root }
+				NOT = { has_opinion = { who = root value = 50 } }
+				has_opinion = { who = root value = -50 }
+				religion_group = root
+				NOT = {
+					any_owned_province = {
+						is_core = root
+					}
+				}
+				NOT = {
+					border_distance = {
+						who = root
+						distance = 200
+					}
+				}
+			}
+		}
+		modifier = {
+			factor = 0.5
+			NOT = { num_of_free_diplomatic_relations = 1 }
+		}
+	}
+	fail_if = {
+		event_target:agenda_country = {
+			OR = {
+				NOT = { num_of_cities = 1 }
+				war_with = root
+				NOT = { has_opinion = { who = root value = -100 } }
+			}
+		}
+	}
+	pre_effect = {
+		set_variable = {
+			which = estate_eunuchs_relations_with_X
+			value = 0
+		}
+		random_known_country = {
+			limit = {
+				NOT = { is_rival = root }
+				ROOT = { NOT = { is_rival = prev } }
+				OR = {
+					is_free_or_tributary_trigger = yes
+					is_subject_of = root
+				}
+				NOT = { war_with = root }
+				NOT = { has_opinion = { who = root value = 50 } }
+				has_opinion = { who = root value = -50 }
+				religion_group = root
+				NOT = {
+					any_owned_province = {
+						is_core = root
+					}
+				}
+				NOT = {
+					border_distance = {
+						who = root
+						distance = 200
+					}
+				}
+			}
+			save_event_target_as = agenda_country
+		}
+		random_known_country = {
+			limit = {
+				OR = {
+					army_size = root
+					alliance_with = root
+					has_harmony = yes
+				}
+				NOT = { is_rival = root }
+				ROOT = { NOT = { is_rival = prev } }
+				OR = {
+					is_free_or_tributary_trigger = yes
+					is_subject_of = root
+				}
+				NOT = { war_with = root }
+				NOT = { has_opinion = { who = root value = 50 } }
+				has_opinion = { who = root value = -50 }
+				religion_group = root
+				NOT = {
+					any_owned_province = {
+						is_core = root
+					}
+				}
+				NOT = {
+					border_distance = {
+						who = root
+						distance = 200
+					}
+				}
+			}
+			save_event_target_as = agenda_country
+		}
+		if = {
+			limit = {
+				event_target:agenda_country = {
+					NOT = { has_opinion = { who = root value = 0 } }
+				}
+			}
+			set_variable = {
+				which = estate_eunuchs_relations_with_X
+				value = 1
+			}
+		}
+		else = {
+			set_variable = {
+				which = estate_eunuchs_relations_with_X
+				value = 2
+			}
+		}
+	}
+	provinces_to_highlight = {
+		is_capital_of = event_target:agenda_country
+	}
+	task_requirements = {
+		if = {
+			limit = {
+				check_variable = {
+					which = estate_eunuchs_relations_with_X
+					value = 2
+				}
+			}
+			event_target:agenda_country = {
+				has_opinion = {
+					who = root
+					value = 100
+				}
+			}
+		}
+		else = {
+			event_target:agenda_country = {
+				has_opinion = {
+					who = root
+					value = 50
+				}
+			}
+		}
+	}
+	task_completed_effect = {
+		add_estate_loyalty = {
+			estate = estate_eunuchs
+			loyalty = 15
+		}
+	}
+    failing_effect = {
+        add_estate_loyalty_modifier = {
+            estate = estate_eunuchs
+			desc = EST_VAL_AGENDA_DENIED
+			loyalty = -5
+			duration = 7300
+        }
+    }
+}
+
+
+
+#Get AE down (if there is a coalition) 
+estate_eunuchs_break_coalition = {
+	can_select = {
+		has_harmony = yes
+		any_country = {
+			coalition_target = root
+			has_opinion_modifier = {
+				who = root
+				modifier = aggressive_expansion
+			}
+			NOT = {
+				has_opinion_modifier = {
+					who = root
+					modifier = aggressive_expansion
+					value = -15
+				}
+			}
+		}
+		is_at_war = no
+	}
+	selection_weight = {
+		factor = 5
+		modifier = {
+			factor = 2
+			calc_true_if = {
+				amount = 5
+				all_country = {
+					coalition_target = root
+				}
+			}
+		}
+		modifier = {
+			factor = 0.5
+			NOT = {
+				any_country = {
+					coalition_target = root
+					army_size = root
+				}
+			}
+		}
+	}
+	provinces_to_highlight = {
+		is_capital = yes
+		owner = {
+			OR = {
+				coalition_target = root
+				AND = {
+					has_opinion_modifier = {
+						who = root
+						modifier = aggressive_expansion
+					}
+					NOT = {
+						has_opinion_modifier = {
+							who = root
+							modifier = aggressive_expansion
+							value = -15
+						}
+					}
+				}
+			}
+		}
+	}
+	fail_if = {
+		has_country_modifier = just_lost_war_timer
+	}
+	task_requirements = {
+		OR = {
+			custom_trigger_tooltip = {
+				tooltip = no_coalition_against_us_tooltip
+				NOT = {
+					any_country = {
+						coalition_target = root
+					}
+				}
+			}
+			custom_trigger_tooltip = {
+				tooltip = no_one_has_15_ae_on_us_tooltip
+				NOT = {
+					any_country = {
+						has_opinion_modifier = {
+							who = root
+							modifier = aggressive_expansion
+						}
+						NOT = {
+							has_opinion_modifier = {
+								who = root
+								modifier = aggressive_expansion
+								value = -15
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	task_completed_effect = {
+		add_estate_loyalty = {
+			estate = estate_eunuchs
+			loyalty = 10
+		}
+		add_dip_power = 50
+	}
+    failing_effect = {
+        add_estate_loyalty_modifier = {
+            estate = estate_eunuchs
+			desc = EST_VAL_AGENDA_DENIED
+			loyalty = -5
+			duration = 7300
+        }
+    }
+}
+
+#Restore legitimacy
+estate_eunuchs_restore_legitimacy = {
+	can_select = {
+		NOT = { legitimacy_equivalent = 65 }
+		government = monarchy
+		NOT = { has_ruler_modifier = legitimacy_defended }
+	}
+	selection_weight = {
+		factor = 2
+		modifier = {
+			factor = 1.5
+			NOT = { legitimacy_equivalent = 50 }
+		}
+		modifier = {
+			factor = 1.5
+			NOT = { legitimacy_equivalent = 35 }
+		}
+	}
+	fail_if = {
+		OR = {
+			NOT = { government = monarchy }
+			has_regency = yes
+		}
+	}
+	task_requirements = {
+		legitimacy_equivalent = 90
+	}
+    task_completed_effect = {
+		add_estate_loyalty = {
+			estate = estate_eunuchs
+			loyalty = 10
+		}
+		if = {
+			limit = {
+				is_emperor_of_china = yes
+				has_dlc = "Mandate of Heaven"
+			}
+			add_prestige = 10
+		}
+		else = {
+			add_ruler_modifier = {
+				name = legitimacy_defended
+			}
+		}
+    }
+    failing_effect = {
+        add_estate_loyalty_modifier = {
+            estate = estate_eunuchs
+			desc = EST_VAL_AGENDA_DENIED
+			loyalty = -5
+			duration = 7300
+        }
+    }
+}
+

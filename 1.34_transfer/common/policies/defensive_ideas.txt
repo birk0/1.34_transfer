@@ -1,0 +1,226 @@
+#############################################
+#	Policies for the Defensive Idea Group
+#############################################
+local_army_organisation = {
+	monarch_power = MIL
+	potential = {
+		ai = no
+		has_idea_group = defensive_ideas
+	}
+	
+	allow = {
+		full_idea_group = defensive_ideas
+		hidden_trigger = {
+			NOT = { has_idea_group = indigenous_ideas }
+		}
+		if = {
+			limit = { has_country_modifier = local_army_organisation_cooldown }
+			custom_trigger_tooltip = {
+				tooltip = POLICY_ON_COOLDOWN
+				always = no
+			}
+		}
+		if = {
+			limit = {
+				has_country_flag = defensive_cd_fl
+			}
+			custom_trigger_tooltip = {
+				tooltip = "We must wait before we can select a policy from this idea group again."
+				always = no
+			}
+		}
+	}
+
+	global_regiment_cost = -0.5
+
+	ai_will_do = {
+		factor = 1
+	}
+}
+the_preparation_act = {
+	monarch_power = MIL
+	
+	potential = {
+		ai = no
+		has_idea_group = defensive_ideas
+	}
+	
+	allow = {
+		full_idea_group = defensive_ideas
+		hidden_trigger = {
+			NOT = { has_idea_group = indigenous_ideas }
+		}
+		if = {
+			limit = { has_country_modifier = the_preparation_act_cooldown }
+			custom_trigger_tooltip = {
+				tooltip = POLICY_ON_COOLDOWN
+				always = no
+			}
+		}
+		if = {
+			limit = {
+				has_country_flag = defensive_cd_fl
+			}
+			custom_trigger_tooltip = {
+				tooltip = "We must wait before we can select a policy from this idea group again."
+				always = no
+			}
+		}
+	}	
+	
+	cav_to_inf_ratio = 0.5
+	
+	ai_will_do = {
+		factor = 1
+	}
+}
+the_foreign_support_act = {
+	monarch_power = DIP
+
+
+	potential = {
+		ai = no
+		has_idea_group = defensive_ideas
+	}
+	
+	allow = {
+		full_idea_group = defensive_ideas
+		hidden_trigger = {
+			NOT = { has_idea_group = indigenous_ideas }
+		}
+		if = {
+			limit = { has_country_modifier = the_foreign_support_act_cooldown }
+			custom_trigger_tooltip = {
+				tooltip = POLICY_ON_COOLDOWN
+				always = no
+			}
+		}
+		if = {
+			limit = {
+				has_country_flag = defensive_cd_fl
+			}
+			custom_trigger_tooltip = {
+				tooltip = "We must wait before we can select a policy from this idea group again."
+				always = no
+			}
+		}
+	}
+
+	ae_impact = -0.2
+	
+	ai_will_do = {
+		factor = 1
+	}
+}
+privy_council_establishment_act = {
+	monarch_power = DIP
+
+
+	potential = {
+		ai = no
+		has_idea_group = defensive_ideas
+	}
+	
+	allow = {
+		full_idea_group = defensive_ideas
+		hidden_trigger = {
+			NOT = { has_idea_group = indigenous_ideas }
+		}
+		if = {
+			limit = { has_country_modifier = privy_council_establishment_act_cooldown }
+			custom_trigger_tooltip = {
+				tooltip = POLICY_ON_COOLDOWN
+				always = no
+			}
+		}
+		if = {
+			limit = {
+				has_country_flag = defensive_cd_fl
+			}
+			custom_trigger_tooltip = {
+				tooltip = "We must wait before we can select a policy from this idea group again."
+				always = no
+			}
+		}
+	}
+
+	spy_offence = 0.33
+	
+	ai_will_do = {
+		factor = 1
+	}
+}
+the_importation_act = {
+	monarch_power = ADM
+
+	potential = {
+		ai = no
+		has_idea_group = defensive_ideas
+	}
+	allow = {
+		full_idea_group = defensive_ideas
+		hidden_trigger = {
+			NOT = { has_idea_group = indigenous_ideas }
+		}
+		if = {
+			limit = { has_country_modifier = the_importation_act_cooldown }
+			custom_trigger_tooltip = {
+				tooltip = POLICY_ON_COOLDOWN
+				always = no
+			}
+		}
+		if = {
+			limit = {
+				has_country_flag = defensive_cd_fl
+			}
+			custom_trigger_tooltip = {
+				tooltip = "We must wait before we can select a policy from this idea group again."
+				always = no
+			}
+		}
+	}
+	
+	trade_efficiency = 0.2
+	
+	ai_will_do = {
+		factor = 1
+	}
+}
+public_welfare_act = {
+	monarch_power = ADM
+
+
+	potential = {
+		ai = no
+		has_idea_group = defensive_ideas
+	}
+	
+	allow = {
+		full_idea_group = defensive_ideas
+		hidden_trigger = {
+			NOT = { has_idea_group = indigenous_ideas }
+		}
+		if = {
+			limit = { has_country_modifier = public_welfare_act_cooldown }
+			custom_trigger_tooltip = {
+				tooltip = POLICY_ON_COOLDOWN
+				always = no
+			}
+		}
+		if = {
+			limit = {
+				has_country_flag = defensive_cd_fl
+			}
+			custom_trigger_tooltip = {
+				tooltip = "We must wait before we can select a policy from this idea group again."
+				always = no
+			}
+		}
+	}
+
+	stability_cost_modifier = -0.5
+
+	ai_will_do = {
+		factor = 1
+	}
+}

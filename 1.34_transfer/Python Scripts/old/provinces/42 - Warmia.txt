@@ -1,0 +1,24 @@
+#42 - Warmia
+
+owner = TEU
+controller = TEU
+capital = "Allenstein"
+culture = prussian
+religion = catholic
+trade_goods = naval_supplies
+hre = no
+base_tax = 3
+base_production = 3
+base_manpower = 2
+is_city = yes
+add_core = TEU
+
+
+
+
+1444.12.1 = {
+	trade_goods = unknown
+	owner = ---
+	controller = ---
+	hre = no
+}

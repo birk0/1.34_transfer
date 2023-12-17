@@ -1,0 +1,55 @@
+tlemcen_civil_crisis = { #Disaster for Tlemcen
+	ended_by_country_breaking_to_rebels = no
+	potential = {
+		TAG = TLC
+		NOT = { mission_completed = tlc_restore_order } 
+	    NOT = { has_country_flag = tlc_has_been_annexed }
+	}
+
+	can_start = {
+		TAG = TLC
+		has_any_disaster = no
+		NOT = { mission_completed = tlc_restore_order }
+		NOT = { has_country_flag = tlc_has_been_annexed }
+	}
+	
+	can_stop = {
+		OR = {
+		   mission_completed = tlc_restore_order
+		   has_country_flag = tlc_has_been_annexed
+		}
+		has_any_disaster = yes
+	}
+	
+	progress = {
+		modifier = {
+		    factor = 100
+		    tag = TLC
+		}
+	}
+
+	can_end = {
+		OR = {
+		   mission_completed = tlc_restore_order
+		   has_country_flag = tlc_has_been_annexed
+		   is_subject = yes
+		}
+	}
+
+	modifier = {
+		global_unrest = 5
+		stability_cost_modifier = 1
+	}
+
+	on_start = mor_events.28
+	on_end = mor_events.29
+	
+	on_monthly = {
+		events = {
+		}
+		
+		random_events = {
+		}
+	}
+}
+

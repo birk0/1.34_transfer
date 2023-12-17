@@ -1,0 +1,7 @@
+# Prov1354 - Coast of Surabaya
+culture = vietnamese
+is_city = no
+religion = shen
+base_tax = 1
+base_production = 1
+base_manpower = 1

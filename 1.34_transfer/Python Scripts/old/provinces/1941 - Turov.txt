@@ -1,0 +1,20 @@
+#Turov
+
+owner = LIT
+controller = LIT 
+culture = byelorussian
+religion = orthodox
+hre = no
+base_tax = 1 
+base_production = 1
+trade_goods = wool 
+base_manpower = 1
+capital = "Turov"
+is_city = yes
+add_core = LIT
+
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

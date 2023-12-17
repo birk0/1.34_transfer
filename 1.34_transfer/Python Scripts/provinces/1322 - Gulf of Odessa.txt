@@ -1,0 +1,5 @@
+#Prov1322 - Gulf of Odessa
+
+base_tax = 1
+base_production = 1
+base_manpower = 1

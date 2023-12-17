@@ -1,0 +1,289 @@
+#this is probably going to get removed or drastically reworked
+
+
+#Reworked Ming Crisis
+
+#Maintaining Balance in East Asia is tricky with Ming, but here is how the new disaster setup works.
+
+#If Ming is AI controlled:
+#	OR = {
+#		neighbouring_horde = {
+#			truce_with_ming = no
+#			is_subject_of_ming = no
+#		}
+#		manchu_exists = yes
+#		past_age_of_discovery = yes
+#		war_with_player = yes
+#	}
+
+#If Ming is player controlled:
+#	past_age_of_discovery = yes
+
+#If Ming is a lucky nation and all their tributaries and neighbours are AI:
+#	-Disaster wont fire (mingblob goes brr)
+ming_crisis = {
+	ended_by_country_breaking_to_rebels = no
+	potential = {
+		tag = MNG
+		normal_or_historical_nations = yes
+		OR = {
+			is_emperor_of_china = yes
+			has_country_modifier = lost_mandate_of_heaven
+		}
+		NOT = { mission_completed = mng_prevent_collapse }
+	}
+	
+	can_start = {
+		always = no # Ming is probably not going to exist as a unified country in the game anymore
+	}
+	
+	can_stop = {
+		always = no
+	}
+
+	progress = {
+		modifier = {
+			factor = 1
+			tag = MNG
+		}
+	}
+	
+	can_end = {
+		always = no
+	}
+	
+	modifier = {
+		prestige = 1
+	}
+	
+	on_start = eoc_events.24 #Crisis of the Ming Dynasty
+	on_end = eoc_events.30 #Ends the Crisis
+	
+	on_monthly = {
+#		events = {
+#			eoc_events.35 # Koxinga flees to Taiwan
+#			eoc_events.26 # Chinese warlords break free
+#		}
+#		random_events = {
+#			1000 = 0
+#			100 = eoc_events.29 # Rebellion
+#		}
+	}
+
+	on_progress_effect = {
+#		if = {
+#			limit = { 
+#				NOT = { has_country_flag = ming_crisis_10_progress }
+#				check_variable = {
+#					which = ming_crisis_progress
+#					value = 10
+#				}
+#			}
+#			set_country_flag = ming_crisis_10_progress
+#			if = {
+#				limit = {
+#					has_ai_cb_against = {
+#						who = event_target:PlayerCountry
+#					}
+#				}
+#				event_target:PlayerCountry = {
+#					set_country_flag = ming_crisis_cause
+#					country_event = { id = eoc_events.57 } #Ming at 10% to disaster
+#				}
+#			}
+#			every_neighbor_country = {
+#				limit = {
+#					has_reform = steppe_horde
+#					NOT = { tag = event_target:PlayerCountry }
+#					NOT = {
+#						any_neighbor_country = { #Usually Manchu meets this but oirat can too
+#							has_reform = steppe_horde
+#							army_size = PREV
+#						}
+#					}
+#				}
+#				set_country_flag = ming_crisis_cause
+#				country_event = { id = eoc_events.57 } #Ming at 10% to disaster
+#			}
+#		}
+#		if = {
+#			limit = { 
+#				NOT = { has_country_flag = ming_crisis_25_progress }
+#				check_variable = {
+#					which = ming_crisis_progress
+#					value = 25
+#				}
+#			}
+#			set_country_flag = ming_crisis_25_progress
+#			if = {
+#				limit = {
+#					has_ai_cb_against = {
+#						who = event_target:PlayerCountry
+#					}
+#				}
+#				event_target:PlayerCountry = {
+#					set_country_flag = ming_crisis_cause
+#					country_event = { id = eoc_events.81 } #Ming at 25% to disaster
+#				}
+#			}
+#			every_neighbor_country = {
+#				limit = {
+#					has_reform = steppe_horde
+#					NOT = { tag = event_target:PlayerCountry }
+#					NOT = {
+#						any_neighbor_country = { #Usually Manchu meets this but oirat can too
+#							has_reform = steppe_horde
+#							army_size = PREV
+#						}
+#					}
+#				}
+#				set_country_flag = ming_crisis_cause
+#				country_event = { id = eoc_events.81 } #Ming at 25% to disaster
+#			}
+#		}
+#		if = {
+#			limit = { 
+#				NOT = { has_country_flag = ming_crisis_50_progress }
+#				check_variable = {
+#					which = ming_crisis_progress
+#					value = 50
+#				}
+#			}
+#			set_country_flag = ming_crisis_50_progress
+#			if = {
+#				limit = {
+#					has_ai_cb_against = {
+#						who = event_target:PlayerCountry
+#					}
+#				}
+#				event_target:PlayerCountry = {
+#					set_country_flag = ming_crisis_cause
+#					country_event = { id = eoc_events.58 } #Ming at 50% to disaster
+#				}
+#			}
+#			every_neighbor_country = {
+#				limit = {
+#					has_reform = steppe_horde
+#					NOT = { tag = event_target:PlayerCountry }
+#					NOT = {
+#						any_neighbor_country = { #Usually Manchu meets this but oirat can too
+#							has_reform = steppe_horde
+#							army_size = PREV
+#						}
+#					}
+#				}
+#				set_country_flag = ming_crisis_cause
+#				country_event = { id = eoc_events.58 } #Ming at 50% to disaster
+#			}
+#		}
+#		if = {
+#			limit = { 
+#				NOT = { has_country_flag = ming_crisis_75_progress }
+#				check_variable = {
+#					which = ming_crisis_progress
+#					value = 75
+#				}
+#			}
+#			set_country_flag = ming_crisis_75_progress
+#			if = {
+#				limit = {
+#					has_ai_cb_against = {
+#						who = event_target:PlayerCountry
+#					}
+#				}
+#				event_target:PlayerCountry = {
+#					set_country_flag = ming_crisis_cause
+#					country_event = { id = eoc_events.59 } #Ming at 75% to disaster
+#				}
+#			}
+#			every_neighbor_country = {
+#				limit = {
+#					has_reform = steppe_horde
+#					NOT = { tag = event_target:PlayerCountry }
+#					NOT = {
+#						any_neighbor_country = { #Usually Manchu meets this but oirat can too
+#							has_reform = steppe_horde
+#							army_size = PREV
+#						}
+#					}
+#				}
+#				set_country_flag = ming_crisis_cause
+#				country_event = { id = eoc_events.59 } #Ming at 75% to disaster
+#			}
+#		}
+#		if = {
+#			limit = {
+#				has_country_flag = ming_crisis_10_progress
+#				NOT = {
+#					check_variable = {
+#						which = ming_crisis_progress
+#						value = 1
+#					}
+#				}
+#			}
+#			clr_country_flag = ming_crisis_10_progress
+#			clr_country_flag = ming_crisis_25_progress
+#			clr_country_flag = ming_crisis_50_progress
+#			clr_country_flag = ming_crisis_75_progress
+#			if = {
+#				limit = {
+#					has_ai_cb_against = {
+#						who = event_target:PlayerCountry
+#					}
+#				}
+#				event_target:PlayerCountry = {
+#					clr_country_flag = ming_crisis_cause
+#					country_event = { id = eoc_events.61 } #Stability in Ming
+#				}
+#			}
+#			every_neighbor_country = {
+#				limit = {
+#					has_reform = steppe_horde
+#					NOT = { tag = event_target:PlayerCountry }
+#					NOT = {
+#						any_neighbor_country = { #Usually Manchu meets this but oirat can too
+#							has_reform = steppe_horde
+#							army_size = PREV
+#						}
+#					}
+#				}
+#				clr_country_flag = ming_crisis_cause
+#				country_event = { id = eoc_events.61 } #Stability in Ming
+#			}
+#		}
+	}
+
+	on_start_effect = {
+#		hidden_effect = {
+#			clr_country_flag = ming_crisis_10_progress
+#			clr_country_flag = ming_crisis_25_progress
+#			clr_country_flag = ming_crisis_50_progress
+#			clr_country_flag = ming_crisis_75_progress
+#			if = {
+#				limit = {
+#					has_ai_cb_against = {
+#						who = event_target:PlayerCountry
+#					}
+#				}
+#				event_target:PlayerCountry = {
+#					clr_country_flag = ming_crisis_cause
+#					country_event = { id = eoc_events.60 } #Crisis of Ming Dynasty
+#				}
+#			}
+#			every_neighbor_country = {
+#				limit = {
+#					has_reform = steppe_horde
+#					NOT = { tag = event_target:PlayerCountry }
+#					NOT = {
+#						any_neighbor_country = { #Usually Manchu meets this but oirat can too
+#							has_reform = steppe_horde
+#							army_size = PREV
+#						}
+#					}
+#				}
+#				clr_country_flag = ming_crisis_cause
+#				country_event = { id = eoc_events.60 } #Crisis of Ming Dynasty
+#			}
+#		}
+	}
+}

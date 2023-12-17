@@ -1,0 +1,20 @@
+#963 - Ayteke
+
+owner = SHY
+controller = SHY
+culture = khazak
+religion = sunni
+capital = "Ayteke"
+trade_goods = fish
+base_tax = 1
+base_production = 1
+base_manpower = 1
+hre = no
+is_city = yes
+add_core = KZH
+add_core = SHY
+add_core = TRS
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

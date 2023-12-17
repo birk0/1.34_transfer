@@ -1,0 +1,19 @@
+#4275 - Al-Yamamah
+
+owner = DAW
+controller = DAW
+culture = bedouin_arabic
+religion = sunni
+capital = "Kharj"
+trade_goods = livestock
+hre = no
+base_tax = 1 
+base_production = 1
+base_manpower = 2
+is_city = yes
+add_core = DAW
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

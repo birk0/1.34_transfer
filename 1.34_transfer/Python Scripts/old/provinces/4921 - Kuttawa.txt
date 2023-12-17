@@ -1,0 +1,21 @@
+#4921 - Kaltan
+
+religion = tengri_pagan_reformed
+capital = "Kaltan"
+hre = no
+base_tax = 1 
+base_production = 1
+base_manpower = 1
+#changes
+owner = OIR
+controller = OIR
+add_core = OIR
+is_city = yes
+trade_goods = livestock
+culture = oirats
+
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

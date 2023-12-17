@@ -1,0 +1,22 @@
+# 169 Armor
+
+owner = BRI
+controller = BRI
+capital = "Saint-Malo"
+is_city = yes
+culture = breton
+religion = catholic
+hre = no
+base_tax = 4
+base_production = 3
+trade_goods = cloth
+base_manpower = 3
+add_core = BRI
+
+1444.12.1 = { # New Bookmark
+	trade_goods = unknown
+	remove_cores = yes
+	owner = ---
+	controller = ---
+	hre = no
+}

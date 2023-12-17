@@ -1,0 +1,22 @@
+#New province
+#4942 - Taza
+
+owner = MOR
+controller = MOR 
+culture = moroccan
+religion = sunni
+capital = "Taza"
+trade_goods = grain
+hre = no
+base_tax = 3
+base_production = 1
+base_manpower = 2
+is_city = yes
+add_core = MOR
+add_core = FEZ
+
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

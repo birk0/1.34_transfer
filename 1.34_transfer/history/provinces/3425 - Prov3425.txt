@@ -1,0 +1,8 @@
+#Prov3425 - Prov3425
+religion = sunni
+culture = turkish
+is_city = no
+
+base_tax = 1
+base_production = 1
+base_manpower = 1

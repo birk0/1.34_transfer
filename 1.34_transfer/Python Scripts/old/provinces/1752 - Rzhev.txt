@@ -1,0 +1,27 @@
+#1752 - Rzhev
+
+owner = MOS
+controller = MOS
+culture = russian
+religion = orthodox
+hre = no
+trade_goods = grain 
+capital = "Rzhev"
+is_city = yes
+add_core = MOS
+add_core = TVE
+#discovered_by = eastern
+#discovered_by = western
+#discovered_by = nomad_group
+#changes
+base_tax = 3
+base_production = 2
+base_manpower = 2
+
+
+
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

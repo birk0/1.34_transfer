@@ -1,0 +1,779 @@
+tlc_2 = {
+	slot = 2
+	generic = no
+	ai = yes
+	potential = {
+		tag = TLC
+		NOT = { map_setup = map_setup_random }
+	}
+	has_country_shield = yes
+	
+	tlc_restore_order = {
+	   icon = mission_ayyubids_virtues_of_a_ruler
+	   position = 1
+	   required_missions = { }
+	   trigger = {
+	      has_disaster = tlemcen_civil_crisis
+	      stability = 1
+	      legitimacy = 100
+	      NOT = { 
+			  OR = {
+	         	num_of_rebel_armies = 1
+	         	num_of_rebel_controlled_provinces = 1
+	         	any_owned_province = {
+	            	has_province_modifier = tlc_anarchy
+	         	}
+	         	has_country_flag = tlc_has_been_annexed
+	         	is_subject = yes
+			  }
+	      }
+	   }
+	   effect = {
+	      add_adm_power = 100
+	      add_dip_power = 100
+	      add_mil_power = 100
+	      every_owned_province = {
+	         add_province_modifier = {
+	            name = tlc_restored_order
+	            duration = 3650
+	         }
+	      }
+	      336 = {
+	         change_trade_goods = silk
+	         add_base_tax = 2
+	         add_base_production = 2
+	         add_base_manpower = 2
+	         add_province_modifier = {
+	            name = tlc_restored_order_capital
+	            duration = -1
+	         }
+	      }
+	   }
+	}
+	
+	tlc_crush_desert_tribes = {
+	   icon = mod_mission_1
+	   position = 2
+	   required_missions = { tlc_restore_order }
+	   provinces_to_highlight = {
+	      OR = { 
+	        has_terrain = desert
+	        any_neighbor_province = { has_terrain = desert }
+	      }
+	      NOT = { development = 10 }
+	      country_or_non_sovereign_subject_holds = ROOT
+	   }
+	   trigger = {
+	      NOT = {
+	         any_owned_province = {
+	            OR = {
+	               has_terrain = desert
+	               any_neighbor_province = { has_terrain = desert }
+	            }
+	            NOT = { development = 10 }
+	         }
+	      }
+	   }
+	   effect = {
+	      custom_tooltip = tlc_no_more_raids_tooltip
+	      add_years_of_income = 2
+	      every_owned_province = {
+	         limit = {
+	            OR = {
+	               has_terrain = desert
+	               any_neighbor_province = { has_terrain = desert }
+	            }
+	         }
+	         change_trade_goods = salt
+	         add_province_modifier = {
+	            name = tlc_reined_in_tribes
+	            duration = 3650
+	         }
+	      }
+	   }
+	}
+	
+	tlc_conquer_tribes = {
+	   icon = mission_pacify_the_berbers
+	   position = 3
+	   required_missions = {
+	      tlc_crush_desert_tribes
+	      tlc_build_navy
+	   }
+	   provinces_to_highlight = {
+	      OR = {
+	        area = ouled_nail_area
+	        area = north_saharan_area
+	      }
+	      NOT = { country_or_non_sovereign_subject_holds = ROOT }
+	   }
+	   trigger = {
+	      ouled_nail_area = { type = all country_or_non_sovereign_subject_holds = ROOT }
+	      north_saharan_area = { type = all country_or_non_sovereign_subject_holds = ROOT }
+	   }
+	   effect = {
+	      kabylia_area = {
+		     limit = {
+				  NOT = { is_permanent_claim = ROOT	}
+				  NOT = { is_core = ROOT	}
+			  }
+			  add_permanent_claim = ROOT
+		  }
+		  tunisia_area = {
+		     limit = {
+				  NOT = { is_permanent_claim = ROOT	}
+				  NOT = { is_core = ROOT	}
+			  }
+			  add_permanent_claim = ROOT
+		  }
+		  djerba_area = {
+		     limit = {
+				  NOT = { is_permanent_claim = ROOT	}
+				  NOT = { is_core = ROOT	}
+			  }
+			  add_permanent_claim = ROOT
+		  }
+	   }
+	}
+	
+	tlc_conquer_tunis = {
+	   icon = mission_conquer_tunis
+	   position = 4
+	   required_missions = { tlc_conquer_tribes }
+	   provinces_to_highlight = {
+	      OR = {
+	         area = kabylia_area
+	         area = tunisia_area
+	         area = djerba_area
+	      }
+	      NOT = { country_or_non_sovereign_subject_holds = ROOT }
+	      province_id = 341
+	   }
+	   trigger = {
+	      kabylia_area = { type = all country_or_non_sovereign_subject_holds = ROOT }
+	      tunisia_area = { type = all country_or_non_sovereign_subject_holds = ROOT }
+	      djerba_area = { type = all country_or_non_sovereign_subject_holds = ROOT }
+	      341 = { 
+	         province_has_center_of_trade_of_level = 3
+	         has_most_province_trade_power = ROOT
+	      }
+	   }
+	   effect = {
+	      tripolitania_area = {
+	         limit = {
+				  NOT = { is_permanent_claim = ROOT	}
+				  NOT = { is_core = ROOT	}
+			  }
+			  add_permanent_claim = ROOT
+		  }
+	      fezzan_area = {
+	         limit = {
+				  NOT = { is_permanent_claim = ROOT	}
+				  NOT = { is_core = ROOT	}
+			 }
+			 add_permanent_claim = ROOT
+		  }
+		  341 = {
+		     add_base_tax = 2
+		     add_base_production = 2
+		     add_base_manpower = 2
+		     add_province_modifier = {
+		        name = tlc_tunisian_ports
+		        duration = -1
+		     }
+		  }
+	   }
+	}
+	
+	tlc_conquer_east_maghreb = {
+	   icon = mission_conquer_alexandria
+	   position = 5
+	   required_missions = { tlc_conquer_tunis }
+	   provinces_to_highlight = {
+	      area = fezzan_area
+	      tripolitania_area = { 
+			type = all 
+		  	NOT = { has_dock_building_trigger = yes } 
+		  }
+	      NOT = { country_or_non_sovereign_subject_holds = ROOT }
+	   }
+	   trigger = {
+	      fezzan_area = { type = all country_or_non_sovereign_subject_holds = ROOT }
+	      tripolitania_area = { type = all country_or_non_sovereign_subject_holds = ROOT has_dock_building_trigger = yes }
+	   }
+	   effect = {
+	      add_country_modifier = {
+	         name = tlc_drydocks_of_east
+	         duration = -1
+	      }
+	      cyrenaica_area = {
+	         limit = {
+				  NOT = { is_permanent_claim = ROOT	}
+				  NOT = { is_core = ROOT	}
+			  }
+			  add_permanent_claim = ROOT
+	      }
+	      delta_area = {
+	         limit = {
+				  NOT = { is_permanent_claim = ROOT	}
+				  NOT = { is_core = ROOT	}
+			  }
+			  add_permanent_claim = ROOT
+	      }
+	      163 = { add_permanent_claim = ROOT }
+	      321 = { add_permanent_claim = ROOT }
+	   }
+	}
+	
+	tlc_saharan_route = {
+	   icon = mission_traverse_the_sahara
+	   position = 7
+	   required_missions = {
+	      tlc_conquer_east_maghreb
+	      tlc_conquer_sous
+	   }
+	   provinces_to_highlight = {
+	      OR = {
+	         province_id = 2448
+	         province_id = 2466
+	      }
+	      NOT = {
+	         has_trade_building_trigger = yes
+	      }
+		  NOT = { country_or_non_sovereign_subject_holds = ROOT }
+	   }
+	   trigger = {
+	      2448 = {
+	         has_trade_building_trigger = yes
+	         country_or_non_sovereign_subject_holds = ROOT
+	      }
+	      2466 = {
+	         has_trade_building_trigger = yes
+	         country_or_non_sovereign_subject_holds = ROOT
+	      }
+	   }
+	   effect = {
+	      country_event = { id = mor_events.34 } #Tlemcen colonizes the saharan corridors
+	   }
+	}
+}
+tlc_3 = {
+	slot = 3
+	generic = no
+	ai = yes
+	potential = {
+		tag = TLC
+		NOT = { map_setup = map_setup_random }
+	}
+	has_country_shield = yes
+	
+	tlc_build_army = {
+	   icon = mission_levantine_restoration
+	   position = 1
+	   required_missions = { }
+	   trigger = {
+	      army_size_percentage = 1 
+	   }
+	   effect = {
+	      add_army_tradition = 15
+	      add_country_modifier = {
+	         name = tlc_land_ambition
+	         duration = 1825
+	      }
+	   }
+	}
+	
+	tlc_build_navy = {
+	   icon = mission_colonize_the_west
+	   position = 2
+	   required_missions = { 
+	      tlc_build_army
+	      tlc_restore_order
+	   }
+	   trigger = {
+	      navy_size_percentage = 1
+	      num_ships_privateering = 10
+	   }
+	   effect = {
+	      create_admiral = { tradition = 50 }
+	      add_country_modifier = {
+	         name = tlc_naval_ambitions
+	         duration = 1825
+	      }
+	   }
+	}
+	
+	tlc_expand_west = {
+	   icon = mission_construct_a_corsair_fleet
+	   position = 3
+	   required_missions = { tlc_build_navy }
+	   trigger = {
+	      OR = {
+	         army_size = MOR
+	         army_size = TFL
+	      }
+	      OR = {
+	         MOR = {
+	            has_opinion_modifier = {
+	               who = ROOT
+	               modifier = scornfully_insulted
+	            }
+	         }
+	         TFL = {
+	            has_opinion_modifier = {
+	               who = ROOT
+	               modifier = scornfully_insulted
+	            }
+	         }
+	      }
+	   }
+	   effect = {
+	      tafilalt_area = {
+	         limit = {
+				  NOT = { is_permanent_claim = ROOT	}
+				  NOT = { is_core = ROOT	}
+			  }
+			  add_permanent_claim = ROOT
+		  }
+		  marrekesh_area = {
+		     limit = {
+		        NOT = { is_permanent_claim = ROOT }
+		        NOT = { is_core = ROOT }
+		     }
+		     add_permanent_claim = ROOT
+		  }
+	   }
+	}
+	
+	tlc_conquer_tafilalt = {
+	   icon = mission_patronize_art_and_religion
+	   position = 4
+	   required_missions = { tlc_expand_west }
+	   provinces_to_highlight = {
+	      area = tafilalt_area
+	      NOT = { country_or_non_sovereign_subject_holds = ROOT }
+	   }
+	   trigger = {
+	      tafilalt_area = { type = all country_or_non_sovereign_subject_holds = ROOT }
+	      NOT = { exists = TFL }
+	   }
+	   effect = {
+	      northern_morocco_area = {
+	         limit = {
+				  NOT = { is_permanent_claim = ROOT	}
+				  NOT = { is_core = ROOT	}
+			  }
+			  add_permanent_claim = ROOT
+	      }
+	      western_morocco_area = {
+	         limit = {
+				  NOT = { is_permanent_claim = ROOT	}
+				  NOT = { is_core = ROOT	}
+			  }
+			  add_permanent_claim = ROOT
+	      }
+	      346 = {
+	         add_province_modifier = {
+	            name = tlc_striking_gold
+	            duration = 5475
+	         }
+	      }
+	   }
+	}
+	
+	tlc_conquer_morocco = {
+	   icon = mission_moroccan_ports
+	   position = 5
+	   required_missions = { tlc_conquer_tafilalt }
+	   provinces_to_highlight = {
+	      OR = {
+	        area = marrekesh_area
+	        area = northern_morocco_area
+	        area = western_morocco_area
+	      }
+	      NOT = { country_or_non_sovereign_subject_holds = ROOT }
+	   }
+	   trigger = {
+	      num_of_owned_provinces_with = {
+	         area = marrekesh_area
+	         has_dock_building_trigger = yes
+	         value = 1
+	      }
+	      num_of_owned_provinces_with = {
+	         area = northern_morocco_area
+	         has_dock_building_trigger = yes
+	         value = 1
+	      }
+	      num_of_owned_provinces_with = {
+	         area = western_morocco_area
+	         has_dock_building_trigger = yes
+	         value = 1
+	      }
+	      marrekesh_area = { type = all country_or_non_sovereign_subject_holds = ROOT }
+	      northern_morocco_area = { type = all country_or_non_sovereign_subject_holds = ROOT }
+	      western_morocco_area = { type = all country_or_non_sovereign_subject_holds = ROOT }
+	   }
+	   effect = {
+	      sus_area = {
+	         limit = {
+				  NOT = { is_permanent_claim = ROOT	}
+				  NOT = { is_core = ROOT	}
+			  }
+			  add_permanent_claim = ROOT
+		  }
+	      southern_morocco_area = {
+	         limit = {
+				  NOT = { is_permanent_claim = ROOT	}
+				  NOT = { is_core = ROOT }
+			  }
+			  add_permanent_claim = ROOT
+		  }
+		  western_morocco_area = { add_province_modifier = { name = tlc_dockyards_of_the_west duration = -1 } }
+	   }
+	}
+	
+	tlc_conquer_sous = {
+	   icon = mission_conquer_air
+	   position = 6
+	   required_missions = {
+	      tlc_conquer_morocco
+	      tlc_conquer_east_maghreb
+	   }
+	   provinces_to_highlight = {
+	      OR = {
+	        area = sus_area
+	        area = southern_morocco_area
+	      }
+	      NOT = { country_or_non_sovereign_subject_holds = ROOT }
+	   }
+	   trigger = {
+	      sus_area = { type = all country_or_non_sovereign_subject_holds = ROOT }
+	      southern_morocco_area = { type = all country_or_non_sovereign_subject_holds = ROOT }
+	      NOT = { exists = MOR }
+	   }
+	   effect = {
+	      southern_morocco_area = { add_province_modifier = { name = tlc_draa_river_trade duration = 7300 } }
+		  cap_verde_area = {
+			limit = {
+				NOT = { is_core = ROOT }
+				NOT = { is_permanent_claim = ROOT }
+			}
+			add_permanent_claim = ROOT
+			discover_country = ROOT
+		  }
+	   }
+	}
+	
+	tlc_the_canaries = {
+	   icon = mission_claim_the_canaries
+	   position = 7
+	   required_missions = { tlc_conquer_sous }
+	   trigger = {
+	      num_of_explorers = 1
+	   }
+	   effect = {
+	      macaronesia_area = {
+	         discover_country = ROOT
+	      }
+	      add_country_modifier = {
+	         name = tlc_exploration_ambition
+	         duration = 7300
+	      }
+	   }
+	}
+	
+	tlc_new_world = {
+	   icon = mission_aragonese_navy
+	   position = 8
+	   required_missions = { tlc_the_canaries }
+		trigger = {
+			always = yes
+		}
+		effect = {
+	    	add_prestige = 1
+		}
+	}          
+}
+
+tlc_4 = {
+	slot = 4
+	generic = no
+	ai = yes
+	potential = {
+		tag = TLC
+		NOT = { map_setup = map_setup_random }
+	}
+	has_country_shield = yes
+	
+	tlc_reclaim_algiers = {
+	   icon = mission_guilds_of_barcelona
+	   position = 3
+	   required_missions = { tlc_build_navy }
+	   provinces_to_highlight = { 
+	      owned_by = ALG
+	   }
+	   trigger = {
+	      2461 = { country_or_non_sovereign_subject_holds = ROOT }
+	      NOT = { exists = ALG }
+	   }
+	   effect = {
+	      change_government_reform_progress = 100
+	      add_adm_power = 200
+	      country_event = { id = mor_events.35 } #Algerian revolt crushed
+	   }
+	}
+	
+    tlc_rival_aragon = {
+	   icon = mission_the_austrian_succession
+	   position = 4
+	   required_missions = { tlc_reclaim_algiers }
+	   provinces_to_highlight = {
+	      province_id = 220
+	   }
+	   trigger = {
+	      OR = {
+	         navy_size = ARA
+	         army_size = ARA
+	         is_rival = ARA
+	      }
+	      220 = {
+	         privateer_power = {
+	           country = ROOT
+	           share = 10
+	         }
+	      }
+	   }
+	   effect = {
+	      add_country_modifier = {
+	         name = tlc_raiding_aragonese_trade
+	         duration = 3650
+	      }
+	      corsica_sardinia_area = {
+	         limit = {
+				  NOT = { is_permanent_claim = ROOT	}
+				  NOT = { is_core = ROOT	}
+			  }
+			  add_permanent_claim = ROOT
+	      }
+	      sicily_area = {
+	         limit = {
+				  NOT = { is_permanent_claim = ROOT	}
+				  NOT = { is_core = ROOT	}
+			  }
+			  add_permanent_claim = ROOT
+	      }
+	      western_sicily_area = {
+	         limit = {
+				  NOT = { is_permanent_claim = ROOT	}
+				  NOT = { is_core = ROOT	}
+			  }
+			  add_permanent_claim = ROOT
+	      }
+	   }
+	}
+	
+	tlc_conquer_aragonese_islands = {
+	   icon = mission_seize_the_isles
+	   position = 5
+	   required_missions = { tlc_rival_aragon }
+	   provinces_to_highlight = {
+	      OR = {
+	         area = western_sicily_area
+	         area = sicily_area
+	         area = corsica_sardinia_area
+	         province_id = 220
+	      }
+	      NOT = { country_or_non_sovereign_subject_holds = ROOT }
+	   }
+	   trigger = {
+	      220 = {
+	         privateer_power = {
+	            country = ROOT
+	            share = 25
+	         }
+	      }
+	      western_sicily_area = { type = all country_or_non_sovereign_subject_holds = ROOT }
+	      sicily_area = { type = all country_or_non_sovereign_subject_holds = ROOT }
+	      corsica_sardinia_area = { type = all country_or_non_sovereign_subject_holds = ROOT }
+	   }
+	   effect = {
+	      upper_andalucia_area = {
+	         limit = {
+				  NOT = { is_permanent_claim = ROOT	}
+				  NOT = { is_core = ROOT	}
+			  }
+			  add_permanent_claim = ROOT
+	      }
+	   }
+	}
+	
+	tlc_control_gibraltar = {
+	   icon = mission_reclaim_andalucia 
+	   position = 6
+	   required_missions = {
+	      tlc_conquer_aragonese_islands
+	      tlc_conquer_morocco
+	   }
+	   provinces_to_highlight = {
+	      OR = {
+	         area = upper_andalucia_area
+	         province_id = 1293
+	      }
+	   }
+	   trigger = {
+	      1293 = {
+	         privateer_power = {
+	            country = ROOT
+	            share = 10
+	         }
+	      }
+	      upper_andalucia_area = { type = all country_or_non_sovereign_subject_holds = ROOT }
+	   }
+	   effect = {
+	      lower_andalucia_area = {
+	         limit = {
+				  NOT = { is_permanent_claim = ROOT	}
+				  NOT = { is_core = ROOT	}
+			  }
+			  add_permanent_claim = ROOT
+		  }
+		  toledo_area = {
+		     limit = {
+				  NOT = { is_permanent_claim = ROOT	}
+				  NOT = { is_core = ROOT	}
+			  }
+			  add_permanent_claim = ROOT
+		  }
+		  valencia_area = {
+		      limit = {
+				  NOT = { is_permanent_claim = ROOT	}
+				  NOT = { is_core = ROOT	}
+			  }
+			  add_permanent_claim = ROOT
+		  }
+	   }
+	}
+	
+	tlc_andalucian_conquest = {
+	   icon = mission_raid_on_iceland
+	   position = 7
+	   required_missions = {
+	      tlc_control_gibraltar
+	      tlc_conquer_sous
+	   }
+	   provinces_to_highlight = {
+	      OR = {
+	         area = lower_andalucia_area
+	         area = toledo_area
+	         area = valencia_area
+	      }
+	      NOT = { country_or_non_sovereign_subject_holds = ROOT }
+	   }
+	   trigger = {
+	      lower_andalucia_area = { type = all country_or_non_sovereign_subject_holds = ROOT }
+	      toledo_area = { type = all country_or_non_sovereign_subject_holds = ROOT }
+	      valencia_area = { type = all country_or_non_sovereign_subject_holds = ROOT }
+	   }
+	   effect = {
+	      lower_andalucia_area = { change_religion = ROOT }
+	      valencia_area = { change_religion = ROOT }
+	      add_country_modifier = {
+	         name = tlc_andalucian_conquest
+	         duration = 7300
+	      }
+	      alentejo_area = {
+		     limit = {
+				  NOT = { is_permanent_claim = ROOT	}
+				  NOT = { is_core = ROOT	}
+			  }
+			  add_permanent_claim = ROOT
+		  }
+		  extremadura_area = {
+		     limit = {
+				  NOT = { is_permanent_claim = ROOT	}
+				  NOT = { is_core = ROOT	}
+			  }
+			  add_permanent_claim = ROOT
+		  }
+	   }
+	}
+	
+	tlc_conquer_portugal = {
+	   icon = mission_union_with_portugal
+	   position = 8
+	   required_missions = { tlc_andalucian_conquest }
+	   provinces_to_highlight = {
+	      OR = {
+	         area = alentejo_area
+	         area = extremadura_area
+	      }
+	      province_id = 1293
+	      NOT = { country_or_non_sovereign_subject_holds = ROOT }
+	   }
+	   trigger = {
+	      1293 = { has_most_province_trade_power = ROOT }
+	      334 = { province_has_center_of_trade_of_level = 3 }
+	      alentejo_area = { type = all country_or_non_sovereign_subject_holds = ROOT }
+	      extremadura_area = { type = all country_or_non_sovereign_subject_holds = ROOT }
+	   }
+	   effect = {
+	      add_country_modifier = {
+	         name = tlc_iberian_trade_power
+	         duration = -1
+	      }
+	      334 = {
+	         add_base_tax = 2
+	         add_base_production = 2
+	         add_base_manpower = 2
+	         add_province_modifier = {
+	            name = tlc_growth_of_tangier
+	            duration = -1
+	         }
+	      }
+	      if = {
+	         limit = {
+	            2474 = { is_empty = yes }
+	         }
+	         2474 = {
+	            cede_province = ROOT
+	            add_core = ROOT
+	         }
+	      }
+	   }
+	}
+	
+	tlc_restore_almohads = {
+      icon = mission_al_andalus
+      position = 9
+      required_missions = { tlc_conquer_portugal }
+      provinces_to_highlight = {
+         OR = {
+            region = maghreb_region
+            area = lower_andalucia_area
+            area = alentejo_area
+            area = extremadura_area
+            area = toledo_area
+            area = valencia_area
+         }
+         NOT = { country_or_non_sovereign_subject_holds = ROOT }
+      }
+      trigger = {
+         is_great_power = yes
+         NOT = { great_power_rank = 6 }
+         maghreb_region = { type = all country_or_non_sovereign_subject_holds = ROOT }
+         lower_andalucia_area = { type = all country_or_non_sovereign_subject_holds = ROOT }
+         alentejo_area = { type = all country_or_non_sovereign_subject_holds = ROOT }
+         extremadura_area = { type = all country_or_non_sovereign_subject_holds = ROOT } 
+         toledo_area = { type = all country_or_non_sovereign_subject_holds = ROOT }
+         valencia_area = { type = all country_or_non_sovereign_subject_holds = ROOT }
+         stability = 2
+      }
+      effect = {
+         set_country_flag = restore_almohad_mission
+         country_event = { id = mor_events.24 } #Restore the Almohad Caliphate
+      }
+   }   
+}	      
+	      
+	      
+	

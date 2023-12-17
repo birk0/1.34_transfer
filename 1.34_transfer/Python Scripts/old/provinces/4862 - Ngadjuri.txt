@@ -1,0 +1,6 @@
+#4862 - Liaoxi Corridor
+
+#discovered_by = nomad_group
+#discovered_by = chinese
+#discovered_by = indonesian
+

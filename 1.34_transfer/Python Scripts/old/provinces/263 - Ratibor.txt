@@ -1,0 +1,22 @@
+#263 - Upper Silesia
+
+latent_trade_goods = {
+	coal
+}
+
+owner = OPL
+controller = OPL
+culture = schlesian
+religion = catholic
+hre = yes
+base_tax = 3 
+base_production = 3
+capital = "Ratibor"
+is_city = yes
+trade_goods = iron
+base_manpower = 2
+add_core = OPL
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

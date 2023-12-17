@@ -1,0 +1,7 @@
+#Prov2074 - Ladakh
+culture = kashmiri
+religion = vajrayana
+
+base_tax = 1
+base_production = 1
+base_manpower = 1

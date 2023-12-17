@@ -1,0 +1,8 @@
+#This is actually Song
+government = monarchy
+add_government_reform = chinese_warlord_reform
+government_rank = 2
+primary_culture = sichuanese
+religion = confucianism
+technology_group = chinese
+capital = 680 #Chongqing

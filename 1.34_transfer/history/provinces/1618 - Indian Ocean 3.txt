@@ -1,0 +1,7 @@
+# Prov1618 - Indian Ocean 3
+culture = shan
+is_city = no
+religion = shen
+base_tax = 1
+base_production = 1
+base_manpower = 1

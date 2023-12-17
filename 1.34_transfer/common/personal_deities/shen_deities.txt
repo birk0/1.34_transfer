@@ -1,0 +1,129 @@
+
+khwan = {
+	sprite = 13
+	allow = { 
+		religion = shen
+	}
+
+	country_admin_power = 1
+	legitimacy = 1
+	meritocracy = 0.5
+	horde_unity = 1
+	devotion = 1
+	republican_tradition = 1
+
+	ai_will_do = {
+		factor = 1
+		modifier = {
+			factor = 2
+			is_at_war = no
+			NOT = { adm = 3 }
+		}
+		modifier = {
+			factor = 2
+			NOT = {
+				employed_advisor = { category = ADM }
+			}
+		}
+	}
+}
+
+mophi = {
+	sprite = 14
+	allow = { 
+		religion = shen
+	}
+
+	global_unrest = -1
+	global_tax_modifier = 0.25
+
+	ai_will_do = {
+		factor = 1
+		modifier = {
+			factor = 2
+			is_in_deficit = yes
+		}
+		modifier = {
+			factor = 2
+			is_bankrupt = yes
+		}
+		modifier = {
+			factor = 2
+			tax_income_percentage = 0.5
+		}
+	}
+}
+
+chengshen = {
+	sprite = 15
+	allow = { 
+		religion = shen
+	}
+
+	defensiveness = 0.25
+	fort_maintenance_modifier = -0.1
+
+	ai_will_do = {
+		factor = 0 #too situational
+	}
+}
+
+phi = {
+	sprite = 16
+	allow = { 
+		religion = shen
+	}
+	
+	development_cost = -0.1
+	build_cost = -0.05
+
+	ai_will_do = {
+		factor = 0.5
+		modifier = {
+			factor = 10
+			has_country_flag = ai_forced_to_construct_buildings
+		}
+	}
+}
+
+naga = {
+	sprite = 17
+	allow = { 
+		religion = shen
+	}
+
+	infantry_power = 0.1
+	shock_damage_received = -0.1
+
+	ai_will_do = {
+		factor = 1
+		modifier = {
+			factor = 10
+			is_at_war = yes
+		}
+		modifier = {
+			factor = 2
+			NOT = { current_age = age_of_discovery }
+		}
+		modifier = {
+			factor = 2
+			any_neighbor_country = {
+				PREV = { is_threat = PREV }
+			}
+		}
+	}
+}
+
+the_shen = {
+	sprite = 6
+	allow = { 
+		religion = shen
+	}
+	
+	ae_impact = -0.1
+	diplomats = 1
+
+	ai_will_do = {
+		factor = 0 #too situational
+	}
+}

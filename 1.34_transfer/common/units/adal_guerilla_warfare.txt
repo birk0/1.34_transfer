@@ -1,0 +1,17 @@
+# Adal Guerrilla Warfare
+
+unit_type = sub_saharan
+type = infantry
+manpower = 2
+
+maneuver = 1
+#Changes
+offensive_morale = 4
+defensive_morale = 6
+offensive_fire = 6
+defensive_fire = 6
+offensive_shock = 4
+defensive_shock = 4
+
+
+

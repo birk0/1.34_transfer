@@ -1,0 +1,19 @@
+#678 - Kham
+
+owner = KAM
+controller = KAM
+add_core = KAM
+culture = tibetan
+religion = vajrayana
+capital = "Tachienlu"
+trade_goods = tea
+hre = no
+base_tax = 1 #changes
+base_production = 1
+base_manpower = 1
+is_city = yes
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

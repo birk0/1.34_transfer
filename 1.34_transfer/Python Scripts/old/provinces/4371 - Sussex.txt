@@ -1,0 +1,19 @@
+#4371 - Sussex
+
+owner = ENG
+controller = ENG
+culture = english
+religion = catholic
+hre = no
+base_tax = 4
+base_production = 4
+trade_goods = grain
+base_manpower = 2
+capital = "Hastings"
+is_city = yes
+add_core = ENG
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

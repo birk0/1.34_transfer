@@ -1,0 +1,22 @@
+#726 - Liaodong
+
+owner = MNG
+controller = MNG
+add_core = MNG
+culture = manchu
+religion = confucianism
+capital = "Shenyang"
+trade_goods = gems #Youyan Jade
+hre = no
+base_tax = 5 
+base_production = 7
+base_manpower = 3
+is_city = yes
+fort_15th = yes #the Nine Garrisons
+center_of_trade = 2
+extra_cost = 16
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

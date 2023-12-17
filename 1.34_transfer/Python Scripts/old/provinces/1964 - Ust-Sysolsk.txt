@@ -1,0 +1,19 @@
+#Ust-Sysolsk
+
+owner = PRM
+controller = PRM
+culture = uralic
+religion = orthodox
+hre = no
+base_tax = 1 
+base_production = 1
+trade_goods = fur
+base_manpower = 1
+capital = "Ust-Sysola"
+is_city = yes
+add_core = PRM
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

@@ -1,0 +1,6 @@
+# Prov568 - Chittagong
+culture = bengali
+religion = shen # A good case could be made that this province was atleast 50% buddhist
+base_tax = 1
+base_production = 1
+base_manpower = 1

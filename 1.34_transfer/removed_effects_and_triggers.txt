@@ -1,0 +1,36 @@
+
+# - is_african_trade_node_province
+# - is_inland_trade_node_province
+# - is_not_inland_trade_node_province
+# - is_european_trade_node_province
+# - is_indian_trade_node_province
+# - is_american_trade_node_province
+# - has_holy_order_trigger
+# - Confucian now uses has_harmony
+# - celestial_empire now uses is_emperor_of_china
+# - daimyo & indep daimyos now use is_daimyo
+# - is_trade_node_province
+# - is_not_free_merc_company
+# - has_unlocked_merc_company
+# - has_globally_unlocked_merc_company
+# - chinese tech group now also checks indonesian
+# - Vanilla sinification cultures
+# - galley triggers to light ship (for AI) or heavy for player
+# - merc companies
+# - spawn_rebels now uses start_revolt
+# - change_government now uses its scripted effect equivalent
+# - daimyo & indep daimyo now use set_daimyo_reform & remove_daimyo_reform 
+# - Vanilla sinification cultures
+# - declare_war_with_cb now uses start_war_effect
+# - galley effects to light ship (for AI) or heavy for player
+# - kill_units
+# - artillery_bonus_vs_fort replaced with artillery_levels_available_vs_fort
+# - free_policy
+# - possible_policy
+# - galley_power
+# - heavy_ship_power
+# - yearly_corruption
+# - infantry = <scope>
+# - cavalry = <scope>
+# - chinese_warlord -> chinese_warlord_reform
+

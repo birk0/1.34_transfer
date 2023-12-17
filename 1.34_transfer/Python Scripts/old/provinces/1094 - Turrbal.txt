@@ -1,0 +1,4 @@
+#1094 - Woji Mountains
+#discovered_by = chinese
+#discovered_by = indonesian
+#discovered_by = nomad_group

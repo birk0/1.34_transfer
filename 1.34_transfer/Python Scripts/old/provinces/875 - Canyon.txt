@@ -1,0 +1,19 @@
+# 875 - Kizomba
+
+owner = YAK
+controller = YAK
+add_core = YAK
+culture = yaka
+religion = shamanism #Fetishism
+capital = "Kizomba"
+trade_goods = livestock
+hre = no
+base_tax = 1
+base_production = 1
+base_manpower = 1
+is_city = yes
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

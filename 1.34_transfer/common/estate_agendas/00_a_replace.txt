@@ -1,0 +1,556 @@
+#Must be loaded first
+
+#Convert a province
+estate_church_convert_province_x = {
+	can_select = {
+		num_of_missionaries = 1
+		NOT = { has_harmony = yes }
+		any_owned_province = {
+			is_state_core = root
+			NOT = { religion = root }
+			NOT = { has_province_modifier = religious_zeal_at_conv }
+			NOT = { has_province_modifier = expelled_minority }
+			NOT = { has_province_modifier = religious_migration }
+			NOT = { religion = secondary }
+			has_missionary = no
+			missionary_strength = 0.01
+		}
+	}
+	selection_weight = {
+		factor = 1
+		modifier = {
+			factor = 1.5
+			NOT = { religious_unity = 0.85 }
+		}
+		modifier = {
+			factor = 1.5
+			NOT = { religious_unity = 0.75 }
+		}
+		modifier = {
+			factor = 1.5
+			NOT = { religious_unity = 0.65 }
+		}
+		modifier = {
+			factor = 1.5
+			NOT = { religious_unity = 0.5 }
+		}
+		modifier = {
+			factor = 1.5
+			NOT = { religious_unity = 0.4 }
+		}
+		modifier = {
+			factor = 0.25
+			has_harmony = yes
+		}
+		modifier = {
+			factor = 0.35
+			has_idea_group = humanist_ideas
+		}
+		modifier = {
+			factor = 2
+			has_idea_group = religious_ideas
+		}
+		modifier = {
+			factor = 0.75
+			NOT = { num_of_missionaries = 2 }
+		}
+		modifier = {
+			factor = 1.25
+			is_defender_of_faith = yes
+		}
+		modifier = {
+			factor = 0.35
+			has_country_modifier = recent_converted_province_mission_timer
+		}
+	}
+	pre_effect = {
+		random_owned_province = {
+			limit = {
+				is_state_core = root
+				NOT = { religion = root }
+				NOT = { has_province_modifier = religious_zeal_at_conv }
+				NOT = { has_province_modifier = expelled_minority }
+				NOT = { has_province_modifier = religious_migration }
+				NOT = { religion = secondary }
+				has_missionary = no
+			}
+			save_event_target_as = agenda_province
+		}
+		random_owned_province = {
+			limit = {
+				is_state_core = root
+				NOT = { religion = root }
+				NOT = { has_province_modifier = religious_zeal_at_conv }
+				NOT = { has_province_modifier = expelled_minority }
+				NOT = { has_province_modifier = religious_migration }
+				NOT = { religion = secondary }
+				has_missionary = no
+				development = 10
+			}
+			save_event_target_as = agenda_province
+		}
+	}
+	fail_if = {
+		event_target:agenda_province = {
+			OR = {
+				NOT = { owned_by = root }
+				AND = {
+					NOT = { religion = root }
+					religion = secondary
+				}
+			}
+		}
+	}
+	immediate_effect = {
+		event_target:agenda_province = {
+			add_province_modifier = {
+				name = agenda_conversion_zeal
+				duration = 7300
+			}
+		}
+	}
+	on_invalid = {
+		event_target:agenda_province = {
+			if = {
+				limit = { has_province_modifier = agenda_conversion_zeal }
+				remove_province_modifier = agenda_conversion_zeal
+			}
+		}
+	}
+	provinces_to_highlight = {
+		province_id = event_target:agenda_province
+	}
+	task_requirements = {
+		event_target:agenda_province = {
+			religion = root
+		}
+	}
+    task_completed_effect = {
+		hidden_effect = {
+			event_target:agenda_province = {
+				if = {
+					limit = { has_province_modifier = agenda_conversion_zeal }
+					remove_province_modifier = agenda_conversion_zeal
+				}
+			}
+			add_country_modifier = {
+				name = recent_converted_province_mission_timer
+				duration = 3650
+				hidden = yes
+			}
+		}
+		generate_scaled_advisor_of_type_and_religion_effect = {
+			type = inquisitor
+			religion = root
+			discount = yes
+		}
+		add_estate_loyalty = {
+			estate = estate_church
+			loyalty = 10
+		}
+    }
+    failing_effect = {
+		event_target:agenda_province = {
+			if = {
+				limit = { has_province_modifier = agenda_conversion_zeal }
+				remove_province_modifier = agenda_conversion_zeal
+			}
+		}
+        add_estate_loyalty_modifier = {
+            estate = estate_church
+			desc = EST_VAL_AGENDA_DENIED
+			loyalty = -5
+			duration = 7300
+        }
+    }
+}
+
+#Protect Brethren in X (religion)
+estate_church_protect_brethren = {
+	can_select = {
+		is_free_or_tributary_trigger = yes
+		is_at_war = no
+		any_neighbor_country = {
+			NOT = { religion = root }
+		}
+		any_owned_province = {
+			any_neighbor_province = {
+				NOT = { owned_by = root }
+				is_city = yes
+				religion = root
+				has_discovered = root
+				owner = {
+					is_free_or_tributary_trigger = yes
+					NOT = { religion = root }
+					NOT = { has_harmony = yes }
+					NOT = { is_subject_of = root }
+					NOT = { overlord_of = root }
+					NOT = { alliance_with = root }
+					NOT = { ROOT = { truce_with = prev } }
+					OR = {
+						is_part_of_hre = no
+						NOT = { hre_reform_passed = landfriede }
+						ROOT = { is_part_of_hre = no }
+					}
+				}
+				NOT = { religion = secondary }
+			}
+		}
+	}
+	selection_weight = {
+		factor = 2
+		modifier = {
+			factor = 2
+			has_idea_group = religious_ideas
+		}
+		modifier = {
+			factor = 0.25
+			any_country = {
+				coalition_target = root
+			}
+		}
+	}
+	pre_effect = {
+		random_owned_province = {
+			limit = {
+				any_neighbor_province = {
+					NOT = { owned_by = root }
+					is_city = yes
+					religion = root
+					has_discovered = root
+					owner = {
+						is_free_or_tributary_trigger = yes
+						NOT = { religion = root }
+						NOT = { has_harmony = yes }
+						NOT = { is_subject_of = root }
+						NOT = { overlord_of = root }
+						NOT = { alliance_with = root }
+						NOT = { ROOT = { truce_with = prev } }
+						OR = {
+							is_part_of_hre = no
+							NOT = { hre_reform_passed = landfriede }
+							ROOT = { is_part_of_hre = no }
+						}
+					}
+					NOT = { religion = secondary }
+				}
+			}
+			random_neighbor_province = {
+				limit = {
+					NOT = { owned_by = root }
+					is_city = yes
+					religion = root
+					has_discovered = root
+					owner = {
+						is_free_or_tributary_trigger = yes
+						NOT = { religion = root }
+						NOT = { has_harmony = yes }
+						NOT = { is_subject_of = root }
+						NOT = { overlord_of = root }
+						NOT = { alliance_with = root }
+						NOT = { ROOT = { truce_with = prev } }
+						OR = {
+							is_part_of_hre = no
+							NOT = { hre_reform_passed = landfriede }
+							ROOT = { is_part_of_hre = no }
+						}
+					}
+					NOT = { religion = secondary }
+				}
+				save_event_target_as = agenda_province
+				owner = { save_event_target_as = agenda_country }
+			}
+		}
+	}
+	immediate_effect = {
+		if = {
+			limit = {
+				event_target:agenda_province = {
+					OR = {
+						AND = {
+							NOT = { is_claim = root }
+							NOT = { is_core = root }
+						}
+						any_neighbor_province = {
+							owned_by = event_target:agenda_country
+							NOT = { is_claim = root }
+							NOT = { is_core = root }
+							religion = root
+						}
+					}
+				}
+			}
+			event_target:agenda_province = {
+				if = {
+					limit = {
+						NOT = { is_claim = root }
+						NOT = { is_core = root }
+					}
+					add_claim = root
+				}
+				every_neighbor_province = {
+					limit = {
+						owned_by = event_target:agenda_country
+						NOT = { is_claim = root }
+						NOT = { is_core = root }
+						religion = root
+					}
+					add_claim = root
+				}
+			}
+		}
+	}
+	provinces_to_highlight = {
+		province_id = event_target:agenda_province
+	}
+	task_requirements = {
+		event_target:agenda_province = {
+			custom_trigger_tooltip = {
+				tooltip = owned_by_country_of_root_religion
+				owner = {
+					religion = root
+				}
+			}
+			hidden_trigger = { religion = root }
+		}
+	}
+	fail_if = {
+		event_target:agenda_province = {
+			NOT = { religion = root }
+		}
+	}
+	task_completed_effect = {
+		if = {
+			limit = {
+				event_target:agenda_province = {
+					owned_by = root
+				}
+			}
+			event_target:agenda_province = {
+				add_nationalism = -5
+			}
+		}
+		else = {
+			custom_tooltip = estate_nobles_protect_our_culture_effect_tooltip
+		}
+		add_estate_loyalty = {
+			estate = estate_church
+			loyalty = 15
+		}
+	}
+    failing_effect = {
+        add_estate_loyalty_modifier = {
+            estate = estate_church
+			desc = EST_VAL_AGENDA_DENIED
+			loyalty = -5
+			duration = 7300
+        }
+		event_target:agenda_province = {
+			if = {
+				limit = {
+					is_claim = root
+					NOT = { is_permanent_claim = root }
+				}
+				remove_claim = root
+			}
+			every_neighbor_province = {
+				if = {
+					limit = {
+						owned_by = event_target:agenda_country
+						is_claim = root
+						NOT = { is_permanent_claim = root }
+					}
+					remove_claim = root
+				}
+			}
+		}
+    }
+}
+estate_maratha_support_independence = {
+	can_select = {
+		OR = {
+			has_dlc = "Conquest of Paradise"
+			has_dlc = "El Dorado"
+		}
+		is_at_war = no
+		is_subject = no
+		any_rival_country = {
+			NOT = { is_daimyo = yes }
+			NOT = { has_reform = chinese_warlord_reform }
+			NOT = { ROOT = { truce_with = prev } }
+			any_subject_country = {
+				is_subject_other_than_tributary_trigger = yes
+				liberty_desire = 50
+				has_opinion = {
+					who = root
+					value = -100
+				}
+				ROOT = {
+					NOT = { is_supporting_independence_of = prev }
+				}
+			}
+		}
+	}
+	selection_weight = {
+		factor = 2
+	}
+	pre_effect = {
+		random_rival_country = {
+			limit = {
+				NOT = { ROOT = { truce_with = prev } }
+				any_subject_country = {
+					is_subject_other_than_tributary_trigger = yes
+					liberty_desire = 50
+					has_opinion = {
+						who = root
+						value = -100
+					}
+					ROOT = {
+						NOT = { is_supporting_independence_of = prev }
+					}
+				}
+			}
+			save_event_target_as = agenda_rival_country
+			random_subject_country = {
+				limit = {
+					is_subject_other_than_tributary_trigger = yes
+					liberty_desire = 50
+					has_opinion = {
+						who = root
+						value = -100
+					}
+					ROOT = {
+						NOT = { is_supporting_independence_of = prev }
+					}
+				}
+				save_event_target_as = agenda_country
+			}
+		}
+	}
+	fail_if = {
+		OR = {
+			is_subject = yes
+			event_target:agenda_country = {
+				OR = {
+					NOT = { is_subject_of = event_target:agenda_rival_country }
+					NOT = { num_of_cities = 1 }
+					war_with = root
+				}
+			}
+		}
+	}
+	provinces_to_highlight = {
+		is_capital_of = event_target:agenda_country
+	}
+	task_requirements = {
+		is_supporting_independence_of = event_target:agenda_country
+	}
+	task_completed_effect = {
+		add_estate_loyalty = {
+			estate = estate_maratha
+			loyalty = 10
+		}
+		add_dip_power = 50
+	}
+    failing_effect = {
+        add_estate_loyalty_modifier = {
+            estate = estate_maratha
+			desc = EST_VAL_AGENDA_DENIED
+			loyalty = -5
+			duration = 7300
+        }
+    }
+}
+estate_rajput_support_independence = {
+	can_select = {
+		OR = {
+			has_dlc = "Conquest of Paradise"
+			has_dlc = "El Dorado"
+		}
+		is_at_war = no
+		is_subject = no
+		any_rival_country = {
+			NOT = { ROOT = { truce_with = prev } }
+			any_subject_country = {
+				is_subject_other_than_tributary_trigger = yes
+				liberty_desire = 50
+				has_opinion = {
+					who = root
+					value = -100
+				}
+				ROOT = {
+					NOT = { is_supporting_independence_of = prev }
+				}
+			}
+		}
+	}
+	selection_weight = {
+		factor = 2
+	}
+	pre_effect = {
+		random_rival_country = {
+			limit = {
+				NOT = { ROOT = { truce_with = prev } }
+				any_subject_country = {
+					is_subject_other_than_tributary_trigger = yes
+					liberty_desire = 50
+					has_opinion = {
+						who = root
+						value = -100
+					}
+					ROOT = {
+						NOT = { is_supporting_independence_of = prev }
+					}
+				}
+			}
+			save_event_target_as = agenda_rival_country
+			random_subject_country = {
+				limit = {
+					is_subject_other_than_tributary_trigger = yes
+					liberty_desire = 50
+					has_opinion = {
+						who = root
+						value = -100
+					}
+					ROOT = {
+						NOT = { is_supporting_independence_of = prev }
+					}
+				}
+				save_event_target_as = agenda_country
+			}
+		}
+	}
+	fail_if = {
+		OR = {
+			is_subject = yes
+			event_target:agenda_country = {
+				OR = {
+					NOT = { is_subject_of = event_target:agenda_rival_country }
+					NOT = { num_of_cities = 1 }
+					war_with = root
+				}
+			}
+		}
+	}
+	provinces_to_highlight = {
+		is_capital_of = event_target:agenda_country
+	}
+	task_requirements = {
+		is_supporting_independence_of = event_target:agenda_country
+	}
+	task_completed_effect = {
+		add_estate_loyalty = {
+			estate = estate_rajput
+			loyalty = 10
+		}
+		add_dip_power = 50
+	}
+    failing_effect = {
+        add_estate_loyalty_modifier = {
+            estate = estate_rajput
+			desc = EST_VAL_AGENDA_DENIED
+			loyalty = -5
+			duration = 7300
+        }
+    }
+}

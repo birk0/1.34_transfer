@@ -1,0 +1,19 @@
+# 4383 Ommeland - Groningen, Ommeland & Drenthe
+
+owner = FRI
+controller = FRI
+capital = "Groningen"
+is_city = yes
+culture = frisian
+religion = catholic
+hre = yes
+base_tax = 4
+base_production = 4
+base_manpower = 2
+trade_goods = cloth 
+add_core = FRI
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

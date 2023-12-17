@@ -1,0 +1,5 @@
+#Prov1614 - Ceylon Sea
+
+base_tax = 1
+base_production = 1
+base_manpower = 1

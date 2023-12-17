@@ -1,0 +1,7 @@
+#Prov1024 - Echigo
+culture = togoku
+religion = shinto
+
+base_tax = 1
+base_production = 1
+base_manpower = 1

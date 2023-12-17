@@ -1,0 +1,19 @@
+#1862 - Cremona
+
+owner = MLO
+controller = MLO
+culture = lombard
+religion = catholic
+hre = yes
+base_tax = 6
+base_production = 5 
+trade_goods = grain
+base_manpower = 4
+capital = "Cremona"
+is_city = yes	# Estimated
+add_core = MLO
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

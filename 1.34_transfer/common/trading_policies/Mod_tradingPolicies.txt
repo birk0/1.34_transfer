@@ -1,0 +1,17 @@
+latin_trade_policy = {
+	can_select = {
+		always = no
+	}
+
+	can_maintain = {
+		FROM = {
+			has_trader = ROOT
+		}
+		always = no
+	}
+	
+	node_province_modifier = {
+	   trade_value_modifier = 0.25
+	}	
+	button_gfx = GFX_Trading_Policy_Improve_Routes
+}

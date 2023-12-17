@@ -1,0 +1,8 @@
+#Prov3245 - Prov3245
+religion = orthodox
+culture = greek
+is_city = no
+
+base_tax = 1
+base_production = 1
+base_manpower = 1

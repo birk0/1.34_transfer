@@ -1,0 +1,35 @@
+#Changes
+vassal = {
+	first = MOR
+	second = TFL
+	start_date = 1444.1.1
+	end_date = 1472.1.1
+}
+
+vassal = {
+	first = MOR
+	second = SOS
+	start_date = 1444.1.1
+	end_date = 1472.1.1
+}
+
+vassal = {
+	first = MOR
+	second = MRK
+	start_date = 1440.1.1
+	end_date = 1472.1.1
+}
+
+guarantee = {
+	first = ARA
+	second = ALG
+	start_date = 1444.1.1
+	end_date = 1447.12.12
+}
+
+vassal = {
+	first = TUN
+	second = TRP
+	start_date = 1444.1.1
+	end_date = 1457.1.1
+}

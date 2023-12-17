@@ -1,0 +1,18 @@
+#294 - Tver
+
+owner = TVE
+controller = TVE  
+culture = russian
+religion = orthodox
+hre = no
+base_tax = 4
+base_production = 4
+trade_goods = grain  
+base_manpower = 3
+capital = "Tver"
+is_city = yes
+add_core = TVE
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

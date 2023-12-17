@@ -1,0 +1,19 @@
+#687 - Zhoujiakou
+
+owner = MNG
+controller = MNG
+add_core = MNG
+culture = zhongyuan
+religion = confucianism
+capital = "Nanyang"
+trade_goods = gems #Duyo Jade
+hre = no
+base_tax = 4 #changes
+base_production = 4
+base_manpower = 2
+is_city = yes
+add_core = LNG
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

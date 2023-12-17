@@ -1,0 +1,21 @@
+#4769 - Kotlas
+
+culture = russian 
+religion = orthodox
+hre = no
+trade_goods = fur
+capital = "Kotlas"
+is_city = yes
+#changes
+owner = TNK
+controller = TNK
+add_core = TNK
+add_core = NOV
+base_tax = 2
+base_production = 3
+base_manpower = 1
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

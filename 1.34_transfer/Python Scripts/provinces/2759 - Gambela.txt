@@ -1,0 +1,7 @@
+#Prov2759 - Gambela
+culture = amhara
+religion = coptic # Fetishism
+
+base_tax = 1
+base_production = 1
+base_manpower = 1

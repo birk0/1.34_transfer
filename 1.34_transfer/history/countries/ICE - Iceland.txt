@@ -1,0 +1,4 @@
+government = republic
+primary_culture = icelandic
+religion = catholic
+technology_group = western

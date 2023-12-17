@@ -1,0 +1,19 @@
+#2229 - Bust
+
+owner = SIS
+controller = SIS
+culture = afghani
+religion = sunni
+capital = "Bust"
+trade_goods = livestock
+hre = no
+base_tax = 1 
+base_production = 1
+base_manpower = 3
+is_city = yes
+add_core = SIS
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

@@ -1,0 +1,19 @@
+#4632 - Bereket
+
+owner = KHI
+controller = KHI
+add_core = KHI
+culture = turkmeni
+religion = sunni
+capital = "Bereket"
+trade_goods = wool
+hre = no
+base_tax = 1 
+base_production = 1
+base_manpower = 2
+is_city = yes
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

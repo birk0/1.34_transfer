@@ -1,0 +1,5 @@
+#Prov1276 - Cote D'Argent
+
+base_tax = 1
+base_production = 1
+base_manpower = 1

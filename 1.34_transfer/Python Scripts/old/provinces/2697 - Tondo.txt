@@ -1,0 +1,19 @@
+#2697 - Tondo
+
+owner = TDO
+controller = TDO
+add_core = TDO
+culture = filipino
+religion = shen #changes
+capital = "Tondo"
+trade_goods = spices
+hre = no
+base_tax = 5
+base_production = 5
+base_manpower = 2
+is_city = yes
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

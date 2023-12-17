@@ -1,0 +1,7 @@
+#Prov1996  Palau
+culture = polynesian
+religion = animism
+
+base_tax = 1
+base_production = 1
+base_manpower = 1

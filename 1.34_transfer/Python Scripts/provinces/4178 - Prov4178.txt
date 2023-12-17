@@ -1,0 +1,7 @@
+#Prov4178 - Prov4178
+religion = shamanism
+culture = songhai
+
+base_tax = 1
+base_production = 1
+base_manpower = 1

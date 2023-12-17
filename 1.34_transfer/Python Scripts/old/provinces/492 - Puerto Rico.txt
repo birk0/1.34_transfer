@@ -1,0 +1,19 @@
+# 492 - Kristiansand
+
+owner = NOR
+controller = NOR
+add_core = NOR
+culture = norwegian
+religion = catholic
+hre = no
+base_tax = 1
+base_production = 1
+trade_goods = naval_supplies
+base_manpower = 1
+capital = "Kristiansand"
+is_city = yes
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

@@ -1,0 +1,130 @@
+#Lithuanian Vassals:
+vassal = { #Minsk
+	first = LIT
+	second = EOR
+	start_date = 1444.1.1
+	end_date = 1449.1.1
+}
+vassal = { #Kiev
+	first = LIT
+	second = KIE
+	start_date = 1444.1.1
+	end_date = 1449.1.1
+}
+vassal = { #Chernigov
+	first = LIT
+	second = CHR
+	start_date = 1444.1.1
+	end_date = 1449.1.1
+}
+vassal = { #Smolensk
+	first = LIT
+	second = SMO
+	start_date = 1444.1.1
+	end_date = 1449.1.1
+}
+vassal = { #Polotsk
+	first = LIT
+	second = PLT
+	start_date = 1444.1.1
+	end_date = 1449.1.1
+}
+vassal = { #Galcia-Volhynia
+	first = LIT
+	second = VOL
+	start_date = 1444.1.1
+	end_date = 1449.1.1
+}
+vassal = { #Zaporzhe
+	first = LIT
+	second = ZAZ
+	start_date = 1444.1.1
+	end_date = 1449.1.1
+}
+
+#Timurid Princes:
+
+#Transoxiana - Son of Shah Rukh
+vassal = {
+	first = TIM
+	second = TRS
+	start_date = 1434.1.1
+	end_date = 1447.1.1
+}
+#Afghanistan - Grandson of Shah Rukh
+vassal = {
+	first = TIM
+	second = AFG
+	start_date = 1434.1.1
+	end_date = 1447.1.1
+}
+#Balkh - Grandson of Shah Rukh
+vassal = {
+	first = TIM
+	second = ISF
+	start_date = 1434.1.1
+	end_date = 1447.1.1
+}
+#Ferghana - Distant Relative
+vassal = {
+	first = TIM
+	second = KOK
+	start_date = 1434.1.1
+	end_date = 1447.1.1
+}
+#Bukhara - Grand Nephew of Shah Rukh
+vassal = {
+	first = TIM
+	second = YZD
+	start_date = 1434.1.1
+	end_date = 1447.1.1
+}
+#Khiva - Distant Relative
+vassal = {
+	first = TIM
+	second = KHI
+	start_date = 1434.1.1
+	end_date = 1447.1.1
+}
+#Khorasan - Grandson of Shah Rukh
+vassal = {
+	first = TIM
+	second = KHO
+	start_date = 1434.1.1
+	end_date = 1447.1.1
+}
+#Mazandaran - Grandson of Shah Rukh
+vassal = {
+	first = TIM
+	second = TAB
+	start_date = 1434.1.1
+	end_date = 1447.1.1
+}
+#Fars - Grandson of Shah Rukh
+vassal = {
+	first = TIM
+	second = FRS
+	start_date = 1434.1.1
+	end_date = 1447.1.1
+}
+#Sistan - Mihrabanid Vassal state
+vassal = {
+	first = TIM
+	second = SIS
+	start_date = 1434.1.1
+	end_date = 1447.1.1
+}
+#Baluchistan - Mirwani Vassal State
+vassal = {
+	first = TIM
+	second = BAL
+	start_date = 1434.1.1
+	end_date = 1447.1.1
+}
+#Kerman - Distant Nephew of Shah Rukh
+vassal = {
+	first = TIM
+	second = KRM
+	start_date = 1434.1.1
+	end_date = 1447.1.1
+}

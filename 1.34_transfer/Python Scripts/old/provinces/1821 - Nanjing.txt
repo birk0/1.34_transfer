@@ -1,0 +1,23 @@
+#1821 - Nanjing
+
+owner = MNG
+controller = MNG
+add_core = MNG
+culture = jianghuai
+religion = mahayana #changes
+capital = "Nanjing"
+trade_goods = silk
+hre = no
+base_tax = 13 
+base_production = 12
+base_manpower = 8
+is_city = yes
+fort_15th = yes #More than 1 Weisuo
+
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}
+#Changes
+add_province_triggered_modifier = culture_center

@@ -1,0 +1,27 @@
+government = monarchy
+add_government_reform = principality
+government_rank = 1
+primary_culture = ryazanian
+religion = orthodox
+technology_group = eastern
+capital = 293	# Smolensk
+
+1416.1.1 = {
+	monarch = { #So that they have a ruler in 1444 pretend yury lived and survived 
+		birth_date = 1368.1.1
+		name = "Yury I"
+		dynasty = "Rostaslavichi"
+		adm = 0
+		dip = 0
+		mil = 3
+	}
+}
+1444.1.1 = {
+	monarch = {
+		name = "Yury I"
+		dynasty = "Rostaslavichi"
+		adm = 0
+		dip = 0
+		mil = 3
+	}
+}

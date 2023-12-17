@@ -1,0 +1,19 @@
+#2687 - Pakuan
+
+owner = SUN
+controller = SUN
+add_core = SUN
+culture = sundanese
+religion = hinduism
+capital = "Pakuan"
+trade_goods = grain
+hre = no
+base_tax = 4
+base_production = 4
+base_manpower = 3
+is_city = yes
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

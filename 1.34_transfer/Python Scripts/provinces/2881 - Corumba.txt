@@ -1,0 +1,7 @@
+#Prov2881 - Corumba
+religion = sunni
+culture = mali
+
+base_tax = 1
+base_production = 1
+base_manpower = 1

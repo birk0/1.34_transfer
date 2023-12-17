@@ -1,0 +1,7 @@
+#Prov2243 - Termes
+culture = mali
+religion = shamanism
+
+base_tax = 1
+base_production = 1
+base_manpower = 1

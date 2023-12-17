@@ -1,0 +1,79 @@
+country_decisions = {
+
+	couronian_nation = {
+		major = yes
+		potential = {
+			OR = {
+				tag = LIV
+				tag = RIG
+				primary_culture = latvian
+			}
+			exists = yes
+			normal_or_historical_nations = yes
+			was_never_end_game_tag_trigger = yes
+			NOT = { has_country_flag = formed_courland_flag }
+			NOT = { exists = KUR }
+			religion_group = christian
+		}
+		provinces_to_highlight = {
+			OR = {
+				province_id = 39	 # Kurland
+				province_id = 1935	 # Semigallia
+				province_id = 28 #Nyland
+			}
+			OR = {
+				NOT = { owned_by = ROOT }
+				NOT = { is_core = ROOT }
+			}
+		}
+		allow = {
+			is_at_war = no
+			religion_group = christian
+			owns_core_province = 39	 # Kurland
+			owns_core_province = 1935	# Semigallia
+			owns_core_province = 28 #Nyland
+			1935 = { 					# Semigallia
+				is_state = yes
+			}
+		}
+		effect = {
+			1935 = { # Semigallia
+				move_capital_effect = yes
+			}
+			change_tag = KUR
+			add_prestige = 10	
+			if = {
+				limit = { has_custom_ideas = no }
+				country_event = { id = ideagroups.1 } #Swap Ideas
+			}
+			add_country_modifier = {
+				name = "centralization_modifier"
+				duration = 3650
+			}
+			baltic_region = {
+				add_permanent_claim = ROOT
+			}
+			if = {
+				limit = {
+					NOT = { government = monarchy }
+				}
+				change_government_to_monarchy = yes
+			}
+			if = {
+				limit = {
+					NOT = { technology_group = western }
+				}
+				change_technology_group = western
+				change_unit_type = western
+			}
+			every_neighbor_country = {
+				limit = { government = monarchy }
+				add_opinion = { who = ROOT modifier = secularized_monastic_order }
+			}
+			set_country_flag = formed_courland_flag
+		}
+		ai_will_do = {
+			factor = 1
+		}
+	}
+}

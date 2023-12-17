@@ -1,0 +1,19 @@
+#261 - Halicz
+
+owner = POL
+controller = POL
+capital= "Halicz"
+culture = ruthenian
+religion = orthodox
+trade_goods = grain
+hre = no
+base_tax = 3
+base_production = 3
+base_manpower = 2
+is_city = yes
+add_core = POL
+add_core = VOL
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

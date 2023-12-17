@@ -1,0 +1,8 @@
+#Prov3262 - Prov3262
+religion = catholic
+culture = hungarian
+is_city = no
+
+base_tax = 1
+base_production = 1
+base_manpower = 1

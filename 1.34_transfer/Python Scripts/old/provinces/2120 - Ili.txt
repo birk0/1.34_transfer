@@ -1,0 +1,21 @@
+# 2120 - Ili
+
+culture = uyghur
+religion = sunni
+capital = "Ili"
+trade_goods = grain
+hre = no
+base_tax = 2 
+base_production = 2
+base_manpower = 3
+is_city = yes
+#Changes
+owner = MHL
+controller = MHL
+add_core = MHL
+
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

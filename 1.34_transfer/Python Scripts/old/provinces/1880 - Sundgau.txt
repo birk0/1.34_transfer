@@ -1,0 +1,21 @@
+# 1880 - Sundgau
+
+owner = HAB
+controller = HAB
+add_core = HAB
+add_core = TIR
+capital = "Altkirch"
+is_city = yes
+culture = swabian
+religion = catholic
+hre = yes
+base_tax = 3 
+base_production = 3
+trade_goods = iron
+base_manpower = 3
+
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

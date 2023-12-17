@@ -1,0 +1,7 @@
+#Prov1124 - Wasuju
+culture = mali
+religion = shamanism # Representing the Malian Aristocracy, rural population likely still adhering to traditional beliefs.
+
+base_tax = 1
+base_production = 1
+base_manpower = 1

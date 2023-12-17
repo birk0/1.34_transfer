@@ -1,0 +1,5158 @@
+#Changes
+cultural_zeal = {
+    local_culture_conversion_cost = 100
+}
+culture_conversion_zeal = {
+    local_culture_conversion_cost = -0.1
+    local_unrest = -1
+}
+syncretic_culture = {
+    local_tax_modifier = 0.33
+	local_missionary_strength = 0.02
+	local_production_efficiency = 0.33
+	local_manpower_modifier = 0.33
+	local_sailors_modifier = 0.2
+	local_unrest = -2
+}
+judaism_community_wrong_culture = {
+	local_unrest = -2
+	local_tax_modifier = 0.33
+	local_manpower_modifier = 0.33
+	local_sailors_modifier = 0.2
+	religion = yes
+	local_production_efficiency = 0.33
+}
+bullion_gold_mining = {
+	trade_goods_size_modifier = 0.5
+	gold_depletion_chance_modifier = -0.2
+}
+bullion_famine = {
+    trade_goods_size_modifier = -0.5
+}
+minority_zeal = {
+    local_missionary_strength = -3
+	local_culture_conversion_cost = 30
+	local_unrest = -5
+}
+#expelled_minority = { #Replaced with minority zeal
+#}
+citizens_deserting_province = {
+    local_tax_modifier = -0.5
+    local_production_efficiency = -0.5
+    local_manpower_modifier = -0.5
+    local_unrest = 2
+}
+french_mechanic_hunted_revolutionaries = {
+    local_unrest = 5
+}
+french_mechanic_culture_in_gov = {
+    local_governing_cost = -0.25
+}
+french_mechanic_autonomy = {
+    local_autonomy = -0.1
+}
+french_mechanic_vassals = {
+    diplomatic_annexation_cost = -0.05
+}
+french_disaster_bad_army = {
+    naval_morale = -0.15
+    navy_tradition = -3
+    land_morale = -0.15
+    leader_cost = 1
+    army_tradition = -3
+}
+british_mercs = { 
+    local_manpower_modifier = -0.5
+}
+gaelic_warriors = {
+    shock_damage_received = -0.1
+    fire_damage_received = -0.1
+}
+gaelic_warriors_advanced = {
+    discipline = 0.1
+}
+mor_disaster_mutinies = {
+    land_morale = -0.1
+    leader_cost = 1
+    global_manpower_modifier = -0.1
+}
+mor_disaster_oppressed_peasants = {
+   local_unrest = 5
+   local_tax_modifier = -0.5
+}
+mor_disaster_reputation_tarnished = {
+   diplomatic_reputation = -3
+   improve_relation_modifier = -0.15
+}
+mor_disaster_appeased_wattasids = {
+   local_autonomy = 0.6
+   local_tax_modifier = -0.5
+}
+mor_reined_in_south = {
+   global_tax_modifier = 0.15
+   prestige = 1.5
+}
+marinid_dominance = {
+   discipline = 0.05
+   global_trade_goods_size_modifier = 0.15
+}
+prov_marinid_dominance = {
+   trade_value = 3
+   local_development_cost = -0.2
+}
+mor_tribes_run_rampart = {
+   land_morale = -0.05
+   manpower_recovery_speed = -0.05
+}
+mor_diplomacy = {
+   diplomatic_reputation = 1
+   improve_relation_modifier = 0.2
+}
+mor_raiding_iberian_trade = {
+   privateer_efficiency = 0.1
+}
+mor_raiders_of_maghreb = {
+   privateer_efficiency = 0.15
+}
+mor_build_army = {
+   global_regiment_cost = -0.10
+   global_ship_cost = -0.1
+}
+mor_build_navy = {
+   global_sailors_modifier = 0.05
+   light_ship_power = 0.05
+}
+mor_iberian_ambitions = {
+   land_morale = 0.1
+   ae_impact = -0.15
+}
+mor_liberated_faithful = {
+   local_missionary_strength = 0.03
+}
+mor_crushed_iberians = {
+   discipline = 0.025
+}
+mor_colonial_ambitions = {
+   global_colonial_growth = 15
+}
+mor_colonial_power = {
+   global_colonial_growth = 35
+}
+tfl_independence = {
+   liberty_desire = 10
+   land_morale = 0.1
+}
+draa_river_estuaries = {
+   trade_goods_size_modifier = 0.1
+   local_production_efficiency = 0.1
+}
+tfl_united_southern_tribes = {
+   trade_efficiency = 0.1
+   land_morale = 0.05
+}
+tfl_saadi_morocco = {
+   prestige = 0.5
+   legitimacy = 0.5
+}
+tlc_zayyanids = {
+   monarch_admin_power = 1
+   monarch_diplomatic_power = 1
+   monarch_military_power = 1
+}
+tlc_anarchy = {
+   local_autonomy = 1.25
+   local_friendly_movement_speed = -0.2
+}
+tlc_restored_order = {
+   local_autonomy = -1
+   local_tax_modifier = 0.2
+}
+tlc_restored_order_capital = {
+   trade_value = 5
+   trade_goods_size = 2
+}
+tlc_ignoring_anarchy = {
+   local_monthly_devastation = 1
+}
+desert_tribes_invaded = {
+   local_tax_modifier = -0.5
+   local_development_cost = 0.5
+}
+tlc_reined_in_tribes = {
+   local_development_cost = -0.3
+   local_build_cost = -0.5
+   trade_goods_size = 0.25
+}
+lost_to_rebels_dummy = { }
+tlc_tunisian_ports = {
+   province_trade_power_value = 5
+   trade_value_modifier = 0.25
+}
+tlc_drydocks_of_east = {
+   privateer_efficiency = 0.1
+   light_ship_power = 0.05
+}
+tlc_saharan_trade = {
+   caravan_power = 0.15
+}
+tlc_land_ambition = {
+   land_morale = 0.025
+   global_manpower_modifier = 0.1
+}
+tlc_naval_ambitions = {
+   naval_morale = 0.05
+   sailors_recovery_speed = 0.1
+}
+tlc_dockyards_of_the_west = {
+   local_sailors_modifier = 0.2
+   local_development_cost = -0.1
+}
+tlc_draa_river_trade = {
+    province_trade_power_value = 5
+}
+tlc_exploration_ambition = {
+   range = 0.5
+}
+tlc_colonial_ambition = {
+   global_colonial_growth = 25
+}
+tlc_raiding_aragonese_trade = {
+   privateer_efficiency = 0.33
+   trade_efficiency = 0.2
+}
+tlc_raiding_posts = {
+   province_trade_power_value = 3
+   ship_recruit_speed = -0.3
+   local_ship_cost = -0.3
+}
+tlc_andalucian_conquest = {
+   defensiveness = 0.33
+   fort_maintenance_modifier = -0.33
+}
+tlc_iberian_trade_power = {
+   global_ship_trade_power = 0.1
+   light_ship_power = 0.05
+}
+tlc_growth_of_tangier = {
+   trade_value = 3
+   trade_goods_size = 0.5
+}
+alg_honest_traders = {
+   trade_efficiency = 0.1
+}
+tun_eastern_trade = {
+   trade_value = 2
+}
+tun_levant_trade = {
+   merchants = 1
+}
+tun_raiding_iberian_trade = {
+   privateer_efficiency = 0.15
+}
+tun_conquest_of_granada = {
+   local_missionary_strength = 0.035
+}
+tun_iberian_conquest = {
+   land_morale = 0.05
+   light_ship_power = 0.05
+}
+tun_growth_of_naples = {
+   trade_goods_size_modifier = 0.3
+}
+tun_italian_conquest = {
+   trade_efficiency = 0.1
+   global_missionary_strength = 0.015
+}
+i_m_built_army = {
+   global_manpower_modifier = 0.1
+   manpower_recovery_speed = 0.1
+}
+i_m_united_tribes = {
+   cavalry_power = 0.1
+   shock_damage = 0.1
+}
+i_m_renovate_capital = {
+   local_development_cost = -0.15
+}
+I_M_restored_borders = {
+   land_morale = 0.1
+}
+i_m_fezzan_trade = {
+   trade_efficiency = 0.25
+   merchants = 1
+}
+restoration_of_tahert = {
+   trade_value = 5
+   province_trade_power_value = 5
+}
+i_m_navy = {
+   light_ship_power = 0.05
+}
+tun_tribes_defeated_tunis = {
+   light_ship_power = 0.05
+}
+failed_court_and_country = {
+   max_absolutism = -25
+}
+resolved_court_and_country = {
+   max_absolutism = 25
+}
+ignored_estates_tech_cost = {
+   technology_cost = 0.1
+}
+listened_estates_tech_cost = {
+   technology_cost = -0.1
+}
+CAC_estate_bribes_refused = {
+   yearly_corruption = -0.2
+   global_tax_modifier = -0.1
+}
+CAC_estate_bribes_accepted = {
+   yearly_corruption = 0.2
+   global_tax_modifier = 0.25
+}
+CAC_advisor_reigning_free = {
+   local_autonomy = 0.1
+   local_tax_modifier = -0.1
+}
+CAC_influential_land_holder = {
+   local_autonomy = 0.2
+}
+CAC_estates_sabotaged_recruitment = {
+   manpower_recovery_speed = -0.1
+   global_manpower_modifier = -0.1
+}
+CAC_no_revolt_here_dummy = { }
+CAC_republic_chose_republic = {
+  max_absolutism = 25
+  republican_tradition = 0.5
+}
+CAC_republic_fighting_pretenders = {
+   global_unrest = 5
+   republican_tradition = 0.25
+}
+CAC_agreed_to_rebel_demands = {
+   local_autonomy = 0.2
+   trade_goods_size = -1
+}
+alm_conquered_iberia_province = {
+   local_development_cost = -0.1
+   local_years_of_nationalism = -5
+}
+alm_developed_iberian_cities = {
+   province_trade_power_modifier = 0.5
+   trade_value_modifier = 0.5
+}
+alm_growth_of_valencian_silk = {
+   trade_goods_size = 1
+}
+alm_perma_merchant = {
+   merchants = 1
+}
+alm_iberian_conversions = {
+   local_missionary_strength = 0.03
+}
+alm_iberian_trade = {
+   trade_efficiency = 0.15
+   global_ship_trade_power = 0.5
+}
+alm_iberian_culture_conversions = {
+   local_culture_conversion_cost = -0.33
+}
+alm_new_world_trade_steering = {
+   trade_steering = 0.1
+}
+alm_pyrenees_defence = {
+   local_defensiveness = 0.3
+   local_build_cost = -0.3
+}
+alm_converted_bordeaux = {
+   local_tax_modifier = 0.5
+}
+alm_growth_of_bordeaux = {
+   local_autonomy = 0.1
+   local_missionary_strength = -0.03
+   local_culture_conversion_cost = 0.5
+   province_trade_power_value = 25
+   local_development_cost = -0.3
+}
+alm_pyrenees_defensive = {
+   fort_maintenance_modifier = -0.25
+   garrison_size = 0.5
+}
+alm_paris_looted = {
+   local_monthly_devastation = 0.5
+   local_unrest = 20
+}
+alm_french_conquest = {
+   land_morale = 0.15
+   infantry_power = 0.05
+}
+alm_crush_british_navy = {
+   naval_morale = 0.1
+   light_ship_power = 0.05
+}
+alm_develop_french_ports = {
+   local_development_cost = -0.15
+   trade_value = 2
+   province_trade_power_value = 5
+}
+alm_north_sea_trade = {
+   global_trade_power = 0.15
+}
+alm_growth_of_slave_trade = {
+   trade_goods_size = 1
+}
+alm_enslaving_people = {
+   tolerance_own = -0.5
+}
+alm_not_enslaving_people = {
+   tolerance_own = 1
+   global_unrest = -1
+}
+alm_growth_of_ivory_trade = {
+   trade_goods_size = 1
+   trade_value = 3
+   local_production_efficiency = 0.5
+}
+alm_ivory_no_slaves_bonus = {
+   trade_goods_size = 1.5
+   trade_value = 10
+}
+alm_west_africa_trade = {
+   global_trade_goods_size_modifier = 0.2
+}
+alm_atlantic_dominance = {
+   administrative_efficiency = 0.05
+}
+alm_special_unit_localisation_dummy = {
+   mercenary_discipline = 0.05
+}
+alm_black_guard_regiments = {
+   #cancel rajput
+   land_morale = -0.05
+   reinforce_cost_modifier = 0.5
+   #actual effects
+   infantry_power = 0.05
+   is_rajput_modifier = yes
+}
+no_special_units_dummy = { }
+alm_reform_the_army = {
+   yearly_army_professionalism = 0.01
+   discipline = 0.025
+}
+alm_reform_the_navy = {
+   light_ship_power = 0.05
+   navy_tradition = 1
+   allowed_marine_fraction = 0.05
+}
+alm_renovated_maghreb_cities = {
+   diplomatic_reputation = 1
+   development_cost = -0.1
+}
+alm_ottoman_alliance = {
+   fire_damage_received = -0.1
+   shock_damage_received = -0.1
+}
+alm_ottoman_no_exist = {
+   land_morale = 0.1
+}
+alm_no_more_mamluks = {
+   trade_efficiency = 0.1
+}
+alm_central_sahara_trade = {
+   trade_value = 5
+   local_development_cost = -0.1
+}
+alm_mam_privateering_incident = {
+   privateer_efficiency = 1
+   light_ship_power = 0.05
+}
+alm_captured_mamluk_sultan = {
+   land_morale = 0.1
+   naval_morale = 0.1
+}
+alm_cawa_conscription_center = {
+   local_manpower = 10
+   regiment_recruit_speed = -1
+}
+alm_the_horn = {
+   missionaries = 1
+}
+estate_burghers_alm_black_gold = {
+ 	min_local_autonomy = 50
+   morale_damage = 0.015
+}
+alm_renovating_holy_cities = {
+   global_tax_modifier = -0.5
+}
+alm_conversion_path = {
+   missionaries = 1
+   global_missionary_strength = 0.01
+}
+alm_humanist_path = {
+   tolerance_heathen = 1
+   tolerance_heretic = 1
+}
+alm_absolutism = {
+   autonomy_change_time = -0.25
+   harsh_treatment_cost = -0.25
+}
+alm_absolutist_ambition = {
+   yearly_absolutism = 1
+}
+alm_we_defeated_turks = {
+   land_morale = 0.2
+}
+alm_defeated_turks = {
+   global_unrest = 20
+   global_monthly_devastation = 0.4
+   stability_cost_modifier = 1
+}
+alm_crush_ottomans_mission = {
+   land_morale = 0.05
+}
+alm_anatolian_conquest = {
+   years_of_nationalism = -5
+}
+alm_city_of_world_desire = {
+   development_cost = -0.1
+}
+alm_caliphate = {
+   unjustified_demands = -0.5
+}
+alm_conquered_rome = {
+   local_unrest = 10
+   local_tax_modifier = -0.25
+}
+alm_muslim_italy = {
+   missionaries = 1
+}
+alm_med_dominance = {
+   trade_efficiency = 0.2
+   global_trade_goods_size_modifier = 0.2
+   merchants = 1
+}
+latin_trade_policy_modifier = {
+   trade_value_modifier = 0.25
+}
+alm_colonize_ivory_coast = {
+   colonists = 1
+   colonist_placement_chance = 0.1
+}
+embassy_modifier1 = {
+   development_cost = -0.1
+}
+embassy_modifier2 = {
+   ae_impact = -0.1
+}
+embassy_modifier3 = {
+   discipline = 0.1
+}
+embassy_modifier4 = {
+   fire_damage = 0.1
+}
+embassy_modifier5 = {
+   shock_damage = 0.1
+}
+embassy_modifier6 = {
+   infantry_power = 0.15
+}
+embassy_modifier7 = {
+   core_creation = -0.2
+}
+embassy_modifier8 = {
+   build_cost = -0.2
+}
+embassy_modifier9 = {
+   idea_cost = -0.2
+}
+embassy_modifier10 = {
+   technology_cost = -0.1
+}
+embassy_modifier11 = {
+   global_tax_modifier = 0.2
+}
+embassy_modifier12 = {
+   production_efficiency = 0.2
+}
+embassy_modifier13 = {
+   trade_efficiency = 0.2
+}
+embassy_modifier14 = {
+   diplomats = 1
+}
+embassy_modifier15 = {
+   merchants = 1
+}
+embassy_modifier16 = {
+   diplomatic_reputation = 1
+}
+embassy_modifier17 = {
+   diplomatic_upkeep = 1
+}
+embassy_modifier18 = {
+   prestige = 1
+}
+embassy_modifier19 = {
+   legitimacy = 1
+}
+embassy_modifier20 = { cavalry_power = 0.15 }
+embassy_modifier21 = { fire_damage_received = -0.1 }
+embassy_modifier22 = { shock_damage_received = -0.1 }
+embassy_modifier23 = { global_manpower_modifier = 0.25 }
+embassy_modifier24 = { manpower_recovery_speed = 0.25 }
+embassy_modifier25 = { land_morale = 0.1 }
+embassy_modifier26 = { artillery_power = 0.15 }
+embassy_modifier27 = { siege_ability = 0.2 }
+embassy_modifier28 = { army_tradition = 1.5 }
+embassy_modifier29 = { light_ship_power = 0.075 }
+embassy_modifier30 = { light_ship_power = 0.075 }
+embassy_modifier31 = { global_sailors_modifier = 0.25 }
+embassy_modifier32 = { ship_durability = 0.2 }
+embassy_modifier33 = { naval_morale = 0.1 }
+embassy_modifier34 = { country_admin_power = 1 }
+embassy_modifier35 = { country_diplomatic_power = 1 }
+embassy_modifier36 = { country_military_power = 1 }
+embassy_modifier37 = { yearly_corruption = -0.1 }
+embassy_modifier38 = { advisor_cost = -0.075 }
+embassy_modifier39 = { global_missionary_strength = 0.015 }
+embassy_modifier40 = { culture_conversion_cost = -0.25 }
+embassy_modifier41 = { global_unrest = -3 }
+embassy_modifier42 = { vassal_income = 0.25 }
+embassy_modifier43 = { diplomatic_annexation_cost = -0.2 }
+embassy_modifier44 = { province_warscore_cost = -0.15 }
+embassy_modifier45 = { unjustified_demands = -0.25 }
+embassy_modifier46 = { global_autonomy = -0.1 }
+embassy_modifier47 = { global_trade_goods_size_modifier = 0.15 }
+embassy_modifier48 = { all_power_cost = -0.05 }
+rsm_built_fleet = {
+   global_ship_cost = -0.25
+   light_ship_power = 0.05
+}
+rsm_annexed_tunis = {
+   monthly_piety = -0.002
+   prestige = 1
+}
+alm_maghreb_ports_navy = {
+   light_ship_power = 0.05
+   naval_maintenance_modifier = -0.15
+}
+alm_maghreb_ports_trade = {
+   trade_value = 3
+   trade_goods_size = 1
+}
+no_edict_here_dummy = { }
+local_decreased_levies_privilege = {
+   local_manpower_modifier = -0.3
+}
+local_decreased_tax_privilege = {
+   local_tax_modifier = -0.3
+}
+local_decreased_conversions_privilege = {
+   local_missionary_strength = -0.05
+}
+province_agenda_cooldown = {
+   local_unrest = 2
+}
+mil_agenda1_modifier = {
+   local_defensiveness = 0.3
+}
+dip_agenda1_modifier = {
+   allowed_num_of_buildings = 1
+}
+dip_agenda2_modifier = {
+   picture = "global_missionary_strength"
+}
+recently_completed_agenda_dummy = { }
+adm_agenda1_modifier = {
+   local_build_cost = -0.25
+}
+adm_agenda2_modifier = {
+   local_development_cost = -0.1
+}
+agenda_diet_cooldown = {
+   picture = "global_unrest"
+}
+failed_diet_modifier = {
+   local_unrest = 3
+}
+refused_diet_cooldown = {
+   picture = "burghers_loyalty_modifier_opposite"
+}
+local_increased_autonomy_privilege = {
+   local_autonomy = 0.3
+}
+local_guarantee_autonomy_privilege = {
+   min_local_autonomy = 25
+}
+local_trade_monopoly_privilege = {
+   province_trade_power_modifier = -0.5
+}
+local_reduced_production_privilege = {
+   local_production_efficiency = -0.3
+}
+local_goods_quota_privilege = {
+   trade_goods_size_modifier = -0.3
+}
+local_quality_infrastructure_privilege = {
+   local_build_cost = 0.3
+}
+local_state_freedom_privilege = {
+   local_state_maintenance_modifier = 1
+}
+local_goods_monopoly_privilege = {
+   trade_value_modifier = -0.3
+}
+local_paid_conscriptions_privilege = {
+   local_regiment_cost = 0.3
+}
+local_reduced_defensiveness_privilege = {
+   local_defensiveness = -0.5
+}
+local_decreased_warsupport_privilege = {
+   supply_limit_modifier = -0.5
+}
+local_naval_levies_privilege = {
+   local_sailors_modifier = -0.3
+}
+local_naval_conscriptions_privilege = {
+   local_ship_cost = 0.3
+}
+local_navy_time_privilege = {
+   ship_recruit_speed = 0.5
+}
+local_decreased_culture_privilege = {
+   local_culture_conversion_cost = 0.5
+}
+local_exclusion_policy_privilege = {
+   local_institution_spread = -0.5
+}
+local_increased_freedoms_privilege = {
+   local_governing_cost = 0.25
+}
+local_local_values_privilege = {
+   local_years_of_nationalism = 15
+}
+local_quality_buildings_privilege = {
+   local_build_time = 0.5
+}
+mil_agenda5_modifier = {
+   local_manpower_modifier = 0.5
+}
+mil_agenda9_modifier = {
+   allowed_num_of_buildings = 1
+}
+mil_agenda11_modifier = {
+   discipline = 0.025
+}
+mil_agenda14_modifier = { }
+dip_agenda3_modifier = {
+   allowed_num_of_buildings = 2
+}
+dip_agenda4_modifier = {
+   allowed_num_of_buildings = 1
+   local_development_cost = -0.15
+}
+dip_agenda5_modifier = {
+   allowed_num_of_buildings = 1
+   local_build_cost = -0.15
+}
+dip_agenda5_2_modifier = {
+   allowed_num_of_buildings = 1
+}
+dip_agenda6_modifier = {
+   allowed_num_of_buildings = 1
+   local_build_cost = -0.25
+}
+dip_agenda6_2_modifier = {
+   allowed_num_of_buildings = 1
+}
+dip_agenda7_modifier = {
+   tolerance_own = 1
+}
+dip_agenda8_modifier = {
+   allowed_num_of_buildings = 1
+}
+dip_agenda9_modifier = {
+   local_development_cost = -0.1
+}
+dip_agenda12_modifier = {
+   local_prosperity_growth = 1
+}
+dip_agenda13_modifier = {
+   local_culture_conversion_cost = -0.15
+}
+state_house_modifier = {
+   min_local_autonomy = -5
+}
+state_house_modifier_boost = {
+   min_local_autonomy = -10
+}
+# Forts
+fort_15th_modifier = {
+   local_unrest = -1
+   local_prosperity_growth = 0.1
+   block_slave_raid = yes
+}
+fort_16th_modifier = {
+   local_unrest = -2
+   local_prosperity_growth = 0.15
+   block_slave_raid = yes
+}
+fort_17th_modifier = {
+   local_unrest = -3
+   local_prosperity_growth = 0.2
+   block_slave_raid = yes
+}
+fort_18th_modifier = {
+   local_unrest = -4
+   local_prosperity_growth = 0.25
+   block_slave_raid = yes
+}
+fort_block_slave_raid_modifier = {
+   block_slave_raid = yes
+}
+ai_building_fort_timer = { }
+ai_recently_deleted_fort_timer = { }
+ai_fort_delete_timer_dummy = { }
+ai_fort_upgrade_timer_dummy = { }
+adm_agenda3_modifier = {
+   local_tax_modifier = 0.25
+}
+adm_agenda5_modifier = {}
+adm_agenda9_modifier = {
+   trade_goods_size = 0.25
+}
+adm_agenda10_modifier = {
+   local_tax_modifier = 0.25
+}
+adm_agenda11_modifier = {
+   allowed_num_of_buildings = 1
+}
+adm_agenda11_2_modifier = {
+   trade_goods_size = 1
+}
+adm_agenda12_modifier = {
+   local_build_cost = -0.05
+   local_development_cost = -0.05
+}
+adm_agenda13_modifier = {
+   local_prosperity_growth = 1
+}
+adm_agenda14_modifier = {
+   land_forcelimit = 2
+   allowed_num_of_buildings = 1
+}
+adm_agenda14_2_modifier = {
+   naval_forcelimit = 2
+}
+draa_estuary_modifier = {
+	province_trade_power_value = 10
+	picture = "estuary_icon"
+}
+amur_estuary_modifier = {
+   province_trade_power_value = 10
+   picture = "estuary_icon"
+}
+severn_estuary_modifier = {
+   province_trade_power_value = 5
+   picture = "estuary_icon"
+}
+ural_river_estuary_modifier = {
+   province_trade_power_value = 5
+   picture = "estuary_icon"
+}
+amu_darya_estuary_modifier = {
+   province_trade_power_value = 5
+   picture = "estuary_icon"
+}
+lundevatnet_estuary_modifier = {
+   province_trade_power_value = 10
+   picture = "estuary_icon"
+}
+tome_estuary_modifier = {
+   province_trade_power_value = 10
+   picture = "estuary_icon"
+}
+ishikari_estuary_modifier = {
+   province_trade_power_value = 10
+   picture = "estuary_icon"
+}
+yalu_estuary_modifier = {
+   province_trade_power_value = 10
+   picture = "estuary_icon"
+}
+mil_tech_5_horse_cost = {
+   cavalry_cost = -0.06
+}
+mil_tech_6_horse_cost = {
+   cavalry_cost = -0.12
+}
+mil_tech_9_horse_cost = {
+   cavalry_cost = -0.15
+}
+mil_tech_11_horse_cost = {
+   cavalry_cost = -0.21
+}
+mil_tech_14_horse_cost = {
+   cavalry_cost = -0.27
+}
+mil_tech_16_horse_cost = {
+   cavalry_cost = -0.3
+}
+mil_tech_18_horse_cost = {
+   cavalry_cost = -0.36
+}
+mil_tech_20_horse_cost = {
+   cavalry_cost = -0.42
+}
+mil_tech_22_horse_cost = {
+   cavalry_cost = -0.48
+}
+mil_tech_24_horse_cost = {
+   cavalry_cost = -0.54
+}
+mil_tech_26_horse_cost = {
+   cavalry_cost = -0.6
+}
+tlc_striking_gold = {
+   trade_goods_size = 0.2
+}
+rsm_ivory_trade = {
+   colonists = 1
+}
+lam_pacified_sanhaja = {
+   culture_conversion_cost = -0.1
+}
+alg_dev_cost = {
+   development_cost = -0.075
+}
+regency_of_algiers = {
+   shock_damage_received = -0.2
+   governing_capacity_modifier = 0.1
+}
+warlord_mandate_1 = { imperial_mandate = -0.01 }
+warlord_mandate_2 = { imperial_mandate = -0.025 }
+warlord_mandate_3 = { imperial_mandate = -0.04 }
+warlord_mandate_4 = { imperial_mandate = -0.05 }
+warlord_mandate_5 = { imperial_mandate = -0.06 }
+warlord_mandate_6 = { imperial_mandate = -0.075 }
+warlord_mandate_7 = { imperial_mandate = -0.09 }
+warlord_mandate_8 = { imperial_mandate = -0.1 }
+warlord_mandate_9 = { imperial_mandate = -0.11 }
+warlord_mandate_10 = { imperial_mandate = -0.12 }
+warlord_mandate_11 = { imperial_mandate = -0.14 }
+warlord_mandate_12 = { imperial_mandate = -0.15 }
+warlord_mandate_13 = { imperial_mandate = -0.16 }
+warlord_mandate_14 = { imperial_mandate = -0.175 }
+warlord_mandate_15 = { imperial_mandate = -0.19 }
+warlord_mandate_16 = { imperial_mandate = -0.2 }
+warlord_mandate_17 = { imperial_mandate = -0.21 }
+warlord_mandate_18 = { imperial_mandate = -0.225 }
+warlord_mandate_19 = { imperial_mandate = -0.24 }
+warlord_mandate_20 = { imperial_mandate = -0.25 }
+rebellion_mandate_1 = { imperial_mandate = -0.02 }
+rebellion_mandate_2 = { imperial_mandate = -0.04 }
+rebellion_mandate_3 = { imperial_mandate = -0.06 }
+rebellion_mandate_4 = { imperial_mandate = -0.8 }
+rebellion_mandate_5 = { imperial_mandate = -0.1 }
+rebellion_mandate_6 = { imperial_mandate = -0.12 }
+rebellion_mandate_7 = { imperial_mandate = -0.14 }
+rebellion_mandate_8 = { imperial_mandate = -0.16 }
+rebellion_mandate_9 = { imperial_mandate = -0.18 }
+rebellion_mandate_10 = { imperial_mandate = -0.2 }
+rebellion_mandate_11 = { imperial_mandate = -0.22 }
+rebellion_mandate_12 = { imperial_mandate = -0.24 }
+rebellion_mandate_13 = { imperial_mandate = -0.26 }
+rebellion_mandate_14 = { imperial_mandate = -0.28 }
+rebellion_mandate_15 = { imperial_mandate = -0.3 }
+rebellion_mandate_16 = { imperial_mandate = -0.32 }
+rebellion_mandate_17 = { imperial_mandate = -0.34 }
+rebellion_mandate_18 = { imperial_mandate = -0.36 }
+rebellion_mandate_19 = { imperial_mandate = -0.38 }
+rebellion_mandate_20 = { imperial_mandate = -0.4 }
+mercs_mandate_5 = { imperial_mandate = -0.005 }
+mercs_mandate_10 = { imperial_mandate = -0.02 }
+mercs_mandate_15 = { imperial_mandate = -0.03 }
+mercs_mandate_20 = { imperial_mandate = -0.04 }
+mercs_mandate_25 = { imperial_mandate = -0.05 }
+mercs_mandate_30 = { imperial_mandate = -0.06 }
+mercs_mandate_35 = { imperial_mandate = -0.07 }
+mercs_mandate_40 = { imperial_mandate = -0.08 }
+mercs_mandate_45 = { imperial_mandate = -0.09 }
+mercs_mandate_50 = { imperial_mandate = -0.1 }
+mercs_mandate_55 = { imperial_mandate = -0.11 }
+mercs_mandate_60 = { imperial_mandate = -0.12 }
+mercs_mandate_65 = { imperial_mandate = -0.13 }
+mercs_mandate_70 = { imperial_mandate = -0.14 }
+mercs_mandate_75 = { imperial_mandate = -0.15 }
+mercs_mandate_80 = { imperial_mandate = -0.16 }
+mercs_mandate_85 = { imperial_mandate = -0.17 }
+mercs_mandate_90 = { imperial_mandate = -0.18 }
+mercs_mandate_95 = { imperial_mandate = -0.19 }
+mercs_mandate_100 = { imperial_mandate = -0.2 }
+independent_mandate_0 ={}
+independent_mandate_2 = { imperial_mandate = -0.01 }
+independent_mandate_4 = { imperial_mandate = -0.04 }
+independent_mandate_6 = { imperial_mandate = -0.06 }
+independent_mandate_8 = { imperial_mandate = -0.08 }
+independent_mandate_10 = { imperial_mandate = -0.1 }
+independent_mandate_12 = { imperial_mandate = -0.12 }
+independent_mandate_14 = { imperial_mandate = -0.14 }
+independent_mandate_16 = { imperial_mandate = -0.16 }
+independent_mandate_18 = { imperial_mandate = -0.18 }
+independent_mandate_20 = { imperial_mandate = -0.2 }
+independent_mandate_22 = { imperial_mandate = -0.22 }
+independent_mandate_24 = { imperial_mandate = -0.24 }
+independent_mandate_26 = { imperial_mandate = -0.26 }
+independent_mandate_28 = { imperial_mandate = -0.28 }
+independent_mandate_30 = { imperial_mandate = -0.3 }
+independent_mandate_32 = { imperial_mandate = -0.32 }
+independent_mandate_34 = { imperial_mandate = -0.34 }
+independent_mandate_36 = { imperial_mandate = -0.36 }
+independent_mandate_38 = { imperial_mandate = -0.38 }
+independent_mandate_40 = { imperial_mandate = -0.4 }
+chinese_land_mandate_25 = { imperial_mandate = 0.01 }
+chinese_land_mandate_50 = { imperial_mandate = 0.02 }
+chinese_land_mandate_75 = { imperial_mandate = 0.03 }
+chinese_land_mandate_100 = { imperial_mandate = 0.04 }
+chinese_land_mandate_125 = { imperial_mandate = 0.05 }
+chinese_land_mandate_150 = { imperial_mandate = 0.06 }
+chinese_land_mandate_175 = { imperial_mandate = 0.07 }
+chinese_land_mandate_200 = { imperial_mandate = 0.08 }
+chinese_land_mandate_225 = { imperial_mandate = 0.09 }
+chinese_land_mandate_250 = { imperial_mandate = 0.1 }
+chinese_land_mandate_275 = { imperial_mandate = 0.11 }
+chinese_land_mandate_300 = { imperial_mandate = 0.12 }
+chinese_land_mandate_325 = { imperial_mandate = 0.13 }
+chinese_land_mandate_350 = { imperial_mandate = 0.14 }
+chinese_land_mandate_375 = { imperial_mandate = 0.15 }
+chinese_land_mandate_400 = { imperial_mandate = 0.16 }
+chinese_land_mandate_425 = { imperial_mandate = 0.17 }
+chinese_land_mandate_450 = { imperial_mandate = 0.18 }
+chinese_land_mandate_475 = { imperial_mandate = 0.19 }
+chinese_land_mandate_500 = { imperial_mandate = 0.2 }
+eoc_miao_revolts_modifier = {
+   imperial_mandate = -0.1
+   global_autonomy = 0.1
+}
+eoc_fighting_miao_rebels = {
+   land_morale = -0.15
+   war_exhaustion = 0.05
+   reinforce_speed = -0.15
+}
+mng_exterminated_miao_revolts = {
+   imperial_mandate = 0.05
+   global_unrest = -2
+   global_missionary_strength = 0.01
+}
+mng_repopulation_of_south = {
+   local_development_cost = -0.1
+   local_build_cost = -0.1
+}
+mng_accepted_miao_revolts = {
+   yearly_harmony = 0.5
+   tolerance_heathen = 1
+   tolerance_heretic = 1
+   num_accepted_cultures = 1
+}
+mng_miao_goods_produced = {
+   trade_goods_size_modifier = 0.25
+   trade_goods_size = 0.5
+   allowed_num_of_buildings = 1
+}
+eoc_exterminated_the_miao = {
+   imperial_mandate = 0.05
+   prestige = 0.5
+}
+eoc_accepted_the_miao = {
+   imperial_mandate = 0.05
+   religious_unity = 0.1
+}
+eoc_converting_miao_modifier = {
+   local_culture_conversion_cost = -0.5
+   local_missionary_strength = 0.05
+   local_unrest = 20
+   #local_harmony_lost = -0.5
+}
+eoc_encouraged_revolts = {
+   global_unrest = 10
+   years_of_nationalism = 10
+   stability_cost_modifier = -0.15
+}
+eoc_mission_reformed_seaban = {
+   light_ship_power = 0.05
+   global_ship_cost = -0.15
+}
+eoc_mission_navy_modifier = {
+   global_sailors_modifier = 0.2
+}
+eoc_loyal_tribute_modifier = {
+   liberty_desire_from_subject_development = -0.15
+   diplomatic_reputation = 1
+}
+eoc_imperial_reserves_modifier = {
+   land_forcelimit_modifier = 0.1
+   global_manpower_modifier = 0.25
+}
+eoc_overseas_ambition_modifier = {
+   range = 0.25
+}
+mng_subjugated_manchu_modifier = {
+   discipline = 0.03
+   shock_damage = 0.1
+}
+eoc_mng_seal_of_yuan = {
+   discipline = 0.025
+}
+eoc_mng_destroyed_yuan = {
+   imperial_mandate = 0.05
+}
+eoc_resurgence_of_ming_mil = {
+   discipline = 0.05
+   land_forcelimit_modifier = 0.15
+   global_manpower_modifier = 0.15
+}
+eoc_resurgence_of_ming_adm = {
+   imperial_mandate = 0.05
+   global_unrest = -2
+   governing_capacity_modifier = 0.15
+}
+eoc_sold_bureaucrats_titles = {
+	max_absolutism = -5
+}
+eoc_didnt_sell_bureaucrats_titles = {
+	global_unrest = 1
+}
+eoc_granted_eunuchs_trade = {
+	global_trade_power = 0.05
+	global_foreign_trade_power = 0.1
+}
+eoc_refused_eunuchs_trade = {
+	global_unrest = 1
+	global_foreign_trade_power = -0.05
+}
+eoc_bureaucrats_isolationism = {
+	meritocracy = 0.25
+	global_trade_goods_size_modifier = 0.05
+	global_foreign_trade_power = -0.1
+}
+eoc_refused_bureaucrats_isolationism = {
+	global_unrest = 2
+}
+eoc_good_feng_shui = {
+	imperial_mandate = 0.01
+	global_tax_modifier = 0.05
+}
+eoc_eunuchs_corrupt_the_country = {
+	advisor_cost = 0.1
+	global_tax_modifier = -0.15
+	imperial_mandate = -0.02
+}
+eoc_purple_turban_rebellion = {
+	imperial_mandate = -0.1
+	global_unrest = 10
+	harsh_treatment_cost = -0.5
+}
+eoc_shaanxi_earthquake = {
+	local_production_efficiency = -0.8
+	local_tax_modifier = -0.8
+	trade_goods_size_modifier = -0.8
+	trade_value_modifier = -0.5
+}
+eoc_yellow_river_floods = {
+   local_production_efficiency = -0.8
+	local_tax_modifier = -0.8
+	trade_goods_size_modifier = -0.8
+	trade_value_modifier = -0.8
+   local_monthly_devastation = 0.1
+}
+eoc_silver_shortages = {
+   interest = 5
+   inflation_reduction = -0.15
+   global_tax_modifier = -0.25
+   imperial_mandate = -0.05
+   global_unrest = 5
+}
+eoc_raided_by_wokou_pirates = {
+   trade_value_modifier = -0.5
+   local_tax_modifier = -0.5
+   local_production_efficiency = -0.5
+   local_monthly_devastation = 0.2
+}
+eoc_wokou_pirates = {
+   trade_efficiency = -0.2
+   global_trade_goods_size_modifier = -0.1
+   global_trade_power = -0.2
+   imperial_mandate = -0.05
+}
+eoc_little_ice_age_modifier = {
+   global_monthly_devastation = 0.15
+   global_trade_goods_size_modifier = -0.15
+   production_efficiency = -0.25
+   imperial_mandate = -0.05
+   global_unrest = 5
+}
+eoc_unguarded_frontier_unrest = {
+   global_unrest = 1
+}
+eoc_unguarded_frontier_local_security = {
+   local_unrest = -2
+}
+eoc_unguarded_frontier_raiding_parties = {
+   local_tax_modifier = -0.25
+   local_production_efficiency = -0.25
+   local_monthly_devastation = 0.1
+}
+warlords_mission_war_for_mandate_modifier = {
+   land_maintenance_modifier = -0.25
+}
+warlords_unify_china_modifier = {
+   imperial_mandate = 0.025
+}
+warlords_mission_allies_modifier = {
+   diplomatic_reputation = 1
+   diplomatic_upkeep = 1
+}
+warlords_mission_trade_modifier = {
+   merchants = 1
+}
+shun_growth_of_capital = {
+   local_development_cost = -0.25
+   local_build_cost = -0.25
+   trade_goods_size = 1
+}
+shun_mission_destroy_ming = {
+   discipline = 0.03
+}
+mil_agenda17_modifier = {
+   land_forcelimit = 1
+   local_manpower_modifier = 0.1
+}
+mil_agenda18_modifier = {
+   land_forcelimit = 2
+   local_manpower_modifier = 0.2
+}
+mil_agenda19_modifier = {
+   land_forcelimit = 2
+   local_manpower_modifier = 0.2
+}
+eoc_european_chinese_trade = {
+   trade_efficiency = 0.1
+   merchants = 1
+}
+ai_passed_celestial_reform_buff = {
+   global_unrest = -5
+   fire_damage_received = -0.25
+   shock_damage_received = -0.25
+}
+unrest_in_chinese_provinces = {
+   local_unrest = 5
+}
+sinification_cooldown_dummy = {}
+eoc_angry_province_sinification = {
+   local_unrest = 10
+   local_tax_modifier = -0.5
+}
+eoc_han_migrations = {
+   local_tax_modifier = 0.5
+}
+eoc_resisting_sinification = {
+   cavalry_power = 0.1
+   infantry_power = 0.1
+}
+eoc_sinification_banners = {
+   amount_of_banners = 0.5
+   discipline = -0.025
+   global_manpower_modifier = 0.25
+}
+eoc_sinification_cav = {
+   cavalry_cost = -0.5
+   shock_damage = -0.05
+   global_manpower_modifier = 0.25
+}
+eoc_sinification_regular = {
+   infantry_power = -0.05
+   infantry_cost = -0.5
+   global_manpower_modifier = 0.25
+}
+eoc_sinification_discipline = {
+   discipline = 0.05
+   global_manpower_modifier = -0.1
+   manpower_recovery_speed = -0.1
+}
+tim_death_of_shah_rukh = {
+   liberty_desire = 25
+   land_morale = 0.1
+}
+eoc_ming_collapsing_manchu_modifier = {
+   amount_of_banners = 0.15
+   discipline = 0.05
+}
+ai_merchant_eval_dummy = {}
+ccr_in_chinese_provinces = {
+   local_core_creation = -0.33
+}
+esen_taishis_four_oirats = {
+   reduced_liberty_desire = 60
+   vassal_forcelimit_bonus = 0.1
+   diplomatic_upkeep = 1
+}
+death_of_esen_taishi = {
+   global_unrest = 15
+   land_morale = -0.1
+   cavalry_cost = 0.5
+}
+eoc_refounding_of_qaraqorum = {
+   local_build_cost = -0.1
+   local_development_cost = -0.1
+}
+mhl_legitimacy_mod = {
+   horde_unity = 0.5
+   legitimacy = 0.5
+   meritocracy = 0.5
+}
+mhl_warrior_of_chagatai_mod = {
+   siege_ability = 0.1
+}
+mhl_unified_chagatai = {
+   shock_damage = 0.1
+}
+qng_han_banners = {
+   local_amount_of_banners = 1
+}
+qng_han_banners_penalty = {
+   yearly_corruption = 0.25
+}
+ai_qng_han_banners = {
+   local_amount_of_banners = 2
+}
+evenks_perma_admin_mod = {
+   country_admin_power = 1
+}
+evenks_colonising_frontier_mod = {
+   colonists = 1
+}
+evenks_privateer_power_mod = {
+   privateer_efficiency = 0.2
+}
+evenks_trade_power_mod = {
+   global_ship_trade_power = 0.2
+   diplomatic_reputation = 1
+}
+evenks_ravaged_kor_mod = {
+   trade_efficiency = 0.2
+   light_ship_power = 0.05
+}
+evenks_invaded_kor_mod = {
+   core_creation = -0.1
+   province_warscore_cost = -0.1
+}
+evenks_defying_china_mod = {
+   land_morale = 0.15
+   fire_damage = 0.15
+}
+##################################################
+# Harmonized Modifiers (replaced elsewhere)
+##################################################
+
+# Religions
+harmonized_vajrayana = {}
+harmonized_buddhism = {}
+harmonized_mahayana = {}
+harmonized_shinto = {}
+harmonized_pagan = {}
+harmonized_jewish_group = {}
+harmonized_zoroastrian_group = {}
+harmonized_dharmic = {}
+harmonized_muslim = {}
+harmonized_christian = {}
+
+ming_crisis_call_of_the_banners_mod = {
+   amount_of_banners = 0.1
+   yearly_corruption = -0.05
+}
+ming_crisis_tech_cost_mod = {
+   technology_cost = -0.1
+   idea_cost = -0.1
+   advisor_cost = -0.1
+}
+ming_crisis_morale_boost_mod = {
+   land_morale = 0.05
+   global_regiment_cost = -0.1
+}
+ming_crisis_siege_mod = {
+   siege_ability = 0.25
+}
+spend_mandate_dummy = {}
+invade_ming_mod = {
+   land_forcelimit = 20
+   land_forcelimit_modifier = -0.25
+}
+gc_in_chinese_provinces = {
+   local_governing_cost = -0.15
+}
+new_mandate_holder = {
+	imperial_mandate = 0.1
+	global_unrest = -5
+   global_monthly_devastation = -0.25
+}
+kor_inwards_perfection1 = {
+   shock_damage_received = 0.33
+   land_morale = -0.15
+}
+kor_inwards_perfection2 = {
+   reinforce_cost_modifier = 1
+   reinforce_speed = -0.33
+}
+kor_inwards_perfection3 = {
+   global_manpower_modifier = -0.5
+   manpower_recovery_speed = -0.33
+}
+kor_manchu_invasion = {
+   local_defensiveness = -0.25
+}
+kor_manchu_invasion2 = {
+   shock_damage_received = 0.33
+}
+mch_invasion_wsc = {
+   local_warscore_cost_modifier = -0.5
+}
+mch_invasion_discipline = {
+   discipline = 0.05
+}
+mch_sack_capital = {
+   trade_goods_size_modifier = -0.25
+   local_development_cost = 0.25
+   local_tax_modifier = -0.25
+   local_build_cost = 0.25
+}
+kor_autonomy_reforms = {
+   global_autonomy = -0.05
+}
+kor_stability_mod = {
+   trade_goods_size = 1
+   local_development_cost = -0.2
+   province_trade_power_value = 5
+}
+mng_crisis_100 = {
+   global_tax_income = 12
+}
+rejected_ming_defectors = {
+   amount_of_banners = 0.15
+}
+rejected_ming_defectors2 = {
+   land_morale = 0.1
+}
+sejm_disapprove_war_mod = {
+   global_manpower_modifier = -0.33
+   reinforce_speed = -0.33
+}
+sejm_option2_mod = {
+   global_tax_modifier = -0.33
+}
+sejm_option3_mod = {
+   global_manpower_modifier = -0.33
+   global_tax_modifier = -0.33
+   global_unrest = 20
+}
+corrupt_sejm_mod = {
+   global_tax_modifier = -0.15
+   production_efficiency = -0.15
+}
+sejm_mock_war_mod = {
+   land_morale = -0.15
+}
+sejm_tech_cost_mod = {
+   technology_cost = 0.1
+   idea_cost = 0.1
+}
+lit_cossack_raided_prov = {
+   local_tax_modifier = -0.5
+   local_production_efficiency = -0.5
+   local_build_cost = 0.5
+   local_development_cost = 0.5
+}
+ruth_mission_army_mod = {
+   infantry_power = 0.1
+   land_maintenance_modifier = -0.1
+}
+ruth_conscripted_cossacks = {
+   cavalry_power = 0.1
+}
+ukr_faiths_bastion_mod = {
+   global_missionary_strength = 0.01
+}
+ukr_orthodox_bastion_mod = {
+   yearly_patriarch_authority = 0.005
+}
+faiths_bastion_mod = {
+   local_build_cost = -0.1
+   local_development_cost = -0.05
+}
+ukr_develop_ruthenia_mod = {
+   trade_value_modifier = 0.5
+   trade_goods_size = 0.5
+}
+ukr_siberian_colonisation = {
+   colonists = 1
+}
+ruth_growth_of_white_sea = {
+   province_trade_power_value = 10
+   trade_goods_size = 0.5
+}
+ruth_fur_trade_mod = {
+   trade_efficiency = 0.2
+}
+ukr_blossoming_culture = {
+   culture_conversion_cost = -0.1
+   prestige_decay = -0.005
+}
+vasily_army_reform_mod = {
+   infantry_power = 0.1
+   infantry_cost = -0.1
+}
+ai_vasily_army_reform_mod = {
+   infantry_power = 0.2
+   land_maintenance_modifier = -0.2
+}
+vasily_admin_reform_mod = {
+   all_power_cost = -0.075
+}
+vasily_diplo_reform_mod = {
+   reduced_liberty_desire = 30
+   diplomatic_reputation = 2
+}
+ivan_the_great_mod = {
+   infantry_power = 0.1
+   land_morale = 0.1
+   core_creation = -0.15
+}
+ai_ivan_the_great_mod = {
+   global_tax_income = 36
+   infantry_power = 0.1
+   land_morale = 0.1
+   core_creation = -0.25
+   global_regiment_cost = -0.15
+}
+land_reforms_of_ivan = {
+   discipline = 0.05
+   land_maintenance_modifier = -0.1
+}
+ai_land_reforms_of_ivan = {
+   discipline = 0.05
+   land_maintenance_modifier = -0.2
+}
+admin_reforms_of_ivan = {
+   advisor_cost = -0.075
+   all_power_cost = -0.05
+}
+nov_provinces_cheaper_mod = {
+   local_warscore_cost_modifier = -0.5
+}
+destruction_of_veche_bell_mod = {
+   ae_impact = -0.1
+   province_warscore_cost = -0.1
+}
+nov_destruction_of_veche_bell = {
+   land_morale = -0.15
+}
+dan_eriks_rebellion = {
+   global_tax_modifier = -0.5
+   reduced_liberty_desire = -100
+}
+eoc_defecting_area_mod = {
+   local_tax_modifier = -0.5
+}
+eoc_ministry_for_foreign_defence = {
+   defensiveness = 0.1
+   fort_maintenance_modifier = -0.1
+}
+eoc_advisor_criticism_mod = {
+   advisor_cost = 0.1
+}
+eoc_frontier_army_reforms = {
+   land_maintenance_modifier = 0.25
+   infantry_power = 0.1
+}
+forcelimit_cap1 = { land_forcelimit_modifier = -0.05 reinforce_speed = 0.05 }
+forcelimit_cap2 = { land_forcelimit_modifier = -0.1 reinforce_speed = 0.1 }
+forcelimit_cap3 = { land_forcelimit_modifier = -0.15 reinforce_speed = 0.15 }
+forcelimit_cap4 = { land_forcelimit_modifier = -0.2 reinforce_speed = 0.2 }
+forcelimit_cap5 = { land_forcelimit_modifier = -0.25 reinforce_speed = 0.25 }
+forcelimit_cap6 = { land_forcelimit_modifier = -0.3 reinforce_speed = 0.3 }
+forcelimit_cap7 = { land_forcelimit_modifier = -0.35 reinforce_speed = 0.35 }
+forcelimit_cap8 = { land_forcelimit_modifier = -0.4 reinforce_speed = 0.4 }
+forcelimit_cap9 = { land_forcelimit_modifier = -0.45 reinforce_speed = 0.45 }
+forcelimit_cap10 = { land_forcelimit_modifier = -0.5 reinforce_speed = 0.5 }
+forcelimit_cap11 = { land_forcelimit_modifier = -0.55 reinforce_speed = 0.55 }
+forcelimit_cap12 = { land_forcelimit_modifier = -0.6 reinforce_speed = 0.6 }
+forcelimit_cap13 = { land_forcelimit_modifier = -0.65 reinforce_speed = 0.65 }
+forcelimit_cap14 = { land_forcelimit_modifier = -0.7 reinforce_speed = 0.7 }
+forcelimit_cap15 = { land_forcelimit_modifier = -0.75 reinforce_speed = 0.75 }
+forcelimit_cap16 = { land_forcelimit_modifier = -0.8 reinforce_speed = 0.8 }
+forcelimit_cap17 = { land_forcelimit_modifier = -0.85 reinforce_speed = 0.85 }
+forcelimit_cap18 = { land_forcelimit_modifier = -0.9 reinforce_speed = 0.9 }
+forcelimit_cap19 = { land_forcelimit_modifier = -0.95 reinforce_speed = 0.95 }
+forcelimit_cap20 = { land_forcelimit_modifier = -1 reinforce_speed = 1 }
+
+converting_to_shinto_mod = {
+   missionaries = 2
+   global_missionary_strength = 0.05
+   religious_unity = 0.33
+}
+marcher_lords_dummy = {}
+vassal_leaders_1 = { free_leader_pool = 1 }
+vassal_leaders_2 = { free_leader_pool = 2 }
+vassal_leaders_3 = { free_leader_pool = 3 }
+vassal_leaders_4 = { free_leader_pool = 4 }
+vassal_leaders_5 = { free_leader_pool = 5 }
+vassal_leaders_6 = { free_leader_pool = 6 }
+vassal_leaders_7 = { free_leader_pool = 7 }
+vassal_leaders_8 = { free_leader_pool = 8 }
+vassal_leaders_9 = { free_leader_pool = 9 }
+vassal_leaders_10 = { free_leader_pool = 10 }
+harmony_mechanic_cd = {}
+conf_harmony_the_art_of_war = {
+   infantry_power = 0.1
+}
+conf_harmony_examination_system = {
+   advisor_pool = 1
+   advisor_cost = -0.05
+}
+conf_harmony_scholarly_elite = {
+   technology_cost = -0.1
+}
+daoism_taoist_thought = {
+   global_institution_spread = 0.1
+}
+daoism_unity_in_faith = {
+   global_autonomy = -0.25
+}
+harmony_mod_dummy = {}
+eunuchs_harmonize_folk_religions_mod = {
+   local_religious_unity_contribution = -0.5
+   local_unrest = -1
+   local_tax_modifier = 0.15
+}
+khwan_ancestor_worship = {
+   local_development_cost = -0.25
+   local_tax_modifier = 0.15
+}
+khwan_traditional_worship = {
+   stability_cost_modifier = -0.1
+   legitimacy = 1
+   meritocracy = 1
+   horde_unity = 1
+   devotion = 1
+   republican_tradition = 1
+}
+khwan_ruler_on_ancestral_trip = {}
+khwan_repair_temple_mod = {
+   local_build_cost = -0.25
+   local_development_cost = -0.25
+}
+khwan_temple_disrepair_mod = {
+   local_development_cost = 0.25
+   local_unrest = 2
+}
+mophi_financial_aid_mod = {
+   tolerance_own = 3
+   global_tax_modifier = -0.15
+}
+shen_contact_mil = {
+   discipline = 0.1
+}
+shen_contact_dip = {
+   diplomatic_reputation = 4
+   diplomats = 1
+}
+shen_contact_adm = {
+   advisor_cost = -0.15
+   global_trade_goods_size_modifier = 0.33
+}
+corrupt_mophi_mod = {
+   global_tax_modifier = -0.25
+   global_unrest = 1
+}
+mophi_conversion_mod = {
+   global_missionary_strength = 0.03
+}
+shen_festivities_mod = {
+   global_tax_modifier = 0.2
+   global_unrest = -1
+}
+mophi_taking_money_mod = {
+   global_tax_modifier = 0.25
+}
+mophi_peasants = {
+   local_tax_modifier = 0.5
+   local_unrest = 10
+   local_development_cost = 0.2
+   local_build_cost = 0.2
+}
+reduced_religious_taxes = {
+   global_tax_modifier = -0.25
+   global_unrest = -3
+}
+mophi_advisor_favoured = {
+   advisor_cost = -0.1
+   advisor_pool = 1
+}
+expensive_mophi_ritual = {
+   advisor_cost = 0.33
+   global_tax_modifier = -0.33
+}
+slightly_expensive_mophi_ritual = {
+   advisor_cost = 0.15
+   global_tax_modifier = -0.15
+}
+mophi_ritual_complete = {
+   land_morale = 0.2
+}
+khwan_ancestors_angry = {
+   local_unrest = 5
+   trade_goods_size_modifier = -0.33
+}
+cheng_capital_temple_mod = {
+   global_trade_goods_size_modifier = 0.1
+   diplomatic_reputation = 1
+}
+cheng_capital_temple_prov = {
+   local_development_cost = -0.2
+   local_build_cost = -0.2
+}
+cheng_temples_in_repair = {
+   local_development_cost = -0.2
+   trade_goods_size_modifier = 0.2
+}
+cheng_frontier_fort = {
+   local_manpower_modifier = 0.5
+}
+cheng_local_expert = {
+   local_defensiveness = 0.25
+}
+cheng_local_deity = {
+   province_trade_power_modifier = 0.33
+   province_trade_power_value = 10
+}
+investing_in_city_deities = {
+   trade_efficiency = 0.15
+}
+cheng_offerings = {
+   drill_decay_modifier = -0.25
+}
+cheng_invested_offerings = {
+   defensiveness = 0.1
+   global_garrison_growth = 0.1
+}
+cheng_siege_mod = {
+   siege_ability = 0.33
+   artillery_levels_available_vs_fort = 3
+}
+phi_spirits_undisturbed = {
+   local_unrest = -2
+   trade_goods_size_modifier = 0.2
+}
+phi_economic_opportunity = {
+   local_development_cost = -0.2
+}
+phi_spirits_angry = {
+   local_monthly_devastation = 1
+}
+phi_temples_mod = {
+   local_manpower_modifier = 0.5
+}
+phi_shrine_built = {
+   local_unrest = -1
+   local_tax_modifier = 0.1
+}
+appeasing_phi = {
+   development_cost = 0.1
+   build_cost = 0.1
+   ae_impact = -0.2
+}
+phi_widespread_disaster = {
+   production_efficiency = -0.33
+   global_unrest = 5
+}
+phi_adm = {
+   adm_tech_cost_modifier = -0.05
+}
+phi_dip = {
+   dip_tech_cost_modifier = -0.05
+}
+phi_mil = {
+   mil_tech_cost_modifier = -0.05
+}
+naga_offerings = {
+   global_manpower_modifier = -0.15
+}
+naga_ritual_in_progress = {
+   land_morale = 0.05
+}
+army_naga_ritual = {
+   infantry_shock = 1
+   shock_damage = 0.33
+}
+way_of_the_naga = {
+   infantry_power = 0.2
+}
+naga_rituals_neglected = {
+   land_morale = -0.1
+   stability_cost_modifier = 0.5
+}
+shen_foreign_contacts = {
+   diplomatic_upkeep = 1
+   diplomatic_reputation = 1
+}
+isolationist_shen = {
+   prestige_decay = -0.01
+   ae_impact = -0.1
+}
+shen_foreign_relations = {
+   improve_relation_modifier = 0.15
+   country_diplomatic_power = 1
+}
+shen_advisors = {
+   advisor_cost = -0.1
+   adm_tech_cost_modifier = -0.1
+}
+shen_separatism = {
+   years_of_nationalism = -5
+}
+goodness_shen = {
+   culture_conversion_cost = -0.15
+}
+subject_good_shen = {
+   diplomatic_annexation_cost = -0.15
+}
+tengri_shen = {
+   religious_unity = 0.25
+   tolerance_heathen = 2
+}
+tengri_integrate_shen = {
+   cavalry_power = 0.15
+}
+burghers_trade_leniency_mod = {
+   province_trade_power_modifier = -0.25
+   local_tax_modifier = 0.5
+}
+altaic_0 = {}
+altaic_1 = { cavalry_power = 0.01 reinforce_speed = -0.02 }
+altaic_2 = { cavalry_power = 0.02 reinforce_speed = -0.04 }
+altaic_3 = { cavalry_power = 0.03 reinforce_speed = -0.06 }
+altaic_4 = { cavalry_power = 0.04 reinforce_speed = -0.08 }
+altaic_5 = { cavalry_power = 0.05 reinforce_speed = -0.1 }
+altaic_6 = { cavalry_power = 0.06 reinforce_speed = -0.12 }
+altaic_7 = { cavalry_power = 0.07 reinforce_speed = -0.14 }
+altaic_8 = { cavalry_power = 0.08 reinforce_speed = -0.16 }
+altaic_9 = { cavalry_power = 0.09 reinforce_speed = -0.18 }
+altaic_10 = { cavalry_power = 0.1 reinforce_speed = -0.2 }
+altaic_11 = { cavalry_power = 0.11 reinforce_speed = -0.23 }
+altaic_12 = { cavalry_power = 0.12 reinforce_speed = -0.26 }
+altaic_13 = { cavalry_power = 0.13 reinforce_speed = -0.29 }
+altaic_14 = { cavalry_power = 0.14 reinforce_speed = -0.32 }
+altaic_15 = { cavalry_power = 0.15 reinforce_speed = -0.35 }
+altaic_16 = { cavalry_power = 0.16 reinforce_speed = -0.37 }
+altaic_17 = { cavalry_power = 0.17 reinforce_speed = -0.39 }
+altaic_18 = { cavalry_power = 0.18 reinforce_speed = -0.41 }
+altaic_19 = { cavalry_power = 0.19 reinforce_speed = -0.43 }
+altaic_20 = { cavalry_power = 0.2 reinforce_speed = -0.45 }
+altaic_21 = { cavalry_power = 0.21 reinforce_speed = -0.47 }
+altaic_22 = { cavalry_power = 0.22 reinforce_speed = -0.49 }
+altaic_23 = { cavalry_power = 0.23 reinforce_speed = -0.51 }
+altaic_24 = { cavalry_power = 0.24 reinforce_speed = -0.53 }
+altaic_25 = { cavalry_power = 0.25 reinforce_speed = -0.55 }
+# % of Ronin using forcelimit = -monthly legitimacy
+ronin_0 = {}
+ronin_1 = { legitimacy = -0.12 meritocracy = -0.12 horde_unity = -0.12 republican_tradition = -0.12 devotion = -0.12 } 
+ronin_2 = { legitimacy = -0.24 meritocracy = -0.24 horde_unity = -0.24 republican_tradition = -0.24 devotion = -0.24 } 
+ronin_3 = { legitimacy = -0.36 meritocracy = -0.36 horde_unity = -0.36 republican_tradition = -0.36 devotion = -0.36 } 
+ronin_4 = { legitimacy = -0.48 meritocracy = -0.48 horde_unity = -0.48 republican_tradition = -0.48 devotion = -0.48 } 
+ronin_5 = { legitimacy = -0.60 meritocracy = -0.60 horde_unity = -0.60 republican_tradition = -0.60 devotion = -0.60 } 
+ronin_6 = { legitimacy = -0.72 meritocracy = -0.72 horde_unity = -0.72 republican_tradition = -0.72 devotion = -0.72 } 
+ronin_7 = { legitimacy = -0.84 meritocracy = -0.84 horde_unity = -0.84 republican_tradition = -0.84 devotion = -0.84 } 
+ronin_8 = { legitimacy = -0.96 meritocracy = -0.96 horde_unity = -0.96 republican_tradition = -0.96 devotion = -0.96 } 
+ronin_9 = { legitimacy = -1.08 meritocracy = -1.08 horde_unity = -1.08 republican_tradition = -1.08 devotion = -1.08 } 
+ronin_10 = { legitimacy = -1.20 meritocracy = -1.20 horde_unity = -1.20 republican_tradition = -1.20 devotion = -1.20 }
+ronin_11 = { legitimacy = -1.32 meritocracy = -1.32 horde_unity = -1.32 republican_tradition = -1.32 devotion = -1.32 }
+ronin_12 = { legitimacy = -1.44 meritocracy = -1.44 horde_unity = -1.44 republican_tradition = -1.44 devotion = -1.44 }
+ronin_13 = { legitimacy = -1.56 meritocracy = -1.56 horde_unity = -1.56 republican_tradition = -1.56 devotion = -1.56 }
+ronin_14 = { legitimacy = -1.68 meritocracy = -1.68 horde_unity = -1.68 republican_tradition = -1.68 devotion = -1.68 }
+ronin_15 = { legitimacy = -1.80 meritocracy = -1.80 horde_unity = -1.80 republican_tradition = -1.80 devotion = -1.80 }
+ronin_16 = { legitimacy = -1.92 meritocracy = -1.92 horde_unity = -1.92 republican_tradition = -1.92 devotion = -1.92 }
+ronin_17 = { legitimacy = -2.04 meritocracy = -2.04 horde_unity = -2.04 republican_tradition = -2.04 devotion = -2.04 }
+ronin_18 = { legitimacy = -2.16 meritocracy = -2.16 horde_unity = -2.16 republican_tradition = -2.16 devotion = -2.16 }
+ronin_19 = { legitimacy = -2.28 meritocracy = -2.28 horde_unity = -2.28 republican_tradition = -2.28 devotion = -2.28 }
+ronin_20 = { legitimacy = -2.40 meritocracy = -2.40 horde_unity = -2.40 republican_tradition = -2.40 devotion = -2.40 }
+ronin_21 = { legitimacy = -2.52 meritocracy = -2.52 horde_unity = -2.52 republican_tradition = -2.52 devotion = -2.52 }
+ronin_22 = { legitimacy = -2.64 meritocracy = -2.64 horde_unity = -2.64 republican_tradition = -2.64 devotion = -2.64 }
+ronin_23 = { legitimacy = -2.76 meritocracy = -2.76 horde_unity = -2.76 republican_tradition = -2.76 devotion = -2.76 }
+ronin_24 = { legitimacy = -2.88 meritocracy = -2.88 horde_unity = -2.88 republican_tradition = -2.88 devotion = -2.88 }
+ronin_25 = { legitimacy = -3.00 meritocracy = -3.00 horde_unity = -3.00 republican_tradition = -3.00 devotion = -3.00 }
+ronin_26 = { legitimacy = -3.12 meritocracy = -3.12 horde_unity = -3.12 republican_tradition = -3.12 devotion = -3.12 }
+ronin_27 = { legitimacy = -3.24 meritocracy = -3.24 horde_unity = -3.24 republican_tradition = -3.24 devotion = -3.24 }
+ronin_28 = { legitimacy = -3.36 meritocracy = -3.36 horde_unity = -3.36 republican_tradition = -3.36 devotion = -3.36 }
+ronin_29 = { legitimacy = -3.48 meritocracy = -3.48 horde_unity = -3.48 republican_tradition = -3.48 devotion = -3.48 }
+ronin_30 = { legitimacy = -3.60 meritocracy = -3.60 horde_unity = -3.60 republican_tradition = -3.60 devotion = -3.60 }
+ronin_31 = { legitimacy = -3.72 meritocracy = -3.72 horde_unity = -3.72 republican_tradition = -3.72 devotion = -3.72 }
+ronin_32 = { legitimacy = -3.84 meritocracy = -3.84 horde_unity = -3.84 republican_tradition = -3.84 devotion = -3.84 }
+ronin_33 = { legitimacy = -3.96 meritocracy = -3.96 horde_unity = -3.96 republican_tradition = -3.96 devotion = -3.96 }
+ronin_34 = { legitimacy = -4.08 meritocracy = -4.08 horde_unity = -4.08 republican_tradition = -4.08 devotion = -4.08 }
+ronin_35 = { legitimacy = -4.20 meritocracy = -4.20 horde_unity = -4.20 republican_tradition = -4.20 devotion = -4.20 }
+ronin_36 = { legitimacy = -4.32 meritocracy = -4.32 horde_unity = -4.32 republican_tradition = -4.32 devotion = -4.32 }
+ronin_37 = { legitimacy = -4.44 meritocracy = -4.44 horde_unity = -4.44 republican_tradition = -4.44 devotion = -4.44 }
+ronin_38 = { legitimacy = -4.56 meritocracy = -4.56 horde_unity = -4.56 republican_tradition = -4.56 devotion = -4.56 }
+ronin_39 = { legitimacy = -4.68 meritocracy = -4.68 horde_unity = -4.68 republican_tradition = -4.68 devotion = -4.68 }
+ronin_40 = { legitimacy = -4.80 meritocracy = -4.80 horde_unity = -4.80 republican_tradition = -4.80 devotion = -4.80 }
+ronin_41 = { legitimacy = -4.92 meritocracy = -4.92 horde_unity = -4.92 republican_tradition = -4.92 devotion = -4.92 }
+ronin_42 = { legitimacy = -5.04 meritocracy = -5.04 horde_unity = -5.04 republican_tradition = -5.04 devotion = -5.04 }
+ronin_43 = { legitimacy = -5.16 meritocracy = -5.16 horde_unity = -5.16 republican_tradition = -5.16 devotion = -5.16 }
+ronin_44 = { legitimacy = -5.28 meritocracy = -5.28 horde_unity = -5.28 republican_tradition = -5.28 devotion = -5.28 }
+ronin_45 = { legitimacy = -5.40 meritocracy = -5.40 horde_unity = -5.40 republican_tradition = -5.40 devotion = -5.40 }
+ronin_46 = { legitimacy = -5.52 meritocracy = -5.52 horde_unity = -5.52 republican_tradition = -5.52 devotion = -5.52 }
+ronin_47 = { legitimacy = -5.64 meritocracy = -5.64 horde_unity = -5.64 republican_tradition = -5.64 devotion = -5.64 }
+ronin_48 = { legitimacy = -5.76 meritocracy = -5.76 horde_unity = -5.76 republican_tradition = -5.76 devotion = -5.76 }
+ronin_49 = { legitimacy = -5.88 meritocracy = -5.88 horde_unity = -5.88 republican_tradition = -5.88 devotion = -5.88 }
+ronin_50 = { legitimacy = -6.00 meritocracy = -6.00 horde_unity = -6.00 republican_tradition = -6.00 devotion = -6.00 }
+ronin_51 = { legitimacy = -6.12 meritocracy = -6.12 horde_unity = -6.12 republican_tradition = -6.12 devotion = -6.12 }
+ronin_52 = { legitimacy = -6.24 meritocracy = -6.24 horde_unity = -6.24 republican_tradition = -6.24 devotion = -6.24 }
+ronin_53 = { legitimacy = -6.36 meritocracy = -6.36 horde_unity = -6.36 republican_tradition = -6.36 devotion = -6.36 }
+ronin_54 = { legitimacy = -6.48 meritocracy = -6.48 horde_unity = -6.48 republican_tradition = -6.48 devotion = -6.48 }
+ronin_55 = { legitimacy = -6.60 meritocracy = -6.60 horde_unity = -6.60 republican_tradition = -6.60 devotion = -6.60 }
+ronin_56 = { legitimacy = -6.72 meritocracy = -6.72 horde_unity = -6.72 republican_tradition = -6.72 devotion = -6.72 }
+ronin_57 = { legitimacy = -6.84 meritocracy = -6.84 horde_unity = -6.84 republican_tradition = -6.84 devotion = -6.84 }
+ronin_58 = { legitimacy = -6.96 meritocracy = -6.96 horde_unity = -6.96 republican_tradition = -6.96 devotion = -6.96 }
+ronin_59 = { legitimacy = -7.08 meritocracy = -7.08 horde_unity = -7.08 republican_tradition = -7.08 devotion = -7.08 }
+ronin_60 = { legitimacy = -7.20 meritocracy = -7.20 horde_unity = -7.20 republican_tradition = -7.20 devotion = -7.20 }
+ronin_61 = { legitimacy = -7.32 meritocracy = -7.32 horde_unity = -7.32 republican_tradition = -7.32 devotion = -7.32 }
+ronin_62 = { legitimacy = -7.44 meritocracy = -7.44 horde_unity = -7.44 republican_tradition = -7.44 devotion = -7.44 }
+ronin_63 = { legitimacy = -7.56 meritocracy = -7.56 horde_unity = -7.56 republican_tradition = -7.56 devotion = -7.56 }
+ronin_64 = { legitimacy = -7.68 meritocracy = -7.68 horde_unity = -7.68 republican_tradition = -7.68 devotion = -7.68 }
+ronin_65 = { legitimacy = -7.80 meritocracy = -7.80 horde_unity = -7.80 republican_tradition = -7.80 devotion = -7.80 }
+ronin_66 = { legitimacy = -7.92 meritocracy = -7.92 horde_unity = -7.92 republican_tradition = -7.92 devotion = -7.92 }
+ronin_67 = { legitimacy = -8.04 meritocracy = -8.04 horde_unity = -8.04 republican_tradition = -8.04 devotion = -8.04 }
+ronin_68 = { legitimacy = -8.16 meritocracy = -8.16 horde_unity = -8.16 republican_tradition = -8.16 devotion = -8.16 }
+ronin_69 = { legitimacy = -8.28 meritocracy = -8.28 horde_unity = -8.28 republican_tradition = -8.28 devotion = -8.28 }
+ronin_70 = { legitimacy = -8.40 meritocracy = -8.40 horde_unity = -8.40 republican_tradition = -8.40 devotion = -8.40 }
+ronin_71 = { legitimacy = -8.52 meritocracy = -8.52 horde_unity = -8.52 republican_tradition = -8.52 devotion = -8.52 }
+ronin_72 = { legitimacy = -8.64 meritocracy = -8.64 horde_unity = -8.64 republican_tradition = -8.64 devotion = -8.64 }
+ronin_73 = { legitimacy = -8.76 meritocracy = -8.76 horde_unity = -8.76 republican_tradition = -8.76 devotion = -8.76 }
+ronin_74 = { legitimacy = -8.88 meritocracy = -8.88 horde_unity = -8.88 republican_tradition = -8.88 devotion = -8.88 }
+ronin_75 = { legitimacy = -9.00 meritocracy = -9.00 horde_unity = -9.00 republican_tradition = -9.00 devotion = -9.00 }
+ronin_76 = { legitimacy = -9.12 meritocracy = -9.12 horde_unity = -9.12 republican_tradition = -9.12 devotion = -9.12 }
+ronin_77 = { legitimacy = -9.24 meritocracy = -9.24 horde_unity = -9.24 republican_tradition = -9.24 devotion = -9.24 }
+ronin_78 = { legitimacy = -9.36 meritocracy = -9.36 horde_unity = -9.36 republican_tradition = -9.36 devotion = -9.36 }
+ronin_79 = { legitimacy = -9.48 meritocracy = -9.48 horde_unity = -9.48 republican_tradition = -9.48 devotion = -9.48 }
+ronin_80 = { legitimacy = -9.60 meritocracy = -9.60 horde_unity = -9.60 republican_tradition = -9.60 devotion = -9.60 }
+ronin_81 = { legitimacy = -9.72 meritocracy = -9.72 horde_unity = -9.72 republican_tradition = -9.72 devotion = -9.72 }
+ronin_82 = { legitimacy = -9.84 meritocracy = -9.84 horde_unity = -9.84 republican_tradition = -9.84 devotion = -9.84 }
+ronin_83 = { legitimacy = -9.96 meritocracy = -9.96 horde_unity = -9.96 republican_tradition = -9.96 devotion = -9.96 }
+ronin_84 = { legitimacy = -10.08 meritocracy = -10.08 horde_unity = -10.08 republican_tradition = -10.08 devotion = -10.08 }
+ronin_85 = { legitimacy = -10.20 meritocracy = -10.20 horde_unity = -10.20 republican_tradition = -10.20 devotion = -10.20 }
+ronin_86 = { legitimacy = -10.32 meritocracy = -10.32 horde_unity = -10.32 republican_tradition = -10.32 devotion = -10.32 }
+ronin_87 = { legitimacy = -10.44 meritocracy = -10.44 horde_unity = -10.44 republican_tradition = -10.44 devotion = -10.44 }
+ronin_88 = { legitimacy = -10.56 meritocracy = -10.56 horde_unity = -10.56 republican_tradition = -10.56 devotion = -10.56 }
+ronin_89 = { legitimacy = -10.68 meritocracy = -10.68 horde_unity = -10.68 republican_tradition = -10.68 devotion = -10.68 }
+ronin_90 = { legitimacy = -10.80 meritocracy = -10.80 horde_unity = -10.80 republican_tradition = -10.80 devotion = -10.80 }
+ronin_91 = { legitimacy = -10.92 meritocracy = -10.92 horde_unity = -10.92 republican_tradition = -10.92 devotion = -10.92 }
+ronin_92 = { legitimacy = -11.04 meritocracy = -11.04 horde_unity = -11.04 republican_tradition = -11.04 devotion = -11.04 }
+ronin_93 = { legitimacy = -11.16 meritocracy = -11.16 horde_unity = -11.16 republican_tradition = -11.16 devotion = -11.16 }
+ronin_94 = { legitimacy = -11.28 meritocracy = -11.28 horde_unity = -11.28 republican_tradition = -11.28 devotion = -11.28 }
+ronin_95 = { legitimacy = -11.40 meritocracy = -11.40 horde_unity = -11.40 republican_tradition = -11.40 devotion = -11.40 }
+ronin_96 = { legitimacy = -11.52 meritocracy = -11.52 horde_unity = -11.52 republican_tradition = -11.52 devotion = -11.52 }
+ronin_97 = { legitimacy = -11.64 meritocracy = -11.64 horde_unity = -11.64 republican_tradition = -11.64 devotion = -11.64 }
+ronin_98 = { legitimacy = -11.76 meritocracy = -11.76 horde_unity = -11.76 republican_tradition = -11.76 devotion = -11.76 }
+ronin_99 = { legitimacy = -11.88 meritocracy = -11.88 horde_unity = -11.88 republican_tradition = -11.88 devotion = -11.88 }
+ronin_100 = { legitimacy = -12.00 meritocracy = -12.00 horde_unity = -12.00 republican_tradition = -12.00 devotion = -12.00 }
+jap_ronin_mod = {
+   fire_damage_received = -0.1
+   land_morale = 0.05
+   is_rajput_modifier = yes
+}
+ronin_disaster_penalty = {
+   reinforce_cost_modifier = 3
+   is_rajput_modifier = yes
+}
+ronin_disaster_reward = {
+   discipline = 0.05
+   is_rajput_modifier = yes
+}
+ronin_payment_mod = {
+   reinforce_cost_modifier = -3
+   land_morale = 0.1
+   is_rajput_modifier = yes
+}
+bad_mercenaries = {
+   mercenary_discipline = -0.05
+}
+merc_0 = {}
+merc_1 = { inflation_reduction = -0.12 } 
+merc_2 = { inflation_reduction = -0.24 } 
+merc_3 = { inflation_reduction = -0.36 } 
+merc_4 = { inflation_reduction = -0.48 } 
+merc_5 = { inflation_reduction = -0.60 } 
+merc_6 = { inflation_reduction = -0.72 } 
+merc_7 = { inflation_reduction = -0.84 } 
+merc_8 = { inflation_reduction = -0.96 } 
+merc_9 = { inflation_reduction = -1.08 } 
+merc_10 = { inflation_reduction = -1.20 }
+merc_11 = { inflation_reduction = -1.32 }
+merc_12 = { inflation_reduction = -1.44 }
+merc_13 = { inflation_reduction = -1.56 }
+merc_14 = { inflation_reduction = -1.68 }
+merc_15 = { inflation_reduction = -1.80 }
+merc_16 = { inflation_reduction = -1.92 }
+merc_17 = { inflation_reduction = -2.04 }
+merc_18 = { inflation_reduction = -2.16 }
+merc_19 = { inflation_reduction = -2.28 }
+merc_20 = { inflation_reduction = -2.40 }
+merc_21 = { inflation_reduction = -2.52 }
+merc_22 = { inflation_reduction = -2.64 }
+merc_23 = { inflation_reduction = -2.76 }
+merc_24 = { inflation_reduction = -2.88 }
+merc_25 = { inflation_reduction = -3.00 }
+merc_26 = { inflation_reduction = -3.12 }
+merc_27 = { inflation_reduction = -3.24 }
+merc_28 = { inflation_reduction = -3.36 }
+merc_29 = { inflation_reduction = -3.48 }
+merc_30 = { inflation_reduction = -3.60 }
+merc_31 = { inflation_reduction = -3.72 }
+merc_32 = { inflation_reduction = -3.84 }
+merc_33 = { inflation_reduction = -3.96 }
+merc_34 = { inflation_reduction = -4.08 }
+merc_35 = { inflation_reduction = -4.20 }
+merc_36 = { inflation_reduction = -4.32 }
+merc_37 = { inflation_reduction = -4.44 }
+merc_38 = { inflation_reduction = -4.56 }
+merc_39 = { inflation_reduction = -4.68 }
+merc_40 = { inflation_reduction = -4.80 }
+merc_41 = { inflation_reduction = -4.92 }
+merc_42 = { inflation_reduction = -5.04 }
+merc_43 = { inflation_reduction = -5.16 }
+merc_44 = { inflation_reduction = -5.28 }
+merc_45 = { inflation_reduction = -5.40 }
+merc_46 = { inflation_reduction = -5.52 }
+merc_47 = { inflation_reduction = -5.64 }
+merc_48 = { inflation_reduction = -5.76 }
+merc_49 = { inflation_reduction = -5.88 }
+merc_50 = { inflation_reduction = -6.00 }
+merc_51 = { inflation_reduction = -6.12 }
+merc_52 = { inflation_reduction = -6.24 }
+merc_53 = { inflation_reduction = -6.36 }
+merc_54 = { inflation_reduction = -6.48 }
+merc_55 = { inflation_reduction = -6.60 }
+merc_56 = { inflation_reduction = -6.72 }
+merc_57 = { inflation_reduction = -6.84 }
+merc_58 = { inflation_reduction = -6.96 }
+merc_59 = { inflation_reduction = -7.08 }
+merc_60 = { inflation_reduction = -7.20 }
+merc_61 = { inflation_reduction = -7.32 }
+merc_62 = { inflation_reduction = -7.44 }
+merc_63 = { inflation_reduction = -7.56 }
+merc_64 = { inflation_reduction = -7.68 }
+merc_65 = { inflation_reduction = -7.80 }
+merc_66 = { inflation_reduction = -7.92 }
+merc_67 = { inflation_reduction = -8.04 }
+merc_68 = { inflation_reduction = -8.16 }
+merc_69 = { inflation_reduction = -8.28 }
+merc_70 = { inflation_reduction = -8.40 }
+merc_71 = { inflation_reduction = -8.52 }
+merc_72 = { inflation_reduction = -8.64 }
+merc_73 = { inflation_reduction = -8.76 }
+merc_74 = { inflation_reduction = -8.88 }
+merc_75 = { inflation_reduction = -9.00 }
+merc_76 = { inflation_reduction = -9.12 }
+merc_77 = { inflation_reduction = -9.24 }
+merc_78 = { inflation_reduction = -9.36 }
+merc_79 = { inflation_reduction = -9.48 }
+merc_80 = { inflation_reduction = -9.60 }
+merc_81 = { inflation_reduction = -9.72 }
+merc_82 = { inflation_reduction = -9.84 }
+merc_83 = { inflation_reduction = -9.96 }
+merc_84 = { inflation_reduction = -10.08 }
+merc_85 = { inflation_reduction = -10.20 }
+merc_86 = { inflation_reduction = -10.32 }
+merc_87 = { inflation_reduction = -10.44 }
+merc_88 = { inflation_reduction = -10.56 }
+merc_89 = { inflation_reduction = -10.68 }
+merc_90 = { inflation_reduction = -10.80 }
+merc_91 = { inflation_reduction = -10.92 }
+merc_92 = { inflation_reduction = -11.04 }
+merc_93 = { inflation_reduction = -11.16 }
+merc_94 = { inflation_reduction = -11.28 }
+merc_95 = { inflation_reduction = -11.40 }
+merc_96 = { inflation_reduction = -11.52 }
+merc_97 = { inflation_reduction = -11.64 }
+merc_98 = { inflation_reduction = -11.76 }
+merc_99 = { inflation_reduction = -11.88 }
+merc_100 = { inflation_reduction = -12.00 }
+#Mercs become more expensive over time
+mercs_reformation = {
+   mercenary_cost = 0.33 #+33% inflation cost
+   merc_maintenance_modifier = 0.15 #+15% inflation maintenance
+}
+mercs_absolutism = {
+   mercenary_cost = 0.66 #+66% inflation cost
+   merc_maintenance_modifier = 0.33 #+33% inflation maintenance
+}
+mercs_revolutions = {
+   mercenary_cost = 1 #+100% inflation cost
+   merc_maintenance_modifier = 0.5 #+50% inflation maintenance
+}
+fl_0 = {}
+fl_1 = { land_maintenance_modifier = 0.02 reinforce_cost_modifier = 0.02 } 
+fl_2 = { land_maintenance_modifier = 0.04 reinforce_cost_modifier = 0.04 } 
+fl_3 = { land_maintenance_modifier = 0.06 reinforce_cost_modifier = 0.06 } 
+fl_4 = { land_maintenance_modifier = 0.08 reinforce_cost_modifier = 0.08 } 
+fl_5 = { land_maintenance_modifier = 0.10 reinforce_cost_modifier = 0.10 } 
+fl_6 = { land_maintenance_modifier = 0.12 reinforce_cost_modifier = 0.12 } 
+fl_7 = { land_maintenance_modifier = 0.14 reinforce_cost_modifier = 0.14 } 
+fl_8 = { land_maintenance_modifier = 0.17 reinforce_cost_modifier = 0.17 } 
+fl_9 = { land_maintenance_modifier = 0.19 reinforce_cost_modifier = 0.19 } 
+fl_10 = { land_maintenance_modifier = 0.21 reinforce_cost_modifier = 0.21 }
+fl_11 = { land_maintenance_modifier = 0.23 reinforce_cost_modifier = 0.23 }
+fl_12 = { land_maintenance_modifier = 0.25 reinforce_cost_modifier = 0.25 }
+fl_13 = { land_maintenance_modifier = 0.28 reinforce_cost_modifier = 0.28 }
+fl_14 = { land_maintenance_modifier = 0.30 reinforce_cost_modifier = 0.30 }
+fl_15 = { land_maintenance_modifier = 0.32 reinforce_cost_modifier = 0.32 }
+fl_16 = { land_maintenance_modifier = 0.35 reinforce_cost_modifier = 0.35 }
+fl_17 = { land_maintenance_modifier = 0.37 reinforce_cost_modifier = 0.37 }
+fl_18 = { land_maintenance_modifier = 0.39 reinforce_cost_modifier = 0.39 }
+fl_19 = { land_maintenance_modifier = 0.42 reinforce_cost_modifier = 0.42 }
+fl_20 = { land_maintenance_modifier = 0.44 reinforce_cost_modifier = 0.44 }
+fl_21 = { land_maintenance_modifier = 0.46 reinforce_cost_modifier = 0.46 }
+fl_22 = { land_maintenance_modifier = 0.49 reinforce_cost_modifier = 0.49 }
+fl_23 = { land_maintenance_modifier = 0.51 reinforce_cost_modifier = 0.51 }
+fl_24 = { land_maintenance_modifier = 0.54 reinforce_cost_modifier = 0.54 }
+fl_25 = { land_maintenance_modifier = 0.56 reinforce_cost_modifier = 0.56 }
+fl_26 = { land_maintenance_modifier = 0.59 reinforce_cost_modifier = 0.59 }
+fl_27 = { land_maintenance_modifier = 0.61 reinforce_cost_modifier = 0.61 }
+fl_28 = { land_maintenance_modifier = 0.64 reinforce_cost_modifier = 0.64 }
+fl_29 = { land_maintenance_modifier = 0.66 reinforce_cost_modifier = 0.66 }
+fl_30 = { land_maintenance_modifier = 0.69 reinforce_cost_modifier = 0.69 }
+fl_31 = { land_maintenance_modifier = 0.72 reinforce_cost_modifier = 0.72 }
+fl_32 = { land_maintenance_modifier = 0.74 reinforce_cost_modifier = 0.74 }
+fl_33 = { land_maintenance_modifier = 0.77 reinforce_cost_modifier = 0.77 }
+fl_34 = { land_maintenance_modifier = 0.80 reinforce_cost_modifier = 0.80 }
+fl_35 = { land_maintenance_modifier = 0.82 reinforce_cost_modifier = 0.82 }
+fl_36 = { land_maintenance_modifier = 0.85 reinforce_cost_modifier = 0.85 }
+fl_37 = { land_maintenance_modifier = 0.88 reinforce_cost_modifier = 0.88 }
+fl_38 = { land_maintenance_modifier = 0.90 reinforce_cost_modifier = 0.90 }
+fl_39 = { land_maintenance_modifier = 0.93 reinforce_cost_modifier = 0.93 }
+fl_40 = { land_maintenance_modifier = 0.96 reinforce_cost_modifier = 0.96 }
+fl_41 = { land_maintenance_modifier = 0.99 reinforce_cost_modifier = 0.99 }
+fl_42 = { land_maintenance_modifier = 1.02 reinforce_cost_modifier = 1.02 }
+fl_43 = { land_maintenance_modifier = 1.04 reinforce_cost_modifier = 1.04 }
+fl_44 = { land_maintenance_modifier = 1.07 reinforce_cost_modifier = 1.07 }
+fl_45 = { land_maintenance_modifier = 1.10 reinforce_cost_modifier = 1.10 }
+fl_46 = { land_maintenance_modifier = 1.13 reinforce_cost_modifier = 1.13 }
+fl_47 = { land_maintenance_modifier = 1.16 reinforce_cost_modifier = 1.16 }
+fl_48 = { land_maintenance_modifier = 1.19 reinforce_cost_modifier = 1.19 }
+fl_49 = { land_maintenance_modifier = 1.22 reinforce_cost_modifier = 1.22 }
+fl_50 = { land_maintenance_modifier = 1.25 reinforce_cost_modifier = 1.25 }
+fl_51 = { land_maintenance_modifier = 1.28 reinforce_cost_modifier = 1.28 }
+fl_52 = { land_maintenance_modifier = 1.31 reinforce_cost_modifier = 1.31 }
+fl_53 = { land_maintenance_modifier = 1.34 reinforce_cost_modifier = 1.34 }
+fl_54 = { land_maintenance_modifier = 1.37 reinforce_cost_modifier = 1.37 }
+fl_55 = { land_maintenance_modifier = 1.40 reinforce_cost_modifier = 1.40 }
+fl_56 = { land_maintenance_modifier = 1.43 reinforce_cost_modifier = 1.43 }
+fl_57 = { land_maintenance_modifier = 1.46 reinforce_cost_modifier = 1.46 }
+fl_58 = { land_maintenance_modifier = 1.50 reinforce_cost_modifier = 1.50 }
+fl_59 = { land_maintenance_modifier = 1.53 reinforce_cost_modifier = 1.53 }
+fl_60 = { land_maintenance_modifier = 1.56 reinforce_cost_modifier = 1.56 }
+fl_61 = { land_maintenance_modifier = 1.59 reinforce_cost_modifier = 1.59 }
+fl_62 = { land_maintenance_modifier = 1.62 reinforce_cost_modifier = 1.62 }
+fl_63 = { land_maintenance_modifier = 1.66 reinforce_cost_modifier = 1.66 }
+fl_64 = { land_maintenance_modifier = 1.69 reinforce_cost_modifier = 1.69 }
+fl_65 = { land_maintenance_modifier = 1.72 reinforce_cost_modifier = 1.72 }
+fl_66 = { land_maintenance_modifier = 1.76 reinforce_cost_modifier = 1.76 }
+fl_67 = { land_maintenance_modifier = 1.79 reinforce_cost_modifier = 1.79 }
+fl_68 = { land_maintenance_modifier = 1.82 reinforce_cost_modifier = 1.82 }
+fl_69 = { land_maintenance_modifier = 1.86 reinforce_cost_modifier = 1.86 }
+fl_70 = { land_maintenance_modifier = 1.89 reinforce_cost_modifier = 1.89 }
+fl_71 = { land_maintenance_modifier = 1.92 reinforce_cost_modifier = 1.92 }
+fl_72 = { land_maintenance_modifier = 1.96 reinforce_cost_modifier = 1.96 }
+fl_73 = { land_maintenance_modifier = 1.99 reinforce_cost_modifier = 1.99 }
+fl_74 = { land_maintenance_modifier = 2.03 reinforce_cost_modifier = 2.03 }
+fl_75 = { land_maintenance_modifier = 2.06 reinforce_cost_modifier = 2.06 }
+fl_76 = { land_maintenance_modifier = 2.10 reinforce_cost_modifier = 2.10 }
+fl_77 = { land_maintenance_modifier = 2.13 reinforce_cost_modifier = 2.13 }
+fl_78 = { land_maintenance_modifier = 2.17 reinforce_cost_modifier = 2.17 }
+fl_79 = { land_maintenance_modifier = 2.20 reinforce_cost_modifier = 2.20 }
+fl_80 = { land_maintenance_modifier = 2.24 reinforce_cost_modifier = 2.24 }
+fl_81 = { land_maintenance_modifier = 2.28 reinforce_cost_modifier = 2.28 }
+fl_82 = { land_maintenance_modifier = 2.31 reinforce_cost_modifier = 2.31 }
+fl_83 = { land_maintenance_modifier = 2.35 reinforce_cost_modifier = 2.35 }
+fl_84 = { land_maintenance_modifier = 2.39 reinforce_cost_modifier = 2.39 }
+fl_85 = { land_maintenance_modifier = 2.42 reinforce_cost_modifier = 2.42 }
+fl_86 = { land_maintenance_modifier = 2.46 reinforce_cost_modifier = 2.46 }
+fl_87 = { land_maintenance_modifier = 2.50 reinforce_cost_modifier = 2.50 }
+fl_88 = { land_maintenance_modifier = 2.53 reinforce_cost_modifier = 2.53 }
+fl_89 = { land_maintenance_modifier = 2.57 reinforce_cost_modifier = 2.57 }
+fl_90 = { land_maintenance_modifier = 2.61 reinforce_cost_modifier = 2.61 }
+fl_91 = { land_maintenance_modifier = 2.65 reinforce_cost_modifier = 2.65 }
+fl_92 = { land_maintenance_modifier = 2.69 reinforce_cost_modifier = 2.69 }
+fl_93 = { land_maintenance_modifier = 2.72 reinforce_cost_modifier = 2.72 }
+fl_94 = { land_maintenance_modifier = 2.76 reinforce_cost_modifier = 2.76 }
+fl_95 = { land_maintenance_modifier = 2.80 reinforce_cost_modifier = 2.80 }
+fl_96 = { land_maintenance_modifier = 2.84 reinforce_cost_modifier = 2.84 }
+fl_97 = { land_maintenance_modifier = 2.88 reinforce_cost_modifier = 2.88 }
+fl_98 = { land_maintenance_modifier = 2.92 reinforce_cost_modifier = 2.92 }
+fl_99 = { land_maintenance_modifier = 2.96 reinforce_cost_modifier = 2.96 }
+fl_100 = { land_maintenance_modifier = 3.00 reinforce_cost_modifier = 3.00 }
+fl_101 = { land_maintenance_modifier = 3.04 reinforce_cost_modifier = 3.04 }
+fl_102 = { land_maintenance_modifier = 3.08 reinforce_cost_modifier = 3.08 }
+fl_103 = { land_maintenance_modifier = 3.12 reinforce_cost_modifier = 3.12 }
+fl_104 = { land_maintenance_modifier = 3.16 reinforce_cost_modifier = 3.16 }
+fl_105 = { land_maintenance_modifier = 3.20 reinforce_cost_modifier = 3.20 }
+fl_106 = { land_maintenance_modifier = 3.24 reinforce_cost_modifier = 3.24 }
+fl_107 = { land_maintenance_modifier = 3.28 reinforce_cost_modifier = 3.28 }
+fl_108 = { land_maintenance_modifier = 3.33 reinforce_cost_modifier = 3.33 }
+fl_109 = { land_maintenance_modifier = 3.37 reinforce_cost_modifier = 3.37 }
+fl_110 = { land_maintenance_modifier = 3.41 reinforce_cost_modifier = 3.41 }
+fl_111 = { land_maintenance_modifier = 3.45 reinforce_cost_modifier = 3.45 }
+fl_112 = { land_maintenance_modifier = 3.49 reinforce_cost_modifier = 3.49 }
+fl_113 = { land_maintenance_modifier = 3.54 reinforce_cost_modifier = 3.54 }
+fl_114 = { land_maintenance_modifier = 3.58 reinforce_cost_modifier = 3.58 }
+fl_115 = { land_maintenance_modifier = 3.62 reinforce_cost_modifier = 3.62 }
+fl_116 = { land_maintenance_modifier = 3.67 reinforce_cost_modifier = 3.67 }
+fl_117 = { land_maintenance_modifier = 3.71 reinforce_cost_modifier = 3.71 }
+fl_118 = { land_maintenance_modifier = 3.75 reinforce_cost_modifier = 3.75 }
+fl_119 = { land_maintenance_modifier = 3.80 reinforce_cost_modifier = 3.80 }
+fl_120 = { land_maintenance_modifier = 3.84 reinforce_cost_modifier = 3.84 }
+fl_121 = { land_maintenance_modifier = 3.88 reinforce_cost_modifier = 3.88 }
+fl_122 = { land_maintenance_modifier = 3.93 reinforce_cost_modifier = 3.93 }
+fl_123 = { land_maintenance_modifier = 3.97 reinforce_cost_modifier = 3.97 }
+fl_124 = { land_maintenance_modifier = 4.02 reinforce_cost_modifier = 4.02 }
+fl_125 = { land_maintenance_modifier = 4.06 reinforce_cost_modifier = 4.06 }
+fl_126 = { land_maintenance_modifier = 4.11 reinforce_cost_modifier = 4.11 }
+fl_127 = { land_maintenance_modifier = 4.15 reinforce_cost_modifier = 4.15 }
+fl_128 = { land_maintenance_modifier = 4.20 reinforce_cost_modifier = 4.20 }
+fl_129 = { land_maintenance_modifier = 4.24 reinforce_cost_modifier = 4.24 }
+fl_130 = { land_maintenance_modifier = 4.29 reinforce_cost_modifier = 4.29 }
+fl_131 = { land_maintenance_modifier = 4.34 reinforce_cost_modifier = 4.34 }
+fl_132 = { land_maintenance_modifier = 4.38 reinforce_cost_modifier = 4.38 }
+fl_133 = { land_maintenance_modifier = 4.43 reinforce_cost_modifier = 4.43 }
+fl_134 = { land_maintenance_modifier = 4.48 reinforce_cost_modifier = 4.48 }
+fl_135 = { land_maintenance_modifier = 4.52 reinforce_cost_modifier = 4.52 }
+fl_136 = { land_maintenance_modifier = 4.57 reinforce_cost_modifier = 4.57 }
+fl_137 = { land_maintenance_modifier = 4.62 reinforce_cost_modifier = 4.62 }
+fl_138 = { land_maintenance_modifier = 4.66 reinforce_cost_modifier = 4.66 }
+fl_139 = { land_maintenance_modifier = 4.71 reinforce_cost_modifier = 4.71 }
+fl_140 = { land_maintenance_modifier = 4.76 reinforce_cost_modifier = 4.76 }
+fl_141 = { land_maintenance_modifier = 4.81 reinforce_cost_modifier = 4.81 }
+fl_142 = { land_maintenance_modifier = 4.86 reinforce_cost_modifier = 4.86 }
+fl_143 = { land_maintenance_modifier = 4.90 reinforce_cost_modifier = 4.90 }
+fl_144 = { land_maintenance_modifier = 4.95 reinforce_cost_modifier = 4.95 }
+fl_145 = { land_maintenance_modifier = 5.00 reinforce_cost_modifier = 5.00 }
+fl_146 = { land_maintenance_modifier = 5.05 reinforce_cost_modifier = 5.05 }
+fl_147 = { land_maintenance_modifier = 5.10 reinforce_cost_modifier = 5.10 }
+fl_148 = { land_maintenance_modifier = 5.15 reinforce_cost_modifier = 5.15 }
+fl_149 = { land_maintenance_modifier = 5.20 reinforce_cost_modifier = 5.20 }
+fl_150 = { land_maintenance_modifier = 5.25 reinforce_cost_modifier = 5.25 }
+navy_fl_0 = {}
+navy_fl_1 = { ship_durability = -0.02 global_ship_trade_power = -0.02 privateer_efficiency = -0.02 } 
+navy_fl_2 = { ship_durability = -0.04 global_ship_trade_power = -0.04 privateer_efficiency = -0.04 } 
+navy_fl_3 = { ship_durability = -0.06 global_ship_trade_power = -0.06 privateer_efficiency = -0.06 } 
+navy_fl_4 = { ship_durability = -0.08 global_ship_trade_power = -0.08 privateer_efficiency = -0.08 } 
+navy_fl_5 = { ship_durability = -0.10 global_ship_trade_power = -0.10 privateer_efficiency = -0.10 } 
+navy_fl_6 = { ship_durability = -0.12 global_ship_trade_power = -0.12 privateer_efficiency = -0.12 } 
+navy_fl_7 = { ship_durability = -0.14 global_ship_trade_power = -0.14 privateer_efficiency = -0.14 } 
+navy_fl_8 = { ship_durability = -0.17 global_ship_trade_power = -0.17 privateer_efficiency = -0.17 } 
+navy_fl_9 = { ship_durability = -0.19 global_ship_trade_power = -0.19 privateer_efficiency = -0.19 } 
+navy_fl_10 = { ship_durability = -0.21 global_ship_trade_power = -0.21 privateer_efficiency = -0.21 }
+navy_fl_11 = { ship_durability = -0.23 global_ship_trade_power = -0.23 privateer_efficiency = -0.23 }
+navy_fl_12 = { ship_durability = -0.25 global_ship_trade_power = -0.25 privateer_efficiency = -0.25 }
+navy_fl_13 = { ship_durability = -0.28 global_ship_trade_power = -0.28 privateer_efficiency = -0.28 }
+navy_fl_14 = { ship_durability = -0.30 global_ship_trade_power = -0.30 privateer_efficiency = -0.30 }
+navy_fl_15 = { ship_durability = -0.32 global_ship_trade_power = -0.32 privateer_efficiency = -0.32 }
+navy_fl_16 = { ship_durability = -0.35 global_ship_trade_power = -0.35 privateer_efficiency = -0.35 }
+navy_fl_17 = { ship_durability = -0.37 global_ship_trade_power = -0.37 privateer_efficiency = -0.37 }
+navy_fl_18 = { ship_durability = -0.39 global_ship_trade_power = -0.39 privateer_efficiency = -0.39 }
+navy_fl_19 = { ship_durability = -0.42 global_ship_trade_power = -0.42 privateer_efficiency = -0.42 }
+navy_fl_20 = { ship_durability = -0.44 global_ship_trade_power = -0.44 privateer_efficiency = -0.44 }
+navy_fl_21 = { ship_durability = -0.46 global_ship_trade_power = -0.46 privateer_efficiency = -0.46 }
+navy_fl_22 = { ship_durability = -0.49 global_ship_trade_power = -0.49 privateer_efficiency = -0.49 }
+navy_fl_23 = { ship_durability = -0.51 global_ship_trade_power = -0.51 privateer_efficiency = -0.51 }
+navy_fl_24 = { ship_durability = -0.54 global_ship_trade_power = -0.54 privateer_efficiency = -0.54 }
+navy_fl_25 = { ship_durability = -0.56 global_ship_trade_power = -0.56 privateer_efficiency = -0.56 }
+navy_fl_26 = { ship_durability = -0.59 global_ship_trade_power = -0.59 privateer_efficiency = -0.59 }
+navy_fl_27 = { ship_durability = -0.61 global_ship_trade_power = -0.61 privateer_efficiency = -0.61 }
+navy_fl_28 = { ship_durability = -0.64 global_ship_trade_power = -0.64 privateer_efficiency = -0.64 }
+navy_fl_29 = { ship_durability = -0.66 global_ship_trade_power = -0.66 privateer_efficiency = -0.66 }
+navy_fl_30 = { ship_durability = -0.69 global_ship_trade_power = -0.69 privateer_efficiency = -0.69 }
+navy_fl_31 = { ship_durability = -0.72 global_ship_trade_power = -0.72 privateer_efficiency = -0.72 }
+navy_fl_32 = { ship_durability = -0.74 global_ship_trade_power = -0.74 privateer_efficiency = -0.74 }
+navy_fl_33 = { ship_durability = -0.77 global_ship_trade_power = -0.77 privateer_efficiency = -0.77 }
+navy_fl_34 = { ship_durability = -0.80 global_ship_trade_power = -0.80 privateer_efficiency = -0.80 }
+navy_fl_35 = { ship_durability = -0.82 global_ship_trade_power = -0.82 privateer_efficiency = -0.82 }
+navy_fl_36 = { ship_durability = -0.85 global_ship_trade_power = -0.85 privateer_efficiency = -0.85 }
+navy_fl_37 = { ship_durability = -0.88 global_ship_trade_power = -0.88 privateer_efficiency = -0.88 }
+navy_fl_38 = { ship_durability = -0.90 global_ship_trade_power = -0.90 privateer_efficiency = -0.90 }
+navy_fl_39 = { ship_durability = -0.93 global_ship_trade_power = -0.93 privateer_efficiency = -0.93 }
+navy_fl_40 = { ship_durability = -0.96 global_ship_trade_power = -0.96 privateer_efficiency = -0.96 }
+navy_fl_41 = { ship_durability = -0.99 global_ship_trade_power = -0.99 privateer_efficiency = -0.99 }
+navy_fl_42 = { ship_durability = -1.02 global_ship_trade_power = -1.02 privateer_efficiency = -1.02 }
+navy_fl_43 = { ship_durability = -1.04 global_ship_trade_power = -1.04 privateer_efficiency = -1.04 }
+navy_fl_44 = { ship_durability = -1.07 global_ship_trade_power = -1.07 privateer_efficiency = -1.07 }
+navy_fl_45 = { ship_durability = -1.10 global_ship_trade_power = -1.10 privateer_efficiency = -1.10 }
+navy_fl_46 = { ship_durability = -1.13 global_ship_trade_power = -1.13 privateer_efficiency = -1.13 }
+navy_fl_47 = { ship_durability = -1.16 global_ship_trade_power = -1.16 privateer_efficiency = -1.16 }
+navy_fl_48 = { ship_durability = -1.19 global_ship_trade_power = -1.19 privateer_efficiency = -1.19 }
+navy_fl_49 = { ship_durability = -1.22 global_ship_trade_power = -1.22 privateer_efficiency = -1.22 }
+navy_fl_50 = { ship_durability = -1.25 global_ship_trade_power = -1.25 privateer_efficiency = -1.25 }
+navy_fl_51 = { ship_durability = -1.28 global_ship_trade_power = -1.28 privateer_efficiency = -1.28 }
+navy_fl_52 = { ship_durability = -1.31 global_ship_trade_power = -1.31 privateer_efficiency = -1.31 }
+navy_fl_53 = { ship_durability = -1.34 global_ship_trade_power = -1.34 privateer_efficiency = -1.34 }
+navy_fl_54 = { ship_durability = -1.37 global_ship_trade_power = -1.37 privateer_efficiency = -1.37 }
+navy_fl_55 = { ship_durability = -1.40 global_ship_trade_power = -1.40 privateer_efficiency = -1.40 }
+navy_fl_56 = { ship_durability = -1.43 global_ship_trade_power = -1.43 privateer_efficiency = -1.43 }
+navy_fl_57 = { ship_durability = -1.46 global_ship_trade_power = -1.46 privateer_efficiency = -1.46 }
+navy_fl_58 = { ship_durability = -1.50 global_ship_trade_power = -1.50 privateer_efficiency = -1.50 }
+navy_fl_59 = { ship_durability = -1.53 global_ship_trade_power = -1.53 privateer_efficiency = -1.53 }
+navy_fl_60 = { ship_durability = -1.56 global_ship_trade_power = -1.56 privateer_efficiency = -1.56 }
+navy_fl_61 = { ship_durability = -1.59 global_ship_trade_power = -1.59 privateer_efficiency = -1.59 }
+navy_fl_62 = { ship_durability = -1.62 global_ship_trade_power = -1.62 privateer_efficiency = -1.62 }
+navy_fl_63 = { ship_durability = -1.66 global_ship_trade_power = -1.66 privateer_efficiency = -1.66 }
+navy_fl_64 = { ship_durability = -1.69 global_ship_trade_power = -1.69 privateer_efficiency = -1.69 }
+navy_fl_65 = { ship_durability = -1.72 global_ship_trade_power = -1.72 privateer_efficiency = -1.72 }
+navy_fl_66 = { ship_durability = -1.76 global_ship_trade_power = -1.76 privateer_efficiency = -1.76 }
+navy_fl_67 = { ship_durability = -1.79 global_ship_trade_power = -1.79 privateer_efficiency = -1.79 }
+navy_fl_68 = { ship_durability = -1.82 global_ship_trade_power = -1.82 privateer_efficiency = -1.82 }
+navy_fl_69 = { ship_durability = -1.86 global_ship_trade_power = -1.86 privateer_efficiency = -1.86 }
+navy_fl_70 = { ship_durability = -1.89 global_ship_trade_power = -1.89 privateer_efficiency = -1.89 }
+navy_fl_71 = { ship_durability = -1.92 global_ship_trade_power = -1.92 privateer_efficiency = -1.92 }
+navy_fl_72 = { ship_durability = -1.96 global_ship_trade_power = -1.96 privateer_efficiency = -1.96 }
+navy_fl_73 = { ship_durability = -1.99 global_ship_trade_power = -1.99 privateer_efficiency = -1.99 }
+navy_fl_74 = { ship_durability = -2.03 global_ship_trade_power = -2.03 privateer_efficiency = -2.03 }
+navy_fl_75 = { ship_durability = -2.06 global_ship_trade_power = -2.06 privateer_efficiency = -2.06 }
+navy_fl_76 = { ship_durability = -2.10 global_ship_trade_power = -2.10 privateer_efficiency = -2.10 }
+navy_fl_77 = { ship_durability = -2.13 global_ship_trade_power = -2.13 privateer_efficiency = -2.13 }
+navy_fl_78 = { ship_durability = -2.17 global_ship_trade_power = -2.17 privateer_efficiency = -2.17 }
+navy_fl_79 = { ship_durability = -2.20 global_ship_trade_power = -2.20 privateer_efficiency = -2.20 }
+navy_fl_80 = { ship_durability = -2.24 global_ship_trade_power = -2.24 privateer_efficiency = -2.24 }
+navy_fl_81 = { ship_durability = -2.28 global_ship_trade_power = -2.28 privateer_efficiency = -2.28 }
+navy_fl_82 = { ship_durability = -2.31 global_ship_trade_power = -2.31 privateer_efficiency = -2.31 }
+navy_fl_83 = { ship_durability = -2.35 global_ship_trade_power = -2.35 privateer_efficiency = -2.35 }
+navy_fl_84 = { ship_durability = -2.39 global_ship_trade_power = -2.39 privateer_efficiency = -2.39 }
+navy_fl_85 = { ship_durability = -2.42 global_ship_trade_power = -2.42 privateer_efficiency = -2.42 }
+navy_fl_86 = { ship_durability = -2.46 global_ship_trade_power = -2.46 privateer_efficiency = -2.46 }
+navy_fl_87 = { ship_durability = -2.50 global_ship_trade_power = -2.50 privateer_efficiency = -2.50 }
+navy_fl_88 = { ship_durability = -2.53 global_ship_trade_power = -2.53 privateer_efficiency = -2.53 }
+navy_fl_89 = { ship_durability = -2.57 global_ship_trade_power = -2.57 privateer_efficiency = -2.57 }
+navy_fl_90 = { ship_durability = -2.61 global_ship_trade_power = -2.61 privateer_efficiency = -2.61 }
+navy_fl_91 = { ship_durability = -2.65 global_ship_trade_power = -2.65 privateer_efficiency = -2.65 }
+navy_fl_92 = { ship_durability = -2.69 global_ship_trade_power = -2.69 privateer_efficiency = -2.69 }
+navy_fl_93 = { ship_durability = -2.72 global_ship_trade_power = -2.72 privateer_efficiency = -2.72 }
+navy_fl_94 = { ship_durability = -2.76 global_ship_trade_power = -2.76 privateer_efficiency = -2.76 }
+navy_fl_95 = { ship_durability = -2.80 global_ship_trade_power = -2.80 privateer_efficiency = -2.80 }
+navy_fl_96 = { ship_durability = -2.84 global_ship_trade_power = -2.84 privateer_efficiency = -2.84 }
+navy_fl_97 = { ship_durability = -2.88 global_ship_trade_power = -2.88 privateer_efficiency = -2.88 }
+navy_fl_98 = { ship_durability = -2.92 global_ship_trade_power = -2.92 privateer_efficiency = -2.92 }
+navy_fl_99 = { ship_durability = -2.96 global_ship_trade_power = -2.96 privateer_efficiency = -2.96 }
+navy_fl_100 = { ship_durability = -3.00 global_ship_trade_power = -3.00 privateer_efficiency = -3.00 }
+navy_fl_101 = { ship_durability = -3.04 global_ship_trade_power = -3.04 privateer_efficiency = -3.04 }
+navy_fl_102 = { ship_durability = -3.08 global_ship_trade_power = -3.08 privateer_efficiency = -3.08 }
+navy_fl_103 = { ship_durability = -3.12 global_ship_trade_power = -3.12 privateer_efficiency = -3.12 }
+navy_fl_104 = { ship_durability = -3.16 global_ship_trade_power = -3.16 privateer_efficiency = -3.16 }
+navy_fl_105 = { ship_durability = -3.20 global_ship_trade_power = -3.20 privateer_efficiency = -3.20 }
+navy_fl_106 = { ship_durability = -3.24 global_ship_trade_power = -3.24 privateer_efficiency = -3.24 }
+navy_fl_107 = { ship_durability = -3.28 global_ship_trade_power = -3.28 privateer_efficiency = -3.28 }
+navy_fl_108 = { ship_durability = -3.33 global_ship_trade_power = -3.33 privateer_efficiency = -3.33 }
+navy_fl_109 = { ship_durability = -3.37 global_ship_trade_power = -3.37 privateer_efficiency = -3.37 }
+navy_fl_110 = { ship_durability = -3.41 global_ship_trade_power = -3.41 privateer_efficiency = -3.41 }
+navy_fl_111 = { ship_durability = -3.45 global_ship_trade_power = -3.45 privateer_efficiency = -3.45 }
+navy_fl_112 = { ship_durability = -3.49 global_ship_trade_power = -3.49 privateer_efficiency = -3.49 }
+navy_fl_113 = { ship_durability = -3.54 global_ship_trade_power = -3.54 privateer_efficiency = -3.54 }
+navy_fl_114 = { ship_durability = -3.58 global_ship_trade_power = -3.58 privateer_efficiency = -3.58 }
+navy_fl_115 = { ship_durability = -3.62 global_ship_trade_power = -3.62 privateer_efficiency = -3.62 }
+navy_fl_116 = { ship_durability = -3.67 global_ship_trade_power = -3.67 privateer_efficiency = -3.67 }
+navy_fl_117 = { ship_durability = -3.71 global_ship_trade_power = -3.71 privateer_efficiency = -3.71 }
+navy_fl_118 = { ship_durability = -3.75 global_ship_trade_power = -3.75 privateer_efficiency = -3.75 }
+navy_fl_119 = { ship_durability = -3.80 global_ship_trade_power = -3.80 privateer_efficiency = -3.80 }
+navy_fl_120 = { ship_durability = -3.84 global_ship_trade_power = -3.84 privateer_efficiency = -3.84 }
+navy_fl_121 = { ship_durability = -3.88 global_ship_trade_power = -3.88 privateer_efficiency = -3.88 }
+navy_fl_122 = { ship_durability = -3.93 global_ship_trade_power = -3.93 privateer_efficiency = -3.93 }
+navy_fl_123 = { ship_durability = -3.97 global_ship_trade_power = -3.97 privateer_efficiency = -3.97 }
+navy_fl_124 = { ship_durability = -4.02 global_ship_trade_power = -4.02 privateer_efficiency = -4.02 }
+navy_fl_125 = { ship_durability = -4.06 global_ship_trade_power = -4.06 privateer_efficiency = -4.06 }
+navy_fl_126 = { ship_durability = -4.11 global_ship_trade_power = -4.11 privateer_efficiency = -4.11 }
+navy_fl_127 = { ship_durability = -4.15 global_ship_trade_power = -4.15 privateer_efficiency = -4.15 }
+navy_fl_128 = { ship_durability = -4.20 global_ship_trade_power = -4.20 privateer_efficiency = -4.20 }
+navy_fl_129 = { ship_durability = -4.24 global_ship_trade_power = -4.24 privateer_efficiency = -4.24 }
+navy_fl_130 = { ship_durability = -4.29 global_ship_trade_power = -4.29 privateer_efficiency = -4.29 }
+navy_fl_131 = { ship_durability = -4.34 global_ship_trade_power = -4.34 privateer_efficiency = -4.34 }
+navy_fl_132 = { ship_durability = -4.38 global_ship_trade_power = -4.38 privateer_efficiency = -4.38 }
+navy_fl_133 = { ship_durability = -4.43 global_ship_trade_power = -4.43 privateer_efficiency = -4.43 }
+navy_fl_134 = { ship_durability = -4.48 global_ship_trade_power = -4.48 privateer_efficiency = -4.48 }
+navy_fl_135 = { ship_durability = -4.52 global_ship_trade_power = -4.52 privateer_efficiency = -4.52 }
+navy_fl_136 = { ship_durability = -4.57 global_ship_trade_power = -4.57 privateer_efficiency = -4.57 }
+navy_fl_137 = { ship_durability = -4.62 global_ship_trade_power = -4.62 privateer_efficiency = -4.62 }
+navy_fl_138 = { ship_durability = -4.66 global_ship_trade_power = -4.66 privateer_efficiency = -4.66 }
+navy_fl_139 = { ship_durability = -4.71 global_ship_trade_power = -4.71 privateer_efficiency = -4.71 }
+navy_fl_140 = { ship_durability = -4.76 global_ship_trade_power = -4.76 privateer_efficiency = -4.76 }
+navy_fl_141 = { ship_durability = -4.81 global_ship_trade_power = -4.81 privateer_efficiency = -4.81 }
+navy_fl_142 = { ship_durability = -4.86 global_ship_trade_power = -4.86 privateer_efficiency = -4.86 }
+navy_fl_143 = { ship_durability = -4.90 global_ship_trade_power = -4.90 privateer_efficiency = -4.90 }
+navy_fl_144 = { ship_durability = -4.95 global_ship_trade_power = -4.95 privateer_efficiency = -4.95 }
+navy_fl_145 = { ship_durability = -5.00 global_ship_trade_power = -5.00 privateer_efficiency = -5.00 }
+navy_fl_146 = { ship_durability = -5.05 global_ship_trade_power = -5.05 privateer_efficiency = -5.05 }
+navy_fl_147 = { ship_durability = -5.10 global_ship_trade_power = -5.10 privateer_efficiency = -5.10 }
+navy_fl_148 = { ship_durability = -5.15 global_ship_trade_power = -5.15 privateer_efficiency = -5.15 }
+navy_fl_149 = { ship_durability = -5.20 global_ship_trade_power = -5.20 privateer_efficiency = -5.20 }
+navy_fl_150 = { ship_durability = -5.25 global_ship_trade_power = -5.25 privateer_efficiency = -5.25 }
+#Truce break penalties
+tb_1 = {
+   diplomatic_reputation = -2
+   prestige = -2
+   ae_impact = 0.2
+   improve_relation_modifier = -0.2
+   land_morale = -0.15
+   naval_morale = -0.15
+   core_creation = 0.15
+   stability_cost_modifier = 0.5
+}
+tb_2 = {
+   diplomatic_reputation = -2
+   prestige = -2
+   ae_impact = 0.25
+   improve_relation_modifier = -0.25
+   land_morale = -0.15
+   naval_morale = -0.15
+   core_creation = 0.15
+   stability_cost_modifier = 0.5
+}
+tb_3 = {
+   diplomatic_reputation = -2.5
+   prestige = -2.5
+   ae_impact = 0.3
+   improve_relation_modifier = -0.3
+   land_morale = -0.2
+   naval_morale = -0.2
+   core_creation = 0.2
+   stability_cost_modifier = 0.5
+}
+tb_4 = {
+   diplomatic_reputation = -2.5
+   prestige = -2.5
+   ae_impact = 0.35
+   improve_relation_modifier = -0.35
+   land_morale = -0.2
+   naval_morale = -0.2
+   core_creation = 0.2
+   stability_cost_modifier = 0.5
+}
+tb_5 = {
+   diplomatic_reputation = -3
+   prestige = -3
+   ae_impact = 0.4
+   improve_relation_modifier = -0.4
+   land_morale = -0.25
+   naval_morale = -0.25
+   core_creation = 0.25
+   stability_cost_modifier = 0.5
+}
+tb_6 = {
+   diplomatic_reputation = -3
+   prestige = -3
+   ae_impact = 0.45
+   improve_relation_modifier = -0.45
+   land_morale = -0.25
+   naval_morale = -0.25
+   core_creation = 0.25
+   stability_cost_modifier = 0.5
+}
+tb_7 = {
+   diplomatic_reputation = -3.5
+   prestige = -3.5
+   ae_impact = 0.5
+   improve_relation_modifier = -0.5
+   land_morale = -0.3
+   naval_morale = -0.3
+   core_creation = 0.3
+   stability_cost_modifier = 0.5
+}
+tb_8 = {
+   diplomatic_reputation = -3.5
+   prestige = -3.5
+   ae_impact = 0.55
+   improve_relation_modifier = -0.55
+   land_morale = -0.3
+   naval_morale = -0.3
+   core_creation = 0.3
+   stability_cost_modifier = 0.5
+}
+tb_9 = {
+   diplomatic_reputation = -4
+   prestige = -4
+   ae_impact = 0.6
+   improve_relation_modifier = -0.6
+   land_morale = -0.35
+   naval_morale = -0.35
+   core_creation = 0.35
+   stability_cost_modifier = 0.5
+}
+tb_10 = {
+   diplomatic_reputation = -5
+   prestige = -5
+   ae_impact = 0.75
+   improve_relation_modifier = -0.75
+   land_morale = -0.5
+   naval_morale = -0.5
+   core_creation = 0.5
+   stability_cost_modifier = 0.5
+}
+ai_merc_cd = {}
+recent_unit_recruited_timer = {} #Prevent CTD when killing recently recruited units by the AI
+ai_transport_timer = {}
+great_wall_of_china_t1 = {
+   local_defensiveness = 0.25
+   local_hostile_attrition = 1
+}
+great_wall_of_china_t2 = {
+   local_defensiveness = 0.5
+	local_hostile_attrition = 2
+}
+great_wall_of_china_t3 = {
+   local_defensiveness = 1
+	local_hostile_attrition = 3
+}
+eoc_local_miao_revolts = {
+   local_unrest = 15
+   min_local_autonomy = 25
+}
+eunuch_embassy_mod = {
+   diplomats = 1
+}
+no_eunuch_embassy_mod = {
+   improve_relation_modifier = -0.1
+}
+wealthy_eunuch_corruption = {
+   state_maintenance_modifier = 0.75
+   global_tax_modifier = -0.25
+}
+eunuchs_good_influence_mod = {
+   adm_advisor_cost = -0.125
+}
+eunuchs_bad_influence_mod = {
+   advisor_cost = 0.2
+}
+loyal_eunuchs = {
+   global_unrest = -3
+   global_tax_modifier = 0.33
+   improve_relation_modifier = 0.25
+   idea_cost = -0.1
+}
+sabotaged_reputation_cooldown = {}
+ccr_sabotaged_reputation = {
+   local_core_creation = -0.33
+}
+lost_trade_war_timer = {}
+lost_agitation_war = {
+   diplomatic_reputation = -5
+   improve_relation_modifier = -0.5
+   global_spy_defence = -0.5
+   spy_offence = -0.5
+   diplomatic_upkeep = -1
+   diplomats = -1
+}
+independent_flag_trigger = {}
+won_agitation_war = {}
+stolen_war_maps_timer = {}
+by_the_grace_of_gold = {
+   infantry_shock = 0.33
+   is_streltsy_modifier = yes
+}
+policy_notif_cd = {}
+weapon_quality_standards_cooldown = {}
+superior_supply_system_cooldown = {}
+professional_diplomatic_corps_cooldown = {}
+the_integrated_administration_act_cooldown = {}
+the_mining_act_cooldown = {}
+visionary_thinkers_cooldown = {}
+field_priests_cooldown = {}
+the_garrison_act_cooldown = {}
+production_quota_act_cooldown = {}
+agricultural_cultivations_cooldown = {}
+hired_adventurers_act_cooldown = {}
+pen_rely_on_sword_act_cooldown = {}
+the_nautic_education_act_cooldown = {}
+zealous_captains_cooldown = {}
+skilled_cartographers_cooldown = {}
+supply_convoys_cooldown = {}
+harbour_administration_cooldown = {}
+the_transportation_act_cooldown = {}
+foreign_conscription_centers_cooldown = {}
+kharash_policy_cooldown = {}
+the_foreign_aid_act_cooldown = {}
+cultural_unity_cooldown = {}
+loyalty_to_the_land_policy_cooldown = {}
+overseas_dominions_cooldown = {}
+trained_marines_act_cooldown = {}
+the_wooden_wall_cooldown = {}
+the_cooperation_act_cooldown = {}
+nobles_in_navy_act_cooldown = {}
+fortified_trading_posts_cooldown = {}
+protected_shipping_lanes_cooldown = {}
+render_unto_caesar_policy_cooldown = {}
+the_stamp_act_cooldown = {}
+the_colonial_nobility_act_cooldown = {}
+war_on_our_terms_policy_cooldown = {}
+colonial_companies_act_cooldown = {}
+beneficial_neglect_cooldown = {}
+deserteur_act_cooldown = {}
+psychological_warfare_policy_cooldown = {}
+black_chamber_act_cooldown = {}
+the_maritime_intelligencer_unit_cooldown = {}
+the_loyalty_act_cooldown = {}
+enforce_religious_law_cooldown = {}
+armed_neutrality_act_cooldown = {}
+the_liquor_act_cooldown = {}
+solidarity_policy_cooldown = {}
+passport_to_merchants_policy_cooldown = {}
+cloth_quality_edict_cooldown = {}
+public_road_act_cooldown = {}
+fear_tactics_policy_cooldown = {}
+appeal_to_old_powers_policy_cooldown = {}
+inspirational_leaders_cooldown = {}
+disruptive_innovation_policy_cooldown = {}
+diplomatic_defence_act_cooldown = {}
+record_keeping_act_cooldown = {}
+the_mercenary_registration_act_cooldown = {}
+unified_army_command_cooldown = {}
+restrictions_for_colonies_cooldown = {}
+mandatory_service_cooldown = {}
+formalized_measures_cooldown = {}
+the_tolerance_act_cooldown = {}
+modern_siege_weapons_cooldown = {}
+modern_firearm_techniques_cooldown = {}
+the_liberation_act_cooldown = {}
+letters_of_marque_cooldown = {}
+the_pioneer_policy_cooldown = {}
+vassal_taxation_policy_cooldown = {}
+local_army_organisation_cooldown = {}
+the_preparation_act_cooldown = {}
+the_foreign_support_act_cooldown = {}
+privy_council_establishment_act_cooldown = {}
+the_importation_act_cooldown = {}
+public_welfare_act_cooldown = {}
+the_three_sisters_policy_cooldown = {}
+superior_fortification_act_cooldown = {}
+encouragement_of_merchant_navy_cooldown = {}
+foreign_advisors_cooldown = {}
+the_statute_of_monopolies_cooldown = {}
+otto_per_mille_cooldown = {}
+chaplains_of_the_fleet_cooldown = {}
+war_horses_policy_cooldown = {}
+taxation_with_representation_cooldown = {}
+commercial_embassies_cooldown = {}
+manueline_architecture_cooldown = {}
+shared_land_policy_cooldown = {}
+horse_artillery_cooldown = {}
+ora_et_labora_policy_cooldown = {}
+diplomatic_cooperation_act_cooldown = {}
+colonial_expansions_cooldown = {}
+the_education_act_cooldown = {}
+the_combination_act_cooldown = {}
+military_zeal_act_cooldown = {}
+wielders_of_the_flaming_sword_policy_cooldown = {}
+edict_of_resistance_cooldown = {}
+one_and_true_cooldown = {}
+church_sponsored_guilds_cooldown = {}
+policy_of_calculate_delay_cooldown = {}
+the_provincial_taxation_system_cooldown = {}
+omne_datum_optimum_policy_cooldown = {}
+administration_of_sacred_land_policy_cooldown = {}
+the_licensing_of_the_press_act_cooldown = {}
+vassal_obligations_act_cooldown = {}
+land_inheritance_act_cooldown = {}
+underhanded_diplomacy_act_cooldown = {}
+by_the_people_for_the_people_policy_cooldown = {}
+multilingual_diplomats_cooldown = {}
+omnism_policy_cooldown = {}
+calming_the_tides_policy_cooldown = {}
+the_banking_system_cooldown = {}
+reverse_weapon_quality_standards = { discipline = -0.05 }
+reverse_superior_supply_system = { leader_land_fire = -2 }
+reverse_professional_diplomatic_corps = { improve_relation_modifier = -0.25 }
+reverse_the_integrated_administration_act = { diplomatic_annexation_cost = 0.25 }
+reverse_the_mining_act = { production_efficiency = -0.25 }
+reverse_visionary_thinkers = { technology_cost = 0.1 }
+reverse_field_priests = { land_morale = -0.15 }
+reverse_the_garrison_act = { land_forcelimit_modifier = -0.5 global_regiment_recruit_speed = 0.5 }
+reverse_production_quota_act = { global_trade_goods_size_modifier = -0.25 }
+reverse_agricultural_cultivations = { build_cost = 0.1 build_time = 0.25 }
+reverse_hired_adventurers_act = { colonists = -1 global_colonial_growth = -100 }
+reverse_pen_rely_on_sword_act = { diplomatic_reputation = -3 }
+reverse_the_nautic_education_act = { artillery_fire = -1 }
+reverse_zealous_captains = { capture_ship_chance = -0.5 leader_naval_shock = -3 }
+reverse_skilled_cartographers = { global_ship_repair = -1 }
+reverse_supply_convoys = { development_cost = 0.1 }
+reverse_harbour_administration = { embracement_cost = 0.5 global_institution_spread = -0.25 }
+reverse_the_transportation_act = { global_tariffs = -1 }
+reverse_foreign_conscription_centers = { manpower_recovery_speed = -0.33 }
+reverse_kharash_policy = { leader_land_shock = -2 free_leader_pool = 1 }
+reverse_the_foreign_aid_act = { diplomats = -2 }
+reverse_cultural_unity = { culture_conversion_cost = 0.2 }
+reverse_loyalty_to_the_land_policy = { core_creation = 0.15 }
+reverse_overseas_dominions = { autonomy_change_time = 0.5 }
+reverse_trained_marines_act = { ship_durability = -0.33 }
+reverse_the_wooden_wall = { fire_damage_received = 0.15 }
+reverse_the_cooperation_act = { trade_steering = -0.5 }
+reverse_nobles_in_navy_act = { transfer_trade_power_reasons = -100 }
+reverse_fortified_trading_posts = { trade_company_investment_cost = 0.33 }
+reverse_protected_shipping_lanes = { trade_efficiency = -0.2 }
+reverse_render_unto_caesar_policy = { province_warscore_cost = 0.15 }
+reverse_the_stamp_act = { global_tariffs = -1 treasure_fleet_income = -0.5 }
+reverse_war_on_our_terms_policy = { reserves_organisation = -1.25 }
+reverse_the_colonial_nobility_act = { global_manpower_modifier = -1 }
+reverse_colonial_companies_act = { placed_merchant_power = -200 }
+reverse_beneficial_neglect = { reduced_liberty_desire = -33 }
+reverse_deserteur_act = { infantry_power = -0.15 }
+reverse_psychological_warfare_policy = { cavalry_power = -0.15 }
+reverse_black_chamber_act = { dip_tech_cost_modifier = 0.2 }
+reverse_the_maritime_intelligencer_unit = { unjustified_demands = 0.5 naval_morale = -0.15 }
+reverse_the_loyalty_act = { min_autonomy_in_territories = 0.5 global_autonomy = 0.5 }
+reverse_enforce_religious_law = { global_missionary_strength = -0.03 }
+reverse_armed_neutrality_act = { land_morale = -0.1 fire_damage = -0.05 }
+reverse_the_liquor_act = { infantry_fire = -0.33 }
+reverse_solidarity_policy = { monthly_favor_modifier = -1 }
+reverse_passport_to_merchants_policy = { merchants = -2 }
+reverse_cloth_quality_edict = { trade_efficiency = -0.2 }
+reverse_public_road_act = { development_cost = 0.05 build_cost = 0.1 }
+reverse_fear_tactics_policy = { power_projection_from_insults = -1.5 }
+reverse_appeal_to_old_powers_policy = { accept_vassalization_reasons = -100 }
+reverse_inspirational_leaders = { shock_damage = -0.2 }
+reverse_disruptive_innovation_policy = { mil_tech_cost_modifier = 0.2 }
+reverse_diplomatic_defence_act = { global_spy_defence = -0.5 }
+reverse_record_keeping_act = { monarch_admin_power = -1 monarch_diplomatic_power = -1 monarch_military_power = -1 }
+reverse_the_mercenary_registration_act = { mercenary_cost = 0.25 }
+reverse_unified_army_command = { reserves_organisation = -0.5 movement_speed = -0.2 }
+reverse_restrictions_for_colonies = { colonist_placement_chance = -0.25 global_missionary_strength = -0.02 }
+reverse_mandatory_service = { country_military_power = -5 advisor_pool = -3 }
+reverse_formalized_measures = { expand_administration_cost = 0.5 }
+reverse_the_tolerance_act = { 
+   devotion = -5 yearly_karma_decay = -0.025 yearly_patriarch_authority = -0.05 monthly_piety = 0.01 yearly_authority = -5
+	papal_influence = -3 monthly_fervor_increase = -1 church_power_modifier = -0.5
+}
+reverse_modern_siege_weapons = { leader_siege = -2 }
+reverse_modern_firearm_techniques = { fire_damage = -0.125 }
+reverse_the_liberation_act = { global_unrest = 5 }
+reverse_letters_of_marque = { privateer_efficiency = -1 }
+reverse_the_pioneer_policy = { global_institution_spread = -0.5 }
+reverse_vassal_taxation_policy = { global_tax_modifier = -0.5 }
+reverse_local_army_organisation = { global_regiment_cost = 0.5 }
+reverse_the_preparation_act = { cav_to_inf_ratio = -0.5 }
+reverse_the_foreign_support_act = { ae_impact = 0.15 }
+reverse_privy_council_establishment_act = { spy_offence = -0.33 }
+reverse_the_importation_act = { trade_efficiency = -0.2 }
+reverse_public_welfare_act = { stability_cost_modifier = 0.5 }
+reverse_the_three_sisters_policy = { reinforce_speed = -0.33 }
+reverse_superior_fortification_act = { garrison_size = -1 }
+reverse_encouragement_of_merchant_navy = { merchants = -2 center_of_trade_upgrade_cost = 0.5 }
+reverse_foreign_advisors = { advisor_pool = -4 advisor_cost = 0.25 }
+reverse_the_statute_of_monopolies = { trade_efficiency = -0.1 global_trade_goods_size_modifier = -0.15 }
+reverse_otto_per_mille = { global_prosperity_growth = -2 global_monthly_devastation = 1 }
+reverse_chaplains_of_the_fleet = { allowed_marine_fraction = -0.25 }
+reverse_war_horses_policy = { cavalry_shock = -0.5 cavalry_cost = 0.15 }
+reverse_taxation_with_representation = { harsh_treatment_cost = 0.75 }
+reverse_commercial_embassies = { global_trade_power = -0.1 } #covert action cost +0.25
+reverse_manueline_architecture = { build_cost = 0.15 }
+reverse_shared_land_policy = { development_cost = 0.05 }
+reverse_horse_artillery = { artillery_power = -0.15 }
+reverse_ora_et_labora_policy = { army_tradition_decay = 0.1 }
+reverse_diplomatic_cooperation_act = { advisor_pool = -3 monarch_diplomatic_power = -3 }
+reverse_colonial_expansions = { global_colonial_growth = -250 colonists = -1 }
+reverse_the_education_act = {legitimacy = -5 republican_tradition = -5 horde_unity = -5 devotion = -5 meritocracy = -5 adm_tech_cost_modifier = 0.2}
+reverse_the_combination_act = { administrative_efficiency = -0.05 }
+reverse_military_zeal_act = { siege_ability = -0.33 }
+reverse_wielders_of_the_flaming_sword_policy = { infantry_shock = -1 }
+reverse_edict_of_resistance = { justify_trade_conflict_cost = 0.66 }
+reverse_one_and_true = { heir_chance = -1 prestige = -20 }
+reverse_church_sponsored_guilds = { idea_cost = 0.33 }
+reverse_policy_of_calculate_delay = { global_unrest = 1 } #rebel_size_modifier +0.75 penalty from occupying rebels = yes
+reverse_the_provincial_taxation_system = { drill_decay_modifier = 1 }
+reverse_omne_datum_optimum_policy = { manpower_in_true_faith_provinces = -2 }
+reverse_administration_of_sacred_land_policy = { development_cost = 0.075 }
+reverse_the_licensing_of_the_press_act = {
+   church_influence_modifier = 0.2 nobles_influence_modifier = 0.2 eunuchs_influence_modifier = 0.2 burghers_influence_modifier = 0.2
+	nomadic_tribes_influence_modifier = 0.2 jains_influence_modifier = 0.2 dhimmi_influence_modifier = 0.2 brahmins_hindu_influence_modifier = 0.2
+	brahmins_muslim_influence_modifier = 0.2 brahmins_other_influence_modifier = 0.2 maratha_influence_modifier = 0.2
+	cossacks_influence_modifier = 0.2 vaisyas_influence_modifier = 0.2
+}
+reverse_vassal_obligations_act = { vassal_forcelimit_bonus = -2 vassal_income = -0.5 }
+reverse_land_inheritance_act = { country_admin_power = -5 advisor_pool = -3 }
+reverse_underhanded_diplomacy_act = { mercenary_discipline = -0.075 merc_maintenance_modifier = 0.33 }
+reverse_by_the_people_for_the_people_policy = { artillery_shock = -1 }
+reverse_multilingual_diplomats = { improve_relation_modifier = -0.5 }
+reverse_omnism_policy = { monthly_reform_progress_modifier = -1 }
+reverse_calming_the_tides_policy = { caravan_power = -1 }
+reverse_the_banking_system = { inflation_action_cost = 0.5 }
+army_organiser_boost = {
+	morale_damage = 0.25
+}
+quartermaster_boost = {
+	reinforce_speed = 0.5
+}
+recruitmaster_boost = {
+	manpower_recovery_speed = 0.5
+}
+fortification_expert_boost = {
+	siege_ability = 0.25
+}
+land_investment = {
+	infantry_power = 0.2
+}
+tribal_leader_boost = {
+   cavalry_power = 0.2
+}
+drill_commander_boost = {
+   fire_damage = 0.2
+}
+war_captain_boost = {
+   shock_damage = 0.2
+}
+artillery_captain_boost = {
+   artillery_power = 0.2
+}
+supply_expert_boost = {
+   reserves_organisation = 1
+}
+subject_governor_boost = {
+   diplomatic_annexation_cost = -0.25
+}
+journalist_boost = {
+   ae_impact = -0.20
+}
+marauder_captain_boost = {
+   privateer_efficiency = 1
+   light_ship_power = 0.1
+}
+ai_take_mandate_modifier = {
+   province_warscore_cost = -0.5
+   ae_impact = -0.25
+   global_regiment_cost = -0.25
+   land_forcelimit_modifier = 0.25
+}
+rise_of_eight_banners = {
+   ae_impact = -0.25
+   global_tax_income = 108
+   global_regiment_cost = -0.5
+   land_forcelimit_modifier = 0.5
+   amount_of_banners = 0.5
+}
+wt_timer_1 = { war_taxes_cost_modifier = 0.1 }
+wt_timer_2 = { war_taxes_cost_modifier = 0.1 }
+wt_timer_3 = { war_taxes_cost_modifier = 0.1 }
+wt_timer_4 = { war_taxes_cost_modifier = 0.1 }
+wt_timer_5 = { war_taxes_cost_modifier = 0.1 }
+wt_timer_6 = { war_taxes_cost_modifier = 0.1 }
+wt_timer_7 = { war_taxes_cost_modifier = 0.1 }
+wt_timer_8 = { war_taxes_cost_modifier = 0.1 }
+wt_timer_9 = { war_taxes_cost_modifier = 0.1 }
+wt_timer_10 = { war_taxes_cost_modifier = 0.1 }
+
+#SHINTO INCIDENTS
+
+#Wokou ---> Isolationism
+wokou_turned_to_navy = {
+   light_ship_power = 0.125
+}
+wokou_no_effort_ending = {
+	global_prov_trade_power_modifier = 0.25
+}
+wokou_closed_ending = {
+   trade_efficiency = 0.25
+}
+#Urbanization ---> Isolationism
+urbanization_social_mobility = {
+	technology_cost = -0.1
+}
+urbanization_middle_road = {
+	development_cost = -0.10
+}
+urbanization_in_order = {
+	global_trade_goods_size_modifier = 0.25
+}
+#Ikko ----> Isolationism
+ikkos_crushed = {
+   global_manpower_modifier = 0.33
+}
+ikkos_empowered = {
+   global_unrest = -3
+}
+support_of_ikkos = {
+	land_morale = 0.1
+}
+#Confucianism ---> Isolationism
+neo_confucian_administration = {
+	all_power_cost = -0.05
+}
+neo_confucianism_middle_road = {
+	idea_cost = -0.1
+}
+traditionalist_administration = {
+	legitimacy = 2
+   horde_unity = 2
+   meritocracy = 2
+   republican_tradition = 2
+   devotion = 2
+}
+#Nanban ---> Isolationism
+incident_end_open_ports = {
+	global_institution_spread = 0.5
+}
+incident_end_trade_with_west = {
+	trade_efficiency = 0.2
+}
+incident_end_dejima = {
+	free_policy = 33
+}
+#Firearms ---> Isolationism
+perfecting_the_musket = {
+   land_morale = 0.2
+}
+guns_commonplace = {
+	fire_damage = 0.1
+}
+traditional_warfare = {
+	discipline = 0.075
+}
+#Christianity ---> Isolationism
+shinto_kirishitan_realm = {
+	advisor_cost = -0.25
+}
+significant_christian_presence = {
+	reform_progress_growth = 0.5
+}
+christianity_defeated = {
+	global_missionary_strength = 0.03
+}
+#Shogunate ---> Isolationism
+adherence_to_shogunate = {
+	build_cost = -0.25
+}
+growing_power_of_the_shogunate = {
+	diplomatic_reputation = 3
+}
+rise_of_the_daimyo = {
+	infantry_fire = 1
+}
+unconditionally_surrendered = {
+   war_exhaustion = 0.5
+}
+abdication_tech_cost = {
+   technology_cost = 0.5
+}
+abdication_increased_spending = {
+   global_tax_modifier = -0.5
+}
+shinto_support_for_court = {
+	legitimacy = 1
+   devotion = 1
+   meritocracy = 1
+   republican_tradition = 1
+   horde_unity = 1
+}
+officials1 = { local_governing_cost = -0.2 local_unrest = -0.5 local_development_cost = 0.05 }
+officials2 = { local_governing_cost = -0.4 local_unrest = -1 local_development_cost = 0.1 }
+officials3 = { local_governing_cost = -0.6 local_unrest = -1.5 local_development_cost = 0.15 }
+officials4 = { local_governing_cost = -0.8 local_unrest = -2 local_development_cost = 0.2 }
+officials5 = { local_governing_cost = -1 local_unrest = -2.5 local_development_cost = 0.25 }
+blockading_with_supremacy_trigger = {}
+recently_naval_sieged = {
+   local_defensiveness = 0.33
+   local_friendly_movement_speed = 0.5
+   local_hostile_movement_speed = -0.25
+   province_trade_power_modifier = 1
+}
+naval_supremacy_recalc = {}
+no_fort_here_trigger = {}
+ai_free_units = {
+   #ai recruits and disbands units, so they dont pay for them now and dont lose manpower
+   local_regiment_cost = -1
+   local_ship_cost = -1
+   #ai cant expand infrastucture so they need this
+   allowed_num_of_buildings = 1
+}
+swedish_naval_reforms = {
+   light_ship_cost = -0.1
+	naval_morale = 0.05
+}
+rule_britannia = {
+	prestige = 1
+	legitimacy = 1
+	republican_tradition = 0.6
+	devotion = 1
+	global_ship_recruit_speed = -0.25
+	global_ship_cost = -0.25
+	naval_morale = 0.1
+	light_ship_power = 0.05
+}
+slaves_raided_trigger = {}
+enforced_piracy_pact = {
+   privateer_efficiency = -1
+   diplomatic_reputation = -3
+}
+enforced_free_reign_piracy = {
+   privateer_efficiency = 1
+}
+country_free_reign_piracy = {
+   trade_efficiency = -0.25
+   global_trade_power = -0.5
+}
+free_reign_piracy = {
+   local_monthly_devastation = 0.5
+   available_province_loot = 1
+}
+raiding_pact_timer = {}
+exodus_nation = {
+   colonists = 2
+   global_colonial_growth = 50
+}
+exodus_nation_eco = {
+   discipline = 0.1
+   global_trade_goods_size_modifier = 0.5
+   land_forcelimit = 20
+   global_manpower = 20
+}
+recent_exodus = {
+   local_development_cost = -0.33
+   local_tax_modifier = 0.5
+   local_prosperity_growth = 3
+   local_build_cost = -0.33
+   trade_goods_size = 1
+   institution_growth = 4
+}
+the_first_circumnavigation = {
+   naval_morale = 0.1
+   land_morale = 0.1
+   prestige = 1
+   navy_tradition = 1
+}
+recently_partioned = {
+   defensiveness = -1
+}
+#Transport stuff
+transport0 = {}
+transport1 = { naval_forcelimit = 1 }
+transport2 = { naval_forcelimit = 2 }  
+transport3 = { naval_forcelimit = 3 }  
+transport4 = { naval_forcelimit = 4 }  
+transport5 = { naval_forcelimit = 5 }  
+transport6 = { naval_forcelimit = 6 }  
+transport7 = { naval_forcelimit = 7 }  
+transport8 = { naval_forcelimit = 8 }  
+transport9 = { naval_forcelimit = 9 }  
+transport10 = { naval_forcelimit = 10 }
+transport11 = { naval_forcelimit = 11 }
+transport12 = { naval_forcelimit = 12 }
+transport13 = { naval_forcelimit = 13 }
+transport14 = { naval_forcelimit = 14 }
+transport15 = { naval_forcelimit = 15 }
+transport16 = { naval_forcelimit = 16 }
+transport17 = { naval_forcelimit = 17 }
+transport18 = { naval_forcelimit = 18 }
+transport19 = { naval_forcelimit = 19 }
+transport20 = { naval_forcelimit = 20 }
+transport21 = { naval_forcelimit = 21 }
+transport22 = { naval_forcelimit = 22 }
+transport23 = { naval_forcelimit = 23 }
+transport24 = { naval_forcelimit = 24 }
+transport25 = { naval_forcelimit = 25 }
+transport26 = { naval_forcelimit = 26 }
+transport27 = { naval_forcelimit = 27 }
+transport28 = { naval_forcelimit = 28 }
+transport29 = { naval_forcelimit = 29 }
+transport30 = { naval_forcelimit = 30 }
+transport31 = { naval_forcelimit = 31 }
+transport32 = { naval_forcelimit = 32 }
+transport33 = { naval_forcelimit = 33 }
+transport34 = { naval_forcelimit = 34 }
+transport35 = { naval_forcelimit = 35 }
+transport36 = { naval_forcelimit = 36 }
+transport37 = { naval_forcelimit = 37 }
+transport38 = { naval_forcelimit = 38 }
+transport39 = { naval_forcelimit = 39 }
+transport40 = { naval_forcelimit = 40 }
+transport41 = { naval_forcelimit = 41 }
+transport42 = { naval_forcelimit = 42 }
+transport43 = { naval_forcelimit = 43 }
+transport44 = { naval_forcelimit = 44 }
+transport45 = { naval_forcelimit = 45 }
+transport46 = { naval_forcelimit = 46 }
+transport47 = { naval_forcelimit = 47 }
+transport48 = { naval_forcelimit = 48 }
+transport49 = { naval_forcelimit = 49 }
+transport50 = { naval_forcelimit = 50 }
+transport51 = { naval_forcelimit = 51 }
+transport52 = { naval_forcelimit = 52 }
+transport53 = { naval_forcelimit = 53 }
+transport54 = { naval_forcelimit = 54 }
+transport55 = { naval_forcelimit = 55 }
+transport56 = { naval_forcelimit = 56 }
+transport57 = { naval_forcelimit = 57 }
+transport58 = { naval_forcelimit = 58 }
+transport59 = { naval_forcelimit = 59 }
+transport60 = { naval_forcelimit = 60 }
+transport61 = { naval_forcelimit = 61 }
+transport62 = { naval_forcelimit = 62 }
+transport63 = { naval_forcelimit = 63 }
+transport64 = { naval_forcelimit = 64 }
+transport65 = { naval_forcelimit = 65 }
+transport66 = { naval_forcelimit = 66 }
+transport67 = { naval_forcelimit = 67 }
+transport68 = { naval_forcelimit = 68 }
+transport69 = { naval_forcelimit = 69 }
+transport70 = { naval_forcelimit = 70 }
+transport71 = { naval_forcelimit = 71 }
+transport72 = { naval_forcelimit = 72 }
+transport73 = { naval_forcelimit = 73 }
+transport74 = { naval_forcelimit = 74 }
+transport75 = { naval_forcelimit = 75 }
+transport76 = { naval_forcelimit = 76 }
+transport77 = { naval_forcelimit = 77 }
+transport78 = { naval_forcelimit = 78 }
+transport79 = { naval_forcelimit = 79 }
+transport80 = { naval_forcelimit = 80 }
+transport81 = { naval_forcelimit = 81 }
+transport82 = { naval_forcelimit = 82 }
+transport83 = { naval_forcelimit = 83 }
+transport84 = { naval_forcelimit = 84 }
+transport85 = { naval_forcelimit = 85 }
+transport86 = { naval_forcelimit = 86 }
+transport87 = { naval_forcelimit = 87 }
+transport88 = { naval_forcelimit = 88 }
+transport89 = { naval_forcelimit = 89 }
+transport90 = { naval_forcelimit = 90 }
+transport91 = { naval_forcelimit = 91 }
+transport92 = { naval_forcelimit = 92 }
+transport93 = { naval_forcelimit = 93 }
+transport94 = { naval_forcelimit = 94 }
+transport95 = { naval_forcelimit = 95 }
+transport96 = { naval_forcelimit = 96 }
+transport97 = { naval_forcelimit = 97 }
+transport98 = { naval_forcelimit = 98 }
+transport99 = { naval_forcelimit = 99 }
+transport100 = { naval_forcelimit = 100 }
+transport101 = { naval_forcelimit = 101 }
+transport102 = { naval_forcelimit = 102 }
+transport103 = { naval_forcelimit = 103 }
+transport104 = { naval_forcelimit = 104 }
+transport105 = { naval_forcelimit = 105 }
+transport106 = { naval_forcelimit = 106 }
+transport107 = { naval_forcelimit = 107 }
+transport108 = { naval_forcelimit = 108 }
+transport109 = { naval_forcelimit = 109 }
+transport110 = { naval_forcelimit = 110 }
+transport111 = { naval_forcelimit = 111 }
+transport112 = { naval_forcelimit = 112 }
+transport113 = { naval_forcelimit = 113 }
+transport114 = { naval_forcelimit = 114 }
+transport115 = { naval_forcelimit = 115 }
+transport116 = { naval_forcelimit = 116 }
+transport117 = { naval_forcelimit = 117 }
+transport118 = { naval_forcelimit = 118 }
+transport119 = { naval_forcelimit = 119 }
+transport120 = { naval_forcelimit = 120 }
+transport121 = { naval_forcelimit = 121 }
+transport122 = { naval_forcelimit = 122 }
+transport123 = { naval_forcelimit = 123 }
+transport124 = { naval_forcelimit = 124 }
+transport125 = { naval_forcelimit = 125 }
+transport126 = { naval_forcelimit = 126 }
+transport127 = { naval_forcelimit = 127 }
+transport128 = { naval_forcelimit = 128 }
+transport129 = { naval_forcelimit = 129 }
+transport130 = { naval_forcelimit = 130 }
+transport131 = { naval_forcelimit = 131 }
+transport132 = { naval_forcelimit = 132 }
+transport133 = { naval_forcelimit = 133 }
+transport134 = { naval_forcelimit = 134 }
+transport135 = { naval_forcelimit = 135 }
+transport136 = { naval_forcelimit = 136 }
+transport137 = { naval_forcelimit = 137 }
+transport138 = { naval_forcelimit = 138 }
+transport139 = { naval_forcelimit = 139 }
+transport140 = { naval_forcelimit = 140 }
+transport141 = { naval_forcelimit = 141 }
+transport142 = { naval_forcelimit = 142 }
+transport143 = { naval_forcelimit = 143 }
+transport144 = { naval_forcelimit = 144 }
+transport145 = { naval_forcelimit = 145 }
+transport146 = { naval_forcelimit = 146 }
+transport147 = { naval_forcelimit = 147 }
+transport148 = { naval_forcelimit = 148 }
+transport149 = { naval_forcelimit = 149 }
+transport150 = { naval_forcelimit = 150 }
+transport151 = { naval_forcelimit = 151 }
+transport152 = { naval_forcelimit = 152 }
+transport153 = { naval_forcelimit = 153 }
+transport154 = { naval_forcelimit = 154 }
+transport155 = { naval_forcelimit = 155 }
+transport156 = { naval_forcelimit = 156 }
+transport157 = { naval_forcelimit = 157 }
+transport158 = { naval_forcelimit = 158 }
+transport159 = { naval_forcelimit = 159 }
+transport160 = { naval_forcelimit = 160 }
+transport161 = { naval_forcelimit = 161 }
+transport162 = { naval_forcelimit = 162 }
+transport163 = { naval_forcelimit = 163 }
+transport164 = { naval_forcelimit = 164 }
+transport165 = { naval_forcelimit = 165 }
+transport166 = { naval_forcelimit = 166 }
+transport167 = { naval_forcelimit = 167 }
+transport168 = { naval_forcelimit = 168 }
+transport169 = { naval_forcelimit = 169 }
+transport170 = { naval_forcelimit = 170 }
+transport171 = { naval_forcelimit = 171 }
+transport172 = { naval_forcelimit = 172 }
+transport173 = { naval_forcelimit = 173 }
+transport174 = { naval_forcelimit = 174 }
+transport175 = { naval_forcelimit = 175 }
+transport176 = { naval_forcelimit = 176 }
+transport177 = { naval_forcelimit = 177 }
+transport178 = { naval_forcelimit = 178 }
+transport179 = { naval_forcelimit = 179 }
+transport180 = { naval_forcelimit = 180 }
+transport181 = { naval_forcelimit = 181 }
+transport182 = { naval_forcelimit = 182 }
+transport183 = { naval_forcelimit = 183 }
+transport184 = { naval_forcelimit = 184 }
+transport185 = { naval_forcelimit = 185 }
+transport186 = { naval_forcelimit = 186 }
+transport187 = { naval_forcelimit = 187 }
+transport188 = { naval_forcelimit = 188 }
+transport189 = { naval_forcelimit = 189 }
+transport190 = { naval_forcelimit = 190 }
+transport191 = { naval_forcelimit = 191 }
+transport192 = { naval_forcelimit = 192 }
+transport193 = { naval_forcelimit = 193 }
+transport194 = { naval_forcelimit = 194 }
+transport195 = { naval_forcelimit = 195 }
+transport196 = { naval_forcelimit = 196 }
+transport197 = { naval_forcelimit = 197 }
+transport198 = { naval_forcelimit = 198 }
+transport199 = { naval_forcelimit = 199 }
+transport200 = { naval_forcelimit = 200 }
+transport201 = { naval_forcelimit = 201 }
+transport202 = { naval_forcelimit = 202 }
+transport203 = { naval_forcelimit = 203 }
+transport204 = { naval_forcelimit = 204 }
+transport205 = { naval_forcelimit = 205 }
+transport206 = { naval_forcelimit = 206 }
+transport207 = { naval_forcelimit = 207 }
+transport208 = { naval_forcelimit = 208 }
+transport209 = { naval_forcelimit = 209 }
+transport210 = { naval_forcelimit = 210 }
+transport211 = { naval_forcelimit = 211 }
+transport212 = { naval_forcelimit = 212 }
+transport213 = { naval_forcelimit = 213 }
+transport214 = { naval_forcelimit = 214 }
+transport215 = { naval_forcelimit = 215 }
+transport216 = { naval_forcelimit = 216 }
+transport217 = { naval_forcelimit = 217 }
+transport218 = { naval_forcelimit = 218 }
+transport219 = { naval_forcelimit = 219 }
+transport220 = { naval_forcelimit = 220 }
+transport221 = { naval_forcelimit = 221 }
+transport222 = { naval_forcelimit = 222 }
+transport223 = { naval_forcelimit = 223 }
+transport224 = { naval_forcelimit = 224 }
+transport225 = { naval_forcelimit = 225 }
+transport226 = { naval_forcelimit = 226 }
+transport227 = { naval_forcelimit = 227 }
+transport228 = { naval_forcelimit = 228 }
+transport229 = { naval_forcelimit = 229 }
+transport230 = { naval_forcelimit = 230 }
+transport231 = { naval_forcelimit = 231 }
+transport232 = { naval_forcelimit = 232 }
+transport233 = { naval_forcelimit = 233 }
+transport234 = { naval_forcelimit = 234 }
+transport235 = { naval_forcelimit = 235 }
+transport236 = { naval_forcelimit = 236 }
+transport237 = { naval_forcelimit = 237 }
+transport238 = { naval_forcelimit = 238 }
+transport239 = { naval_forcelimit = 239 }
+transport240 = { naval_forcelimit = 240 }
+transport241 = { naval_forcelimit = 241 }
+transport242 = { naval_forcelimit = 242 }
+transport243 = { naval_forcelimit = 243 }
+transport244 = { naval_forcelimit = 244 }
+transport245 = { naval_forcelimit = 245 }
+transport246 = { naval_forcelimit = 246 }
+transport247 = { naval_forcelimit = 247 }
+transport248 = { naval_forcelimit = 248 }
+transport249 = { naval_forcelimit = 249 }
+transport250 = { naval_forcelimit = 250 }
+transport251 = { naval_forcelimit = 251 }
+transport252 = { naval_forcelimit = 252 }
+transport253 = { naval_forcelimit = 253 }
+transport254 = { naval_forcelimit = 254 }
+transport255 = { naval_forcelimit = 255 }
+transport256 = { naval_forcelimit = 256 }
+transport257 = { naval_forcelimit = 257 }
+transport258 = { naval_forcelimit = 258 }
+transport259 = { naval_forcelimit = 259 }
+transport260 = { naval_forcelimit = 260 }
+transport261 = { naval_forcelimit = 261 }
+transport262 = { naval_forcelimit = 262 }
+transport263 = { naval_forcelimit = 263 }
+transport264 = { naval_forcelimit = 264 }
+transport265 = { naval_forcelimit = 265 }
+transport266 = { naval_forcelimit = 266 }
+transport267 = { naval_forcelimit = 267 }
+transport268 = { naval_forcelimit = 268 }
+transport269 = { naval_forcelimit = 269 }
+transport270 = { naval_forcelimit = 270 }
+transport271 = { naval_forcelimit = 271 }
+transport272 = { naval_forcelimit = 272 }
+transport273 = { naval_forcelimit = 273 }
+transport274 = { naval_forcelimit = 274 }
+transport275 = { naval_forcelimit = 275 }
+transport276 = { naval_forcelimit = 276 }
+transport277 = { naval_forcelimit = 277 }
+transport278 = { naval_forcelimit = 278 }
+transport279 = { naval_forcelimit = 279 }
+transport280 = { naval_forcelimit = 280 }
+transport281 = { naval_forcelimit = 281 }
+transport282 = { naval_forcelimit = 282 }
+transport283 = { naval_forcelimit = 283 }
+transport284 = { naval_forcelimit = 284 }
+transport285 = { naval_forcelimit = 285 }
+transport286 = { naval_forcelimit = 286 }
+transport287 = { naval_forcelimit = 287 }
+transport288 = { naval_forcelimit = 288 }
+transport289 = { naval_forcelimit = 289 }
+transport290 = { naval_forcelimit = 290 }
+transport291 = { naval_forcelimit = 291 }
+transport292 = { naval_forcelimit = 292 }
+transport293 = { naval_forcelimit = 293 }
+transport294 = { naval_forcelimit = 294 }
+transport295 = { naval_forcelimit = 295 }
+transport296 = { naval_forcelimit = 296 }
+transport297 = { naval_forcelimit = 297 }
+transport298 = { naval_forcelimit = 298 }
+transport299 = { naval_forcelimit = 299 }
+transport300 = { naval_forcelimit = 300 }
+transport301 = { naval_forcelimit = 301 }
+transport302 = { naval_forcelimit = 302 }
+transport303 = { naval_forcelimit = 303 }
+transport304 = { naval_forcelimit = 304 }
+transport305 = { naval_forcelimit = 305 }
+transport306 = { naval_forcelimit = 306 }
+transport307 = { naval_forcelimit = 307 }
+transport308 = { naval_forcelimit = 308 }
+transport309 = { naval_forcelimit = 309 }
+transport310 = { naval_forcelimit = 310 }
+transport311 = { naval_forcelimit = 311 }
+transport312 = { naval_forcelimit = 312 }
+transport313 = { naval_forcelimit = 313 }
+transport314 = { naval_forcelimit = 314 }
+transport315 = { naval_forcelimit = 315 }
+transport316 = { naval_forcelimit = 316 }
+transport317 = { naval_forcelimit = 317 }
+transport318 = { naval_forcelimit = 318 }
+transport319 = { naval_forcelimit = 319 }
+transport320 = { naval_forcelimit = 320 }
+transport321 = { naval_forcelimit = 321 }
+transport322 = { naval_forcelimit = 322 }
+transport323 = { naval_forcelimit = 323 }
+transport324 = { naval_forcelimit = 324 }
+transport325 = { naval_forcelimit = 325 }
+transport326 = { naval_forcelimit = 326 }
+transport327 = { naval_forcelimit = 327 }
+transport328 = { naval_forcelimit = 328 }
+transport329 = { naval_forcelimit = 329 }
+transport330 = { naval_forcelimit = 330 }
+transport331 = { naval_forcelimit = 331 }
+transport332 = { naval_forcelimit = 332 }
+transport333 = { naval_forcelimit = 333 }
+transport334 = { naval_forcelimit = 334 }
+transport335 = { naval_forcelimit = 335 }
+transport336 = { naval_forcelimit = 336 }
+transport337 = { naval_forcelimit = 337 }
+transport338 = { naval_forcelimit = 338 }
+transport339 = { naval_forcelimit = 339 }
+transport340 = { naval_forcelimit = 340 }
+transport341 = { naval_forcelimit = 341 }
+transport342 = { naval_forcelimit = 342 }
+transport343 = { naval_forcelimit = 343 }
+transport344 = { naval_forcelimit = 344 }
+transport345 = { naval_forcelimit = 345 }
+transport346 = { naval_forcelimit = 346 }
+transport347 = { naval_forcelimit = 347 }
+transport348 = { naval_forcelimit = 348 }
+transport349 = { naval_forcelimit = 349 }
+transport350 = { naval_forcelimit = 350 }
+transport351 = { naval_forcelimit = 351 }
+transport352 = { naval_forcelimit = 352 }
+transport353 = { naval_forcelimit = 353 }
+transport354 = { naval_forcelimit = 354 }
+transport355 = { naval_forcelimit = 355 }
+transport356 = { naval_forcelimit = 356 }
+transport357 = { naval_forcelimit = 357 }
+transport358 = { naval_forcelimit = 358 }
+transport359 = { naval_forcelimit = 359 }
+transport360 = { naval_forcelimit = 360 }
+transport361 = { naval_forcelimit = 361 }
+transport362 = { naval_forcelimit = 362 }
+transport363 = { naval_forcelimit = 363 }
+transport364 = { naval_forcelimit = 364 }
+transport365 = { naval_forcelimit = 365 }
+transport366 = { naval_forcelimit = 366 }
+transport367 = { naval_forcelimit = 367 }
+transport368 = { naval_forcelimit = 368 }
+transport369 = { naval_forcelimit = 369 }
+transport370 = { naval_forcelimit = 370 }
+transport371 = { naval_forcelimit = 371 }
+transport372 = { naval_forcelimit = 372 }
+transport373 = { naval_forcelimit = 373 }
+transport374 = { naval_forcelimit = 374 }
+transport375 = { naval_forcelimit = 375 }
+transport376 = { naval_forcelimit = 376 }
+transport377 = { naval_forcelimit = 377 }
+transport378 = { naval_forcelimit = 378 }
+transport379 = { naval_forcelimit = 379 }
+transport380 = { naval_forcelimit = 380 }
+transport381 = { naval_forcelimit = 381 }
+transport382 = { naval_forcelimit = 382 }
+transport383 = { naval_forcelimit = 383 }
+transport384 = { naval_forcelimit = 384 }
+transport385 = { naval_forcelimit = 385 }
+transport386 = { naval_forcelimit = 386 }
+transport387 = { naval_forcelimit = 387 }
+transport388 = { naval_forcelimit = 388 }
+transport389 = { naval_forcelimit = 389 }
+transport390 = { naval_forcelimit = 390 }
+transport391 = { naval_forcelimit = 391 }
+transport392 = { naval_forcelimit = 392 }
+transport393 = { naval_forcelimit = 393 }
+transport394 = { naval_forcelimit = 394 }
+transport395 = { naval_forcelimit = 395 }
+transport396 = { naval_forcelimit = 396 }
+transport397 = { naval_forcelimit = 397 }
+transport398 = { naval_forcelimit = 398 }
+transport399 = { naval_forcelimit = 399 }
+transport400 = { naval_forcelimit = 400 }
+transport401 = { naval_forcelimit = 401 }
+transport402 = { naval_forcelimit = 402 }
+transport403 = { naval_forcelimit = 403 }
+transport404 = { naval_forcelimit = 404 }
+transport405 = { naval_forcelimit = 405 }
+transport406 = { naval_forcelimit = 406 }
+transport407 = { naval_forcelimit = 407 }
+transport408 = { naval_forcelimit = 408 }
+transport409 = { naval_forcelimit = 409 }
+transport410 = { naval_forcelimit = 410 }
+transport411 = { naval_forcelimit = 411 }
+transport412 = { naval_forcelimit = 412 }
+transport413 = { naval_forcelimit = 413 }
+transport414 = { naval_forcelimit = 414 }
+transport415 = { naval_forcelimit = 415 }
+transport416 = { naval_forcelimit = 416 }
+transport417 = { naval_forcelimit = 417 }
+transport418 = { naval_forcelimit = 418 }
+transport419 = { naval_forcelimit = 419 }
+transport420 = { naval_forcelimit = 420 }
+transport421 = { naval_forcelimit = 421 }
+transport422 = { naval_forcelimit = 422 }
+transport423 = { naval_forcelimit = 423 }
+transport424 = { naval_forcelimit = 424 }
+transport425 = { naval_forcelimit = 425 }
+transport426 = { naval_forcelimit = 426 }
+transport427 = { naval_forcelimit = 427 }
+transport428 = { naval_forcelimit = 428 }
+transport429 = { naval_forcelimit = 429 }
+transport430 = { naval_forcelimit = 430 }
+transport431 = { naval_forcelimit = 431 }
+transport432 = { naval_forcelimit = 432 }
+transport433 = { naval_forcelimit = 433 }
+transport434 = { naval_forcelimit = 434 }
+transport435 = { naval_forcelimit = 435 }
+transport436 = { naval_forcelimit = 436 }
+transport437 = { naval_forcelimit = 437 }
+transport438 = { naval_forcelimit = 438 }
+transport439 = { naval_forcelimit = 439 }
+transport440 = { naval_forcelimit = 440 }
+transport441 = { naval_forcelimit = 441 }
+transport442 = { naval_forcelimit = 442 }
+transport443 = { naval_forcelimit = 443 }
+transport444 = { naval_forcelimit = 444 }
+transport445 = { naval_forcelimit = 445 }
+transport446 = { naval_forcelimit = 446 }
+transport447 = { naval_forcelimit = 447 }
+transport448 = { naval_forcelimit = 448 }
+transport449 = { naval_forcelimit = 449 }
+transport450 = { naval_forcelimit = 450 }
+transport451 = { naval_forcelimit = 451 }
+transport452 = { naval_forcelimit = 452 }
+transport453 = { naval_forcelimit = 453 }
+transport454 = { naval_forcelimit = 454 }
+transport455 = { naval_forcelimit = 455 }
+transport456 = { naval_forcelimit = 456 }
+transport457 = { naval_forcelimit = 457 }
+transport458 = { naval_forcelimit = 458 }
+transport459 = { naval_forcelimit = 459 }
+transport460 = { naval_forcelimit = 460 }
+transport461 = { naval_forcelimit = 461 }
+transport462 = { naval_forcelimit = 462 }
+transport463 = { naval_forcelimit = 463 }
+transport464 = { naval_forcelimit = 464 }
+transport465 = { naval_forcelimit = 465 }
+transport466 = { naval_forcelimit = 466 }
+transport467 = { naval_forcelimit = 467 }
+transport468 = { naval_forcelimit = 468 }
+transport469 = { naval_forcelimit = 469 }
+transport470 = { naval_forcelimit = 470 }
+transport471 = { naval_forcelimit = 471 }
+transport472 = { naval_forcelimit = 472 }
+transport473 = { naval_forcelimit = 473 }
+transport474 = { naval_forcelimit = 474 }
+transport475 = { naval_forcelimit = 475 }
+transport476 = { naval_forcelimit = 476 }
+transport477 = { naval_forcelimit = 477 }
+transport478 = { naval_forcelimit = 478 }
+transport479 = { naval_forcelimit = 479 }
+transport480 = { naval_forcelimit = 480 }
+transport481 = { naval_forcelimit = 481 }
+transport482 = { naval_forcelimit = 482 }
+transport483 = { naval_forcelimit = 483 }
+transport484 = { naval_forcelimit = 484 }
+transport485 = { naval_forcelimit = 485 }
+transport486 = { naval_forcelimit = 486 }
+transport487 = { naval_forcelimit = 487 }
+transport488 = { naval_forcelimit = 488 }
+transport489 = { naval_forcelimit = 489 }
+transport490 = { naval_forcelimit = 490 }
+transport491 = { naval_forcelimit = 491 }
+transport492 = { naval_forcelimit = 492 }
+transport493 = { naval_forcelimit = 493 }
+transport494 = { naval_forcelimit = 494 }
+transport495 = { naval_forcelimit = 495 }
+transport496 = { naval_forcelimit = 496 }
+transport497 = { naval_forcelimit = 497 }
+transport498 = { naval_forcelimit = 498 }
+transport499 = { naval_forcelimit = 499 }
+transport500 = { naval_forcelimit = 500 }
+transport501 = { naval_forcelimit = 501 }
+transport502 = { naval_forcelimit = 502 }
+transport503 = { naval_forcelimit = 503 }
+transport504 = { naval_forcelimit = 504 }
+transport505 = { naval_forcelimit = 505 }
+transport506 = { naval_forcelimit = 506 }
+transport507 = { naval_forcelimit = 507 }
+transport508 = { naval_forcelimit = 508 }
+transport509 = { naval_forcelimit = 509 }
+transport510 = { naval_forcelimit = 510 }
+transport511 = { naval_forcelimit = 511 }
+transport512 = { naval_forcelimit = 512 }
+transport513 = { naval_forcelimit = 513 }
+transport514 = { naval_forcelimit = 514 }
+transport515 = { naval_forcelimit = 515 }
+transport516 = { naval_forcelimit = 516 }
+transport517 = { naval_forcelimit = 517 }
+transport518 = { naval_forcelimit = 518 }
+transport519 = { naval_forcelimit = 519 }
+transport520 = { naval_forcelimit = 520 }
+transport521 = { naval_forcelimit = 521 }
+transport522 = { naval_forcelimit = 522 }
+transport523 = { naval_forcelimit = 523 }
+transport524 = { naval_forcelimit = 524 }
+transport525 = { naval_forcelimit = 525 }
+transport526 = { naval_forcelimit = 526 }
+transport527 = { naval_forcelimit = 527 }
+transport528 = { naval_forcelimit = 528 }
+transport529 = { naval_forcelimit = 529 }
+transport530 = { naval_forcelimit = 530 }
+transport531 = { naval_forcelimit = 531 }
+transport532 = { naval_forcelimit = 532 }
+transport533 = { naval_forcelimit = 533 }
+transport534 = { naval_forcelimit = 534 }
+transport535 = { naval_forcelimit = 535 }
+transport536 = { naval_forcelimit = 536 }
+transport537 = { naval_forcelimit = 537 }
+transport538 = { naval_forcelimit = 538 }
+transport539 = { naval_forcelimit = 539 }
+transport540 = { naval_forcelimit = 540 }
+transport541 = { naval_forcelimit = 541 }
+transport542 = { naval_forcelimit = 542 }
+transport543 = { naval_forcelimit = 543 }
+transport544 = { naval_forcelimit = 544 }
+transport545 = { naval_forcelimit = 545 }
+transport546 = { naval_forcelimit = 546 }
+transport547 = { naval_forcelimit = 547 }
+transport548 = { naval_forcelimit = 548 }
+transport549 = { naval_forcelimit = 549 }
+transport550 = { naval_forcelimit = 550 }
+transport551 = { naval_forcelimit = 551 }
+transport552 = { naval_forcelimit = 552 }
+transport553 = { naval_forcelimit = 553 }
+transport554 = { naval_forcelimit = 554 }
+transport555 = { naval_forcelimit = 555 }
+transport556 = { naval_forcelimit = 556 }
+transport557 = { naval_forcelimit = 557 }
+transport558 = { naval_forcelimit = 558 }
+transport559 = { naval_forcelimit = 559 }
+transport560 = { naval_forcelimit = 560 }
+transport561 = { naval_forcelimit = 561 }
+transport562 = { naval_forcelimit = 562 }
+transport563 = { naval_forcelimit = 563 }
+transport564 = { naval_forcelimit = 564 }
+transport565 = { naval_forcelimit = 565 }
+transport566 = { naval_forcelimit = 566 }
+transport567 = { naval_forcelimit = 567 }
+transport568 = { naval_forcelimit = 568 }
+transport569 = { naval_forcelimit = 569 }
+transport570 = { naval_forcelimit = 570 }
+transport571 = { naval_forcelimit = 571 }
+transport572 = { naval_forcelimit = 572 }
+transport573 = { naval_forcelimit = 573 }
+transport574 = { naval_forcelimit = 574 }
+transport575 = { naval_forcelimit = 575 }
+transport576 = { naval_forcelimit = 576 }
+transport577 = { naval_forcelimit = 577 }
+transport578 = { naval_forcelimit = 578 }
+transport579 = { naval_forcelimit = 579 }
+transport580 = { naval_forcelimit = 580 }
+transport581 = { naval_forcelimit = 581 }
+transport582 = { naval_forcelimit = 582 }
+transport583 = { naval_forcelimit = 583 }
+transport584 = { naval_forcelimit = 584 }
+transport585 = { naval_forcelimit = 585 }
+transport586 = { naval_forcelimit = 586 }
+transport587 = { naval_forcelimit = 587 }
+transport588 = { naval_forcelimit = 588 }
+transport589 = { naval_forcelimit = 589 }
+transport590 = { naval_forcelimit = 590 }
+transport591 = { naval_forcelimit = 591 }
+transport592 = { naval_forcelimit = 592 }
+transport593 = { naval_forcelimit = 593 }
+transport594 = { naval_forcelimit = 594 }
+transport595 = { naval_forcelimit = 595 }
+transport596 = { naval_forcelimit = 596 }
+transport597 = { naval_forcelimit = 597 }
+transport598 = { naval_forcelimit = 598 }
+transport599 = { naval_forcelimit = 599 }
+transport600 = { naval_forcelimit = 600 }
+transport601 = { naval_forcelimit = 601 }
+transport602 = { naval_forcelimit = 602 }
+transport603 = { naval_forcelimit = 603 }
+transport604 = { naval_forcelimit = 604 }
+transport605 = { naval_forcelimit = 605 }
+transport606 = { naval_forcelimit = 606 }
+transport607 = { naval_forcelimit = 607 }
+transport608 = { naval_forcelimit = 608 }
+transport609 = { naval_forcelimit = 609 }
+transport610 = { naval_forcelimit = 610 }
+transport611 = { naval_forcelimit = 611 }
+transport612 = { naval_forcelimit = 612 }
+transport613 = { naval_forcelimit = 613 }
+transport614 = { naval_forcelimit = 614 }
+transport615 = { naval_forcelimit = 615 }
+transport616 = { naval_forcelimit = 616 }
+transport617 = { naval_forcelimit = 617 }
+transport618 = { naval_forcelimit = 618 }
+transport619 = { naval_forcelimit = 619 }
+transport620 = { naval_forcelimit = 620 }
+transport621 = { naval_forcelimit = 621 }
+transport622 = { naval_forcelimit = 622 }
+transport623 = { naval_forcelimit = 623 }
+transport624 = { naval_forcelimit = 624 }
+transport625 = { naval_forcelimit = 625 }
+transport626 = { naval_forcelimit = 626 }
+transport627 = { naval_forcelimit = 627 }
+transport628 = { naval_forcelimit = 628 }
+transport629 = { naval_forcelimit = 629 }
+transport630 = { naval_forcelimit = 630 }
+transport631 = { naval_forcelimit = 631 }
+transport632 = { naval_forcelimit = 632 }
+transport633 = { naval_forcelimit = 633 }
+transport634 = { naval_forcelimit = 634 }
+transport635 = { naval_forcelimit = 635 }
+transport636 = { naval_forcelimit = 636 }
+transport637 = { naval_forcelimit = 637 }
+transport638 = { naval_forcelimit = 638 }
+transport639 = { naval_forcelimit = 639 }
+transport640 = { naval_forcelimit = 640 }
+transport641 = { naval_forcelimit = 641 }
+transport642 = { naval_forcelimit = 642 }
+transport643 = { naval_forcelimit = 643 }
+transport644 = { naval_forcelimit = 644 }
+transport645 = { naval_forcelimit = 645 }
+transport646 = { naval_forcelimit = 646 }
+transport647 = { naval_forcelimit = 647 }
+transport648 = { naval_forcelimit = 648 }
+transport649 = { naval_forcelimit = 649 }
+transport650 = { naval_forcelimit = 650 }
+transport651 = { naval_forcelimit = 651 }
+transport652 = { naval_forcelimit = 652 }
+transport653 = { naval_forcelimit = 653 }
+transport654 = { naval_forcelimit = 654 }
+transport655 = { naval_forcelimit = 655 }
+transport656 = { naval_forcelimit = 656 }
+transport657 = { naval_forcelimit = 657 }
+transport658 = { naval_forcelimit = 658 }
+transport659 = { naval_forcelimit = 659 }
+transport660 = { naval_forcelimit = 660 }
+transport661 = { naval_forcelimit = 661 }
+transport662 = { naval_forcelimit = 662 }
+transport663 = { naval_forcelimit = 663 }
+transport664 = { naval_forcelimit = 664 }
+transport665 = { naval_forcelimit = 665 }
+transport666 = { naval_forcelimit = 666 }
+transport667 = { naval_forcelimit = 667 }
+transport668 = { naval_forcelimit = 668 }
+transport669 = { naval_forcelimit = 669 }
+transport670 = { naval_forcelimit = 670 }
+transport671 = { naval_forcelimit = 671 }
+transport672 = { naval_forcelimit = 672 }
+transport673 = { naval_forcelimit = 673 }
+transport674 = { naval_forcelimit = 674 }
+transport675 = { naval_forcelimit = 675 }
+transport676 = { naval_forcelimit = 676 }
+transport677 = { naval_forcelimit = 677 }
+transport678 = { naval_forcelimit = 678 }
+transport679 = { naval_forcelimit = 679 }
+transport680 = { naval_forcelimit = 680 }
+transport681 = { naval_forcelimit = 681 }
+transport682 = { naval_forcelimit = 682 }
+transport683 = { naval_forcelimit = 683 }
+transport684 = { naval_forcelimit = 684 }
+transport685 = { naval_forcelimit = 685 }
+transport686 = { naval_forcelimit = 686 }
+transport687 = { naval_forcelimit = 687 }
+transport688 = { naval_forcelimit = 688 }
+transport689 = { naval_forcelimit = 689 }
+transport690 = { naval_forcelimit = 690 }
+transport691 = { naval_forcelimit = 691 }
+transport692 = { naval_forcelimit = 692 }
+transport693 = { naval_forcelimit = 693 }
+transport694 = { naval_forcelimit = 694 }
+transport695 = { naval_forcelimit = 695 }
+transport696 = { naval_forcelimit = 696 }
+transport697 = { naval_forcelimit = 697 }
+transport698 = { naval_forcelimit = 698 }
+transport699 = { naval_forcelimit = 699 }
+transport700 = { naval_forcelimit = 700 }
+transport701 = { naval_forcelimit = 701 }
+transport702 = { naval_forcelimit = 702 }
+transport703 = { naval_forcelimit = 703 }
+transport704 = { naval_forcelimit = 704 }
+transport705 = { naval_forcelimit = 705 }
+transport706 = { naval_forcelimit = 706 }
+transport707 = { naval_forcelimit = 707 }
+transport708 = { naval_forcelimit = 708 }
+transport709 = { naval_forcelimit = 709 }
+transport710 = { naval_forcelimit = 710 }
+transport711 = { naval_forcelimit = 711 }
+transport712 = { naval_forcelimit = 712 }
+transport713 = { naval_forcelimit = 713 }
+transport714 = { naval_forcelimit = 714 }
+transport715 = { naval_forcelimit = 715 }
+transport716 = { naval_forcelimit = 716 }
+transport717 = { naval_forcelimit = 717 }
+transport718 = { naval_forcelimit = 718 }
+transport719 = { naval_forcelimit = 719 }
+transport720 = { naval_forcelimit = 720 }
+transport721 = { naval_forcelimit = 721 }
+transport722 = { naval_forcelimit = 722 }
+transport723 = { naval_forcelimit = 723 }
+transport724 = { naval_forcelimit = 724 }
+transport725 = { naval_forcelimit = 725 }
+transport726 = { naval_forcelimit = 726 }
+transport727 = { naval_forcelimit = 727 }
+transport728 = { naval_forcelimit = 728 }
+transport729 = { naval_forcelimit = 729 }
+transport730 = { naval_forcelimit = 730 }
+transport731 = { naval_forcelimit = 731 }
+transport732 = { naval_forcelimit = 732 }
+transport733 = { naval_forcelimit = 733 }
+transport734 = { naval_forcelimit = 734 }
+transport735 = { naval_forcelimit = 735 }
+transport736 = { naval_forcelimit = 736 }
+transport737 = { naval_forcelimit = 737 }
+transport738 = { naval_forcelimit = 738 }
+transport739 = { naval_forcelimit = 739 }
+transport740 = { naval_forcelimit = 740 }
+transport741 = { naval_forcelimit = 741 }
+transport742 = { naval_forcelimit = 742 }
+transport743 = { naval_forcelimit = 743 }
+transport744 = { naval_forcelimit = 744 }
+transport745 = { naval_forcelimit = 745 }
+transport746 = { naval_forcelimit = 746 }
+transport747 = { naval_forcelimit = 747 }
+transport748 = { naval_forcelimit = 748 }
+transport749 = { naval_forcelimit = 749 }
+transport750 = { naval_forcelimit = 750 }
+transport751 = { naval_forcelimit = 751 }
+transport752 = { naval_forcelimit = 752 }
+transport753 = { naval_forcelimit = 753 }
+transport754 = { naval_forcelimit = 754 }
+transport755 = { naval_forcelimit = 755 }
+transport756 = { naval_forcelimit = 756 }
+transport757 = { naval_forcelimit = 757 }
+transport758 = { naval_forcelimit = 758 }
+transport759 = { naval_forcelimit = 759 }
+transport760 = { naval_forcelimit = 760 }
+transport761 = { naval_forcelimit = 761 }
+transport762 = { naval_forcelimit = 762 }
+transport763 = { naval_forcelimit = 763 }
+transport764 = { naval_forcelimit = 764 }
+transport765 = { naval_forcelimit = 765 }
+transport766 = { naval_forcelimit = 766 }
+transport767 = { naval_forcelimit = 767 }
+transport768 = { naval_forcelimit = 768 }
+transport769 = { naval_forcelimit = 769 }
+transport770 = { naval_forcelimit = 770 }
+transport771 = { naval_forcelimit = 771 }
+transport772 = { naval_forcelimit = 772 }
+transport773 = { naval_forcelimit = 773 }
+transport774 = { naval_forcelimit = 774 }
+transport775 = { naval_forcelimit = 775 }
+transport776 = { naval_forcelimit = 776 }
+transport777 = { naval_forcelimit = 777 }
+transport778 = { naval_forcelimit = 778 }
+transport779 = { naval_forcelimit = 779 }
+transport780 = { naval_forcelimit = 780 }
+transport781 = { naval_forcelimit = 781 }
+transport782 = { naval_forcelimit = 782 }
+transport783 = { naval_forcelimit = 783 }
+transport784 = { naval_forcelimit = 784 }
+transport785 = { naval_forcelimit = 785 }
+transport786 = { naval_forcelimit = 786 }
+transport787 = { naval_forcelimit = 787 }
+transport788 = { naval_forcelimit = 788 }
+transport789 = { naval_forcelimit = 789 }
+transport790 = { naval_forcelimit = 790 }
+transport791 = { naval_forcelimit = 791 }
+transport792 = { naval_forcelimit = 792 }
+transport793 = { naval_forcelimit = 793 }
+transport794 = { naval_forcelimit = 794 }
+transport795 = { naval_forcelimit = 795 }
+transport796 = { naval_forcelimit = 796 }
+transport797 = { naval_forcelimit = 797 }
+transport798 = { naval_forcelimit = 798 }
+transport799 = { naval_forcelimit = 799 }
+transport800 = { naval_forcelimit = 800 }
+transport801 = { naval_forcelimit = 801 }
+transport802 = { naval_forcelimit = 802 }
+transport803 = { naval_forcelimit = 803 }
+transport804 = { naval_forcelimit = 804 }
+transport805 = { naval_forcelimit = 805 }
+transport806 = { naval_forcelimit = 806 }
+transport807 = { naval_forcelimit = 807 }
+transport808 = { naval_forcelimit = 808 }
+transport809 = { naval_forcelimit = 809 }
+transport810 = { naval_forcelimit = 810 }
+transport811 = { naval_forcelimit = 811 }
+transport812 = { naval_forcelimit = 812 }
+transport813 = { naval_forcelimit = 813 }
+transport814 = { naval_forcelimit = 814 }
+transport815 = { naval_forcelimit = 815 }
+transport816 = { naval_forcelimit = 816 }
+transport817 = { naval_forcelimit = 817 }
+transport818 = { naval_forcelimit = 818 }
+transport819 = { naval_forcelimit = 819 }
+transport820 = { naval_forcelimit = 820 }
+transport821 = { naval_forcelimit = 821 }
+transport822 = { naval_forcelimit = 822 }
+transport823 = { naval_forcelimit = 823 }
+transport824 = { naval_forcelimit = 824 }
+transport825 = { naval_forcelimit = 825 }
+transport826 = { naval_forcelimit = 826 }
+transport827 = { naval_forcelimit = 827 }
+transport828 = { naval_forcelimit = 828 }
+transport829 = { naval_forcelimit = 829 }
+transport830 = { naval_forcelimit = 830 }
+transport831 = { naval_forcelimit = 831 }
+transport832 = { naval_forcelimit = 832 }
+transport833 = { naval_forcelimit = 833 }
+transport834 = { naval_forcelimit = 834 }
+transport835 = { naval_forcelimit = 835 }
+transport836 = { naval_forcelimit = 836 }
+transport837 = { naval_forcelimit = 837 }
+transport838 = { naval_forcelimit = 838 }
+transport839 = { naval_forcelimit = 839 }
+transport840 = { naval_forcelimit = 840 }
+transport841 = { naval_forcelimit = 841 }
+transport842 = { naval_forcelimit = 842 }
+transport843 = { naval_forcelimit = 843 }
+transport844 = { naval_forcelimit = 844 }
+transport845 = { naval_forcelimit = 845 }
+transport846 = { naval_forcelimit = 846 }
+transport847 = { naval_forcelimit = 847 }
+transport848 = { naval_forcelimit = 848 }
+transport849 = { naval_forcelimit = 849 }
+transport850 = { naval_forcelimit = 850 }
+transport851 = { naval_forcelimit = 851 }
+transport852 = { naval_forcelimit = 852 }
+transport853 = { naval_forcelimit = 853 }
+transport854 = { naval_forcelimit = 854 }
+transport855 = { naval_forcelimit = 855 }
+transport856 = { naval_forcelimit = 856 }
+transport857 = { naval_forcelimit = 857 }
+transport858 = { naval_forcelimit = 858 }
+transport859 = { naval_forcelimit = 859 }
+transport860 = { naval_forcelimit = 860 }
+transport861 = { naval_forcelimit = 861 }
+transport862 = { naval_forcelimit = 862 }
+transport863 = { naval_forcelimit = 863 }
+transport864 = { naval_forcelimit = 864 }
+transport865 = { naval_forcelimit = 865 }
+transport866 = { naval_forcelimit = 866 }
+transport867 = { naval_forcelimit = 867 }
+transport868 = { naval_forcelimit = 868 }
+transport869 = { naval_forcelimit = 869 }
+transport870 = { naval_forcelimit = 870 }
+transport871 = { naval_forcelimit = 871 }
+transport872 = { naval_forcelimit = 872 }
+transport873 = { naval_forcelimit = 873 }
+transport874 = { naval_forcelimit = 874 }
+transport875 = { naval_forcelimit = 875 }
+transport876 = { naval_forcelimit = 876 }
+transport877 = { naval_forcelimit = 877 }
+transport878 = { naval_forcelimit = 878 }
+transport879 = { naval_forcelimit = 879 }
+transport880 = { naval_forcelimit = 880 }
+transport881 = { naval_forcelimit = 881 }
+transport882 = { naval_forcelimit = 882 }
+transport883 = { naval_forcelimit = 883 }
+transport884 = { naval_forcelimit = 884 }
+transport885 = { naval_forcelimit = 885 }
+transport886 = { naval_forcelimit = 886 }
+transport887 = { naval_forcelimit = 887 }
+transport888 = { naval_forcelimit = 888 }
+transport889 = { naval_forcelimit = 889 }
+transport890 = { naval_forcelimit = 890 }
+transport891 = { naval_forcelimit = 891 }
+transport892 = { naval_forcelimit = 892 }
+transport893 = { naval_forcelimit = 893 }
+transport894 = { naval_forcelimit = 894 }
+transport895 = { naval_forcelimit = 895 }
+transport896 = { naval_forcelimit = 896 }
+transport897 = { naval_forcelimit = 897 }
+transport898 = { naval_forcelimit = 898 }
+transport899 = { naval_forcelimit = 899 }
+transport900 = { naval_forcelimit = 900 }
+transport901 = { naval_forcelimit = 901 }
+transport902 = { naval_forcelimit = 902 }
+transport903 = { naval_forcelimit = 903 }
+transport904 = { naval_forcelimit = 904 }
+transport905 = { naval_forcelimit = 905 }
+transport906 = { naval_forcelimit = 906 }
+transport907 = { naval_forcelimit = 907 }
+transport908 = { naval_forcelimit = 908 }
+transport909 = { naval_forcelimit = 909 }
+transport910 = { naval_forcelimit = 910 }
+transport911 = { naval_forcelimit = 911 }
+transport912 = { naval_forcelimit = 912 }
+transport913 = { naval_forcelimit = 913 }
+transport914 = { naval_forcelimit = 914 }
+transport915 = { naval_forcelimit = 915 }
+transport916 = { naval_forcelimit = 916 }
+transport917 = { naval_forcelimit = 917 }
+transport918 = { naval_forcelimit = 918 }
+transport919 = { naval_forcelimit = 919 }
+transport920 = { naval_forcelimit = 920 }
+transport921 = { naval_forcelimit = 921 }
+transport922 = { naval_forcelimit = 922 }
+transport923 = { naval_forcelimit = 923 }
+transport924 = { naval_forcelimit = 924 }
+transport925 = { naval_forcelimit = 925 }
+transport926 = { naval_forcelimit = 926 }
+transport927 = { naval_forcelimit = 927 }
+transport928 = { naval_forcelimit = 928 }
+transport929 = { naval_forcelimit = 929 }
+transport930 = { naval_forcelimit = 930 }
+transport931 = { naval_forcelimit = 931 }
+transport932 = { naval_forcelimit = 932 }
+transport933 = { naval_forcelimit = 933 }
+transport934 = { naval_forcelimit = 934 }
+transport935 = { naval_forcelimit = 935 }
+transport936 = { naval_forcelimit = 936 }
+transport937 = { naval_forcelimit = 937 }
+transport938 = { naval_forcelimit = 938 }
+transport939 = { naval_forcelimit = 939 }
+transport940 = { naval_forcelimit = 940 }
+transport941 = { naval_forcelimit = 941 }
+transport942 = { naval_forcelimit = 942 }
+transport943 = { naval_forcelimit = 943 }
+transport944 = { naval_forcelimit = 944 }
+transport945 = { naval_forcelimit = 945 }
+transport946 = { naval_forcelimit = 946 }
+transport947 = { naval_forcelimit = 947 }
+transport948 = { naval_forcelimit = 948 }
+transport949 = { naval_forcelimit = 949 }
+transport950 = { naval_forcelimit = 950 }
+transport951 = { naval_forcelimit = 951 }
+transport952 = { naval_forcelimit = 952 }
+transport953 = { naval_forcelimit = 953 }
+transport954 = { naval_forcelimit = 954 }
+transport955 = { naval_forcelimit = 955 }
+transport956 = { naval_forcelimit = 956 }
+transport957 = { naval_forcelimit = 957 }
+transport958 = { naval_forcelimit = 958 }
+transport959 = { naval_forcelimit = 959 }
+transport960 = { naval_forcelimit = 960 }
+transport961 = { naval_forcelimit = 961 }
+transport962 = { naval_forcelimit = 962 }
+transport963 = { naval_forcelimit = 963 }
+transport964 = { naval_forcelimit = 964 }
+transport965 = { naval_forcelimit = 965 }
+transport966 = { naval_forcelimit = 966 }
+transport967 = { naval_forcelimit = 967 }
+transport968 = { naval_forcelimit = 968 }
+transport969 = { naval_forcelimit = 969 }
+transport970 = { naval_forcelimit = 970 }
+transport971 = { naval_forcelimit = 971 }
+transport972 = { naval_forcelimit = 972 }
+transport973 = { naval_forcelimit = 973 }
+transport974 = { naval_forcelimit = 974 }
+transport975 = { naval_forcelimit = 975 }
+transport976 = { naval_forcelimit = 976 }
+transport977 = { naval_forcelimit = 977 }
+transport978 = { naval_forcelimit = 978 }
+transport979 = { naval_forcelimit = 979 }
+transport980 = { naval_forcelimit = 980 }
+transport981 = { naval_forcelimit = 981 }
+transport982 = { naval_forcelimit = 982 }
+transport983 = { naval_forcelimit = 983 }
+transport984 = { naval_forcelimit = 984 }
+transport985 = { naval_forcelimit = 985 }
+transport986 = { naval_forcelimit = 986 }
+transport987 = { naval_forcelimit = 987 }
+transport988 = { naval_forcelimit = 988 }
+transport989 = { naval_forcelimit = 989 }
+transport990 = { naval_forcelimit = 990 }
+transport991 = { naval_forcelimit = 991 }
+transport992 = { naval_forcelimit = 992 }
+transport993 = { naval_forcelimit = 993 }
+transport994 = { naval_forcelimit = 994 }
+transport995 = { naval_forcelimit = 995 }
+transport996 = { naval_forcelimit = 996 }
+transport997 = { naval_forcelimit = 997 }
+transport998 = { naval_forcelimit = 998 }
+transport999 = { naval_forcelimit = 999 }
+transport1000 = { naval_forcelimit = 1000 }
+shahrukhs_empire = {
+   liberty_desire_from_subject_development = -1
+   reduced_liberty_desire = 100
+   diplomatic_upkeep = 5
+}
+tim_backed_down_against_ajam = {
+   land_morale = -0.1
+   reduced_liberty_desire = -25
+   diplomatic_reputation = -2
+}
+timurid_prince_general_stat = {
+   leader_land_fire = 1
+   leader_land_shock = 3
+   leader_land_manuever = 2
+}
+tim_disintegrating_empire = {
+   land_morale = -0.15
+   technology_cost = 0.33
+   global_unrest = 10
+   governing_capacity_modifier = -0.5
+}
+tim_accused_foreign_plot = {
+   spy_offence = -0.2
+}
+tim_foreign_plot = {
+   global_spy_defence = -0.5
+}
+tim_influx_of_sufis = {
+   local_missionary_strength = 0.03
+}
+tim_morale_event = {
+   land_morale = 0.075
+}
+tim_defiant_court_officials = {
+   advisor_cost = 0.5
+}
+timurid_prince_modifier = {}
+sufi_autonomy_modifier = {
+   min_local_autonomy = 100
+   local_unrest = 10
+}
+tim_secured_western_iran = {
+   local_defensiveness = 0.1
+}
+tim_secured_caucasia_mod = {
+   monthly_piety = 0.002
+}
+tim_show_strength = {
+   infantry_power = 0.15
+}
+tim_true_heir_of_timur = {
+   country_military_power = 1
+}
+
+teleporter_province_modifier = {
+   local_hostile_movement_speed = 4
+   local_friendly_movement_speed = 4
+}
+
+merc_disc0 = {}
+merc_disc2 = { discipline = 0.02 is_streltsy_modifier = yes }
+merc_disc4 = { discipline = 0.04 is_streltsy_modifier = yes }
+merc_disc6 = { discipline = 0.06 is_streltsy_modifier = yes }
+merc_disc8 = { discipline = 0.08 is_streltsy_modifier = yes }
+merc_disc10 = { discipline = 0.1 is_streltsy_modifier = yes }
+merc_disc12 = { discipline = 0.12 is_streltsy_modifier = yes }
+merc_disc14 = { discipline = 0.14 is_streltsy_modifier = yes }
+merc_disc16 = { discipline = 0.16 is_streltsy_modifier = yes }
+merc_disc18 = { discipline = 0.18 is_streltsy_modifier = yes }
+merc_disc20 = { discipline = 0.2 is_streltsy_modifier = yes }
+local_teleporter_captured = {
+   local_defensiveness = 3
+   local_hostile_movement_speed = 1
+}
+estate_burghers_mountain_expansion_mod = {
+	local_development_cost_modifier = -0.15
+	local_build_cost = 0.15
+}
+estate_burghers_forest_expansion_mod = {
+   local_development_cost_modifier = -0.1
+   local_build_cost = 0.1
+}
+estate_burghers_hydraulic_rights_mod = {
+   local_development_cost_modifier = -0.15
+   local_build_cost = 0.15
+}
+estate_burghers_mint_mining_rights_mod = {
+   trade_goods_size_modifier = 1
+   local_development_cost = 0.25
+}
+estate_dhimmi_guarantee_of_traditions_mod = {
+   local_missionary_strength = 0.02
+   local_religious_unity_contribution = 1
+}
+naval_glory_mod = {
+   discipline = 0.05
+   is_marine_modifier = yes
+}
+mil_tech_17_supply_mod = {
+   global_supply_limit_modifier = 0.5
+}
+mil_tech_24_supply_mod = {
+   global_supply_limit_modifier = 0.5
+}
+mil_tech_30_supply_mod = {
+   global_supply_limit_modifier = 0.5
+}
+ai_pursuit_of_knowledge_reform = {
+   monarch_military_power = 2
+   monarch_admin_power = 2
+   monarch_diplomatic_power = 2
+}
+cac_mutinies = {
+   discipline = -0.05
+   morale_damage_received = 0.15
+}
+cac_pagan_declining_state_influence = {
+   global_institution_spread = 0.1
+}
+cac_factional_influence = {
+   global_missionary_strength = 0.01
+}
+cac_eastern_advisors = {
+   advisor_cost = -0.05
+}
+tribes_resisting_cac = {
+   cavalry_power = 0.05
+   cavalry_shock = 0.05
+}
+cac_betrayed_by_mil_advisor = {
+   infantry_power = -0.1
+   cavalry_power = -0.1
+}
+absolutist_court = {
+   max_absolutism = 25
+   republican_tradition = -0.5
+}
+liberalist_society = {
+   max_absolutism = -25
+   republican_tradition = 1
+}
+gaelic_defender_diceroll_2 = {
+   local_defender_dice_roll_bonus = 1
+}
+gaelic_defender_diceroll_3 = {
+   local_defender_dice_roll_bonus = 2
+}
+gaelic_attacker_diceroll_2 = {
+   local_attacker_dice_roll_bonus = 1
+}
+gaelic_attacker_diceroll_3 = {
+   local_attacker_dice_roll_bonus = 2
+}
+shangdao_estuary_modifier = {
+   province_trade_power_value = 10
+   picture = "estuary_icon"
+}
+manchu_beijing_trade_modifier = {
+   province_trade_power_value = 15
+}
+mediocre_colonial_benefits_modifier_province = {
+   local_warscore_cost_modifier = 3
+}
+mediocre_colonial_benefits_modifier_country = {
+   global_tax_income = 180 #15 ducats monthly
+   global_regiment_cost = -0.5
+   manpower_recovery_speed = 0.5
+}
+colonial_benefits_modifier_province = {
+   local_warscore_cost_modifier = 6
+}
+colonial_benefits_modifier_country = {
+   own_territory_dice_roll_bonus = 1
+   land_morale = 0.1
+   manpower_recovery_speed = 1
+   global_regiment_cost = -0.5
+   global_tax_income = 360 #30 ducats monthly
+}
+colonial_fervour = {
+ 	own_territory_dice_roll_bonus = 1
+   global_trade_goods_size_modifier = 0.1
+   global_regiment_cost = -0.1
+   development_cost = -0.1
+   build_cost = -0.1
+   advisor_cost = -0.1
+   legitimacy = 1
+   republican_tradition = 0.5
+   horde_unity = 0.5
+   meritocracy = 0.5
+   devotion = 1
+}
+ai_colonial_fervour = {
+ 	own_territory_dice_roll_bonus = 2
+   land_morale = 0.1
+   global_trade_goods_size_modifier = 0.33
+   global_regiment_cost = -0.33
+   land_forcelimit = 24
+   global_manpower = 24
+   development_cost = -0.33
+   build_cost = -0.33
+   advisor_cost = -0.2
+   legitimacy = 1
+   republican_tradition = 0.5
+   horde_unity = 0.5
+   meritocracy = 0.5
+   devotion = 1
+   global_institution_spread = 1
+}
+reformation_diplomacy = {
+	improve_relation_modifier = 0.15
+}
+expelled_heretics_2 = {
+   global_heretic_missionary_strength = 0.01
+   culture_conversion_cost = -0.05
+}
+renaissance_guild_sponsorship = {
+   prestige = 0.5
+   trade_efficiency = 0.05
+   burghers_influence_modifier = 0.1
+   jains_influence_modifier = 0.1
+   vaisyas_influence_modifier = 0.1
+}
+renaissance_trade_spread = {
+   trade_efficiency = -0.2
+   global_institution_spread = 0.1
+}
+increased_chance_of_disease_modifier={}
+influx_of_foreign_bullion = {
+   inflation_reduction = -0.1
+   interest = 1
+   global_tax_modifier = 0.5
+}
+colonialism_banned_imports = {
+   global_institution_spread = -0.15
+   trade_efficiency = -0.15
+}
+divine_delving = {
+   country_admin_power = -1
+   all_power_cost = 0.05
+}
+separation_of_wheat_and_tare = {
+   infantry_power = 0.20
+   country_military_power = 1
+}
+press_divine_guidance = {
+   all_power_cost = -0.1
+   country_admin_power = 1
+}
+press_divine_word = {
+   improve_relation_modifier = 0.50
+   global_missionary_strength = 0.03
+   country_diplomatic_power = 1
+}
+increased_demand_for_textiles = {
+   global_trade_goods_size_modifier = 0.10
+   global_institution_spread = 0.10
+}
+prov_increased_demand_for_textiles = {
+   local_production_efficiency = -10
+}
+textile_demands_unmet = {
+   trade_efficiency = -0.10
+}
+heeded_theologian_advice = {
+   stability_cost_modifier = -0.10
+   adm_tech_cost_modifier = -0.05
+   advisor_cost = -0.05
+}
+increased_pirate_hunting = {
+   light_ship_cost = 0.1
+   global_ship_trade_power = 0.1
+}
+terrorized_by_pirates = {
+   local_unrest = 3
+   local_production_efficiency = -0.5
+   province_trade_power_modifier = -0.2
+}
+rampart_piracy = {
+   global_trade_power = -0.1
+   trade_efficiency = -0.1
+}
+fighting_piracy_with_piracy = {
+   privateer_efficiency = 0.15
+   global_trade_power = -0.1
+}
+trader_ship_building = {
+   global_ship_cost = -0.1
+   sailors_recovery_speed = 0.1
+}
+abandoned_privateer_captain = {
+   privateer_efficiency = -0.25
+   global_trade_power = -0.1
+   trade_efficiency = -0.1
+   diplomatic_reputation = -1
+}
+abandoned_privateer_captain2 = {
+   privateer_efficiency = -0.25
+   global_trade_power = -0.1
+   trade_efficiency = -0.1
+   diplomatic_reputation = -1 
+}
+executed_enemy_privateer = {
+   global_ship_trade_power = 0.1
+}
+enforced_naval_armistice = {
+   naval_forcelimit_modifier = -0.33
+   global_sailors_modifier = -0.2
+}
+rogue_privateer_captured = {
+   privateer_efficiency = -0.1
+   diplomatic_reputation = 1.5
+   improve_relation_modifier = 0.15
+}
+focussed_privateer_effort = {
+   privateer_efficiency = 0.15
+}
+captured_slave_traders = {
+   improve_relation_modifier = 0.15
+   trade_range_modifier = 0.25
+}
+passing_slavers = {
+   trade_efficiency = 0.1
+}
+skirmish_absent_admiral = {
+   free_navy_leader_pool = -1
+   global_ship_trade_power = -0.1
+   privateer_efficiency = -0.1
+}
+hostile_skirmishes = {
+   naval_morale = -0.1
+   trade_efficiency = -0.1
+   global_trade_power = -0.1
+   global_sailors_modifier = -0.1
+}
+successful_skirmish = {
+   global_ship_trade_power = 0.2
+   trade_steering = 0.1
+   naval_morale = 0.1
+}
+loyal_privateer_captured = {
+   improve_relation_modifier = -0.15
+   trade_efficiency = -0.1
+}
+strong_pirate_base = {
+   trade_goods_size = -1
+   local_autonomy = 0.5
+   province_trade_power_value = -20
+}
+defeated_pirates_regular = {
+   naval_morale = 0.1
+   light_ship_power = 0.05
+   trade_efficiency = 0.1
+   naval_tradition_from_trade = 2
+}
+defeated_pirates_treasure = {
+   naval_morale = 0.1
+   light_ship_power = 0.1
+   trade_efficiency = 0.25
+   land_morale = 0.15
+}
+defeated_by_pirates = {
+   naval_morale = -0.1
+   trade_efficiency = -0.1
+   global_sailors_modifier = -0.33
+   global_ship_trade_power = -0.25
+}
+successful_privateers_node = {
+   privateer_efficiency = 0.20
+   trade_efficiency = 0.05
+}
+hired_privateers_defeated = {
+   privateer_efficiency = -0.20
+   light_ship_cost = 0.2
+}
+fight_the_pirates_timer={}
+successful_pirate_hunt = {
+   global_ship_trade_power = 0.1
+   trade_efficiency = 0.05
+}
+successful_pirate_treasure = {
+   naval_tradition_from_trade = 2
+   global_ship_trade_power = 0.2
+   trade_efficiency = 0.1
+   trade_steering = 0.1
+}
+pirate_infested_waters = {
+   trade_efficiency = -0.15
+   global_trade_power = -0.15
+   global_ship_cost = 0.15
+}
+ai_war_commit = {
+   land_forcelimit_modifier = 1
+   land_maintenance_modifier = 0.1
+}
+ai_war_commit2 = {
+   land_forcelimit_modifier = 1
+   land_maintenance_modifier = 0.1
+}
+ai_bankruptcy = {
+	land_morale = -0.5
+	naval_morale = -0.5
+	reinforce_speed = -0.25					#Slower reinforce
+	manpower_recovery_speed = -1.0
+	sailors_recovery_speed = -1.0
+	global_autonomy = 0.05
+	imperial_mandate = -0.1
+}
+player_bankruptcy = {
+	interest = 5
+	land_morale = -0.5
+	naval_morale = -0.5
+	reinforce_speed = -0.25					#Slower reinforce
+	bureaucrats_influence = 0.25
+	mr_guilds_influence = 0.25
+	manpower_recovery_speed = -1.0
+	sailors_recovery_speed = -1.0
+	advisor_cost = 0.5
+	monthly_fervor_increase = -1
+	global_autonomy = 0.05
+	global_institution_spread = -0.50
+	monthly_militarized_society = -0.5
+	yearly_absolutism = -2.0
+	technology_cost = 0.5
+	idea_cost = 0.5
+	imperial_mandate = -0.1
+	great_project_upgrade_cost = 0.5
+}
+cac_9_modifier={}
+cac_10_modifier={}
+cac_11_modifier={}
+cac_12_modifier={}
+cac_13_modifier={}
+cac_14_modifier={}
+cac_15_modifier={}
+cac_16_modifier={}
+cac_17_modifier={}
+cac_18_modifier={}
+cac_19_modifier={}
+cac_20_modifier={}
+cac_21_modifier={}
+cac_22_modifier={}
+cac_23_modifier={}
+cac_24_modifier={}
+slander0={}
+slander1={}
+slander2={}
+slander3={}
+slander4={}
+slander5={}
+slander6={}
+slander7={}
+slander8={}
+slander9={}
+slander10={}
+slander11={}
+slander12={}
+slander13={}
+slander14={}
+slander15={}
+slander16={}
+slander17={}
+slander18={}
+slander19={}
+slander20={}
+slander21={}
+slander22={}
+slander23={}
+slander24={}
+slander25={}
+slander26={}
+slander27={}
+slander28={}
+slander29={}
+slander30={}
+slander31={}
+slander32={}
+slander33={}
+slander34={}
+slander35={}
+slander36={}
+slander37={}
+slander38={}
+slander39={}
+slander40={}
+slander41={}
+slander42={}
+slander43={}
+slander44={}
+slander45={}
+slander46={}
+slander47={}
+slander48={}
+slander49={}
+slander50={}
+slander51={}
+slander52={}
+slander53={}
+slander54={}
+slander55={}
+slander56={}
+slander57={}
+slander58={}
+slander59={}
+slander60={}
+slander61={}
+slander62={}
+slander63={}
+slander64={}
+slander65={}
+slander66={}
+slander67={}
+slander68={}
+slander69={}
+slander70={}
+slander71={}
+slander72={}
+slander73={}
+slander74={}
+slander75={}
+slander76={}
+slander77={}
+slander78={}
+slander79={}
+slander80={}
+slander81={}
+slander82={}
+slander83={}
+slander84={}
+slander85={}
+slander86={}
+slander87={}
+slander88={}
+slander89={}
+slander90={}
+slander91={}
+slander92={}
+slander93={}
+slander94={}
+slander95={}
+slander96={}
+slander97={}
+slander98={}
+slander99={}
+slander100={}
+slander_merchant3 = { 
+   merchants = 2 
+   trade_efficiency = 0.10
+   embargo_efficiency = 2
+}
+slander_merchant2 = { 
+   merchants = 2 
+   trade_efficiency = 0.10
+   embargo_efficiency = 2
+}
+slander_merchant1 = { 
+   merchants = 2 
+   trade_efficiency = 0.10
+   embargo_efficiency = 2
+}
+slander_merchant0 = { 
+   merchants = 2 
+   trade_efficiency = 0.10
+   embargo_efficiency = 2
+}
+hired_rajput_units = {
+   cavalry_fire = 0.5
+   reinforce_speed = -0.5
+   is_cossack_modifier = yes
+}
+ai_evaluate_policies = {
+   possible_policy = -5
+}
+philosopher_boost = {
+   global_institution_spread = 0.5
+}
+diplomat_boost = {
+   improve_relation_modifier = 1
+}
+trader_boost = {
+   trade_efficiency = 0.33
+}
+architect_boost = {
+   build_cost = -0.20
+}
+civil_engineer_boost = {
+   development_cost = -0.125
+}
+tim_princes_spies = {
+   spy_offence = 0.1
+}
+tim_growth_of_capital = {
+   local_development_cost = -0.05
+   local_build_cost = -0.1
+}
+tim_national_focus_time_mod = {
+   national_focus_years = -50
+}
+conquest_of_khorasan = {
+   shock_damage_received = -0.1
+}
+fortified_city_tabriz = {
+   local_defensiveness = 0.15
+}
+prince_silk_industry = {
+   trade_efficiency = 0.1
+}
+per_qizilbash_doctrine2_modifier = {	
+	land_morale = 0.05
+   morale_damage = 0.05
+}
+per_shah_of_azerbaijan_modifier = {
+	power_projection_from_insults = 0.5
+	prestige_decay = -0.01
+}
+per_safe_mountain_roads_modifier = {
+	local_friendly_movement_speed = 0.5
+	province_trade_power_modifier = 0.5
+}
+per_strategic_fort_of_zagros_modifier = {
+	local_defensiveness = 0.3
+}
+per_vanquished_caucasus_tribesmen_modifier = {
+	cavalry_cost = -0.1 
+}
+per_accepted_georgian_culture = {
+	num_accepted_cultures = 1 
+}
+per_assured_qizilbash_authority_modifier = {
+	nobles_influence_modifier = 0.05
+}
+per_sponsorship_of_christian_armenians_modifier = {
+	tolerance_heathen = 1 
+}
+per_accepted_armenian_culture_modifier = {
+	num_accepted_cultures = 1 
+}
+per_ensured_armenian_qizilbash_rights_modifier = {
+	nobles_influence_modifier = 0.05
+}
+per_elitist_caste_modifier = {
+	same_culture_advisor_cost = -0.1
+	culture_conversion_cost = -0.1
+}
+per_king_of_kings_modifier = {
+	legitimacy = 1 
+	republican_tradition = 0.35
+	devotion = 1 
+	horde_unity = 1
+}
+per_turkmen_recruits_modifier = {
+	local_manpower_modifier = 0.3
+}
+per_trade_in_persian_gulf_modifier = {
+	trade_efficiency = 0.05 
+}
+per_collapse_ottoman_empire_modifier = {
+	core_creation = -0.1
+}
+per_powerful_religious_doctrine_modifier = {
+	prestige_per_development_from_conversion = 0.2
+	global_missionary_strength = 0.02
+}
+per_conquest_of_baghdad_modifier = {
+	tolerance_own = 1 
+	technology_cost = -0.05 
+}
+per_naval_command_modifier = {	
+	navy_tradition = 1
+	global_naval_engagement_modifier = 0.2 
+	naval_forcelimit_modifier = 0.25
+}
+per_kingdom_of_hormuz_province_modifier = {
+	local_production_efficiency = 0.2
+	province_trade_power_modifier = 0.3
+}
+per_triumph_in_cairo_modifier = {	
+	trade_efficiency = 0.1
+}
+per_defied_iron_monarch_modifier = {
+	core_creation = -0.1
+}
+per_persian_reign_modifier = {
+	local_monthly_devastation = -0.1
+	local_autonomy = -0.05
+}
+per_campaign_in_india_modifier = {
+	ae_impact = -0.1
+	siege_ability = 0.1
+}
+per_crossing_hindus_river_modifier = {
+	land_attrition = -0.15 
+	manpower_recovery_speed = 0.1
+}
+per_elevation_of_panjabi_culture_modifier = {
+	local_build_cost = -0.1
+	local_production_efficiency = 0.1
+}
+per_accepted_panjabi_culture_modifier = {
+	num_accepted_cultures = 1 
+}
+per_monarch_steppes_modifier = {
+	cavalry_power = 0.1
+}
+per_muzaffarid_centre_of_admin_modifier = {
+	local_governing_cost_increase = -20
+	trade_goods_size_modifier = 0.1
+	local_tax_modifier = 0.5
+}
+per_land_of_purbias_modifier = {
+	fire_damage = 0.1
+}
+per_guardians_of_the_grand_trunk_road_modifier = {
+	trade_steering = 0.1
+}
+per_conquest_western_india_modifier = {
+	trade_efficiency = 0.1
+}
+per_continental_trading_modifier = {
+	global_trade_power = 0.20
+}
+per_patronage_of_thought_modifier = {
+	adm_tech_cost_modifier = -0.05
+}
+per_persian_illuminated_manuscript_modifier = {
+	trade_goods_size_modifier = 0.1
+}
+per_caravanserais_modifier = {
+	province_trade_power_value = 4
+}
+per_persian_carpet_industry_modifier = {
+	trade_goods_size = 0.25
+}
+per_healthy_administration_modifier = {
+	church_loyalty_modifier = 0.05 
+	nobles_loyalty_modifier = 0.05 
+	burghers_loyalty_modifier = 0.05 
+	yearly_corruption = -0.1
+	country_admin_power = 1 
+}
+per_sponsored_the_arts_modifier = {	
+	dip_tech_cost_modifier = -0.1 
+	diplomatic_reputation = 2 
+}
+per_abandoned_qizilbash_system_modifier = {
+	global_manpower_modifier = 0.1
+}
+per_centralization_reforms_of_ruler_modifier = {
+	global_autonomy = -0.05
+	build_cost = -0.05
+}
+per_expanded_capital_area_infrastructure_modifier = {
+	allowed_num_of_manufactories = 1
+}
+per_expanded_the_royal_qurci_guard_modifier = {
+	infantry_power = 0.1
+	army_tradition = 0.5 
+}
+per_wasp_artillery_modifier = {
+	artillery_shock = 0.5
+	movement_speed = 0.1
+}
+per_cavalry_muskets_modifier = {
+	cavalry_fire = 0.5
+	leader_land_fire = 1 
+}
+per_adherence_to_ahura_mazda_modifier3 = {
+	tolerance_own = 3
+}
+per_royal_porcelain_collection_modifier = {
+	improve_relation_modifier = 0.2 
+	diplomats = 1 
+}
+per_harun_i_vilayat_tomb_modifier = {
+	enforce_religion_cost = -0.25 
+	church_influence_modifier = 0.05
+}
+per_urban_planning_of_shah_abbas_modifier = {
+	local_build_cost = -0.15 
+}
+per_gardens_of_chahar_bagh_modifier = {
+	local_development_cost = -0.10
+}
+per_nashq_e_jahan_square_modifier = {
+	province_trade_power_value = 10 
+	trade_goods_size_modifier = 0.15
+}
+per_shahnameh_modifier = {
+	diplomatic_reputation = 1 
+	innovativeness_gain = 0.25
+}
+per_persian_arquebusiers_modifier = {
+	infantry_shock = 0.25 
+	movement_speed = 0.15
+}
+per_shirley_reforms_the_army1_modifier = {
+	drill_gain_modifier = 0.25
+	yearly_army_professionalism = 0.0025 
+}
+per_servitude_to_the_qizilbash2_modifier = {
+	local_manpower_modifier = 0.25
+	local_regiment_cost = -0.1 
+}
+ai_increased_heir_chance = {
+   heir_chance = 0.25
+}
+raised_mobilisation_modifier = {
+   land_forcelimit_modifier = 0.20
+   mercenary_manpower = 0.20
+}
+slackened_recruitment_standards = {
+   manpower_recovery_speed = 0.25
+}
+fee_per_the_qizilbash = {
+	army_tradition_decay = -0.003
+	global_manpower_modifier = 0.05
+}
+fee_mug_red_fort = {
+	local_build_cost = -0.1
+	local_defensiveness = 0.2
+}
+fee_mug_integration_hindu_culture = {
+	religious_unity = 0.1
+	num_accepted_cultures = 1
+	diplomatic_reputation = 1
+	vassal_income = 0.1
+}
+fee_mug_hindu_conversion_policy = {
+	tolerance_heathen = -2
+	global_missionary_strength = 0.02
+}
+BEY_naval_routes = {
+	global_ship_trade_power = 0.25
+}
+BEY_anatolian_architecture_modifier = {
+	build_cost = -0.1
+}
+BEY_local_madrasah = {
+	local_tax_modifier = 0.5
+}
+RUM_against_ottomans = {
+	infantry_power = 0.05
+}
+RUM_we_grow = {
+	morale_damage = 0.05
+}
+BEY_a_grand_force = {
+	land_maintenance_modifier = -0.1
+}
+BEY_konya_modifier = {
+	local_development_cost = -0.15
+	trade_goods_size_modifier = 0.1
+}
+rum_secure_anatolia_modifier = {
+	tolerance_own = 2
+   core_creation = -0.1
+}
+rum_the_blue_phoenix_modifier = {
+	years_of_nationalism = -5
+}
+rum_impale_the_impaler_modifier = {
+	ae_impact = -0.1
+   manpower_recovery_speed = 0.20
+}
+rum_ghost_of_mehmet_modifier = {
+	siege_ability = 0.15
+}
+rum_smooth_transition = {
+	local_unrest = -1
+}
+rum_slave_warrior_ranks = {
+	global_manpower_modifier = 0.1
+}
+rum_terror_of_the_levant = {
+	ae_impact = -0.1
+}
+rum_satisfied_populists = {
+	tolerance_own = 1
+}
+rum_secure_the_artana_mine_province_modifier = {
+	trade_goods_size = 0.5
+	local_gold_depletion_chance_modifier = -0.33
+}
+rum_conceeded_against_the_synod = {
+	dhimmi_loyalty_modifier = 0.05
+	num_accepted_cultures = 1
+}
+rum_reigned_in_the_patriarchate = {
+	culture_conversion_cost = -0.33
+	global_missionary_strength = 0.02
+}
+rum_the_balkan_campaign_province_modifier = {
+	local_defensiveness = 0.2
+	local_friendly_movement_speed = 0.2
+}
+rum_reign_in_europe_province_modifier = {
+	local_unrest = -1
+	local_production_efficiency = 0.1
+	local_tax_modifier = 0.2
+}
+rum_annihilating_the_slaves_modifier = {
+	legitimacy = 1
+	republican_tradition = 0.5
+	devotion = 1
+	meritocracy = 1
+	horde_unity = 1
+}
+rum_annihilating_the_slaves_province_modifier = {
+	local_development_cost = -0.1
+	local_build_cost = -0.1
+	province_trade_power_modifier = 0.25
+}
+rum_iron_fist_reign = {
+	harsh_treatment_cost = -0.33
+	global_unrest = -2
+}
+rum_of_silk_and_fabric_province_modifier = {
+	trade_goods_size = 0.5
+}
+rum_a_rising_naval_power_modifier = {
+	ship_durability = 0.05
+	trade_efficiency = 0.15
+}
+rum_march_into_arabia_modifier = {
+	cavalry_power = 0.15
+}
+rum_seizing_the_aden_gulf_modifier = {
+	global_ship_trade_power = 0.25
+}
+rum_coffee_arabica_province_modifier = {
+	trade_goods_size = 0.3
+	trade_goods_size_modifier = 0.15
+}
+rum_restore_medina_modifier_1 = {
+	tolerance_own = 0.5
+	prestige = 0.5
+}
+rum_restore_medina_modifier_2 = {
+	advisor_cost = -0.05
+	innovativeness_gain = 0.5
+}
+rum_celebrate_our_faith_province_modifier = {
+	technology_cost = -0.05
+	innovativeness_gain = 0.5
+}
+rum_reinstate_the_caravanserai_province_modifier = {
+	trade_value = 0.25
+	province_trade_power_modifier = 0.25
+}
+rum_monopolize_the_grain_trade_modifier = {
+	trade_goods_size_modifier = 0.2
+}
+rum_revive_the_nile_province_modifier = {
+	trade_goods_size = 0.25
+}
+rum_persian_architectural_methods_modifier = {
+	great_project_upgrade_cost = -0.25
+	build_time = -0.25
+}
+rum_expanded_rumi_bureaucracy = {
+	idea_cost = -0.1
+	technology_cost = -0.1
+	global_tax_modifier = 0.1
+	reform_progress_growth = 0.1
+}
+rum_koprulu_family = {
+	global_tax_modifier = 0.1
+	yearly_corruption = -0.2
+}
+rum_following_hunyadi_modifier_1 = {
+   monthly_splendor = 2
+   prestige = 1
+}
+
+tenaille_modifier_defender_root = { # For the province with the tenaille
+   local_defender_dice_roll_bonus = 1
+}
+tenaille_modifier_defender_area = { # For the area with the tenaille
+   local_defender_dice_roll_bonus = 1
+   fort_level = 1
+   local_defensiveness = -1
+}
+tenaille_modifier_attacker_root = {
+   local_attacker_dice_roll_bonus = 1
+}
+tenaille_modifier_attacker_area = {
+   local_attacker_dice_roll_bonus = 1
+   fort_level = 1
+   local_defensiveness = -1
+}
+earthern_rampart_defender_root = { # for the province with the earthern rampart
+   local_defensiveness = 0.33 # replaces the edicts
+}
+earthern_rampart_defender_area = { # for the whole area
+   local_defensiveness = 0.33
+}
+earthern_rampart_attacker_root = {
+   local_defensiveness = -0.33
+}
+earthern_rampart_attacker_area = {
+   local_defensiveness = -0.33
+}
+library_area_modifier = {
+	local_missionary_strength = 0.01
+	local_institution_spread = 0.15
+	local_culture_conversion_cost = -0.1
+	institution_growth = 3.6 #0.3
+}
+grand_library_area_modifier = {
+	local_missionary_strength = 0.02
+	local_institution_spread = 0.33
+	local_culture_conversion_cost = -0.2
+	institution_growth = 6 #0.5
+}
+university_area_modifier = {
+	local_missionary_strength = 0.03
+	local_institution_spread = 0.5
+	local_culture_conversion_cost = -0.3
+	institution_growth = 9 #0.75
+}
+important_estuary_modifier = { # coastal
+	province_trade_power_value = 10
+	picture = "estuary_icon"
+}
+important_trade_route_modifier = { #inland
+	province_trade_power_value = 5
+	picture = "estuary_icon"
+}
+formalised_alphabet_modifier = {
+   technology_cost = -0.075
+}
+renaissance_caste_sponsorship_modifier = {
+   prestige = 0.5
+}
+literacy_popular_manuscript = {
+   technology_cost = -0.05
+}
+literacy_religious_literature = {
+   adm_tech_cost_modifier = -0.1
+   global_institution_spread = 0.05
+}
+literacy_pamphlets = {
+   administrative_efficiency = 0.025
+}
+literacy_novels = {
+   global_tax_modifier = -0.10
+   global_unrest = -2
+}
+literacy_writing = {
+   all_power_cost = -0.03
+}
+printing_press_newspapers = {
+   ae_impact = -0.10
+   diplomatic_repuation = 0.5
+}
+printing_press_scripture_translated = {
+   tolerance_own = 1
+   global_missionary_strength = 0.01
+}
+printing_press_censorship = {
+   global_unrest = 2
+   prestige = -0.5
+}
+printing_press_religious_pamphlets = {
+   global_missionary_strength = 0.01
+   global_institution_spread = 0.1
+}
+printing_press_ancient_manuscripts = {
+   adm_tech_cost_modifier = -0.10
+   advisor_cost = -0.05
+}
+printing_press_sacred_manuscripts = {
+   tolerance_own = 1
+   land_morale = 0.025
+}
+printing_press_parchment_revolution = {
+   technology_cost = -0.05
+   prestige = 0.5
+}
+printing_press_chinese_paper = {
+   global_trade_goods_size_modifier = 0.05
+   all_power_cost = -0.02
+}
+printing_press_shogun_propaganda = {
+   province_warscore_cost = -0.05
+   core_creation = -0.05
+}
+printing_press_SEA = {
+   technology_cost = -0.05
+   culture_conversion_cost = -0.05
+}
+printing_press_sedentary_knowledge = {
+   development_cost = -0.05
+}
+printing_press_sacred_hindu_texts = {
+   missionaries = 1
+}
+printing_press_written_traditions = {
+   discipline = 0.025
+}
+birthplace_of_gunpowder = {
+   local_manpower = 3
+}
+birthplace_of_literacy = {
+   institution_growth = 1.2
+}
+birthplace_of_nationalism = {
+   land_morale = 0.10
+   local_warscore_cost_modifier = 0.5
+}
+
+
+better_work_mod = {
+   local_garrison_size = -0.5
+}
+test_mod_test = {
+   global_tax_income = 500
+   land_forcelimit = 100
+}

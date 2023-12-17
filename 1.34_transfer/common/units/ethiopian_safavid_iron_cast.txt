@@ -1,0 +1,14 @@
+# Reformed Safavid Iron cast
+
+type = artillery
+manpower = 0.1
+unit_type = east_african
+
+maneuver = 2
+
+offensive_fire = 4
+defensive_fire = 4
+offensive_shock = 2
+defensive_shock = 2
+offensive_morale = 2
+defensive_morale = 4

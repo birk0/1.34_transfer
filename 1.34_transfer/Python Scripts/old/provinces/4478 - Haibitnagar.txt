@@ -1,0 +1,17 @@
+#4478 - Haibatnagar 
+
+owner = BNG
+controller = BNG
+culture = bengali
+religion = hinduism
+capital = "Haibatnagar"
+trade_goods = cotton
+hre = no
+base_tax = 2
+base_production = 2
+base_manpower = 1
+is_city = yes
+add_core = BNG
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

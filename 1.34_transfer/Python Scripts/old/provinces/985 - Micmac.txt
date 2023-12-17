@@ -1,0 +1,18 @@
+# 985 - Omagh
+
+owner = TYR
+controller = TYR
+culture = irish
+religion = catholic
+hre = no
+base_tax = 2
+base_production = 2
+trade_goods = wool
+base_manpower = 1
+capital = "Omagh"
+is_city = yes
+add_core = TYR
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

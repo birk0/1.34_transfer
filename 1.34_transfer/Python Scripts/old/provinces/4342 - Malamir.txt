@@ -1,0 +1,19 @@
+#4342 - Malamir
+
+owner = LRI
+controller = LRI
+culture = luri
+religion = shiite
+capital = "Malamir"
+trade_goods = wool
+hre = no
+base_tax = 1
+base_production = 1
+base_manpower = 1
+is_city = yes
+add_core = LRI
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

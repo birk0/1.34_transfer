@@ -1,0 +1,7 @@
+# Prov574 - The Andamans
+culture = burmese # closest we can get without making a new culture
+is_city = no
+religion = shen
+base_tax = 1
+base_production = 1
+base_manpower = 1

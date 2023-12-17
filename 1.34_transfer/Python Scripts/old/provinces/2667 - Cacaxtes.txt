@@ -1,0 +1,19 @@
+# 2667 - Fiq
+
+owner = ADA
+controller = ADA
+add_core = ADA
+culture = somali # issa
+religion = sunni
+capital = "Fiq"
+is_city = yes
+trade_goods = incense
+hre = no
+base_manpower = 2
+base_tax = 2
+base_production = 1
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

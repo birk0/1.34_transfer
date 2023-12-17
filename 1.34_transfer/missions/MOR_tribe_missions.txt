@@ -1,0 +1,858 @@
+#Tribe Missions (For all the Tribal nations in and around the Maghreb)
+mor_generic_slot = {
+	slot  = 1
+	generic = no
+	ai = yes
+	potential = {
+		culture_group = maghrebi
+		NOT = { religion = ibadi }
+		OR = {
+			tag = LAM
+			tag = MRK
+			tag = TFL
+			tag = SOS
+		}
+		NOT = { map_setup = map_setup_random }
+	}
+	mor_tribes_build_army = {
+		icon = mission_protect_granada
+		position = 1
+	 	required_missions = { }
+		trigger = {
+		  	army_size_percentage = 0.75
+		}
+		effect = {
+		   	add_years_of_income = 1
+		   	if = {
+				limit = { tag = TFL }
+			 	add_country_modifier = {
+				 	name = tfl_independence
+				 	duration = 1825
+				}
+			}
+		}
+	}
+}
+#For Tafilalt
+Tafilalt_slot = {
+	slot = 1
+	generic = no
+	ai = yes
+	potential = {
+		tag = TFL
+		NOT = { map_setup = map_setup_random }
+	}
+	has_country_shield = yes
+	
+	tfl_declare_independence = {
+	   icon = mission_al_andalus
+	   position = 2
+	   required_missions = { mor_tribes_build_army }
+	   trigger = {
+	      is_subject = no
+	   }
+	   effect = {
+	      define_general = { 
+	         name = "Muhammad al-Qa'im"
+	         fire = 4
+	         shock = 6
+	         manuever = 3
+	         siege = 3
+	      } 
+	      sus_area = {
+			  limit = {
+				  NOT = { is_permanent_claim = ROOT	}
+				  NOT = { is_core = ROOT	}
+			  }
+			  add_permanent_claim = ROOT
+		  }
+		  1110 = {
+		     add_permanent_claim = ROOT
+		  }
+		  347 = {
+		     add_permanent_claim = ROOT
+		  }
+	   }
+	}
+	
+	tfl_reach_coast = {
+	   icon = mission_retake_ceuta
+	   position = 3
+	   required_missions = { tfl_declare_independence }
+	   provinces_to_highlight = {
+	      OR = {
+	        area = sus_area
+	        province_id = 1110
+	        province_id = 347
+	      }
+	      NOT = { country_or_non_sovereign_subject_holds = ROOT }
+	   }
+	   trigger = {
+	      NOT = { exists = SOS }
+	      1110 = { country_or_non_sovereign_subject_holds = ROOT }
+	      347 = { country_or_non_sovereign_subject_holds = ROOT }
+	   }
+	   effect = {
+	      tafilalt_area = {
+	         if = { 
+	            limit = { country_or_non_sovereign_subject_holds = ROOT }
+	            add_province_modifier = {
+	               name = draa_river_estuaries
+	               duration = 1825
+	            }
+	         }
+	      }
+	      sus_area = {
+	         if = {
+	            limit = { country_or_non_sovereign_subject_holds = ROOT }
+	            add_province_modifier = {
+	               name = draa_river_estuaries
+	               duration = 1825
+	            }
+	         }
+	      }
+	   }
+	}
+	
+	tfl_hinata_diplomacy = {
+	   icon = mission_friends_or_enemies
+	   position = 4
+	   required_missions = { tfl_reach_coast }
+	   provinces_to_highlight = {
+	      owned_by = MRK
+	   }
+	   trigger = {
+	      OR = {
+	         MRK = {
+	            has_opinion = {
+	               who = ROOT
+	               value = 100
+	            }
+	            marriage_with = ROOT
+	         }
+	         MRK = {
+	            has_opinion_modifier = {
+	               who = ROOT
+	               modifier = scornfully_insulted
+	            }
+	         }
+	         NOT = { exists = MRK }
+	      }
+	   }
+	   effect = {
+	      tooltip = { MRK = { country_event = { id = mor_events.26 } } }
+	      tooltip = { 
+	         every_province = {
+	            limit = { owned_by = MRK }
+	            add_permanent_claim = ROOT
+	         }
+	      }
+	      if = { 
+	         limit = {
+	             MRK = {
+	                has_opinion = {
+	                   who = ROOT
+	                   value = 100
+	                }
+	                marriage_with = ROOT
+	             }
+	         }
+	         MRK = { country_event = { id = mor_events.26 } } #The Saadi proposal
+	      }
+	      else_if = {
+	          limit = {
+	              MRK = {
+	                 has_opinion_modifier = {
+	                     who = ROOT
+	                     modifier = scornfully_insulted
+	                 }
+	              }
+	          }
+	          every_province = {
+	             limit = { owned_by = MRK }
+	             add_permanent_claim = ROOT
+	          }
+	      }
+	      else_if = {
+	         limit = { NOT = { exists = MRK } }
+	         344 = { add_permanent_claim = ROOT }
+	      }
+	   }
+	}
+	
+	tfl_marrakech_conquest = {
+	   icon = mission_turning_the_tables
+	   position = 5
+	   required_missions = { tfl_hinata_diplomacy }
+	   provinces_to_highlight = {
+	      owned_by = MRK
+	      NOT = { country_or_non_sovereign_subject_holds = ROOT }
+	   }
+	   trigger = {
+	      NOT = { exists = MRK }
+	      owns = 344
+	   }
+	   effect = {
+	      add_country_modifier = {
+	         name = tfl_united_southern_tribes
+	         duration = 3650
+	      }
+	      western_morocco_area = {
+	          limit = {
+		        NOT = { is_permanent_claim = ROOT }
+		        NOT = { is_core = ROOT }
+		     }
+		     add_permanent_claim = ROOT
+	      }
+		  marrekesh_area = {
+		     limit = {
+		        NOT = { is_permanent_claim = ROOT }
+		        NOT = { is_core = ROOT }
+		     }
+		     add_permanent_claim = ROOT
+		  }
+		  northern_morocco_area = {
+		     limit = {
+		        NOT = { is_permanent_claim = ROOT }
+		        NOT = { is_core = ROOT }
+		     }
+		     add_permanent_claim = ROOT
+		  }
+	   }
+	}
+	
+	tfl_saadi_morocco = {
+	   icon = mission_new_world_power
+	   position = 6
+	   required_missions = { tfl_marrakech_conquest }
+	   provinces_to_highlight = {
+	      OR = {
+	        owned_by = MOR
+	        province_id = 343
+	      }
+	      NOT = { country_or_non_sovereign_subject_holds = ROOT }
+	   }
+	   trigger = {
+	      NOT = { exists = MOR }
+	      owns = 343
+	   }
+	   effect = {
+	      add_country_modifier = {
+	         name = tfl_saadi_morocco
+	         duration = -1
+	      }
+	   }
+	}
+}
+#For Marrakesh and Sus
+moroccan_tribes_slot = {
+	slot = 1
+	generic = no
+	ai = yes
+	potential = {
+		OR = {
+		   tag = SOS
+		   tag = MRK
+		}
+		NOT = { map_setup = map_setup_random }
+	}
+	has_country_shield = yes
+	
+	mor_tribes_independence = {
+	   icon = mission_al_andalus
+	   position = 2
+	   required_missions = { mor_tribes_build_army }
+	   trigger = {
+	      is_subject = no
+	   }
+	   effect = {
+	      marrekesh_area = {
+		     limit = {
+		        NOT = { is_permanent_claim = ROOT }
+		        NOT = { is_core = ROOT }
+		     }
+		     add_permanent_claim = ROOT
+		  }
+	   }
+	}
+	
+	mor_tribes_conquer_morocco = {
+	   icon = mission_new_world_power
+	   position = 3
+	   required_missions = { mor_tribes_independence }
+	   provinces_to_highlight = {
+	      OR = {
+	        owned_by = MOR
+	        area = marrekesh_area
+	      }
+	      NOT = { country_or_non_sovereign_subject_holds = ROOT }
+	   }
+	   trigger = {
+	      NOT = { exists = MOR }
+	      owns = 343
+	   }
+	   effect = {
+	      add_prestige = 25
+	   }
+	}
+}
+#For Lamtuna
+LAM_slot = {
+	slot = 1
+	generic = no
+	ai = yes
+	potential = {
+		tag = LAM
+		NOT = { map_setup = map_setup_random }
+	}
+	has_country_shield = yes
+	lam_rival_trarza = {
+		icon = mission_retake_ceuta
+		position = 2
+		required_missions = { mor_tribes_build_army }
+		trigger = {
+			army_size = TRZ
+			is_rival = TRZ
+		}
+		effect = {
+			every_province = {
+				limit = { 
+					owned_by = TRZ 
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+		}
+	}
+	lam_pacify_sanhaja = {
+		icon = mission_al_andalus
+		position = 3
+		required_missions = { lam_rival_trarza }
+		trigger = {
+			cap_verde_area = {
+				type = all
+				NOT = { culture = sanhaja }
+			}
+		}
+		effect = {
+			add_country_modifier = {
+				name = lam_pacified_sanhaja
+				duration = -1
+			}
+		}
+	}
+}
+#For Ibadi (mzab)
+Ibadi_maghreb_1 = {
+	slot = 1
+	generic = no
+	ai = yes
+	potential = {
+		religion = ibadi
+		culture_group = maghrebi
+		NOT = { map_setup = map_setup_random }
+		NOT = { tag = RSM }
+	}
+	has_country_shield = yes
+	
+	I_M_build_army = {
+	   icon = mission_subjugate_rajputana
+	   position = 1
+	   trigger = {
+	     army_size_percentage = 1
+	   }
+	   effect = {
+	      add_country_modifier = {
+	         name = i_m_built_army
+	         duration = 1825
+	      }
+	      ouled_nail_area = {
+	         limit = { 
+	            NOT = { is_core = ROOT }
+	            NOT = { is_claim = ROOT }
+	         }
+	         add_permanent_claim = ROOT
+	      }
+	      north_saharan_area = {
+		      limit = {
+			     NOT = { is_core = ROOT }
+			     NOT = { is_permanent_claim = ROOT }
+			  }
+			  add_permanent_claim = ROOT
+		  } 
+	   }
+	}
+	
+	I_M_unite_tribes = {
+	   icon = mission_gwalior_and_rathambore
+	   position = 2
+	   required_missions = { I_M_build_army }
+	   provinces_to_highlight = {
+	      OR = {
+	        province_id = 350
+	        province_id = 351
+	        area = north_saharan_area
+	      }
+	      NOT = { country_or_non_sovereign_subject_holds = ROOT }
+	   }
+	   trigger = {
+	      350 = { country_or_non_sovereign_subject_holds = ROOT }
+	      351 = { country_or_non_sovereign_subject_holds = ROOT }
+	      north_saharan_area = { type = all country_or_non_sovereign_subject_holds = ROOT }
+	   }
+	   effect = {
+	      add_country_modifier = {
+	         name = i_m_united_tribes
+	         duration = 1825
+	      }
+	   }
+	}
+	
+	I_M_rival_tlemcen = {
+	   icon = mission_abu_saids_dream
+	   position = 3
+	   required_missions = { I_M_unite_tribes }
+	   trigger = {
+	      if = { 
+	         limit = { exists = TLC }
+	         OR = {
+	           is_rival = TLC
+	           army_size = TLC
+	         }
+	         TLC = {
+	            has_opinion_modifier = {
+	               who = ROOT
+	               modifier = scornfully_insulted
+	            }
+	         }
+	      }
+	      else = {
+	          336 = {
+	             owner = {
+	                  OR = {
+	                     is_rival = ROOT
+	                     NOT = { army_size = ROOT }
+	                  }
+	                  has_opinion_modifier = {
+	                     who = ROOT
+	                     modifier = scornfully_insulted
+	                  }
+	             }
+	          }
+	      }
+	   }
+	   effect = {
+	      barbary_coast_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			algiers_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			hautes_plaines_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+	   }
+	}
+	
+	I_M_reconquer_tlemcen = {
+	   icon = mission_into_the_west
+	   position = 4
+	   required_missions = { I_M_rival_tlemcen }
+	   provinces_to_highlight = {
+	      OR = {
+	         area = hautes_plaines_area
+	         area = algiers_area
+	         area = barbary_coast_area
+	      }
+	      NOT = { country_or_non_sovereign_subject_holds = ROOT }
+	   }
+	   trigger = {
+	      hautes_plaines_area = { type = all country_or_non_sovereign_subject_holds = ROOT }
+	      algiers_area = { type = all country_or_non_sovereign_subject_holds = ROOT }
+	      barbary_coast_area = { type = all country_or_non_sovereign_subject_holds = ROOT }
+	   }
+	   effect = {
+	      2459 = {
+	         add_province_modifier = {
+	            name = i_m_renovate_capital
+	            duration = 7300
+	         }
+	      }
+	      country_event = { id = mor_events.40 } #Move capital to Tahert?
+	   }
+	}
+	
+	I_M_rival_tunis = {
+	   icon = mission_conquer_tunis
+	   position = 5
+	   required_missions = { I_M_reconquer_tlemcen }
+	   trigger = {
+	      if = { 
+	         limit = { exists = TUN }
+	         OR = {
+	           is_rival = TUN
+	           army_size = TUN
+	         }
+	         TUN = {
+	            has_opinion_modifier = {
+	               who = ROOT
+	               modifier = scornfully_insulted
+	            }
+	         }
+	      }
+	      else = {
+	          341 = {
+	             owner = {
+	                  OR = {
+	                     is_rival = ROOT
+	                     NOT = { army_size = ROOT }
+	                  }
+	                  has_opinion_modifier = {
+	                     who = ROOT
+	                     modifier = scornfully_insulted
+	                  }
+	             }
+	          }
+	      }
+	   }
+	   effect = {
+	      kabylia_area = {
+	         limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+	      }
+	      2458 = { add_permanent_claim = ROOT }
+	      djerba_area = {
+	         limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+	      }
+	      tunisia_area = {
+	         limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+	      }
+	   }
+	}
+	
+	I_M_restore_the_empire = {
+	   icon = mission_al_andalus
+	   position = 6
+	   required_missions = { I_M_rival_tunis }
+	   provinces_to_highlight = {
+	      OR = {
+	         province_id = 2450
+	         province_id = 2459
+	         province_id = 2457
+	         province_id = 336
+	         province_id = 2461
+	         province_id = 339
+	      }
+	      NOT =  { country_or_non_sovereign_subject_holds = ROOT }
+	   }
+	   trigger = {
+	         owns_core_province = 2450
+	         owns_core_province = 2459
+	         owns_core_province = 2457
+	         owns_core_province = 336
+	         owns_core_province = 2461
+	         owns_core_province = 339
+	   }
+	   effect = {
+	      add_country_modifier = {
+	         name = I_M_restored_borders
+	         duration = 10950
+	      }
+	   }
+	}
+}
+
+ibadi_maghreb5 = {
+	slot = 5
+	generic = no
+	ai = yes
+	potential = {
+		religion = ibadi
+		culture_group = maghrebi
+		NOT = { map_setup = map_setup_random }
+		NOT = { tag = RSM }
+	}
+	has_country_shield = yes
+	
+	I_M_fezzan_trade_1 = {
+	   icon = mission_friends_or_enemies
+	   position = 1
+	   required_missions = { }
+	   trigger = {
+	      OR = {
+	         FZA = { alliance_with = ROOT }
+	         FZA = {
+	            has_opinion = {
+	               who = ROOT
+	               value = 100
+	            }
+	         }
+	         NOT = { exists = FZA }
+	      }
+	   }
+	   effect = {
+	      if = {
+	         limit = { NOT = { exists = FZA } }
+	         add_years_of_income = 1.5
+	      }
+	      else = {
+	         add_country_modifier = {
+	            name = i_m_fezzan_trade
+	            duration = 1825
+	         }
+	         add_years_of_income = 1
+	      }
+	   }
+	}
+	
+	I_M_renovate_capital = {
+	   icon = mission_develop_alhambra
+	   position = 2
+	   required_missions = { I_M_fezzan_trade_1 }
+	   provinces_to_highlight = {
+	      province_id = 2459
+	      NOT = { development = 10 }
+	      NOT = { owned_by = ROOT }
+	   }
+	   trigger = {
+	        owns_core_province = 338
+	        2459 = {
+	           country_or_non_sovereign_subject_holds = ROOT
+	           development = 10
+	        }
+	   }
+	   effect = {
+	      if = {
+	         limit = { owns_core_province = 2459 }
+	         2459 = {
+	            change_trade_goods = spices
+	            center_of_trade = 1
+	            add_province_modifier = {
+	               name = restoration_of_tahert
+	               duration = -1
+	            }
+	            add_base_tax = 1
+	            add_base_production = 1
+	            add_base_manpower = 1
+	            change_culture = ROOT
+	            change_religion = ROOT
+	         }
+	      }
+	      else = {
+	         2459 = {
+	           cede_province = ROOT
+	           add_core = ROOT
+	           change_trade_goods = spices
+	            center_of_trade = 1
+	            add_province_modifier = {
+	               name = restoration_of_tahert
+	               duration = -1
+	            }
+	            add_base_tax = 1
+	            add_base_production = 1
+	            add_base_manpower = 1
+	            change_culture = ROOT
+	            change_religion = ROOT
+	         }
+	      }
+	      338 = {
+	         add_center_of_trade_level = -1
+	         add_base_tax = -1
+	         add_base_production = -1
+	         add_base_manpower = -1
+	      }
+	   }
+	}
+	
+	I_M_naval_ambition = {
+	   icon = mission_retake_ceuta
+	   position = 3
+	   required_missions = { I_M_renovate_capital }
+	   trigger = {
+	      num_of_owned_provinces_with = {
+	         OR = {
+	            has_building = dock
+	            has_building = drydock
+	         }
+	         value = 5
+	      }
+	   }
+	   effect = {
+	      add_country_modifier = {
+	         name = i_m_navy
+	         duration = 7300
+	      }
+	   }
+	}
+}
+#For Djerid Fezzan Tripoltania and Toughrout
+tun_tribe1 = {
+	slot = 1
+	generic = no
+	ai = yes
+	potential = {
+		OR = {
+		   tag = GHD
+		   tag = TGT
+		   tag = FZA
+		   tag = MZB
+		   tag = TRP
+		}
+		NOT = { religion = ibadi }
+		culture_group = maghrebi
+		NOT = { map_setup = map_setup_random }
+	}
+	has_country_shield = yes
+	
+	tun_tribes_build_army = {
+	   icon = mission_construct_a_corsair_fleet
+	   position = 1
+	   required_missions = { }
+	   trigger = {
+	      army_size_percentage = 1
+	      any_country = {
+	         NOT = { tag = ROOT } 
+	         capital_scope = {
+	            OR = {
+	               area = ouled_nail_area
+	               area = north_saharan_area
+	               area = fezzan_area
+	            }
+	         }
+	         NOT = { army_size = ROOT }
+	      }
+	   }
+	   effect = {
+	      add_country_modifier = {
+	         name = i_m_built_army
+	         duration = 1825
+	      }
+	      north_saharan_area = {
+	         limit = {
+	            NOT = { is_core = ROOT }
+	            NOT = { is_permanent_claim = ROOT }
+	         }
+	         add_permanent_claim = ROOT
+	      }
+	      ouled_nail_area = {
+	         limit = {
+	            NOT = { is_core = ROOT }
+	            NOT = { is_permanent_claim = ROOT }
+	         }
+	         add_permanent_claim = ROOT
+	      }
+	      fezzan_area = {
+	         limit = {
+	            NOT = { is_core = ROOT }
+	            NOT = { is_permanent_claim = ROOT }
+	         }
+	         add_permanent_claim = ROOT
+	      }
+	   }
+	}
+	
+	tun_tribes_unite_tribes = {
+	   icon = mission_protect_granada
+	   position = 2
+	   required_missions = { tun_tribes_build_army }
+	   provinces_to_highlight = {
+	      OR = {
+	         owned_by = FZA
+	         owned_by = MZB
+	         owned_by = TGT
+	         owned_by = GHD
+	      }
+	      NOT = { country_or_non_sovereign_subject_holds = ROOT }
+	   }
+	   trigger = {
+	      if = {
+	         limit = { NOT = { tag = FZA } }
+	         NOT = { exists = FZA }
+	      }
+	      if = {
+	         limit = { NOT = { tag = GHD } }
+	         NOT = { exists = GHD }
+	      }
+	      if = {
+	         limit = { NOT = { tag = MZB } }
+	         NOT = { exists = MZB }
+	      }
+	      if = {
+	         limit = { NOT = { tag = TGT } }
+	         NOT = { exists = TGT }
+	      }
+	   }
+	   effect = {
+	      add_country_modifier = {
+	         name = i_m_united_tribes
+	         duration = 1825
+	      }
+	      tripolitania_area = {
+	         limit = {
+	            NOT = { is_core = ROOT }
+	            NOT = { is_permanent_claim = ROOT }
+	         }
+	         add_permanent_claim = ROOT
+	      }
+	      tunisia_area = {
+	         limit = {
+	            NOT = { is_core = ROOT }
+	            NOT = { is_permanent_claim = ROOT }
+	         }
+	         add_permanent_claim = ROOT
+	      }
+	      djerba_area = {
+	         limit = {
+	            NOT = { is_core = ROOT }
+	            NOT = { is_permanent_claim = ROOT }
+	         }
+	         add_permanent_claim = ROOT
+	      }
+	      kabylia_area = {
+	         limit = {
+	            NOT = { is_core = ROOT }
+	            NOT = { is_permanent_claim = ROOT }
+	         }
+	         add_permanent_claim = ROOT
+	      }
+	   }
+	}
+	
+	tun_tribes_defeat_tunis = {
+	   icon = mission_conquer_tunis
+	   position = 3
+	   required_missions = { tun_tribes_unite_tribes } 
+	   trigger = {
+	      NOT = { exists = TUN }
+	   }
+	   effect = {
+	      add_country_modifier = {
+	         name = tun_tribes_defeated_tunis
+	         duration = -1
+	      }
+	   }
+	}
+}

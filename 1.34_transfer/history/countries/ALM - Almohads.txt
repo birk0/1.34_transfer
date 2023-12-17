@@ -1,0 +1,7 @@
+government = monarchy
+add_government_reform = feudal_theocracy
+primary_culture = berber
+government_rank = 3
+religion = sunni
+technology_group = muslim
+capital = 344	# Marrakech

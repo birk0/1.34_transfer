@@ -1,0 +1,32 @@
+po_force_abdication = { #Option for the AI to mess up the player in coalition wars
+	prestige_base = 0.2
+	ae_base = 0
+	power_projection = humiliated_rival
+	warscore_cost = {
+		no_provinces = 50.0
+	}
+	requires_is_allowed = yes
+	is_visible = {
+		FROM = {
+			OR = {
+				ai = no
+				AND = {
+					ai = yes
+					is_in_war = { attackers = THIS }
+				}
+			}
+		}
+	}
+	effect = { 
+		FROM = { set_country_flag = disaster_abdication }
+	}
+	ai_weight = {
+		export_to_variable = {
+			variable_name = ai_value
+			value = 1000
+		}
+		limit = {
+			always = yes
+		}
+	}
+}

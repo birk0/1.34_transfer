@@ -1,0 +1,7 @@
+#Prov1850 - Yaran
+culture = manchu
+religion = tengri_pagan_reformed
+
+base_tax = 1
+base_production = 1
+base_manpower = 1

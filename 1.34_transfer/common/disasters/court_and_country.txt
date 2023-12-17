@@ -1,0 +1,106 @@
+#Reworked Court and Country disaster
+
+#Reworked again 
+court_and_country = {
+	#ended_by_country_breaking_to_rebels = yes
+
+	potential = {
+		is_absolutism_active = yes
+		has_country_flag = in_court_and_country
+	}
+
+	can_start = {
+		has_country_flag = in_court_and_country
+	}
+	
+	
+	can_stop = {
+		always = no
+	}
+	
+	progress = { #Triggered via event
+		modifier = {
+			factor = 100
+			always = yes
+		}
+	}
+
+	can_end = {
+		OR = {
+			#Uses Estates, no active privileges, no active rebellions
+		   	AND = {
+		      	custom_trigger_tooltip = {
+		         	tooltip = CAC_does_use_estates_tt
+		         	has_any_estates = yes
+		      	}
+		      	custom_trigger_tooltip = {
+		         	tooltip = no_estate_has_privileges_tt
+		         	NOT = { any_estate_has_privilege = { value = 1 } }
+		      	}
+				NOT = { num_of_rebel_armies = 1 }
+				if = {
+					limit = { ai = no }
+					stability = 2 #AI can't handle this one, sorry.
+				}
+		   	}
+			#Dosen't use estates, no active rebellions, absolutism desire at least 15 OR has been in disaster for 30 years.
+		   	AND = {
+		      	custom_trigger_tooltip = {
+		         	tooltip = CAC_does_not_use_estates_tt
+		         	NOT = { has_any_estates = yes }
+		      	}
+				OR = {
+					custom_trigger_tooltip = {
+						tooltip = absolutism_desire_15_tooltip
+						check_variable = {
+							which = absolutism_desire
+							value = 15
+						}
+					}
+					custom_trigger_tooltip = {
+						tooltip = CAC_has_been_30_years_tt
+						had_country_flag = {
+							flag = in_court_and_country
+							days = 10950
+						}
+					}
+				}
+				NOT = { num_of_rebel_armies = 1 }
+				if = {
+					limit = { ai = no }
+					stability = 2 #AI can't handle this one, sorry.
+				}
+		   	}
+		}
+	}
+
+	modifier = {
+		max_absolutism = -100
+	}
+	
+	on_end = cac.3 #Checks outcome
+	
+	on_monthly = {
+		random_events = {
+			20 = cac.9 	# Rebellious Advisor
+			20 = cac.10 # Decentralisation
+			20 = cac.11	# Reforms Rejected
+			20 = cac.12	# Land Seizure
+			20 = cac.13	# Decentralisation Increases
+			20 = cac.14	# Court Conspiracy
+			20 = cac.15	# Influential Figure
+			20 = cac.16	# Mutinies
+			20 = cac.17	# Recruitment Troubles
+			20 = cac.18	# A Brewing Storm
+			20 = cac.19	# Bribery Increases
+			20 = cac.20	# Promising Representative
+			20 = cac.21	# Authority Challenged
+			20 = cac.22	# Bold Accusations
+			20 = cac.23	# Desire for old rights
+			20 = cac.24	# Military slandered
+			
+			1000 = 0
+		}
+	}
+}
+

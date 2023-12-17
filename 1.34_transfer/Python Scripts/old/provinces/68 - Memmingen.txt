@@ -1,0 +1,22 @@
+#68 - Memmingen
+
+owner = MEM
+controller = MEM
+add_core = MEM
+culture = swabian
+religion = catholic
+hre = yes
+base_tax = 5
+base_production = 5
+trade_goods = cloth
+base_manpower = 3
+capital = "Memmingen" 
+is_city = yes
+
+
+1444.12.1 = {
+	trade_goods = unknown
+	owner = ---
+	controller = ---
+	hre = no
+}

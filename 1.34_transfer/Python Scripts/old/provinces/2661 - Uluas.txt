@@ -1,0 +1,20 @@
+# 2661 - Magarauein
+
+owner = MRE
+controller = MRE
+add_core = MRE
+add_core = OGD
+culture = somali
+religion = sunni
+capital = "Magarauein"
+trade_goods = slaves
+is_city = yes
+hre = no
+base_tax = 1 
+base_production = 1
+base_manpower = 1
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

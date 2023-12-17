@@ -1,0 +1,7 @@
+#Prov2617 - Huichol
+culture = nubian #Shilluk
+religion = shamanism  #Fetishism
+
+base_tax = 1
+base_production = 1
+base_manpower = 1

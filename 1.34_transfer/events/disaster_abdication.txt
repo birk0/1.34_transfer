@@ -1,0 +1,452 @@
+namespace = disaster_abdication
+
+#########################################
+#	Events for the Abdication Disaster
+#########################################
+
+#[Monarch] abdicates
+country_event = {
+	id = disaster_abdication.1
+	title = "disaster_abdication.1.t"
+	desc = "disaster_abdication.1.d"
+	picture = BAD_WITH_MONARCH_eventPicture
+	is_triggered_only = yes
+
+	immediate = {
+		hidden_effect = {
+			set_variable = {
+				which = abdication_var
+				value = 0
+			}
+		}
+	}
+
+	option = {
+		name = "disaster_abdication.1.a"
+		define_ruler = {
+			regency = yes
+			adm = 0
+			dip = 0
+			mil = 0
+		}
+		if = {
+			limit = { has_consort = yes }
+			kill_consort = yes
+		}
+		if = {
+			limit = { has_heir = yes }
+			kill_heir = {}
+		}
+		add_stability = -3
+		add_adm_power = -100
+		add_mil_power = -100
+		add_dip_power = -100
+		random_owned_province = {
+			area = {
+				limit = { owned_by = ROOT }
+				start_revolt = {
+					size = 2
+					type = pretender_rebels
+				}
+			}
+		}
+		random_owned_province = {
+			area = {
+				limit = { owned_by = ROOT }
+				start_revolt = {
+					size = 2
+					type = pretender_rebels
+				}
+			}
+		}
+		random_owned_province = {
+			area = {
+				limit = { owned_by = ROOT }
+				start_revolt = {
+					size = 2
+					type = pretender_rebels
+				}
+			}
+		}
+		random_owned_province = {
+			area = {
+				limit = { owned_by = ROOT }
+				start_revolt = {
+					size = 2
+					type = pretender_rebels
+				}
+			}
+		}
+		random_owned_province = {
+			area = {
+				limit = { owned_by = ROOT }
+				start_revolt = {
+					size = 2
+					type = pretender_rebels
+				}
+			}
+		}
+		random_owned_province = {
+			area = {
+				limit = { owned_by = ROOT }
+				start_revolt = {
+					size = 2
+					type = pretender_rebels
+				}
+			}
+		}
+	}
+}
+#Order is restored
+country_event = {
+	id = disaster_abdication.2
+	title = "disaster_abdication.2.t"
+	desc = "disaster_abdication.2.d"
+	picture = GOOD_WITH_MONARCH_eventPicture
+	is_triggered_only = yes
+
+	option = {
+		name = "disaster_abdication.2.a"
+		add_stability = 1
+		hidden_effect = {
+			set_variable = {
+				which = abdication_var
+				value = 0
+			}
+		}
+		clr_country_flag = disaster_abdication
+	}
+}
+#A new [Monarch] is found
+country_event = {
+	id = disaster_abdication.3
+	title = "disaster_abdication.3.t"
+	desc = "disaster_abdication.3.d"
+	picture = GOOD_WITH_MONARCH_eventPicture
+	is_triggered_only = yes
+	trigger = {
+		has_disaster = forced_abdication
+		NOT = { has_regency = yes }
+	}
+	
+	option = {
+		name = "disaster_abdication.3.a" #May he lead us through these perilous times
+		change_mil = 1
+		add_mil_power = 100
+	}
+	option =  {
+		name = "disaster_abdication.3.b" #His cunning shall bless the nation
+		change_dip = 1
+		add_dip_power = 100
+	}
+	option = {
+		name = "disaster_abdication.3.c" #May he restore our nation to its former glory
+		change_adm = 1
+		add_adm_power = 100
+	}
+	after = {
+		change_variable = {
+			which = abdication_var
+			value = 3
+		}
+	}
+}
+#Authority Challenged
+country_event = {
+	id = disaster_abdication.4
+	title = "disaster_abdication.4.t"
+	desc = "disaster_abdication.4.d"
+	picture = ANGRY_MOB_eventPicture
+	is_triggered_only = yes
+
+	trigger = {
+		NOT = {
+			check_variable = {
+				which = abdication_var
+				value = 10
+			}
+		}
+	}
+
+	option = {
+		name = "disaster_abdication.4.a" #Traitors!
+		custom_tooltip = path_to_stability_tt
+		hidden_effect = {
+			change_variable = {
+				which = abdication_var
+				value = 2
+			}
+		}
+		add_stability = -1
+		random_owned_province = {
+			start_revolt = {
+				size = 6
+				type = pretender_rebels
+			}
+		}
+		random_owned_province = {
+			start_revolt = {
+				size = 6
+				type = pretender_rebels
+			}
+		}
+		random_owned_province = {
+			start_revolt = {
+				size = 6
+				type = pretender_rebels
+			}
+		}
+	}
+	option = {
+		name = "disaster_abdication.4.b" #Ignore it for now
+		add_legitimacy_equivalent = { amount = -25 }
+		custom_tooltip = path_to_chaos_tt
+		hidden_effect = {
+			change_variable = {
+				which = abdication_var
+				value = -1
+			}
+		}
+	}
+}
+#Military Decadence
+country_event = {
+	id = disaster_abdication.5
+	title = "disaster_abdication.5.t"
+	desc = "disaster_abdication.5.d"
+	picture = LAND_MILITARY_eventPicture
+	is_triggered_only = yes
+
+	trigger = {
+		NOT = {
+			check_variable = {
+				which = abdication_var
+				value = 10
+			}
+		}
+	}
+
+	option = {
+		name = "disaster_abdication.5.a" #Nonsense
+		if = {
+			limit = { NOT = { has_country_modifier = abdication_tech_cost } }
+			add_country_modifier = {
+				name = abdication_tech_cost #+50% tech cost
+				duration = 3650
+			}
+		}
+		else = {
+			add_dip_power = -100
+			add_mil_power = -100
+		}
+		custom_tooltip = path_to_chaos_tt
+		hidden_effect = {
+			change_variable = {
+				which = abdication_var
+				value = -1
+			}
+		}
+	}
+	option = {
+		name = "disaster_abdication.5.b" #We should heed their advice
+		add_years_of_income = -5
+		add_stability = -1
+		if = {
+			limit = { NOT = { has_country_modifier = abdication_increased_spending } }
+			add_country_modifier = {
+				name = abdication_increased_spending #tax
+				duration = 3650
+			}
+		}
+		else = {
+			add_yearly_manpower = -2
+		}
+		custom_tooltip = path_to_stability_tt
+		hidden_effect = {
+			change_variable = {
+				which = abdication_var
+				value = 2
+			}
+		}
+	}
+}
+#The Peasant's representative
+country_event = {
+	id = disaster_abdication.6
+	title = "disaster_abdication.6.t"
+	desc = "disaster_abdication.6.d"
+	picture = NOBLE_ESTATE_DEMANDS_eventPicture
+	is_triggered_only = yes
+
+	trigger = {
+		NOT = {
+			check_variable = {
+				which = abdication_var
+				value = 10
+			}
+		}
+	}
+
+	immediate = {
+		hidden_effect = {
+			random_owned_province = {
+				save_event_target_as = peasants_prov
+			}
+		}
+	}
+
+	option = {
+		name = "disaster_abdication.6.a" #Very well, compensate them
+		if = {
+			limit = { 
+				crown_land_share = 10
+			}
+			change_estate_land_share = {
+				estate = all
+				share = 10
+			}
+		}
+		else = {
+			add_estate_influence_modifier = {
+				influence = 15
+				duration = 5475
+				desc = peasants_representative_desc
+				estate = all
+			}
+		}
+		event_target:peasants_prov = {
+			area = {
+				limit = { owned_by = ROOT }
+			}
+			add_local_autonomy = 100
+			add_base_tax = 1
+		}
+		custom_tooltip = path_to_stability_tt
+		hidden_effect = {
+			change_variable = {
+				which = abdication_var
+				value = 2
+			}
+		}
+	}
+	option = {
+		name = "disaster_abdication.6.b" #Why should I listen to such rabble?
+		custom_tooltip = path_to_chaos_tt
+		hidden_effect = {
+			change_variable = {
+				which = abdication_var
+				value = -1
+			}
+		}
+		add_legitimacy_equivalent = { amount = 10 }
+		event_target:peasants_prov = {
+			area = {
+				limit = { owned_by = ROOT }
+				add_unrest = 20
+			}
+		}
+	}
+}
+#Blood in the water?
+country_event = {
+	id = disaster_abdication.7
+	title = "disaster_abdication.7.t"
+	desc = "disaster_abdication.7.d"
+	picture = ANGRY_MOB_eventPicture
+	is_triggered_only = yes
+
+	trigger = {
+		NOT = {
+			check_variable = {
+				which = abdication_var
+				value = 10
+			}
+		}
+	}
+
+	immediate = {
+		hidden_effect = {
+			random_owned_province = {
+				limit = { is_state = yes }
+				save_event_target_as = peasant_revolt
+			}
+		}
+	}
+
+	option = {
+		name = "disaster_abdication.7.a" #Kill them all
+		event_target:peasant_revolt = {
+			area = {
+				limit = { owned_by = ROOT }
+				start_revolt = {
+					size = 2
+					type = particularist_rebels
+				}
+			}
+		}
+		custom_tooltip = path_to_stability_tt
+		hidden_effect = {
+			change_variable = {
+				which = abdication_var
+				value = 1
+			}
+		}
+	}
+	option = {
+		name = "disaster_abdication.7.b" #Give them what they want
+		event_target:peasant_revolt = {
+			area = {
+				limit = { owned_by = ROOT }
+				add_local_autonomy = 50
+			}
+		}
+		custom_tooltip = path_to_chaos_tt
+		hidden_effect = {
+			change_variable = {
+				which = abdication_var
+				value = -1
+			}
+		}
+	}
+}
+#Losing control in [area]
+country_event = {
+	id = disaster_abdication.8
+	title = "disaster_abdication.8.t"
+	desc = "disaster_abdication.8.d"
+	picture = REVOLT_eventPicture
+	is_triggered_only = yes
+
+	trigger = {
+		any_owned_province = {
+			all_province_in_state = {
+				owned_by = ROOT
+				is_core = ROOT
+				controlled_by = REB
+			}
+		}
+	}
+	immediate = {
+		hidden_effect = {
+			random_owned_province = {
+				limit = {
+					all_province_in_state = {
+						owned_by = ROOT
+						is_core = ROOT
+						controlled_by = REB
+					}
+				}
+				save_event_target_as = lost_control_prov
+			}
+		}
+	}
+	option = {
+		name = "disaster_abdication.8.a" #Rebel scum!
+		event_target:lost_control_prov = {
+			area = { 
+				limit = { is_core = ROOT }
+				remove_core = ROOT
+			}
+		}
+	}
+}

@@ -1,0 +1,19 @@
+#2035 - Gulbarga
+
+owner = BAH
+controller = BAH
+culture = kannada
+religion = hinduism
+capital = "Gulbarga"
+trade_goods = grain
+hre = no
+base_tax = 4
+base_production = 4
+base_manpower = 1
+is_city = yes
+add_core = BAH
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

@@ -1,0 +1,7 @@
+#Prov296 - Kaluga
+culture = russian
+religion = orthodox
+
+base_tax = 1
+base_production = 1
+base_manpower = 1

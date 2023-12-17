@@ -1,0 +1,20 @@
+#4729 - Padova, Padua
+
+owner = VEN
+controller = VEN
+culture = venetian 
+religion = catholic 
+hre = no 
+base_tax = 4
+base_production = 3
+trade_goods = paper
+base_manpower = 2
+capital = "Padova" 
+is_city = yes 
+add_core = VEN
+add_core = PDV
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

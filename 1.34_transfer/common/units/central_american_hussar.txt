@@ -1,0 +1,13 @@
+# American Hussar
+
+unit_type = mesoamerican
+type = cavalry
+manpower = 2
+
+maneuver = 6
+offensive_morale = 6
+defensive_morale = 4
+offensive_fire = 2
+defensive_fire = 2
+offensive_shock = 6
+defensive_shock = 4

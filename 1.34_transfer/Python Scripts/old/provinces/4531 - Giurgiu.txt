@@ -1,0 +1,18 @@
+# Giurgiu
+
+owner = WAL
+controller = WAL  
+culture = romanian
+religion = orthodox
+capital = "Giurgiu"
+trade_goods = livestock
+hre = no
+base_tax = 3
+base_production = 3
+base_manpower = 2
+is_city = yes
+add_core = WAL
+fort_15th = yes
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

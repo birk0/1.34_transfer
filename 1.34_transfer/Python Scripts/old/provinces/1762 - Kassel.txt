@@ -1,0 +1,17 @@
+owner = HES
+controller = HES
+add_core = HES
+capital = "Kassel"
+trade_goods = glass
+culture = hessian
+religion = catholic
+base_tax = 5 
+base_production = 5
+base_manpower = 3
+is_city = yes
+hre = yes
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

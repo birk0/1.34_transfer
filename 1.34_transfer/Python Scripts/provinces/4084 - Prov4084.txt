@@ -1,0 +1,7 @@
+#Prov4084 - Prov4084
+religion = sunni
+culture = berber
+
+base_tax = 1
+base_production = 1
+base_manpower = 1

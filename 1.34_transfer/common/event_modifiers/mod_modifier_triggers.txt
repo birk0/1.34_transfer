@@ -1,0 +1,38 @@
+# Modifiers which act as province/country flags
+# These are usually desirable over using a flag because they can expire and clear themselves when no longer needed, whereas flags are permanent and have to be cleared manually.
+
+
+should_not_trigger_destroyed_library = {}
+remove_library_modifier_trigger = {}
+may_not_build_library = {}
+ai_doesnt_want_fort_here = {}
+recently_won_war_timer = {}
+recent_ownership_change = {}
+recently_lost_battle_timer = {}
+may_not_build_fort = {}
+remove_tenaille_building_modifier = {}
+should_not_trigger_destroyed = {}
+should_not_trigger_destroyed_tenaille = {}
+recent_ownership_fort_change = {}
+option_1 = {}
+option_2 = {}
+option_3 = {}
+option_4 = {}
+option_5 = {}
+option_6 = {}
+option_7 = {}
+option_8 = {}
+option_9 = {}
+option_10 = {}
+option_11 = {}
+option_12 = {}
+option_13 = {}
+option_14 = {}
+option_15 = {}
+option_16 = {}
+option_17 = {}
+option_18 = {}
+option_19 = {}
+option_20 = {}
+# New institution events trigger
+nie1={}nie2={}nie3={}nie4={}nie5={}nie6={}nie7={}nie8={}nie9={}nie10={}nie11={}nie12={}nie13={}nie14={}nie15={}nie16={}nie17={}nie18={}nie19={}nie20={}nie21={}nie22={}nie23={}nie24={}nie25={}nie26={}nie27={}nie28={}nie29={}nie30={}nie31={}nie32={}nie33={}nie34={}nie35={}nie36={}nie37={}nie38={}nie39={}nie40={}nie41={}nie42={}nie43={}nie44={}nie45={}nie46={}nie47={}nie48={}nie49={}nie50={}nie51={}nie52={}

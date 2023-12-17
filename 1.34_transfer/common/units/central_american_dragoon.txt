@@ -1,0 +1,13 @@
+# American Dragoon
+
+unit_type = mesoamerican
+type = cavalry
+manpower = 2
+
+maneuver = 6
+offensive_morale = 8
+defensive_morale = 8
+offensive_fire = 4
+defensive_fire = 4
+offensive_shock = 6
+defensive_shock = 6

@@ -1,0 +1,23 @@
+#422 - Imereti
+
+latent_trade_goods = {
+	coal
+}
+
+owner = IME
+controller = IME
+culture = georgian
+religion = orthodox
+capital = "Kutaisi"
+trade_goods = cloth
+hre = no
+base_tax = 3 
+base_production = 3
+base_manpower = 3
+is_city = yes
+add_core = GEO
+add_core = IME
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

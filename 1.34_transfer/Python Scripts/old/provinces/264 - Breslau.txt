@@ -1,0 +1,18 @@
+#264 - Breslau (Breslau+Brieg+Öls+Wartenberg+Wohlau/Steinau)
+
+owner = OPL
+controller = OPL
+culture = schlesian
+religion = catholic
+capital = "Breslau"
+trade_goods = cloth
+hre = yes
+base_tax = 5 
+base_production = 5
+is_city = yes 
+base_manpower = 3
+add_core = OPL
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

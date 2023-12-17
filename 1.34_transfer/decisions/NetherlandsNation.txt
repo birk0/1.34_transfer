@@ -1,0 +1,189 @@
+country_decisions = {
+
+	netherlands_nation = {
+		major = yes
+		potential = {
+			was_never_end_game_tag_trigger = yes
+			exists = yes
+			religion_group = christian
+			OR = {
+				AND = {
+					ai = no
+					culture_group = swamp
+				}
+				num_of_owned_provinces_with = {
+					value = 5
+					culture_group = swamp
+				}
+			}
+			NOT = {
+				tag = SPA
+				tag = FRA
+				tag = HAB
+				tag = GER
+				tag = PRU
+				tag = DAN
+				tag = SWE
+				tag = ENG 
+				tag = GBR
+				tag = CAS
+				tag = NOR
+			}
+			is_emperor = no
+			NOT = { has_country_flag = formed_netherlands_flag }
+			OR = {
+				ai = no
+				is_playing_custom_nation = no
+			}
+			OR = {
+				NOT = { exists = NED }
+				ai = no
+			}
+			OR = {
+				is_free_or_tributary_trigger = yes
+				ai = no
+			}
+			NOT = { tag = PAP }
+			NOT = { tag = NED }
+			NOT = { tag = HLR }
+		}
+		provinces_to_highlight = {
+			OR = {
+				province_id = 97 # Amsterdam
+				AND = {
+					region = low_countries_region
+					ROOT = {
+						NOT = {
+							num_of_owned_provinces_with = {
+								value = 7
+								culture_group = swamp
+							}
+						}
+						owns_core_province = 97
+						owns_core_province = 98
+						owns_core_province = 99
+					}
+				}
+			}
+			OR = {
+				NOT = { owned_by = ROOT }
+				NOT = { is_core = ROOT }
+			}
+		}
+		allow = {
+			is_free_or_tributary_trigger = yes
+			is_at_war = no
+			NOT = { exists = NED }
+			owns_core_province = 97 # Amsterdam
+			97 = {
+				is_state = yes
+			}
+			num_of_owned_provinces_with = {
+				value = 5
+				culture_group = swamp
+			}
+		}
+	 	effect = {
+	  		if = {
+	  			limit = {
+	  				tag = BUR
+	  			}
+	  			change_primary_culture = dutch
+				97 = {
+					move_capital_effect = yes
+				}
+			}
+			if = {
+				limit = {
+					tag = BUR
+					exists = FRA
+				}
+	  			france_region = {
+					limit = {
+						owned_by = BUR
+					}
+	  				remove_core = BUR
+	  				add_core = FRA
+	  				cede_province = FRA
+	  			}
+	  		}
+			if = {
+				limit = {
+					tag = BUR
+					exists = FRA
+					BUR = {
+						any_subject_country = {
+							france_region = {
+								owned_by = PREV
+							}
+						}
+					}
+				}
+				every_subject_country = {
+					limit = {
+						france_region = {
+							owned_by = PREV
+						}
+					}
+					france_region = {
+						limit = {
+							owned_by = PREV
+						}
+						remove_core = BUR
+						remove_core = PREV
+						add_core = FRA
+						cede_province = FRA
+					}
+				}
+	  		}
+			change_tag = NED
+			if = {
+				limit = { NOT = { culture_group = swamp } }
+				change_primary_culture = dutch
+			}
+			restore_country_name = yes
+			swap_non_generic_missions = yes
+			low_countries_region = {
+				limit = {
+					NOT = { owned_by = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+					NOT = { province_id = 1931 }
+				}
+				add_permanent_claim = NED
+			}
+			if = {
+				limit = {
+					NOT = {
+						government_rank = 2
+					}
+				}
+				NED = { set_government_rank = 2 }
+			}
+			if = {
+				limit = {
+					ai = yes
+					is_religion_enabled = protestant
+				}
+				change_religion = protestant
+				hidden_effect = {
+					every_owned_province = {
+						change_religion = protestant
+					}
+				}
+			}
+			set_country_flag = formed_netherlands_flag
+			add_prestige = 25
+			if = {
+				limit = {
+					has_custom_ideas = no
+				}
+				country_event = { id = ideagroups.1 } #Swap Ideas
+			}
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		ai_importance = 400
+	}
+	
+}

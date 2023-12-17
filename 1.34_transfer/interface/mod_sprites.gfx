@@ -1,0 +1,969 @@
+spriteTypes = {
+	#Missions
+    spriteType = {
+	    name = "mission_ayyubids_virtues_of_a_ruler"
+	    texturefile = "gfx/interface/missions/mission_ayyubids_virtues_of_a_ruler.dds"
+    }
+    spriteType = {
+	    name = "mod_mission_1"
+	    texturefile = "gfx/interface/missions/mod_mission_1.dds"
+    }
+    spriteType = {
+	    name = "mod_mission_2"
+	    texturefile = "gfx/interface/missions/mod_mission_2.dds"
+    }
+    spriteType = {
+	    name = "mod_mission_3"
+	    texturefile = "gfx/interface/missions/mod_mission_3.dds"
+    }
+    spriteType = {
+	    name = "mod_mission_4"
+	    texturefile = "gfx/interface/missions/mod_mission_4.dds"
+    }
+    spriteType = {
+	    name = "mod_mission_5"
+	    texturefile = "gfx/interface/missions/mod_mission_5.dds"
+    }
+	#Estate Privileges
+	spriteType = {
+		name = "privilege_timurid_leadership"
+		texturefile = "gfx/interface/privileges/privilege_timurid_leadership.dds"
+	}
+	#for GUI
+	spriteType = {
+		name = "GFX_privilege_blank_2"
+		texturefile = "gfx/interface/estate_interface/privilege_blank_2.dds"
+	}
+	#Government Reforms
+	spriteType = {
+		name = "government_reform_imperial_japan"
+		texturefile = "gfx//interface//government_reform_icons//imperial_japan.dds"
+	}
+	spriteType = {
+		name = "government_reform_french_empire"
+		texturefile = "gfx//interface//government_reform_icons//french_empire.dds"
+	}
+	spriteType = {
+		name = "government_reform_irish_kingdom"
+		texturefile = "gfx//interface//government_reform_icons//irish_kingdom.dds"
+	}
+	spriteType = {
+		name = "government_reform_chinese_warlord_reform"
+		texturefile = "gfx//interface//government_reform_icons//chinese_warlord_reform.dds"
+	}
+	spriteType = {
+		name = "government_reform_khanganate_reform"
+		texturefile = "gfx//interface//government_reform_icons//khanganate_reform.dds"
+	}
+	spriteType = {
+		name = "government_reform_korean_kingdom"
+		texturefile = "gfx//interface//government_reform_icons//korean_kingdom.dds"
+	}
+	spriteType = {
+		name = "government_reform_timurid_prince"
+		texturefile = "gfx//interface//government_reform_icons//timurid_prince.dds"
+	}
+	spriteType = {
+		name = "government_reform_timurid_empire"
+		texturefile = "gfx//interface//government_reform_icons//timurid_empire.dds"
+	}
+	#Event Pictures
+	spriteType = {
+		name = "NEW_EMPEROR_eventPicture"
+		texturefile = "gfx/mod_event_pictures//NEW_EMPEROR_eventPicture.dds"
+		allwaystransparent = yes
+	}
+	spriteType = {
+		name = "WOKOU_PIRATES_eventPicture"
+		texturefile = "gfx/mod_event_pictures/WOKOU_PIRATES_eventPicture.dds"
+		allwaystransparent = yes
+	}
+	spriteType = {
+		name = "PALACE_eventPicture"
+		texturefile = "gfx/mod_event_pictures/PALACE_eventPicture.dds"
+		allwaystransparent = yes
+	}
+	#Advisor Portraits
+   	spriteType = { #Turkish commander not same
+      	name = "GFX_advisor_alm_turkish_commander"
+      	texturefile = "gfx//interface//advisors//turkish_commander.dds"
+      	noOfFrames = 1
+      	norefcount = yes
+      	effectFile = "gfx/FX/buttonstate.lua"
+      	loadType = "INGAME"
+   	}
+   	spriteType = {
+      	name = "GFX_advisor_alm_turkish_commander_female"
+     	texturefile = "gfx//interface//advisors//alm_turkish_commander_female.dds"
+      	noOfFrames = 1
+      	norefcount = yes
+      	effectFile = "gfx/FX/buttonstate.lua"
+     	loadType = "INGAME"
+   	}
+
+   	spriteType = { #Inquisitor reformer
+    	name = "GFX_advisor_alm_inquisitor"
+      	texturefile = "gfx//interface//advisors//alm_inquisitor.dds"
+      	noOfFrames = 1
+      	norefcount = yes
+      	effectFile = "gfx/FX/buttonstate.lua"
+      	loadType = "INGAME"
+   	}
+   	spriteType = {
+   	   name = "GFX_advisor_alm_inquisitor_female"
+   	   texturefile = "gfx//interface//advisors//alm_inquisitor_female.dds"
+   	   noOfFrames = 1
+   	   norefcount = yes
+   	   effectFile = "gfx/FX/buttonstate.lua"
+   	   loadType = "INGAME"
+   	}
+
+  	spriteType = { #Humanist
+   	   name = "GFX_advisor_alm_humanist"
+   	   texturefile = "gfx//interface//advisors//turkish_diplomat.dds"
+   	   noOfFrames = 1
+   	   norefcount = yes
+   	   effectFile = "gfx/FX/buttonstate.lua"
+   	   loadType = "INGAME"
+   	}
+   	spriteType = {
+   	   name = "GFX_advisor_alm_humanist_female"
+   	   texturefile = "gfx//interface//advisors//turkish_diplomat_female.dds"
+   	   noOfFrames = 1
+   	   norefcount = yes
+   	   effectFile = "gfx/FX/buttonstate.lua"
+   	   loadType = "INGAME"
+   	}
+
+   	spriteType = { #Turkish Diplomat
+   	   name = "GFX_advisor_rsm_turkish_diplomat"
+   	   texturefile = "gfx//interface//advisors//turkish_diplomat.dds"
+   	   noOfFrames = 1
+   	   norefcount = yes
+   	   effectFile = "gfx/FX/buttonstate.lua"
+   	   loadType = "INGAME"
+   	}
+   	spriteType = {
+   	   name = "GFX_advisor_rsm_turkish_diplomat_female"
+   	   texturefile = "gfx//interface//advisors//turkish_diplomat_female.dds"
+   	   noOfFrames = 1
+   	   norefcount = yes
+   	   effectFile = "gfx/FX/buttonstate.lua"
+   	   loadType = "INGAME"
+   	}
+
+   	spriteType = { 	#Turkish Commander
+   	   name = "GFX_advisor_rsm_turkish_commander"
+   	   texturefile = "gfx//interface//advisors//turkish_commander.dds"
+   	   noOfFrames = 1
+   	   norefcount = yes
+   	   effectFile = "gfx/FX/buttonstate.lua"
+   	   loadType = "INGAME"
+   	}
+   	spriteType = {
+   	   name = "GFX_advisor_rsm_turkish_commander_female"
+   	   texturefile = "gfx//interface//advisors//turkish_commander_female.dds"
+   	   noOfFrames = 1
+   	   norefcount = yes
+   	   effectFile = "gfx/FX/buttonstate.lua"
+   	   loadType = "INGAME"
+   	}
+
+   	spriteType = { #Local Academic
+   	   name = "GFX_advisor_local_academic"
+   	   texturefile = "gfx//interface//advisors//local_academic.dds"
+   	   noOfFrames = 1
+   	   norefcount = yes
+   	   effectFile = "gfx/FX/buttonstate.lua"
+   	   loadType = "INGAME"
+   	}
+   	spriteType = {
+   	   name = "GFX_advisor_local_academic_female"
+   	   texturefile = "gfx//interface//advisors//local_academic_female.dds"
+   	   noOfFrames = 1
+   	   norefcount = yes
+   	   effectFile = "gfx/FX/buttonstate.lua"
+   	   loadType = "INGAME"
+   	}
+
+   	spriteType = { #Imperial Examiner
+   	   name = "GFX_advisor_eoc_imperial_examiner"
+   	   texturefile = "gfx//interface//advisors//eoc_imperial_examiner.dds"
+   	   noOfFrames = 1
+   	   norefcount = yes
+   	   effectFile = "gfx/FX/buttonstate.lua"
+   	   loadType = "INGAME"
+   	}
+   	spriteType = {
+   	   name = "GFX_advisor_eoc_imperial_examiner_female"
+   	   texturefile = "gfx//interface//advisors//eoc_imperial_examiner_female.dds"
+   	   noOfFrames = 1
+   	   norefcount = yes
+   	   effectFile = "gfx/FX/buttonstate.lua"
+   	   loadType = "INGAME"
+   	}
+
+   	spriteType = {    	#Linguist
+   	   name = "GFX_advisor_linguist"
+   	   texturefile = "gfx//interface//advisors//linguist_advisor.dds"
+   	   noOfFrames = 1
+   	   norefcount = yes
+   	   effectFile = "gfx/FX/buttonstate.lua"
+   	   loadType = "INGAME"
+   	}
+   	spriteType = {
+   	   name = "GFX_advisor_linguist_female"
+   	   texturefile = "gfx//interface//advisors//linguist_advisor_female.dds"
+   	   noOfFrames = 1
+   	   norefcount = yes
+   	   effectFile = "gfx/FX/buttonstate.lua"
+   	   loadType = "INGAME"
+   	}
+
+   	spriteType = {    	#Civil Engineer
+   	   name = "GFX_advisor_civil_engineer"
+   	   texturefile = "gfx//interface//advisors//civil_engineer.dds"
+   	   noOfFrames = 1
+   	   norefcount = yes
+   	   effectFile = "gfx/FX/buttonstate.lua"
+   	   loadType = "INGAME"
+   	}
+   	spriteType = {
+   	   name = "GFX_advisor_civil_engineer_female"
+   	   texturefile = "gfx//interface//advisors//civil_engineer_female.dds"
+   	   noOfFrames = 1
+   	   norefcount = yes
+   	   effectFile = "gfx/FX/buttonstate.lua"
+	   loadType = "INGAME"
+	}
+
+   	spriteType = {    	#Architect
+   	   name = "GFX_advisor_architect"
+   	   texturefile = "gfx//interface//advisors//architect.dds"
+   	   noOfFrames = 1
+   	   norefcount = yes
+   	   effectFile = "gfx/FX/buttonstate.lua"
+   	   loadType = "INGAME"
+   	}
+   	spriteType = {
+   	   name = "GFX_advisor_architect_female"
+   	   texturefile = "gfx//interface//advisors//architect_female.dds"
+   	   noOfFrames = 1
+   	   norefcount = yes
+   	   effectFile = "gfx/FX/buttonstate.lua"
+	   loadType = "INGAME"
+	}
+
+   	spriteType = {   	#Negotiator
+   	   name = "GFX_advisor_negotiator"
+   	   texturefile = "gfx//interface//advisors//turkish_diplomat.dds"
+   	   noOfFrames = 1
+   	   norefcount = yes
+   	   effectFile = "gfx/FX/buttonstate.lua"
+   	   loadType = "INGAME"
+   	}
+   	spriteType = {
+   	   name = "GFX_advisor_negotiator_female"
+   	   texturefile = "gfx//interface//advisors//turkish_diplomat_female.dds"
+   	   noOfFrames = 1
+   	   norefcount = yes
+   	   effectFile = "gfx/FX/buttonstate.lua"
+   	   loadType = "INGAME"
+   	}
+	spriteType = { 	#Tribal Leader
+   	   name = "GFX_advisor_tribal_leader"
+   	   texturefile = "gfx//interface//advisors//turkish_commander.dds"
+   	   noOfFrames = 1
+   	   norefcount = yes
+   	   effectFile = "gfx/FX/buttonstate.lua"
+   	   loadType = "INGAME"
+   	}
+   	spriteType = {
+   	   name = "GFX_advisor_tribal_leader_female"
+   	   texturefile = "gfx//interface//advisors//turkish_commander_female.dds"
+   	   noOfFrames = 1
+   	   norefcount = yes
+   	   effectFile = "gfx/FX/buttonstate.lua"
+   	   loadType = "INGAME"
+	}
+	spriteType = { 	#Drill Commander
+   	   name = "GFX_advisor_drill_commander"
+   	   texturefile = "gfx//interface//advisors//linguist_advisor.dds"
+   	   noOfFrames = 1
+   	   norefcount = yes
+   	   effectFile = "gfx/FX/buttonstate.lua"
+   	   loadType = "INGAME"
+   	}
+   	spriteType = {
+   	   name = "GFX_advisor_drill_commander_female"
+   	   texturefile = "gfx//interface//advisors//linguist_advisor_female.dds"
+   	   noOfFrames = 1
+   	   norefcount = yes
+   	   effectFile = "gfx/FX/buttonstate.lua"
+   	   loadType = "INGAME"
+   	}
+	spriteType = { 	#War Captain
+	   name = "GFX_advisor_war_captain"
+	   texturefile = "gfx//interface//advisors//turkish_commander.dds"
+	   noOfFrames = 1
+	   norefcount = yes
+	   effectFile = "gfx/FX/buttonstate.lua"
+	   loadType = "INGAME"
+	}
+	spriteType = {
+	   name = "GFX_advisor_war_captain_female"
+	   texturefile = "gfx//interface//advisors//turkish_commander_female.dds"
+	   noOfFrames = 1
+	   norefcount = yes
+	   effectFile = "gfx/FX/buttonstate.lua"
+	   loadType = "INGAME"
+	}
+	spriteType = { 	#Artillery Captain
+   	   name = "GFX_advisor_artillery_captain"
+   	   texturefile = "gfx//interface//advisors//alm_inquisitor.dds"
+   	   noOfFrames = 1
+   	   norefcount = yes
+   	   effectFile = "gfx/FX/buttonstate.lua"
+   	   loadType = "INGAME"
+   	}
+   	spriteType = {
+   	   name = "GFX_advisor_artillery_captain_female"
+   	   texturefile = "gfx//interface//advisors//alm_inquisitor_female.dds"
+   	   noOfFrames = 1
+   	   norefcount = yes
+   	   effectFile = "gfx/FX/buttonstate.lua"
+   	   loadType = "INGAME"
+   	}
+	spriteType = { 	#Supply Expert
+	   name = "GFX_advisor_supply_expert"
+	   texturefile = "gfx//interface//advisors//alm_inquisitor.dds"
+	   noOfFrames = 1
+	   norefcount = yes
+	   effectFile = "gfx/FX/buttonstate.lua"
+	   loadType = "INGAME"
+	}
+	spriteType = {
+	   name = "GFX_advisor_supply_expert_female"
+	   texturefile = "gfx//interface//advisors//alm_inquisitor_female.dds"
+	   noOfFrames = 1
+	   norefcount = yes
+	   effectFile = "gfx/FX/buttonstate.lua"
+	   loadType = "INGAME"
+	}
+	spriteType = { 	#Subject Governor
+   	   name = "GFX_advisor_subject_governor"
+   	   texturefile = "gfx//interface//advisors//turkish_diplomat.dds"
+   	   noOfFrames = 1
+   	   norefcount = yes
+   	   effectFile = "gfx/FX/buttonstate.lua"
+   	   loadType = "INGAME"
+   	}
+   	spriteType = {
+   	   name = "GFX_advisor_subject_governor_female"
+   	   texturefile = "gfx//interface//advisors//turkish_diplomat_female.dds"
+   	   noOfFrames = 1
+   	   norefcount = yes
+   	   effectFile = "gfx/FX/buttonstate.lua"
+   	   loadType = "INGAME"
+   	}
+	   spriteType = { 	#Journalist
+	   name = "GFX_advisor_journalist"
+	   texturefile = "gfx//interface//advisors//turkish_diplomat.dds"
+	   noOfFrames = 1
+	   norefcount = yes
+	   effectFile = "gfx/FX/buttonstate.lua"
+	   loadType = "INGAME"
+	}
+	spriteType = {
+	   name = "GFX_advisor_journalist_female"
+	   texturefile = "gfx//interface//advisors//turkish_diplomat_female.dds"
+	   noOfFrames = 1
+	   norefcount = yes
+	   effectFile = "gfx/FX/buttonstate.lua"
+	   loadType = "INGAME"
+	}
+	spriteType = { 	#Marauder Captain
+   	   name = "GFX_advisor_marauder_captain"
+   	   texturefile = "gfx//interface//advisors//turkish_commander.dds"
+   	   noOfFrames = 1
+   	   norefcount = yes
+   	   effectFile = "gfx/FX/buttonstate.lua"
+   	   loadType = "INGAME"
+   	}
+   	spriteType = {
+   	   name = "GFX_advisor_marauder_captain_female"
+   	   texturefile = "gfx//interface//advisors//turkish_commander_female.dds"
+   	   noOfFrames = 1
+   	   norefcount = yes
+   	   effectFile = "gfx/FX/buttonstate.lua"
+   	   loadType = "INGAME"
+   	}
+
+	#Flagship Icons
+	spriteType = {
+		name = "GFX_flagship_maghrebi_raiders"
+		texturefile = "gfx//interface//flagship//maghrebi_raiders.tga"
+		loadType = "INGAME"
+	}
+	spriteType = {
+		name = "GFX_flagship_maghrebi_invaders"
+		texturefile = "gfx//interface//flagship//maghrebi_invaders.tga"
+		loadType = "INGAME"
+	}
+	spriteType = {
+		name = "GFX_flagship_maghrebi_cannoneers"
+		texturefile = "gfx//interface//flagship//maghrebi_cannoneers.tga"
+		loadType = "INGAME"
+	}
+	#Interface Sprites
+	spriteType = {
+		name = "GFX_banner_defence_1"
+		texturefile = "gfx//interface//banner_defence_1.dds"
+	}
+	spriteType = {
+		name = "GFX_banner_5_left_mod"
+		texturefile = "gfx//interface//banner_5_left_mod.dds"
+	}
+	spriteType = {
+		name = "GFX_banner_4_left_mod"
+		texturefile = "gfx//interface//banner_4_left_mod.dds"
+	}
+	spriteType = {
+		name = "GFX_banner_5_right_mod"
+		texturefile = "gfx//interface//banner_5_right_mod.dds"
+	}
+	spriteType = {
+		name = "GFX_banner_4_mid_mod"
+		texturefile = "gfx//interface//banner_4_mid_mod.dds"
+	}
+	#Building Sprites
+
+
+	#############################
+	# Earthern Rampart
+	############################# 
+	
+	spriteType = {
+		name = "GFX_earthern_rampart"
+		texturefile = "gfx//interface//buildings//earthern_rampart.tga"
+		loadType = "INGAME"
+	}
+	spriteType = {
+		name = "GFX_earthern_rampart_easterngfx"
+		texturefile = "gfx//interface//buildings//eastern_earthern_rampart.tga"
+		loadType = "INGAME"
+	}
+	spriteType = {
+		name = "GFX_earthern_rampart_asiangfx"
+		texturefile = "gfx//interface//buildings//chinese_earthern_rampart.tga"
+		loadType = "INGAME"
+	}
+	spriteType = {
+		name = "GFX_earthern_rampart_africangfx"
+		texturefile = "gfx//interface//buildings//african_earthern_rampart.tga"
+		loadType = "INGAME"
+	}
+	spriteType = {
+		name = "GFX_earthern_rampart_indiangfx"
+		texturefile = "gfx//interface//buildings//indian_earthern_rampart.tga"
+		loadType = "INGAME"
+	}
+	spriteType = {
+		name = "GFX_earthern_rampart_muslimgfx"
+		texturefile = "gfx//interface//buildings//muslim_earthern_rampart.tga"
+		loadType = "INGAME"
+	}
+	spriteType = {
+		name = "GFX_earthern_rampart_southamericagfx"
+		texturefile = "gfx//interface//buildings//southamerica_earthern_rampart.tga"
+		loadType = "INGAME"
+	}
+	spriteType = {
+		name = "GFX_earthern_rampart_northamericagfx"
+		texturefile = "gfx//interface//buildings//northamerica_earthern_rampart.tga"
+		loadType = "INGAME"
+	}
+	
+	##########################################
+	#			Tenaille
+	##########################################
+	
+	spriteType = {
+		name = "GFX_tenaille"
+		texturefile = "gfx//interface//buildings//tenaille.tga"
+		loadType = "INGAME"
+	}
+	spriteType = {
+		name = "GFX_tenaille_easterngfx"
+		texturefile = "gfx//interface//buildings//eastern_tenaille.tga"
+		loadType = "INGAME"
+	}
+	spriteType = {
+		name = "GFX_tenaille_asiangfx"
+		texturefile = "gfx//interface//buildings//chinese_tenaille.tga"
+		loadType = "INGAME"
+	}
+	spriteType = {
+		name = "GFX_tenaille_africangfx"
+		texturefile = "gfx//interface//buildings//african_tenaille.tga"
+		loadType = "INGAME"
+	}
+	spriteType = {
+		name = "GFX_tenaille_indiangfx"
+		texturefile = "gfx//interface//buildings//indian_tenaille.tga"
+		loadType = "INGAME"
+	}
+	spriteType = {
+		name = "GFX_tenaille_muslimgfx"
+		texturefile = "gfx//interface//buildings//muslim_tenaille.tga"
+		loadType = "INGAME"
+	}
+	spriteType = {
+		name = "GFX_tenaille_southamericagfx"
+		texturefile = "gfx//interface//buildings//southamerica_tenaille.tga"
+		loadType = "INGAME"
+	}
+	spriteType = {
+		name = "GFX_tenaille_northamericagfx"
+		texturefile = "gfx//interface//buildings//northamerica_tenaille.tga"
+		loadType = "INGAME"
+	}
+
+	##################################
+	#			NAVAL ARSENAL:
+	##################################
+
+	spriteType = {
+		name = "GFX_naval_arsenal"
+		texturefile = "gfx//interface//buildings//naval_arsenal.tga"
+		loadType = "INGAME"
+	}
+	spriteType = {
+		name = "GFX_naval_arsenal_easterngfx"
+		texturefile = "gfx//interface//buildings//eastern_naval_arsenal.tga"
+		loadType = "INGAME"
+	}
+	spriteType = {
+		name = "GFX_naval_arsenal_asiangfx"
+		texturefile = "gfx//interface//buildings//chinese_naval_arsenal.tga"
+		loadType = "INGAME"
+	}
+	spriteType = {
+		name = "GFX_naval_arsenal_africangfx"
+		texturefile = "gfx//interface//buildings//african_naval_arsenal.dds"
+		loadType = "INGAME"
+	}
+	spriteType = {
+		name = "GFX_naval_arsenal_indiangfx"
+		texturefile = "gfx//interface//buildings//indian_naval_arsenal.tga"
+		loadType = "INGAME"
+	}
+	spriteType = {
+		name = "GFX_naval_arsenal_muslimgfx"
+		texturefile = "gfx//interface//buildings//muslim_naval_arsenal.tga"
+		loadType = "INGAME"
+	}
+	spriteType = {
+		name = "GFX_naval_arsenal_southamericagfx"
+		texturefile = "gfx//interface//buildings//southamerica_naval_arsenal.tga"
+		loadType = "INGAME"
+	}
+	spriteType = {
+		name = "GFX_naval_arsenal_northamericagfx"
+		texturefile = "gfx//interface//buildings//northamerica_naval_arsenal.tga"
+		loadType = "INGAME"
+	}
+	##################################
+	#			TRADE CENTER:
+	##################################
+
+	spriteType = {
+		name = "GFX_trade_center"
+		texturefile = "gfx//interface//buildings//trade_center.tga"
+		loadType = "INGAME"
+	}
+	spriteType = {
+		name = "GFX_trade_center_easterngfx"
+		texturefile = "gfx//interface//buildings//eastern_trade_center.tga"
+		loadType = "INGAME"
+	}
+	spriteType = {
+		name = "GFX_trade_center_asiangfx"
+		texturefile = "gfx//interface//buildings//chinese_trade_center.tga"
+		loadType = "INGAME"
+	}
+	spriteType = {
+		name = "GFX_trade_center_africangfx"
+		texturefile = "gfx//interface//buildings//african_trade_center.tga"
+		loadType = "INGAME"
+	}
+	spriteType = {
+		name = "GFX_trade_center_indiangfx"
+		texturefile = "gfx//interface//buildings//indian_trade_center.tga"
+		loadType = "INGAME"
+	}
+	spriteType = {
+		name = "GFX_trade_center_muslimgfx"
+		texturefile = "gfx//interface//buildings//muslim_trade_center.tga"
+		loadType = "INGAME"
+	}
+	spriteType = {
+		name = "GFX_trade_center_southamericagfx"
+		texturefile = "gfx//interface//buildings//southamerica_trade_center.dds"
+		loadType = "INGAME"
+	}
+	spriteType = {
+		name = "GFX_trade_center_northamericagfx"
+		texturefile = "gfx//interface//buildings//northamerica_trade_center.tga"
+		loadType = "INGAME"
+	}
+
+	##################################
+	#			GLOBAL TRADE CENTER:
+	##################################
+
+	spriteType = {
+		name = "GFX_global_trade_center"
+		texturefile = "gfx//interface//buildings//global_trade_center.tga"
+		loadType = "INGAME"
+	}
+	spriteType = {
+		name = "GFX_global_trade_center_easterngfx"
+		texturefile = "gfx//interface//buildings//eastern_global_trade_center.tga"
+		loadType = "INGAME"
+	}
+	spriteType = {
+		name = "GFX_global_trade_center_asiangfx"
+		texturefile = "gfx//interface//buildings//chinese_global_trade_center.tga"
+		loadType = "INGAME"
+	}
+	spriteType = {
+		name = "GFX_global_trade_center_africangfx"
+		texturefile = "gfx//interface//buildings//african_global_trade_center.tga"
+		loadType = "INGAME"
+	}
+	spriteType = {
+		name = "GFX_global_trade_center_indiangfx"
+		texturefile = "gfx//interface//buildings//indian_global_trade_center.tga"
+		loadType = "INGAME"
+	}
+	spriteType = {
+		name = "GFX_global_trade_center_muslimgfx"
+		texturefile = "gfx//interface//buildings//muslim_global_trade_center.tga"
+		loadType = "INGAME"
+	}
+	spriteType = {
+		name = "GFX_global_trade_center_southamericagfx"
+		texturefile = "gfx//interface//buildings//southamerica_global_trade_center.tga"
+		loadType = "INGAME"
+	}
+	spriteType = {
+		name = "GFX_global_trade_center_northamericagfx"
+		texturefile = "gfx//interface//buildings//northamerica_global_trade_center.tga"
+		loadType = "INGAME"
+	}
+
+	##################################
+	#		WEAPONS ARSENAL:
+	##################################
+
+	spriteType = {
+		name = "GFX_weapons_arsenal"
+		texturefile = "gfx//interface//buildings//weapons_arsenal.tga"
+		loadType = "INGAME"
+	}
+	spriteType = {
+		name = "GFX_weapons_arsenal_easterngfx"
+		texturefile = "gfx//interface//buildings//eastern_weapons_arsenal.tga"
+		loadType = "INGAME"
+	}
+	spriteType = {
+		name = "GFX_weapons_arsenal_asiangfx"
+		texturefile = "gfx//interface//buildings//chinese_weapons_arsenal.tga"
+		loadType = "INGAME"
+	}
+	spriteType = {
+		name = "GFX_weapons_arsenal_africangfx"
+		texturefile = "gfx//interface//buildings//african_weapons_arsenal.dds"
+		loadType = "INGAME"
+	}
+	spriteType = {
+		name = "GFX_weapons_arsenal_indiangfx"
+		texturefile = "gfx//interface//buildings//indian_weapons_arsenal.tga"
+		loadType = "INGAME"
+	}
+	spriteType = {
+		name = "GFX_weapons_arsenal_muslimgfx"
+		texturefile = "gfx//interface//buildings//muslim_weapons_arsenal.tga"
+		loadType = "INGAME"
+	}
+	spriteType = {
+		name = "GFX_weapons_arsenal_southamericagfx"
+		texturefile = "gfx//interface//buildings//southamerica_weapons_arsenal.tga"
+		loadType = "INGAME"
+	}
+	spriteType = {
+		name = "GFX_weapons_arsenal_northamericagfx"
+		texturefile = "gfx//interface//buildings//northamerica_weapons_arsenal.tga"
+		loadType = "INGAME"
+	}
+
+	##################################
+	#		GRAND TREASURY:
+	##################################
+
+	spriteType = {
+		name = "GFX_grand_treasury"
+		texturefile = "gfx//interface//buildings//grand_treasury.tga"
+		loadType = "INGAME"
+	}
+	spriteType = {
+		name = "GFX_grand_treasury_easterngfx"
+		texturefile = "gfx//interface//buildings//eastern_grand_treasury.tga"
+		loadType = "INGAME"
+	}
+	spriteType = {
+		name = "GFX_grand_treasury_asiangfx"
+		texturefile = "gfx//interface//buildings//chinese_grand_treasury.tga"
+		loadType = "INGAME"
+	}
+	spriteType = {
+		name = "GFX_grand_treasury_africangfx"
+		texturefile = "gfx//interface//buildings//african_grand_treasury.tga"
+		loadType = "INGAME"
+	}
+	spriteType = {
+		name = "GFX_grand_treasury_indiangfx"
+		texturefile = "gfx//interface//buildings//indian_grand_treasury.tga"
+		loadType = "INGAME"
+	}
+	spriteType = {
+		name = "GFX_grand_treasury_muslimgfx"
+		texturefile = "gfx//interface//buildings//muslim_grand_treasury.tga"
+		loadType = "INGAME"
+	}
+	spriteType = {
+		name = "GFX_grand_treasury_southamericagfx"
+		texturefile = "gfx//interface//buildings//southamerica_grand_treasury.dds"
+		loadType = "INGAME"
+	}
+	spriteType = {
+		name = "GFX_grand_treasury_northamericagfx"
+		texturefile = "gfx//interface//buildings//northamerica_grand_treasury.tga"
+		loadType = "INGAME"
+	}
+
+	##################################
+	#		TOWN CENTER:
+	##################################
+
+	spriteType = {
+		name = "GFX_town_center"
+		texturefile = "gfx//interface//buildings//town_center.tga"
+		loadType = "INGAME"
+	}
+	spriteType = {
+		name = "GFX_town_center_easterngfx"
+		texturefile = "gfx//interface//buildings//eastern_town_center.tga"
+		loadType = "INGAME"
+	}
+	spriteType = {
+		name = "GFX_town_center_asiangfx"
+		texturefile = "gfx//interface//buildings//chinese_town_center.tga"
+		loadType = "INGAME"
+	}
+	spriteType = {
+		name = "GFX_town_center_africangfx"
+		texturefile = "gfx//interface//buildings//african_town_center.tga"
+		loadType = "INGAME"
+	}
+	spriteType = {
+		name = "GFX_town_center_indiangfx"
+		texturefile = "gfx//interface//buildings//indian_town_center.tga"
+		loadType = "INGAME"
+	}
+	spriteType = {
+		name = "GFX_town_center_muslimgfx"
+		texturefile = "gfx//interface//buildings//muslim_town_center.tga"
+		loadType = "INGAME"
+	}
+	spriteType = {
+		name = "GFX_town_center_southamericagfx"
+		texturefile = "gfx//interface//buildings//southamerica_town_center.tga"
+		loadType = "INGAME"
+	}
+	spriteType = {
+		name = "GFX_town_center_northamericagfx"
+		texturefile = "gfx//interface//buildings//northamerica_town_center.tga"
+		loadType = "INGAME"
+	}
+
+	#####################
+	#	FORTS:
+	#####################
+	spriteType = {
+		name = "GFX_fort_15th"
+		texturefile = "gfx//interface//buildings//latin_fort01.dds"
+		loadType = "INGAME"
+	}
+	spriteType = {
+		name = "GFX_fort_16th"
+		texturefile = "gfx//interface//buildings//latin_fort02.dds"
+		loadType = "INGAME"
+	}
+	spriteType = {
+		name = "GFX_fort_17th"
+		texturefile = "gfx//interface//buildings//latin_fort03.dds"
+		loadType = "INGAME"
+	}
+	spriteType = {
+		name = "GFX_fort_18th"
+		texturefile = "gfx//interface//buildings//latin_fort04.dds"
+		loadType = "INGAME"
+	}
+	########################################
+	#		DISASTERS
+	########################################
+	spriteType = {
+		name = "GFX_disaster_french_empire_disaster"
+		texturefile = "gfx//interface//disasters//french_empire_disaster.dds"
+		noOfFrames = 3
+		loadType = "INGAME"
+	}
+	spriteType = {
+		name = "GFX_disaster_wattasid_revolt_disaster"
+		texturefile = "gfx//interface//disasters//wattasid_revolt_disaster.dds"
+		noOfFrames = 3
+		loadType = "INGAME"
+	}
+	spriteType = {
+		name = "GFX_disaster_tlemcen_civil_crisis"
+		texturefile = "gfx//interface//disasters//tlemcen_civil_crisis.dds"
+		noOfFrames = 3
+		loadType = "INGAME"
+	}
+	spriteType = {
+		name = "GFX_disaster_ikko_ikki_rebellion"
+		texturefile = "gfx//interface//disasters//tlemcen_civil_crisis.dds"
+		noOfFrames = 3
+		loadType = "INGAME"
+	}
+	spriteType = {
+		name = "GFX_disaster_forced_abdication"
+		texturefile = "gfx//interface//disasters//french_empire_disaster.dds"
+		noOfFrames = 3
+		loadType = "INGAME"
+	}
+	spriteType = {
+		name = "GFX_disaster_timurid_civil_war"
+		texturefile = "gfx//interface//disasters//timurid_civil_war.dds"
+		noOfFrames = 3
+		loadType = "INGAME"
+	}
+	#########################
+	#		Age Ability
+	#########################
+	spriteType = {
+		name = "GFX_ab_mercenary_armies"
+		texturefile = "gfx/interface/ages/ab_mercenary_armies.dds"
+	}
+	#######################
+	#	New Estate Icons
+	#######################
+	spriteType = {
+		name = "GFX_raise_war_taxes"
+		texturefile = "gfx/interface/estates/raise_war_taxes.dds"
+	}
+	spriteType = {
+		name = "GFX_reduce_war_taxes"
+		texturefile = "gfx/interface/estates/reduce_war_taxes.dds"
+	}
+	spriteType = {
+		name = "GFX_recruit_from_estates"
+		texturefile = "gfx/interface/estates/recruit_from_estates.dds"
+	}
+	##################################
+	#	Holy Orders Rework
+	##################################
+	spriteType = {
+		name = "GFX_holy_order_promote_officials"
+		texturefile = "gfx/interface/holy_orders/promote_officials.dds"
+		noOfFrames = 4
+	}
+	spriteType = {
+		name = "GFX_mod_empty"
+		texturefile = "gfx/interface/mod_empty.dds"
+	}
+	spriteType = {
+		name = "GFX_view_edicts_button"
+		texturefile = "gfx/interface/view_edicts_button.dds"
+	}
+	spriteType = {
+		name = "GFX_holy_order_consecrate_metropolitan"
+		texturefile = "gfx/interface/holy_orders/consecrate_metropolitan.dds"
+		noOfFrames = 4
+	}
+	spriteType = {
+		name = "GFX_naval_supremacy_icon"
+		texturefile = "gfx/interface/naval_supremacy_icon.dds"
+	}
+	##############################################
+	#	TERRAIN
+	##############################################
+	spriteType = {
+		name = "GFX_colony_terrain_teleporter"
+		texturefile = "gfx/interface/terrain/colony_terrain_teleporter.dds"
+	}
+	spriteType = {
+		name = "GFX_combat_terrain_teleporter"
+		texturefile = "gfx/interface/terrain/combat_terrain_teleporter.dds"
+	}
+	spriteType = {
+		name = "GFX_colony_terrain_plains"
+		texturefile = "gfx/interface/terrain/colony_terrain_plains.dds"
+	}
+	spriteType = {
+		name = "GFX_combat_terrain_plains"
+		texturefile = "gfx/interface/terrain/combat_terrain_plains.dds"
+	}
+	spriteType = {
+		name = "GFX_colony_terrain_taiga"
+		texturefile = "gfx/interface/terrain/colony_terrain_taiga.dds"
+	}
+	spriteType = {
+		name = "GFX_combat_terrain_taiga"
+		texturefile = "gfx/interface/terrain/combat_terrain_taiga.dds"
+	}
+	spriteType = {
+		name = "GFX_colony_terrain_valley"
+		texturefile = "gfx/interface/terrain/colony_terrain_valley.dds"
+	}
+	spriteType = {
+		name = "GFX_combat_terrain_valley"
+		texturefile = "gfx/interface/terrain/combat_terrain_valley.dds"
+	}
+	spriteType = {
+		name = "GFX_colony_terrain_mesa"
+		texturefile = "gfx/interface/terrain/colony_terrain_mesa.dds"
+	}
+	spriteType = {
+		name = "GFX_combat_terrain_mesa"
+		texturefile = "gfx/interface/terrain/combat_terrain_mesa.dds"
+	}
+	spriteType = {
+		name = "GFX_colony_terrain_oasis"
+		texturefile = "gfx/interface/terrain/colony_terrain_oasis.dds"
+	}
+	spriteType = {
+		name = "GFX_combat_terrain_oasis"
+		texturefile = "gfx/interface/terrain/combat_terrain_oasis.dds"
+	}
+	spriteType = {
+		name = "GFX_colony_terrain_rainforest"
+		texturefile = "gfx/interface/terrain/colony_terrain_rainforest.dds"
+	}
+	spriteType = {
+		name = "GFX_combat_terrain_rainforest"
+		texturefile = "gfx/interface/terrain/combat_terrain_rainforest.dds"
+	}
+}

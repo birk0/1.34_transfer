@@ -1,0 +1,7 @@
+#Prov1822 - Suzhou
+culture = jianghuai
+religion = confucianism # changes
+
+base_tax = 1
+base_production = 1
+base_manpower = 1

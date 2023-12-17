@@ -1,0 +1,8 @@
+#Prov3583 - Prov3583
+religion = hinduism
+culture = gondi
+is_city = no
+
+base_tax = 1
+base_production = 1
+base_manpower = 1

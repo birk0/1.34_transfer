@@ -1,0 +1,17 @@
+#4535 - Wilkimierz
+
+owner = LIT
+controller = LIT
+capital = "Vilkmerge"
+is_city = yes
+culture = lithuanian
+religion = catholic
+trade_goods = livestock
+hre = no
+base_tax = 2
+base_production = 2
+base_manpower = 2
+add_core = LIT
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

@@ -1,0 +1,47 @@
+po_slandered_merchants = { #Country can "Un-slander" their merchants with this
+
+	prestige_base = 0.2
+	ae_base = 0
+	power_projection = humiliated_rival
+	warscore_cost = {
+		no_provinces = 50.0
+	}
+	warscore_cap = 100
+	requires_is_allowed = yes
+	is_visible = {}
+	effect = { 
+		while = {
+			limit = {
+				any_trade_node = {
+					has_slandered_merchants_from = { who = FROM }
+				}
+			}
+			random_trade_node = {
+				limit = {
+					has_slandered_merchants_from = { who = FROM }
+				}
+				remove_slandered_merchants_from = { who = FROM }
+			}
+		}
+		FROM = {
+			add_country_modifier = {
+				name = lost_trade_war_timer
+				duration = 7300
+				hidden = yes
+			}
+			remove_country_modifier = slander_merchant0
+			remove_country_modifier = slander_merchant1
+			remove_country_modifier = slander_merchant2
+			remove_country_modifier = slander_merchant3
+		}
+	}
+	ai_weight = {
+		export_to_variable = {
+			variable_name = ai_value
+			value = 1000
+		}
+		limit = {
+			always = yes
+		}
+	}
+}

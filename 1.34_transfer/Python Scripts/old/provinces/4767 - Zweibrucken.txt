@@ -1,0 +1,19 @@
+#4767 - Lukin
+
+owner = NOV
+controller = NOV  
+culture = karelian
+religion = orthodox
+hre = no
+trade_goods = fur 
+base_tax = 1 
+base_production = 1
+base_manpower = 1
+capital = "Lukin"
+is_city = yes
+add_core = NOV
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

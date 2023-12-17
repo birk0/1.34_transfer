@@ -1,0 +1,21 @@
+#1822 - Suzhou
+
+owner = MNG
+controller = MNG
+add_core = MNG
+culture = jianghuai
+religion = mahayana #changes
+capital = "Suzhou"
+trade_goods = grain
+hre = no
+#Changes
+base_tax = 4 
+base_production = 5
+base_manpower = 4
+is_city = yes
+
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

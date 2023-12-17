@@ -1,0 +1,19 @@
+#1972 - Udmurtia
+
+owner = KAZ
+controller = KAZ
+capital = "Elabuga"
+culture = uralic
+religion = tengri_pagan_reformed #Sami Shamanism
+trade_goods = grain
+hre = no
+base_tax = 2
+base_production = 2
+base_manpower = 2
+is_city = yes
+add_core = KAZ
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

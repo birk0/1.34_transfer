@@ -1,0 +1,20 @@
+#4259 - Velsk
+
+owner = NOV
+controller = NOV
+culture = russian 
+religion = orthodox
+hre = no
+base_tax = 1
+base_production = 1
+trade_goods = fur 
+base_manpower = 1
+capital = "Velsk"
+is_city = yes
+add_core = MOS
+add_core = NOV
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

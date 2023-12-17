@@ -1,0 +1,401 @@
+########################################
+# Events for Expelling Minorities
+#
+# written by Rufus Tronde
+########################################
+
+namespace = expel_minority_events
+
+# Heretics Move Overseas
+country_event = {
+	id = expel_minority_events.1
+	title = expel_minority_events.1.t
+	desc = expel_minority_events.1.d
+	picture = EUROPEAN_REFUGEES_eventPicture
+
+	trigger = {
+		any_owned_province = {
+			expelling_minorities = yes
+			has_owner_religion = no
+			religion_group = owner
+		}
+	}
+
+	is_triggered_only = yes
+
+	immediate = {
+		hidden_effect = {
+			random_owned_province = {
+				limit = {
+					expelling_minorities = yes
+					has_owner_religion = no
+					religion_group = owner
+				}
+				save_event_target_as = expelling_province
+			}
+			random_owned_province = {
+				limit = {
+					is_colony = yes
+					expelling_minorities_from = event_target:expelling_province
+				}
+				save_event_target_as = expelling_colony
+			}
+		}
+	}
+
+	option = {
+		name = expel_minority_events.1.a
+		event_target:expelling_colony = { add_colonysize = 200 }
+	}
+}
+
+# Heathens Move Overseas
+country_event = {
+	id = expel_minority_events.2
+	title = expel_minority_events.2.t
+	desc = expel_minority_events.2.d
+	picture = EUROPEAN_REFUGEES_eventPicture
+
+	trigger = {
+		any_owned_province = {
+			expelling_minorities = yes
+			has_owner_religion = no
+			NOT = { religion_group = owner }
+			any_neighbor_province = {
+				owned_by = root
+				has_owner_religion = no
+				NOT = { religion_group = owner }
+				base_tax = 2
+				expelling_minorities = no
+			}
+		}
+	}
+
+	is_triggered_only = yes
+
+	immediate = {
+		hidden_effect = {
+			random_owned_province = {
+				limit = {
+					expelling_minorities = yes
+					has_owner_religion = no
+					NOT = { religion_group = owner }
+					any_neighbor_province = {
+						owned_by = root
+						has_owner_religion = no
+						NOT = { religion_group = owner }
+						base_tax = 2
+						expelling_minorities = no
+					}
+				}
+				save_event_target_as = expelling_province
+				random_neighbor_province = {
+					limit = {
+						owned_by = root
+						has_owner_religion = no
+						NOT = { religion_group = owner }
+						base_tax = 2
+						expelling_minorities = no
+					}
+					save_event_target_as = heathen_neighbors_moving
+				}
+			}
+			random_owned_province = {
+				limit = {
+					is_colony = yes
+					expelling_minorities_from = event_target:expelling_province
+				}
+				save_event_target_as = expelling_colony
+			}
+		}
+	}
+
+	option = {
+		name = expel_minority_events.2.a
+		event_target:heathen_neighbors_moving = { add_base_tax = -1 }
+		event_target:expelling_colony = { add_colonysize = 200 }
+	}
+
+	option = {
+		name = expel_minority_events.2.b
+		event_target:heathen_neighbors_moving = { add_unrest = 3 }
+	}
+}
+
+# Last of minority group leaves rapidly
+country_event = {
+	id = expel_minority_events.3
+	title = expel_minority_events.3.t
+	desc = expel_minority_events.3.d
+	picture = EUROPEAN_REFUGEES_eventPicture
+
+	trigger = {
+		any_owned_province = {
+			expelling_minorities = yes
+			has_owner_culture = no
+			NOT = { religion_group = ROOT }
+			base_tax = 2
+		}
+	}
+
+	is_triggered_only = yes
+
+	immediate = {
+		hidden_effect = {
+			random_owned_province = {
+				limit = {
+					expelling_minorities = yes
+					has_owner_culture = no
+					NOT = { religion_group = ROOT }
+					base_tax = 2
+				}
+				save_event_target_as = expelling_province
+			}
+			random_owned_province = {
+				limit = {
+					is_colony = yes
+					expelling_minorities_from = event_target:expelling_province
+				}
+				save_event_target_as = expelling_colony
+			}
+		}
+	}
+
+	option = {
+		name = expel_minority_events.3.a
+		event_target:expelling_province= {
+			add_base_tax = -1
+			add_unrest = 4
+		}
+		event_target:expelling_colony = { add_colonysize = 300 }
+	}
+}
+
+# Cultural Minority Flees
+country_event = {
+	id = expel_minority_events.4
+	title = expel_minority_events.4.t
+	desc = expel_minority_events.4.d
+	picture = EUROPEAN_REFUGEES_eventPicture
+
+	trigger = {
+		any_owned_province = {
+			expelling_minorities = yes
+			has_owner_culture = no
+			base_tax = 2
+			any_neighbor_province = {
+				owned_by = ROOT
+				has_owner_culture = yes
+				expelling_minorities = no
+			}
+		}
+	}
+
+	is_triggered_only = yes
+
+	immediate = {
+		hidden_effect = {
+			random_owned_province = {
+				limit = {
+					expelling_minorities = yes
+					has_owner_culture = no
+					base_tax = 2
+					any_neighbor_province = {
+						has_owner_culture = yes
+						expelling_minorities = no
+					}
+				}
+				random_neighbor_province = {
+					limit = {
+						owned_by = ROOT
+						has_owner_culture = yes
+						expelling_minorities = no
+					}
+					save_event_target_as = nearby_refugee_province
+				}
+				save_event_target_as = expelling_province
+			}
+			random_owned_province = {
+				limit = {
+					is_colony = yes
+					expelling_minorities_from = event_target:expelling_province
+				}
+				save_event_target_as = expelling_colony
+			}
+		}
+	}
+
+	option = {
+		name = expel_minority_events.4.a
+		event_target:nearby_refugee_province = {
+			add_base_tax = 1
+			add_unrest = 10
+		}
+	}
+
+	option = {
+		name = expel_minority_events.4.b
+		event_target:expelling_province = { add_base_tax = -1 }
+	}
+}
+
+# Administrative Officials Expelled
+country_event = {
+	id = expel_minority_events.5
+	title = expel_minority_events.5.t
+	desc = expel_minority_events.5.d
+	picture = EUROPEAN_REFUGEES_eventPicture
+
+	trigger = {
+		any_owned_province = {
+			expelling_minorities = yes
+			base_tax = 2
+		}
+	}
+
+	is_triggered_only = yes
+
+	immediate = {
+		random_owned_province = {
+			limit = {
+				expelling_minorities = yes
+				base_tax = 2
+			}
+			save_event_target_as = expelling_province
+		}
+		random_owned_province = {
+			limit = {
+				is_colony = yes
+				expelling_minorities_from = event_target:expelling_province
+			}
+			save_event_target_as = expelling_colony
+		}
+	}
+
+	option = {
+		name = expel_minority_events.5.a
+		event_target:expelling_province = { add_local_autonomy = 25 }
+	}
+
+	option = {
+		name = expel_minority_events.5.b
+		event_target:expelling_province = { add_base_tax = -1 }
+	}
+}
+
+#Changes
+# Re-enables Minority Explusion
+province_event = {
+    id = expel_minority_events.6
+    hidden = yes
+	picture = "none"
+	title = "none"
+	desc = "none"
+    
+    trigger = {
+       expelling_minorities = yes
+       NOT = { has_province_modifier = cultural_zeal }
+       NOT = { has_province_flag = success } 
+       owner = { 
+           any_owned_province = {
+              expelling_minorities_from = ROOT
+              NOT = { has_province_modifier = minority_zeal }
+              NOT = { has_province_flag = failed_minority_colony }
+              colonysize = 500
+           }
+       }
+    }
+    
+    mean_time_to_happen = {
+        days = 1
+    }
+    
+    immediate = {
+       hidden_effect = {
+          random = {
+             chance = 40
+             set_province_flag = success
+          }
+          owner = { save_event_target_as = expeller }
+          random_province = {
+             limit = {
+                owned_by = event_target:expeller
+                expelling_minorities_from = ROOT
+                NOT = { has_province_modifier = minority_zeal }
+                NOT = { has_province_flag = failed_minority_colony }
+                has_colonist = yes
+                colonysize = 500
+             }
+             save_event_target_as = expelled_colony
+          }
+       }
+    }
+    
+    option = {
+       ai_chance = { factor = 1 }
+       if = {
+          limit = { has_province_flag = success }
+          event_target:expelled_colony = {
+             change_culture = ROOT
+             change_religion = ROOT
+             add_province_modifier = {
+                name = minority_zeal
+                duration = 10950
+             }
+             add_base_tax = 1
+             add_base_production = 1
+             add_base_manpower = 1
+          }
+          change_religion = event_target:expeller
+          change_culture = event_target:expeller
+          province_event = { id = cultural_events.2 } #Adds to Conversion variable in Cultural Center
+          add_province_modifier = {
+             name = cultural_zeal
+             duration = 10950
+          }
+          if = {
+             limit = {
+                   OR = {
+                      NOT = { base_tax = 1 }
+                      NOT = { base_production = 1 }
+                      NOT = { base_manpower = 1 }
+                   }
+              }
+              add_province_modifier = {
+                 name = citizens_deserting_province
+                 duration = 5475
+              }
+          }
+          else = {
+             add_base_tax = -1
+             add_base_production = -1
+             add_base_manpower = -1
+          }
+       }
+       else = {
+          event_target:expelled_colony = {
+              set_province_flag = failed_minority_colony
+           }
+       }
+    }
+    
+    after = { clr_province_flag = success }
+}
+             
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

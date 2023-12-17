@@ -1,0 +1,7 @@
+#Prov2130 - Nyingchi
+culture = tibetan
+religion = vajrayana
+
+base_tax = 1
+base_production = 1
+base_manpower = 1

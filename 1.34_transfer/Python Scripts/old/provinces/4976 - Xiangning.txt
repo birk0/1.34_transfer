@@ -1,0 +1,21 @@
+#4976 - Xiangning
+
+owner = MNG
+controller = MNG
+add_core = MNG
+culture = hubei
+religion = confucianism
+capital = "Xiangning"
+trade_goods = chinaware
+hre = no
+#Changes
+base_tax = 3
+base_production = 1
+base_manpower = 2
+is_city = yes
+add_core = SHU
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

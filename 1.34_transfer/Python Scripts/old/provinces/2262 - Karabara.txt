@@ -1,0 +1,19 @@
+# No previous file for Karabara
+
+owner = SON
+controller = SON
+add_core = SON
+is_city = yes
+culture = songhai 
+religion = sunni
+capital = "Karabara"
+trade_goods = fish
+hre = no
+base_tax = 3 
+base_production = 3
+base_manpower = 1
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

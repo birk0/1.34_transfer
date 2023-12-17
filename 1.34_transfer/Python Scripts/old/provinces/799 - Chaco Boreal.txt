@@ -1,0 +1,20 @@
+# 799 - Marmar
+
+owner = YAO
+controller = YAO
+add_core = YAO
+add_core = KBO
+culture = kanuri
+religion = sunni
+capital = "Marmar"
+is_city = yes
+base_manpower = 1
+trade_goods = paper #Producer of paper and exporter of Qurans throughout the Islamic world.
+hre = no
+base_tax = 1
+base_production = 1
+#discovered_by = sub_saharan
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

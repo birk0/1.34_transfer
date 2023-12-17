@@ -1,0 +1,5 @@
+#Prov1364 - Mekong Delta
+
+base_tax = 1
+base_production = 1
+base_manpower = 1

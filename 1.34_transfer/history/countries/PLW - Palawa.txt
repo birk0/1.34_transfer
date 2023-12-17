@@ -1,0 +1,9 @@
+#This is actually Zhao
+government = monarchy
+add_government_reform = chinese_warlord_reform
+government_rank = 2
+primary_culture = zhongyuan
+religion = confucianism
+technology_group = chinese
+capital = 692 #Huaiqing
+

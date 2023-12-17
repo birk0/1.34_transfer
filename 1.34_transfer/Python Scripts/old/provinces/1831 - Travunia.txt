@@ -1,0 +1,20 @@
+#1831 - Travunia # now Herzegovina
+
+owner = HRZ
+controller = HRZ
+culture = bosnian
+religion = orthodox
+capital = "Herceg Novi"
+trade_goods = wool
+hre = no
+base_tax = 2 
+base_production = 3
+base_manpower = 2
+is_city = yes
+add_core = HRZ
+add_core = BOS
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

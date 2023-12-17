@@ -1,0 +1,49 @@
+po_free_reign_piracy = { #Option to enforce free reign piracy on the loser
+	prestige_base = 1
+	ae_base = 1
+	power_projection = humiliated_rival
+	warscore_cost = {
+		no_provinces = 50.0
+	}
+	requires_is_allowed = yes
+	is_visible = {
+        always = yes
+	}
+	effect = { 
+		remove_opinion = {
+            modifier = opinion_raiding_pact
+            who = FROM
+        }
+		add_country_modifier = {
+			name = enforced_free_reign_piracy
+			duration = 1825
+		}
+		add_adm_power = 100
+		add_dip_power = 100
+		add_mil_power = 100
+		FROM = {
+			add_country_modifier = {
+				name = country_free_reign_piracy
+				duration = 7300
+			}
+			every_owned_province = {
+				limit = {
+					has_port = yes
+				}
+				add_province_modifier = {
+					name = free_reign_piracy
+					duration = 7300
+				}
+			}
+		}
+	}
+	ai_weight = {
+		export_to_variable = {
+			variable_name = ai_value
+			value = 1000
+		}
+		limit = {
+			always = yes
+		}
+	}
+}

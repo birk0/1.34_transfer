@@ -1,0 +1,8 @@
+#Prov741 - Cumana
+religion = animism
+culture = uralic
+is_city = no
+
+base_tax = 1
+base_production = 1
+base_manpower = 1

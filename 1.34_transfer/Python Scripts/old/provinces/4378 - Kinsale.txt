@@ -1,0 +1,20 @@
+#4378 - Lands of the Mac Carthys
+
+owner = MCM
+controller = MCM
+culture = irish
+religion = catholic
+hre = no
+base_tax = 2
+base_production = 1
+trade_goods = fish
+base_manpower = 1
+capital = "Deas-Mhumhain"
+fort_15th = yes
+is_city = yes
+add_core = MCM
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

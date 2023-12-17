@@ -1,0 +1,19 @@
+#Åland
+
+owner = SWE
+controller = SWE
+add_core = SWE
+culture = swedish
+religion = catholic
+capital = "Mariehamn"
+is_city = yes
+hre = no
+base_tax = 1 
+base_production = 1
+base_manpower = 1
+trade_goods = fish
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

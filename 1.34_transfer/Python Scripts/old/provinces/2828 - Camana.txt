@@ -1,0 +1,19 @@
+# 2828 - Pirogue
+
+owner = TMB
+controller = TMB # under Tuareg rule to 1468
+add_core = TMB
+culture = tuareg
+is_city = yes
+base_manpower = 1
+religion = sunni
+capital = "Pirogue"
+trade_goods = livestock
+hre = no
+base_tax = 1
+base_production = 1
+native_ferocity = 4
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

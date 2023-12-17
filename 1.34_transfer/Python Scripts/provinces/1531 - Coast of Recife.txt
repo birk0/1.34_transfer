@@ -1,0 +1,7 @@
+#Prov1531 - Coast of Recife
+culture = songhai
+religion = sunni # Fetishism
+
+base_tax = 1
+base_production = 1
+base_manpower = 1

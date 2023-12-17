@@ -1,0 +1,19 @@
+#426 - Amol
+
+owner = TAB
+controller = TAB
+culture = mazandarani
+religion = shiite
+capital = "Amol"
+trade_goods = silk
+hre = no
+base_tax = 4
+base_production = 4
+base_manpower = 2
+is_city = yes
+fort_15th = yes
+add_core = TAB
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

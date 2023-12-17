@@ -1,0 +1,7 @@
+#Prov2110 - Yehe
+culture = manchu
+religion = vajrayana
+
+base_tax = 1
+base_production = 1
+base_manpower = 1

@@ -1,0 +1,46 @@
+po_force_union = { #For nations outside the Emperor of China claiming the Mandate
+
+	prestige_base = 1
+	ae_base = 1
+	power_projection = humiliated_rival
+	warscore_cost = {
+		no_provinces = 75.0
+	}
+	warscore_cap = 100
+	is_visible = {
+		OR = {
+			ai = yes
+			FROM = { ai = yes }
+		}
+		valid_for_personal_unions_trigger = yes
+		FROM = {
+			dynasty = ROOT
+			OR = {
+				has_heir = no
+				NOT = { heir_claim = 25 }
+			}
+			valid_for_personal_unions_trigger = yes
+		}
+	}
+	effect = {
+		create_union = FROM
+	}
+	ai_weight = {
+		export_to_variable = {
+			variable_name = ai_value
+			value = 1000
+		}
+		limit = {
+			OR = {
+				AND = {
+					NOT = { is_absolutism_active = yes }
+					FROM = { total_development = 100 }
+				}
+				AND = {
+					is_absolutism_active = yes
+					FROM = { total_development = 200 }
+				}
+			}
+		}
+	}
+}

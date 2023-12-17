@@ -1,0 +1,2299 @@
+#WARNING! LOAD BEFORE VANILLA FILES
+
+east_asian = {	# Chinese Group
+	graphical_culture = asiangfx
+
+	manchu_new = {
+		#country = { has_banners = 1}
+		#province = { local_has_banners = 1}
+		#Banners are given via Manchu NI, to gain banners as non-Jurchen, upgrade Jurchen Cultural Center to Tier 3
+		
+		primary = MCH
+		dynasty_names = {
+			"Aisin Gioro" Wanyan "Yehe Nara" "Ula Nara" "Magiya Hala" Niohuru
+			Heseri Guwalgiya Tunggiya Hata Hoifa Yeren Udige
+		}
+		male_names = {
+			"Bukuri Yongson" "Sibeoci Fiyanggu" "Dudu Mengtemu" "Huang Taiji" "Hiowan Yei" "In Jen" "Hung Li" "Yong Yan"
+			"Min Ning" Cungsan Tolo Fuman Giocangga Taksi Nurhachi Dorgon Hooge Fulin Fanca Hoogle Yinzhi Yinreng 
+			Yinti Daisan Abatai Ajige Dodo Yinxiang Yinsi Yintang Hongshi Hongzhou Yongqi Akjan Ayan Baohu Chengjun 
+			Dorgide Eje Encehen Fisin Fulu Ganyong Ganzhan Hurong Jabsan Jakdan Leli Liyi Lung Mergen Muduri Mujin Oori 
+			Radi Talman Wehe Yelu Yongyi Zhanhung Zhenghu Zhengrong Zhongcheng Zhongchun Zhongho Zhonghu Zhonghung 
+			Zongqian Zhongxian Zhongyong Zhongyu
+		}
+		female_names = {
+			Fen Jian Wen Hejing Hejia Hexiao Zhuangjing 
+		}
+	}
+	chihan = {	#Zhili
+		primary = YAN
+		male_names = {
+			Zhanji Zhanjun Zhanyong Zhanyin Zhanshan Zhangang Zhan'ao Zhankai Zhanyan Jianrui Jianlin Jianti Jianchun 
+			Jianze Jianjun Jianzhi Jianpei Jianji Youji Youtang Youwan Youlun Youbing Youyun Youheng You'kai Houzhao 
+			Houwei Houxi Houcong Zaiji Zairui Zaihou Yiling Yijun Yiliu Changluo Changxu Changxun Changzhi Changhao 
+			Changrun Changyin Changbo Youxiao Youxue Youmo Youjian Youyi Youshan Ciran Ciyu Cijiong Cilang Ciheng 
+			Cizhao Cihuan Cican Shangbing Shanglie Shangyi Shanghong Zhijun Zhibao Gongxi Gongjian Gongtang Gongming 
+			Jixi Jiye Jihuang Jihuan Jixuan Meigui Meiyuan Zhongxuan Zhongduo Qiyuan Qiying Qirong Youdun Zishi Linmei 
+			Cijue Ciwei Cikai Youhua Linyuan Qisheng Biao Shuang Gang Su Zhen Bo Zi Chun Bo Gui Xuntan Xunquan Ying 
+			Zhanyan Zhi Quan Chenhao Bian Hui Song Mo Yin Jing Dong Nan Shouqian Xiongying Yuntong Yunjian Wengui 
+			Wenkui Gaoxu Gaosui Houyu ZhanYong Zhanshan Yousi Jianchun Jianshu Jianzhi Yourong Houjue Zailun Zaiji 
+			Changfang Changxu Changxun Changzhi Changrun Cilang Cihuan Guan Keqin Fu Dounan Chengzu Zixiang Bingyi Guan 
+			Zongren Yuan Fu Xingui Zonglian Ji Xiang Yu Quan Zhong Ji Xizheng Jian Shao'en Jiusi Song Chun Youxue Zugan 
+			Yingfang Kekuan Mo Juren Qing Qinshun Duan Zhencheng Bao Li Xiao Xian Tang Boyuan Chunyao Xianzhang Liang 
+			Ruoshui Shouyi De Ti Hongxian Shihuai Shixi Yizan Huali Zhide Yuanxi Xixue Weizhen Han Boheng Mian Zongyi 
+			Kai Meng Hong Du Danian Tai Minzheng Mengyang Jingming Zhenqing Gong Shanfu Shen Zhengming Zuo Weiqi 
+			Shenzhong Panlong Youguang Weizhen Shisheng Qichang Hongdao Nanying Shaozong Peng Wenshi Liangxiang Wannian 
+			Zongyan Tingkui Bangzuo Ruxiu Guochang Huanchun Xianming Shengdou Zhaochen Shimei Guoxi Shangzhen Daoxing 
+			Tingbiao Yunrang Wan Jin Ding Wuchang Chengzhang Jiefu Wenyong Shiming Chonghua Sanfeng Wanyan Dayong 
+			Zhongwen Kexue Yuanjie Rucai Kexi Zhongming Jinxing Yan Yingxiang Zongmin
+		}
+		female_names = {
+			Heying Chunmei Tianhui Kon Mao Yuying Yuantong Yanxiang Xiurong Shouying Fuyuan Luzhen Ruirong Suzhen 
+			Xiao'e Xiaoying Xiaoyuan Xiaoji Xiaolou
+		}
+	}
+	cantonese = {
+		primary = YUE
+		male_names = {
+			Zhanji Zhanjun Zhanyong Zhanyin Zhanshan Zhangang Zhan'ao Zhankai Zhanyan Jianrui Jianlin Jianti Jianchun 
+			Jianze Jianjun Jianzhi Jianpei Jianji Youji Youtang Youwan Youlun Youbing Youyun Youheng You'kai Houzhao 
+			Houwei Houxi Houcong Zaiji Zairui Zaihou Yiling Yijun Yiliu Changluo Changxu Changxun Changzhi Changhao 
+			Changrun Changyin Changbo Youxiao Youxue Youmo Youjian Youyi Youshan Ciran Ciyu Cijiong Cilang Ciheng 
+			Cizhao Cihuan Cican Shangbing Shanglie Shangyi Shanghong Zhijun Zhibao Gongxi Gongjian Gongtang Gongming 
+			Jixi Jiye Jihuang Jihuan Jixuan Meigui Meiyuan Zhongxuan Zhongduo Qiyuan Qiying Qirong Youdun Zishi Linmei 
+			Cijue Ciwei Cikai Youhua Linyuan Qisheng Biao Shuang Gang Su Zhen Bo Zi Chun Bo Gui Xuntan Xunquan Ying 
+			Zhanyan Zhi Quan Chenhao Bian Hui Song Mo Yin Jing Dong Nan Shouqian Xiongying Yuntong Yunjian Wengui 
+			Wenkui Gaoxu Gaosui Houyu ZhanYong Zhanshan Yousi Jianchun Jianshu Jianzhi Yourong Houjue Zailun Zaiji 
+			Changfang Changxu Changxun Changzhi Changrun Cilang Cihuan Guan Keqin Fu Dounan Chengzu Zixiang Bingyi Guan 
+			Zongren Yuan Fu Xingui Zonglian Ji Xiang Yu Quan Zhong Ji Xizheng Jian Shao'en Jiusi Song Chun Youxue Zugan 
+			Yingfang Kekuan Mo Juren Qing Qinshun Duan Zhencheng Bao Li Xiao Xian Tang Boyuan Chunyao Xianzhang Liang 
+			Ruoshui Shouyi De Ti Hongxian Shihuai Shixi Yizan Huali Zhide Yuanxi Xixue Weizhen Han Boheng Mian Zongyi 
+			Kai Meng Hong Du Danian Tai Minzheng Mengyang Jingming Zhenqing Gong Shanfu Shen Zhengming Zuo Weiqi 
+			Shenzhong Panlong Youguang Weizhen Shisheng Qichang Hongdao Nanying Shaozong Peng Wenshi Liangxiang Wannian 
+			Zongyan Tingkui Bangzuo Ruxiu Guochang Huanchun Xianming Shengdou Zhaochen Shimei Guoxi Shangzhen Daoxing 
+			Tingbiao Yunrang Wan Jin Ding Wuchang Chengzhang Jiefu Wenyong Shiming Chonghua Sanfeng Wanyan Dayong 
+			Zhongwen Kexue Yuanjie Rucai Kexi Zhongming Jinxing Yan Yingxiang Zongmin
+		}
+		female_names = {
+			Heying Chunmei Tianhui Kon Mao Yuying Yuantong Yanxiang Xiurong Shouying Fuyuan Luzhen Ruirong Suzhen 
+			Xiao'e Xiaoying Xiaoyuan Xiaoji Xiaolou
+		}
+	}
+	jin = {
+		primary = JIN
+		male_names = {
+			Zhanji Zhanjun Zhanyong Zhanyin Zhanshan Zhangang Zhan'ao Zhankai Zhanyan Jianrui Jianlin Jianti Jianchun 
+			Jianze Jianjun Jianzhi Jianpei Jianji Youji Youtang Youwan Youlun Youbing Youyun Youheng You'kai Houzhao 
+			Houwei Houxi Houcong Zaiji Zairui Zaihou Yiling Yijun Yiliu Changluo Changxu Changxun Changzhi Changhao 
+			Changrun Changyin Changbo Youxiao Youxue Youmo Youjian Youyi Youshan Ciran Ciyu Cijiong Cilang Ciheng 
+			Cizhao Cihuan Cican Shangbing Shanglie Shangyi Shanghong Zhijun Zhibao Gongxi Gongjian Gongtang Gongming 
+			Jixi Jiye Jihuang Jihuan Jixuan Meigui Meiyuan Zhongxuan Zhongduo Qiyuan Qiying Qirong Youdun Zishi Linmei 
+			Cijue Ciwei Cikai Youhua Linyuan Qisheng Biao Shuang Gang Su Zhen Bo Zi Chun Bo Gui Xuntan Xunquan Ying 
+			Zhanyan Zhi Quan Chenhao Bian Hui Song Mo Yin Jing Dong Nan Shouqian Xiongying Yuntong Yunjian Wengui 
+			Wenkui Gaoxu Gaosui Houyu ZhanYong Zhanshan Yousi Jianchun Jianshu Jianzhi Yourong Houjue Zailun Zaiji 
+			Changfang Changxu Changxun Changzhi Changrun Cilang Cihuan Guan Keqin Fu Dounan Chengzu Zixiang Bingyi Guan 
+			Zongren Yuan Fu Xingui Zonglian Ji Xiang Yu Quan Zhong Ji Xizheng Jian Shao'en Jiusi Song Chun Youxue Zugan 
+			Yingfang Kekuan Mo Juren Qing Qinshun Duan Zhencheng Bao Li Xiao Xian Tang Boyuan Chunyao Xianzhang Liang 
+			Ruoshui Shouyi De Ti Hongxian Shihuai Shixi Yizan Huali Zhide Yuanxi Xixue Weizhen Han Boheng Mian Zongyi 
+			Kai Meng Hong Du Danian Tai Minzheng Mengyang Jingming Zhenqing Gong Shanfu Shen Zhengming Zuo Weiqi 
+			Shenzhong Panlong Youguang Weizhen Shisheng Qichang Hongdao Nanying Shaozong Peng Wenshi Liangxiang Wannian 
+			Zongyan Tingkui Bangzuo Ruxiu Guochang Huanchun Xianming Shengdou Zhaochen Shimei Guoxi Shangzhen Daoxing 
+			Tingbiao Yunrang Wan Jin Ding Wuchang Chengzhang Jiefu Wenyong Shiming Chonghua Sanfeng Wanyan Dayong 
+			Zhongwen Kexue Yuanjie Rucai Kexi Zhongming Jinxing Yan Yingxiang Zongmin
+		}
+		female_names = {
+			Heying Chunmei Tianhui Kon Mao Yuying Yuantong Yanxiang Xiurong Shouying Fuyuan Luzhen Ruirong Suzhen 
+			Xiao'e Xiaoying Xiaoyuan Xiaoji Xiaolou
+		}
+	}
+	wu = {
+		primary = WUU
+		male_names = {
+			Zhanji Zhanjun Zhanyong Zhanyin Zhanshan Zhangang Zhan'ao Zhankai Zhanyan Jianrui Jianlin Jianti Jianchun 
+			Jianze Jianjun Jianzhi Jianpei Jianji Youji Youtang Youwan Youlun Youbing Youyun Youheng You'kai Houzhao 
+			Houwei Houxi Houcong Zaiji Zairui Zaihou Yiling Yijun Yiliu Changluo Changxu Changxun Changzhi Changhao 
+			Changrun Changyin Changbo Youxiao Youxue Youmo Youjian Youyi Youshan Ciran Ciyu Cijiong Cilang Ciheng 
+			Cizhao Cihuan Cican Shangbing Shanglie Shangyi Shanghong Zhijun Zhibao Gongxi Gongjian Gongtang Gongming 
+			Jixi Jiye Jihuang Jihuan Jixuan Meigui Meiyuan Zhongxuan Zhongduo Qiyuan Qiying Qirong Youdun Zishi Linmei 
+			Cijue Ciwei Cikai Youhua Linyuan Qisheng Biao Shuang Gang Su Zhen Bo Zi Chun Bo Gui Xuntan Xunquan Ying 
+			Zhanyan Zhi Quan Chenhao Bian Hui Song Mo Yin Jing Dong Nan Shouqian Xiongying Yuntong Yunjian Wengui 
+			Wenkui Gaoxu Gaosui Houyu ZhanYong Zhanshan Yousi Jianchun Jianshu Jianzhi Yourong Houjue Zailun Zaiji 
+			Changfang Changxu Changxun Changzhi Changrun Cilang Cihuan Guan Keqin Fu Dounan Chengzu Zixiang Bingyi Guan 
+			Zongren Yuan Fu Xingui Zonglian Ji Xiang Yu Quan Zhong Ji Xizheng Jian Shao'en Jiusi Song Chun Youxue Zugan 
+			Yingfang Kekuan Mo Juren Qing Qinshun Duan Zhencheng Bao Li Xiao Xian Tang Boyuan Chunyao Xianzhang Liang 
+			Ruoshui Shouyi De Ti Hongxian Shihuai Shixi Yizan Huali Zhide Yuanxi Xixue Weizhen Han Boheng Mian Zongyi 
+			Kai Meng Hong Du Danian Tai Minzheng Mengyang Jingming Zhenqing Gong Shanfu Shen Zhengming Zuo Weiqi 
+			Shenzhong Panlong Youguang Weizhen Shisheng Qichang Hongdao Nanying Shaozong Peng Wenshi Liangxiang Wannian 
+			Zongyan Tingkui Bangzuo Ruxiu Guochang Huanchun Xianming Shengdou Zhaochen Shimei Guoxi Shangzhen Daoxing 
+			Tingbiao Yunrang Wan Jin Ding Wuchang Chengzhang Jiefu Wenyong Shiming Chonghua Sanfeng Wanyan Dayong 
+			Zhongwen Kexue Yuanjie Rucai Kexi Zhongming Jinxing Yan Yingxiang Zongmin
+		}
+		female_names = {
+			Heying Chunmei Tianhui Kon Mao Yuying Yuantong Yanxiang Xiurong Shouying Fuyuan Luzhen Ruirong Suzhen 
+			Xiao'e Xiaoying Xiaoyuan Xiaoji Xiaolou
+		}
+	}
+	chimin = {
+		primary = MIN
+		male_names = {
+			Zhanji Zhanjun Zhanyong Zhanyin Zhanshan Zhangang Zhan'ao Zhankai Zhanyan Jianrui Jianlin Jianti Jianchun 
+			Jianze Jianjun Jianzhi Jianpei Jianji Youji Youtang Youwan Youlun Youbing Youyun Youheng You'kai Houzhao 
+			Houwei Houxi Houcong Zaiji Zairui Zaihou Yiling Yijun Yiliu Changluo Changxu Changxun Changzhi Changhao 
+			Changrun Changyin Changbo Youxiao Youxue Youmo Youjian Youyi Youshan Ciran Ciyu Cijiong Cilang Ciheng 
+			Cizhao Cihuan Cican Shangbing Shanglie Shangyi Shanghong Zhijun Zhibao Gongxi Gongjian Gongtang Gongming 
+			Jixi Jiye Jihuang Jihuan Jixuan Meigui Meiyuan Zhongxuan Zhongduo Qiyuan Qiying Qirong Youdun Zishi Linmei 
+			Cijue Ciwei Cikai Youhua Linyuan Qisheng Biao Shuang Gang Su Zhen Bo Zi Chun Bo Gui Xuntan Xunquan Ying 
+			Zhanyan Zhi Quan Chenhao Bian Hui Song Mo Yin Jing Dong Nan Shouqian Xiongying Yuntong Yunjian Wengui 
+			Wenkui Gaoxu Gaosui Houyu ZhanYong Zhanshan Yousi Jianchun Jianshu Jianzhi Yourong Houjue Zailun Zaiji 
+			Changfang Changxu Changxun Changzhi Changrun Cilang Cihuan Guan Keqin Fu Dounan Chengzu Zixiang Bingyi Guan 
+			Zongren Yuan Fu Xingui Zonglian Ji Xiang Yu Quan Zhong Ji Xizheng Jian Shao'en Jiusi Song Chun Youxue Zugan 
+			Yingfang Kekuan Mo Juren Qing Qinshun Duan Zhencheng Bao Li Xiao Xian Tang Boyuan Chunyao Xianzhang Liang 
+			Ruoshui Shouyi De Ti Hongxian Shihuai Shixi Yizan Huali Zhide Yuanxi Xixue Weizhen Han Boheng Mian Zongyi 
+			Kai Meng Hong Du Danian Tai Minzheng Mengyang Jingming Zhenqing Gong Shanfu Shen Zhengming Zuo Weiqi 
+			Shenzhong Panlong Youguang Weizhen Shisheng Qichang Hongdao Nanying Shaozong Peng Wenshi Liangxiang Wannian 
+			Zongyan Tingkui Bangzuo Ruxiu Guochang Huanchun Xianming Shengdou Zhaochen Shimei Guoxi Shangzhen Daoxing 
+			Tingbiao Yunrang Wan Jin Ding Wuchang Chengzhang Jiefu Wenyong Shiming Chonghua Sanfeng Wanyan Dayong 
+			Zhongwen Kexue Yuanjie Rucai Kexi Zhongming Jinxing Yan Yingxiang Zongmin
+		}
+		female_names = {
+			Heying Chunmei Tianhui Kon Mao Yuying Yuantong Yanxiang Xiurong Shouying Fuyuan Luzhen Ruirong Suzhen 
+			Xiao'e Xiaoying Xiaoyuan Xiaoji Xiaolou
+		}
+	}
+	hakka = {
+		primary = HUA
+		male_names = {
+			Zhanji Zhanjun Zhanyong Zhanyin Zhanshan Zhangang Zhan'ao Zhankai Zhanyan Jianrui Jianlin Jianti Jianchun 
+			Jianze Jianjun Jianzhi Jianpei Jianji Youji Youtang Youwan Youlun Youbing Youyun Youheng You'kai Houzhao 
+			Houwei Houxi Houcong Zaiji Zairui Zaihou Yiling Yijun Yiliu Changluo Changxu Changxun Changzhi Changhao 
+			Changrun Changyin Changbo Youxiao Youxue Youmo Youjian Youyi Youshan Ciran Ciyu Cijiong Cilang Ciheng 
+			Cizhao Cihuan Cican Shangbing Shanglie Shangyi Shanghong Zhijun Zhibao Gongxi Gongjian Gongtang Gongming 
+			Jixi Jiye Jihuang Jihuan Jixuan Meigui Meiyuan Zhongxuan Zhongduo Qiyuan Qiying Qirong Youdun Zishi Linmei 
+			Cijue Ciwei Cikai Youhua Linyuan Qisheng Biao Shuang Gang Su Zhen Bo Zi Chun Bo Gui Xuntan Xunquan Ying 
+			Zhanyan Zhi Quan Chenhao Bian Hui Song Mo Yin Jing Dong Nan Shouqian Xiongying Yuntong Yunjian Wengui 
+			Wenkui Gaoxu Gaosui Houyu ZhanYong Zhanshan Yousi Jianchun Jianshu Jianzhi Yourong Houjue Zailun Zaiji 
+			Changfang Changxu Changxun Changzhi Changrun Cilang Cihuan Guan Keqin Fu Dounan Chengzu Zixiang Bingyi Guan 
+			Zongren Yuan Fu Xingui Zonglian Ji Xiang Yu Quan Zhong Ji Xizheng Jian Shao'en Jiusi Song Chun Youxue Zugan 
+			Yingfang Kekuan Mo Juren Qing Qinshun Duan Zhencheng Bao Li Xiao Xian Tang Boyuan Chunyao Xianzhang Liang 
+			Ruoshui Shouyi De Ti Hongxian Shihuai Shixi Yizan Huali Zhide Yuanxi Xixue Weizhen Han Boheng Mian Zongyi 
+			Kai Meng Hong Du Danian Tai Minzheng Mengyang Jingming Zhenqing Gong Shanfu Shen Zhengming Zuo Weiqi 
+			Shenzhong Panlong Youguang Weizhen Shisheng Qichang Hongdao Nanying Shaozong Peng Wenshi Liangxiang Wannian 
+			Zongyan Tingkui Bangzuo Ruxiu Guochang Huanchun Xianming Shengdou Zhaochen Shimei Guoxi Shangzhen Daoxing 
+			Tingbiao Yunrang Wan Jin Ding Wuchang Chengzhang Jiefu Wenyong Shiming Chonghua Sanfeng Wanyan Dayong 
+			Zhongwen Kexue Yuanjie Rucai Kexi Zhongming Jinxing Yan Yingxiang Zongmin
+		}
+		female_names = {
+			Heying Chunmei Tianhui Kon Mao Yuying Yuantong Yanxiang Xiurong Shouying Fuyuan Luzhen Ruirong Suzhen 
+			Xiao'e Xiaoying Xiaoyuan Xiaoji Xiaolou
+		}
+	}
+	gan = {
+		primary = NNG
+		male_names = {
+			Zhanji Zhanjun Zhanyong Zhanyin Zhanshan Zhangang Zhan'ao Zhankai Zhanyan Jianrui Jianlin Jianti Jianchun 
+			Jianze Jianjun Jianzhi Jianpei Jianji Youji Youtang Youwan Youlun Youbing Youyun Youheng You'kai Houzhao 
+			Houwei Houxi Houcong Zaiji Zairui Zaihou Yiling Yijun Yiliu Changluo Changxu Changxun Changzhi Changhao 
+			Changrun Changyin Changbo Youxiao Youxue Youmo Youjian Youyi Youshan Ciran Ciyu Cijiong Cilang Ciheng 
+			Cizhao Cihuan Cican Shangbing Shanglie Shangyi Shanghong Zhijun Zhibao Gongxi Gongjian Gongtang Gongming 
+			Jixi Jiye Jihuang Jihuan Jixuan Meigui Meiyuan Zhongxuan Zhongduo Qiyuan Qiying Qirong Youdun Zishi Linmei 
+			Cijue Ciwei Cikai Youhua Linyuan Qisheng Biao Shuang Gang Su Zhen Bo Zi Chun Bo Gui Xuntan Xunquan Ying 
+			Zhanyan Zhi Quan Chenhao Bian Hui Song Mo Yin Jing Dong Nan Shouqian Xiongying Yuntong Yunjian Wengui 
+			Wenkui Gaoxu Gaosui Houyu ZhanYong Zhanshan Yousi Jianchun Jianshu Jianzhi Yourong Houjue Zailun Zaiji 
+			Changfang Changxu Changxun Changzhi Changrun Cilang Cihuan Guan Keqin Fu Dounan Chengzu Zixiang Bingyi Guan 
+			Zongren Yuan Fu Xingui Zonglian Ji Xiang Yu Quan Zhong Ji Xizheng Jian Shao'en Jiusi Song Chun Youxue Zugan 
+			Yingfang Kekuan Mo Juren Qing Qinshun Duan Zhencheng Bao Li Xiao Xian Tang Boyuan Chunyao Xianzhang Liang 
+			Ruoshui Shouyi De Ti Hongxian Shihuai Shixi Yizan Huali Zhide Yuanxi Xixue Weizhen Han Boheng Mian Zongyi 
+			Kai Meng Hong Du Danian Tai Minzheng Mengyang Jingming Zhenqing Gong Shanfu Shen Zhengming Zuo Weiqi 
+			Shenzhong Panlong Youguang Weizhen Shisheng Qichang Hongdao Nanying Shaozong Peng Wenshi Liangxiang Wannian 
+			Zongyan Tingkui Bangzuo Ruxiu Guochang Huanchun Xianming Shengdou Zhaochen Shimei Guoxi Shangzhen Daoxing 
+			Tingbiao Yunrang Wan Jin Ding Wuchang Chengzhang Jiefu Wenyong Shiming Chonghua Sanfeng Wanyan Dayong 
+			Zhongwen Kexue Yuanjie Rucai Kexi Zhongming Jinxing Yan Yingxiang Zongmin
+		}
+		female_names = {
+			Heying Chunmei Tianhui Kon Mao Yuying Yuantong Yanxiang Xiurong Shouying Fuyuan Luzhen Ruirong Suzhen 
+			Xiao'e Xiaoying Xiaoyuan Xiaoji Xiaolou
+		}
+	}
+	xiang = {
+		primary = CHC
+		male_names = {
+			Zhanji Zhanjun Zhanyong Zhanyin Zhanshan Zhangang Zhan'ao Zhankai Zhanyan Jianrui Jianlin Jianti Jianchun 
+			Jianze Jianjun Jianzhi Jianpei Jianji Youji Youtang Youwan Youlun Youbing Youyun Youheng You'kai Houzhao 
+			Houwei Houxi Houcong Zaiji Zairui Zaihou Yiling Yijun Yiliu Changluo Changxu Changxun Changzhi Changhao 
+			Changrun Changyin Changbo Youxiao Youxue Youmo Youjian Youyi Youshan Ciran Ciyu Cijiong Cilang Ciheng 
+			Cizhao Cihuan Cican Shangbing Shanglie Shangyi Shanghong Zhijun Zhibao Gongxi Gongjian Gongtang Gongming 
+			Jixi Jiye Jihuang Jihuan Jixuan Meigui Meiyuan Zhongxuan Zhongduo Qiyuan Qiying Qirong Youdun Zishi Linmei 
+			Cijue Ciwei Cikai Youhua Linyuan Qisheng Biao Shuang Gang Su Zhen Bo Zi Chun Bo Gui Xuntan Xunquan Ying 
+			Zhanyan Zhi Quan Chenhao Bian Hui Song Mo Yin Jing Dong Nan Shouqian Xiongying Yuntong Yunjian Wengui 
+			Wenkui Gaoxu Gaosui Houyu ZhanYong Zhanshan Yousi Jianchun Jianshu Jianzhi Yourong Houjue Zailun Zaiji 
+			Changfang Changxu Changxun Changzhi Changrun Cilang Cihuan Guan Keqin Fu Dounan Chengzu Zixiang Bingyi Guan 
+			Zongren Yuan Fu Xingui Zonglian Ji Xiang Yu Quan Zhong Ji Xizheng Jian Shao'en Jiusi Song Chun Youxue Zugan 
+			Yingfang Kekuan Mo Juren Qing Qinshun Duan Zhencheng Bao Li Xiao Xian Tang Boyuan Chunyao Xianzhang Liang 
+			Ruoshui Shouyi De Ti Hongxian Shihuai Shixi Yizan Huali Zhide Yuanxi Xixue Weizhen Han Boheng Mian Zongyi 
+			Kai Meng Hong Du Danian Tai Minzheng Mengyang Jingming Zhenqing Gong Shanfu Shen Zhengming Zuo Weiqi 
+			Shenzhong Panlong Youguang Weizhen Shisheng Qichang Hongdao Nanying Shaozong Peng Wenshi Liangxiang Wannian 
+			Zongyan Tingkui Bangzuo Ruxiu Guochang Huanchun Xianming Shengdou Zhaochen Shimei Guoxi Shangzhen Daoxing 
+			Tingbiao Yunrang Wan Jin Ding Wuchang Chengzhang Jiefu Wenyong Shiming Chonghua Sanfeng Wanyan Dayong 
+			Zhongwen Kexue Yuanjie Rucai Kexi Zhongming Jinxing Yan Yingxiang Zongmin
+		}
+		female_names = {
+			Heying Chunmei Tianhui Kon Mao Yuying Yuantong Yanxiang Xiurong Shouying Fuyuan Luzhen Ruirong Suzhen 
+			Xiao'e Xiaoying Xiaoyuan Xiaoji Xiaolou
+		}
+	}
+	sichuanese = {
+		primary = CXI #Changes
+		male_names = {
+			Zhanji Zhanjun Zhanyong Zhanyin Zhanshan Zhangang Zhan'ao Zhankai Zhanyan Jianrui Jianlin Jianti Jianchun 
+			Jianze Jianjun Jianzhi Jianpei Jianji Youji Youtang Youwan Youlun Youbing Youyun Youheng You'kai Houzhao 
+			Houwei Houxi Houcong Zaiji Zairui Zaihou Yiling Yijun Yiliu Changluo Changxu Changxun Changzhi Changhao 
+			Changrun Changyin Changbo Youxiao Youxue Youmo Youjian Youyi Youshan Ciran Ciyu Cijiong Cilang Ciheng 
+			Cizhao Cihuan Cican Shangbing Shanglie Shangyi Shanghong Zhijun Zhibao Gongxi Gongjian Gongtang Gongming 
+			Jixi Jiye Jihuang Jihuan Jixuan Meigui Meiyuan Zhongxuan Zhongduo Qiyuan Qiying Qirong Youdun Zishi Linmei 
+			Cijue Ciwei Cikai Youhua Linyuan Qisheng Biao Shuang Gang Su Zhen Bo Zi Chun Bo Gui Xuntan Xunquan Ying 
+			Zhanyan Zhi Quan Chenhao Bian Hui Song Mo Yin Jing Dong Nan Shouqian Xiongying Yuntong Yunjian Wengui 
+			Wenkui Gaoxu Gaosui Houyu ZhanYong Zhanshan Yousi Jianchun Jianshu Jianzhi Yourong Houjue Zailun Zaiji 
+			Changfang Changxu Changxun Changzhi Changrun Cilang Cihuan Guan Keqin Fu Dounan Chengzu Zixiang Bingyi Guan 
+			Zongren Yuan Fu Xingui Zonglian Ji Xiang Yu Quan Zhong Ji Xizheng Jian Shao'en Jiusi Song Chun Youxue Zugan 
+			Yingfang Kekuan Mo Juren Qing Qinshun Duan Zhencheng Bao Li Xiao Xian Tang Boyuan Chunyao Xianzhang Liang 
+			Ruoshui Shouyi De Ti Hongxian Shihuai Shixi Yizan Huali Zhide Yuanxi Xixue Weizhen Han Boheng Mian Zongyi 
+			Kai Meng Hong Du Danian Tai Minzheng Mengyang Jingming Zhenqing Gong Shanfu Shen Zhengming Zuo Weiqi 
+			Shenzhong Panlong Youguang Weizhen Shisheng Qichang Hongdao Nanying Shaozong Peng Wenshi Liangxiang Wannian 
+			Zongyan Tingkui Bangzuo Ruxiu Guochang Huanchun Xianming Shengdou Zhaochen Shimei Guoxi Shangzhen Daoxing 
+			Tingbiao Yunrang Wan Jin Ding Wuchang Chengzhang Jiefu Wenyong Shiming Chonghua Sanfeng Wanyan Dayong 
+			Zhongwen Kexue Yuanjie Rucai Kexi Zhongming Jinxing Yan Yingxiang Zongmin
+		}
+		female_names = {
+			Heying Chunmei Tianhui Kon Mao Yuying Yuantong Yanxiang Xiurong Shouying Fuyuan Luzhen Ruirong Suzhen 
+			Xiao'e Xiaoying Xiaoyuan Xiaoji Xiaolou
+		}
+	}
+	jianghuai = {
+		primary = MNG
+		male_names = {
+			Zhanji Zhanjun Zhanyong Zhanyin Zhanshan Zhangang Zhan'ao Zhankai Zhanyan Jianrui Jianlin Jianti Jianchun 
+			Jianze Jianjun Jianzhi Jianpei Jianji Youji Youtang Youwan Youlun Youbing Youyun Youheng You'kai Houzhao 
+			Houwei Houxi Houcong Zaiji Zairui Zaihou Yiling Yijun Yiliu Changluo Changxu Changxun Changzhi Changhao 
+			Changrun Changyin Changbo Youxiao Youxue Youmo Youjian Youyi Youshan Ciran Ciyu Cijiong Cilang Ciheng 
+			Cizhao Cihuan Cican Shangbing Shanglie Shangyi Shanghong Zhijun Zhibao Gongxi Gongjian Gongtang Gongming 
+			Jixi Jiye Jihuang Jihuan Jixuan Meigui Meiyuan Zhongxuan Zhongduo Qiyuan Qiying Qirong Youdun Zishi Linmei 
+			Cijue Ciwei Cikai Youhua Linyuan Qisheng Biao Shuang Gang Su Zhen Bo Zi Chun Bo Gui Xuntan Xunquan Ying 
+			Zhanyan Zhi Quan Chenhao Bian Hui Song Mo Yin Jing Dong Nan Shouqian Xiongying Yuntong Yunjian Wengui 
+			Wenkui Gaoxu Gaosui Houyu ZhanYong Zhanshan Yousi Jianchun Jianshu Jianzhi Yourong Houjue Zailun Zaiji 
+			Changfang Changxu Changxun Changzhi Changrun Cilang Cihuan Guan Keqin Fu Dounan Chengzu Zixiang Bingyi Guan 
+			Zongren Yuan Fu Xingui Zonglian Ji Xiang Yu Quan Zhong Ji Xizheng Jian Shao'en Jiusi Song Chun Youxue Zugan 
+			Yingfang Kekuan Mo Juren Qing Qinshun Duan Zhencheng Bao Li Xiao Xian Tang Boyuan Chunyao Xianzhang Liang 
+			Ruoshui Shouyi De Ti Hongxian Shihuai Shixi Yizan Huali Zhide Yuanxi Xixue Weizhen Han Boheng Mian Zongyi 
+			Kai Meng Hong Du Danian Tai Minzheng Mengyang Jingming Zhenqing Gong Shanfu Shen Zhengming Zuo Weiqi 
+			Shenzhong Panlong Youguang Weizhen Shisheng Qichang Hongdao Nanying Shaozong Peng Wenshi Liangxiang Wannian 
+			Zongyan Tingkui Bangzuo Ruxiu Guochang Huanchun Xianming Shengdou Zhaochen Shimei Guoxi Shangzhen Daoxing 
+			Tingbiao Yunrang Wan Jin Ding Wuchang Chengzhang Jiefu Wenyong Shiming Chonghua Sanfeng Wanyan Dayong 
+			Zhongwen Kexue Yuanjie Rucai Kexi Zhongming Jinxing Yan Yingxiang Zongmin
+		}
+		female_names = {
+			Heying Chunmei Tianhui Kon Mao Yuying Yuantong Yanxiang Xiurong Shouying Fuyuan Luzhen Ruirong Suzhen 
+			Xiao'e Xiaoying Xiaoyuan Xiaoji Xiaolou
+		}
+	}
+	xibei = {
+		primary = CSH
+		male_names = {
+			Qizhen Qiyu Jianjun Youcheng Houzhao Houcong Zaihou Yijun Changluo Youjian Yousong Yujian Youlang Chenggong 
+			Kehshuan Biao Shuang Gang Su Zhen Fu Zi Qi Tan Chun Bai Gui Zhi Quan Pian Hui Song Mo Ying Jing Dang Nan 
+			Gaoxu Caosui Gauxi Youyuan Youlun Youbin Houwei Youxiao Youji Youxue Youyi Youshan Cixuan Cijiang Cizhao 
+			Cibuan Cican Guan Keqin Fu Dounan Chengzu Zixiang Bingyi Guan Zongren Yuan Fu Xingui Zonglian Ji Xiang Yu 
+			Quan Zhong Ji Xizheng Jian Shao'en Jiusi Song Chun Youxue Zugan Yingfang Kekuan Mo Juren Qing Qinshun Duan 
+			Zhencheng Bao Li Xiao Xian Tang Boyuan Chunyao Xianzhang Liang Ruoshui Shouyi De Ti Hongxian Shihuai Shixi 
+			Yizan Huali Zhide Yuanxi Xixue Weizhen Han Boheng Mian Zongyi Kai Meng Hong Du Danian Tai Minzheng Mengyang 
+			Jingming Zhenqing Gong Shanfu Shen Zhengming Zuo Weiqi Shenzhong Panlong Youguang Weizhen Shisheng Qichang 
+			Hongdao Nanying Shaozong Peng Wenshi Liangxiang Wannian Zongyan Tingkui Bangzuo Ruxiu Guochang Huanchun 
+			Xianming Shengdou Zhaochen Shimei Guoxi Shangzhen Daoxing Tingbiao Yunrang Wan Jin Ding Wuchang Chengzhang 
+			Jiefu Wenyong Shiming Chonghua Sanfeng Wanyan Dayong Zhongwen Kexue Yuanjie Rucai Kexi Zhongming 
+			Jinxing Yan Yingxiang Zongmin Yuchun
+		}
+		female_names = {
+			Heying Chunmei Tianhui Kon Mao Yuying Yuantong Yanxiang Xiurong Shouying Fuyuan Luzhen Ruirong Suzhen 
+			Xiao'e Xiaoying Xiaoyuan Xiaoji Xiaolou 
+		}
+	}
+	hubei = {
+		primary = SHU #Changes
+		male_names = {
+			Qizhen Qiyu Jianjun Youcheng Houzhao Houcong Zaihou Yijun Changluo Youjian Yousong Yujian Youlang Chenggong 
+			Kehshuan Biao Shuang Gang Su Zhen Fu Zi Qi Tan Chun Bai Gui Zhi Quan Pian Hui Song Mo Ying Jing Dang Nan 
+			Gaoxu Caosui Gauxi Youyuan Youlun Youbin Houwei Youxiao Youji Youxue Youyi Youshan Cixuan Cijiang Cizhao 
+			Cibuan Cican Guan Keqin Fu Dounan Chengzu Zixiang Bingyi Guan Zongren Yuan Fu Xingui Zonglian Ji Xiang Yu 
+			Quan Zhong Ji Xizheng Jian Shao'en Jiusi Song Chun Youxue Zugan Yingfang Kekuan Mo Juren Qing Qinshun Duan 
+			Zhencheng Bao Li Xiao Xian Tang Boyuan Chunyao Xianzhang Liang Ruoshui Shouyi De Ti Hongxian Shihuai Shixi 
+			Yizan Huali Zhide Yuanxi Xixue Weizhen Han Boheng Mian Zongyi Kai Meng Hong Du Danian Tai Minzheng Mengyang 
+			Jingming Zhenqing Gong Shanfu Shen Zhengming Zuo Weiqi Shenzhong Panlong Youguang Weizhen Shisheng Qichang 
+			Hongdao Nanying Shaozong Peng Wenshi Liangxiang Wannian Zongyan Tingkui Bangzuo Ruxiu Guochang Huanchun 
+			Xianming Shengdou Zhaochen Shimei Guoxi Shangzhen Daoxing Tingbiao Yunrang Wan Jin Ding Wuchang Chengzhang 
+			Jiefu Wenyong Shiming Chonghua Sanfeng Wanyan Dayong Zhongwen Kexue Yuanjie Rucai Kexi Zhongming 
+			Jinxing Yan Yingxiang Zongmin Yuchun
+		}
+		female_names = {
+			Heying Chunmei Tianhui Kon Mao Yuying Yuantong Yanxiang Xiurong Shouying Fuyuan Luzhen Ruirong Suzhen 
+			Xiao'e Xiaoying Xiaoyuan Xiaoji Xiaolou 
+		}
+	}
+	zhongyuan = {
+		primary = LNG
+		male_names = {
+			Zhanji Zhanjun Zhanyong Zhanyin Zhanshan Zhangang Zhan'ao Zhankai Zhanyan Jianrui Jianlin Jianti Jianchun 
+			Jianze Jianjun Jianzhi Jianpei Jianji Youji Youtang Youwan Youlun Youbing Youyun Youheng You'kai Houzhao 
+			Houwei Houxi Houcong Zaiji Zairui Zaihou Yiling Yijun Yiliu Changluo Changxu Changxun Changzhi Changhao 
+			Changrun Changyin Changbo Youxiao Youxue Youmo Youjian Youyi Youshan Ciran Ciyu Cijiong Cilang Ciheng 
+			Cizhao Cihuan Cican Shangbing Shanglie Shangyi Shanghong Zhijun Zhibao Gongxi Gongjian Gongtang Gongming 
+			Jixi Jiye Jihuang Jihuan Jixuan Meigui Meiyuan Zhongxuan Zhongduo Qiyuan Qiying Qirong Youdun Zishi Linmei 
+			Cijue Ciwei Cikai Youhua Linyuan Qisheng Biao Shuang Gang Su Zhen Bo Zi Chun Bo Gui Xuntan Xunquan Ying 
+			Zhanyan Zhi Quan Chenhao Bian Hui Song Mo Yin Jing Dong Nan Shouqian Xiongying Yuntong Yunjian Wengui 
+			Wenkui Gaoxu Gaosui Houyu ZhanYong Zhanshan Yousi Jianchun Jianshu Jianzhi Yourong Houjue Zailun Zaiji 
+			Changfang Changxu Changxun Changzhi Changrun Cilang Cihuan Guan Keqin Fu Dounan Chengzu Zixiang Bingyi Guan 
+			Zongren Yuan Fu Xingui Zonglian Ji Xiang Yu Quan Zhong Ji Xizheng Jian Shao'en Jiusi Song Chun Youxue Zugan 
+			Yingfang Kekuan Mo Juren Qing Qinshun Duan Zhencheng Bao Li Xiao Xian Tang Boyuan Chunyao Xianzhang Liang 
+			Ruoshui Shouyi De Ti Hongxian Shihuai Shixi Yizan Huali Zhide Yuanxi Xixue Weizhen Han Boheng Mian Zongyi 
+			Kai Meng Hong Du Danian Tai Minzheng Mengyang Jingming Zhenqing Gong Shanfu Shen Zhengming Zuo Weiqi 
+			Shenzhong Panlong Youguang Weizhen Shisheng Qichang Hongdao Nanying Shaozong Peng Wenshi Liangxiang Wannian 
+			Zongyan Tingkui Bangzuo Ruxiu Guochang Huanchun Xianming Shengdou Zhaochen Shimei Guoxi Shangzhen Daoxing 
+			Tingbiao Yunrang Wan Jin Ding Wuchang Chengzhang Jiefu Wenyong Shiming Chonghua Sanfeng Wanyan Dayong 
+			Zhongwen Kexue Yuanjie Rucai Kexi Zhongming Jinxing Yan Yingxiang Zongmin
+		}
+		female_names = {
+			Heying Chunmei Tianhui Kon Mao Yuying Yuantong Yanxiang Xiurong Shouying Fuyuan Luzhen Ruirong Suzhen 
+			Xiao'e Xiaoying Xiaoyuan Xiaoji Xiaolou
+		}
+	}
+	shandong_culture = {
+		primary = QIC
+		male_names = {
+			Zhanji Zhanjun Zhanyong Zhanyin Zhanshan Zhangang Zhan'ao Zhankai Zhanyan Jianrui Jianlin Jianti Jianchun 
+			Jianze Jianjun Jianzhi Jianpei Jianji Youji Youtang Youwan Youlun Youbing Youyun Youheng You'kai Houzhao 
+			Houwei Houxi Houcong Zaiji Zairui Zaihou Yiling Yijun Yiliu Changluo Changxu Changxun Changzhi Changhao 
+			Changrun Changyin Changbo Youxiao Youxue Youmo Youjian Youyi Youshan Ciran Ciyu Cijiong Cilang Ciheng 
+			Cizhao Cihuan Cican Shangbing Shanglie Shangyi Shanghong Zhijun Zhibao Gongxi Gongjian Gongtang Gongming 
+			Jixi Jiye Jihuang Jihuan Jixuan Meigui Meiyuan Zhongxuan Zhongduo Qiyuan Qiying Qirong Youdun Zishi Linmei 
+			Cijue Ciwei Cikai Youhua Linyuan Qisheng Biao Shuang Gang Su Zhen Bo Zi Chun Bo Gui Xuntan Xunquan Ying 
+			Zhanyan Zhi Quan Chenhao Bian Hui Song Mo Yin Jing Dong Nan Shouqian Xiongying Yuntong Yunjian Wengui 
+			Wenkui Gaoxu Gaosui Houyu ZhanYong Zhanshan Yousi Jianchun Jianshu Jianzhi Yourong Houjue Zailun Zaiji 
+			Changfang Changxu Changxun Changzhi Changrun Cilang Cihuan Guan Keqin Fu Dounan Chengzu Zixiang Bingyi Guan 
+			Zongren Yuan Fu Xingui Zonglian Ji Xiang Yu Quan Zhong Ji Xizheng Jian Shao'en Jiusi Song Chun Youxue Zugan 
+			Yingfang Kekuan Mo Juren Qing Qinshun Duan Zhencheng Bao Li Xiao Xian Tang Boyuan Chunyao Xianzhang Liang 
+			Ruoshui Shouyi De Ti Hongxian Shihuai Shixi Yizan Huali Zhide Yuanxi Xixue Weizhen Han Boheng Mian Zongyi 
+			Kai Meng Hong Du Danian Tai Minzheng Mengyang Jingming Zhenqing Gong Shanfu Shen Zhengming Zuo Weiqi 
+			Shenzhong Panlong Youguang Weizhen Shisheng Qichang Hongdao Nanying Shaozong Peng Wenshi Liangxiang Wannian 
+			Zongyan Tingkui Bangzuo Ruxiu Guochang Huanchun Xianming Shengdou Zhaochen Shimei Guoxi Shangzhen Daoxing 
+			Tingbiao Yunrang Wan Jin Ding Wuchang Chengzhang Jiefu Wenyong Shiming Chonghua Sanfeng Wanyan Dayong 
+			Zhongwen Kexue Yuanjie Rucai Kexi Zhongming Jinxing Yan Yingxiang Zongmin
+		}
+		female_names = {
+			Heying Chunmei Tianhui Kon Mao Yuying Yuantong Yanxiang Xiurong Shouying Fuyuan Luzhen Ruirong Suzhen 
+			Xiao'e Xiaoying Xiaoyuan Xiaoji Xiaolou
+		}
+	}
+	#Syncretic Cultures
+	tibetan_group_new = { #For Tibetans
+		male_names = {
+			Qizhen Qiyu Jianjun Youcheng Houzhao Houcong Zaihou Yijun Changluo Youjian Yousong Yujian Youlang Chenggong 
+			Kehshuan Biao Shuang Gang Su Zhen Fu Zi Qi Tan Chun Bai Gui Zhi Quan Pian Hui Song Mo Ying Jing Dang Nan 
+			Gaoxu Caosui Gauxi Youyuan Youlun Youbin Houwei Youxiao Youji Youxue Youyi Youshan Cixuan Cijiang Cizhao 
+			Cihuan Cican He Ji Da Yuchun 
+		}
+		female_names = {
+			Heying Chunmei Tianhui Kon Mao Yuying Yuantong Yanxiang Xiurong Shouying Fuyuan Luzhen Ruirong Suzhen
+		}
+		dynasty_names = {
+			Se Rmu Ldong Stong Dbra Dru Nyang Sbas Gnon Chespong Thonmi Mgar Bri Mong Zhang Mchims Bal Lang Cogro Bro Dbas 
+			Shudpu Gnyags Mgus Mjang Snang Sgro Rma Snyiba Khu Khun Mkar Rlangs Rinspungs Zhingshag Phjongsrgjas Nganlam Sba Lig 
+			Khjungpo Dbas Mnyammed
+		}
+	}
+	thai_new = { #For Thais
+		male_names = {
+			"An" "Quy Ly" "Han Thuong" "Ngoi" "Quy Khoang" "Loi" "Nguyen Long" "Bang Co" "Nghi Dan" "Tu Thanh" "Tranh" 
+			"Thuan" "Tuan" "Oanh" "Y" "Xuan" "Dang Dung" "Dang Doanh" "Trang Tong" "Phuc Hai" "Phuc Nguyen" "Mau Hop" 
+			"Kinh Chi" "Kinh Cung" "Kinh Khoan" "Kinh Vu" "Duy Duong" "Duy Phuong" "Duy Tuong" "Duy Than" "Duy Dieu" 
+			"Duy Khiem" "Hue" "Quang Toan" "Duy Hop"
+		}
+		female_names = {
+			"Kim Anh" "Thuy Tram" "Bich Ngoc" "Phuong Nga" "Thanh Thao"
+		}
+		dynasty_names = {
+			"Laa" "Tran" "Mac" "Nguyen" "Trinh" "Vu" "Nguyen Phuc" "Nguyen Quang"
+		}
+	}
+	burman_new = { #For Burmese
+		male_names = {
+			"Zalahtinyan" "Sithukyawhtin" "Minkyinyo" "Tabinshwehti" "Thamindwut" "Thaminhatau" "Bayinnaug" 
+			"Handabayin" "Anaukpetlun" "Minradeippa" "Thalun" "Pindale" "Pye" "Narawara" "Minredyawdin" "Sane" 
+			"Taninganwe" "Hamdammayaza" 
+		}
+		female_names = {
+			"Yaza Dewi" "Atula Thiri" "Khin Myo Sit" "Khin Myat Hset" "Khin Ma Lat"
+		}
+		dynasty_names = {
+			Taungu Ava Pagan Prome "Myede Mong" Sagaing Kyaukse Pinya Myinsaing Konbaung
+		}
+	}
+	khmer_new = { #For SEA's
+		male_names = {
+			"Barom Reachea" "Noreay Ramathipatei" "Soriyotei" "Thommo Reachea" "Srey Sukonthor" "Ang Chan" "Reachea Ramathipatei"
+			"Barom Reachea" "Chey Chettha" "Ney Khan" "Preah Ram" "Keo Hua" "Outey Reachea" "Dharmaraja" "Padumaraja" "Ramathipadi" "Satha" "Ream Reachea" "Narayanaraja" "Ponhea Yat" "Narayanaraja" 
+			"Sri Raja" "Rajadhiraja" "Dharmarajadhiraja" "Damkhat Sukonthor" "Reamea Chungprey" "Keo Ban On" "Ponhea Yor" "Ponhea An" "Ponhea Nhom" "Srei Soriyopear" "Udayaraja" "Ponhea To" "Ang Non" "Ponhea Chan" "Ang Sur" 
+			"Ang Chea" "Ang Nan" "Ang Sor" "Ang Yong" "Ang Em" "Ang Tham" "Ang Sngoun" "Ang Tong" "Ang Ton" "Ang Eng" 
+			"Ang Duong"
+		}
+		female_names = {
+			"Boupha" "Sakngea" "Ang Mey" "Anak Moneang Krachap" "Neang Pou" Achariya Akara Anchali Arunny Ary Bopha Botum 
+			Boupha Champei Champey Chamroeun Chan Chankrisna Chanlina Chanmony Channary Chanthavy Chantou Chantrea 
+			Chanvatey Chariya Chavy Chaya Chea Chenda Chhaiya Chhean Chhorvin Chhorvon Chivy Choum Da Daevy Dara 
+			Darareaksmey Davi Jorani Kalianne Kaliyanei Kalliyan Kanleakhana Kannareth Kannitha Kanya Kesor Kolab Kolthida 
+			Kravann Kun Thea Kunthea Leakena Leap Mach Makara Malis Maly Mau Mealea Mean Mliss Mony Nakry Thom Thyda Tina 
+			Toch Tola Vanna Veasna Veata Vimean Nary Nearidei Neary Reach Reaksmey Rangsei Reasmey Sokha Sokhanya Sokhom 
+			Sok Mean Rom Chang Rotha Samphy Roumduol Roumjong Samnang Saley Savady Sawatdee Seda Seyha Sikha Sinuon Sita 
+			Soboen Socheat Sok Sombo Sonisay Sonith Peou Nuon Phally Phary Pich Pheakdei Pheakkley Phhoung Ponlok Ponnleu 
+			Pisey Putrea Punthea Rachana Rachany 
+		}
+		dynasty_names = {
+			Angkor "Siem Reap" Oudong Battambang "Stung Treng" Kratie "Phnom Penh"
+		}
+	}
+	korean_g_new = { #For Korea
+		dynasty_names = { 
+			Yi Wang Kim Pak Shin Song Chae Gang Jeong Jang Yun Han Hong Yu Ki Choi Ga Gye Go Na Noh Woo Do Du Ban Ma Min Mun
+			Seo Son Sim An Yang O Jeon Cho Jin Ha Hong Heo Kwak Lim Won Kwon Hwang Bae Seok Bang Dae Gyeong Nam Sung Bae
+		}
+		male_names = {
+			Hongwi Yu Gwang Hyeol Yung Yeok Ho Hwan Yeon Hon Jong Sun Yun Geum San Gong Byeon Myeongbok Ha-eung Un Gu Seon Hyeon
+			Cho Yeong Bu Haeng Hwon Kang Ji Rip Jae-u Seong-ryong Yakyong Jongmu Se-young Hong-rip Deokgi Munsu Hee-woon Busik
+			Jiwon Gwangjo Sukju Hongdo Yong-bok Jong-un Chung-hee Yeong-sil Yun-ui Myung-shin Chae-ho Chwa-jin Honghi Byong-hi
+			Hwang Jae-sang Yu-sin Wonjong Jong-seo Jangchun Museon Sung-gyeom Seungman Sun-sin Chang-ho Dae-seung Jae-suk
+			Dae-yong Eok-gi Si-min Gam-chan Chung-heon U Tong-jeon In-seon Gwanghyeon Gyun Yul Wi Im Geon Jun Mok Il Tak
+ 
+		}
+		female_names = {
+			Ae-jung Areum Bit-na Bo-young Bora Chae-won Chae-young Cho-hee Chun-hwa Chun-ja Da-hee Da-hyun Do-hee Eun-ah 
+			Eun-bi Eun-byul Eun-chae Eun-ha Eun-hee Eun-hye Eun-ji Eun-jin Eun-ju Eun-jung Eun-kyung Eun-mi Eun-sook Eun-suh 
+			Eun-young Ga-in Ga-young Gyuri Ha-eun Hana Hye-bin Hye-in Hye-ja Hye-jin Hye-jung Hye-kyung Hye-mi Hye-rim 
+			Hye-su Hye-won Hyo-joo Hyo-rin Hyun-a Hyun-kyung Hyun-mi Hyun-sook In-hye In-sook In-sun Ja-kyung Jae-eun 
+			Jang-geum Jang-mi Jeong-ja Ji-ae Ji-eun Ji-hye Ji-yeon Ji-young Jina Jin-yi Jung-ah Jung-sook Jung-soon Kyung-ah Kyung-hee 
+			Kyung-hwa Kyung-ja Kyung-ok Kyung-sook Mi-hee Mi-ja Mi-jung Mi-kyung Mi-ran Mi-sook Mi-yeon Mi-young Min-hee 
+			Min-ji Min-jung Min-seo Mina Myung-hwa Myung-ok Myung-sook Myung-soon Na-young Nana Nari Noo-ri Sang-mi  
+			Se-bin Seo-hyeon Seo-yeon Seo-yun Seol-hee Seon-ok Seong-ja Seung-ah Shin-hye Si-yeon So-hee So-hyun So-won So-yi 
+			So-young Soo-ah Soo-hee Sook-ja Soon-hee Soon-ja Sora Su-mi Sun-hee Sun-hwa Sun-mi Sun-ok Sung-mi Sung-sook 
+			Ye-eun Ye-ji Ye-jin Ye-rin Ye-seo Ye-won Yeo-jin Yeon-hee Yi-kyung Yoo-kyung Yoo-na Yoon-hee Yoon-sook Young-ae 
+			Young-hee Young-ja Young-mi Young-sook Yu-ri Yumi
+		}
+	}
+	japanese_g_new = { #For Japanese
+		male_names = {
+			Motohito Mihito Hikohito Fusahito Katsuhito Tomohito Michihito Kazuhito Kotohito Okiko Tsuguhito Nagahito 
+			Satohito Asahito Toshiko Yasuhito Teruhito Hidehito Morohito Ayahito Takauji Yoshiakira Yoshimitsu 
+			Yoshimochi Yoshikazu Yoshinori Yoshikatsu Yoshimasa Yoshihisa Yoshitane Yoshizumi Yoshiharu Yoshiteru 
+			Yoshihide Yoshiaki Nobutada Hidenobu Hideyoshi Hideyori Ieyasu Hidetada Iemitsu Ietsuna Tsunayoshi Ienobu 
+			Ietsugu Yoshimune Ieshige Ieharu Ienari Ieyoshi Iesada Iemochi Yoshinobu
+		}
+		dynasty_names = { 
+			Yamato Arisugawa Asaka Fushimi "Kan'in" Katsura Kaya Kitashirakawa 
+			Kuni Nashimoto Takeda Yamashina
+		}
+		female_names = {
+			Toku Sen Tama Aya Ina Kumiko Ai Aiko Aimi Aina Airi Akane Akemi Aki Akiko Akira Ami Aoi Asuka Atsuko Aya Ayaka 
+			Ayako Ayame Ayane Ayano Chika Chikako Chinatsu Chiyo Chiyoko Cho Chou Chouko Emi Etsuko Hana Hanae Hanako Haru 
+			Haruka Haruko Haruna Hikari Hikaru Hina Hinata Hiroko Hitomi Honoka Hoshi Hoshiko Hotaru Izumi Junko Kaede 
+			Kanon Kaori Kaoru Kasumi Kazue Kazuko Keiko Kiku Kiyoko Kohaku Koharu Kokoro Kotone Kumiko Kyo Kyou Mai Makoto 
+			Mami Manami Mao Mariko Masami Masuyo Mayu Megumi Mei Michi Michiko Midori Mika Miki Miku Minako Minato Mio 
+			Misaki Mitsuko Miu Miyako Miyu Mizuki Moe Momoka Momoko Moriko Nana Nanami Naoko Naomi Natsuki Natsuko Natsumi 
+			Noa Noriko Ran Rei Ren Riko Rin Rina Rio Sachiko Saki Sakura Sakurako Satomi Sayuri Setsuko Shinju Shinobu 
+			Shiori Shizuka Shun Sora Sumiko Suzu Suzume Takako Takara Tamiko Tomiko Tomoko Tomomi Tsubaki Tsubame Tsubasa 
+			Tsukiko Ume Umeko Wakana Yasu Yoko Yoshi Yoshiko Youko Yua Yui Yuina Yuki Yukiko Yuko Yumi Yumiko Yuri Yuu 
+			Yuuka Yuuki Yuuko Yuuna Yuzuki
+		}
+	}
+	altaic_new = {
+		male_names = {
+			Agbarjin Adai Altan Arigaba Arugtai Ayurparibhadra Bodi Bek Bahamu Bars Buyan Biligta Dayan 
+			Delbeg Ejei Elbeg Engke Gak Gan Gulichi Irinchibal Jorightu Kublai Kake Ligdan Markargis Mangke 
+			Manduulun aljei Aag Oyiradai Adgadei Qayshan Qoshila Sayn Suddhipala Tayisung Temujin Temir Toghun 
+			Tolui Toq Uskhal Yesann Ariq Batu Eljigidei Joichi Darayisung Tumen
+		}
+		female_names = {
+			Temulen Barte Mandukhai Samar Zaufishan Mulan Aigiarn Borte Chabi Conchaka Doquez-khatum Goland Ho'elun 
+			Khultulun Kokachin Mandughai Oghul Qamish Orqina Sorghaghtani Beki Toregene 
+		}
+		dynasty_names = {
+			"Onggirat" "Naiman" "Kereyid" "Sartaq" "Mengu-Timur" "Uriankhai" "Bujakhin" "Besud" "Noyan" 
+			"Jochid" "Chagatayid" "Borjigin" "Chupanid" "Injuid" "Toluid" "Ganbold" "Bolormaa" "Batbayar" 
+			"Bat-Erdene" "Otgonbayar" "Enkhtuyaa" "Gantulga" "Nergai" "Lkhagvasaren" "Enkhjargal" 
+			"Ganzorig" "Narantsetseg" "Parevsaren" "Ganbaatar" "Mankhtsetseg" "Mankhbat" "Mankh-Erdene" 
+			"Jalair" "Sartuul" "Olkhunut" "Khatagin" "Iljigin" "Tsookhor" "Qarakhanid"
+		}
+	}
+	dynasty_names = {
+		Zhu Wu Geng Shang Zheng Zhao Li Shi Liu Guo Yang Wang Qian Ma Meng Gao 
+		Chen Sun Sima Cao Xiao Qi Zu Zhou Huang Bai Qiu Tang Lu	Xu Chang 
+		Feng Deng Hua Gu Fei Fu Hu Mei Xue Liao Jin Ye He Lan Du Fang Mao Hao 
+		Kong Jiao Si Pan Zuo Ding Bao Yan Tan Han Luo Xie Yuan Qin Ruan	Niu Zeng
+		Dong Lin Shen Ouyang Su Yu Ren Chai Xia Mo Dai Jiang Yue Jia Xiong Cui
+	}
+}
+thai_group = {
+	graphical_culture = southeastasiangfx
+	second_graphical_culture = asiangfx
+
+	central_thai = {
+		primary = AYU
+		dynasty_names = { 
+			Ayutthaya Sukhothai Thonburi Phitsanulok "Phra Bang" Ratchaburi Phetchaburi "U Thong" "Nakhon Pathom" 
+			Phimai "Sri Thep" "Nakhon Sawan" Lavapura "Chiang Mai" "Chiang Rai" "Chet Ton" Lampang Lamphun
+		}
+		male_names = {
+			"Ramaracha" "Intha Racha" "Borommaracha" "Trailokanat" "Ramathibodi" "Ratsada" "Chairacha" "Keo Fa" 
+			"Bun Si" "Chakkraphat" "Mahin" "Thammaracha" "Naresuen" "Ekathotsarot" "Si Saowaphak" "Songtham" "Chettha" 
+			"Athittayawong" "Prasat Thong" "Chao Fa Jai" "Narai" "Si Suthammaracha" "Phetracha" "Phrachao Suea" "Thai Sa" "Boromakot" "Uthumphon" "Taksin" "Rama"
+			"Kaa Na" "Saenmuenagma" "Samfangkaen" "Tilokaracha" "Yotchiangrai" "Kaeo" "Ket" "Saikham" "Setthathirat" 
+			"Mekuti" "Nawrahta Minsaw" "Phra Choi" "Phra Chaiyathip" "Sisongmueang" "Luangthipphanet" "Phra Saenmueang" 
+			"Phrae" "Ingsemang" "Cheputarai" "Mangraenara" "Ong Kham" "Ong Chan" "Khihut" "Po Aphaikhamini" "Po Mayunguan" "Phraya Chaban" "Thammalangka" "Kawila"
+		}
+		female_names = {
+			"Amporn" "Chanarong" "Sri Suriyothai" "Panjapapee" "Komol"
+			"Dara" "Mya" "Chiraprapha" "Wisutthithewi" "Yasuntarathewi"
+		}
+	}
+	northern_thai = {
+		primary = LNA
+		dynasty_names = { 
+			"Chiang Mai" "Chiang Rai" "Chet Ton" Lampang Lamphun
+		}
+		male_names = {
+			"Kaa Na" "Saenmuenagma" "Samfangkaen" "Tilokaracha" "Yotchiangrai" "Kaeo" "Ket" "Saikham" "Setthathirat" 
+			"Mekuti" "Nawrahta Minsaw" "Phra Choi" "Phra Chaiyathip" "Sisongmueang" "Luangthipphanet" "Phra Saenmueang" 
+			"Phrae" "Ingsemang" "Cheputarai" "Mangraenara" "Ong Kham" "Ong Chan" "Khihut" "Po Aphaikhamini" "Po Mayunguan" "Phraya Chaban" "Thammalangka" "Kawila"
+		}
+		female_names = {
+			"Dara" "Mya" "Chiraprapha" "Wisutthithewi" "Yasuntarathewi"
+		}
+	}
+	lao = {
+		primary = LUA
+		dynasty_names = { 
+			"Luang Prabang" "Champassak" Vientiane Phuan Nan
+		}
+		male_names = {
+			"Fa Ngum" "Samsenethai" "Lan Kham Deng" "Phommathat" "Khamtum" "Meunsai" "Konekham" "Kham Tam Sa" "Lue Sai" 
+			"Khai Bua Ban" "Khong Kham" "Sai Tia Kaphut" "Theng Kham" "Laasaenthai" "Sompou" "Visunarat" "Photisarat" 
+			"Setthathirat" "Saensurin" "Maha Oupahat" "Nakhon Noi" "Nokeo Koumanh" "Thammikarat" "Upanyuvarat" 
+			"Mon Keo" "Tone Kham" "Vichai" "Souligna Vongsa" "Tian Thala" "Nan Tharat" "Ong Long" "Anouvong" "Sai" 
+			"Khamteam" "Kongkeo" "Leu Xay" "Fa Kheun" "Yu Khong" "Nan Rat" "Saya Kumane" "Xiang Keo" "Fay Na" "No Muong"
+			"Cha Nou" "Ma Noi" "Rajabud Yo" "Kin Kitsarat" "Ong Kham" "Thao Ang" "Inthara Vongsa" "Inthaphom Yo" 
+			"Sotika Koumane" "Anurutha" "Manthaturat"
+		}
+		female_names = {
+			"Chau" "Nang Keo Phimpha" "Manora" "Souphutta" "Anousa" "Nokasat"
+		}	
+	}
+	shan = {
+		primary = SST
+		dynasty_names = { 
+			Bamaw Kale Ava Kengtung Yawnghwe "Mong Pawn" "Mong Mit" "Mong Kawng" Hsipaw Hsenwi "Mong Pai"
+		}
+		male_names = {
+			"Thadominbya" "Nga Nu" "Swasawke" "Tarabya" "Nga Nauk Hsan" "Minkhaung" "Thihathu" "Minhlange" 
+			"Kale Kyetaungnyo" "Minyekyawswa" "Narapati" "Thihathura" "Shwenankyawshin" "Thohanbwa" "Hkonmaing" 
+			"Mobye Narapati" "Sao Sit Pan Tu" "Sao Ai Awn" "Ai Wu Hsa" "Yi Hkam Hka" "Sao Hsam" "Sao Kham Mu" 
+			"Hpaya Kiao" "Sao Mong Hka" "Sao Hkam Tao" "Sao Mong Hkak" "Sao On" "Sao In Hkam" "Sao Awk" "Sao Mong Saik" 
+			"Sao Hsam Hpi" "Maung Nyo" "Sao Mong Sin" "Sao Mong Hsam" "Sao Kawng Tai" "Sao Maha Hkanan"
+		}
+		female_names = {
+			"Thou Umma" "Thin Bohme"
+		}
+	}
+	#Changes
+	vietnamese = {
+		primary = DAI
+		dynasty_names = {
+			"Lau" "Tran" "Mac" "Nguyen" "Trinh" "Vu" "Nguyen Phuc" "Nguyen Quang"
+		}
+		male_names = {
+			"An" "Quy Ly" "Han Thuong" "Ngoi" "Quy Khoang" "Loi" "Nguyen Long" "Bang Co" "Nghi Dan" "Tu Thanh" "Tranh" 
+			"Thuan" "Tuan" "Oanh" "Y" "Xuan" "Dang Dung" "Dang Doanh" "Trang Tong" "Phuc Hai" "Phuc Nguyen" "Mau Hop" 
+			"Kinh Chi" "Kinh Cung" "Kinh Khoan" "Kinh Vu" "Duy Duong" "Duy Phuong" "Duy Tuong" "Duy Than" "Duy Dieu" 
+			"Duy Khiem" "Hue" "Quang Toan" "Duy Hop"
+		}
+		female_names = {
+			"Kim Anh" "Thuy Tram" "Bich Ngoc" "Phuong Nga" "Thanh Thao"
+		}
+	}
+}
+tibetan_group = {
+	graphical_culture = asiangfx
+	tibetan = {
+		primary = UTS
+		dynasty_names = {
+			Se Rmu Ldong Stong Dbra Dru Nyang Sbas Gnon Chespong Thonmi Mgar Bri Mong Zhang Mchims Bal Lang Cogro Bro Dbas 
+			Shudpu Gnyags Mgus Mjang Snang Sgro Rma Snyiba Khu Khun Mkar Rlangs Rinspungs Zhingshag Phjongsrgjas Nganlam Sba Lig 
+			Khjungpo Dbas Mnyammed
+		}
+		male_names = {
+			"Gendun Drup" "Trakpa Chunge" "Sangye Gyantesen Pal Zangpo" "Dan-ya Dorje" "Ngawang Namgyal" "Tandup Tseten" "Phantso Namgye" "Karma Tseten" "Lhawang Dorje" "Karma Ten-Kyong" "Gusri" "Dayan" "Tenzin Dalai" 
+			"Lhabzang" "Tsewang Arabtan" "Phola Sonam Topbgye" "Gyurme Namgyal" "Lozang Gyastro" "Tsangyang Gyatso" 
+			"Kelzang Gyatso" "Jamphel Gyatso" "Lungtok Gyatso" "Tsultrim Gyatso" "Gendun Gyastro" "Sonam Gyastro" "Desi Sangay Gyatso"
+			"Ngwaang Yeshi Gyatso" "Chang-chub" "Sakya Gyantsen" "Trakpa Richen" "Trakpa Chang-chub" 
+			"Trakpa Chungne" "Sangye Gyamtso" "Lobsang Yeshe" "Palden Yeshi" "Ngapoi Takna" "Jigme Wangyal" "Tashi Chophel" "Bapu Gendun" "Rabtan" "Sengge" "Galdan" "Gushi" Dorjee Dote Kalden
+		}
+		female_names = {
+			"Kamala" "Indira" Dawa Dechen Diki Choden Dohna Dolkar Karma Sonam Sangmu
+		}
+	}
+	yi = {
+		primary = CYI
+		dynasty_names = {
+			"An" "She" "Liu" "Longzan" "Feng" "Pu"
+		}
+		male_names = {
+			Qizhen Qiyu Jianjun Youcheng Houzhao Houcong Zaihou Yijun Changluo Youjian Yousong Yujian Youlang Chenggong 
+			Kehshuan Biao Shuang Gang Su Zhen Fu Zi Qi Tan Chun Bai Gui Zhi Quan Pian Hui Song Mo Ying Jing Dang Nan 
+			Gaoxu Caosui Gauxi Youyuan Youlun Youbin Houwei Youxiao Youji Youxue Youyi Youshan Cixuan Cijiang Cizhao 
+			Cihuan Cican He Ji Da Yuchun
+		}
+		female_names = {
+			Heying Chunmei Tianhui Kon Mao Yuying Yuantong Yanxiang Xiurong Shouying Fuyuan Luzhen Ruirong Suzhen
+		}
+	}
+	bai = {
+		primary = CDL
+		dynasty_names = {
+			"Duan" "Gao" "Meng"
+		}
+		male_names = {
+			Qizhen Qiyu Jianjun Youcheng Houzhao Houcong Zaihou Yijun Changluo Youjian Yousong Yujian Youlang Chenggong 
+			Kehshuan Biao Shuang Gang Su Zhen Fu Zi Qi Tan Chun Bai Gui Zhi Quan Pian Hui Song Mo Ying Jing Dang Nan 
+			Gaoxu Caosui Gauxi Youyuan Youlun Youbin Houwei Youxiao Youji Youxue Youyi Youshan Cixuan Cijiang Cizhao 
+			Cihuan Cican He Ji Da Yuchun
+		}
+		female_names = {
+			Heying Chunmei Tianhui Kon Mao Yuying Yuantong Yanxiang Xiurong Shouying Fuyuan Luzhen Ruirong Suzhen
+		}
+	}
+	miao = {
+		primary = CMI
+		dynasty_names = {
+			"Fang" "Hang" "Hue" "Khang" "Kong" "Soung" "Kue" "Lo" "Lor" "Li" "Moua" "Pha" "Tang" "Thao" "Chang" "Cheng" 
+			"Chu" "Vang" "Vue" "Xiong" "Yang"
+		}
+		male_names = {
+			Qizhen Qiyu Jianjun Youcheng Houzhao Houcong Zaihou Yijun Changluo Youjian Yousong Yujian Youlang Chenggong 
+			Kehshuan Biao Shuang Gang Su Zhen Fu Zi Qi Tan Chun Bai Gui Zhi Quan Pian Hui Song Mo Ying Jing Dang Nan 
+			Gaoxu Caosui Gauxi Youyuan Youlun Youbin Houwei Youxiao Youji Youxue Youyi Youshan Cixuan Cijiang Cizhao 
+			Cihuan Cican He Ji Da Yuchun
+		}
+		female_names = {
+			Heying Chunmei Tianhui Kon Mao
+		}
+	}
+	#Changes
+	zhuang = {
+		primary = CGS
+		dynasty_names = { 
+			Bamaw Kale Ava Kengtung Yawnghwe "Mong Pawn" "Mong Mit" "Mong Kawng" Hsipaw Hsenwi "Mong Pai"
+		}
+		male_names = {
+			"Thadominbya" "Nga Nu" "Swasawke" "Tarabya" "Nga Nauk Hsan" "Minkhaung" "Thihathu" "Minhlange" 
+			"Kale Kyetaungnyo" "Minyekyawswa" "Narapati" "Thihathura" "Shwenankyawshin" "Thohanbwa" "Hkonmaing" 
+			"Mobye Narapati" "Sao Sit Pan Tu" "Sao Ai Awn" "Ai Wu Hsa" "Yi Hkam Hka" "Sao Hsam" "Sao Kham Mu" 
+			"Hpaya Kiao" "Sao Mong Hka" "Sao Hkam Tao" "Sao Mong Hkak" "Sao On" "Sao In Hkam" "Sao Awk" "Sao Mong Saik" 
+			"Sao Hsam Hpi" "Maung Nyo" "Sao Mong Sin" "Sao Mong Hsam" "Sao Kawng Tai" "Sao Maha Hkanan"
+		}
+		female_names = {
+			"Thou Umma" "Thin Bohme"
+		}
+	}
+}
+sahelian = {
+	graphical_culture = africangfx
+	
+	hausa = {
+		primary = HAU
+		dynasty_names = {
+			Azna "Yan Korau" Dadi Yaji Saibou Bakara Mamami
+			Kountcha Diore Balewa Aluko Bandele Kanu Kuti
+		}
+		male_names = {
+			"Chiroma" "Yakubu" "Muhammad" "'Abdullahi" "Da'uda Abasama" "Abu Bakr Kado" "Yakufu" "Kutambi" "Alhaji" 
+			"Shekkarau" "Soyaki" "Babba Zaki" "Dalla Gungum" "Dalla Dawaki" "Akal" "Bachiri" "Gumsara" "Bardandoma" 
+			"Soba" "Nyakum" "Yakub" "Salihu"	 "Janhazo" "Karya Giwa" "Abd al-Karim" "Tsagarana" "Agwaragwi" "Bawa" 
+			"Magajin" "Tomo" "Sumail" "Suleyman" "Fati" "Ibrahim" "'Aliyu" "Bako" "Burema" "Dudufani" "Burum"
+		}
+		female_names = {
+			Aamina Adila Afaf Afra Aida 'aisha A'isha Aisha Akilah Alia Alina Aliya 
+			Aliyah Aliyya Aliyyah Almas Alya Amal Amani Amina Aminah Amira Amirah Amna Anisa Aqila Arij Arwa Ashraqat 
+			Asma Asmaa Asra Atifa Atiya Ayda Ayesha Ayishah Azra Badr Bahiga Bahija Bahiyya Basima Basira Basma Batul 
+			Budur Dalal Dana Dania Daniyah Dema Dima Djamila Dua Duha Fadia Fadila Fahima Fairuz Faiza Fajr Fakhriyya 
+			Farah Farida Fariha Farrah Fathiyya Fatima Fatimah Fatin Fatma Fawziya Fawziyya Fayruz Fayza Fidda 
+			Fikriyya Fizza Galila Gamila Gathbiyya Gauhar Gawahir Gazbiyya Ghada Ghadir Ghaliya Ghufran Habiba Hadia 
+			Hadil Hadiya Hadiyya Hadjara Hadya Hafsa Hafsah Hafza Hagir Haifa Hajar Hala Halima Halim Hamida Hamid 
+			Hana Hanaa Hanan Hania Haniyya Hanifa Hanif Haniyah Haniyya Haniyya Hasna Hawa Hayfa Hiba Hikmat Hind 
+			Hooda Hosni Houda Huda Husna Husni Husniya Ibtihaj Ibtisam Ihab Ihsan Ikraam Ikram Ikram Ilham Iman In'am 
+			Inas 'ismat Isra Israa I'tidal I'timad Izdihar Jalila Jameela Jamila Jamillah Janan Jathbiyya Jawahir 
+			Jawdat Jinan Jumana Karam Karima Khadiga Khadija Khalida Khalilah Khatijah Khayrat Khayriyya Laila Layla 
+			Lamia Lamis Lamya Lateefah Latifa Latifah Lawahiz Layla Leila Lubna Lujayn Maha Malaika Malak Malika Maram 
+			Mariam Marwa Maryam Masuma Midha Mona Mouna Mubina Muhsina Mumina Muna Munira Munya Nabila Nada Nadia 
+			Nadira Nadiyya Nadra Nadya Naila Na'ima Najwa Naseem Nashwa Nasim Nasira Nassim Nawal Nawra Naziha Nazli 
+			Nida Nimat Noor Nuha Nur Nura Qamar Raabi'a Rabab Rabi'a Rabi Rafiqa Rafiq Rahat Raisa Rais Raja Rajiya 
+			Rajya Rajiya Ramla Ramlah Ramlah Rana Randa Raniya Ranya Raniya Rasha Rashida Rashid Rasima Rasim Rawiya 
+			Rawya Rayhana Reem Ridwana Rihanna Rim Rizwana Ruba Ruqayya Ruqayyah Ruwa Ruya Sa'adat Sabah Sabeen 
+			Sabriyya Sabri Sadaf Sa'dia Sa'di Safiya Safiyyah Sahar Sa'ida Sakina Salha Saliha Salima Salma Salwah 
+			Samar Sameera Samira Samia Samiya Samina Thamina Samira Samiya Sana Saniyya Sanya Sawsan Sayyida Selima 
+			Salima Shadiya Shadya Shadiya Shafaqat Shafiqa Shahd Shahira Shahnazpu Shahrazadr Shahrizad Shahrazad 
+			Shaimaa Shayma Shakila Shakil Shakira Shakir Shakura Shakur Sham'a Sharifa Shayma Shazi Shukriya Shula 
+			Suha Suhaila Sultana Sumayya Suraya Tabassum Tahira Taliba Tasnim Thamina Thana Thurayya Tuba Uzma Wafiya 
+			Waheeda Wahida Widad Yasmeen Yusra Zaahira Zahia Zahida Zahira Zahra Zahrah Zaida Zaina Zainab Zakiah 
+			Zakiya Zakiyya Zaray Zayna Zaynab Zinat Zubaida Zulaykha Zulekha
+		}
+	}
+	kanuri = {
+		primary = KBO
+		dynasty_names = {
+			Sayfawa Kanemi Zubayr
+			Oueddai Ardoum Yorassem
+			Djammous Nahor Terap
+		}
+		male_names = {
+			"Dunama" "Muhammad" "Amir" "Ghaji" "'Uthman" "'Umar" "'Ali" "Idris" "'Abd Allah" "Ibrahim" "Hamdan" 
+			"Othman Kalinuama" "Abdullah" "Biri" "'Abd al-Karim" "Kharut" "Kharif" "Ya'qub" "Salih" "Birni Besse" 
+			"Dalai" "Burkomanda" "Dalo" "'Abd al-Qadir" "Wanja" "Abu Sekkin" "Rifaya" "Sharud" "Tindhim" "Musa" 
+			"Sulbuta" "Ishaq" "Kade Alunu" "Abu Bakr" "Da'ud" "Kure" "Bikoru" "Humayy" "Sa'id" "Nasr" "Yahya" "Yusuf"
+		}
+		female_names = {
+			Aamina Adila Afaf Afra Aida 'aisha A'isha Aisha Akilah Alia Alina Aliya 
+			Aliyah Aliyya Aliyyah Almas Alya Amal Amani Amina Aminah Amira Amirah Amna Anisa Aqila Arij Arwa Ashraqat 
+			Asma Asmaa Asra Atifa Atiya Ayda Ayesha Ayishah Azra Badr Bahiga Bahija Bahiyya Basima Basira Basma Batul 
+			Budur Dalal Dana Dania Daniyah Dema Dima Djamila Dua Duha Fadia Fadila Fahima Fairuz Faiza Fajr Fakhriyya 
+			Farah Farida Fariha Farrah Fathiyya Fatima Fatimah Fatin Fatma Fawziya Fawziyya Fayruz Fayza Fidda 
+			Fikriyya Fizza Galila Gamila Gathbiyya Gauhar Gawahir Gazbiyya Ghada Ghadir Ghaliya Ghufran Habiba Hadia 
+			Hadil Hadiya Hadiyya Hadjara Hadya Hafsa Hafsah Hafza Hagir Haifa Hajar Hala Halima Halim Hamida Hamid 
+			Hana Hanaa Hanan Hania Haniyya Hanifa Hanif Haniyah Haniyya Haniyya Hasna Hawa Hayfa Hiba Hikmat Hind 
+			Hooda Hosni Houda Huda Husna Husni Husniya Ibtihaj Ibtisam Ihab Ihsan Ikraam Ikram Ikram Ilham Iman In'am 
+			Inas 'ismat Isra Israa I'tidal I'timad Izdihar Jalila Jameela Jamila Jamillah Janan Jathbiyya Jawahir 
+			Jawdat Jinan Jumana Karam Karima Khadiga Khadija Khalida Khalilah Khatijah Khayrat Khayriyya Laila Layla 
+			Lamia Lamis Lamya Lateefah Latifa Latifah Lawahiz Layla Leila Lubna Lujayn Maha Malaika Malak Malika Maram 
+			Mariam Marwa Maryam Masuma Midha Mona Mouna Mubina Muhsina Mumina Muna Munira Munya Nabila Nada Nadia 
+			Nadira Nadiyya Nadra Nadya Naila Na'ima Najwa Naseem Nashwa Nasim Nasira Nassim Nawal Nawra Naziha Nazli 
+			Nida Nimat Noor Nuha Nur Nura Qamar Raabi'a Rabab Rabi'a Rabi Rafiqa Rafiq Rahat Raisa Rais Raja Rajiya 
+			Rajya Rajiya Ramla Ramlah Ramlah Rana Randa Raniya Ranya Raniya Rasha Rashida Rashid Rasima Rasim Rawiya 
+			Rawya Rayhana Reem Ridwana Rihanna Rim Rizwana Ruba Ruqayya Ruqayyah Ruwa Ruya Sa'adat Sabah Sabeen 
+			Sabriyya Sabri Sadaf Sa'dia Sa'di Safiya Safiyyah Sahar Sa'ida Sakina Salha Saliha Salima Salma Salwah 
+			Samar Sameera Samira Samia Samiya Samina Thamina Samira Samiya Sana Saniyya Sanya Sawsan Sayyida Selima 
+			Salima Shadiya Shadya Shadiya Shafaqat Shafiqa Shahd Shahira Shahnazpu Shahrazadr Shahrizad Shahrazad 
+			Shaimaa Shayma Shakila Shakil Shakira Shakir Shakura Shakur Sham'a Sharifa Shayma Shazi Shukriya Shula 
+			Suha Suhaila Sultana Sumayya Suraya Tabassum Tahira Taliba Tasnim Thamina Thana Thurayya Tuba Uzma Wafiya 
+			Waheeda Wahida Widad Yasmeen Yusra Zaahira Zahia Zahida Zahira Zahra Zahrah Zaida Zaina Zainab Zakiah 
+			Zakiya Zakiyya Zaray Zayna Zaynab Zinat Zubaida Zulaykha Zulekha
+		}
+	}
+	bilala = {
+		primary = YAO
+		dynasty_names = {
+			Mahamat Batoa "N'guidjim" Batoa Burwa Dalmawa Tchalmawa Wadawa Djulwa
+			"N'guidjim" Kassawa Gaswa Madawa Fadwa Kiliti Argumba
+		}
+		male_names = {
+			"Djil Essa Tubo" "Tsharoma" "Madgasha" "Mada Saxair" "Mat Kurtu" "Djourab el Kabir" "Mortcho" 
+			"Djourab el Mongo" "Dogo Arma" "Balkasha" "Djourab Saxair" "Moussa Mortcho" "Baya Mortcho" 
+			"Hassan Baikouma" "Djili" "Gadai" "Hassan Absakin" "Tscharoma Abdallah" "Hassan Abba" "Oumar Abba" "Malik" 
+			"Haris" "Oumar" "Dikhoma" "Fanna" "Ariso" "Kader" "Waima" "Balwa" "Araki" "Beiso" "Al Djelil" "Dounouma" 
+			"Alio" "Idris Am Sami" "Brahim" "Dil Zei Nebi" "Maidakin Abami" "Chagrami" "Beyra" "Keda" "Djil Goumsoumi" 
+			"Al el Qatil"
+		}
+		female_names = {
+			"Aikacha" "Khadidja" "Aicha" "Fatima" Aamina Adila Afaf Afra Aida 'aisha A'isha Aisha Akilah Alia Alina Aliya 
+			Aliyah Aliyya Aliyyah Almas Alya Amal Amani Amina Aminah Amira Amirah Amna Anisa Aqila Arij Arwa Ashraqat 
+			Asma Asmaa Asra Atifa Atiya Ayda Ayesha Ayishah Azra Badr Bahiga Bahija Bahiyya Basima Basira Basma Batul 
+			Budur Dalal Dana Dania Daniyah Dema Dima Djamila Dua Duha Fadia Fadila Fahima Fairuz Faiza Fajr Fakhriyya 
+			Farah Farida Fariha Farrah Fathiyya Fatima Fatimah Fatin Fatma Fawziya Fawziyya Fayruz Fayza Fidda 
+			Fikriyya Fizza Galila Gamila Gathbiyya Gauhar Gawahir Gazbiyya Ghada Ghadir Ghaliya Ghufran Habiba Hadia 
+			Hadil Hadiya Hadiyya Hadjara Hadya Hafsa Hafsah Hafza Hagir Haifa Hajar Hala Halima Halim Hamida Hamid 
+			Hana Hanaa Hanan Hania Haniyya Hanifa Hanif Haniyah Haniyya Haniyya Hasna Hawa Hayfa Hiba Hikmat Hind 
+			Hooda Hosni Houda Huda Husna Husni Husniya Ibtihaj Ibtisam Ihab Ihsan Ikraam Ikram Ikram Ilham Iman In'am 
+			Inas 'ismat Isra Israa I'tidal I'timad Izdihar Jalila Jameela Jamila Jamillah Janan Jathbiyya Jawahir 
+			Jawdat Jinan Jumana Karam Karima Khadiga Khadija Khalida Khalilah Khatijah Khayrat Khayriyya Laila Layla 
+			Lamia Lamis Lamya Lateefah Latifa Latifah Lawahiz Layla Leila Lubna Lujayn Maha Malaika Malak Malika Maram 
+			Mariam Marwa Maryam Masuma Midha Mona Mouna Mubina Muhsina Mumina Muna Munira Munya Nabila Nada Nadia 
+			Nadira Nadiyya Nadra Nadya Naila Na'ima Najwa Naseem Nashwa Nasim Nasira Nassim Nawal Nawra Naziha Nazli 
+			Nida Nimat Noor Nuha Nur Nura Qamar Raabi'a Rabab Rabi'a Rabi Rafiqa Rafiq Rahat Raisa Rais Raja Rajiya 
+			Rajya Rajiya Ramla Ramlah Ramlah Rana Randa Raniya Ranya Raniya Rasha Rashida Rashid Rasima Rasim Rawiya 
+			Rawya Rayhana Reem Ridwana Rihanna Rim Rizwana Ruba Ruqayya Ruqayyah Ruwa Ruya Sa'adat Sabah Sabeen 
+			Sabriyya Sabri Sadaf Sa'dia Sa'di Safiya Safiyyah Sahar Sa'ida Sakina Salha Saliha Salima Salma Salwah 
+			Samar Sameera Samira Samia Samiya Samina Thamina Samira Samiya Sana Saniyya Sanya Sawsan Sayyida Selima 
+			Salima Shadiya Shadya Shadiya Shafaqat Shafiqa Shahd Shahira Shahnazpu Shahrazadr Shahrizad Shahrazad 
+			Shaimaa Shayma Shakila Shakil Shakira Shakir Shakura Shakur Sham'a Sharifa Shayma Shazi Shukriya Shula 
+			Suha Suhaila Sultana Sumayya Suraya Tabassum Tahira Taliba Tasnim Thamina Thana Thurayya Tuba Uzma Wafiya 
+			Waheeda Wahida Widad Yasmeen Yusra Zaahira Zahia Zahida Zahira Zahra Zahrah Zaida Zaina Zainab Zakiah 
+			Zakiya Zakiyya Zaray Zayna Zaynab Zinat Zubaida Zulaykha Zulekha
+		}
+	}
+	tunjur = {
+		primary = WAD
+		dynasty_names = {
+			Mahamat Batoa "N'guidjim" Batoa Burwa Dalmawa Tchalmawa Wadawa Djulwa
+			"N'guidjim" Kassawa Gaswa Madawa Fadwa Kiliti Argumba
+		}
+		male_names = {
+			"Djil Essa Tubo" "Tsharoma" "Madgasha" "Mada Saxair" "Mat Kurtu" "Djourab el Kabir" "Mortcho" 
+			"Djourab el Mongo" "Dogo Arma" "Balkasha" "Djourab Saxair" "Moussa Mortcho" "Baya Mortcho" 
+			"Hassan Baikouma" "Djili" "Gadai" "Hassan Absakin" "Tscharoma Abdallah" "Hassan Abba" "Oumar Abba" "Malik" 
+			"Haris" "Oumar" "Dikhoma" "Fanna" "Ariso" "Kader" "Waima" "Balwa" "Araki" "Beiso" "Al Djelil" "Dounouma" 
+			"Alio" "Idris Am Sami" "Brahim" "Dil Zei Nebi" "Maidakin Abami" "Chagrami" "Beyra" "Keda" "Djil Goumsoumi" 
+			"Al el Qatil"
+		}
+		female_names = {
+			"Aikacha" "Khadidja" "Aicha" "Fatima" Aamina Adila Afaf Afra Aida 'aisha A'isha Aisha Akilah Alia Alina Aliya 
+			Aliyah Aliyya Aliyyah Almas Alya Amal Amani Amina Aminah Amira Amirah Amna Anisa Aqila Arij Arwa Ashraqat 
+			Asma Asmaa Asra Atifa Atiya Ayda Ayesha Ayishah Azra Badr Bahiga Bahija Bahiyya Basima Basira Basma Batul 
+			Budur Dalal Dana Dania Daniyah Dema Dima Djamila Dua Duha Fadia Fadila Fahima Fairuz Faiza Fajr Fakhriyya 
+			Farah Farida Fariha Farrah Fathiyya Fatima Fatimah Fatin Fatma Fawziya Fawziyya Fayruz Fayza Fidda 
+			Fikriyya Fizza Galila Gamila Gathbiyya Gauhar Gawahir Gazbiyya Ghada Ghadir Ghaliya Ghufran Habiba Hadia 
+			Hadil Hadiya Hadiyya Hadjara Hadya Hafsa Hafsah Hafza Hagir Haifa Hajar Hala Halima Halim Hamida Hamid 
+			Hana Hanaa Hanan Hania Haniyya Hanifa Hanif Haniyah Haniyya Haniyya Hasna Hawa Hayfa Hiba Hikmat Hind 
+			Hooda Hosni Houda Huda Husna Husni Husniya Ibtihaj Ibtisam Ihab Ihsan Ikraam Ikram Ikram Ilham Iman In'am 
+			Inas 'ismat Isra Israa I'tidal I'timad Izdihar Jalila Jameela Jamila Jamillah Janan Jathbiyya Jawahir 
+			Jawdat Jinan Jumana Karam Karima Khadiga Khadija Khalida Khalilah Khatijah Khayrat Khayriyya Laila Layla 
+			Lamia Lamis Lamya Lateefah Latifa Latifah Lawahiz Layla Leila Lubna Lujayn Maha Malaika Malak Malika Maram 
+			Mariam Marwa Maryam Masuma Midha Mona Mouna Mubina Muhsina Mumina Muna Munira Munya Nabila Nada Nadia 
+			Nadira Nadiyya Nadra Nadya Naila Na'ima Najwa Naseem Nashwa Nasim Nasira Nassim Nawal Nawra Naziha Nazli 
+			Nida Nimat Noor Nuha Nur Nura Qamar Raabi'a Rabab Rabi'a Rabi Rafiqa Rafiq Rahat Raisa Rais Raja Rajiya 
+			Rajya Rajiya Ramla Ramlah Ramlah Rana Randa Raniya Ranya Raniya Rasha Rashida Rashid Rasima Rasim Rawiya 
+			Rawya Rayhana Reem Ridwana Rihanna Rim Rizwana Ruba Ruqayya Ruqayyah Ruwa Ruya Sa'adat Sabah Sabeen 
+			Sabriyya Sabri Sadaf Sa'dia Sa'di Safiya Safiyyah Sahar Sa'ida Sakina Salha Saliha Salima Salma Salwah 
+			Samar Sameera Samira Samia Samiya Samina Thamina Samira Samiya Sana Saniyya Sanya Sawsan Sayyida Selima 
+			Salima Shadiya Shadya Shadiya Shafaqat Shafiqa Shahd Shahira Shahnazpu Shahrazadr Shahrizad Shahrazad 
+			Shaimaa Shayma Shakila Shakil Shakira Shakir Shakura Shakur Sham'a Sharifa Shayma Shazi Shukriya Shula 
+			Suha Suhaila Sultana Sumayya Suraya Tabassum Tahira Taliba Tasnim Thamina Thana Thurayya Tuba Uzma Wafiya 
+			Waheeda Wahida Widad Yasmeen Yusra Zaahira Zahia Zahida Zahira Zahra Zahrah Zaida Zaina Zainab Zakiah 
+			Zakiya Zakiyya Zaray Zayna Zaynab Zinat Zubaida Zulaykha Zulekha
+		}
+	}
+	tuareg = {
+		primary = AIR
+		dynasty_names = {
+			Magsharen Stanbulewa "Ait Loaien" "Dag Rali" Iregenaten
+			"Kel Rela" "Kel Silet" Taituq "Tgaha Millet" "Kel Afella"
+			"Kel Taghlit" "Kel Essouk" "Kel Ouzzeyn" Ifergoumessen Iriyaken
+			"Taghat Mellet" Idnan
+		}
+		male_names = {
+			Agg-Abba al-Amin al-Wali al-Mu'min Uthman Agg-A'isha Humad Guma al-Adil ad-Dani al-Baqiri Waffa Ibrahim 
+			Waffa al-Qadir ar-Raffa ad-Dusuki Mikitan ar-Rahman Umaru ag-Ibrahim Salah al-Khir Yunus Ag Mama al-Hajj 
+			Ahmad Aytarel Attici Musa Akhamuk Meslar Bayy
+		}
+		female_names = {
+			"Tin Hinan" Takama Tanteflest Tarayna Aygul Aygan AylIn Aynur Aysel Fatma FIdan Firuza Gulnar Gulnara 
+			Ganay Ganel Konul Leyla Parvana Parvin Sevda SevInc SevInj Tarana Vasala Zemfira Zeynab
+		}
+	}		
+	senegambian = {
+		primary = JOL
+		dynasty_names = {
+			"N'Dyaye" "Penda" "Mba" "Tyukuli" "Sare" Kompass
+			Birayamb Keme Bakar Fak "Kuran Kan" Daagulen
+			Sare Samba Dyakher
+		}
+		male_names = {
+			"N'Dyelen Mbey" "Tase Daagulen" Sare N'Diklam Tyukuli Leeyti Birayma Bukaar Leele al-Buri Lat Gireun Bakar 
+			Bakan Birawa Bakaa Mba Mbanyi
+		}
+		female_names = {
+			"Fatoumata Sall" Fatim Fatoumata Halima Hawa Ina Kadi Kilia Kolonkan Lorane Mariam Nafissa Namandjé Namiss 
+			Nana Asha Chausiku Eshe Furaha Imani Kamaria Marjani Mchumba Mwanajuma Nia Nuru Nyah Sanaa Sauda Subira Zuri
+		}
+	}			
+	fulani = {
+		primary = FUL
+		dynasty_names = {
+			Fodio Denyanke Lih Wan Alfa Garm Ule Kumba Lamu
+			Tabakali Bohi Dundu Jeegi Musa Njai
+			Kan Talla "Lamin Bal" Wan Ly An
+		}
+		male_names = {
+			Tengella Koli Laba Jam Gelaajo Yero Njal Jaje Gata Samba Bokar Bubakar Sire Bubu Konko Sule Makhan Abdul 
+			Kader Moktar Hamat Yusuf Ali Mamadu Biran
+		}
+		female_names = {
+			"Tabara" "Gaisiri" "Bello" "Diallo" "Nyako" Endana Gethera Hinya Ikeno Inira Inithia Itanya Jamba Kakena 
+			Kenja Kenithia Kenura Kiama Kiania Kianira Kiira Kirima Muney Muraty Oyana Therania Tia
+		}
+	}
+	#Changes
+	sanhaja = {
+		primary = TRZ
+		dynasty_names = {
+			Fodio Denyanke Lih Wan Alfa Garm Ule Kumba Lamu
+			Tabakali Bohi Dundu Jeegi Musa Njai
+			Kan Talla "Lamin Bal" Wan Ly An
+		}
+		male_names = {
+			Tengella Koli Laba Jam Gelaajo Yero Njal Jaje Gata Samba Bokar Bubakar Sire Bubu Konko Sule Makhan Abdul 
+			Kader Moktar Hamat Yusuf Ali Mamadu Biran
+		}
+		female_names = {
+			"Tabara" "Gaisiri" "Bello" "Diallo" "Nyako" Endana Gethera Hinya Ikeno Inira Inithia Itanya Jamba Kakena 
+			Kenja Kenithia Kenura Kiama Kiania Kianira Kiira Kirima Muney Muraty Oyana Therania Tia
+		}
+	}
+}
+altaic = {
+	graphical_culture = muslimgfx
+
+	mongol = {
+		primary = KHA
+		male_names = {
+			Agbarjin Adai Altan Arigaba Arugtai Ayurparibhadra Bodi Bek Bahamu Bars Buyan Biligtü Dayan 
+			Delbeg Ejei Elbeg Engke Güyük Gün Gulichi Irinchibal Jorightu Kublai Köke Ligdan Markörgis Möngke 
+			Manduulun Öljei Örüg Oyiradai Ögödei Qayshan Qoshila Sayn Suddhipala Tayisung Temujin Temür Toghun 
+			Tolui Toq Uskhal Yesün Ariq Batu Eljigidei Joichi Darayisung Tümen
+		}
+		female_names = {
+			Temülen Börte Mandukhai Samar Zaufishan Mulan Aigiarn Borte Chabi Conchaka Doquez-khatum Goland Ho'elun 
+			Khultulun Kokachin Mandughai Oghul Qamish Orqina Sorghaghtani Beki Toregene 
+		}
+		dynasty_names = {
+			# CKII
+			"Onggirat" "Naiman" "Kereyid" "Sartaq" "Mengu-Timur" "Uriankhai" "Bujakhin" "Besud" "Noyan" 
+			"Jochid" "Chagatayid" "Borjigin" "Chupanid" "Injuid" "Toluid" "Ganbold" "Bolormaa" "Batbayar" 
+			"Bat-Erdene" "Otgonbayar" "Enkhtuyaa" "Gantulga" "Nergüi" "Lkhagvasüren" "Enkhjargal" 
+			"Ganzorig" "Narantsetseg" "Pürevsüren" "Ganbaatar" "Mönkhtsetseg" "Mönkhbat" "Mönkh-Erdene" 
+			"Jalair" "Sartuul" "Olkhunut" "Khatagin" "Iljigin" "Tsookhor" "Qarakhanid"
+		}
+	}
+	chahar = { # now korchin
+		primary = KRC
+		male_names = {
+			Agbarjin Adai Altan Arigaba Arugtai Ayurparibhadra Bodi Bek Bahamu Bars Buyan Biligtü Dayan 
+			Delbeg Ejei Elbeg Engke Güyük Gün Gulichi Irinchibal Jorightu Kublai Köke Ligdan Markörgis Möngke 
+			Manduulun Öljei Örüg Oyiradai Ögödei Qayshan Qoshila Sayn Suddhipala Tayisung Temujin Temür Toghun 
+			Tolui Toq Uskhal Yesün Ariq Batu Eljigidei Joichi Darayisung Tümen
+		}
+		female_names = {
+			Temülen Börte Mandukhai Samar Zaufishan Mulan Aigiarn Borte Chabi Conchaka Doquez-khatum Goland Ho'elun 
+			Khultulun Kokachin Mandughai Oghul Qamish Orqina Sorghaghtani Beki Toregene 
+		}
+	}
+	khalkha = {
+		primary = KLK
+		male_names = {
+			Agbarjin Adai Altan Arigaba Arugtai Ayurparibhadra Bodi Bek Bahamu Bars Buyan Biligtü Dayan 
+			Delbeg Ejei Elbeg Engke Güyük Gün Gulichi Irinchibal Jorightu Kublai Köke Ligdan Markörgis Möngke 
+			Manduulun Öljei Örüg Oyiradai Ögödei Qayshan Qoshila Sayn Suddhipala Tayisung Temujin Temür Toghun 
+			Tolui Toq Uskhal Yesün Ariq Batu Eljigidei Joichi Darayisung Tümen
+		}
+		female_names = {
+			Temülen Börte Mandukhai Samar Zaufishan Mulan Aigiarn Borte Chabi Conchaka Doquez-khatum Goland Ho'elun 
+			Khultulun Kokachin Mandughai Oghul Qamish Orqina Sorghaghtani Beki Toregene 
+		}
+	}
+	oirats = {
+		primary = ZUN
+		male_names = {
+			Batula Toghan Galdan Amursana Erdeni Choghtu Dawa Esen Güshi Lha-bzang Khara Khula Kho Sengge Tseten 
+			Tsewang Kundelung Lobzang Sutai Tsobasa Ubasi Quduqa Toghto Altai Bäki Bayan Dayan Hami Molon Oori 
+			Sechen Radi Talman Todo Tumen Tumu Ubashi Ulan Wehe Yelu Zaya Orlök
+		}
+		female_names = {
+			Hoelun Tamülün Sorghaghtani Temülen Börte Mandukhai Samar Zaufishan Mulan Aigiarn Borte Chabi Conchaka Doquez-khatum Goland Ho'elun Khultulun Kokachin Mandughai Oghul Qamish Orqina Sorghaghtani Beki Toregene 
+		}
+	}
+	uzbehk = {
+		primary = SHY
+		male_names = {
+			Abdul-Aziz Abdul-Karim Abdul-Mumin Abdul-Rahim Abdulla Abu Said Abu'l-Feiz Abu'l-Ghazi Abu'l-Khayr 
+			Abu'l-Mansur Agatay Alim Anusha Arab Muhammad Avanesh Bahadur Bakht Baqi Muhammad Budjuga Bureke 
+			Djuchi Dost Habash Hadji Hadji Muhammad Hassan Quli Haydar Imam Quli Ilbars Irdana Isfandiyar Isim 
+			Janibek Kal Khudayar Khudaydad Kochkunju Muhammad Muhammad Amin Muhammad Hakim Muhammad Rahim Nadir 
+			Muhammad Narbuta Navruz Ahmad Niyaz Pir Muhammad Sanjar Sevinch Shadi Shahmurad Shahrukh Shaykh 
+			Subhan Quli Sufyan Suleyman Tahir Timur Ubaydulla Umar Vali Vali Muhammad Yadgar Daniyal Haidar 
+			Iskandar
+		}
+		female_names = {
+			Temülen Börte Mandukhai Samar Zaufishan Mulan Aigiarn Borte Chabi Conchaka Doquez-khatum Goland Ho'elun Khultulun Kokachin Mandughai Oghul Qamish Orqina Sorghaghtani Beki Toregene 
+		}
+	}
+	turkmeni = {
+		primary = KHI
+		dynasty_names = {
+			"Arabshahid" "Qungrat" "Bayan Arslan" "Mongke Cheren" "Mongke Bayar" "Suren Chinua" "Oyugun Nasan"
+			"Bora Tolui" Qadancher Batulun Batutai Bokejin Arighqan Burilgiteni
+			Bayarnai Subegene Tegusdai Yekedei
+		}
+		male_names = {
+			Abdul-Aziz Abdul-Karim Abdul-Mumin Abdul-Rahim Abdulla Abu Said Abu'l-Feiz Abu'l-Ghazi Abu'l-Khayr 
+			Abu'l-Mansur Agatay Alim Anusha Arab Muhammad Avanesh Bahadur Bakht Baqi Muhammad Budjuga Bureke 
+			Djuchi Dost Habash Hadji Hadji Muhammad Hassan Quli Haydar Imam Quli Ilbars Irdana Isfandiyar Isim 
+			Janibek Kal Khudayar Khudaydad Kochkunju Muhammad Muhammad Amin Muhammad Hakim Muhammad Rahim Nadir 
+			Muhammad Narbuta Navruz Ahmad Niyaz Pir Muhammad Sanjar Sevinch Shadi Shahmurad Shahrukh Shaykh 
+			Subhan Quli Sufyan Suleyman Tahir Timur Ubaydulla Umar Vali Vali Muhammad Yadgar Daniyal Haidar 
+			Iskandar
+		}
+		female_names = {
+			Hooda Malaika Munira Rabiya Rafiqa Ksyusha Sabina Zarina Hatyra Gulnaza Selbi Aziza Jeren Zeynab Myahri
+		}
+	}
+	uyghur = {
+		primary = KAS
+		male_names = {
+			Abdul-Karim Abdul-Latif Abdul-Rashîd Abdullah Ahmad Alghu Ali Baraq Bayan Quli Buqa Temür Buzan 
+			Changshi Danishmendji Dost Muhammad Dughlat Duwa Duwa Temür Eljigidey Esen Buqa Ilbars Ilyas Ismail 
+			Khabul Khizr Könchek Mahmud Mansur Mubarak Muhammad Muhammad Amin Muhammad Mumin Naqsh-i-Jahan 
+			Hulagu Qazaghan Qazan Quraysh Sa'id Satuq Shams-i-Jahan Sher Muhammad Soyurghatmish Taliqu 
+			Temür Tughlugh Temür Uwais Yasa'ur Yesu Mongke Yesun Temür Yunus Chagatay Tarmashirin Negübei Qara 
+			Kebek Yahballaha 
+		}
+		female_names = {
+			Sakina Temülen Börte Mandukhai Samar Zaufishan Mulan Aigiarn Borte Chabi Conchaka Doquez-khatum Goland Ho'elun 
+			Khultulun Kokachin Mandughai Oghul Qamish Orqina Sorghaghtani Beki Toregene "Fatima" "Ibtisam" "Jalila" "Janan" 
+			"Layla" "Sakina" "Sharifa"
+		}
+	}
+	khazak = {
+		primary = KZH
+		male_names = {
+			Abilghazi Abilmambet Abulay Abulkhayr Ahmat Ayshwak Arunghazi Barak Batir Bokey Bulat Burunduq 
+			Erali Esim Ghubaydulla Haqnazar Jangir Janibek Jantore Jarmuhambet Jolbaris Kenesari Kerey Mamash 
+			Qaratay Qasim Qayip Sameke Sherghazi Shighay Tahir Tauke Tawekel Tugum Wali Buydash Nurali
+		}
+		female_names = {
+			Hayfa Aisara Asem Aisulu Aizhan Aikorkem Aisha Aiganim Aisaule Aigul Ainur Agila Ademi Ajar Aziza Aida Aibala 
+			Aibanu Aibarsha Aigerim Aidana Aizhamal Aizharkyn Aizada Aiman Aina Ainagul Ainash Aisana Aishagul Aishat Aim 
+			Aimgul Aimzhan Akbota Akjamal Akkenje Akmaral Aksamal Aktolkin Aktoty Aliya Alia Alma Altyn Altynai Altingul 
+			Alua Albina Alfia Amangul Amina Anar Anargul Aray Arai Araylim Arailym Aru Arujan Asel Asemgul Asiya Asyl Asil 
+			Asylgul Ayagoz Ayajan Ayazhan Bazargul Bakyt Balbike Balzhan Balziya Balkiya Balym Banu Bayan Bibigul Bibinur 
+			Bota Botagoz Botakoz Damilia Damira Dana Danagul Daniya Dariga Dariya Diana Didar Didara Dilara Dilyara Dilda 
+			Dilya Dina Dinara Enlik Erke Erkejan Farida Fariza Fatima Fatiha Gaziza Galiya Gaukhar Gul Gulayim Gulbarshin 
+			Gulbahram Gulim Gulnaz Gulbanu Guldana Guldariga Guldaria Guljazira Guljaina Guljan Gulzada Gulziya Gulmarzhan 
+			Gulmira Gulnur Gulsara Gulsezim Gulsim Gulshat Gulshakhar Hadisha Halila Halima Hamida Hanifa Hanshayim Hanym 
+			Hatima Iltipat Inabat Inju Indira Inkar Irada Jadyra Jazira Jayna Jaina Jamal Jamilya Janar Jangul Janiya Janna 
+			Janat Jansaule Jansaya Jansulu Jarkin Jarkynai Jibek Juldiz Juldyz Jumagul Jumakiz Jupar Kamila Kamshat Karima 
+			Karina Kenje Klara Kulimjan Kulyan Kumis Kunsulu Laura Leyla Luiza Lyazzat Magripa Madina Maira Maya Maqpal 
+			Malika Manshuk Maral Marzhan Marjan Maria Mariyam Mahabbat Marhabbat Meyirgul Mirgul Meyramgul Meruert Mira 
+			Munira Nagima Nazgul Nazira Nazim Nazym Nasibeli Nurai Nurbike Nurgul Nurjamal Nurjanat Nurziya Nuriya Nursulu 
+			Oryngul Perizat Qazyna Qalamqas Qaljan Qalima Qamaria Qaragoz Qarashash Qarlygash Qundyz Quralai Qymbat Rabiga 
+			Raziya Raisa Raygul Raykhan Raushan Raya Rizagul Rita Roza Sabira Sagida Sagimgul Saida Sayra Sakypjamal Salima 
+			Saltanat Samal Sandigul Sandugash Sara Saule Saya Sayagul Shakizat Shakira Shara Shahzada Sholpan Shynar Shinar 
+			Sveta Senim Sezim Sulu Sulujan Sulushash Symbat Talshin Tamara Tanzilya Tansholpan Tatti Togjan Tolganai 
+			Tomiris Tursin Tursinai Tursingul Uazira Ulbala Ulbolsyn Uldana Uljan Umit Umitjan Venera Zaida Zamzagul Zamira 
+			Zarina Zaure Zauresh Zeyne Zeynep Zemfira Zere Zlikha Zoya Zubaira Zulfia Zukhra Zlika
+		}
+	}
+	kirgiz = {
+		primary = CHG
+		male_names = {
+			Abdul-Karim Abdul-Latif Abdul-Rashîd Abdullah Ahmad Alghu Ali Baraq Bayan Quli Buqa Temür Buzan 
+			Changshi Danishmendji Dost Muhammad Dughlat Duwa Duwa Temür Eljigidey Esen Buqa Ilbars Ilyas Ismail 
+			Khabul Khizr Könchek Mahmud Mansur Mubarak Muhammad Muhammad Amin Muhammad Mumin Naqsh-i-Jahan 
+			Hulagu Qazaghan Qazan Quraysh Sa'id Satuq Shams-i-Jahan Sher Muhammad Soyurghatmish Taliqu 
+			Temür Tughlugh Temür Uwais Yasa'ur Yesu Mongke Yesun Temür Yunus Tarmashirin Negübei Qara Kebek 
+			Chagatay
+		}
+		female_names = {
+			Mandughai Hoelun Tamülün Kokachin Beki Temülen Börte Mandukhai Samar Zaufishan Mulan Aigiarn Borte Chabi Conchaka 
+			Doquez-khatum Goland Ho'elun Khultulun  Qamish Orqina Sorghaghtani Toregene "Fatima" "Ibtisam" "Jalila" "Janan" Sakina
+		}
+	}
+	#changes
+	dorbet = {
+		primary = KUL
+		male_names = {
+			Batula Toghan Galdan Amursana Erdeni Choghtu Dawa Esen Güshi Lha-bzang Khara Khula Kho Sengge Tseten 
+			Tsewang Kundelung Lobzang Sutai Tsobasa Ubasi Quduqa Toghto Altai Bäki Bayan Dayan Hami Molon Oori 
+			Sechen Radi Talman Todo Tumen Tumu Ubashi Ulan Wehe Yelu Zaya Orlök
+		}
+		female_names = {
+			Hoelun Tamülün Sorghaghtani Temülen Börte Mandukhai Samar Zaufishan Mulan Aigiarn Borte Chabi Conchaka Doquez-khatum Goland Ho'elun Khultulun Kokachin Mandughai Oghul Qamish Orqina Sorghaghtani Beki Toregene 
+		}
+	}
+	male_names = {
+		Abagha Achigh Aguchu Ajai Ajinai Akhutai Alagh Alchi Alchidai Altan Ambaghai Arkhai Arasen 
+		Babur Badai Bagaridai Bala Barghujin Bartan Batu Bedugun Begter Belgutei Belgunutei Bilge Berke 
+		Bodonchar Bogen Bogorchu Bolkhadar Borjigidai Boroghul Bughu Bugidai Bugunutei Bujeg Bukha 
+		Bulughan Buri Burkhan Burundai Chagatai Chaghagan Chanai Chigu Chidukhul Chilagun Chiledu 
+		Chormakhan Chulgetei Dagun Daritai Dayir Dodai Duua Eljigedei Ghazan Ghunan Guchu Gughlug Guyug 
+		Harghasun Horkhudagh Hulegu Husun Inalchi Inancha Iturgen Jajiradai Jamugha Jebe Jochi 
+		Jurchedei Khabichi Khachi Khachigun Khadagh Khagatai Khaidu Khal Khorchi Khorilartai Khubilai 
+		Khudu Khutula Khuyildar Kogsegu Kokochu Megetu Megujin Menggei Mongke Morokha Munglig Nakhu 
+		Narin Nayaga Nogai Odchigin Ogodei Okhotur Oljaitu Oronartai Shiraghul Shirgugetu Subetei 
+		Suyiketu Taghai Tamachi Targhutai Temuge Temujin Temur Todogen Toghoril Toghtoga Tokhtamis 
+		Tolui Torolchi Tumen Uighurtai Ukhuna Usun Yedi Yegu Yeke Yesugei Yesunge Yokhunan Kadan Godan
+		# PECHENEG
+		Çelgil Aba Baitzas Balgor Batan Batas Bator Bayça Biçkili Bizel Boru Bula Giazis Ildey Ipa Ipaos 
+		Kabuksin Karaca Kaydum Kegen Konel
+		Korkutan Kortan Kostas Kourkoutai Kuerçi Kugel Kure Sol Suru Tatus Teber Temir Tyrach Yavdi Yazi 
+		# CUMAN / KARLUK / KIRGHIZ
+		Çilbu Aepak Asalup Asep Atrak Bönek Bachman Begluk Blush Bonyak Borç Eldeçyuk Etrek Girgen Gzi 
+		Itlar Ituk Könçek Kobyak Kopti Kotyan Koza Kozel Kubasar Kuntuvdi Kutan Pulad Saru Sevenç Sirçan 
+		Sokal Sotan Sugr Törtogul Togli Tolun Tugor Uzluk Uzur
+		# AVAR
+		Almish Alp Alzek Anzi Apskhih Araslan Arslan Asparukh Bagha Baghatur Balambär Balambar Barjik 
+		Bars Barsbek Bashtwa Bastu Bataul Batbayan Batoya Batulia Bayan Belkermak Bezmer Bihor Boyan Bugha 
+		Bughra Bulan Bulger Bulçan Busir Buzan Buzer Bälgiçi Böri 
+		Chepa Chinialush Dengizikh Dizeng Dometa Dristar Drong Dukum Elemag Ellak Ernakh Eskhakh Goleda 
+		Gostun Guar Hudbad Iani Ilik Iltäbär Irnek Isbul Islivan Isperikh Ispor Itakh Kamaj Kano Karadakh 
+		Karan Karaton Kardam Kayghalagh Kharaton Khatir Khinialon 
+		Khudbard Khuterkin Kibar Kisa Kordil Kormesiy Kormisosh Kotrag Krovat Krum Kuber Kubrat Kundaç 
+		Kundaçiq Kurt Kutrigur Kälaç Labertam Magotin Malamir Mugel Mänär Mänäs Mënümarót Odolgan Okhsi 
+		Okhsun Okors Omurtag Onegavon Organ Organa Ornag 
+		Oshi Ostro Pagan Pakhtiyar Bakhtiar Papaçyz Paväl Praksa Rassate Rugila Sabin Samsam Sandil 
+		Sandilkh Sarkhan Sartäç Savin Sevar Shilki Simsam Sondoke Tabghaç Tarasiy Taridin Tarkhan Tarmaç 
+		Tatra Telec Telerig Tervel Timër Timur Timëreç Timërpälat 
+		Tingiz Tiradin Toghan Toghrïl Toghrul Tokhtaman Toktu Tsog Tsul Tuk Tuzniq Täbär Teber Tähtaman 
+		Umor Uturgur Vakrim Venda Vetam Vinekh Yabghu Yani Yavantey Yençepi Yerneslu Yeçtirek Yilig 
+		Zabergan Zenti Çat Çat'n Çorpan Ötemis
+	}
+	female_names = { 
+		Al-Alta Alan Altani Borte Botokhui Bulughan Chabi Chagur Chakha Checheyigen Chotan Doregene 
+		Doquz Ebegei Gurbesu Hogelun Holuikhan Ibakha Khadagan Khogaghchin Khojin Khorijin Khugurchin 
+		Khulan Mandukhai Mongoljin Nomolun Oghul Orbei Sokhatai Sorkhaghatani Tekine Temulun Töregene 
+		Yesugun Yesui Hoelun
+		# PECHENEG
+		Çiçek Çilen Çiltanesi Özgul Özlem Akgul Asli Ayasun Ayten Bozçin Dilek Esin Gulçiçek Gulay 
+		Gunduz Gundes Gunes Ilkay Ipek Ipekel Irge Karacik Mala Mutlu Peksen Samur Sarica Sati Sevilay 
+		Sevindik Sibel Sirin Sirma Songul Tekçe Tura Umay Usunbike Yasar Yeldem Yildiz
+		# CUMAN
+		Çiçek Çilen Çiltanesi Özgul Özlem Akgul Asli Ayasun Ayten Bozçin Dilek Esin Gulçiçek Gulay Gunduz 
+		Gundes Gunes Ilkay Ipek Ipekel Irge Karacik Mala Mutlu Peksen Samur Sarica Sati Sevilay Sevindik 
+		Sibel Sirin Sirma Songul Tekçe Tura Umay Usunbike Yasar Yeldem Yildiz
+		# KHAZAR / BOLGHAR
+		Çiçäk Çiçek Çeçeppi Çeçki Çeçtilet Çilen Çiltanesi Özgul Özlem Akgul Asli Ayasun Ayten Bozçin Dilek 
+		Esin Gulçiçäk Gulçiçek Gulay Gunduz Gundes Gunes Ikalay Ilkay Ipek Ipekel Irge 
+		Karacik Kätyarikka Këlnissa Këlyamal Khatun Lärkka Lyukha Mala Maturkka Mutlu Naça Parsbit Patiyer 
+		Paykëlti Peksen Puyantay Samur Sarantay Sarä Sarica Sarikel 
+		Sati Savaçka Savkëlti Savtilek Savilay Sevilay Savintik Sevindik Shurkka Sibel Sirin Sirma Songul 
+		Tähtani Tekçe Tura Umay Usunbike Yasar Yeldem Yildiz Yartilek
+		# AVAR
+		Akgul Asli Ayasun Ayten Bozçin Dilek Esin Gulay Gulçiçäk Gulçiçek Gundes Gunduz Gunes Ikalay Ilkay 
+		Ipek Ipekel Irge Karacik Khatun Kätyarikka Këlnissa Këlyamal Lyukha Lärkka Mala Maturkka Mutlu Naça 
+		Parsbit Patiyer Paykëlti Peksen Puyantay Samur Sarantay Sarica Sarikel Sarä Sati Savaçka Savilay 
+		Sevilay Savintik Sevindik Savkëlti Savtilek Shurkka Sibel Sirin Sirma Songul Tekçe Tura Tähtani 
+		Umay Usunbike Yartilek Yasar Yeldem Yildiz Çeçeppi Çeçki Çeçtilet Çilen Çiltanesi Çiçäk Çiçek Özgul 
+		Özlem
+	}
+	dynasty_names = {
+		"Chagatay" "Edigüid" "Giray" "Borjigin" "Shaybanid" "Janid" "Mangit"
+		Kirghiz
+		# CKII - KHANTY
+		"Sibirid" "Narima" "Mansi" "Khantys"
+	}
+}
+evenks = {
+	graphical_culture = inuitgfx
+	second_graphical_culture = asiangfx
+	evenk = {
+		second_graphical_culture = asiangfx
+		primary = SOL
+		dynasty_names = {
+			Badarhan Tabangut 
+		}
+		male_names = {
+			Aiaan Atch-ytagyn Giv-ynkeev Nute-nli Gyrgol-gyrgyn Tanat Darkhan Dokhsun Duolan Dygyn Dulustaan Kyytymei 
+			Kencheeri Keskil Manchaary Michil Modun Nurgun Nuolan Sulustaan Tolluman Timir Tygyn Tuskul Uolan Ergis 
+			Erchim Erkin Yrgel Kharyskhan
+		}
+		female_names = {
+			Naryiaana Aiyyna Kydaana Tuskulaana Khaarchaana Temülen Börte Mandukhai Samar Zaufishan 
+		}
+	}
+	yakut = {
+		dynasty_names = {
+			Badarhan Tabangut 
+		}
+		male_names = {
+			Aiaan Atch-ytagyn Giv-ynkeev Nute-nli Gyrgol-gyrgyn Tanat Darkhan Dokhsun Duolan Dygyn Dulustaan Kyytymei 
+			Kencheeri Keskil Manchaary Michil Modun Nurgun Nuolan Sulustaan Tolluman Timir Tygyn Tuskul Uolan Ergis 
+			Erchim Erkin Yrgel Kharyskhan
+		}
+		female_names = {
+			Naryiaana Aiyyna Kydaana Tuskulaana Khaarchaana Temülen Börte Mandukhai Samar Zaufishan 
+		}
+	}
+	yukagyr = {
+		primary = HOD
+		dynasty_names = {
+			Uygulaan Khorints
+		}
+		male_names = {
+			Aiaan Atch-ytagyn Giv-ynkeev Nute-nli Gyrgol-gyrgyn Tanat Darkhan Dokhsun Duolan Dygyn Dulustaan Kyytymei 
+			Kencheeri Keskil Manchaary Michil Modun Nurgun Nuolan Sulustaan Tolluman Timir Tygyn Tuskul Uolan Ergis 
+			Erchim Erkin Yrgel Kharyskhan
+		}
+		female_names = {
+			Naryiaana Aiyyna Kydaana Tuskulaana Khaarchaana Temülen Börte Mandukhai Samar Zaufishan 
+		}
+	}
+	buryat = {
+		primary = BRT
+		dynasty_names = {
+			Badarhan "Chagatay" "Edigüid" "Giray" "Borjigin" "Shaybanid" "Janid" "Mangit"
+		}
+		male_names = {
+			Agbarjin Adai Altan Arigaba Arugtai Ayurparibhadra Bodi Bek Bahamu Bars Buyan Biligtü Dayan Darayisung 
+			Delbeg Ejei Elbeg Engke Güyük Gün Gulichi Irinchibal Jorightu Kublai Köke Ligdan Markörgis Möngke Mulan 
+			Manduulun Öljei Örüg Oyiradai Ögödei Qayshan Qoshila Sayn Suddhipala Tayisung Temujin Temür Toghun Tümen 
+			Tolui Toq Uskhal Yesün Ariq Batu Eljigidei Joichi
+		}
+		female_names = {
+			Temülen Börte Mandukhai Samar Zaufishan 
+		}
+	}
+	tungus = {
+		dynasty_names = {
+			Bulagat Ekhirit Khongodor
+		}
+		male_names = {
+			Agbarjin Adai Altan Arigaba Arugtai Ayurparibhadra Bodi Bek Bahamu Bars Buyan Biligtü Dayan Darayisung 
+			Delbeg Ejei Elbeg Engke Güyük Gün Gulichi Irinchibal Jorightu Kublai Köke Ligdan Markörgis Möngke Mulan 
+			Manduulun Öljei Örüg Oyiradai Ögödei Qayshan Qoshila Sayn Suddhipala Tayisung Temujin Temür Toghun Tümen 
+			Tolui Toq Uskhal Yesün Ariq Batu Eljigidei Joichi
+		}
+		female_names = {
+			Naryiaana Aiyyna Kydaana Tuskulaana Khaarchaana Temülen Börte Mandukhai Samar Zaufishan 
+		}
+	}
+	manchu = {
+		graphical_culture = asiangfx
+		#country = { has_banners = 1}
+		#province = { local_has_banners = 1}
+		#Banners are given via NIs to Jurchens. To gain banners as non-Jurchen, Upgrade Jurchen Cultural Center to Tier 3.
+		primary = MJZ
+		dynasty_names = {
+			"Aisin Gioro" Wanyan "Yehe Nara" "Ula Nara" "Magiya Hala" Niohuru
+			Heseri Guwalgiya Tunggiya Hata Hoifa Yeren Udige
+		}
+		male_names = {
+			"Bukuri Yongson" "Sibeoci Fiyanggu" "Dudu Mengtemu" "Huang Taiji" "Hiowan Yei" "In Jen" "Hung Li" "Yong Yan"
+			"Min Ning" Cungsan Tolo Fuman Giocangga Taksi Nurhachi Dorgon Hooge Fulin Fanca Hoogle Yinzhi Yinreng 
+			Yinti Daisan Abatai Ajige Dodo Yinxiang Yinsi Yintang Hongshi Hongzhou Yongqi Akjan Ayan Baohu Chengjun 
+			Dorgide Eje Encehen Fisin Fulu Ganyong Ganzhan Hurong Jabsan Jakdan Leli Liyi Lung Mergen Muduri Mujin Oori 
+			Radi Talman Wehe Yelu Yongyi Zhanhung Zhenghu Zhengrong Zhongcheng Zhongchun Zhongho Zhonghu Zhonghung 
+			Zongqian Zhongxian Zhongyong Zhongyu
+		}
+		female_names = {
+			Fen Jian Wen Hejing Hejia Hexiao Zhuangjing 
+		}
+	}
+	dynasty_names = {
+		Khorints Tabangut Sartul Daur Khorchin Bulagat Ekhirit Khongodor
+	}
+}
+ryukyu_g = {
+	graphical_culture = asiangfx
+	
+	ryukyuan = { #Ryukyu Has to be taken out of Japanese group for mechanic reasons
+		primary = RYU
+		dynasty_names = { 
+			Yamato Arisugawa Asaka Fushimi "Kan'in" Katsura Kaya Kitashirakawa 
+			Kuni Nashimoto Takeda Yamashina
+		}
+		male_names = {
+			Motohito Mihito Hikohito Fusahito Katsuhito Tomohito Michihito Kazuhito Kotohito Okiko Tsuguhito Nagahito 
+			Satohito Asahito Toshiko Yasuhito Teruhito Hidehito Morohito Ayahito Takauji Yoshiakira Yoshimitsu 
+			Yoshimochi Yoshikazu Yoshinori Yoshikatsu Yoshimasa Yoshihisa Yoshitane Yoshizumi Yoshiharu Yoshiteru 
+			Yoshihide Yoshiaki Nobutada Hidenobu Hideyoshi Hideyori Ieyasu Hidetada Iemitsu Ietsuna Tsunayoshi Ienobu 
+			Ietsugu Yoshimune Ieshige Ieharu Ienari Ieyoshi Iesada Iemochi Yoshinobu
+		}
+		female_names = {
+			Toku Sen Tama Aya Ina Kumiko Ai Aiko Aimi Aina Airi Akane Akemi Aki Akiko Akira Ami Aoi Asuka Atsuko Aya Ayaka 
+			Ayako Ayame Ayane Ayano Chika Chikako Chinatsu Chiyo Chiyoko Cho Chou Chouko Emi Etsuko Hana Hanae Hanako Haru 
+			Haruka Haruko Haruna Hikari Hikaru Hina Hinata Hiroko Hitomi Honoka Hoshi Hoshiko Hotaru Izumi Junko Kaede 
+			Kanon Kaori Kaoru Kasumi Kazue Kazuko Keiko Kiku Kiyoko Kohaku Koharu Kokoro Kotone Kumiko Kyo Kyou Mai Makoto 
+			Mami Manami Mao Mariko Masami Masuyo Mayu Megumi Mei Michi Michiko Midori Mika Miki Miku Minako Minato Mio 
+			Misaki Mitsuko Miu Miyako Miyu Mizuki Moe Momoka Momoko Moriko Nana Nanami Naoko Naomi Natsuki Natsuko Natsumi 
+			Noa Noriko Ran Rei Ren Riko Rin Rina Rio Sachiko Saki Sakura Sakurako Satomi Sayuri Setsuko Shinju Shinobu 
+			Shiori Shizuka Shun Sora Sumiko Suzu Suzume Takako Takara Tamiko Tomiko Tomoko Tomomi Tsubaki Tsubame Tsubasa 
+			Tsukiko Ume Umeko Wakana Yasu Yoko Yoshi Yoshiko Youko Yua Yui Yuina Yuki Yukiko Yuko Yumi Yumiko Yuri Yuu 
+			Yuuka Yuuki Yuuko Yuuna Yuzuki
+		}
+	}
+	dynasty_names = {}
+}
+aboriginal_australian = {
+	graphical_culture = aboriginalgfx
+	second_graphical_culture = africangfx
+	
+	aboriginal = { #(Kuric) Eora/East Coast
+		male_names = {
+			#pre-mandala names
+			Adoni Akama Allambee Amaroo Apari Araluen Araluen Arunta Balun Balunn Dural Ganan Gelar Girra Jarrah 
+			Jerara Jirra Kalti Maka Mallee Mandu Marron Matari Mearann Minar Miro Mogo Monti Mowan Odern Orad Parri 
+			Pindan Pindari Taree Tewart Tuart Uwan Warra Warrain
+			
+			#shared names
+			Babawar Bambam Binyan Birrinbirrin Bunji Cambul Darana Dayindi Djarrjuntjun Dural Gabii Gambuu Marrii
+			Minygululu Nadi Nullah Nyakul Nyukuti Omeo Ridjimiraril Tidam Toba Umbarra Waku Watorea Yarran Yeeralparil
+			Yibaay Yileen
+			
+			Colebee Iluka Killara Merriman Warragul Warrin Yannthan Yarramundi
+		}
+		female_names = {
+			#pre-mandala names
+			Akala Alba Alinga Alkina Alkira Allirea Allora Allunga Amarina Anka Apanie Coorah Coreen Corowa Darri 
+			Ekala Elouera Gedala Gheera Kala Kamballa Karri Karuah Katyin Kayle Kiah Kimba Kirra Kolora 
+			Koorine Maiya Mallana Manilla Manya Marinna Marlee Mayra Meera Merinda Merindah Neridah Niley Noora Olba Olono 
+			Oola Orana Orani Pangari Pengana Pierah Weema Wihelma Wilga Wilhemine Willa Wilmette Wyla Wyuna Yani Yara Yaralla
+			
+			#shared names
+			Alkawari Allira Angoona Anmari Babawar Bando Binda Binmarray Biralee Bunji Chumbuli Colba Darana
+			Illarah Karri Kirrili Kyeema Lilardia Maroochy Mirrin Munandjarra Myaree Naata Ngoia Ningali Nowalingu
+			Nymbulda Nyurapayia Oodgeroo Papalya Parara Patiseba Payu Pirrmangka Takariya Talei Tallara Tatali Tjunkiya
+			Truganina Truganini Truganner Walangkura Watorea Wintjiya Yakari Yalamay Yinarupa Yindi
+			
+			Adina Alinta Alira Arika Birindabella Cardinia Inala Jindalee Kareela Killara Lowanna Merri Pemau Waratah
+		}
+	}
+	yura = { #South Australia
+		male_names = {
+			#pre-mandala names
+			Adoni Akama Allambee Amaroo Apari Araluen Araluen Arunta Balun Balunn Dural Ganan Gelar Girra Jarrah 
+			Jerara Jirra Kalti Maka Mallee Mandu Marron Matari Mearann Minar Miro Mogo Monti Mowan Odern Orad Parri 
+			Pindan Pindari Taree Tewart Tuart Uwan Warra Warrain
+			
+			#shared names
+			Babawar Bambam Binyan Birrinbirrin Bunji Cambul Darana Dayindi Djarrjuntjun Dural Gabii Gambuu Marrii
+			Minygululu Nadi Nullah Nyakul Nyukuti Omeo Ridjimiraril Tidam Toba Umbarra Waku Watorea Yarran Yeeralparil
+			Yibaay Yileen
+			
+			Irabinna Kurraki Warriya "Witto Witto" Daku
+		}
+		female_names = {
+			#pre-mandala names
+			Akala Alba Alinga Alkina Alkira Allirea Allora Allunga Amarina Anka Apanie Coorah Coreen Corowa Darri 
+			Ekala Elouera Gedala Gheera Kala Kamballa Karri Karuah Katyin Kayle Kiah Kimba Kirra Kolora 
+			Koorine Maiya Mallana Manilla Manya Marinna Marlee Mayra Meera Merinda Merindah Neridah Niley Noora Olba Olono 
+			Oola Orana Orani Pangari Pengana Pierah Weema Wihelma Wilga Wilhemine Willa Wilmette Wyla Wyuna Yani Yara Yaralla
+			
+			#shared names
+			Alkawari Allira Angoona Anmari Babawar Bando Binda Binmarray Biralee Bunji Chumbuli Colba Darana
+			Illarah Karri Kirrili Kyeema Lilardia Maroochy Mirrin Munandjarra Myaree Naata Ngoia Ningali Nowalingu
+			Nymbulda Nyurapayia Oodgeroo Papalya Parara Patiseba Payu Pirrmangka Takariya Talei Tallara Tatali Tjunkiya
+			Truganina Truganini Truganner Walangkura Watorea Wintjiya Yakari Yalamay Yinarupa Yindi
+			
+			Karro Kudnarto Manmarra Medika Tarni Thoomi
+		}
+	}
+	paman = { #Capricornia
+		male_names = {
+			#pre-mandala names
+			Adoni Akama Allambee Amaroo Apari Araluen Araluen Arunta Balun Balunn Dural Ganan Gelar Girra Jarrah 
+			Jerara Jirra Kalti Maka Mallee Mandu Marron Matari Mearann Minar Miro Mogo Monti Mowan Odern Orad Parri 
+			Pindan Pindari Taree Tewart Tuart Uwan Warra Warrain
+			
+			#shared names
+			Babawar Bambam Binyan Birrinbirrin Bunji Cambul Darana Dayindi Djarrjuntjun Dural Gabii Gambuu Marrii
+			Minygululu Nadi Nullah Nyakul Nyukuti Omeo Ridjimiraril Tidam Toba Umbarra Waku Watorea Yarran Yeeralparil
+			Yibaay Yileen
+		}
+		female_names = {
+			#pre-mandala names
+			Akala Alba Alinga Alkina Alkira Allirea Allora Allunga Amarina Anka Apanie Coorah Coreen Corowa Darri 
+			Ekala Elouera Gedala Gheera Kala Kamballa Karri Karuah Katyin Kayle Kiah Kimba Kirra Kolora 
+			Koorine Maiya Mallana Manilla Manya Marinna Marlee Mayra Meera Merinda Merindah Neridah Niley Noora Olba Olono 
+			Oola Orana Orani Pangari Pengana Pierah Weema Wihelma Wilga Wilhemine Willa Wilmette Wyla Wyuna Yani Yara Yaralla
+			
+			#shared names
+			Alkawari Allira Angoona Anmari Babawar Bando Binda Binmarray Biralee Bunji Chumbuli Colba Darana
+			Illarah Karri Kirrili Kyeema Lilardia Maroochy Mirrin Munandjarra Myaree Naata Ngoia Ningali Nowalingu
+			Nymbulda Nyurapayia Oodgeroo Papalya Parara Patiseba Payu Pirrmangka Takariya Talei Tallara Tatali Tjunkiya
+			Truganina Truganini Truganner Walangkura Watorea Wintjiya Yakari Yalamay Yinarupa Yindi
+		}
+	}
+	gunwinyguan = { #Top End
+		male_names = {
+			#pre-mandala names
+			Adoni Akama Allambee Amaroo Apari Araluen Araluen Arunta Balun Balunn Dural Ganan Gelar Girra Jarrah 
+			Jerara Jirra Kalti Maka Mallee Mandu Marron Matari Mearann Minar Miro Mogo Monti Mowan Odern Orad Parri 
+			Pindan Pindari Taree Tewart Tuart Uwan Warra Warrain
+			
+			#shared names
+			Babawar Bambam Binyan Birrinbirrin Bunji Cambul Darana Dayindi Djarrjuntjun Dural Gabii Gambuu Marrii
+			Minygululu Nadi Nullah Nyakul Nyukuti Omeo Ridjimiraril Tidam Toba Umbarra Waku Watorea Yarran Yeeralparil
+			Yibaay Yileen
+		}
+		female_names = {
+			#pre-mandala names
+			Akala Alba Alinga Alkina Alkira Allirea Allora Allunga Amarina Anka Apanie Coorah Coreen Corowa Darri 
+			Ekala Elouera Gedala Gheera Kala Kamballa Karri Karuah Katyin Kayle Kiah Kimba Kirra Kolora 
+			Koorine Maiya Mallana Manilla Manya Marinna Marlee Mayra Meera Merinda Merindah Neridah Niley Noora Olba Olono 
+			Oola Orana Orani Pangari Pengana Pierah Weema Wihelma Wilga Wilhemine Willa Wilmette Wyla Wyuna Yani Yara Yaralla
+			
+			#shared names
+			Alkawari Allira Angoona Anmari Babawar Bando Binda Binmarray Biralee Bunji Chumbuli Colba Darana
+			Illarah Karri Kirrili Kyeema Lilardia Maroochy Mirrin Munandjarra Myaree Naata Ngoia Ningali Nowalingu
+			Nymbulda Nyurapayia Oodgeroo Papalya Parara Patiseba Payu Pirrmangka Takariya Talei Tallara Tatali Tjunkiya
+			Truganina Truganini Truganner Walangkura Watorea Wintjiya Yakari Yalamay Yinarupa Yindi
+			
+			Adaliya Banalandju Jannali
+		}
+	}
+	palawa = { #Tasmania
+		male_names = {
+			#pre-mandala names
+			Adoni Akama Allambee Amaroo Apari Araluen Araluen Arunta Balun Balunn Dural Ganan Gelar Girra Jarrah 
+			Jerara Jirra Kalti Maka Mallee Mandu Marron Matari Mearann Minar Miro Mogo Monti Mowan Odern Orad Parri 
+			Pindan Pindari Taree Tewart Tuart Uwan Warra Warrain
+			
+			#shared names
+			Babawar Bambam Binyan Birrinbirrin Bunji Cambul Darana Dayindi Djarrjuntjun Dural Gabii Gambuu Marrii
+			Minygululu Nadi Nullah Nyakul Nyukuti Omeo Ridjimiraril Tidam Toba Umbarra Waku Watorea Yarran Yeeralparil
+			Yibaay Yileen
+			
+			Mangana Nicermenic
+		}
+		female_names = {
+			#pre-mandala names
+			Akala Alba Alinga Alkina Alkira Allirea Allora Allunga Amarina Anka Apanie Coorah Coreen Corowa Darri 
+			Ekala Elouera Gedala Gheera Kala Kamballa Karri Karuah Katyin Kayle Kiah Kimba Kirra Kolora 
+			Koorine Maiya Mallana Manilla Manya Marinna Marlee Mayra Meera Merinda Merindah Neridah Niley Noora Olba Olono 
+			Oola Orana Orani Pangari Pengana Pierah Weema Wihelma Wilga Wilhemine Willa Wilmette Wyla Wyuna Yani Yara Yaralla
+			
+			#shared names
+			Alkawari Allira Angoona Anmari Babawar Bando Binda Binmarray Biralee Bunji Chumbuli Colba Darana
+			Illarah Karri Kirrili Kyeema Lilardia Maroochy Mirrin Munandjarra Myaree Naata Ngoia Ningali Nowalingu
+			Nymbulda Nyurapayia Oodgeroo Papalya Parara Patiseba Payu Pirrmangka Takariya Talei Tallara Tatali Tjunkiya
+			Truganina Truganini Truganner Walangkura Watorea Wintjiya Yakari Yalamay Yinarupa Yindi
+			
+			Lenah Lutana Tanganutura Trugernanner
+		}
+	}
+	kulin = { #Melbourne
+		male_names = {
+			#pre-mandala names
+			Adoni Akama Allambee Amaroo Apari Araluen Araluen Arunta Balun Balunn Dural Ganan Gelar Girra Jarrah 
+			Jerara Jirra Kalti Maka Mallee Mandu Marron Matari Mearann Minar Miro Mogo Monti Mowan Odern Orad Parri 
+			Pindan Pindari Taree Tewart Tuart Uwan Warra Warrain
+			
+			#shared names
+			Babawar Bambam Binyan Birrinbirrin Bunji Cambul Darana Dayindi Djarrjuntjun Dural Gabii Gambuu Marrii
+			Minygululu Nadi Nullah Nyakul Nyukuti Omeo Ridjimiraril Tidam Toba Umbarra Waku Watorea Yarran Yeeralparil
+			Yibaay Yileen
+		}
+		female_names = {
+			#pre-mandala names
+			Akala Alba Alinga Alkina Alkira Allirea Allora Allunga Amarina Anka Apanie Coorah Coreen Corowa Darri 
+			Ekala Elouera Gedala Gheera Kala Kamballa Karri Karuah Katyin Kayle Kiah Kimba Kirra Kolora 
+			Koorine Maiya Mallana Manilla Manya Marinna Marlee Mayra Meera Merinda Merindah Neridah Niley Noora Olba Olono 
+			Oola Orana Orani Pangari Pengana Pierah Weema Wihelma Wilga Wilhemine Willa Wilmette Wyla Wyuna Yani Yara Yaralla
+			
+			#shared names
+			Alkawari Allira Angoona Anmari Babawar Bando Binda Binmarray Biralee Bunji Chumbuli Colba Darana
+			Illarah Karri Kirrili Kyeema Lilardia Maroochy Mirrin Munandjarra Myaree Naata Ngoia Ningali Nowalingu
+			Nymbulda Nyurapayia Oodgeroo Papalya Parara Patiseba Payu Pirrmangka Takariya Talei Tallara Tatali Tjunkiya
+			Truganina Truganini Truganner Walangkura Watorea Wintjiya Yakari Yalamay Yinarupa Yindi
+		}
+	}
+	gamilaraay = { #interior
+		male_names = {
+			#pre-mandala names
+			Adoni Akama Allambee Amaroo Apari Araluen Araluen Arunta Balun Balunn Dural Ganan Gelar Girra Jarrah 
+			Jerara Jirra Kalti Maka Mallee Mandu Marron Matari Mearann Minar Miro Mogo Monti Mowan Odern Orad Parri 
+			Pindan Pindari Taree Tewart Tuart Uwan Warra Warrain
+			
+			#shared names
+			Babawar Bambam Binyan Birrinbirrin Bunji Cambul Darana Dayindi Djarrjuntjun Dural Gabii Gambuu Marrii
+			Minygululu Nadi Nullah Nyakul Nyukuti Omeo Ridjimiraril Tidam Toba Umbarra Waku Watorea Yarran Yeeralparil
+			Yibaay Yileen
+		}
+		female_names = {
+			#pre-mandala names
+			Akala Alba Alinga Alkina Alkira Allirea Allora Allunga Amarina Anka Apanie Coorah Coreen Corowa Darri 
+			Ekala Elouera Gedala Gheera Kala Kamballa Karri Karuah Katyin Kayle Kiah Kimba Kirra Kolora 
+			Koorine Maiya Mallana Manilla Manya Marinna Marlee Mayra Meera Merinda Merindah Neridah Niley Noora Olba Olono 
+			Oola Orana Orani Pangari Pengana Pierah Weema Wihelma Wilga Wilhemine Willa Wilmette Wyla Wyuna Yani Yara Yaralla
+			
+			#shared names
+			Alkawari Allira Angoona Anmari Babawar Bando Binda Binmarray Biralee Bunji Chumbuli Colba Darana
+			Illarah Karri Kirrili Kyeema Lilardia Maroochy Mirrin Munandjarra Myaree Naata Ngoia Ningali Nowalingu
+			Nymbulda Nyurapayia Oodgeroo Papalya Parara Patiseba Payu Pirrmangka Takariya Talei Tallara Tatali Tjunkiya
+			Truganina Truganini Truganner Walangkura Watorea Wintjiya Yakari Yalamay Yinarupa Yindi
+		}
+	}
+	nyoongah = { #Perth
+		male_names = {
+			#pre-mandala names
+			Adoni Akama Allambee Amaroo Apari Araluen Araluen Arunta Balun Balunn Dural Ganan Gelar Girra Jarrah 
+			Jerara Jirra Kalti Maka Mallee Mandu Marron Matari Mearann Minar Miro Mogo Monti Mowan Odern Orad Parri 
+			Pindan Pindari Taree Tewart Tuart Uwan Warra Warrain
+			
+			#shared names
+			Babawar Bambam Binyan Birrinbirrin Bunji Cambul Darana Dayindi Djarrjuntjun Dural Gabii Gambuu Marrii
+			Minygululu Nadi Nullah Nyakul Nyukuti Omeo Ridjimiraril Tidam Toba Umbarra Waku Watorea Yarran Yeeralparil
+			Yibaay Yileen
+			
+			Beangagarrie Jarli Jarrah Mawukura Mirri Mudrooroo
+		}
+		female_names = {
+			#pre-mandala names
+			Akala Alba Alinga Alkina Alkira Allirea Allora Allunga Amarina Anka Apanie Coorah Coreen Corowa Darri 
+			Ekala Elouera Gedala Gheera Kala Kamballa Karri Karuah Katyin Kayle Kiah Kimba Kirra Kolora 
+			Koorine Maiya Mallana Manilla Manya Marinna Marlee Mayra Meera Merinda Merindah Neridah Niley Noora Olba Olono 
+			Oola Orana Orani Pangari Pengana Pierah Weema Wihelma Wilga Wilhemine Willa Wilmette Wyla Wyuna Yani Yara Yaralla
+			
+			#shared names
+			Alkawari Allira Angoona Anmari Babawar Bando Binda Binmarray Biralee Bunji Chumbuli Colba Darana
+			Illarah Karri Kirrili Kyeema Lilardia Maroochy Mirrin Munandjarra Myaree Naata Ngoia Ningali Nowalingu
+			Nymbulda Nyurapayia Oodgeroo Papalya Parara Patiseba Payu Pirrmangka Takariya Talei Tallara Tatali Tjunkiya
+			Truganina Truganini Truganner Walangkura Watorea Wintjiya Yakari Yalamay Yinarupa Yindi
+			
+			Alkina Bindi Inyuwa Jedda Makinti Mirri Wawiriya
+		}
+	}
+	dynasty_names = {
+		Barak Bennelong Billibellary Calyute Derrimut Dundalli Jackey Jandamarra Lanne Mannalargenna Mokare Mullagh Musquito Pemulwuy
+		Tullamareena Wonga Yagan Wylle Napaljarri Tjakamarra Tjapaltjarri Gurruwiwi Nungurrayi Mununggurr Namok Milyika Ginibi Wagan
+	}
+}
+na_dene = {
+	graphical_culture = northamericagfx
+
+	chipewyan = {
+		dynasty_names = {
+			"Tsi'naajinii" "Deeshchii'nii" "Tl'izi Lani" "Tl'aaschi'I" Tsenabahituii Nashashi "T'üschebaanii" "Jaa'yaaloolii"
+			"Keha'atiintii" "Naashaashi"
+		}
+		male_names = {
+			"Chapitone" "Ashkii Diyin" "Dahaana Baadaane" "Hastiin Ch'ilhaajin" "Nabaah Jilt'aa" "Bislahalani" 
+			"Hozhooji Naat'a" "Hastiin Daghaa" "Hastiin Daagi" "Haske Yahne Yah" "Toh Yah" "Hastiin Klah" "Ahway Eskay" 
+			"Hoksay Nolyae" "Atsidi Sani" "Beshiltheeni"
+		}
+		female_names = {
+			"Dahteste" "Ilthgozay" "Gouyen" "Lozen" "Tohayea"
+		}
+	}
+	haida = {
+		dynasty_names = {
+			Kiusta Kung Yan Hiellan Skidegate "Cha'atl" Haina Kaisun Cumshewa Skedans Tanu Ninstints
+			Masset Atewaas Jaahguhl Kayung "Hlk'yah GaawGa" Klinkwan Sukkwan Howkan Kasaan
+		}
+		male_names = {
+			"Nanni Chaddi" "Na tio tish" Sitahle Oahtekah Ahzaah Kootzzah Moketaveto Ohtoahnesotowheo Harkkahome 
+			Munamenek Otoahnisto Mahvipah Choseta Nahtan Konzhontaco Bazheech Tillaka Chacon Dasoda-hae Cochise Juh 
+			Delshay Goyaale
+		}
+		female_names = {
+			Dahteste Ilthgozay Gouyen Lozen Tohayea
+		}
+	}
+	athabascan = {
+		dynasty_names = {
+			Kiusta Kung Yan Hiellan Skidegate "Cha'atl" Haina Kaisun Cumshewa Skedans Tanu Ninstints
+			Masset Atewaas Jaahguhl Kayung "Hlk'yah GaawGa" Klinkwan Sukkwan Howkan Kasaan
+		}
+		male_names = {
+			"Nanni Chaddi" "Na tio tish" Sitahle Oahtekah Ahzaah Kootzzah Moketaveto Ohtoahnesotowheo Harkkahome 
+			Munamenek Otoahnisto Mahvipah Choseta Nahtan Konzhontaco Bazheech Tillaka Chacon Dasoda-hae Cochise Juh 
+			Delshay Goyaale
+		}
+		female_names = {
+			Dahteste Ilthgozay Gouyen Lozen Tohayea
+		}
+	}
+}
+penutian = {
+	graphical_culture = northamericagfx
+	salish = {
+		dynasty_names = {
+			Samish Sawehamish Semiahmoo Shishalh Siletz Skagits Skokomish Snohomish Snoqualmie Songhees Squamish Squaxin 
+			Stillaguamish Stolo Aitchelitz Chawathil Cheam
+			Kwantlen Katzie Leqamel Matsqui Popkum Shxwowhamel Skway Skowkale Skwah Soowalhie Chehalis Sumas Tzeatchen 
+			Yakweakwioose Suiaxbixw Suquamish Swinomish 
+			Tsawassen "Tsleil-Waututh" Tulalip Xacuabs
+		}
+		male_names = {
+			Seattle Patkanam Chowitshoot Goliah Kwallatum S'hootst-hoot Snah-talc Squush-um Seeallapahan Heuhkanam 
+			Tsenahtalc Nsskioos Watskalahtchie Smehmaihu Slateahkanam Sthauai Lugsken Shehtsoolt Doqueoosatl 
+			Klemshkanam Tshuahntl Kwusskanam Helmits Skwaikwi Sehlekqu Shchehoos Whailanhu Sheahdelthu Kwultseh 
+			Kwullethu Klehkentsoot Sohnhehovs S'dehapkan Chulwhiltan Skeehtum Patchkanam Satskanam Sdzomathl Dahtldemin 
+			Sdzekdunum Nowachais Mislotche Sloonokshtan Moowhahladhu Toolehplan Hasehdooan Hooviltmehtum Weaipah 
+			S'ahanhu Shehope Hwnlahlakq Chtsimpt Tsesumten Klthahlten Kuttakanam Chlahben Noohehoos Hwehuk Pehnus 
+			Yimkadam Twooiaskut Luchalkanam S'hootkanam Smeakanam Sadziskeh Hehmahl Hatch Kwentum Yoikum Tkwamahan 
+			Stodumkan Belole D'zololegwamhu Stehshail Kelkahltsoot Patsen Pattehus Shoolkkanam Chloksuts
+		}
+		female_names = {
+			Kikisoblu Wewick Sholeetsa Ladalia Olahl
+		}
+	}
+	chinook = {
+		dynasty_names = {
+			Clatsop Cathlamet Skilloot Cathlapotle Multnomah Watlala Clowwewalla Clackamas Chiluckittequaw 
+			Wishram Wasco Atfalati Yamel Lakmiut Chepenafa Santiam Chelamela Calapooya Yoncalla
+		}
+		male_names = {
+			Comcomly Tumulth Napesa Injice Tasyah Nessick Etnama Cheenlenten Nasyah Absaquil Quintioosan Talsapeer 
+			Myneletta Quiaquatty Yalkus Kawkama Kiles Kowahtough Anta Quilala Mequah Yackatee Tophor Hallale Pulktah 
+			Tumwalth Obanahah Watchano Teapinick Wallahpicate Lalbick Cuckamanna Towyecolla Laham Senegertta Pulican 
+			Tena Pulkuptima Sallaf Hoipkenek Yeptah Satinvose 
+		}
+		female_names = {
+			Elvamox Ethete Natane Bly Dae Cocheta Ekta Ela Elina Ila Imala Inayat Kushala Kusuma Liluye Lipika Lolaksi 
+			Lolotea Nascha Nashota Natane Nita Nitara Niti Nitika Nittawosew Onawa Onawah Preyasi Prita PreetiHalf Smita 
+			Smriti Surabhi Tapi Tara
+		}
+	}
+	yokuts = {
+		primary = YKT
+		dynasty_names = {
+			Wishram Wasco Atfalati Yamel Lakmiut Chepenafa Santiam Chelamela Calapooya Yoncalla
+		}
+		male_names = {
+			Comcomly Tumulth Napesa Injice Tasyah Nessick Etnama Cheenlenten Nasyah Absaquil Quintioosan Talsapeer 
+		}
+		female_names = {
+			Elvamox Ethete Natane Bly Dae Cocheta Ekta Ela Elina Ila Imala Inayat Kushala Kusuma Liluye Lipika Lolaksi 
+		}
+	}
+}
+
+# Removed swamp people
+
+germanic = {
+	graphical_culture = westerngfx
+
+	male_names = { Gunther Rolf }
+	
+	pommeranian = {
+		primary = POM
+		male_names = {
+			Boguslaw Barnim Ota Eryk Filip Franciszek Jan Fryderyk Georg Ernest 
+			Ludwik Albrecht Arnt August Bernhard Bodo Carl Emil Fritz Gerhard 
+			Gustav Harald Hendryk Herbert Hermann Jochem Maximiliam Reinhold 
+			Siegfried Walter Wilhelm Alexander Andrzej Antoni Antoninus Aron 
+			Bartosz Bartolomeus Bedrich 
+			Frederick Bezprzym Blazej Blaise Bogislaw Bohdan Bogdan Bohumir Boleslaw Boleslav 
+			Boriwoj Borijov Bozydar Theodat Branimir Branislav
+			Bretislav Bretislaus Casimir Ctibor Ctibor Dobieslaw Dobromil Drosuk Dytryk Thierry Frantisek 
+			Francis Gawel Grzegorz Gregory Havel Gallus Jacenty Hyacinth Jakub Jakusz Jacob 
+			Janusz John Jaromar
+			Jaromil Jaromir Jaroslav Jedrzej Jindrich Henry Jirí George Jozef Joseph 
+			Juliusz Julian Kajetan Kamil Camillus Karel Charles Kasper Kazimierz Kliment Clement Kolman 
+			Koloman Kornel Cornelius Kresimir Krzeslaw
+			Krzysztof Christopher Lech Leszek Lubomir Lucjan Lucius Ludvik Louis Marek Marcus Marian Marius 
+			Martin Mateusz Matthew Mieszko Mikolás Nicholas Miloslaw Milosz Miroslaw 
+			Mscislaw Mstislav Msciwoj
+			Oldrich Ulrich Ondrej Andrew Otokar Patryk Patrick Pawel Paul Piotr Peter Prendota Przemysl 
+			Premysl Przybyslaw Radomil Radomir Radoslav Rostislav Ryszard Richard Sambor Sobieslav Sobeslaus 
+			Stanislaw
+			Strasz Swietopelk Svatopluk Swietoslaw Sviatoslav Szczepan Stephen Szczesny Szymon Tadeusz 
+			Theodore Tomasz Thomas Udalrich Urjasz Vojtech Albert Waclaw Walenty Valentin Wratislaw 
+			Vratislav Wawrzyniec Laurence Wenceslaw Vaclav
+			Wincenty Vincent Wizlaw Wladyslaw Wlodek Wlodzimierz Wlodzislaw Wratislaw 
+			Zbigniew Zbynek Zdenek Zdislav Zygmunt Sigmund
+		}
+		female_names = {
+			Gabriela Helena Janina
+			Agnieszka Agnes Alzbeta Andela Anna Berta Bohuslava Bozena Branislava Dagmar Danuta Dobravy 
+			Dobroniega Dorota Dorothy Dragomira Edyta Ewa Geira Gertruda Gertrude
+			Gracja Grazyna Halina Hanna Irena Izabela Jadwiga Jarka Jarmila Jolanta Judyta Judith Kamila 
+			Katarina Catherine Kenna Kornelia Krystyna Christina Ksenia Lidia
+			Ludmila Magda Magdalena Magdalena Magdalena Malgorzata Marcelina Maria Markéta Martyna 
+			Mateja Matylda Matilda Milena Miroslava Pechna Róza Radomila Radomira Radoslava
+			Raina Regelinda Rycheza Salomea Smiechna Stanislava Stefana Stephania Svetlana Urszula Václava 
+			Vladislava Wera Wojslawa Zdenka Zofia Zwinislawa
+		}
+		dynasty_names = {
+			"von Klinckow" "von Puttkamer" "von Barnekow" "von Strantz" "Gryf" "Wizlawid"
+			"von Krassow" "von der Lancken" "von Schlieffen" "von Schwerin"
+			"von Schöning" "von Suhm" "von Maltzahn" "von Below" "von Blixen" "von Borcke"
+			"von Buggenhagen" "von Manteuffel" "von Corswant" "von Stralenheim" "von Dewitz" "von Preen" "von Podewils"
+			"von Flemming" "von Platen" "von Neuenkirchen" "von Gottberg" "von Hackewitz" "von Hennigs" "Trampe" "von Hertzberg" "von Heyden" "von Kameke" "von Kleist" "Natzmer" 
+			"von Zepelin" "von Gostowski" "von Wakenitz"
+			"von Usedom" "Thun" "von Thadden"
+			#CKII
+			"Gryfita" "z Pomorza" "Grzymala" "Jastrzebiec" "Lubicz" "Nalecz" "Slaweka" "ze Slupska"
+			"Gniewosz"
+		}
+	}
+	prussian = {
+		primary = PRU
+		male_names = {
+			Albrecht Friedrich August Emil Ferdinand Karl Ludwig Karl Wilhelm Adolf Alfred Anton Benedikt 
+			Benjamin Denis Diederick Eckbert Erwin Florian Franz Gebhard Gottfried Hartmann Heinrich Helmut 
+			Horst Joachim Kaspar Kurt Leo Ludwig Lukas Manfred Michael Nikolaus Oskar Otto Philipp Reiner Rudolf 
+			Rupprecht Siegfried Siegmund Thomas Urs Viktor Werner Alvydas Arelis Auctune Bajoras Beidras Budo Dagonis 
+			Ekkelis Galindas Galindo Gauronas Gerdautas Glande Golding Jauguttis Karatas Klukis Kugis Milzas Nomedas 
+			Prusas Sergonis Ulinniks Ulitis
+		}
+		female_names = {
+			Raphaela Sabine Vera Betten Dagas Gelennis Gerkus Grasus Gulbis Mila Milyuns Weslikan Ziedas
+		}
+	}
+	baltic_german = {
+		primary = RIG
+		male_names = {
+			Albrecht Friedrich August Emil Ferdinand Karl Ludwig Karl Wilhelm Adolf Alfred Anton Benedikt 
+			Benjamin Denis Diederick Eckbert Erwin Florian Franz Gebhard Gottfried Hartmann Heinrich Helmut 
+			Horst Joachim Kaspar Kurt Leo Ludwig Lukas Manfred Michael Nikolaus Oskar Otto Philipp Reiner Rudolf 
+			Rupprecht Siegfried Siegmund Thomas Urs Viktor Werner Alvydas Arelis Auctune Bajoras Beidras Budo Dagonis 
+			Ekkelis Galindas Galindo Gauronas Gerdautas Glande Golding Jauguttis Karatas Klukis Kugis Milzas Nomedas 
+			Prusas Sergonis Ulinniks Ulitis Jens Johann Engelbert Fromhold Johannes Henning Silvester Dietrich
+		}
+		female_names = {
+			Raphaela Sabine Vera Betten Dagas Gelennis Gerkus Grasus Gulbis Mila Milyuns Weslikan Ziedas Gertrud Ida
+		}
+	}
+	lower_saxon = {
+		primary = HAN
+		male_names = {
+			Ernst Adolf Alfred August Christian Eduard Friedrich Georg Karl Philipp Maximilian Octavius Wilhelm 
+			Alexander Alois Anton Bruno Clemens Denis Gerfried Gottfried Günther Helmut Herbert Ignatz Isidor 
+			Konstantin Kuno Markus Martin Oskar Reinhard Silvester Stefan Waldemar Jakob
+		}
+		female_names = {
+			Amanda Beate Debora Sara Anne Saga Sibyl Joanna Joanne Adele Adelgunde Adelheid Adolfine Agatha Agnes Alexandra Alice Alina Aline Alma Alwina Alwine Amalia Amalie 
+		}
+	}
+	hannoverian = {
+		primary = WES
+		male_names = {
+			Ernst Adolf Alfred August Christian Eduard Friedrich Georg Karl Philipp Maximilian Octavius Wilhelm 
+			Alexander Alois Anton Bruno Clemens Denis Gerfried Gottfried Günther Helmut Herbert Ignatz Isidor 
+			Konstantin Kuno Markus Martin Oskar Reinhard Silvester Stefan Waldemar Jakob
+		}
+		female_names = {
+			Amanda Beate Debora Sara Anne Saga Sibyl Joanna Joanne Adele Adelgunde Adelheid Adolfine Agatha Agnes Alexandra Alice Alina Aline Alma Alwina Alwine Amalia Amalie 
+		}
+	}
+	hessian = {
+		primary = HES
+		male_names = {
+			Wilhelm Ludwig Friedrich Hermann Karl Moritz Philipp Heinrich Otto Adolf Christian Georg Leopold 
+			Philipp Adelmar Albrecht Barnabas Denis Egon Erich Gerhard Gottlieb Gregor Hagan Helmut Isaak Isidor 
+			Joachim Joseph Kreszens Lothar Oskar Siegfried Stefan Thomas Wenzel Werner Wolfram Maximilian Ivo
+		}
+		female_names = {
+			Corinna Else Hedwig Helene Helen Hildegard Hildegard Hrothwina Ida Ida Imma Emma Irmgard Charlotte Chiara 
+			Christa Christel Christiane Christina Christine Clara Claudia Constanze
+		}
+	}
+	saxon = {
+		primary = SAX
+		male_names = {
+			Friedrich Albrecht Christian Heinrich Rudolf August Ernst Georg Moritz Alexander Anton Hektor 
+			Johann Karl Clemens Wenzel Franz Xaver Joachim Joseph Magnus Maximilian Severinus Wolfgang 
+			Andreas Bruno Burkhard Günther HermannLukas Micharl Reimund Ulrich Wilfried Wolfram Konrad Edwin Marcus Osmund Peter Ralph Reginald Sigehelm Wulfhelm Wulfhere Alfred
+			Alwin Adémar Alwin Adolf Albert Albrecht Arnold Baltasar
+			Benedict Bernd Bernard Bernhard Bertold Bertram Bertrand Burchard 
+			Claus Nicholas Cobbo Cord Dietmar Diederik Ekkehard Ekbert Engelbert Engelhard 
+			Erik Albert Ewald Frederick Gerard Gebhard Giselmar Gottschalk Günther Hans 
+			Heideke Herbert Hermann Hinrik Jacob Jaspar Caspar Jochim Joakim Johann Kersten 
+			Christian Laurentz Lambert Liawizo Liemar Liudger Otto Ludolf Ludwig
+			Louis Mathias Matthew Meinwerk Merten Martin Michael Norbert Ordulf 
+			Peter Philip Renard Reinmar Roger Rudolf Ralph Sigbert Sigisbert
+			Sigfrid Siegfried Sigward Sigurd Simon Steffen Thomas Waldemar
+			Werner Victor Werneke Weybrecht Wichbert Wichmann Wigebert Wolter Walter Wulff Ulf
+		}
+		female_names = { 
+			Amalia Bianka Eleonora
+			Agatha Balthild
+			Christina Cuthburg 
+			Cynehild Cyneswith Cynethryth Eadburg Edith 
+			Gunhilda Gunhild Helga Judith
+			Maud Matilda Sigri 
+			Wulfhild
+			Addila Adela Adelheid Alof Agnes Anna Athela Beatrix Beatrice Bertha Bertha 
+			Bertrada Bia Beatrice Bisina Bithild Brigida Brigid Elisabeth 
+			Elisabeth Enda Gertrud Gisela
+			Hedwig Heilwig Helene Hildegard Ida Emma Irmgard 
+			Judith Katharina
+			Margarete Mathilde Matilda Mechthild Reginlint 
+			Richardis Ricarda Rodelinda Sophia Sophia Suanhilde Swanahild Wienke 
+			Wiltrud Wulfhild Ulfhild
+		}
+		dynasty_names = {
+			"von Schwarzburg" "von Schönburg" "von Schlotheim" "von Salza" "von Kospoth"
+			"von Knuth" "von Wettin" "Askanier" "von Hohenzollern" "von Erffa" "von Bodungen" "von Eckersberg" "von Brandenstein" "von Pappenheim" "von Wiehe"
+			"von Westernhagen" "von Jena" "von Trützschler" "von Plessen" "von Haugwitz" "von Kanitz" "von Falkenhayn" "von Thüna"
+			"von Thüringen" "von Nostitz" "von Bieberstein" "von Meerheimb" "von Freiberg" "von Neitschütz" "von Minckwitz" "von Arnswaldt" "von Auerswald" "aus dem Winckel"
+			"von Beichlingen" "von Bendeleben" "von Beneckendorff"  "von Berbisdorf" "von Bissingen" "von Bock" "von Bomsdorff" "von Bose" "von Breitenbach"
+			"von Breitenbuch" "von Brühl" "von Bünau" "von Hoym" "Holtzendorff" "von Hohenthal" "von Heynitz" "von Hessler" "von Helldorff" "von Harling" "von Görschen" "von Glaubitz"
+			"von Gfug" "von Gersdorff" "von Germar" "von Fritsch" "von Friesen" "von Flanss" "von Etzdorff" "von Erdmannsdorff" "von Einsiedel" "von Dyhrn" "von Dieskau" "von Creytzen" "von Carlowitz" "von Maltitz" "von Mansfeld" "von Miltitz" "von Mücheln" "von Pflugk" "von Pölnitz" "von Ponickau" "von Rackel"
+			"von Raumer" "von Rechenberg" "von Rex" "Sack" "von Scheidingen" "von Schleinitzstrasse" "von Schönberg" "Senfft von Pilsach" "von Stolberg" "von Kannewurf" "Karras" "von Keller" "von Kirchbach" "von Sternberg" "von Leisnig"
+			"von Liebenau" "von Loeben" "von Logau" "von Lüttichau" "von Taube" "von Tettau" Vitzthum "von Wolffersdorff" Wöhrmann "von Werthern" "von Wackerbarth" "von Bredow" "von Brandt"
+		}
+	}
+	franconian = {
+		primary = FKN
+	}
+	swabian = {
+		primary = SWA
+	}
+	swiss = {
+		primary = SWI
+		male_names = {
+			Friedrich Otto Heinrich Werner Ferdinand Karl Alfred Benedikt Christoph Dietrich Engelbert 
+			Florian Gerhard Immanuel Johan Leonhard Markus Nikolaus Paul Ruprecht Stefan Thomas Ulrich 
+			Vinzenz André Charles Didier Emmanuel Frédéric Gérard Henri Jules Matthieu Nicolas Pascal 
+			Vincent Claudio Edmondo Leonardo Timoteo
+		}
+		female_names = {
+			Angela Marlene Hanna Anastasia Christina Adelina Adriana Afina Alexandra Alexia Ana Anna Arina 
+		}
+	}
+	bavarian = {
+		primary = BAV
+		male_names = {
+			Albrecht Wilhelm Johann Ernst Maximilian Emanuel Siegmund Ludwig Anton Christoph Ferdinand  
+			Leopold Philipp Theodor Adalbert Alois Johann Clemens August Friedrich Johann Theodor Joseph  
+			Luitpold Otto Philipp Moritz Wolfgang Engelbert Gottfried Hieronymus Ignatz Markus Meinhard 
+			Raphael Karl Kajetan Clemens
+		}
+		female_names = {
+			Hiltraud Friede Juliane
+		}
+		dynasty_names = {
+			"von Pappenheim" "von Westernhagen" "von Henneberg" "von Flemming"
+			"von Arnim" "von Baudissin" "zu Eulenburg" "von Etzdorff" "von Keller" "von Hohenzollern" "von Wittelsbach"
+			"von Württemberg" "von Aham"  "von Arco" "von Armansperg" "von Bibra" "von Chlingensperg" "von Closen" "von Degenberg" "von Durkheim" "Echter" "von Fraunberg"
+			"von Freundsberg" "Fugger" "Gabelkofen" "von Gaisberg" "von Gebsattel" "von Gravenreuth"
+			"Griespek von Griespach" "von Trockau" "von Grumbach" "von Guttenberg" "von Gumppenberg"
+			"von Grumbach" "von Hackledt" "von Haslang" "Hofer von Lobenstein" "von Holnstein"
+			"von Knöringen" "von Laiming" "von Leublfing" "von Quirnheim" "Notthafft" "von Ortenburg"
+			"von Parsberg" "Pfäffinger" "von Pienzenau" "von Pudewels" "von Raumer" "von Rehlinger"
+			"von Reitzenstein" "von Rohr"
+			"Rotenhan" "Rüdt von Collenberg" "von Waldow" "von Wartenberg" "von Sandizell" "von Sinzendorf" "von der Tann" "von Tattenbach"
+			"von Thuengen" "von Thürheim" "von Thurn und Taxis" "von Toerring"
+			"von Koenigsegg"
+		}
+	}
+	austrian = {
+		primary = HAB
+		male_names = {
+			Albrecht Maximilian Friedrich Ladislav Matthias Ernst Ferdinand Wenzel Georg Philipp Joseph 
+			Rudolf Gerhard Wolfgang Leopold Florian
+			Alexander Anton Franz Karl Johann Ludwig Rainer Adolf Alfred Benno Bruno Cristoph Clemens  
+			Günther Heinrich Jakob Joachim Jörg Michael Oskar Otto Siegfried Stefan Ulrich Viktor Wilhelm 
+		}
+		female_names = {
+			Maria Theresia Viktoria
+		}
+		dynasty_names = {
+			"Gabelkofen" "von und zu Goldegg und Lindenburg" "von Haunsperger" "von Pranckh" "von Rohr" "von Aichen" "Enenkel" "Geymann" "von Eggendorf" "von Albrechtsburg"
+			"von Thürheim" "von Thurn und Taxis" "von Tippelskirch" "von Falkenberg" "von Polheim"
+			"von Wagrain" "von Tollet" "Fieger" "Ennenkel" "Hayden von Dorff" Volkenstorfer "von Tannberg" Hätzenberg Moser "von Felsach" "von Daun" "von Unverzagt"
+		}
+	}
+	female_names = {
+		Adele Adelgunde Adelheid Adolfine Agatha Agnes Alexandra Alice Alina Aline Alma Alwina Alwine Amalia Amalie Amanda 
+		Amelie Andrea Angela Angelika Angelina Anika Anita Anja Anke Ann-Katrin Anna Anne Annegret Anneli Annelie Anneliese 
+		Annemarie Anni Annika Annina Anny Antje Antonia Astrid Augusta Auguste Barbara Bärbel Beate Beatrice Beatrix 
+		Bernadette Berta Bertha Bettina Bianca Bianka Birgit Brigitte Britta Brunhild Brünhild Brunhilde Brünhilde Cäcilia 
+		Cäcilie Caren Carina Carla Carmen Carolin Caroline Catarina Catharina Cathrin Catrin Cecilia Cecilie Celina Celine 
+		Charlotte Chiara Christa Christel Christiane Christina Christine Clara Claudia Constanze Cordula Corina Corinna 
+		Cornelia Dagmar Daniela Denise Desirée Désirée Diana Dietlind Dietlinde Dora Doris Dorothea Edda Edith Elena 
+		Eleonora Eleonore Elfriede Elisa Elisabeth Elise Elke Ella Ellen Elli Elly Elma Elsa Elsbeth Else Elvira Emelie 
+		Emely Emilia Emilie Emily Emma Emmeline Emmi Emmy Erdmute Erica Erika Erna Ester Esther Eugenie Eva Evelyn 
+		Fabienne Fanny Felicia Felicitas Felizia Felizitas Finja Finnja Fiona Flora Florentina Florentine Franziska Frauke 
+		Freya Frida Fridegunde Frieda Friedegund Friedegunde Friederike Gabriela Gabriele Genoveva Gerda Gerlind Gerlinde 
+		Gertraud Gertrud Gertrudis Gesine Gina Gisela Grete Gretel Grethe Gudrun Gunda Gundula Hanna Hannah Hanne Hannelore 
+		Hedwig Heide Heidemarie Heidi Heike Helena Helene Helga Helge Hella Helmina Helmine Henny Hermina Hermine Herta 
+		Hertha Hilda Hilde Hildegard Hulda Ida Ilse Ines Inga Inge Ingeborg Ingeburg Ingrid Irene Irina Iris Irma Irmela 
+		Irmelin Irmgard Isabel Isabell Isabella Isabelle Isolde Ivonne Jacqueline Jana Janina Janine Jaqueline Jasmin 
+		Jennifer Jessica Johanna Johanne Josefine Josephine Judith Jule Julia Juliane Jutta Kai Karen Karin Karina Karla 
+		Karolin Karoline Katarina Käte Katharina Käthe Kathrin Katja Katrin Kerstin Kim Kirsten Klara Konstanze Kristin 
+		Kristina Kunigunde Lara Larissa Laura Lea Lena Leni Leoni Leonie Leonore Liane Liesel Lieselotte Lili Lilli Lilly 
+		Lina Linda Lisa Liselotte Lore Lotte Louisa Louise Lucia Lucie Luisa Luise Lulu Luna Luzia Luzie Lydia Madeleine 
+		Madleen Madlen Madlene Magda Magdalena Magdalene Maike Maja Manuela Mareike Marga Margareta Margarete Margaretha 
+		Margarethe Margit Margot Margret Margrit Maria Marianne Marie Marie-Theres Marie-Therese Marina Marion Marleen 
+		Marlen Marlene Marlies Marlis Marta Martha Martina Mathilde Maya Mechthild Meike Melanie Melina Melissa 
+		Merle Meta Mia Michaela Michelle Minna Miriam Mirjam Mona Monica Monika Nadia Nadin Nadine Nadja Natali Natalie 
+		Natascha Nathalie Neele Nele Nicola Nicole Nina Noemi Nora Oda Olga Olivia Ottilie Patricia Patrizia Paula Paulina 
+		Pauline Petra Pia Rachel Rafaela Raffaela Rahel Ramona Raphaela Rebecca Rebekka Regina Renate Ricarda Rita Rolanda 
+		Ronja Rosa Rose Rosemarie Roswitha Ruth Sabina Sabine Sabrina Samantha Sandra Sara Sarah Saskia Selina Seraphina 
+		Seraphine Sibylle Sieglind Sieglinde Siglind Siglinde Sigrid Silke Silvia Simone Sina Sissi Sofia Sofie Sonja Sophia 
+		Sophie Stefanie Stella Stephanie Susanna Svenja Swenja Sybille Sylvia Tabea Tamara Tanja Tatjana Teresa Thekla 
+		Theres Theresa Therese Theresia Thirza Tina Tirza Traute Trude Ulrike Ursel Ursula Uta Ute Valentina Valerie Vanessa 
+		Vera Verena Verona Veronika Victoria Viktoria Walburg Walburga Waldtraud Waldtraut Walpurga Walpurgis Waltraud 
+		Waltraut Wanja Wibke Wiebke Wilhelmina Wilhelmine Wilma Xenia Yasmin Yvonne Zäzilia Zäzilie Zoe
+	}
+	dynasty_names = {
+		"von Oldenburg" "von Mecklenburg" "von Hohenzollern" "von Habsburg"
+		"von Zweibrücken" "von Wittelsbach" "von Holstein" "von Hesse-Kassel" "von Holstein-Gottorp"
+		"von Pfalz-Neumarkt" "von Braunschweig-Lüneburg" "von Hannover" "von Wettin"
+		# CKII
+		"von Rügen" "von Diepholz" "von Silesia-Glogau" "von Bibra" "von Bodeck" 
+		"Boeselager" "Jaworski" "Brauchitsch" "von Bülow" 
+		"von Calw" "von Cham" "von Steutzlingen" "von Wetterau" "von Julichgau" 
+		"von Helffenstein" "von Venis" "von Kyburg" "von Arbon" "von Urach" "von Cilli" "von Utlede" 
+		"von Katzenelnbogen" "von Altena" "von der Marck" "von Hessen" "von Arnsberg" "von Bucheck" 
+		"Walter" "Grelle" "von Dolen" "von Liebnitz" "von Virneberg"
+		"Rübsamen" "von Bardewik" "Vorrade" "Warendorp" "Lüneburg" "Wittenborg" "von Klingenberg" 
+		"von Parchim" "von Kärnten" "von Rügen" "von Neuenburg" "von Werle" "von Mecklemburg" 
+		"von Wittenberg" "von Brandenburg" "von Glogau" "von Rendsburg" "von Pommern" 
+		"von Slesvig" "von Plain" "von Formbach" "von Wasserburg" 
+		"von Lengenfeld" "von Eberstein" "von Heinsberg" "von Weimar"
+		"von Andechs" "von Sulzbach" "von Kleve" "von Versfleth" "von Wickerode" 
+		"von Winzenburg" "von Thüringen" "von Bogen" "von Meissen" "von Genf" 
+		"von Arstein" "von Veldenz" "von Landsberg" "von Franken" "von Babenberg" "von Berg" "von Hohenstauf" 
+		"von Saarbrucken" "von Puteledorg" "von Henneberg" "von Stade" "von Sommerchenberg" 
+		"von Kirchberg" "von Württemberg" "von Tübingen" "von Raabs" 
+		"von Heimbach" "von Nörvenich" "von Jülich" "von Metz" "von Limburg" 
+		"von Eppstein" "von Luxemburg" "von Hornes" "von Sachsen" 
+		"von Beilstein" "von Eppenstein" "von Lusatia" "Orlamunde"
+		"von Hohenstaufen" "von Otakar" "Weimar" "von Tirol"
+		"von Haldensleben" "von Schweinfurt" "von Stad" "von Rheinfelden" 
+		"von Ringelheim" "de Luxembourg" "Hainaut" "von Lenzburg" "Prochaska" 
+		"von Boulogne" "von Nordheim" "von Egisheim" "Asperger" "Hunfriding" 
+		"Witte" "von Hagen" "von Mölln" "Runese" Pleskow 
+		"von Supplingenburg" "von Plotzkau" "von Katlenburg" "von Goslar"
+		"von Wunstorf" "von Goltern" "von Wölpe" "von Nellenburg" "von Arnstein" "von Holte"
+		"von Wippra" "von der Mark" "von Diest" "von Rietberg" "von Löningen" "von Corvey" 
+		"von Steinfurt" "von Tecklenburg" "von Rüssel" "von Waldeck" "von Ravensberg" "von Weyhe" "von Hoya" 
+		"von Dachau" "von Bassenheim" "von Kerpen" "von Tunna" "von Salza" "von Malberg" "von Hohenlohe" 
+		"von Wüllersleben" "von Osterna" "von Sangershausen" "von Heldrungen" 
+		"von Orseln" "von Nauen" "Suerbeer" "von Lunen" 
+		"von Vechta" "Pernstein" "von Schwerin" "von Dorpat" "von Haseldorf" "von Vyshusen" "von Dolen" 
+		"von Friesack" "von Hildesheim" "von Lechsgmünd" "von Komburg" 
+		"von Stahleck" "von Ziegenhain" "von Dinslaken" "von Lambach" "von Pluyvoise" 
+		"von Scharfenberg" "von Leistenberg" "von Schwarzburg" "von Badewide" "von Wassel" 
+		"von Dassel" "von Greyerz" "von Grenchen" "von Abensberg" "von Grünberg" 
+		"von Lichtenberg" "von Hachberg" "von Wartenberg" "von Wolfach" "von Gudensberg"
+		"von Gerhausen" "von Signau" "von Groitzsch" "von Frickingen" "von Sigmaringen" "von Regensburg" 
+		"von Lurngau" "von Leibrechtskirchen" "von Meran" "von Treven" "Gross" "Gualch" "Beck"
+		"zu Schwaben" "von Attems" "von Schweipünt" "von Saffenberg" "von Nörvenich" "von Querfurt" 
+		"von Mansfeld" "von Kärnten" "von Eschenloch" "von Naumburg" "von Schrapelnau" 
+		"von Magdeburg" "von Hardegg" "von Arneburg" "von Seeburg" "von Veldenz" "von Schmidtburg" 
+		"von Bamberg" "von Kyrburg" "von Baumberg" "von Stolzenberg" "von Altenbaumberg" "von Tyrol" 
+		"von Ortenburg" "von Wangen" "von Frontenhausen" "von Andechs" "von Eurasburg" "von Geroldseck" 
+		"von Bocksberg" "von Vinstingen" "von Schoenecken" "von Daun" "von Leiningen" 
+		"von Hohenfels" "von Hunolstein" "von Blankenheim" "von Salm" "von Falkenstein" "von Sponheim" 
+		"von Brunshorn" "von Stein" "von Bikkenbach" "von Heinsberg" "van Valkenburg" "von Sayn" 
+		"von Veringen" "von Gruningen" "von Eselsberg" "von Muhlhausen" "von Pfirt" 
+		"von Lövenstein" "von Landau" "von Tschudi" "von Glarus" "von Chalôns" "von Ratzeburg" 
+		"von Schlawe" "von Schwelz" "von Liebschau" "von der Lippe" "von Schauenburg" "von Rostock" 
+		"von Gustrow" "von Rendsburg" "von Segeberg" "von Neuhaus" "von Friedenthal" "von Rosenberg" 
+		"von Waldenstein" "von Altenburg" "von Pernstein" "von Monheim" "von Urslingen" 
+		"von Assel" "von Osnabrück" "von Münster" "von Kleve" "von Jülich" 
+		"von Andernach" "von Göttingen"
+		"von Pfalz" "von Baden" "von Nordgau" "von Metz" "von Sundgau" "von Bern" 
+		"von Schwyz" "von Neuchatel" "von Aargau" "von Breisgau" "von Fürstenberg"
+		"von Württemberg" "von Franken" "von Thüringen" "von Weimar" "von Celle" 
+		"von Amsberg" "von Wolgast" "von Altmark" "von Anhalt" 
+		"von Plauen" "von Ansbach" "von Kempten" "von Arnim" "von Trent" 
+		"von Innsbruck" "von Lausitz" "von Stettin" 
+		"von Abensberg"  "von Berlichingen" "von Beetzen" 
+		"Sieghardinger" "von Walbeck"
+		#Prussian
+		"von Knorring" "von Creytzen" Sack "von Taube" "Wöhrmann"
+		#Rheinlaender
+		"von Keller" "von der Mark" "von Wittelsbach" "von Baden" "Rotberg"
+		#Hessian
+		"von Frankenstein" "von Taube" "von Uffeln" "von Hessen" "von Boyneburg"
+		#Hannoveran
+		"von Schack" "von Fabrice" "von Hardenberg" "von Welf" "von Schauenburg" "von Holstein-Gottorp" "Askanier" "von Oldenburg"
+	}
+}
+french	= {
+	graphical_culture = westerngfx
+
+	cosmopolitan_french = {
+		primary = FRA
+		dynasty_names = {
+			"de Valois" "de Bourbon" Bonaparte "de la Tour" "d'Anjou" 
+			"de Lorraine" "de Foix" "de Montfort" "de Blois" "de Penthievre" "de Dreux"
+			"de Rohan" "de Bar" "d'Albert" "d'Escoubleau" "de Neufville" 
+		}
+	}
+	gascon = {
+		primary = GUY
+	}
+	normand = {
+		primary = NRM
+	}
+	aquitaine = {
+		primary = TOU
+	}
+	burgundian = {
+		primary = BUR
+	}
+	occitain = {
+		primary = PRO
+	}
+	louisianans = {
+		primary = LOU
+	}
+	quebecois = {
+		primary = QUE
+	}
+	breton = {
+		primary = BRI
+		dynasty_names = { 
+			Rohan Penteur Leon Roazhon Poutrecoet Naoned "Leon" "de Dinan" "de Vitré" "de Cornouaille" 
+			"de Rohan" "de Porhoët" "of Brittany" "de Châteaubriant" "de Nantes" "Leon" "Guennec" "Pensec" 
+			"de Vannes" "de Bretagne"  "Sant Nazar" "Tanguy"  "Hennebont" "Gwened" "de Rennes" "de Rieux"
+		}
+		male_names = {
+			François Jean Artur Pierre Henri Charles Gilles Richard Corentin Deniel Dinan Erwan Gaël Gwenaël Gwenneg 
+			Gwilherm Iouennic Loïc Maeldan Mikael Olier Padrig Paol Patern Pier Primel Roparzh Servan Similien Sklaer 
+			Sulio Uuinmael Venec Visant Vonig Vougay Winifrid Yann
+			Adoyre Adrien Adrian Aedan Hugh Agustin August Alan Alar Alaric Aldrien Aldroenus Alfrond Alor 
+			Alured Alfred Alwen Alwin Anaoc Anaubritou Anaugen Anauguethen Anauguoret Anauhocar Andreas 
+			Andrew Aniud Anton Antoninus Argantbri Argantmoet Arnalt Arnold Arthel Arthguiu Arthmael 
+			Arthueu Arthuiu Artorius Arthur Austol Baldoen Baldwin Bastian Sebastian Beli Beltram Bertrand 
+			Benabic Berenger Berengar Bernead Bernard Berthgualt Berthoald Bledric Bledrig Bledros Bleidcum 
+			Bletcu Blethin Bleddyn Blethiut Bleiddud Bodan Bran Brangualart Branwaladr Branhucar Branoc 
+			Brenci Brendan Breselconan Breselcoucant Breselgar Breseloc Breselueu Brethoc Brient Brian 
+			Brigualt Brioc Briog Brithael Brochuael Brogmaglus Bronmael Budguoret Budhoiarn Budic Benedict 
+			Budoc Buhedoc Butgual Cadan Cadaouen Cadarvan Cadiou Cadoc Cadog Cador Cadwr Cadou Cadw 
+			Cantgueithen Caradec Caratacus Caradoc Caradog Carantoc Catgualart Cadwaladr Catuallon Cadwallon 
+			Catguethen Catguoret Cadwared Catgutic Cathno Catnimed Catuod Caurantin Corentin Ceneu Cenguethen 
+			Cenmarhoc Cenmin Cenmonoc Cingur Cinhoedl Clemen Clement Clodouan Clotwoïon Comoere Conan Concen 
+			Cyngen Condeleu Cynddelw Condidan Cyndyddan Congar Cyngar Conmael Cynfael Conmonoc Conogan 
+			Conredeu Conuallon Cynwallon Conmarch Cynfarch Convelin Cynfelyn Conwoïon Corguethen Courantgern 
+			Courantmonoc Culmin Custent Constans Custentin Constantine Dauid Deniel Daniel Denis Deroch 
+			Derrien Deui David Deurhoiarn Domnoret Domuel Dywel Donual Donald Donuallon Dyfnwallon Drogon 
+			Drogo Duenerth Dumnarth Donyarth Edern Eternus Edouart Edward Eguen Eon Erispoë Erouan Yves 
+			Estienne Etgual Eudon Otto Euhocar Euhoiarn Eusebi Eusebius Even Eugene Evrard Everard Farinmael
+			Ffernfael Ferant Ferdinand Fracan Fragan Framual Fransaz Francis Frioc Friog Garmon German 
+			Geofroi Geralt Gerald Gereint Gerontius Gestin Justin Gilbert Godefroi Godfrey Goennoc Gouesnon 
+			Goulwen Gouremor Gwrfawr Gourmaelon Gralon Gratcant Gregor Gregory Grifiud Ruffinus Guallon 
+			Gualter Walter Gudual Guecon Guenerdon Guenhael Guentanet Guentiern Gui Guy Guiharan Guihomarch 
+			Guihomart Guilherm William Guincalon Guincum Guinhael Guinhoiarn Guinoc Guinol Winaloe Guithrit 
+			Guitol Vitalis Guobrian Guocon Guoedanau Guoedatoe Guoednou Guoethoiarn Guoletec Guorbili 
+			Guordotal Guoretan Guorethoiarn Guorhoiarn Gurbodu Gurcant Gurcencor Gurceneu Gwrgeneu Gurci 
+			Gwrgi Gurcon Gurdilic Gurgen Gurguaret Gurguist Gurguistl Fergus Gurheter Guriant Viriathius 
+			Gurlouen Gurmael Gurmaeloc Gurmhaelon Gurthcid Gurthiern Vortigern Guruant Guerech Gueroc 
+			Guethenan Guethencar Guethencor Guethenwoïon Guethenhoiarn Guethenoc Haelcomarch Haelguethen 
+			Haelguoret Haelhoiarn Haeloc Haeloubri Herori Haermael Hammelin Hamelin Hamon Harscoit Hedyn 
+			Heranal Herri Henry Hesdren Hincomhal Hinguethen Hocar Hoconan Honfroi Hoël Hywel Huiarnal 
+			Huiarnbili Huiarnviu Harvey Hunfroi Humphrey Iacob Jacob Iarcun Iarnbud Iarncant Iarncar 
+			Iarndetguid Iarnegon Jarnegon Iarnuallon Iarnuocon Iarnhitin Iedechael Iehan John Ilcarthon Ildut 
+			Iliud Inisian Iocilin Joscelin Iodoc Ionas Jonas Iosep Joseph Iudcum Iuduallon Idwallon 
+			Ithel Iudicael Judicael Iudnerth Idnerth Iudnimet Ednyfed Iustoc Iudoc Iudual Idwal Iumael 
+			Iunceneu Iunuocon Iunmonoc Jord George Leucum Loi Lorens Laurence Louenan Loumarch Llywarch 
+			Louïs Iudhael Louis Maelcon Maelgwn Maeldoï Maelhuedoc Maeloc Maelscoet Maelscuet Maenceneu Maenci March 
+			Marthin Martin Matheudoï Mathias Matthew Matoc Matad Matuid Maugan Mauric Maurice Medrod 
+			Meldroc Meriadoc Mermin Merfyn Meugan Mawgan Meven Michel Michael Morcant Morgan Morcondeleu 
+			Morgen Morguethen Morhaetho Mormarch Morfarch Morvan Mortiern Neven Nicolas Nicholas 
+			Nodhoiarn Nominoë Nougui Nowy Oliuer Oliver Oswallt Oswald Padric Patrick Paol Paul 
+			Pasquitan Patern Paternus Petroc Phelippe Phillip Piran Prigent Primael Primarhoc Putrael 
+			Peter Ralf Raoul Ralph Renan Resmen Riacet Ribald Ricart Richard Riceneu Ricenus Richwin 
+			Riualtr Rihouen Rinduran Rioc Riol Riwal Riuallon Rhiwallon Rodric Roderick Roenualloc 
+			Roenuolou Roenhoiarn Rolland Roland Ronan Roparth Robert Roucen Rucenus Rumon Roman Ryd 
+			Salomon Solomon Samson Samuel Stefen Stephen Sulgen Julian Sulhoiarn Sulmonoc Sultiern Talan 
+			Talhoiarn Tanci Tanet Tanhoiarn Telent Terithien Tethion Teudric Theodoric Teudur Theodore 
+			Tibault Theobald Tiernan Tiernmael Tiernoc Tiernualloc Tiernuallon Treveur Tristan Tuduallon 
+			Tudwallon Tudur Tugdual Tuathal Ungust Urbcen Urbgenius Urbien Urban Urblon Urvod Uther 
+			Vincenne Vincent Victor Salenn Roenuallon Ridoredh Pêr Pascueten Nodethael Mordred Marcus
+		}
+		female_names = {
+			Aanor Abrelda Adela Adelaïda Adelaide Adelindis Adeltrudis Aedoc Aeluit Aelwyd Agnes Alana 
+			Alis Anne Claudine Alice Anaguistl Anaudat Anaudrec Anauhouguel Anauprost Andrea Anna Aourcen Aouregan Aourell 
+			Aouren Argantan Argantdrec Arganteila Arganteilin Argantguistl Arganthael Argantlon 
+			Artaca Avandrec Avenie Beladora Beladore Berchet Brigid Berengaria Bernegarda Berta 
+			Bertha Bertissa Bleutuen Blodwen Brendana Bronuen Bronwen Buriana Canna Cateline Catherine 
+			Catguistl Cecilia Ceindrec Cagintria Ceinguled Cleirui Creirwy Condeleu Constansa Constance 
+			Cristen Christina Dengel Deniela Denise Diuset Dreanau Drebiu Dreguoreth Drelouguen 
+			Drilego Duihon Elara Eleina Elaine Elena Helen Elesbed Elizabeth Elisaued Elizabeth Elwen 
+			Emma Endellion Ennoguent Enoguen Enora Eonnecte Joan Erouana Yvonne Ewsannec Fuandrec Gaela 
+			Geberga Geberga Glades Claudia Gloiucen Gloiumed Guelet Guenbrith Guencen Guencenedl Guencor 
+			Guenguerthlon Guenguistl Guenguiu Guenmon Guenna Guenneret Guennguar Gueruel Gwerfyl 
+			Guillemecte Williamette Gwenn Gwen Halbiu Hawis Hawise Herannuen Hodierne Igerna Ignoguen 
+			Ildegarda Hildegarde Iofa Iouenna Joan Isabelle Elizabeth Iseult Hersilia Iudhent Iudlouguen 
+			Iudprost Janed Joan Judhael Judith Languoret Leonore Eleanor Leueer Leuhemel Leuoc Louhelic 
+			Luncen Maben Magdalene Magdalena Marguarite Margaret Mari Maria Medguistl Meduil Melita 
+			Milian Mona Mona Morganne Morganna Morguetel Moruen Murron Moruith Morvana Neulenna Neulenna 
+			Nodguoret Nodiunet Nolwenne Nonne Nonna Oncenedl Oncum Onguen Ordguydel Ourcen Ourdilic 
+			Proscen Prosguetel Prostlon Rannoeu Riguistl Rimoet Rioanon Rioanon Rhiannon Rioantcen 
+			Rioantdrec Rioantdrec Rioantel Rioantguellt Regina Roenhael Roinoc Ronana Rozenn Rum Rumun 
+			Stefania Stephania Steren Sulcar Sulcen Sulgubri Sulgwen Sulleisoc Sulmed Susanne Susanna 
+			Tandrec Tanetbiu Tanetlowen Tanguistl Tancostyla Tedvil Tephaine Thomine Tibourge Tiburge 
+			Trifine Tristana Uriell Seva Perenn Meonre Ilcum Guigoëdon Drichglur Berthildis Argantmoet
+		}
+	}
+	dynasty_names = {
+		"de Valois" "de Bourbon" "de la Tour" "d'Anjou" 
+		"de Lorraine" "de Foix" "de Montfort" "de Blois" "de Penthievre" "de Dreux"
+		"de Rohan" "de Bar" "d'Albert" "d'Escoubleau" "de Neufville" "de Bourgogne"
+		"de Castellane" "d'Auvergne" "de Montbéliard" "de Metz" 
+		#CKII Frankish
+		"de Laval" "de la Tour du Pin" "de La Trémoille" "de Créquy" "de Broglie"
+		"de Montesquiou" "de Courtenay" "d'Harcourt" "de La Croix" "Le Tellier"
+		"de Rochechouart" "d'Aumont" "de Vergy" "de Saboulin" "de Gramont" "de Bissy"
+		"de Barrau" "de La Fayette" "d'Armagnac" "de Rougé" "du Quenoy" "de Ficquelmont"
+		"de Talleyrand" "de Saintignon" "von Luxemburg" "de Montmorency" "de Savoie"
+		"de Vaudemont" "de Nicolaÿ"
+	}
+	male_names = {
+		Édouard Érrard Étienne Adémar Adrien Aimery Alain 
+		Aldebert Aldéric Alphonse Amaury Amédée Ancel André Antoine Archambaud Arnaud 
+		Arnault Arnoul Aubry Aymar Barthélémi Baudouin Benoît Bérenger Bernard Bertrand Bohemond 
+		Boson Bouchard Centule Charles Clotaire Ebbon Enguerrand Eudes Eustache Evrard Foulques François 
+		Frédéric Gaucher Gaucelin Gauthier Geoffroi Géraud Gilbert Gilles Godefroi
+		Guichard Guiges Guilhem Guillaume Guy Hélie Hamelin Henri Herbert Hildebert Hugues Humbert Jacques 
+		Jaufré Jaspert Jean Jourdain Julien Léon Léonard Lothaire Louis Loup Mathieu Maurice Nicolas Ogier Onfroi Orson Othon
+		Payen Philippe Pierre Raimbaut Raoul Raymond Raynaud Renaud Richard Robert Robin Roger Rorgues Roubaud Savary Sigismond Simon Thibault Thiébaut 
+		Thierry Thomas Valeran Yves
+	}
+	female_names = {
+		Éléonore Élodie Étiennette Adèle Adalmode Adelaide Adelinde 
+		Agnès Aléarde Alice Aliénor Agathe
+		Alix Almodis Amelie Anne Antoinette Arsinde Aude Aurengarde 
+		Béatrice Béatrix Belleassez Benoîte Bérengère
+		Berthe Blanche Bonne Bourgogne Bourguigne Cécile Cathèrine 
+		Charlotte Constance Denise Douce Echive Eglantine
+		Elisabeth Emma Ermengarde Ermessinde Esclarmonde 
+		Euphrosine Eustachie Eve Gerberge Gisèle Guillaumette Héloise Helvis Hodierne Ide Ildégarde
+		Isabeau Isabelle Jeanne Judith Julienne Mafalda Mahaut Margot Marguerite Marie Marthe
+		Mascarose Mathilde Mélisande Mélisende Mélusine Péronelle Pernelle Perinne Pernette Plaisance 
+		Raymonde Sarrazine Solène Sophie Stéphanie Sybille Tiburge Valence Yolande
+	}
+}
+
+
+
+
+# NEW DUTCH CULTURE GROUP
+swamp = {
+	dutch = {
+		primary = NED
+		male_names = {
+			Adriaen Albrecht Albert Alwin Ambroos Antoon Arnold Arnold Arnulf Arnulf Balderik Barend 
+			Barnaerd Bernard Bartolomeus Bartolomeus
+			Bavo Bertold Boudewijn Baldwin Claes Nicholas Claeuwaert Daevit David Damaes Diederick 
+			Thierry Dirk Thierry Douwe Eduard Edward Egmund Ekbert
+			Emmo Engelbrecht Filips Philip Floris Folbert Frans Francis Frederik Frederick Gerard Gerolt 
+			Gerulf
+			Gerrit Gijsbrecht Giselbert Gilbert Godfried Godfrey Godschalk Gozewijn Guij Guy Gwijde 
+			Gwijde Hendrik Henry Herman Herman Hubert
+			Hugo Hugh Ijsbrand Ijsbrecht Jacco Jacob Jan John Karel Charles Koenraad Konrad
+			Kristof Christopher Lambert Lambert Lodewijk Louis Ludewijn Lutbert Luthard Maertijn Martin
+			Marquart Niclaes Nicholas
+			Olivier Oliver Otto Otto Otwin Onno Pieter Peter Reinaerd Reinoud Reinhold Reginar Robrecht
+			Robert Robert Robert Rodulf 
+			Roelof Roland Rutger Sebastiaen Sebastian Sicco Simon Steven Stephen Steyn Sten Theodolf
+			Waelram Walter Walter
+			Wicher Willem William Wolfard Hendrik Maurits
+			Adriaan Andries Antonius Gaspar Isaac Johan Laurens Paul Abraham Barthout Christiaan
+			Christoffel Constantijn Cornelis Daniel Eise Gabriel Gerben Hans Jeroen Joost Nicolaas 
+			Roeland Rogier Thomas Vincent Zacharias
+		}
+		female_names = {
+			Ada Adela Adelheid Adelaide Aechte Agaete Aleid Alijse Alice Aliken Anna Annelies
+			Badeloge Bava Beatrijs Beatrice Benedicta
+			Blanca Blanche Blanceflore Cecily Cecilia Cille Clara Clementia 
+			Ellijnore Eleanor Emma Ermingarde Ermengarde Fenne
+			Filippa Philippa Frida Gheertrude Gertrude Gerda Godila Haduwijn Helena Helen Herlinda 
+			Hilligonda Ide Ida Imagina Irene Isabelle Iudith
+			Jacoba Jaccobijn Jasminne Johanna Joan Jolanda Juliana Jutte Kathrijne 
+			Katrien Catherine Liedwin Lisebet Elisabeth Machtelt Margareta Margaret
+			Maria Mathilde Matilda Oda Odelt Olinde Onna Pieternelle Petronilla Reynilde Sanne 
+			Sigerda Sophie Sophia Swanhildis Thetburga Tiburge Waltrud
+			Wila Wendelmoet Wenna Willemine Yonefij Yvonne Zoete Margaretha Rosanne Tamara
+		}
+		dynasty_names = {
+			"van Oranje" Nassau "van Wassenberg" "van Henegouwen" "de Friesland"
+			"van Haspinga" "van Limburg" "van Lotharingen"  "von der Mark"
+			"van Leuven" "van Brabant" "van Egmont" "de Reginar" "van Jülich-Hengebach"
+			# CKII
+			"van Loon" "von Geldern" "van Sulzbach" "von Salm"
+			"van Bergh" "van Heinsberg" "van de Veluwe" "De Graeff"
+			"van Brederode" "van Breda" "van Heemskerk" "van Glymes" "van Grimberghe"
+			"van Renesse" "van Wassenaer" "van Bronckhorst"
+			"van Keppel" "Van Voorst tot Voorst" "van Wisch" "van Kamerijk" "Cirksena"
+			"van Diest" "van Montfoort"
+			# Frisian
+			"van Serooskerken"
+		}
+	}
+	flemish = {
+		primary = FLA
+		dynasty_names = {
+			"van Oranje" Nassau "van Wassenberg" "van Henegouwen" "de Friesland"
+			"van Haspinga" "van Limburg" "van Lotharingen"  "von der Mark"
+			"van Leuven" "van Brabant" "van Egmont" "de Reginar" "van Jülich-Hengebach"
+			# CKII
+			"van Loon" "von Geldern" "van Sulzbach" "von Salm"
+			"van Bergh" "van Heinsberg" "van de Veluwe" "De Graeff"
+			"van Brederode" "van Breda" "van Heemskerk" "van Glymes" "van Grimberghe"
+			"van Renesse" "van Wassenaer" "van Bronckhorst"
+			"van Keppel" "Van Voorst tot Voorst" "van Wisch" "van Kamerijk" "Cirksena"
+			"van Diest" "van Montfoort"
+			# Frisian
+			"van Serooskerken"
+		}
+		male_names = {
+			Filips Jan Boudewijn Arnolf Lodewijk Robrecht Willem Diederik Gwijde Karel Antoon Abraham Alexander Alfons 
+			Andries Balthasar Bartholomeus Christoffel Constantijn Cornelis Daniël David Ernst Erwin Ewoud Floris 
+			Gabriel Godfried Hans Jacob Kasper Ludger Luuk Marinus Pieter Renate Rodolf Roeland Valentijn
+		}
+		female_names = {
+			Ada Adela Adelheid Adelaide Aechte Agaete Aleid Alijse Alice Aliken Anna Annelies
+			Badeloge Bava Beatrijs Beatrice Benedicta
+			Blanca Blanche Blanceflore Cecily Cecilia Cille Clara Clementia 
+			Ellijnore Eleanor Emma Ermingarde Ermengarde Fenne
+			Filippa Philippa Frida Gheertrude Gertrude Gerda Godila Haduwijn Helena Helen Herlinda 
+			Hilligonda Ide Ida Imagina Irene Isabelle Iudith
+			Jacoba Jaccobijn Jasminne Johanna Joan Jolanda Juliana Jutte Kathrijne 
+			Katrien Catherine Liedwin Lisebet Elisabeth Machtelt Margareta Margaret
+			Maria Mathilde Matilda Oda Odelt Olinde Onna Pieternelle Petronilla Reynilde Sanne 
+			Sigerda Sophie Sophia Swanhildis Thetburga Tiburge Waltrud
+			Wila Wendelmoet Wenna Willemine Yonefij Yvonne Zoete Margaretha Rosanne Tamara
+		}
+	}
+	frisian = {
+		primary = FRI
+		male_names = {
+			Anno Bernard Baltasar Campegius Dodo Eggerik Eilhard Eeltsje Enno Edzard Edo
+			Freark Franciscus Gysbert Gerlof Hendrik Jancko Jacobus Joast Jehan Joaris
+			Kristiaan Karel Keno Loadewyk Magnus Marten Michiel Nicolaas Okko Oluf
+			Pier Rudolf Theunis Tsalling Tsjibbe Tileman Tako Ulrik Ucko Uniko Ubbo
+			Worp Widzel Wigbolt Wijard Wybrand Ygo
+		}
+		female_names = {
+			Albertina Ats Anna Elisabet Fokel Goslinga Juliana Kristine Kynke Marije
+			Ruerdtsje Rintsje Stine Sesilia Sjarlotte Titia Theda Tijdt Wobbel
+		}
+		dynasty_names = {
+			Abdena Accama "fan Aldenboarch" Brandsma "fan Boalsert" "fan Blije" Beninga
+			Brongersma Binnerts Bonninga "tom Brok" Carree Douwama Durks Dirksen Donia
+			Edema Eisinga Emmius Eschels "fan Esens" Feddes Galama Hamkes Halbertsma Haringsma
+			Japiks "fan Jever" Jelckama Jelgersma Lenige Ripperda "fan Rossum" Steenbicker 
+			Sirksena Syrtsema "fan Thabor" Vitringa Walles Wiarda Zelle
+		}
+	}
+	wallonian = {
+		primary = HAI
+	}
+	female_names = {
+		Adele Adelgunde Adelheid Adolfine Agatha Agnes Alexandra Alice Alina Aline Alma Alwina Alwine Amalia Amalie Amanda 
+		Amelie Andrea Angela Angelika Angelina Anika Anita Anja Anke Ann-Katrin Anna Anne Annegret Anneli Annelie Anneliese 
+		Annemarie Anni Annika Annina Anny Antje Antonia Astrid Augusta Auguste Barbara Bärbel Beate Beatrice Beatrix 
+		Bernadette Berta Bertha Bettina Bianca Bianka Birgit Brigitte Britta Brunhild Brünhild Brunhilde Brünhilde Cäcilia 
+		Cäcilie Caren Carina Carla Carmen Carolin Caroline Catarina Catharina Cathrin Catrin Cecilia Cecilie Celina Celine 
+		Charlotte Chiara Christa Christel Christiane Christina Christine Clara Claudia Constanze Cordula Corina Corinna 
+		Cornelia Dagmar Daniela Denise Desirée Désirée Diana Dietlind Dietlinde Dora Doris Dorothea Edda Edith Elena 
+		Eleonora Eleonore Elfriede Elisa Elisabeth Elise Elke Ella Ellen Elli Elly Elma Elsa Elsbeth Else Elvira Emelie 
+		Emely Emilia Emilie Emily Emma Emmeline Emmi Emmy Erdmute Erica Erika Erna Ester Esther Eugenie Eva Evelyn 
+		Fabienne Fanny Felicia Felicitas Felizia Felizitas Finja Finnja Fiona Flora Florentina Florentine Franziska Frauke 
+		Freya Frida Fridegunde Frieda Friedegund Friedegunde Friederike Gabriela Gabriele Genoveva Gerda Gerlind Gerlinde 
+		Gertraud Gertrud Gertrudis Gesine Gina Gisela Grete Gretel Grethe Gudrun Gunda Gundula Hanna Hannah Hanne Hannelore 
+		Hedwig Heide Heidemarie Heidi Heike Helena Helene Helga Helge Hella Helmina Helmine Henny Hermina Hermine Herta 
+		Hertha Hilda Hilde Hildegard Hulda Ida Ilse Ines Inga Inge Ingeborg Ingeburg Ingrid Irene Irina Iris Irma Irmela 
+		Irmelin Irmgard Isabel Isabell Isabella Isabelle Isolde Ivonne Jacqueline Jana Janina Janine Jaqueline Jasmin 
+		Jennifer Jessica Johanna Johanne Josefine Josephine Judith Jule Julia Juliane Jutta Kai Karen Karin Karina Karla 
+		Karolin Karoline Katarina Käte Katharina Käthe Kathrin Katja Katrin Kerstin Kim Kirsten Klara Konstanze Kristin 
+		Kristina Kunigunde Lara Larissa Laura Lea Lena Leni Leoni Leonie Leonore Liane Liesel Lieselotte Lili Lilli Lilly 
+		Lina Linda Lisa Liselotte Lore Lotte Louisa Louise Lucia Lucie Luisa Luise Lulu Luna Luzia Luzie Lydia Madeleine 
+		Madleen Madlen Madlene Magda Magdalena Magdalene Maike Maja Manuela Mareike Marga Margareta Margarete Margaretha 
+		Margarethe Margit Margot Margret Margrit Maria Marianne Marie Marie-Theres Marie-Therese Marina Marion Marleen 
+		Marlen Marlene Marlies Marlis Marta Martha Martina Mathilde Maya Mechthild Meike Melanie Melina Melissa 
+		Merle Meta Mia Michaela Michelle Minna Miriam Mirjam Mona Monica Monika Nadia Nadin Nadine Nadja Natali Natalie 
+		Natascha Nathalie Neele Nele Nicola Nicole Nina Noemi Nora Oda Olga Olivia Ottilie Patricia Patrizia Paula Paulina 
+		Pauline Petra Pia Rachel Rafaela Raffaela Rahel Ramona Raphaela Rebecca Rebekka Regina Renate Ricarda Rita Rolanda 
+		Ronja Rosa Rose Rosemarie Roswitha Ruth Sabina Sabine Sabrina Samantha Sandra Sara Sarah Saskia Selina Seraphina 
+		Seraphine Sibylle Sieglind Sieglinde Siglind Siglinde Sigrid Silke Silvia Simone Sina Sissi Sofia Sofie Sonja Sophia 
+		Sophie Stefanie Stella Stephanie Susanna Svenja Swenja Sybille Sylvia Tabea Tamara Tanja Tatjana Teresa Thekla 
+		Theres Theresa Therese Theresia Thirza Tina Tirza Traute Trude Ulrike Ursel Ursula Uta Ute Valentina Valerie Vanessa 
+		Vera Verena Verona Veronika Victoria Viktoria Walburg Walburga Waldtraud Waldtraut Walpurga Walpurgis Waltraud 
+		Waltraut Wanja Wibke Wiebke Wilhelmina Wilhelmine Wilma Xenia Yasmin Yvonne Zäzilia Zäzilie Zoe
+	}
+	dynasty_names = {
+		"von Oldenburg" "von Slesvig" "von Formbach" "von Wasserburg" "von Lengenfeld" "von Eberstein" "von Heinsberg"
+		"von Kleve" "von Versfleth" "von Wickerode" "von Winzenburg" "von Bogen" "von Genf" "von Veldenz" "von Berg" "von Hohenstauf" "von Saarbrucken" "von Puteledorg" "von Henneberg" "von Stade" "von Sommerchenberg" "von Kirchberg" "von Raabs" "von Heimbach" "von Metz" "von Limburg" "von Luxemburg""von Beilstein" "von Lusatia" "Orlamunde" "de Luxembourg" "Hainaut" "von Lenzburg" "Hunfriding" "Witte" "von Hagen" "von Supplingenburg" "von Plotzkau""von Wippra" "von der Mark" "von Diest" "von Rietberg" "von Löningen" "von Corvey" "von Steinfurt" "von Tecklenburg" "von Rüssel" "von Waldeck" "von Ravensberg" "von Weyhe" "von Hoya" "von Bassenheim" "von Kerpen" "von Tunna" "von Salza" "von Malberg" "von Hohenlohe" "von Wüllersleben" "von Osterna" "von Sangershausen" "von Heldrungen" "von Orseln" "von Nauen" "Suerbeer" "von Lunen" "von Vechta" "Pernstein" "von Schwerin" "von Dorpat" "von Haseldorf" "von Vyshusen" "von Dolen" "von Friesack" "von Hildesheim" "von Lechsgmünd" "von Komburg" "von Stahleck" "von Ziegenhain" "von Dinslaken" "von Lambach" "von Pluyvoise" "von Scharfenberg" "von Leistenberg" "von Schwarzburg" "von Badewide" "von Wassel" "von Dassel" "von Greyerz" "von Grenchen" "von Abensberg" "von Grünberg" "von Lichtenberg" "von Hachberg" "von Wartenberg" "von Wolfach" "von Gudensberg""von Gerhausen" "von Signau" "von Groitzsch" "von Frickingen" "von Sigmaringen" "von Meran" "von Treven" "Gross" "Gualch" "Beck" "zu Schwaben" "von Attems" "von Schweipünt" "von Saffenberg" "von Nörvenich" "von Querfurt" "von Mansfeld" "von Kärnten" "von Eschenloch" "von Naumburg" "von Schrapinstein" "von Hardegg" "von Arneburg" "von Seeburg" "von Veldenz" "von Schmidtburg" "von Bamberg" "von Kyrburg" "von Baumberg" "von Stolzenberg" "von Altenbaumberg" "von Ortenburg" "von Wangen" "von Frontenhausen" "von Andechs" "von Eurasburg" "von Geroldseck" "von Bocksberg" "von Vinstingen" "von Schoenecken" "von Daun" "von Leiningen" "von Hohenfels" "von Hunolstein" "von Blankenheim" "von Salm" "von Sponheim" "von Brunshorn" "von Bikkenbach" "von Heinsberg" "von Ratzeburg" "von Schlawe" "von Schwelz" "von Liebschau" "von der Lippe" "von Schauenburg" "von Rostock" "von Gustrow" "von Rendsburg" "von Segeberg" "von Neuhaus" "von Friedenthal" "von Rosenberg"  "von Altenburg" "von Pernstein" "von Monheim" "von Urslingen" "von Assel" "von Osnabrück" "von Kleve" "von Andernach" "von Metz" "von Bern" "von Schwyz" "von Neuchatel" "von Aargau" "von Breisgau" "von Fürstenberg""von Württemberg" "von Franken" "von Thüringen"
+	}
+}

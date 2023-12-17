@@ -1,0 +1,8 @@
+#Prov1048 - Udskoye
+culture = mongol
+religion = vajrayana
+is_city = no
+
+base_tax = 1
+base_production = 1
+base_manpower = 1

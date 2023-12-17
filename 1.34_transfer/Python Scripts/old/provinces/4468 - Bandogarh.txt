@@ -1,0 +1,17 @@
+#4468 - Bandogarh
+
+owner = BGL
+controller = BGL
+culture = vindhyan
+religion = hinduism
+capital = "Bandogarh"
+trade_goods = grain
+hre = no
+base_tax = 2 
+base_production = 1
+base_manpower = 2
+is_city = yes
+add_core = BGL
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

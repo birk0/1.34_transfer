@@ -1,0 +1,17 @@
+#Aviero
+
+owner = POR
+controller = POR
+culture = portugese
+religion = catholic
+capital = "Aveiro"
+trade_goods = fish
+hre = no
+base_tax = 4
+base_production = 4
+base_manpower = 2
+is_city = yes
+add_core = POR
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

@@ -1,0 +1,22 @@
+country_decisions = {
+
+	capital_in_belgrade = {
+		potential = {
+			tag = SER
+			NOT = { has_country_flag = moved_capital_to_belgrade }
+		}
+		allow = {
+			stability = 1
+			adm_power = 50
+		}
+		effect = {
+			add_adm_power = -50
+			set_country_flag = moved_capital_to_belgrade
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		ai_importance = 400
+	}
+
+}

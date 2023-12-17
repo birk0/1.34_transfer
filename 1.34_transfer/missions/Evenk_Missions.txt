@@ -1,0 +1,336 @@
+evenks_1 = { #Generic stability/government missions
+	potential = {
+		OR = {
+			culture_group = kamchatkan_g
+			AND = {
+				culture_group = evenks
+				NOT = { primary_culture = manchu }
+			}
+		}
+	}
+	ai = yes
+	has_country_shield = yes
+	slot = 1
+	generic = yes
+
+	evenks_develop_capital = {
+		icon = mission_central_asian_city
+		position = 1
+		trigger = {
+			capital_scope = {
+				num_of_times_improved = 10
+			}
+		}
+		effect = {
+			capital_scope = {
+				add_next_institution_embracement = 100
+			}
+		}
+	}
+	evenks_reform_government = {
+		icon = mission_chinese_general_riding
+		position = 2
+		required_missions = { evenks_develop_capital }
+		trigger = {
+			stability = 3
+			has_institution = renaissance
+		}
+		effect = {
+			country_event = { id = eoc_events.77 }
+		}
+	}
+	evenks_stable_government = {
+		icon = mission_non-western_soldiers
+		position = 3
+		required_missions = {}
+		trigger = {
+			OR = {
+				monthly_adm = 10
+				adm = 4
+			}
+			OR = {
+				monthly_dip = 10
+				dip = 4
+			}
+			OR = {
+				monthly_mil = 10
+				mil = 4
+			}
+		}
+		effect = {
+			add_country_modifier = {
+				name = evenks_perma_admin_mod
+				duration = -1
+			}
+		}
+	}
+	evenks_fur_trade = {
+		icon = mission_collect_yasak
+		position = 4
+		required_missions = {}
+		trigger = {
+			home_trade_node = {
+				trade_share = {
+					country = ROOT
+					share = 50
+				}
+			}
+		}
+		effect = {
+			add_years_of_income = 10
+		}
+	}
+	evenks_develop_country = {
+		position = 5
+		icon = mission_central_asian_city
+		required_missions = {}
+		trigger = {
+			num_of_owned_provinces_with = {
+				value = 10
+				has_tax_building_trigger = yes
+				has_trade_building_trigger = yes
+			}
+		}
+		effect = {
+			add_country_modifier = {
+				name = evenks_colonising_frontier_mod
+				duration = -1
+			}
+		}
+	}
+}
+
+evenks_5 = { #Generic trading/minor conquest missions
+	potential = {
+		OR = {
+			culture_group = kamchatkan_g
+			AND = {
+				culture_group = evenks
+				NOT = { primary_culture = manchu }
+			}
+		}
+	}
+	ai = yes
+	has_country_shield = yes
+	slot = 5
+	generic = yes
+
+	evenks_establish_fleet = {
+		icon = mission_market_place_with_asian_traders
+		required_missions = {}
+		position = 1
+		trigger = {
+			num_of_light_ship = 10
+		}
+		effect = {
+			country_event = { id = eoc_events.78 }
+			add_yearly_sailors = 5
+		}
+	}
+	evenks_trade_in_girin = {
+		icon = mission_raid_christian_trade
+		required_missions = { evenks_establish_fleet }
+		position = 2
+		provinces_to_highlight = {
+			province_id = 730
+		}
+		trigger = {
+			OR = {
+				731 = {
+					trade_share = {
+						country = ROOT
+						share = 20
+					}
+				}
+				731 = {
+					privateer_power = {
+						country = ROOT
+						share = 20
+					}
+				}
+			}
+		}
+		effect = {
+			add_years_of_income = 5
+			ningguta_area = {
+				limit = {
+					NOT = { is_permanent_claim = ROOT }
+					NOT = { is_core = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			furdan_area = {
+				limit = {
+					NOT = { is_permanent_claim = ROOT }
+					NOT = { is_core = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			ilan_hala_area = {
+				limit = {
+					NOT = { is_permanent_claim = ROOT }
+					NOT = { is_core = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			central_jilin_area = {
+				limit = {
+					NOT = { is_permanent_claim = ROOT }
+					NOT = { is_core = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			east_heilongjiang_area = {
+				limit = {
+					NOT = { is_permanent_claim = ROOT }
+					NOT = { is_core = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			central_heilongjiang_area = {
+				limit = {
+					NOT = { is_permanent_claim = ROOT }
+					NOT = { is_core = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+		}
+	}
+	evenks_rival_korea = {
+		icon = mission_asian_cannon
+		position = 3
+		required_missions = {
+			evenks_trade_in_girin
+		}
+		trigger = {
+			OR = {
+				NOT = { exists = KOR }
+				AND = {
+					army_size = KOR
+					navy_size = KOR
+					is_rival = KOR
+				}
+				AND = {
+					army_size_percentage = 1
+					navy_size_percentage = 1
+					custom_trigger_tooltip = {
+						tooltip = evenks_dowed_korea_tt
+						has_country_flag = evenks_dowed_korea_flag
+					}
+				}
+			}
+		}
+		effect = {
+			clr_country_flag = evenks_dowed_korea_flag
+			korea_region = {
+				limit = {
+					NOT = { is_permanent_claim = ROOT }
+					NOT = { is_core = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			if = {
+				limit = { 
+					exists = KOR
+				}
+				country_event = { id = eoc_events.79 }
+			}
+		}
+	}
+	evenks_rival_japan = {
+		icon = mission_japanese_samurai
+		required_missions = { evenks_rival_korea }
+		position = 4
+		provinces_to_highlight = {
+			province_id = 1376
+		}
+		trigger = {
+			OR = {
+				any_known_country = {
+					religion = shinto
+					is_rival = ROOT
+				}
+				custom_trigger_tooltip = {
+					tooltip = evenks_no_jap_countries_tt
+					all_known_country = {
+						NOT = { religion = shinto }
+					}
+				}
+				custom_trigger_tooltip = {
+					tooltip = evenks_no_strong_jap_tt
+					NOT = {
+						japan_region = {
+							owner = {
+								OR = {
+									army_size = ROOT
+									navy_size = ROOT
+								}
+							}
+						}
+					}
+				}
+			}
+			1388 = {
+				is_strongest_trade_power = ROOT
+			}
+		}
+		effect = {
+			add_mercantilism = 33
+			1388 = {
+				add_trade_modifier = {
+					key = evenks_jap_trade_mod
+					duration = -1
+					power = 20
+					who = ROOT
+				}
+			}
+		}
+	}
+	evenks_defy_china = {
+		icon = mission_seize_the_dragon_throne
+		position = 5
+		required_missions = { evenks_rival_japan }
+		trigger = {
+			OR = {
+				custom_trigger_tooltip = {
+					tooltip = evenks_eoc_dismantled_tt
+					has_global_flag = empire_of_china_dismantled
+				}
+				AND = {
+					event_target:EmperorOfChina = {
+						has_opinion_modifier = {
+							who = ROOT
+							modifier = scornfully_insulted
+						}
+					}
+					NOT = { is_subject_of = event_target:EmperorOfChina }
+					is_neighbor_of = event_target:EmperorOfChina
+				}
+			}
+		}
+		effect = {
+			if = {
+				limit = {
+					NOT = { has_global_flag = empire_of_china_dismantled }
+				}
+				event_target:EmperorOfChina = {
+					add_mandate = -50
+				}
+			}
+			add_country_modifier = {
+				name = evenks_defying_china_mod
+				duration = 10950
+			}
+			add_mil_power = 300
+			add_adm_power = 300
+			add_dip_power = 300
+			manchuria_region = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+		}
+	}
+}

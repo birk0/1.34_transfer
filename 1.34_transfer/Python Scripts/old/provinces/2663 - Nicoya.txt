@@ -1,0 +1,19 @@
+# 2663 - Heigali
+
+owner = ADA
+controller = ADA
+add_core = ADA
+add_core = OGD
+culture = somali
+religion = sunni
+capital = "Heigali"
+is_city = yes
+base_manpower = 1
+base_tax = 1 
+base_production = 1 
+trade_goods = livestock
+hre = no
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

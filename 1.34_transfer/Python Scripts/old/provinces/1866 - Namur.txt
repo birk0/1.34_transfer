@@ -1,0 +1,25 @@
+# 1866 - Namur
+
+latent_trade_goods = {
+	coal
+}
+
+owner = BUR
+controller = BUR
+add_core = BUR
+capital = "Namur"
+is_city = yes
+culture = wallonian
+religion = catholic
+hre = yes
+base_tax = 7 
+base_production = 7
+trade_goods = iron
+base_manpower = 3
+add_core = HAI
+fort_15th = yes
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

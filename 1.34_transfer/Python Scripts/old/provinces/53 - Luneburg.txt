@@ -1,0 +1,24 @@
+#53 - Lüneburg
+
+owner = LUN
+controller = LUN
+add_core = LUN
+culture = lower_saxon
+religion = catholic
+capital = "Lüneburg"
+trade_goods = salt
+hre = yes
+base_tax = 3
+base_production = 3
+base_manpower = 2
+is_city = yes
+
+
+
+
+1444.12.1 = {
+	trade_goods = unknown
+	owner = ---
+	controller = ---
+	hre = no
+}

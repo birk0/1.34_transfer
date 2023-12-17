@@ -1,0 +1,5 @@
+#Prov1324 - Eastern Black Sea
+
+base_tax = 1
+base_production = 1
+base_manpower = 1

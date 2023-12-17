@@ -1,0 +1,7 @@
+#Prov438 - Kara Kum
+culture = turkmeni
+religion = sunni
+
+base_tax = 1
+base_production = 1
+base_manpower = 1

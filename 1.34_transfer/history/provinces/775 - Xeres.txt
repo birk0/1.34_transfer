@@ -1,0 +1,7 @@
+#Prov775 - Xeres
+culture = nubian
+religion = shamanism #Fetishism
+
+base_tax = 1
+base_production = 1
+base_manpower = 1

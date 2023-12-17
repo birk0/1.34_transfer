@@ -1,0 +1,19 @@
+owner = TRI
+controller = TRI
+culture = hessian
+religion = catholic
+trade_goods = grain
+capital = "Trier"
+base_tax = 5
+base_production = 5
+is_city = yes
+add_core = TRI
+base_manpower = 2
+hre = yes
+
+1444.12.1 = {
+	trade_goods = unknown
+	owner = ---
+	controller = ---
+	hre = no
+}

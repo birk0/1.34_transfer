@@ -1,0 +1,17 @@
+#4488 - Champaran
+
+owner = TRT
+controller = TRT
+culture = bihari
+religion = hinduism
+capital = "Simraon"
+trade_goods = grain
+hre = no
+base_tax = 3
+base_production = 3
+base_manpower = 1
+is_city = yes
+add_core = TRT
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

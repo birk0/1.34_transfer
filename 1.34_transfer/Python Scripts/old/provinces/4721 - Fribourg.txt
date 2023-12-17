@@ -1,0 +1,19 @@
+#4721 - Girvhask
+
+owner = NOV
+controller = NOV
+culture = novgorodian
+religion = orthodox
+hre = no
+trade_goods = salt
+base_tax = 1
+base_production = 1
+base_manpower = 1
+capital = "Girvhask"
+is_city = yes
+add_core = NOV
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

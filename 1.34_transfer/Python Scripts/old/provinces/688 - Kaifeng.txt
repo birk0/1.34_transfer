@@ -1,0 +1,19 @@
+#688 - Kaifeng (can't change file name)
+
+owner = MNG
+controller = MNG
+add_core = MNG
+culture = zhongyuan
+religion = confucianism
+capital = "Kaifeng"
+trade_goods = chinaware
+hre = no
+base_tax = 6 #changes
+base_production = 7
+base_manpower = 3
+is_city = yes
+add_core = LNG
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

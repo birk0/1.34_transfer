@@ -1,0 +1,22 @@
+# 2840 - Farama
+
+owner = TMB
+controller = TMB # under Tuareg rule to 1468
+add_core = TMB
+is_city = yes
+culture = tuareg
+religion = sunni
+capital = "Farama"
+trade_goods = livestock
+hre = no
+base_tax = 1 
+base_production = 1
+base_manpower = 1
+native_size = 30
+native_ferocity = 4
+native_hostileness = 10
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

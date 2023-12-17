@@ -1,0 +1,19 @@
+#353 - Tataouine
+
+owner = TUN
+controller = TUN 
+culture = tunisian
+religion = sunni
+capital = "Tataouine"
+trade_goods = grain
+hre = no
+base_tax = 1 
+base_production = 1
+base_manpower = 1
+is_city = yes
+add_core = TUN
+add_core = TRP
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

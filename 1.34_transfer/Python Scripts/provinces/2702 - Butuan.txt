@@ -1,0 +1,7 @@
+#Prov2702 - Butuan
+culture = filipino
+religion = shen
+
+base_tax = 1
+base_production = 1
+base_manpower = 1

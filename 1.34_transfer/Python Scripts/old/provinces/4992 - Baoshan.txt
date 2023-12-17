@@ -1,0 +1,24 @@
+#4992 - Baoshan
+
+owner = MNG
+controller = MNG
+add_core = MNG
+culture = bai
+religion = buddhism
+capital = "Baoshan"
+trade_goods = cloth
+hre = no
+base_tax = 1 
+base_production = 1
+base_manpower = 1
+is_city = yes
+add_core = CDL
+extra_cost = 5
+center_of_trade = 1
+add_local_autonomy = 25 #Ming weak rule over South
+
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

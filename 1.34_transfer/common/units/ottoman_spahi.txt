@@ -1,0 +1,13 @@
+# Ottoman Spahi
+
+type = cavalry
+manpower = 2
+unit_type = ottoman
+
+maneuver = 6	
+offensive_morale = 6
+defensive_morale = 4
+offensive_fire = 0
+defensive_fire = 0
+offensive_shock = 6
+defensive_shock = 4

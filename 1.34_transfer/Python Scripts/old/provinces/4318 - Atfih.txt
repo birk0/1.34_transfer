@@ -1,0 +1,19 @@
+#4318 - Atfih
+
+owner = MAM
+controller = MAM
+culture = al_misr_arabic
+religion = sunni
+capital = "Atfih"
+trade_goods = paper
+hre = no
+base_tax = 3
+base_production = 3
+base_manpower = 1
+is_city = yes
+add_core = MAM
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

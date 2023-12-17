@@ -1,0 +1,7 @@
+#Prov1664 - Lake Nipigon
+religion = shamanism
+culture = mossi
+
+base_tax = 1
+base_production = 1
+base_manpower = 1

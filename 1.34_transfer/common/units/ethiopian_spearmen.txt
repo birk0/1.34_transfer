@@ -1,0 +1,12 @@
+#Ethiopian Spearmen
+type = infantry
+manpower = 2
+unit_type = east_african
+maneuver = 1
+
+offensive_fire = 0
+defensive_fire = 0
+offensive_shock = 2
+defensive_shock = 0
+offensive_morale = 2
+defensive_morale = 2

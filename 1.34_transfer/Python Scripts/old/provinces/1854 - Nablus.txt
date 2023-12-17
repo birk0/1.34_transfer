@@ -1,0 +1,20 @@
+#1854 - Negev
+
+owner = MAM
+controller = MAM
+culture = al_suryah_arabic
+religion = sunni
+capital = "Nablus"
+trade_goods = sugar
+hre = no
+base_tax = 3 
+base_production = 3
+base_manpower = 3
+is_city = yes
+add_core = MAM
+
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

@@ -1,0 +1,112 @@
+ikko_ikki_rebellion = {
+	#Represents Over-reliance on the Ronin special regiments
+	#AI won't abuse Ronin so it's easier for them to get out of this since it wasnt from reckless behaviour
+	ended_by_country_breaking_to_rebels = no
+	potential = {
+		is_country_culture = {
+			type = japanese_g
+		}
+		OR = {
+			num_of_rajput = 1
+			has_country_flag = hired_ronin_flag
+		}
+		is_free_or_tributary_trigger = yes
+		NOT = { legitimacy_equivalent = 75 }
+	}
+	can_start = {
+		if = {
+			limit = { ai = yes }
+			NOT = { legitimacy_equivalent = 1 }
+		}
+		else = {
+			NOT = { legitimacy_equivalent = 25 }
+		}
+		hidden_trigger = { #CAC takes precedent
+			NOT = {
+				has_disaster_progress = {
+					disaster = court_and_country
+					value = 1
+				}
+			}
+		}
+	}
+	can_stop = {
+		legitimacy_equivalent = 75
+		custom_trigger_tooltip = {
+			tooltip = no_ronin_tooltip
+			OR = {
+				NOT = { num_of_rajput = 1 }
+				ai = yes #AI stupid
+			}
+		}
+		hidden_trigger = {
+			has_disaster_progress = {
+				disaster = court_and_country
+				value = 1
+			}
+		}
+	}
+	progress = {
+		modifier = {
+			factor = 1
+			NOT = { legitimacy_equivalent = 10 }
+		}
+		modifier = {
+			factor = 1
+			NOT = { legitimacy_equivalent = 25 }
+		}
+		modifier = {
+			factor = 0.5
+			NOT = { legitimacy_equivalent = 50 }
+		}
+		modifier = {
+			factor = 0.5
+			NOT = { legitimacy_equivalent = 75 }
+		}
+		modifier = {
+			factor = 1
+			custom_trigger_tooltip = {
+				tooltip = has_hired_ronin_tooltip
+				num_of_rajput = 1
+				ai = no #AI is stupid
+			}
+		}
+		modifier = {
+			factor = -1
+			OR = {
+				legitimacy_equivalent = 75
+				hidden_trigger = {
+					AND = {
+						ai = yes
+						legitimacy_equivalent = 50
+					}
+				}
+			}
+		}
+	}
+	can_end = {
+		legitimacy = 75
+		custom_trigger_tooltip = {
+			tooltip = no_ronin_tooltip
+			OR = {
+				NOT = { num_of_rajput = 1 }
+				ai = yes #AI is stupid
+			}
+		}
+	}
+	modifier = {
+		global_unrest = 20
+		discipline = -0.15
+		global_trade_goods_size_modifier = -0.33
+	}
+	on_start = eoc_events.113 #Ikko-Ikki Rebellion starts
+	on_end = eoc_events.114 #Ikko-Ikki Rebellion ends
+	on_monthly = {
+		random_events = {
+			100 = eoc_events.115 #Ronin Rebels
+			100 = eoc_events.116 #Ikko-Ikki rebels
+			100 = eoc_events.117 #Management of the Armies
+			1250 = 0
+		}
+	}
+}

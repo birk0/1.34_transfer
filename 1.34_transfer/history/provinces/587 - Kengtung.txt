@@ -1,0 +1,6 @@
+# Prov587 - Kengtung
+culture = shan
+religion = shen # changes
+base_tax = 1
+base_production = 1
+base_manpower = 1

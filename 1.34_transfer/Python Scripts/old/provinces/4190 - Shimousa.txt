@@ -1,0 +1,19 @@
+#4190 - Shimousa
+
+owner = CBA
+controller = CBA
+culture = togoku
+religion = shinto
+capital = "Sakura"
+trade_goods = fish
+hre = no
+base_tax = 2
+base_manpower = 2
+base_production = 1
+is_city = yes
+add_core = CBA
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

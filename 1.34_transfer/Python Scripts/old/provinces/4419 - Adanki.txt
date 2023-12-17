@@ -1,0 +1,20 @@
+#4419 - Adanki
+
+owner = YOR #In custody of Rajamahendri Reddys after the Reddys of Kondavidu were overthrown by Vijayanagar in 1428.
+controller = YOR
+culture = telegu
+religion = hinduism
+capital = "Adanki"
+trade_goods = cotton
+hre = no
+base_tax = 3
+base_production = 3
+base_manpower = 1
+is_city = yes
+add_vaisyas_or_burghers_effect = yes
+add_core = YOR
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

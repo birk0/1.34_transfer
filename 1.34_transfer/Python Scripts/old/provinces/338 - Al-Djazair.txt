@@ -1,0 +1,22 @@
+#338 - Al-Djazair
+
+#Changes
+owner = TLC
+controller = TLC
+add_core = TUN
+add_core = ALG
+add_core = TLC
+# 
+culture = algerian
+religion = sunni
+capital = "Al-Djazair"
+trade_goods = grain
+hre = no
+base_tax = 5 
+base_production = 5
+base_manpower = 3
+is_city = yes
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

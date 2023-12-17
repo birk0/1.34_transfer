@@ -1,0 +1,7 @@
+#Prov1729 - Southern Pacific 13
+religion = shiite
+culture = bedouin_arabic
+
+base_tax = 1
+base_production = 1
+base_manpower = 1

@@ -1,0 +1,19 @@
+# - Idjil
+
+culture = sanhaja
+religion = sunni
+capital = "Idjil"
+trade_goods = spices
+hre = no
+base_tax = 1 
+base_production = 1
+base_manpower = 1
+add_core = TRZ
+is_city = yes
+owner = TRZ
+controller = TRZ
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

@@ -1,0 +1,4 @@
+#4997 - Alxa Desert
+#discovered_by = chinese
+#discovered_by = indonesian
+#discovered_by = nomad_group

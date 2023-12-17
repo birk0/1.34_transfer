@@ -1,0 +1,44 @@
+#######################################
+# Timurid Empire
+#######################################
+technology_group = muslim
+primary_culture = uzbehk
+religion = sunni
+government = monarchy
+add_government_reform = timurid_prince
+capital = 454 # Samarkand
+religious_school = hanafi_school
+set_heir_flag = abdal_latif_timurid
+
+1409.5.13 = {
+	monarch = {
+		name = "Ulugh Beg"
+		dynasty = "Timurid"
+		birth_date = 1394.1.1
+		claim = 50
+		adm = 3
+		dip = 5
+		mil = 4
+		leader = { type = general name = "Ulugh Beg" fire = 2 shock = 2 manuever = 3 siege = 2 }
+	}
+	clear_scripted_personalities = yes
+	add_ruler_personality = scholar_personality
+	add_ruler_personality = righteous_personality
+	add_ruler_personality = naive_personality
+	add_piety = -0.5
+}
+1420.1.1 = {
+	heir = {
+		name = "Abdal-Latif" #Also the governor of Balkh
+		dynasty = "Timurid"
+		birth_date = 1420.1.1
+		claim = 95
+		adm = 3
+		dip = 3
+		mil = 5
+		death_date = 1451.1.1
+		monarch_name = "Abdal-Latif"
+	}
+}
+
+#1448.3.1 -> Ulugh Beg takes Herat and reunites the core of the Timurid Empire

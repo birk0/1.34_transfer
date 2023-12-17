@@ -1,0 +1,20 @@
+# 824 - Abodom
+
+
+owner = BON
+controller = BON
+add_core = BON
+is_city = yes
+culture = aka 
+religion = shamanism #Fetishism
+capital = "Amanvi"
+trade_goods = coffee #Kola nuts
+hre = no
+base_tax = 1
+base_production = 1
+base_manpower = 1
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

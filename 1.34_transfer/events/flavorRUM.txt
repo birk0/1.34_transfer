@@ -1,0 +1,449 @@
+#more events for ottomans and rum
+
+namespace = flavor_rum
+
+country_event = {
+	id = flavor_rum.1
+	title = flavor_rum.1.t
+	desc = flavor_rum.1.d
+	picture = DIPLOMACY_eventPicture
+
+	is_triggered_only = yes
+
+	option = {
+		name = flavor_rum.1.a
+
+		ai_chance = {
+			factor = 0
+		}
+
+		if = {
+			limit = {
+				NOT = { exists = TRA }
+			}
+			wallachia_area = {
+				add_core = TRA
+				remove_core = ROOT
+			}
+			release = TRA
+			hidden_effect = {
+				TRA = {
+					change_government = monarchy
+					add_government_reform = feudalism_reform
+					capital_scope = {
+						PREV = { change_religion = PREV }
+					}
+				}
+			}
+			create_subject = {
+				subject = TRA
+				subject_type = vassal 
+			}
+		}
+		else_if = {
+			limit = {
+				TRA = {
+					NOT = { vassal_of = ROOT }
+				}
+			}
+			vassalize = TRA
+		}
+		TRA = {
+			define_ruler = {
+				name = "John"
+				dynasty = "Zapolya"
+				claim = 100
+				ADM = 4
+				DIP = 5
+				MIL = 3
+				religion = ROOT 
+				culture = ROOT 
+				age = 32
+			}
+		}
+	}
+
+	option = {
+		name = flavor_rum.1.b
+
+		add_mil_power = 50
+	}
+}
+
+country_event = {
+	id = flavor_rum.2
+	title = flavor_rum.2.t
+	desc = flavor_rum.2.d
+	picture = DIPLOMACY_eventPicture
+
+	is_triggered_only = yes
+
+	option = {
+		name = flavor_rum.2.a
+
+		mashriq_region = {
+			limit = {
+				country_or_non_sovereign_subject_holds = ROOT
+				culture_group = turko_semitic
+			}
+			add_local_autonomy = -25
+			add_province_modifier = {
+				name = rum_smooth_transition
+				duration = 3650
+			}
+		}
+	}
+
+	option = {
+		name = flavor_rum.2.b
+
+		ai_chance = {
+			factor = 0
+		}
+
+		aleppo_area = {
+			add_core = SYR
+			remove_core = ROOT
+		}
+		syria_area = {
+			add_core = SYR
+			remove_core = ROOT
+		}
+		if = { 
+			limit = { 
+				SYR = { exists = no }
+			}
+			release = SYR
+			hidden_effect = {
+				SYR = {
+					change_government = monarchy
+					add_government_reform = feudalism_reform
+					change_religion = ROOT
+				}
+			}
+		}
+		add_historical_friend = SYR
+		SYR = { add_historical_friend = ROOT } 
+		vassalize = SYR
+	}
+}
+
+country_event = {
+	id = flavor_rum.3
+	title = flavor_rum.3.t
+	desc = flavor_rum.3.d
+	picture = DIPLOMACY_eventPicture
+
+	is_triggered_only = yes
+
+	option = {
+		name = flavor_rum.3.a
+
+		add_country_modifier = {
+			name = rum_slave_warrior_ranks
+			duration = 3650
+		}
+
+		ai_chance = {
+			factor = 100
+		}
+	}
+
+	option = {
+		name = flavor_rum.3.b
+
+		add_country_modifier = {
+			name = rum_terror_of_the_levant
+			duration = 3650
+		}
+	}
+
+	option = {
+		name = flavor_rum.3.c
+
+		add_country_modifier = {
+			name = rum_satisfied_populists
+			duration = 3650
+		}
+	}
+}
+
+country_event = {
+	id = flavor_rum.4
+	title = flavor_rum.4.t
+	desc = flavor_rum.4.d
+	picture = DIPLOMACY_eventPicture
+
+	is_triggered_only = yes
+
+	option = {
+		name = flavor_rum.4.a
+
+		if = {
+			limit = {
+				religion_group = muslim
+			}
+			add_piety = 0.25
+		}
+		add_country_modifier = {
+			name = rum_conceeded_against_the_synod
+			duration = -1
+		}
+
+		ai_chance = {
+			factor = 100
+		}
+	}
+
+	option = {
+		name = flavor_rum.4.b
+
+		if = {
+			limit = {
+				religion_group = muslim
+			}
+			add_piety = -0.25
+		}
+		add_country_modifier = {
+			name = rum_reigned_in_the_patriarchate
+			duration = 18250
+		}
+	}
+}
+
+country_event = {
+	id = flavor_rum.5
+	title = flavor_rum.5.t
+	desc = flavor_rum.5.d
+	picture = DIPLOMACY_eventPicture
+
+	is_triggered_only = yes
+
+	option = {
+		name = flavor_rum.5.a
+		add_piety = 0.25
+		379 = {
+			change_province_name = "al-Quds as-Sarif"
+			rename_capital = "al-Quds as-Sarif"
+			add_base_tax = 1
+			add_base_production = 1
+			add_base_manpower = 1
+		}
+	}
+}
+
+country_event = {
+	id = flavor_rum.6
+	title = flavor_rum.6.t
+	desc = flavor_rum.6.d
+	picture = DIPLOMACY_eventPicture
+
+	is_triggered_only = yes
+
+	option = {
+		name = flavor_rum.6.a
+
+		add_ruler_modifier = {
+			name = rum_iron_fist_reign
+			duration = -1
+		}
+		egypt_region = {
+			limit = {
+				owned_by = ROOT
+			}
+			add_local_autonomy = -25
+		}
+	}
+}
+
+country_event = {
+	id = flavor_rum.7
+	title = flavor_rum.7.t
+	desc = flavor_rum.7.d
+	picture = DIPLOMACY_eventPicture
+
+	fire_only_once = yes
+
+	trigger = {
+		OR = {
+			tag = TUR
+			tag = RUM
+		}
+		current_age = age_of_reformation
+		total_development = 700
+		is_at_war = no
+		ADM = 4
+	}
+
+	mean_time_to_happen = {
+		months = 25
+	}
+
+	option = {
+		name = flavor_rum.7.a
+
+		reduce_stability_or_adm_power = yes
+		add_country_modifier = {
+			name = rum_expanded_rumi_bureaucracy
+			duration = 10950
+		}
+	}
+
+	option = {
+		name = flavor_rum.7.b
+
+		ai_chance = {
+			factor = 10
+		}
+		add_adm_power = 50
+		change_government_reform_progress = 50
+	}
+}
+
+country_event = {
+	id = flavor_rum.8
+	title = flavor_rum.8.t
+	desc = flavor_rum.8.d
+	picture = DIPLOMACY_eventPicture
+
+	fire_only_once = yes
+
+	trigger = {
+		OR = {
+			tag = TUR
+			tag = RUM
+		}
+		is_at_war = no
+		religion_group = muslim
+		owns = 361
+		owns = 358
+		owns = 382
+		owns = 379
+	}
+
+	mean_time_to_happen = {
+		months = 12
+	}
+
+	option = {
+		name = flavor_rum.8.a
+
+		add_prestige = 25
+		add_legitimacy_equivalent = { amount = 20 }
+		add_piety = 0.25
+		add_adm_power = 100
+	}
+}
+
+country_event = {
+	id = flavor_rum.9
+	title = flavor_rum.9.t
+	desc = flavor_rum.9.d
+	picture = DIPLOMACY_eventPicture
+
+	fire_only_once = yes
+
+	trigger = {
+		OR = {
+			tag = TUR
+			tag = RUM
+		}
+		is_year = 1600
+		albania_area = {
+			type = all
+			owned_by = ROOT
+		}
+		num_of_owned_provinces_with = {
+			value = 30
+			region = balkan_region
+		}
+	}
+
+	mean_time_to_happen = {
+		months = 25
+	}
+
+	option = {
+		name = flavor_rum.9.a
+
+		add_ruler_modifier = {
+			name = rum_koprulu_family
+			duration = -1
+		}
+	}
+
+	option = {
+		name = flavor_rum.9.b
+
+		if = {
+			limit = {
+				religion_group = muslim
+			}
+			add_piety = -0.15
+		}
+		add_dip_power = 100
+	}
+}
+
+country_event = {
+	id = flavor_rum.10
+	title = flavor_rum.10.t
+	desc = flavor_rum.10.d
+	picture = DIPLOMACY_eventPicture
+
+	fire_only_once = yes
+
+	trigger = {
+		OR = {
+			tag = TUR
+			tag = RUM
+		}
+		total_development = 600
+		is_at_war = no
+		has_heir = yes
+		NOT = { heir_age = 15 }
+		heir_adm = 3
+		heir_dip = 3
+		heir_mil = 3
+	}
+
+	mean_time_to_happen = {
+		months = 12
+	}
+
+	option = {
+		name = flavor_rum.10.a
+
+		change_heir_adm = 1
+		if = {
+			limit = {
+				has_dlc = "Rights of Man"
+			}
+			add_heir_personality = lawgiver_personality
+		}
+	}
+
+	option = {
+		name = flavor_rum.10.b
+
+		change_heir_dip = 1
+		if = {
+			limit = {
+				has_dlc = "Rights of Man"
+			}
+			add_heir_personality = silver_tongue_personality
+		}
+	}
+
+	option = {
+		name = flavor_rum.10.c
+
+		change_heir_mil = 1
+		if = {
+			limit = {
+				has_dlc = "Rights of Man"
+			}
+			add_heir_personality = tactical_genius_personality
+		}
+	}
+}

@@ -1,0 +1,19 @@
+#597 - Johor
+
+owner = MLC
+controller = MLC
+culture = malayan
+religion = sunni
+capital = "Johor"
+trade_goods = chinaware
+hre = no
+base_tax = 5
+base_production = 5
+base_manpower = 2
+is_city = yes
+add_core = MLC
+add_core = JOH
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

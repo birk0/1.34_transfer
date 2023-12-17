@@ -1,0 +1,538 @@
+country_decisions = {
+	eoc_decision_end_miao_revolts = {
+		major = yes
+		potential = {
+			is_emperor_of_china = yes
+			has_country_flag = eoc_miao_revolts
+			NOT = { tag = MNG } #Ming has its own mission for this
+		}
+		provinces_to_highlight = {
+			if = {
+				limit = {
+					ROOT = {
+						has_country_flag = eoc_exterminating_miao
+					}
+				}
+				OR = {
+					AND = {
+						OR = {
+							region = south_china_region
+							region = xinan_region
+						}
+						OR = {
+							AND = {
+								country_or_non_sovereign_subject_holds = ROOT
+								culture_group = tibetan_group
+								NOT = { province_is_or_accepts_culture = yes }
+								NOT = { owner_or_harmonized_religion = yes }
+							}
+							NOT = { country_or_non_sovereign_subject_holds = ROOT }
+						}
+					}
+					owned_by = CYI
+					owned_by = CMI
+					owned_by = CDL
+					owned_by = CGS
+				}
+			}
+			else = {
+				always = no
+			}
+		}
+		allow = {
+			if = {
+				limit = { has_country_flag = eoc_exterminating_miao }
+				custom_trigger_tooltip = {
+					tooltip = miao_extermination_trigger_tooltip
+					south_china_region = {
+						type = all
+						OR = {
+							AND = {
+								province_is_or_accepts_culture = yes
+								owner_or_harmonized_religion = yes
+							}
+							NOT = { culture_group = tibetan_group }
+						}
+						country_or_non_sovereign_subject_holds = ROOT
+					}
+					xinan_region = {
+						type = all
+						OR = {
+							AND = {
+								province_is_or_accepts_culture = yes
+								owner_or_harmonized_religion = yes
+							}
+							NOT = { culture_group = tibetan_group }
+						}
+						country_or_non_sovereign_subject_holds = ROOT
+					}
+				}
+				NOT = {
+					OR = {
+						exists = CMI
+						exists = CYI
+						exists = CDL
+						exists = CGS
+						num_of_rebel_armies = 1
+						num_of_rebel_controlled_provinces = 1	
+					}
+				}
+			}
+			else_if = {
+				limit = { has_country_flag = eoc_not_exterminating_miao }
+				custom_trigger_tooltip = {
+					tooltip = had_miao_revolts_for_25_years_tt
+					had_country_flag = {
+						flag = eoc_miao_revolts
+						days = 9125
+					}
+				}
+				if = {
+					limit = {
+						ai = no #AI cant handle this
+					}
+					custom_trigger_tooltip = {
+						tooltip = eoc_one_accepted_tibet_culture
+						any_owned_province = {
+							culture_group = tibetan_group
+							ROOT = { accepted_culture = PREV }
+						}
+					}
+				}
+				NOT = {
+					OR = {
+						num_of_rebel_armies = 1
+						num_of_rebel_controlled_provinces = 1
+					}
+				}
+			}
+			else = {
+				always = no
+			}
+		}
+		effect = {
+			if = {
+				limit = { has_country_flag = eoc_exterminating_miao }
+				add_country_modifier = {
+					name = eoc_exterminated_the_miao 
+					duration = -1
+				}
+			}
+			if = {
+				limit = { has_country_flag = eoc_not_exterminating_miao }
+				add_country_modifier = {
+					name = eoc_accepted_the_miao 
+					duration = -1
+				}
+			}
+			hidden_effect = {
+				country_event = { id = eoc_events.3 } #Ends the Miao revolts
+			}
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		ai_importance = 400
+	}
+	eoc_decision_convert_miao_lands = {
+		potential = {
+			is_emperor_of_china = yes
+			has_country_flag = eoc_miao_revolts
+			has_country_flag = eoc_exterminating_miao
+			NOT = { has_country_flag = eoc_resolved_miao_revolts }
+		}
+		allow = {
+			custom_trigger_tooltip = {
+				tooltip = has_flag_exterminating_miao_tooltip
+				has_country_flag = eoc_exterminating_miao
+			}
+			custom_trigger_tooltip = {
+				tooltip = eoc_convert_miao_tooltip
+				any_owned_province = {
+					culture_group = tibetan_group
+					NOT = { has_province_modifier = eoc_converting_miao_modifier }
+				}
+			}
+		}
+		effect = {
+			custom_tooltip = eoc_converting_miao_modifier_tooltip
+			hidden_effect = {
+				every_owned_province = {
+					limit = { 
+						culture_group = tibetan_group 
+						NOT = { has_province_modifier = eoc_converting_miao_modifier }
+					}
+					add_province_modifier = {
+						name = eoc_converting_miao_modifier
+						duration = 7300
+					}
+				}
+			}
+		}
+	}
+	eoc_decision_embrace_chinese_culture = { 
+		#Allows the new Emperor to switch to Chinese group
+		#May get replaced by PDX but we'll see
+		major = yes
+		potential = {
+			is_emperor_of_china = yes
+			OR = {
+				NOT = { culture_group = east_asian }
+				has_reform = khanganate_reform
+			}
+			has_country_flag = eoc_sinified_culture_flag
+		}
+		allow = {
+			is_emperor_of_china = yes
+			OR = {
+				NOT = { culture_group = east_asian }
+				has_reform = khanganate_reform
+			}
+			calc_true_if = {
+				amount = 50 
+				all_owned_province = {
+					superregion = china_superregion
+				}
+			}
+		}
+		effect = {
+			clr_country_flag = eoc_sinified_culture_flag
+			set_country_flag = enacted_sinified_culture_decision
+			#The Manchu - Chinese Sinified Culture has been moved here instead
+			if = {
+				limit = { culture_group = evenks }
+				sinify_culture_to = {
+					culture = manchu_new
+				}
+			}
+			else_if = {
+				limit = { culture_group = tibetan_group } 
+				sinify_culture_to = {
+					culture = tibetan_group_new #Sino-Tibetan culture
+				}
+			}
+			else_if = {
+				limit = { culture_group = thai_group }
+				sinify_culture_to = {
+					culture = thai_new #Sino-Thai culture
+				}
+			}
+			else_if = {
+				limit = { culture_group = burman }
+				sinify_culture_to = {
+					culture = burman_new #Sino-Burman culture
+				}
+			}
+			else_if = {
+				limit = { culture_group = southeastasian_group }
+				sinify_culture_to = {
+					culture = khmer_new #Sino-SEA culture
+				}
+			}
+			else_if = {
+				limit = { culture_group = korean_g }
+				sinify_culture_to = {
+					culture = korean_g_new #Sino-Korean culture
+				}
+			}
+			else_if = {
+				limit = { culture_group = japanese_g }
+				sinify_culture_to = {
+					culture = japanese_g_new #Sino-Japanese culture
+				}
+			}
+			else_if = {
+				limit = { culture_group = altaic }
+				sinify_culture_to = {
+					culture = altaic_new #Sino-Mongol culture
+				}
+			}
+			if = {
+				limit = {
+					has_reform = khanganate_reform
+				}
+				remove_government_reform = khanganate_reform
+				hidden_effect = {
+					every_owned_province = {
+						limit = { has_province_modifier = unrest_in_chinese_provinces }
+						remove_province_modifier = unrest_in_chinese_provinces
+					}
+				}
+				change_government_to_monarchy = yes
+				change_technology_group = chinese
+				change_unit_type = chinese
+				add_government_reform = celestial_empire
+			}
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		ai_importance = 1000
+	}
+	decision_establish_green_standard_army = {
+		major = yes
+		potential = {
+			tag = QNG
+			OR = {
+				current_age = age_of_absolutism
+				current_age = age_of_industry
+			}
+			NOT = { has_country_flag = established_han_banners }
+		}
+		allow = {
+			is_emperor_of_china = yes
+			if = {
+				limit = { ai = no }
+				empire_of_china_reform_passed = new_centralizing_top_government_decision
+			}
+			else = {
+				empire_of_china_reform_passed = regulate_imperial_princes_decision
+			}
+			imperial_mandate = 75
+			NOT = { 
+				any_known_country = {
+					has_reform = chinese_warlord_reform
+				}
+			}
+		}
+		effect = {
+			set_country_flag = established_han_banners
+			custom_tooltip = enable_han_banners_tooltip
+			hidden_effect = {
+				if = {
+					limit = { ai = yes }
+					every_owned_province = {
+						limit = {
+							culture = manchu_new
+						}
+						add_province_modifier = {
+							name = ai_qng_han_banners
+							duration = -1
+							hidden = yes
+						}
+					}
+				}
+				else = {
+					every_owned_province = {
+						limit = {
+							culture = manchu_new
+						}
+						add_province_modifier = {
+							name = qng_han_banners
+							duration = -1
+							hidden = yes
+						}
+					}
+				}
+			}
+			add_country_modifier = {
+				name = qng_han_banners_penalty
+				duration = -1
+			}
+		}
+		ai_will_do = {
+			factor = 0
+		}
+		#ai_importance = 200
+	}
+	eoc_sinify_cultural_center = {
+		potential = {
+			is_emperor_of_china = yes
+			has_country_flag = enacted_sinified_culture_decision
+			NOT = { has_country_flag = sino_culture_center_flag }
+		}
+		allow = {
+			culture_group = east_asian
+			NOT = {
+				1821 = {
+					has_great_project = {
+						tier = 3
+						type = porcelain_tower_nanjing
+					}
+				}
+			}
+		}
+		effect = {
+			set_country_flag = sino_culture_center_flag
+			custom_tooltip = can_use_old_culture_tt
+		}
+		ai_will_do = {
+			factor = 0 #Ai will always use chinese modifiers
+		}
+	}
+	form_joseon_dynasty = {
+		potential = {
+			has_country_flag = joseon_dynasty_decision
+		}
+		allow = {
+			tag = KOR
+			is_emperor_of_china = yes
+		}
+		effect = {
+			clr_country_flag = joseon_dynasty_decision
+			set_country_flag = formed_joseon_dynasty
+			change_adm = 1
+			change_dip = 1
+			change_mil = 1
+			hidden_effect = {
+				if = {
+					limit = {
+						NOT = { has_country_flag = enacted_sinified_culture_decision }
+						NOT = { has_country_flag = eoc_sinified_culture_flag }
+						NOT = { culture_group = east_asian }
+					}
+					country_event = {
+						id = eoc_events.56 #Can Sinify culture
+					}
+				}
+			}
+			override_country_name = JOSEON_DYNASTY
+			if = {
+				limit = {
+					has_custom_ideas = no
+				}
+				country_event = { id = ideagroups.1 } #swap ideas
+			}
+			add_country_modifier = {
+				name = centralization_modifier
+				duration = 1825
+			}
+		}
+		ai_will_do = { factor = 1 }
+		ai_importance = 400
+	}
+	#These religions are deeply tied to the Mandate of Heaven and therefore can easily be harmonized by Chinese tags
+	eoc_harmonize_mahayana = {
+		major = yes
+		potential = {
+			OR = {
+				is_emperor_of_china = yes
+				culture_group = east_asian
+			}
+			exists = yes
+			has_harmony = yes
+			any_owned_province = { religion = mahayana }
+			NOT = { has_harmonized_with = mahayana }
+		}
+		allow = {
+			harmony = 50
+			OR = {
+				dominant_religion = mahayana
+				AND = {
+					NOT = { religious_unity = 0.75 }
+					num_of_owned_provinces_with = {
+						value = 5
+						religion = mahayana
+					}
+				}
+			}
+		}
+		effect = {
+			country_event = {
+				id = confucian_events.9
+			}
+			add_harmonized_religion = mahayana
+			add_stability = -1
+			add_harmony = -20
+		}
+		ai_will_do = { factor = 10 }
+	}
+	eoc_harmonize_daoist = {
+		major = yes
+		potential = {
+			OR = {
+				is_emperor_of_china = yes
+				culture_group = east_asian
+			}
+			exists = yes
+			religion = confucianism
+			any_owned_province = { religion = daoism }
+			NOT = { has_harmonized_with = daoism }
+		}
+		allow = {
+			harmony = 50
+			OR = {
+				dominant_religion = daoism
+				AND = {
+					NOT = { religious_unity = 0.75 }
+					num_of_owned_provinces_with = {
+						value = 5
+						religion = daoism
+					}
+				}
+			}
+		}
+		effect = {
+			country_event = {
+				id = eoc_events.109
+			}
+			add_harmonized_religion = daoism
+			add_stability = -1
+			add_harmony = -20
+		}
+		ai_will_do = { factor = 10 }
+	}
+	eoc_harmonize_confucianism = {
+		major = yes
+		potential = {
+			OR = {
+				is_emperor_of_china = yes
+				culture_group = east_asian
+			}
+			exists = yes
+			religion = daoism
+			any_owned_province = { religion = confucianism }
+			NOT = { has_harmonized_with = confucianism }
+		}
+		allow = {
+			harmony = 50
+			OR = {
+				dominant_religion = confucianism
+				AND = {
+					NOT = { religious_unity = 0.75 }
+					num_of_owned_provinces_with = {
+						value = 5
+						religion = confucianism
+					}
+				}
+			}
+		}
+		effect = {
+			country_event = {
+				id = eoc_events.108
+			}
+			add_harmonized_religion = confucianism
+			add_stability = -1
+			add_harmony = -20
+		}
+		ai_will_do = { factor = 10 }
+	}
+
+	eunuchs_flexible_harmony_decision = {
+		potential = {
+			has_estate = estate_eunuchs
+			has_harmony = yes
+		}
+		allow = {
+			has_estate_privilege = estate_eunuchs_flexible_harmony
+			NOT = {
+				estate_influence = {
+					estate = estate_eunuchs
+					influence = 90
+				}
+			}
+		}
+		effect = {
+			add_estate_influence_modifier = {
+				estate = estate_eunuchs
+				influence = 15
+				duration = 10950
+				desc = eunuchs_flexible_harmony_influence_desc
+			}
+			set_country_flag = eunuchs_flexible_harmony_flag
+			country_event = {
+				id = eoc_events.106
+			}
+		}
+	}
+}

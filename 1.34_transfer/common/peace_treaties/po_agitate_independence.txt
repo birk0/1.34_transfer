@@ -1,0 +1,51 @@
+po_agitate_independence = { #Placeholder treaty for Agitating Liberty
+
+	prestige_base = 0.5
+	power_projection = humiliated_rival
+	ae_base = 1.0
+	warscore_cost = {
+		no_provinces = 50.0
+	}
+	warscore_cap = 100
+	requires_is_allowed = yes
+	effect = {
+		add_country_modifier = { name = independent_flag_trigger duration = 100 hidden = yes }
+		random_known_country = {
+			limit = {
+				reverse_has_opinion_modifier = {
+					who = ROOT
+					modifier = agitated_our_liberty
+				}
+			}
+			add_country_modifier = { name = independent_flag_trigger duration = 100 hidden = yes }
+			reverse_remove_opinion = {
+				who = FROM
+				modifier = action_agitated_liberty
+			}
+			reverse_remove_opinion = {
+				who = ROOT
+				modifier = agitated_our_liberty
+			}
+		}
+		clr_country_flag = was_vassal_flag
+		clr_country_flag = was_daimyo_vassal_flag
+		clr_country_flag = was_client_flag
+		clr_country_flag = was_colony_flag
+		clr_country_flag = was_march_flag
+		clr_country_flag = was_pu_flag
+		FROM = { clr_country_flag = the_agitation_war }
+		reverse_remove_opinion = {
+			who = FROM
+			modifier = agitated_disloyal
+		}
+	}
+	ai_weight = {
+		export_to_variable = {
+			variable_name = ai_value
+			value = 1000
+		}
+		limit = {
+			always = yes
+		}
+	}
+}

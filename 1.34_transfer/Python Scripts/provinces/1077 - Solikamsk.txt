@@ -1,0 +1,7 @@
+#Prov1077 - Solikamsk
+culture = uralic
+religion = animism # Sami Shamanism
+
+base_tax = 1
+base_production = 1
+base_manpower = 1

@@ -1,0 +1,19 @@
+# 2364 - Talas
+owner = MHL
+add_core = MHL
+controller = MHL
+
+culture = kirgiz
+religion = sunni
+capital = "Talas"
+trade_goods = iron
+hre = no
+base_tax = 2 
+base_production = 2
+base_manpower = 2
+is_city = yes
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

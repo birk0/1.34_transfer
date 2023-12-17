@@ -1,0 +1,38 @@
+# 175 Armagnac - Principal cities: Auch
+
+owner = FRA
+controller = FRA
+capital = "Auch"
+is_city = yes
+culture = gascon
+religion = catholic
+hre = no
+base_tax = 4
+base_production = 3
+trade_goods = wool
+base_manpower = 3
+add_local_autonomy = 25
+add_core = AMG
+add_core = GUY
+
+
+
+#discovered_by = eastern
+#discovered_by = western
+#discovered_by = muslim
+#discovered_by = ottoman
+
+
+1399.1.1 = { add_core = ENG }
+1444.1.1 = {
+	owner = AMG
+	controller = AMG
+}
+
+1444.12.1 = { # New Bookmark
+	trade_goods = unknown
+	remove_cores = yes
+	owner = ---
+	controller = ---
+	hre = no
+}

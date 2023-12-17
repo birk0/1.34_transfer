@@ -1,0 +1,8 @@
+#Prov3229 - Prov3229
+religion = hinduism
+culture = kannada
+is_city = no
+
+base_tax = 1
+base_production = 1
+base_manpower = 1

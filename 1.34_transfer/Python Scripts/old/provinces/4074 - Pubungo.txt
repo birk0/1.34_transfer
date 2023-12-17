@@ -1,0 +1,19 @@
+#Pubungo
+
+owner = BNY
+controller = BNY
+add_core = BNY
+culture = acholi
+religion = shamanism #Fetishism
+capital = "Pubungo"
+trade_goods = livestock
+hre = no
+base_tax = 1
+base_production = 1
+base_manpower = 2
+is_city = yes
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

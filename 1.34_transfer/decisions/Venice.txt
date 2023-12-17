@@ -1,0 +1,23 @@
+country_decisions = {
+
+	confirm_thalassocracy = {
+			potential = {
+				always = no
+			}
+			allow = {
+			}		
+	
+			effect = {
+				add_country_modifier = {
+					name = "thalassocracy"
+					duration = -1
+				}
+			}
+			
+			ai_will_do = {
+				factor = 1
+			}
+		}
+	
+	}
+	

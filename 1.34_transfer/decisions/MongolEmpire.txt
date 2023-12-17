@@ -1,0 +1,424 @@
+country_decisions = {
+
+	restore_mongol_empire = {
+		major = yes
+		potential = {
+			OR = {
+				is_country_culture = { type = altaic }
+				culture_group = tartar
+			}
+			exists = yes
+			OR = { # to prevent countries that can't form a prerequisite nation from seeing this
+				tag = YUA
+				tag = GLH
+				tag = ILK
+				was_never_end_game_tag_trigger = yes
+			}
+			NOT = { has_country_flag = mongol_empire_flag }
+			NOT = { tag = HLR }
+			NOT = { tag = ROM }
+			NOT = { tag = PAP }
+			NOT = { exists = MGE }
+		}
+		provinces_to_highlight = {
+			OR = {
+				AND = {
+					OR = {
+						AND = {
+							region = mongolia_region
+							is_empty = no
+						}
+						region = central_asia_region
+						region = crimea_region
+						province_id = 1816
+						province_id = 1821
+						province_id = 667
+					}
+					NOT = { owned_by = ROOT }
+				}
+				AND = {
+					OR = {
+						region = khorasan_region
+						region = persia_region
+						province_id = 295
+						province_id = 280
+					}
+					NOT = {
+						country_or_non_sovereign_subject_holds = ROOT
+					}
+				}
+			}
+		}
+		allow = {
+			OR = {
+				tag = YUA
+				tag = GLH
+				tag = ILK
+			}
+			custom_trigger_tooltip = {
+				tooltip = mongolia_decision_tooltip
+				mongolia_region = {
+					type = all
+					OR = {
+						is_empty = yes
+						owned_by = ROOT
+					}
+				}
+			}
+			central_asia_region = {
+				type = all
+				owned_by = ROOT
+			}
+			crimea_region = {
+				type = all
+				owned_by = ROOT
+			}
+			1816 = { owned_by = ROOT } # beijing		
+			1821 = { owned_by = ROOT }
+			667 = { owned_by = ROOT }
+			khorasan_region = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			persia_region = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			295 = { country_or_non_sovereign_subject_holds = ROOT }
+			280 = { country_or_non_sovereign_subject_holds = ROOT }
+			is_at_war = no
+			is_free_or_tributary_trigger = yes
+		}
+		effect = {
+			change_tag = MGE
+			if = {
+				limit = {
+					NOT = {
+						government_rank = 3
+					}
+				}
+				set_government_rank = 3
+			}
+			if = {
+				limit = {
+					is_emperor_of_china = yes
+				}
+				dismantle_empire_of_china = yes
+			}
+			if = {
+				limit = { is_revolutionary = no }
+				change_government_to_tribal = yes
+				add_government_reform = great_mongol_state_reform
+			}
+			add_country_modifier = {
+				name = "centralization_modifier"
+				duration = 7300
+			}
+			set_country_flag = mongol_empire_flag
+		}
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+	restore_ilkhanate_decision_march = {
+		major = yes
+		potential = {
+			always = no
+			normal_or_historical_nations = yes
+			OR = {
+				tag = YUA
+				tag = GLH
+				tag = MGE
+			}
+			NOT = { has_country_flag = restored_ilkhanate_decision_flag }
+			NOT = { has_mission = mission_conquer_persia_tatars }
+			NOT = { exists = ILK }
+			NOT = {
+				capital_scope = {
+					region = persia_region
+				}
+			}
+		}
+		provinces_to_highlight = {
+			region = persia_region
+			NOT = { owned_by = ROOT }
+		}
+		allow = {
+			is_free_or_tributary_trigger = yes
+			is_at_war = no
+			persia_region = {
+				type = all
+				owned_by = ROOT
+			}
+		}
+		effect = {
+			set_country_flag = restored_ilkhanate_decision_flag
+			persia_region = {
+				limit = {
+					owned_by = ROOT
+				}
+				add_core = ILK
+			}
+			release = ILK
+			create_march = ILK
+			ILK = {
+				change_government_to_monarchy = yes
+				#set_legacy_government = despotic_monarchy
+				change_primary_culture = ROOT
+				change_religion = ROOT
+				define_ruler = {
+					dynasty = ROOT
+					culture = ROOT
+					religion = ROOT
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+	restore_ilkhanate_decision = {
+		major = yes
+		potential = {
+			OR = {
+				culture_group = tartar
+				culture_group = altaic
+				is_country_culture = { type = altaic }
+			}
+			exists = yes
+			NOT = { has_country_flag = formed_ilkhanate_flag }
+			was_never_end_game_tag_trigger = yes
+			OR = {
+				ai = no
+				is_playing_custom_nation = no
+			}
+			has_reform = steppe_horde
+			NOT = { tag = TIM }
+			NOT = { tag = PER }
+			NOT = { tag = PAP }
+			NOT = { tag = HLR }
+			NOT = { tag = ROM }
+			NOT = { tag = MUG }
+			NOT = { tag = ARB }
+			NOT = { dynasty = "Timurid" }
+			always = no
+		}
+		allow = {
+			NOT = { exists = ILK }
+			is_free_or_tributary_trigger = yes
+			is_at_war = no
+		}
+		effect = {
+			change_tag = ILK
+			add_country_modifier = {
+				name = "centralization_modifier"
+				duration = 7300
+			}
+			add_prestige = 25
+			if = {
+				limit = { has_custom_ideas = no }
+				country_event = { id = ideagroups.1 } #Swap Ideas
+			}
+			set_country_flag = formed_ilkhanate_flag
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		ai_importance = 400
+	}
+	#Cultural center based decisions (since mongol empire will probably be using this anyway)
+	increase_cca_slider = {
+		major = yes
+		potential = {
+			OR = {
+				culture_group = altaic
+				AND = {
+					primary_culture = altaic_new
+					has_country_flag = sino_culture_center_flag
+				}
+			}
+			exists = yes
+			2190 = {
+				has_great_project = {
+					type = erdene_zuu
+					tier = 3
+				}
+				owned_by = ROOT
+			}
+		}
+		allow = {
+			is_at_war = no
+		}
+		effect = {
+			if = {
+				limit = {
+					NOT = {
+						check_variable = {
+							which = altaic_slider_var
+							value = 25
+						}
+					}
+				}
+				custom_tooltip = boost_altaic_slider_tt
+				hidden_effect = {
+					if = {
+						limit = {
+							NOT = {
+								check_variable = {
+									which = altaic_slider_var
+									value = 0
+								}
+							}
+						}
+						set_variable = {
+							which = altaic_slider_var
+							value = 0
+						}
+					}
+					change_variable = {
+						which = altaic_slider_var
+						value = 1
+					}
+					set_variable = {
+						which = loop_var
+						which = altaic_slider_var
+					}
+					clear_altaic_slider_modifiers = yes
+					add_country_modifier = {
+						name = altaic_0
+						duration = -1
+						hidden = yes
+					}
+					while = {
+						limit = {
+							check_variable = {
+								which = loop_var
+								value = 1
+							}
+						}
+						subtract_variable = {
+							which = loop_var
+							value = 1
+						}
+						set_altaic_slider = yes
+					}
+					set_variable = {
+						which = loop_var
+						value = 0
+					}
+				}
+			}
+			else = {
+				custom_tooltip = slider_max_tt
+			}
+		}
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				factor = 0
+				check_variable = {
+					which = altaic_slider_var
+					value = 10
+				}
+			}
+		}
+	}
+	decrease_cca_slider = {
+		major = yes
+		potential = {
+			OR = {
+				culture_group = altaic
+				AND = {
+					primary_culture = altaic_new
+					has_country_flag = sino_culture_center_flag
+				}
+			}
+			exists = yes
+			2190 = {
+				has_great_project = {
+					type = erdene_zuu
+					tier = 3
+				}
+				owned_by = ROOT
+			}
+		}
+		allow = {
+			is_at_war = no
+		}
+		effect = {
+			if = {
+				limit = {
+					check_variable = {
+						which = altaic_slider_var
+						value = 1
+					}
+				}
+				custom_tooltip = lower_altaic_slider_tt
+				hidden_effect = {
+					if = {
+						limit = {
+							NOT = {
+								check_variable = {
+									which = altaic_slider_var
+									value = 0
+								}
+							}
+						}
+						set_variable = {
+							which = altaic_slider_var
+							value = 1
+						}
+					}
+					subtract_variable = {
+						which = altaic_slider_var
+						value = 1
+					}
+					set_variable = {
+						which = loop_var
+						which = altaic_slider_var
+					}
+					clear_altaic_slider_modifiers = yes
+					add_country_modifier = {
+						name = altaic_0
+						duration = -1
+						hidden = yes
+					}
+					while = {
+						limit = {
+							check_variable = {
+								which = loop_var
+								value = 1
+							}
+						}
+						subtract_variable = {
+							which = loop_var
+							value = 1
+						}
+						set_altaic_slider = yes
+					}
+					set_variable = {
+						which = loop_var
+						value = 0
+					}
+				}
+			}
+			else = {
+				custom_tooltip = slider_min_tt
+			}
+		}
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				factor = 0
+				NOT = {
+					check_variable = {
+						which = altaic_slider_var
+						value = 11
+					}
+				}
+			}
+		}
+	}
+}

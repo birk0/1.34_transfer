@@ -1,0 +1,25 @@
+#343 - Fez
+
+owner = MOR
+controller = MOR 
+culture = moroccan
+religion = sunni
+capital = "Fez"
+trade_goods = cloth
+hre = no
+#Changes
+base_tax = 7
+base_production = 4
+base_manpower = 5
+#
+is_city = yes
+fort_15th = yes
+add_core = MOR
+add_core = FEZ
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}
+
+#Changes
+add_province_triggered_modifier = city_of_moors

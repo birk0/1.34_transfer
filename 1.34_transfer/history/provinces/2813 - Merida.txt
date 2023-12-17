@@ -1,0 +1,7 @@
+#Prov2813 - Merida
+culture = mossi #mossi
+religion = shamanism  #Fetishism
+
+base_tax = 1
+base_production = 1
+base_manpower = 1

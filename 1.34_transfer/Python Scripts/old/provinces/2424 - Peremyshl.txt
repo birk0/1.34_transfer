@@ -1,0 +1,20 @@
+#2424 - Przemysl
+
+owner = POL
+controller = POL
+culture = ruthenian
+religion = orthodox
+hre = no
+base_tax = 3
+base_production = 3
+trade_goods = livestock
+base_manpower = 1
+capital = "Przemysl"
+is_city = yes
+add_core = POL
+add_core = VOL
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

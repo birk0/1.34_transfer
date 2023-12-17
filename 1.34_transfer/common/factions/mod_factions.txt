@@ -1,0 +1,7 @@
+
+# These are dummy factions used in to create scripted triggers out of their modifiers
+
+ahead_of_time_MIL = {monarch_power=MIL always=no modifier={}}
+ahead_of_time_ADM = {monarch_power=MIL always=no modifier={}}
+ahead_of_time_DIP = {monarch_power=MIL always=no modifier={}}
+

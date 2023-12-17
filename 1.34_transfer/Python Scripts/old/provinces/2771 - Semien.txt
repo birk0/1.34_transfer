@@ -1,0 +1,34 @@
+#2771 - Semien
+
+owner = ETH
+controller = ETH
+add_core = ETH
+add_core = BTI
+culture = amhara 
+religion = jewish
+capital = "Dabareq"
+is_city = yes
+base_manpower = 2
+trade_goods = grain
+hre = no
+base_tax = 1 
+base_production = 1
+#discovered_by = east_african
+#discovered_by = muslim
+#discovered_by = ottoman
+#discovered_by = indian
+
+1441.1.1 = { # moved date forward a year for balance reasons
+	controller = REB
+	revolt = {
+		type = nationalist_rebels
+		size = 2
+		leader = "Gideon Gideonid"
+	}
+	unrest = 8
+}
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

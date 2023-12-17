@@ -1,0 +1,61 @@
+forced_abdication = { #Triggered from losing Coalition war
+	ended_by_country_breaking_to_rebels = no
+	potential = {
+		has_country_flag = disaster_abdication
+	}
+
+	can_start = {
+		has_country_flag = disaster_abdication
+	}
+	
+	can_stop = {
+		always = no
+	} #Complete event Chain
+	
+	progress = {
+		modifier = {
+			factor = 100
+			custom_trigger_tooltip = {
+				tooltip = lost_coalition_war_tt
+				has_country_flag = disaster_abdication
+			}
+		}
+	}
+
+	can_end = {
+		custom_trigger_tooltip = {
+			tooltip = resolved_disaster_tooltip
+			check_variable = {
+				which = abdication_var
+				value = 10
+			}
+		}
+		NOT = { num_of_rebel_controlled_provinces = 1 }
+		NOT = { num_of_rebel_armies = 1 }
+		stability = 1
+	}
+
+	modifier = {
+		stability_cost_modifier = 1.5
+		global_trade_goods_size_modifier = -0.5
+		land_morale = -0.25
+	}
+
+	on_start = disaster_abdication.1 #[Monarch] Abdicates
+	on_end = disaster_abdication.2 #Order is restored
+	
+	on_monthly = {
+		events = {
+		}
+		
+		random_events = {
+			1000 = 0
+			20 = disaster_abdication.4
+			20 = disaster_abdication.5
+			20 = disaster_abdication.6
+			20 = disaster_abdication.7
+			1000 = disaster_abdication.8
+		}
+	}
+}
+

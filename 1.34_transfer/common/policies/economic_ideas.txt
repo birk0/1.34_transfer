@@ -1,0 +1,227 @@
+###############################################
+#	Policies for the Economic Idea Group
+###############################################
+the_three_sisters_policy = { 
+	monarch_power = MIL
+
+	potential = {
+		ai = no
+		has_idea_group = economic_ideas
+	}
+	
+	allow = {
+		full_idea_group = economic_ideas
+		hidden_trigger = {
+			NOT = { has_idea_group = indigenous_ideas }
+		}
+		if = {
+			limit = { has_country_modifier = the_three_sisters_policy_cooldown }
+			custom_trigger_tooltip = {
+				tooltip = POLICY_ON_COOLDOWN
+				always = no
+			}
+		}
+		if = {
+			limit = {
+				has_country_flag = economic_cd_fl
+			}
+			custom_trigger_tooltip = {
+				tooltip = "We must wait before we can select a policy from this idea group again."
+				always = no
+			}
+		}
+	}
+
+	reinforce_speed = 0.33
+	
+	ai_will_do = {
+		factor = 1
+	}
+}
+superior_fortification_act = {
+	monarch_power = MIL
+	
+	potential = {
+		ai = no
+		has_idea_group = economic_ideas
+	}
+	
+	allow = {
+		full_idea_group = economic_ideas
+		hidden_trigger = {
+			NOT = { has_idea_group = indigenous_ideas }
+		}
+		if = {
+			limit = { has_country_modifier = superior_fortification_act_cooldown }
+			custom_trigger_tooltip = {
+				tooltip = POLICY_ON_COOLDOWN
+				always = no
+			}
+		}
+		if = {
+			limit = {
+				has_country_flag = economic_cd_fl
+			}
+			custom_trigger_tooltip = {
+				tooltip = "We must wait before we can select a policy from this idea group again."
+				always = no
+			}
+		}
+	}
+	
+	own_territory_dice_roll_bonus = 1
+
+	ai_will_do = {
+		factor = 1
+	}
+}
+encouragement_of_merchant_navy = {
+	monarch_power = DIP
+	potential = {
+		ai = no
+		has_idea_group = economic_ideas
+	}
+	
+	allow = {
+		full_idea_group = economic_ideas
+		hidden_trigger = {
+			NOT = { has_idea_group = indigenous_ideas }
+		}
+		if = {
+			limit = { has_country_modifier = encouragement_of_merchant_navy_cooldown }
+			custom_trigger_tooltip = {
+				tooltip = POLICY_ON_COOLDOWN
+				always = no
+			}
+		}
+		if = {
+			limit = {
+				has_country_flag = economic_cd_fl
+			}
+			custom_trigger_tooltip = {
+				tooltip = "We must wait before we can select a policy from this idea group again."
+				always = no
+			}
+		}
+	}
+	merchants = 2
+	center_of_trade_upgrade_cost = -0.5
+
+	ai_will_do = {
+		factor = 1
+	}
+}
+foreign_advisors = {
+	monarch_power = DIP
+	
+	potential = {
+		ai = no
+		has_idea_group = economic_ideas
+	}
+	
+	allow = {
+		full_idea_group = economic_ideas
+		hidden_trigger = {
+			NOT = { has_idea_group = indigenous_ideas }
+		}
+		if = {
+			limit = { has_country_modifier = foreign_advisors_cooldown }
+			custom_trigger_tooltip = {
+				tooltip = POLICY_ON_COOLDOWN
+				always = no
+			}
+		}
+		if = {
+			limit = {
+				has_country_flag = economic_cd_fl
+			}
+			custom_trigger_tooltip = {
+				tooltip = "We must wait before we can select a policy from this idea group again."
+				always = no
+			}
+		}
+	}	
+	
+	advisor_cost = -0.15
+	advisor_pool = 4
+	
+	ai_will_do = {
+		factor = 1
+	}
+}
+the_statute_of_monopolies = {
+	monarch_power = ADM
+
+	potential = {
+		ai = no
+		has_idea_group = economic_ideas
+	}
+	
+	allow = {
+		full_idea_group = economic_ideas
+		hidden_trigger = {
+			NOT = { has_idea_group = indigenous_ideas }
+		}
+		if = {
+			limit = { has_country_modifier = the_statute_of_monopolies_cooldown }
+			custom_trigger_tooltip = {
+				tooltip = POLICY_ON_COOLDOWN
+				always = no
+			}
+		}
+		if = {
+			limit = {
+				has_country_flag = economic_cd_fl
+			}
+			custom_trigger_tooltip = {
+				tooltip = "We must wait before we can select a policy from this idea group again."
+				always = no
+			}
+		}
+	}
+
+	global_trade_goods_size_modifier = 0.15
+	trade_efficiency = 0.1
+
+	ai_will_do = {
+		factor = 1
+	}
+}
+otto_per_mille = {
+	monarch_power = ADM
+	
+	potential = {
+		ai = no
+		has_idea_group = economic_ideas
+	}
+	
+	allow = {
+		full_idea_group = economic_ideas
+		hidden_trigger = {
+			NOT = { has_idea_group = indigenous_ideas }
+		}
+		if = {
+			limit = { has_country_modifier = otto_per_mille_cooldown }
+			custom_trigger_tooltip = {
+				tooltip = POLICY_ON_COOLDOWN
+				always = no
+			}
+		}
+		if = {
+			limit = {
+				has_country_flag = economic_cd_fl
+			}
+			custom_trigger_tooltip = {
+				tooltip = "We must wait before we can select a policy from this idea group again."
+				always = no
+			}
+		}
+	}
+	
+	global_prosperity_growth = 2
+	global_monthly_devastation = -1
+	
+	ai_will_do = {
+		factor = 1
+	}
+}

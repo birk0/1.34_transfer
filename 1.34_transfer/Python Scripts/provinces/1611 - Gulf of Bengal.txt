@@ -1,0 +1,5 @@
+#Prov1611 - Gulf of Bengal
+
+base_tax = 1
+base_production = 1
+base_manpower = 1

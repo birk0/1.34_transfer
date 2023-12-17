@@ -1,0 +1,7 @@
+#Prov3700 - Prov3700
+religion = sunni
+culture = berber
+
+base_tax = 1
+base_production = 1
+base_manpower = 1

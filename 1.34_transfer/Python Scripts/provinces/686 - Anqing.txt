@@ -1,0 +1,7 @@
+#Prov686 - Anqing
+culture = jianghuai
+religion = mahayana # changes
+
+base_tax = 1
+base_production = 1
+base_manpower = 1

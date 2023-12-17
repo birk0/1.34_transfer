@@ -1,0 +1,18 @@
+# 2527 - Langres
+
+owner = BUR
+controller = BUR 
+capital = "Langres"
+is_city = yes
+culture = burgundian
+religion = catholic
+hre = no
+base_tax = 3
+base_production = 3
+trade_goods = wine
+base_manpower = 2
+add_core = BUR
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

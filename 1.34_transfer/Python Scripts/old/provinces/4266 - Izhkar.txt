@@ -1,0 +1,19 @@
+#4266 - Izhkar
+
+owner = KAZ
+controller = KAZ
+capital = "Izhkar"
+culture = uralic
+religion = tengri_pagan_reformed #Sami Shamanism
+trade_goods = iron
+hre = no
+base_tax = 2
+base_production = 1
+base_manpower = 2
+is_city = yes
+add_core = KAZ
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

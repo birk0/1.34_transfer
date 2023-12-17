@@ -1,0 +1,8 @@
+#Prov4047 - Prov4047
+religion = mahayana
+culture = jianghuai
+is_city = no
+
+base_tax = 1
+base_production = 1
+base_manpower = 1

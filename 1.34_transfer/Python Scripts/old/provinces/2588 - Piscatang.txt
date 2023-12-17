@@ -1,0 +1,18 @@
+#2588 - Sörvik
+
+add_core = SWE
+owner = SWE
+controller = SWE
+culture = swedish
+religion = catholic
+hre = no
+base_tax = 1 
+base_production = 1
+trade_goods = fur
+base_manpower = 1
+capital = "Sörvik"
+is_city = yes
+
+1444.12.1 = {
+	add_bookmark_effect = yes
+}

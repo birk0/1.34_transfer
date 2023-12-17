@@ -1,0 +1,238 @@
+#Reworked Empire of China in Name
+empire_of_china_in_name = {
+	#Signifies when the current Emperor of China is considered illegitimate either of following must be true:
+	#if the decision 'Sinify culture' is possible and at least one province in china has unaccepted culture.
+	#if the emperor dosent own at least one province in china
+	#wont fire for AI unless they dont own provinces in china
+	#Yuan is except from this disaster (only tag who can remain Khaganate without penalties)
+
+	ended_by_country_breaking_to_rebels = no
+
+	potential = {
+		is_emperor_of_china = yes
+		NOT = { culture_group = east_asian }
+		NOT = { has_country_flag = eoc_sinification_flag } #Wont fire while a country is sinifying with chinese
+		OR = {
+			NOT = { tag = YUA }
+			ai = yes
+		}
+	}
+	
+	can_start = {
+		has_any_disaster = no
+		OR = {
+			AND = {
+				hidden_trigger = { ai = no } #Ai will always Sinify culture
+				china_superregion = {
+					owned_by = ROOT
+					has_owner_accepted_culture = no
+				}
+				custom_trigger_tooltip = {
+					tooltip = hasnt_enacted_sinification_decision_tt
+					NOT = { has_country_flag = enacted_sinified_culture_decision }
+				}
+			}
+			AND = {
+				hidden_trigger = { ai = no }
+				custom_trigger_tooltip = {
+					tooltip = dosent_own_1_prov_in_china_tt
+					NOT = {
+						calc_true_if = {
+							amount = 1
+							all_owned_province = {
+								superregion = china_superregion
+							}
+						}
+					}
+				}
+			}
+			hidden_trigger = { 
+				#As long as the AI borders someone in china it can DoW this disaster wont fire (Manchu is special ed)
+				AND = {
+					ai = yes
+					NOT = { 
+						calc_true_if = {
+							amount = 1
+							all_owned_province = {
+								superregion = china_superregion
+							}
+						}
+					}
+					NOT = {
+						any_neighbor_country = {
+							OR = {
+								has_reform = chinese_warlord_reform
+								capital_scope = { superregion = china_superregion }
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+	on_progress_effect = {
+		if = {
+			limit = {
+				NOT = { has_country_flag = lacking_provinces_in_china_cause }
+				NOT = {
+					calc_true_if = {
+						amount = 1
+						all_owned_province = {
+							superregion = china_superregion
+						}
+					}
+				}
+				check_variable = {
+					which = empire_of_china_culture_progress
+					value = 5
+				}
+			}
+			set_country_flag = lacking_provinces_in_china_cause #Defines that lack of provinces in china is cause of disaster
+		}
+		if = {
+			limit = {
+				has_country_flag = lacking_provinces_in_china_cause
+				NOT = {
+					check_variable = {
+						which = empire_of_china_culture_progress
+						value = 5
+					}
+				}
+			}
+			clr_country_flag = lacking_provinces_in_china_cause #disaster has ticked down, removes flag
+		}
+	}
+
+	can_stop = { 
+		OR = {
+			has_any_disaster = yes
+			custom_trigger_tooltip = {
+				tooltip = enacted_sinification_decision_tt
+				has_country_flag = enacted_sinified_culture_decision
+			}
+			custom_trigger_tooltip = {
+				tooltip = all_culture_in_china_accepted_tt
+				AND = {
+					china_superregion = {
+						owned_by = ROOT
+					}
+					NOT = {
+						china_superregion = {
+							owned_by = ROOT
+							has_owner_accepted_culture = no
+						}
+					}
+				}
+			}
+			AND = {
+				custom_trigger_tooltip = {
+					tooltip = has_conquered_provinces_in_china_tooltip
+					has_country_flag = lacking_provinces_in_china_cause
+					calc_true_if = {
+						amount = 1
+						all_owned_province = {
+							superregion = china_superregion
+						}
+					}
+				}
+			}
+		}
+	}
+	
+	progress = {
+		modifier = {
+			factor = 1
+			custom_trigger_tooltip = {
+				tooltip = hasnt_enacted_sinification_decision_tt
+				AND = {
+					NOT = { culture_group = east_asian }
+					NOT = { has_country_flag = enacted_sinified_culture_decision }
+				}
+			}
+		}
+		modifier = {
+			factor = 1
+			NOT = {
+				calc_true_if = {
+					amount = 50
+					all_owned_province = {
+						superregion = china_superregion
+					}
+				}
+			}
+		}
+		modifier = {
+			factor = 1
+			NOT = {
+				calc_true_if = {
+					amount = 1
+					all_owned_province = {
+						superregion = china_superregion
+					}
+				}
+			}
+		}
+		modifier = {
+			factor = -0.5
+			full_idea_group = humanist_ideas
+		}
+	}
+
+	can_end = {
+		OR = {
+			is_emperor_of_china = no
+			custom_trigger_tooltip = {
+				tooltip = enacted_sinification_decision_tt
+				has_country_flag = enacted_sinified_culture_decision
+			}
+			custom_trigger_tooltip = {
+				tooltip = all_culture_in_china_accepted_tt
+				AND = {
+					china_superregion = {
+						owned_by = ROOT
+					}
+					NOT = {
+						china_superregion = {
+							owned_by = ROOT
+							has_owner_accepted_culture = no
+						}
+					}
+				}
+			}
+			custom_trigger_tooltip = {
+				tooltip = has_conquered_provinces_in_china_tooltip
+				AND = {
+					has_country_flag = lacking_provinces_in_china_cause	
+					calc_true_if = {
+						amount = 1
+						all_owned_province = {
+							superregion = china_superregion
+						}
+					}
+				}
+			}
+		}
+	}
+	
+
+	modifier = {
+		imperial_mandate = -0.3
+		years_of_nationalism = 10
+		technology_cost = 0.1
+		global_unrest = 5
+	}	
+	
+	
+	on_start = eoc_events.62
+	on_end = eoc_events.63
+	on_monthly = {
+		events = {
+		}
+		random_events = { 
+			1000 = 0
+			10 = eoc_events.65 #Rebels rise up in [province]
+		}
+	}
+}
+

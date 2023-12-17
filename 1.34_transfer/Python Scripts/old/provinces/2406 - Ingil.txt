@@ -1,0 +1,22 @@
+#2406 - Ingil
+
+hre = no
+base_tax = 1
+base_production = 1
+trade_goods = wine
+base_manpower = 1
+capital = "Kyzy-Kermen"
+is_city = yes
+#changes
+owner = ZAZ
+controller = ZAZ
+add_core = ZAZ
+add_core = CRI
+add_core = LIT
+culture = ruthenian
+religion = orthodox
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

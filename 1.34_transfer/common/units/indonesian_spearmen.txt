@@ -1,0 +1,13 @@
+# Indonesian Spearmen
+
+type = infantry
+manpower = 2
+unit_type = indonesian
+
+maneuver = 1
+offensive_fire = 0
+defensive_fire = 0
+offensive_shock = 2
+defensive_shock = 0
+offensive_morale = 0
+defensive_morale = 2

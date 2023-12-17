@@ -1,0 +1,28 @@
+government = monarchy
+add_government_reform = principality
+government_rank = 1
+primary_culture = byelorussian
+religion = orthodox
+technology_group = eastern
+capital = 275	# Polotsk
+
+1440.1.1 = {
+	monarch = {
+		birth_date = 1401.1.1
+		name = "Yaropolk I"
+		dynasty = "Sviatoslavich"
+		adm = 0
+		dip = 3
+		mil = 5
+	}
+}
+
+1444.1.1 = {
+	monarch = {
+		name = "Yaropolk I"
+		dynasty = "Sviatoslavich"
+		adm = 0
+		dip = 3
+		mil = 5
+	}
+}

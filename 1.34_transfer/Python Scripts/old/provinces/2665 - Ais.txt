@@ -1,0 +1,24 @@
+# 2665 - Sirro
+
+owner = ETH
+controller = ETH
+add_core = ETH
+culture = harari 
+religion = sunni
+capital = "Sirro"
+is_city = yes
+base_manpower = 1
+trade_goods = grain
+hre = no
+base_tax = 1 
+base_production = 1
+
+1443.1.1 = {
+	owner = ADA
+	controller = ADA
+	add_core = ADA
+}
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

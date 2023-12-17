@@ -1,0 +1,5 @@
+#Prov1473 - Jan Mayen Sea
+
+base_tax = 1
+base_production = 1
+base_manpower = 1

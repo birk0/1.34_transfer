@@ -1,0 +1,17 @@
+#4496 - Kora
+
+owner = JNP
+controller = JNP
+culture = avadhi
+religion = hinduism
+capital = "Kora"
+trade_goods = cotton
+hre = no
+base_tax = 4
+base_production = 4
+base_manpower = 2
+is_city = yes
+add_core = JNP
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

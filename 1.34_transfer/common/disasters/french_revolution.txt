@@ -1,0 +1,33 @@
+french_revolution = {
+	ended_by_country_breaking_to_rebels = no
+	potential = {
+		always = no
+	}
+	
+	
+	can_start = {
+		always = no
+	}
+	
+	can_stop = {
+	}
+	
+	
+	progress = {
+		modifier = {
+			factor = 1
+		}
+	}
+	
+	can_end = {
+	}
+	
+
+	modifier = {
+		prestige = 1
+	}	
+	
+	
+	on_start = french_revolution.1 #General Estates / Storming of the Bastille
+	on_end = french_revolution.18 #Long live the Republic/Monarchy
+}

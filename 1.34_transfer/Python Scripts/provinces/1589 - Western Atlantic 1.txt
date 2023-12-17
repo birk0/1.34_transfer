@@ -1,0 +1,7 @@
+#Prov1589 - Western Atlantic 1
+religion = coptic
+culture = nubian
+
+base_tax = 1
+base_production = 1
+base_manpower = 1

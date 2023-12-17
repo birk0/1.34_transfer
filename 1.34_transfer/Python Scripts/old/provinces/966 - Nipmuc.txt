@@ -1,0 +1,22 @@
+#966 - Lampeter
+
+owner = ENG
+controller = ENG
+culture = welsh
+religion = catholic
+hre = no
+base_tax = 1
+base_production = 1
+trade_goods = grain
+base_manpower = 1
+capital = "Lampeter"
+is_city = yes
+add_core = ENG
+add_core = WLS
+
+1400.9.16 = { revolt = { type = nationalist_rebels size = 2 } controller = REB } # The Welsh Revolt
+1415.1.1 = { revolt = {} controller = ENG } # English rule is restored
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

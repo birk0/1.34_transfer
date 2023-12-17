@@ -1,0 +1,7 @@
+#Prov3733 - Prov3733
+religion = sunni
+culture = berber
+
+base_tax = 1
+base_production = 1
+base_manpower = 1

@@ -1,0 +1,21 @@
+#4421 - Seringapatam
+
+owner = MYS
+controller = MYS
+culture = kannada
+religion = hinduism
+capital = "Seringapatam"
+trade_goods = cotton
+hre = no
+base_tax = 4
+base_production = 4
+base_manpower = 3
+fort_15th = yes #Seringapatanam Fort
+is_city = yes
+add_core = MYS
+add_jains_or_burghers_effect = yes
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

@@ -1,0 +1,28 @@
+#339 - Bejaia
+
+owner = TUN
+controller = TUN
+culture = berber
+religion = sunni
+capital = "Bejaia"
+trade_goods = iron
+hre = no
+base_tax = 3 
+base_production = 3
+base_manpower = 2
+is_city = yes
+add_core = TUN
+#Changes
+#add_core = KBA
+1444.1.1 = {
+	controller = REB
+	revolt = {
+		type = pretender_rebels
+		size = 1
+		leader = "Abu-l-Hasan Hafsid"
+	}
+}
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

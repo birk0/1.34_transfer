@@ -1,0 +1,7 @@
+#Prov2954 - Djerba
+culture = berber
+religion = ibadi
+
+base_tax = 1
+base_production = 1
+base_manpower = 1

@@ -1,0 +1,5 @@
+#Prov1335 - Persian Gulf
+
+base_tax = 1
+base_production = 1
+base_manpower = 1

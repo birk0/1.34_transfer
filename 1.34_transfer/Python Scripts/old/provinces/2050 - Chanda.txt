@@ -1,0 +1,21 @@
+#2050 - Chanda
+
+owner = CHD
+controller = CHD
+culture = gondi
+religion = hinduism
+capital = "Ballarsah"
+trade_goods = tropical_wood
+hre = no
+base_tax = 2 
+base_production = 1
+base_manpower = 2
+is_city = yes
+add_core = BRR
+add_core = CHD
+
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

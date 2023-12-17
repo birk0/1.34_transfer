@@ -1,0 +1,167 @@
+#Changes
+culture_center = {
+	potential = {
+      always = no
+	}
+	
+	trigger = {
+		if = {
+			limit = {
+				province_id = 219 #Toledo
+			}
+			culture_group = iberian
+			owner = { NOT = { culture_group = iberian } }
+		}
+		else_if = {
+		    limit = {
+		       province_id = 344 #Marrakesh
+		    }
+		    culture_group = maghrebi
+		    owner = { NOT = { culture_group = maghrebi } }
+		}
+		else_if = {
+		    limit = {
+		       province_id = 183 #Paris
+		    }
+		    culture_group = french
+		    owner = { NOT = { culture_group = french } }
+		}
+		else_if = {
+		    limit = {
+		       province_id = 236 #London
+		    }
+		    culture_group = british
+		    owner = { NOT = { culture_group = british } }
+		}
+		else_if = {
+		    limit = {
+		       province_id = 118 #Rome
+		    }
+		    culture_group = latin
+		    owner = { NOT = { culture_group = latin } }
+		}
+      else_if = {
+         limit = {
+            province_id = 1821 #Nanjing
+         }
+         culture_group = east_asian
+         owner = { NOT = { culture_group = east_asian } }
+      }
+      else_if = {
+         limit = {
+            province_id = 677 #Lhasa
+         }
+         OR = {
+            culture_group = tibetan_group
+            culture = tibetan_group_new
+         }
+         owner = {
+            NOT = {
+               OR = {
+                  culture_group = tibetan_group
+                  primary_culture = tibetan_group_new
+               }
+            }
+         }
+      }
+      else_if = {
+         limit = {
+            province_id = 2190 #Qaraqorum
+         }
+         is_province_culture = { type = altaic }
+         owner = {
+            NOT = {
+               is_country_culture = { type = altaic }
+            }
+         }
+      }
+      else_if = {
+         limit = {
+            province_id = 1029 #Kai
+         }
+         is_province_culture = { type = altaic }
+         owner = {
+            NOT = {
+               is_country_culture = { type = japanese_g }
+            }
+         }
+      }
+	}
+
+	local_culture_conversion_cost = 1
+	local_years_of_nationalism = 10
+	local_autonomy = 0.4
+	
+	#Province scope
+	on_activation = {
+	}
+	
+	on_deactivation = {
+	   if = {
+	      limit = { has_province_modifier = cultural_zeal }
+	      province_event = { id = cultural_events.8 days = 1 } #Destroy Monument
+	   }
+	}
+}
+
+city_of_moors = {
+   potential = {
+      controller = {
+          culture_group = iberian
+      }
+   }
+   trigger = {
+      controller = {
+          culture_group = iberian
+      }
+   }
+   local_warscore_cost_modifier = 0.5
+}
+
+great_tlemcen_fortress = {
+   potential = {
+      controller = {
+         tag = TLC
+       }
+   }
+   trigger = {
+      controller = {
+         tag = TLC
+      }
+   }
+   local_defensiveness = 0.33
+}
+
+rsm_fezzan_corridor = { #if fezzan refuses to sell the province, you can conquer it and this triggered modifier will fire the event instead
+   potential = {
+      owner = { tag = RSM }
+   }
+   
+   trigger = {
+	  owner = { tag = RSM }
+	  OR = {
+	     has_building = trade_depot
+	     has_building = marketplace
+	     has_building = stock_exchange
+	     development = 10
+	  }
+   }
+	
+	#Province scope
+	on_activation = {
+	   owner = { country_event = { id = mor_events.62 days = 1 } } #Cross sahara via Fezzan route
+	}
+	
+	on_deactivation = {
+	}
+}
+
+rsm_upgrade_sevilla_node = {
+   potential = {
+      owner = { tag = RSM }
+   }
+   trigger = {
+      owner = { tag = RSM }
+   }
+   center_of_trade_upgrade_cost = -0.25
+}

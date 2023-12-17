@@ -1,0 +1,18 @@
+#425 - Dagestan
+
+owner = SRV
+controller = SRV 
+culture = dagestani
+religion = shiite
+capital = "Derbent"
+trade_goods = fish
+hre = no
+base_tax = 3 
+base_production = 3
+base_manpower = 1
+is_city = yes
+add_core = SRV
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

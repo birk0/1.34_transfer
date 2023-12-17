@@ -1,0 +1,19 @@
+#1230 - Massawa
+
+owner = MED
+controller = MED
+add_core = MED
+culture = tigray 
+religion = coptic
+capital = "Mitsiwa"
+is_city = yes
+base_manpower = 1
+trade_goods = gems #Pearls in the Dahlek Archipelago
+hre = no
+base_tax = 2 
+base_production = 2
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

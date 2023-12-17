@@ -1,0 +1,41 @@
+po_annex_subject = { #Lets ROOT fully subjugate FROM
+
+	prestige_base = 0.5
+	ae_base = 1.0
+	power_projection = humiliated_rival
+	warscore_cost = {
+		no_provinces = 50.0
+	}
+	warscore_cap = 100
+	requires_is_allowed = yes
+	effect = { #Complete Subjugation
+		FROM = {
+			every_owned_province = {
+				cede_province = ROOT
+				add_core = ROOT
+			}
+		}
+		add_country_modifier = { name = won_agitation_war duration = 100 hidden = yes } #Used for trigger
+		random_known_country = {
+			limit = {
+				reverse_has_opinion_modifier = {
+					who = ROOT
+					modifier = action_agitated_liberty
+				}
+			}
+			country_event = {
+				id = cultural_events.11
+				days = 1
+			}
+		}
+	}
+	ai_weight = {
+		export_to_variable = {
+			variable_name = ai_value
+			value = 1000
+		}
+		limit = {
+			always = yes
+		}
+	}
+}

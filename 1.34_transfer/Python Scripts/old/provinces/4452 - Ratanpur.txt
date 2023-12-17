@@ -1,0 +1,17 @@
+#4452 - Ratanpur
+
+owner = RTT
+controller = RTT
+culture = gondi
+religion = hinduism
+capital = "Ratanpur"
+trade_goods = grain
+hre = no
+base_tax = 2 
+base_production = 2
+base_manpower = 1
+is_city = yes
+add_core = RTT
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

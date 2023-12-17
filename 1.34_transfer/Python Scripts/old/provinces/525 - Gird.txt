@@ -1,0 +1,19 @@
+#525 - Gird
+
+owner = GWA
+controller = GWA
+culture = vindhyan
+religion = hinduism
+capital = "Gwalior"
+trade_goods = dyes
+hre = no
+base_tax = 3 
+base_production = 3
+base_manpower = 2
+is_city = yes
+add_core = GWA
+fort_15th = yes #"Gibraltar of India"
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

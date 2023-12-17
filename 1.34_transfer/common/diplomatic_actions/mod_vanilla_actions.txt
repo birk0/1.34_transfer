@@ -1,0 +1,1569 @@
+declarewar = {
+	condition = {
+		tooltip = BLOCK_WARLORD_DOW #Warlords may only attack the Emperor or fellow Warlords
+		potential = {
+			has_reform = chinese_warlord_reform
+		}
+		allow = {
+			FROM = {
+				OR = {
+					has_reform = chinese_warlord_reform
+					is_emperor_of_china = yes
+				}
+			}
+		}
+	}
+	condition = { #Daimyos may only dow people within The Empire of Japan
+		tooltip = BLOCK_DAIMYO_DOW
+		potential = {
+			is_daimyo = yes
+		}
+		allow = {
+			FROM = {
+				OR = {
+					is_daimyo = yes
+					has_reform = shogunate
+					is_indep_daimyo = yes
+					has_reform = imperial_japan
+				}
+			}
+		}
+	}
+	condition = { #Ai can only attack warlords if they're stronger than the emperor no alliance or subject of
+		potential = {
+			FROM = { has_reform = chinese_warlord_reform }
+			ai = yes
+			NOT = { has_reform = chinese_warlord_reform }
+			is_emperor_of_china = no
+		}
+		allow = {
+			NOT = { alliance_with = event_target:EmperorOfChina }
+			NOT = { is_subject_of = event_target:EmperorOfChina }
+			OR = {
+				army_strength = {
+					who = event_target:EmperorOfChina
+					value = 1
+				}
+				event_target:EmperorOfChina = {
+					OR = {
+						is_bankrupt = yes
+						has_disaster = ming_crisis
+						has_disaster = empire_of_china_in_name
+						war_exhaustion = 20
+					}
+				}
+				FROM = {
+					war_with = event_target:EmperorOfChina
+				}
+			}
+		}
+	}
+	condition = { #AI will only dec Daimyos if it's stronger than the current Shogun (Or the Shogun wont accept CTA)
+		potential = {
+			FROM = { is_daimyo = yes }
+			ai = yes
+			NOT = { is_daimyo = yes }
+			NOT = { has_reform = shogunate }
+			NOT = { has_reform = imperial_japan }
+		}
+		allow = {
+			NOT = { is_subject_of = event_target:ShogunOfJapan }
+			NOT = { alliance_with = event_target:ShogunOfJapan }
+			OR = {
+				army_strength = {
+					who = event_target:ShogunOfJapan
+					value = 1
+				}
+				event_target:ShogunOfJapan = {
+					OR = {
+						is_bankrupt = yes
+						war_exhaustion = 20
+					}
+				}
+				FROM = {
+					war_with = event_target:ShogunOfJapan
+				}
+			}
+		}
+	}
+	condition = {
+		tooltip = DAIMYO_ONIN_WAR_TT
+		potential = {
+			FROM = { is_daimyo = yes }
+			NOT = { is_indep_daimyo = yes }
+			NOT = { is_daimyo = yes }
+			NOT = { has_reform = shogunate }
+		}
+		allow = {
+			has_global_flag = onin_war_fl
+		}
+	}
+	condition = { #Ming cant declare war while they have the eunuch privilege
+		tooltip = MNG_EUNUCHS_BLOCK
+		potential = {
+			has_estate_privilege = estate_eunuchs_mng_powerful_eunuchs
+			tag = MNG
+		}
+		allow = {
+			OR = {
+				FROM = { ai = no }
+				FROM = { has_reform = chinese_warlord_reform }
+			}
+		}
+	}
+	condition = {
+		tooltip = KOR_inwards_perfection_tt2 #Korea cant declare war with Inwards perfection privilege
+		potential = {
+			tag = KOR
+			has_estate_privilege = estate_church_inwards_perfection
+		}
+		allow = {
+			always = no
+		}
+	}
+	condition = {
+		tooltip = "Won't be able to gain military access"
+		potential = {
+			ai = yes
+			FROM = {
+				NOT = {
+					OR = {
+						any_owned_province = {
+							is_in_capital_area = yes
+							any_neighbor_province = {
+								owned_by = ROOT
+								is_in_capital_area = yes
+							}
+						}
+						any_teleporter = {
+							owned_by = FROM
+							any_neighbor_province = {
+								owned_by = FROM
+								is_in_capital_area = yes
+							}
+							any_empty_neighbor_province = {
+								any_neighbor_province = {
+									has_terrain = teleporter
+									owned_by = ROOT
+									any_neighbor_province = {
+										owned_by = ROOT
+										is_in_capital_area = yes
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		allow = {
+			FROM = {
+				OR = {
+					num_of_owned_provinces_with = {
+						value = 1
+						has_terrain = teleporter
+					}
+					any_neighbor_country = { # Country that will probably give you military access
+						any_neighbor_country = {
+							tag = ROOT
+							PREV = {
+								NOT = {
+									ai_attitude = {
+										who = PREV
+										attitude = attitude_hostile
+									}
+								}
+								NOT = {
+									ai_attitude = {
+										who = PREV
+										attitude = attitude_rivalry
+									}
+								}
+								NOT = {
+									ai_attitude = {
+										who = PREV
+										attitude = attitude_domineering
+									}
+								}
+								NOT = {
+									ai_attitude = {
+										who = PREV
+										attitude = attitude_outraged
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	
+	#on_declare_war
+
+	#FROM = Defender
+	#THIS = Attacker
+	effect = {
+		if = {
+			limit = { 
+				is_emperor_of_china = yes
+				FROM = { has_reform = chinese_warlord_reform }
+			}
+			clr_warlords_drop_mandate_effect = yes
+		}
+		if = {
+			limit = {
+				OR = {
+					primary_culture = kirgiz
+					primary_culture = uyghur
+				}
+				FROM = {
+					OR = {
+						primary_culture = kirgiz
+						primary_culture = uyghur
+					}
+				}
+			}
+			set_country_flag = mhl_warrior_of_chagatai_flag #Used for Mission trigger
+		}
+		if = { #Emperor of China will get CTA from Warlords attacked by foreign power
+			limit = {
+				is_emperor_of_china = no
+				NOT = { has_reform = chinese_warlord_reform }
+				FROM = {
+					has_reform = chinese_warlord_reform
+					NOT = { war_with = event_target:EmperorOfChina }
+				}
+			}
+			generate_cta_effect = {
+				caller = FROM
+				target = event_target:EmperorOfChina
+			}
+		}
+		if = { #Shogun will get CTA from Daimyos attacked by foreign power
+			limit = {
+				NOT = { has_reform = shogunate }
+				NOT = { has_reform = imperial_japan }
+				NOT = { is_daimyo = yes }
+				FROM = {
+					is_daimyo = yes
+					NOT = { war_with = event_target:ShogunOfJapan }
+					NOT = { alliance_with = event_target:ShogunOfJapan }
+				}
+			}
+			generate_cta_effect = {
+				caller = FROM
+				target = event_target:ShogunOfJapan
+			}
+		}
+		if = {
+			limit = {
+				FROM = { tag = KOR }
+				mission_completed = evenks_trade_in_girin
+			}
+			set_country_flag = evenks_dowed_korea_flag #Used for mission
+		}
+		if = {
+			limit = {
+				has_reform = elective_monarchy
+			}
+			add_estate_influence_modifier = {
+				desc = poland_nobles_influence_desc
+				duration = 3650
+				influence = 5
+				estate = estate_nobles
+			}
+			random_list = { #IRL the Sejm were a pain so this should be represented in RNG to keep PLC in check
+				50 = {
+					country_event = {
+						id = flavor_pol.23 #Sejm disapprove of war effort
+					}
+				}
+				50 = {
+					country_event = {
+						id = flavor_pol.24 #Sejm approve of war effort
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				FROM = { tag = NOV }
+			}
+			country_event = { id = flavor_rus.45 } #The Novgorod Campaign
+		}
+	}
+}
+ask_for_tributary_state_action = {
+	#ASKING IF WE CAN BECOME A TRIBUTARY
+	condition = {
+		tooltip = CLAIMS_ON_OUR_LAND_BLOCK
+		potential = {
+			OR = {
+				primary_culture = FROM
+				FROM = {
+					OR = {
+						core_claim = ROOT
+						claim = ROOT
+					}
+				}
+				china_superregion = {
+					owned_by = ROOT
+					FROM = { is_emperor_of_china = yes }
+				}
+				japan_region = {
+					owned_by = ROOT
+					FROM = { capital_scope = { region = japan_region } }
+				}
+         		any_subject_country = {
+					OR = {
+						primary_culture = FROM
+						FROM = {
+							OR = {
+								core_claim = ROOT
+								claim = ROOT
+							}
+						}
+						china_superregion = {
+							owned_by = ROOT
+							FROM = { is_emperor_of_china = yes }
+						}
+						japan_region = {
+							owned_by = ROOT
+							FROM = { capital_scope = { region = japan_region } }
+						}
+					}
+            	}
+         	}
+		}
+		allow = {
+			always = no
+		}
+	}
+	condition = {
+		tooltip = WARLORDS_CANT_MAKE_TRIBUTARIES
+		potential = {
+			FROM = { has_reform = chinese_warlord_reform }
+		}
+		allow = { always = no }
+	}
+	condition = {
+		tooltip = WARLORD_CANT_MAKE_TRIBUTARY
+		potential = {
+			has_reform = chinese_warlord_reform
+		}
+		allow = {
+			always = no
+		}
+	}
+}
+tributary_state_action = {
+	#REQUESTING THEY BECOME TRIBUTARY
+	condition = {
+		tooltip = CLAIMS_ON_THEIR_LAND_BLOCK
+		potential = {
+			FROM = {
+				OR = {
+					primary_culture = ROOT
+					any_owned_province = { 
+						OR = {
+							is_permanent_claim = ROOT 
+							is_core = ROOT
+							AND = {
+								superregion = china_superregion
+								ROOT = { is_emperor_of_china = yes }
+							}
+							AND = {
+								region = japan_region
+								ROOT = {
+									capital_scope = { region = japan_region }
+								}
+							}
+						}
+					}
+         			any_subject_country = {
+						OR = {
+							primary_culture = ROOT
+							any_owned_province = {
+								OR = {
+									is_permanent_claim  = ROOT
+									is_core = ROOT
+									AND = {
+										superregion = china_superregion
+										ROOT = { is_emperor_of_china = yes }
+									}
+									AND = {
+										region = japan_region
+										ROOT = {
+											capital_scope = { region = japan_region }
+										}
+									}
+								}
+							}
+						}
+					}
+            	}
+			}
+		}
+		allow = {
+			always = no
+		}
+	}
+	condition = { #Prevents countries becoming tributaries of warlords
+		tooltip = WARLORD_CANT_MAKE_TRIBUTARY
+		potential = {
+			FROM = { has_reform = chinese_warlord_reform }
+		}
+		allow = { always = no }
+	}
+	condition = {
+		tooltip = WARLORDS_CANT_MAKE_TRIBUTARIES #Warlords cant ask for tribute
+		potential = { has_reform = chinese_warlord_reform }
+		allow = {
+			always = no
+		}
+	}
+	condition = {
+		tooltip = DAIMYO_NO_TRIBUTARY #Cannot ask Daimyos or Shogun for tribute
+		potential = {
+			FROM = { 
+				OR = {
+					is_daimyo = yes 
+					has_reform = shogunate
+				}
+			}
+		}
+		allow = { always = no }
+	}
+	condition = {
+		tooltip = WE_ARE_DAIMYO_TT #Daimyos can not ask for tribute
+		potential = {
+			is_daimyo = yes
+		}
+		allow = { always = no }
+	}
+}
+allianceaction = {
+	condition = {
+		tooltip = THREAT_TO_MANDATE_BLOCK #Prevents the Emperor allying countries that have land in China
+		potential = {
+			is_emperor_of_china = yes
+		}
+		allow = {
+			NOT = {
+				china_superregion = {
+					country_or_subject_holds = FROM
+				}
+			}
+		}
+	}
+	condition = {
+		tooltip = CONQUER_CHINA_BLOCK #Prevents countries that have land in China from allying the Emperor
+		potential = {
+			china_superregion = {
+				country_or_subject_holds = PREV
+			}
+		}
+		allow = {
+			FROM = { is_emperor_of_china = no }
+		}
+	}
+	condition = {
+		tooltip = THEY_ARE_NOT_WARLORD_BLOCK #Warlords can only ally other warlords
+		potential = {
+			has_reform = chinese_warlord_reform
+		}
+		allow = {
+			FROM = { 
+				has_reform = chinese_warlord_reform 
+			}
+		}
+	}
+	condition = { #Prevents outside countries allying warlords
+		tooltip = CANT_ALLY_WARLORD_BLOCK
+		potential = {
+			NOT = { has_reform = chinese_warlord_reform }
+			FROM = { has_reform = chinese_warlord_reform }
+		}
+		allow = {
+			always = no
+		}
+	}
+	condition = {
+		tooltip = NOT_DAIMYO_TT #Daimyos can only ally countries within Japan
+		potential = {
+			is_daimyo = yes
+		}
+		allow = {
+			FROM = { 
+				OR = {
+					is_daimyo = yes
+					is_indep_daimyo = yes
+					has_reform = shogunate
+				}
+			}
+		}
+	}
+	condition = { #Countries outside Japan cannot ally Daimyos
+		tooltip = THEY_DAIMYO_TT
+		potential = {
+			NOT = { is_daimyo = yes }
+			NOT = { is_indep_daimyo = yes }
+			NOT = { has_reform = shogunate }
+		}
+		allow = {
+			NOT = { FROM = { is_daimyo = yes } }
+		}
+	}
+	condition = {
+		tooltip = PIRATE_DENIED_ALLIANCE
+		potential = {
+			has_government_attribute = cannot_ally_non_pirates
+		}
+		allow = {
+			OR = {
+				NOT = { has_government_attribute = cannot_ally_non_pirates }
+				FROM = { has_government_attribute = is_pirate_republic_reform }
+			}
+		}
+	}
+	condition = {
+		tooltip = FROM_PIRATE_DENIED_ALLIANCE
+		potential = {
+			FROM = {
+				has_government_attribute = cannot_ally_non_pirates
+			}
+			NOT = { has_government_attribute = is_pirate_republic_reform }
+		}
+		allow = {
+			OR = {
+				has_government_attribute = is_pirate_republic_reform
+				NOT = { FROM = { has_government_attribute = cannot_ally_non_pirates } }
+			}
+		}
+	}
+	condition = {
+		tooltip = REPUBLIC_DENIED_ALLIANCE
+		potential = {
+			has_government_attribute = cannot_ally_non_republics
+		}
+		allow = {
+			OR = {
+				NOT = { has_government_attribute = cannot_ally_non_republics }
+				FROM = { government = republic }
+			}
+		}
+	}
+	condition = {
+		tooltip = FROM_REPUBLIC_DENIED_ALLIANCE
+		potential = {
+			FROM = {
+				has_government_attribute = cannot_ally_non_republics
+			}
+			NOT = { government = republic }
+		}
+		allow = {
+			OR = {
+				government = republic
+				NOT = { FROM = { has_government_attribute = cannot_ally_non_republics } }
+			}
+		}
+	}
+	condition = {
+		tooltip = REV_REPUBLIC_DENIED_ALLIANCE
+		potential = {
+			has_government_attribute = cannot_ally_non_republics_or_non_rev
+		}
+		allow = {
+			OR = {
+				NOT = { has_government_attribute = cannot_ally_non_republics_or_non_rev }
+				FROM = { 
+					OR = {
+						government = republic 
+						is_revolutionary = yes
+					}
+				}
+			}
+		}
+	}
+	condition = {
+		tooltip = FROM_REV_REPUBLIC_DENIED_ALLIANCE
+		potential = {
+			FROM = {
+				has_government_attribute = cannot_ally_non_republics_or_non_rev
+			}
+			NOT = { government = republic }
+			is_revolutionary = no
+		}
+		allow = {
+			OR = {
+				OR = {
+					government = republic 
+					is_revolutionary = yes
+				}
+				NOT = { FROM = { has_government_attribute = cannot_ally_non_republics_or_non_rev } }
+			}
+		}
+	}
+	#misc
+	condition = {
+		tooltip = "We cannot have alliances"
+		potential = {
+			has_global_flag = misc_setup
+		}
+		allow = {
+			always = no
+		}
+	}
+}
+royal_marriage = {
+	condition = {
+		tooltip = THREAT_TO_MANDATE_BLOCK #Prevents the Emperor marrying countries that have land in China
+		potential = {
+			is_emperor_of_china = yes
+		}
+		allow = {
+			NOT = {
+				china_superregion = {
+					country_or_subject_holds = FROM
+				}
+			}
+		}
+	}
+	condition = {
+		tooltip = CONQUER_CHINA_BLOCK #Prevents countries that have land in China from marrying the Emperor
+		potential = {
+			china_superregion = {
+				country_or_subject_holds = ROOT
+			}
+		}
+		allow = {
+			FROM = { is_emperor_of_china = no }
+		}
+	}
+	condition = {
+		tooltip = MARWAR #Base game
+		potential = {
+		}
+		allow = {
+			NOT = { war_with = FROM }
+		}
+	}
+	condition = {
+		tooltip = THEY_ARE_EMPEROR_BLOCK #Prevents Warlords from royal marrying non-warlords
+		potential = {
+			has_reform = chinese_warlord_reform
+		}
+		allow = {
+			FROM = { 
+				has_reform = chinese_warlord_reform
+				NOT = { is_neighbor_of_or_shares_seazone_with = { who = ROOT } }
+			}
+		}
+	}
+	condition = { #Prevents outside countries marrying warlords
+		tooltip = CANT_MARRY_WARLORD_BLOCK
+		potential = {
+			FROM = { has_reform = chinese_warlord_reform }
+		}
+		allow = { 
+			has_reform = chinese_warlord_reform
+		}
+	}
+	condition = {
+		tooltip = OUTSIDE_JAPAN_DAIMYO_TT #Daimyos can only marry other daimyos
+		potential = {
+			is_daimyo = yes
+		}
+		allow = {
+			FROM = {
+				OR = {
+					is_daimyo = yes
+					is_indep_daimyo = yes
+					has_reform = shogunate
+				}
+			}
+		}
+	}
+	condition = {
+		tooltip = THEY_ARE_DAIMYO_MARRY_TT #Prevents outside countries marrying Daimyos
+		potential = {
+			FROM = { is_daimyo = yes }
+		}
+		allow = {
+			OR = {
+				is_daimyo = yes
+				is_indep_daimyo = yes
+				has_reform = shogunate
+			}
+		}
+	}
+	#misc
+	condition = {
+		tooltip = "We cannot do this with them"
+		potential = {
+			has_global_flag = misc_setup
+		}
+		allow = {
+			overlord_of = FROM
+		}
+	}
+}
+improve_relation = {
+	condition = {
+		tooltip = THEY_ARE_WARLORD_BLOCK #Stops non-warlords from wasting diplomat on improving relations with warlords
+		potential = {
+			NOT = { has_reform = chinese_warlord_reform }
+			FROM = { has_reform = chinese_warlord_reform }
+		}
+		allow = {
+			always = no
+		}
+	}
+	condition = {
+		tooltip = THEY_ARE_EMPEROR_BLOCK #Stops Warlords from wasting diplomat on improving relations with non-warlords
+		potential = {
+			has_reform = chinese_warlord_reform
+		}
+		allow = {
+			FROM = { has_reform = chinese_warlord_reform }
+		}
+	}
+	condition = {
+		tooltip = THEY_NOT_DAIMYO #Prevents Daimyos improving with nations outside Japan
+		potential = {
+			is_daimyo = yes
+		}
+		allow = {
+			FROM = {
+				OR = {
+					is_daimyo = yes
+					is_indep_daimyo = yes
+					has_reform = shogunate
+				}
+			}
+		}
+	}
+	condition = {
+		tooltip = THEY_ARE_DAIMYO_RELATION #Prevents outside countries improving with Daimyos
+		potential = {
+			FROM = { is_daimyo = yes }
+		}
+		allow = {
+			OR = {
+				is_daimyo = yes
+				is_indep_daimyo = yes
+				has_reform = shogunate
+			}
+		}
+	}
+	#misc
+	condition = {
+		tooltip = "We cannot improve their opinion of us"
+		potential = {
+			has_global_flag = misc_setup
+		}
+		allow = {
+			overlord_of = FROM
+		}
+	}
+}
+guaranteeaction = { #Stops outside countries guaranteeing the Emperor because thats stupid
+	condition = {
+		tooltip = CANT_GUARANTEE_EMPEROR_BLOCK
+		potential = {
+			FROM = {
+				OR = {
+					is_emperor_of_china = yes
+					has_reform = shogunate
+				}
+			}
+		}
+		allow = {
+			always = no
+		}
+	}
+	condition = { #Prevents outside countries guaranteeing warlords
+		tooltip = CANT_GUARANTEE_WARLORD_BLOCK
+		potential = {
+			FROM = { 
+				OR = {
+					has_reform = chinese_warlord_reform 
+					capital_scope = { superregion = china_superregion }
+				}
+			}
+			NOT = { has_reform = chinese_warlord_reform }
+		}
+		allow = {
+			always = no
+		}
+	}
+	condition = { #Stops warlords guaranteeing people
+		tooltip = WARLORDS_CANT_GUARANTEE
+		potential = {
+			has_reform = chinese_warlord_reform
+		}
+		allow = {
+			always = no
+		}
+	}
+	condition = {
+		tooltip = CANT_GUARANTEE_DAIMYO #Daimyos cannot be guaranteed
+		potential = {
+			FROM = {
+				is_daimyo = yes
+			}
+		}
+		allow = {
+			always = no
+		}
+	}
+	condition = {
+		tooltip = DAIMYOS_CANT_GUARANTEE #Daimyos cannot guarantee people
+		potential = {
+			is_daimyo = yes
+		}
+		allow = {
+			always = no
+		}
+	}
+}
+support_independence_action = {
+	#Warlords cant support indep
+	condition = {
+		tooltip = WARLORDS_CANT_SUPPORT_INDEP
+		potential = {
+			has_reform = chinese_warlord_reform
+		}
+		allow = { always = no }
+	}
+	condition = {
+		tooltip = WARLORDS_CANT_SUPPORT_INDEP
+		potential = {
+			FROM = { has_reform = chinese_warlord_reform }
+		}
+		allow = { always = no }
+	}
+	#Daimyos cant support indep
+	condition = {
+		tooltip = DAIMYO_CANT_SUPPORT
+		potential = {
+			is_daimyo = yes
+		}
+		allow = {
+			always = no
+		}
+	}
+}
+form_coalition = {
+	condition = { #Base game
+		tooltip = MINAGGRESSIVEEXPANSION
+		potential = {
+		}
+		allow = {
+			has_opinion_modifier = {
+				modifier = aggressive_expansion
+				who = FROM
+			}		
+			NOT = {
+				has_opinion_modifier = {
+					modifier = aggressive_expansion
+					who = FROM
+					value = -50
+				}
+			}
+		}
+	}
+	condition = {
+		tooltip = COALITION_OUTSIDE_CHINA_BLOCK #Stops warlords joining coalitions against outside powers
+		potential = {
+			has_reform = chinese_warlord_reform
+		}
+		allow = {
+			FROM = { has_reform = chinese_warlord_reform }
+		}
+	}
+	condition = { #Stops outside countries forming coalitions on warlords (basically ae dosent matter as a warlord)
+		tooltip = CANT_FORM_COALITION_WARLORD_BLOCK
+		potential = {
+			NOT = { has_reform = chinese_warlord_reform }
+			FROM = { has_reform = chinese_warlord_reform }
+		}
+		allow = {
+			always = no
+		}
+	}
+	condition = {
+		tooltip = COALITION_OUTSIDE_JAPAN_BLOCK #Blocks Daimyos joining Coalitions outside Japan
+		potential = {
+			is_daimyo = yes
+		}
+		allow = {
+			FROM = {
+				OR = {
+					is_daimyo = yes
+					is_indep_daimyo = yes
+					has_reform = shogunate
+				}
+			}
+		}
+	}
+	condition = {
+		tooltip = THEY_ARE_DAIMYO_COALITION #Blocks countries outside japan coalitioning Daimyos
+		potential = {
+			FROM = { is_daimyo = yes }
+		}
+		allow = {
+			OR = {
+				is_daimyo = yes
+				is_indep_daimyo = yes
+				has_reform = shogunate
+			}
+		}
+	}
+}
+warningaction = { #Stops countries from warning warlords
+	condition = {
+		tooltip = CANT_WARN_WARLORD_BLOCK
+		potential = {
+			NOT = { has_reform = chinese_warlord_reform }
+			FROM = { has_reform = chinese_warlord_reform }
+		}
+		allow = {
+			always = no
+		}
+	}
+	condition = { #stops warlords warning people
+		tooltip = WARLORDS_CANT_WARN
+		potential = {
+			has_reform = chinese_warlord_reform
+		}
+		allow = {
+			always = no
+		}
+	}
+	condition = { #Stops countries warning the emperor if it would interfere with Emperor attacking Warlords
+		tooltip = CANT_WARN_EMPEROR_WARLORDS
+		potential = {
+			FROM = { is_emperor_of_china = yes }
+		}
+		allow = {
+			NOT = {
+				any_neighbor_country = { has_reform = chinese_warlord_reform }
+			}
+		}
+	}
+	condition = {
+		tooltip = CANT_WARN_DAIMYOS #Stops countries Warning Daimyos
+		potential = {
+			FROM = { is_daimyo = yes }
+		}
+		allow = {
+			always = no
+		}
+	}
+	condition = {
+		tooltip = DAIMYO_CANT_WARN #Stops Daimyos warning people
+		potential = {
+			is_daimyo = yes
+		}
+		allow = {
+			always = no
+		}
+	}
+}
+enforce_peace = { #Stops outside countries forcing peace on warlords
+	condition = {
+		tooltip = CANT_FORCE_PEACE_WARLORD_BLOCK
+		potential = {
+			FROM = { has_reform = chinese_warlord_reform }
+		}
+		allow = {
+			always = no
+		}
+	}
+	condition = { #Stops warlords enforcing peace on other countries
+		tooltip = CANT_FORCE_PEACE_WE_WARLORD_BLOCK
+		potential = {
+			has_reform = chinese_warlord_reform
+		}
+		allow = {
+			always = no
+		}
+	}
+	condition = {
+		tooltip = DAIMYO_CANT_FORCE_PEACE #Cannot force peace on Daimyos
+		potential = {
+			FROM = { is_daimyo = yes }
+		}
+		allow = { always = no }
+	}
+	condition = {
+		tooltip = CANT_FORCE_PEACE_DAIMYO #Daimyos cannot force peace
+		potential = {
+			is_daimyo = yes
+		}
+		allow = {
+			always = no
+		}
+	}
+	condition = {
+		tooltip = colonial_cant_enforce_tooltip
+		potential = {
+			FROM = { has_country_flag = cant_call_allies_flag }
+		}
+		allow = {
+			all_subject_country = {
+				NOT = {
+					any_war_enemy_country = {
+						has_country_flag = cant_call_allies_flag
+					}
+				}
+			}
+		}
+	}
+}
+threaten_war = {
+	condition = { #stops outside powers threatening warlords
+		tooltip = CANT_THREATEN_WARLORD_BLOCK
+		potential = {
+			NOT = { has_reform = chinese_warlord_reform }
+			FROM = { has_reform = chinese_warlord_reform }
+		}
+		allow = {
+			always = no
+		}
+	}
+	condition = { #Stops warlords threatening other countries
+		tooltip = CANT_THREATEN_WE_WARLORD_BLOCK
+		potential = {
+			has_reform = chinese_warlord_reform
+		}
+		allow = {
+			FROM = { has_reform = chinese_warlord_reform }
+		}
+	}
+	condition = {
+		tooltip = DAIMYO_CANT_THREATEN #Daimyos cannot be threatened
+		potential = {
+			FROM = { is_daimyo = yes }
+		}
+		allow = {
+			OR = {
+				is_daimyo = yes
+				has_reform = shogunate
+				is_indep_daimyo = yes
+			}
+		}
+	}
+	condition = {
+		tooltip = CANT_THREATEN_DAIMYO #Cannot threaten outside countries as daimyo
+		potential = {
+			is_daimyo = yes
+		}
+		allow = {
+			FROM = { 
+				OR = {
+					is_daimyo = yes
+					is_indep_daimyo = yes
+					has_reform = shogunate 
+				}
+			}
+		}
+	}
+}
+influence_nation = {
+	condition = { #Stops countries influencing warlords
+		tooltip = CANT_INFLUENCE_WARLORDS_BLOCK
+		potential = {
+			NOT = { has_reform = chinese_warlord_reform }
+			FROM = { has_reform = chinese_warlord_reform }
+		}
+		allow = {
+			always = no
+		}
+	}
+	condition = { #Stops warlords influencing non-warlords
+		tooltip = WARLORD_CANT_INFLUENCE_BLOCK
+		potential = {
+			has_reform = chinese_warlord_reform
+		}
+		allow = { 
+			FROM = { has_reform = chinese_warlord_reform }
+		}
+	}
+	condition = {
+		tooltip = DAIMYO_CANT_INFLUENCE #Daimyos can only influence within Japan
+		potential = {
+			is_daimyo = yes
+		}
+		allow = {
+			FROM = {
+				OR = {
+					is_daimyo = yes
+					is_indep_daimyo = yes
+					has_reform = shogunate
+				}
+			}
+		}
+	}
+	condition = {
+		tooltip = THEY_DAIMYO_INFLUENCE #Countries outside Japan cant influence daimyos
+		potential = {
+			FROM = { is_daimyo = yes }
+		}
+		allow = {
+			OR = {
+				is_daimyo = yes
+				is_indep_daimyo = yes
+				has_reform = shogunate
+			}
+		}
+	}
+}
+intervene_in_war = {
+	condition = { #Stops countries intervening on warlords
+		tooltip = CANT_INTERVENE_WARLORDS_BLOCK
+		potential = {
+			NOT = { has_reform = chinese_warlord_reform }
+			FROM = { has_reform = chinese_warlord_reform }
+		}
+		allow = { always = no }
+	}
+	condition = { #Stops warlords intervening on outside countries
+		tooltip = WARLORD_CANT_INTERVENE_BLOCK
+		potential = {
+			has_reform = chinese_warlord_reform 
+		}
+		allow = { 
+			FROM = { has_reform = chinese_warlord_reform }
+		}
+	}
+	condition = {
+		tooltip = DAIMYO_CANT_INTERVENE #Daimyos can only intervene within Japan
+		potential = {
+			is_daimyo = yes
+		}
+		allow = {
+			FROM = {
+				OR = {
+					is_daimyo = yes
+					is_indep_daimyo = yes
+					has_reform = shogunate
+				}
+			}
+		}
+	}
+	condition = {
+		tooltip = THEY_DAIMYO_INTERVENE #Countries outside Japan cant intervene daimyos
+		potential = {
+			FROM = { is_daimyo = yes }
+		}
+		allow = {
+			OR = {
+				is_daimyo = yes
+				is_indep_daimyo = yes
+				has_reform = shogunate
+			}
+		}
+	}
+}
+vassalaction = {
+	condition = { #Stops countries vassalizing warlords
+		tooltip = CANT_VASSALIZE_WARLORDS
+		potential = {
+			NOT = { has_reform = chinese_warlord_reform }
+			FROM = { has_reform = chinese_warlord_reform }
+		}
+		allow = { 
+			always = no
+		}
+	}
+	condition = { #Stops warlords vassalizing
+		tooltip = WARLORD_CANT_VASSALIZE
+		potential = {
+			has_reform = chinese_warlord_reform
+		}
+		allow = {
+			always = no
+		}
+	}
+	condition = {
+		tooltip = WE_ARE_DAIMYO_BLOCK #Stops Daimyos vassalizing
+		potential = {
+			is_daimyo = yes
+		}
+		allow = {
+			always = no
+		}
+	}
+	condition = {
+		tooltip = THEY_ARE_DAIMYO_BLOCK #Stops countries vassalizing Daimyos
+		potential = {
+			FROM = { is_daimyo = yes }
+		}
+		allow = {
+			always = no
+		}
+	}
+	condition = {
+		tooltip = THEY_ARE_EMPEROR_TT
+		potential = {
+			FROM = {
+				OR = {
+					is_emperor_of_china = yes
+					has_reform = shogunate
+				}
+			}
+		}
+		allow = {
+			always = no
+		}
+	}
+	#Vanilla
+	condition = {
+		tooltip = VASSALINVALID
+		potential = {
+		}
+		allow = {
+			alliance_with = FROM
+			FROM = {
+				has_opinion = {
+					who = ROOT
+					value = 190
+				}
+			}
+			FROM = { is_at_war = no }
+		}
+	}
+}
+sellprov = {
+	condition = { #Stops countries selling provs to warlords
+		tooltip = CANT_SELL_PROVINCE_WARLORD
+		potential = {
+			NOT = { has_reform = chinese_warlord_reform }
+			FROM = { has_reform = chinese_warlord_reform }
+		}
+		allow = { 
+			always = no
+		}
+	}
+	condition = { #Stops warlords selling provs
+		tooltip = WARLORD_CANT_SELL_PROV
+		potential = {
+			has_reform = chinese_warlord_reform
+		}
+		allow = {
+			always = no
+		}
+	}
+	condition = {
+		tooltip = WE_ARE_DAIMYO_BLOCK #Stops Daimyos selling provs
+		potential = {
+			is_daimyo = yes
+		}
+		allow = {
+			always = no
+		}
+	}
+	condition = {
+		tooltip = THEY_ARE_DAIMYO_BLOCK #Stops countries selling provs to daimyo
+		potential = {
+			FROM = { is_daimyo = yes }
+		}
+		allow = {
+			always = no
+		}
+	}
+}
+spy_network = { #Stops warlords spying on non-warlords unless emperor
+	condition = {
+		tooltip = WARLORDS_CANT_SPY
+		potential = {
+			has_reform = chinese_warlord_reform
+		}
+		allow = {
+			FROM = { 
+				OR = {
+					has_reform = chinese_warlord_reform 
+					is_emperor_of_china = yes
+				}
+			}
+		}
+	}
+	condition = {
+		tooltip = WE_ARE_DAIMYO_BLOCK #Stops Daimyos spying outside japan
+		potential = {
+			is_daimyo = yes
+		}
+		allow = {
+			FROM = {
+				OR = {
+					is_daimyo = yes
+					is_indep_daimyo = yes
+					has_reform = shogunate
+				}
+			}
+		}
+	}
+}
+steer_trade = {
+	condition = { #Countries cant ask warlords to steer trade
+		tooltip = WARLORDS_WONT_STEER_TRADE
+		potential = {
+			NOT = { has_reform = chinese_warlord_reform }
+			FROM = { has_reform = chinese_warlord_reform }
+		}
+		allow = {
+			always = no
+		}
+	}
+	condition = { #Warlords cant ask countries to steer trade
+		tooltip = WARLORD_CANT_STEER
+		potential = {
+			has_reform = chinese_warlord_reform
+		}
+		allow = {
+			always = no
+		}
+	}
+	condition = {
+		tooltip = WE_ARE_DAIMYO_BLOCK #Stops Daimyos asking for trade
+		potential = {
+			is_daimyo = yes
+		}
+		allow = {
+			always = no
+		}
+	}
+	condition = {
+		tooltip = THEY_ARE_DAIMYO_BLOCK #Stops countries asking Daimyos for trade
+		potential = {
+			FROM = { is_daimyo = yes }
+		}
+		allow = {
+			always = no
+		}
+	}
+}
+break_alliance = { #Misleading, this is the "Force break alliance action" used by outside powers
+
+	condition = { #Countries cant break warlord alliances
+		tooltip = CANT_BREAK_ALLY_WARLORD
+		potential = {
+			NOT = { has_reform = chinese_warlord_reform }
+			FROM = { has_reform = chinese_warlord_reform }
+		}
+		allow = {
+			always = no
+		}
+	}
+	condition = { #Warlords cant break outside country alliances
+		tooltip = WARLORDS_CANT_BREAK_ALLY
+		potential = {
+			has_reform = chinese_warlord_reform
+		}
+		allow = {
+			FROM = { has_reform = chinese_warlord_reform }
+		}
+	}
+	condition = {
+		tooltip = WE_ARE_DAIMYO_BLOCK #Stops Daimyos breaking outside alliances
+		potential = {
+			is_daimyo = yes
+		}
+		allow = {
+			always = no
+		}
+	}
+	condition = {
+		tooltip = THEY_ARE_DAIMYO_BLOCK #Stops countries breaking daimyo alliances
+		potential = {
+			FROM = { is_daimyo = yes }
+		}
+		allow = {
+			always = no
+		}
+	}
+}
+request_to_join_trade_league = {
+	condition = {
+		tooltip = NOT_RELEVANT_TRADE_REGION_FROM
+		potential = {
+		}
+		allow = {
+			home_trade_node = {
+				trade_share = {
+					country = from
+					share = 1
+				}
+			}
+		}
+	}
+	condition = {
+		tooltip = WARLORD_NO_TRADE_LEAGUE #Warlords cannot join trade leagues
+		potential = {
+			has_reform = chinese_warlord_reform
+		}
+		allow = {
+			always = no
+		}
+	}
+	condition = {
+		tooltip = WE_ARE_DAIMYO_BLOCK #Stops Daimyos joining trade leagues
+		potential = {
+			is_daimyo = yes
+		}
+		allow = {
+			always = no
+		}
+	}
+}
+
+invite_to_trade_league = {
+	condition = {
+		tooltip = NOT_RELEVANT_TRADE_REGION
+		potential = {
+		}
+		allow = {
+			from = {
+				home_trade_node = {
+					trade_share = {
+						country = root
+						share = 1
+					}
+				}
+			}
+		}
+	}
+	condition = {
+		tooltip = WARLORD_NO_TRADE_LEAGUE #Warlords cannot join trade leagues
+		potential = {
+			FROM = { has_reform = chinese_warlord_reform }
+		}
+		allow = {
+			always = no
+		}
+	}
+	condition = {
+		tooltip = THEY_ARE_DAIMYO_BLOCK #Stops countries asking Daimyos to join trade leagues
+		potential = {
+			FROM = { is_daimyo = yes }
+		}
+		allow = {
+			always = no
+		}
+	}
+}
+#VANILLA
+annexationaction = {
+	condition = {
+		tooltip = ANNEX_TOO_LOW
+		potential = {
+			FROM = {
+				vassal_of = ROOT
+			}
+		}
+		allow = {
+			FROM = {
+				has_opinion = {
+					who = ROOT
+					value = 190
+				}
+			}
+		}
+	}
+	condition = {
+		tooltip = PUINTEGRATIONIMPOSSIBLE
+		potential = {
+			has_government_attribute = cannot_integrate_personal_unions
+		}
+		allow = {
+			NOT = { has_government_attribute = cannot_integrate_personal_unions }
+		}
+	}
+}
+
+integrationaction = {
+	condition = {
+		tooltip = INTEGRATETOOLOWDESC
+		potential = {
+			senior_union_with = FROM
+		}
+		allow = {
+			FROM = {
+				has_opinion = {
+					who = ROOT
+					value = 190
+				}
+			}
+		}
+	}
+}
+
+abandon_union_action = {
+	condition = {
+		potential = {
+		}
+		allow = {
+			ROOT = {
+				senior_union_with = FROM
+				is_at_war = no
+			}
+		}
+	}
+	condition = {
+		tooltip = PUABANDONINGIMPOSSIBLE
+		potential = {
+			has_government_attribute = cannot_abandon_personal_unions
+		}
+		allow = {
+			NOT = { has_government_attribute = cannot_abandon_personal_unions }
+		}
+	}
+}
+callaction = {
+	condition = {
+		tooltip = fighting_agitation_tt
+		potential = {
+			has_country_flag = the_agitation_war
+		}
+		allow = {
+			always = no
+		}
+	}
+	condition = {
+		tooltip = fighting_colonial_tt
+		potential = {
+			has_country_flag = cant_call_allies_flag
+		}
+		allow = {
+			always = no
+		}
+	}
+}
+justify_trade_conflict = {
+	condition = {
+		tooltip = not_heathens_tt
+		potential = { 
+			OR = {
+				religion_group = FROM
+				NOT = { is_neighbor_of = FROM }
+			}
+		}
+		allow = {
+			always = no
+		}
+	}
+}
+fabricate_claim = { #Should use Claim Area instead
+	condition = {
+		potential = { ai = yes }
+		allow = {
+			ai = no
+		}
+	}
+}
+
+
+

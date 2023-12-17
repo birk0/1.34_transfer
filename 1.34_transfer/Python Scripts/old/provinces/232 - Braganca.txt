@@ -1,0 +1,22 @@
+#232 - Bragança
+
+owner = POR
+controller = POR
+culture = portugese
+religion = catholic
+capital = "Bragança"
+trade_goods = wine
+hre = no
+base_tax = 4 
+base_production = 4
+base_manpower = 2
+is_city = yes
+add_core = POR
+
+1444.12.1 = { # New Bookmark
+	trade_goods = unknown
+	remove_cores = yes
+	owner = ---
+	controller = ---
+	hre = no
+}

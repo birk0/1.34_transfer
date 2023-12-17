@@ -1,0 +1,97 @@
+po_take_mandate_warlord = { #For Warlords claiming the Mandate of Heaven
+	power_cost_base = 2
+	prestige_base = 0.5
+	ae_base = 0 
+	power_projection = humiliated_rival
+	warscore_cost = {
+		no_provinces = 100.0
+	}
+	warscore_cap = 100
+	requires_is_allowed = yes
+	effect = {
+		set_emperor_of_china = THIS
+		FROM = {
+			while = {
+				limit = {
+					any_owned_province = {
+						superregion = china_superregion
+						any_core_country = {
+							exists = no
+						}
+					}
+					num_of_owned_provinces_with = {
+						value = 5
+						superregion = china_superregion
+					}
+				}
+				random_owned_province = {
+					limit = { superregion = china_superregion }
+					random_core_country = {
+						limit = {
+							exists = no
+							NOT = { 
+								calc_true_if = {
+									amount = 20
+									all_core_province = {
+										owned_by = FROM
+									}
+								}
+							}
+						}
+						FROM = { release = PREV }
+						adopt_reform_progress = FROM
+						if = {
+							limit = { religion = noreligion }
+							capital_scope = {
+								PREV = { change_religion = PREV }
+							}
+						}
+						if = {
+							limit = { primary_culture = noculture }
+							capital_scope = {
+								PREV = { change_primary_culture = PREV }
+							}
+						}
+					}
+				}
+			}
+			if = {
+				limit = {
+					OR = {
+						is_in_war = { casus_belli = cb_take_mandate }
+						is_in_war = { casus_belli = cb_claim_mandate_warlord }
+						is_in_war = { casus_belli = cb_crush_rebel_warlord }
+					}
+				}
+				every_known_country = {
+					limit = {
+						NOT = { tag = ROOT }
+						OR = {
+							is_in_war = { casus_belli = cb_claim_mandate_warlord }
+							is_in_war = { casus_belli = cb_take_mandate }
+							is_in_war = { casus_belli = cb_crush_rebel_warlord }
+						}
+					}
+					white_peace = FROM
+				}
+			}
+		}
+		every_known_country = {
+			limit = {
+				capital_scope = { superregion = china_superregion }
+				NOT = { tag = ROOT }
+			}
+			add_government_reform = chinese_warlord_reform
+			add_meritocracy = 100
+		}
+	}
+	ai_weight = {
+		export_to_variable = {
+			variable_name = ai_value
+			value = 1000
+		}
+		limit = {
+			always = yes
+		}
+	}
+}

@@ -1,0 +1,7 @@
+#Prov2450 - Ghadames
+culture = tuareg
+religion = sunni
+
+base_tax = 1
+base_production = 1
+base_manpower = 1

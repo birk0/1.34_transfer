@@ -1,0 +1,19 @@
+#1079 - Viatka
+
+capital = "Hlynov"
+culture = russian
+religion = orthodox
+trade_goods = copper
+hre = no
+is_city = yes
+#changes
+base_tax = 1
+base_production = 2
+base_manpower = 2
+owner = TNK
+controller = TNK
+add_core = TNK
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}

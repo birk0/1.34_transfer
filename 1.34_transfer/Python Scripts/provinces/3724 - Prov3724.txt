@@ -1,0 +1,7 @@
+#Prov3724 - Prov3724
+religion = sunni
+culture = nubian
+
+base_tax = 1
+base_production = 1
+base_manpower = 1

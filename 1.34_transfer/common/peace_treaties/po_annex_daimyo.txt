@@ -1,0 +1,31 @@
+po_annex_daimyo = {
+
+	prestige_base = 0.1
+	power_projection = humiliated_rival
+	ae_base = 0.5
+	warscore_cost = {
+		no_provinces = 100.0
+	}
+	warscore_cap = 100
+	requires_is_allowed = yes
+	effect = { #Complete Subjugation
+		set_country_flag = won_shogun_war
+		add_legitimacy_equivalent = { amount = 10 }
+		FROM = {
+			every_owned_province = {
+				limit = { region = japan_region }
+				cede_province = ROOT
+				add_core = ROOT
+			}
+		}
+	}
+	ai_weight = {
+		export_to_variable = {
+			variable_name = ai_value
+			value = 1000
+		}
+		limit = {
+			always = yes
+		}
+	}
+}

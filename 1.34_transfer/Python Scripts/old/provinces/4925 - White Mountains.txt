@@ -1,0 +1,22 @@
+#4925 - Chuzhou
+
+owner = MNG
+controller = MNG
+add_core = MNG
+culture = zhongyuan
+religion = mahayana #changes
+capital = "Chuzhou"
+trade_goods = cloth
+hre = no
+#Changes
+base_tax = 2 
+base_production = 2
+base_manpower = 3
+is_city = yes
+add_core = KAU
+
+
+
+1444.12.1 = { # New Bookmark
+	add_bookmark_effect = yes
+}
