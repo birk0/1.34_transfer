@@ -96,5 +96,6 @@
 			"00_mod_scripted_effects.txt",
 
 		],
+		"git.ignoreLimitWarning": true,
 	}
 }
